@@ -139,12 +139,12 @@ Quality bar: `plans/29-DOCS-AUTHORING-STANDARDS.md` for every markdown / JSON fi
 - [x] write `cli/data/sui-mcps.json` (Sui-relevant MCP servers)
 - [x] write `cli/data/sui-ideas.json` (top idea picks promoted from `skills/data/ideas/*.json`, deduped)
 
-## Phase 20: CLI install / health commands [ ]
-- [ ] write `cli/init.ts` per `plans/03-INSTALL-FLOW.md` and `plans/08-CLI-DESIGN.md` (writes to `~/.claude/skills`, `~/.codex/skills`, `~/.cursor/rules`; manifest at `~/.suiperpower/skills-installed.json`; supports `--vendor`, `--convex-url`, `--agent`)
-- [ ] write `cli/agent-cli.ts` (detect / install Claude Code, Codex; detect Cursor; never block)
-- [ ] write `cli/doctor.ts` (status table per `plans/08-CLI-DESIGN.md`, never exits non-zero, surfaces Sui CLI version, active env, gas address)
-- [ ] write `cli/update.ts` (calls `init.ts` after `npm install -g suiperpower@latest`, prints changelog summary)
-- [ ] write `cli/uninstall.ts` (reads manifest, removes only files we own, prompts before deleting `~/.suiperpower/`)
+## Phase 20: CLI install / health commands [x]
+- [x] write `cli/init.ts` per `plans/03-INSTALL-FLOW.md` and `plans/08-CLI-DESIGN.md` (writes to `~/.claude/skills`, `~/.codex/skills`, `~/.cursor/rules`; manifest at `~/.suiperpower/skills-installed.json`; supports `--vendor`, `--convex-url`, `--agent`)
+- [x] write `cli/agent-cli.ts` (detect / install Claude Code, Codex; detect Cursor; never block)
+- [x] write `cli/doctor.ts` (status table per `plans/08-CLI-DESIGN.md`, never exits non-zero, surfaces Sui CLI version, active env, gas address)
+- [x] write `cli/update.ts` (calls `init.ts` after `npm install -g suiperpower@latest`, prints changelog summary)
+- [x] write `cli/uninstall.ts` (reads manifest, removes only files we own, prompts before deleting `~/.suiperpower/`)
 
 ## Phase 21: CLI utility commands [ ]
 - [ ] write `cli/telemetry.ts` (tiny helper for CLI commands; same Convex schema; respects tier in `~/.suiperpower/config.json`)
