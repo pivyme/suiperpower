@@ -1,0 +1,16 @@
+name: validate-idea
+version: 1
+phase: idea
+description: |
+  Stress test a chosen Sui product idea against demand, competition,
+  feasibility, and Sui-native fit, and produce a go/no-go recommendation. Use
+  when the user says "validate my idea", "stress test my idea", "is this idea
+  good", "go or no go", "should I build this", "kill the idea or build it",
+  or "pressure test my Sui idea".
+prompt_path: ../SKILL.md
+references:
+  - ../references/demand-evidence-questions.md
+  - ../references/no-go-criteria.md
+knowledge:
+  - skills/data/ideas/sui-native-gaps.json
+  - skills/data/sui-knowledge/06-opensource-research.md

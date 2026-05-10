@@ -99,13 +99,13 @@ Quality bar: `plans/29-DOCS-AUTHORING-STANDARDS.md` for every markdown / JSON fi
 - [x] author `skills/build/page-load-animations/`
 - [x] author `skills/build/design-taste/`
 
-## Phase 14: Idea phase skills [ ]
-- [ ] author `skills/idea/find-next-sui-idea/` (writes initial `idea-context.md`, scoring rubric)
-- [ ] author `skills/idea/validate-idea/` (stress-test, go/no-go output)
-- [ ] author `skills/idea/competitive-landscape/`
-- [ ] author `skills/idea/deepbook-research/` (queries DeepBook trading data, finds market niches)
-- [ ] author `skills/idea/walrus-research/`
-- [ ] author `skills/idea/overflow-copilot/` (past Sui hackathon project search; analog to colosseum-copilot but Sui-only)
+## Phase 14: Idea phase skills [x]
+- [x] author `skills/idea/find-next-sui-idea/` (writes initial `idea-context.md`, scoring rubric)
+- [x] author `skills/idea/validate-idea/` (stress-test, go/no-go output)
+- [x] author `skills/idea/competitive-landscape/`
+- [x] author `skills/idea/deepbook-research/` (queries DeepBook trading data, finds market niches)
+- [x] author `skills/idea/walrus-research/`
+- [x] author `skills/idea/overflow-copilot/` (past Sui hackathon project search; analog to colosseum-copilot but Sui-only)
 
 ## Phase 15: Anti-slop skills [ ]
 - [ ] author `skills/build/validate-business-model/` per `plans/12-ANTI-SLOP-FRAMEWORK.md` (5 questions, refuses to claim model exists if unanswered)

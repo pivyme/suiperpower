@@ -1,0 +1,16 @@
+name: walrus-research
+version: 1
+phase: idea
+description: |
+  Research Walrus storage usage patterns and surface product opportunities,
+  underserved use cases, and integration gaps. Use when the user says "Walrus
+  research", "find Walrus opportunities", "what to build on Walrus", "Walrus
+  market gaps", "decentralized storage idea", "Walrus blob storage
+  opportunities", or "Walrus integration ideas".
+prompt_path: ../SKILL.md
+references:
+  - ../references/walrus-categories.md
+  - ../references/walrus-unit-economics.md
+knowledge:
+  - skills/data/sui-knowledge/sponsor-docs/walrus.md
+  - skills/data/sui-knowledge/04-protocols-and-sdks.md

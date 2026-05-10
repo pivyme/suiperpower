@@ -1,427 +1,530 @@
 # 14. Website structure
 
-## Scope of this doc
+A single-page site at `suiperpower.dev`. This doc is the build spec for the frontend engineer. Each section block has **layout**, **copy** (paste verbatim), **assets**, **links**, and **behavior**. Skip the appendix at the bottom unless you want context on why a constraint exists.
 
-Information architecture, copy outline, and structural constraints for `suiperpower.dev`. No styling, no design system, no component implementation. Visual decisions happen later, in the build phase, against the constraints recorded here.
+## Pending decisions (resolve before final copy lock)
 
-If you are reading this to build the site: every section below has copy you can paste, plus a short "constraints" block telling you what not to do. If a constraint is unclear, treat the constraint as load-bearing and ask before relaxing it.
-
-## What the website is, in one paragraph
-
-`suiperpower.dev` is a **single-page** content site. It exists to convert a visitor into someone who has run the install command. Everything on the page either drives that conversion or earns the trust that makes that conversion likely. The site is not the product. The CLI is the product. Skill catalog, docs, contributing guide, release notes, and sponsor pages all live on GitHub, where they already render for free.
-
-Two operational jobs:
-
-1. Host `/setup.sh` (the curl install target).
-2. Show the install command above the fold, with enough scroll-context that a visitor knows what they are installing and why.
-
-If a future feature does not serve one of those two jobs, it does not belong on the site.
-
-## Reference, not template
-
-`solana.new` is a structural reference for the **install hero** only. The terminal-style code block, the install command as the visual centerpiece, is a pattern that works and we use it.
-
-Everything else (sections, copy, ordering, narrative spine) is Suiperpower-specific. The site should not feel like a Sui re-skin of solana.new to anyone who has seen both. The single most important rule of this entire doc: **we are a Sui-native product, not a port.**
-
-What we do **not** copy from solana.new:
-
-- The "build useful and tasteful crypto apps" left-rail skill table on the landing
-- The "founder mode ON" pillar layout
-- The "Your Agents are ready. Are you?" purple CTA
-- The dark gradient hero treatment
-
-The full do-not-use phrase list lives in `plans/15-BRAND.md`. Read it before writing any copy.
-
-## The narrative spine
-
-The page answers the visitor's questions in order. If a section does not answer one of these, it does not belong on the page.
-
-| Scroll depth | Visitor question | Section |
+| What | Status | Where it lands |
 |---|---|---|
-| Hero | "What is this and how do I install?" | 1. Hero |
-| First scroll | "What do I actually get?" | 2. What this gives you |
-| Mid-scroll | "How does this work?" | 3. The journey |
-| Mid-scroll | "Why should I care?" | 4. Why anti-slop matters |
-| Trust-building | "Who is this person, and have they done this before?" | 5. From the builder |
-| Trust-building | "Who validates this?" | 6. Built with Sui sponsors |
-| Conversion | "OK, how do I install again?" | 7. Final CTA |
-| Tail | "Who actually built it?" | 8. Made by |
-
-Two conversion checkpoints we design for:
-
-- **Hero-only visitor**: someone who lands, reads the headline, sees the install command, and leaves. They should have everything they need to install. The hero is self-sufficient.
-- **Mid-scroll visitor**: someone who scrolls to "why anti-slop matters" and bounces. They should have enough context to remember the project and come back. The middle of the page reinforces the hero, it does not replace it.
-
-## Stack and routes
-
-Tech is deliberately boring, because the page is small.
-
-- Next.js (App Router) on Vercel, single page at `/`
-- Static export
-- No CMS, no MDX, no catalog rendering on the site
-
-Routes:
-
-```
-/                       The landing page (the only real route)
-/setup.sh               The bash install script (from /public/setup.sh)
-/og-image.png           Open Graph card
-/sitemap.xml            One-entry sitemap (just /)
-/robots.txt             Allow all
-```
-
-That is the entire website. **No** `/install`, `/skills`, `/repos`, `/mcps`, `/ideas`, `/docs`, `/sponsors`, `/overflow`, `/changelog`, `/privacy`, or `/terms`. All of that lives in the GitHub repo as markdown.
-
-If we ever need a privacy notice or terms link for compliance, we add them later as static pages. They are not blocking launch.
+| Final tagline | **Pending Kelvin's pick.** Current placeholder: `build Sui that ships.` (do not ship this verbatim, Kelvin flagged it as off). See alternatives in chat history. | Section 1 headline, meta title, OG card |
+| GitHub org / handle for repo URL | Pending, see `plans/19` row 1 | All `<org>` placeholders below |
+| OG image final art | Not yet produced | `/public/og-image.png` |
+| Team photos (4) | Not yet collected, see `MANUAL-TODO.md` A14 | `/public/team/*.jpg` |
+| Telegram URL for footer | `https://go.sui.io/suioverflow2026-tg` for now (Sui Overflow Telegram, we don't run our own) | Footer |
 
 ---
 
-## Landing page sections
+## Page map
 
-Eight sections and a footer. No more. Order matters.
+```
+┌─────────────────────────────────────────────────┐
+│ TOP BAR        wordmark · GitHub stars          │
+├─────────────────────────────────────────────────┤
+│ 1. HERO        headline + install + agent badges│
+├─────────────────────────────────────────────────┤
+│ 2. WHAT YOU GET    3 columns of benefits        │
+├─────────────────────────────────────────────────┤
+│ 3. THE JOURNEY     5-phase flow + one-paragraph │
+├─────────────────────────────────────────────────┤
+│ 4. ANTI-SLOP       2 paragraphs + text link     │
+├─────────────────────────────────────────────────┤
+│ 5. FROM THE BUILDER  Kelvin's quote + attribution│
+├─────────────────────────────────────────────────┤
+│ 6. OVERFLOW READY  sponsors + submission tools  │
+├─────────────────────────────────────────────────┤
+│ 7. FINAL CTA       install block + 2 text links │
+├─────────────────────────────────────────────────┤
+│ 8. MADE BY         founders, intern, site credit│
+├─────────────────────────────────────────────────┤
+│ FOOTER         one line                         │
+└─────────────────────────────────────────────────┘
+```
 
-For each section: copy you can paste, then a constraints block telling you what not to do.
+Eight sections + top bar + footer. Render in this order on every viewport.
 
-### 1. Hero
+---
 
-The visitor's first 3 seconds decide whether they install. Every element earns its space.
+## Top bar
 
-**Top bar** (one line, full-width):
+**Layout**: full-width row, fixed height, sticky on desktop, static on mobile.
 
-- Left: wordmark "suiperpower" (lowercase, small)
-- Right: GitHub link with star count, that is it. No menu, no nav, no theme toggle.
+**Left**: wordmark `suiperpower` (lowercase, plain text or SVG).
 
-**Hero block** (centered):
+**Right**: single GitHub link with live star count.
 
-- **Headline**: `build Sui that ships.`
-- **Subhead** (one sentence): "Skills, knowledge, and a CLI for shipping production Sui products with Claude Code, Codex, or Cursor."
-- **Install block** (terminal-style, copy button on hover or always visible):
-  ```
-  curl -fsSL https://suiperpower.dev/setup.sh | bash
-  ```
-- **Below install** (small, one line): "30+ Sui-native skills, knowledge base, ecosystem catalog. One install. Three agents."
-- **Agent badges** (3 small icons, inline, below the install block): Claude Code, Codex, Cursor.
+**Copy**:
+- Wordmark text: `suiperpower`
+- GitHub link label: `GitHub` (with star count appended, e.g. `GitHub · 132`)
 
-**Constraints**:
+**Links**:
+- Wordmark → `/` (anchor to top)
+- GitHub link → `https://github.com/<org>/suiperpower`
 
-- Hero must fit in the viewport on a 13-inch laptop and on an iPhone 15. If it does not, cut copy until it does.
-- No carousel.
-- No gradient hero animation, no looping background video, no particle field.
-- No Sui Overflow 2026 co-branding in the hero. The hero is for install conversion, not partnership announcements.
-- No "watch demo" video CTA. The install command is the demo.
+**Behavior**:
+- Star count fetched at build time from GitHub API. If fetch fails, render the label without the number (no "0", no "—").
+- No mobile menu (there's nothing to put in it).
 
-### 2. What this gives you
+---
 
-Three benefits, three columns. One sentence each. No icons unless they are tasteful, restrained, and the same family.
+## Section 1: Hero
 
-| Benefit | Copy |
+**Layout**: centered column. Fits in viewport on a 13-inch laptop and on iPhone 15.
+
+**Structure**:
+```
+[ headline ]
+[ subhead ]
+[ install code block (full-width on mobile, max-width 640px on desktop) ]
+[ small line under install ]
+[ 3 agent badges in a row ]
+```
+
+**Copy**:
+
+| Element | Text |
 |---|---|
-| **Skills that route by intent** | "Type what you want to do. The right skill loads. No flag memorization, no doc spelunking." |
-| **A Sui knowledge base your agent can read** | "Move, objects, PTBs, Walrus, DeepBook, Scallop. The agent uses it before it writes a line." |
-| **Anti-slop quality gates** | "Every build skill ends with a 'will this survive past the hackathon' check. Slop fails the gate." |
+| Headline (H1) | `<TAGLINE>` (placeholder until Kelvin locks; current draft `build Sui that ships.`) |
+| Subhead | Skills, knowledge, and a CLI for shipping production Sui products with Claude Code, Codex, or Cursor. |
+| Install command (in a `<pre><code>` block) | `curl -fsSL https://suiperpower.dev/setup.sh \| bash` |
+| Below install (small) | 30+ Sui-native skills, knowledge base, ecosystem catalog. One install. Three agents. |
+| Agent badges | `Claude Code`  ·  `Codex`  ·  `Cursor` |
 
-**Constraints**:
+**Assets**:
+- Three small agent logos for the badges. Source from each agent's brand assets page.
 
-- Three columns at desktop width, stacked at mobile width.
-- Headlines bold, body regular weight. No fancy treatments.
-- Do not add a fourth column to make it "more complete". The third column (anti-slop) is the differentiator and three columns hits visual balance. Four columns dilutes.
+**Links**:
+- None. The hero only has the install command (which is meant to be copied, not clicked).
+- Agent badges are non-interactive labels.
 
-### 3. The journey
+**Behavior**:
+- Install code block has a copy button (icon-only, top-right of the block). On click, copy the full command to clipboard. Show a brief "copied" state for 1.5s.
+- The pipe character (`|`) must render correctly inside the code block (no smart-quote replacement, no markdown escaping).
 
-The single section that visually distinguishes us from solana.new. Solana.new shows four pillars. We show a five-phase pipeline because Suiperpower is opinionated about handoff between phases, that is the actual product story.
+**Do not**:
+- Add a "watch demo" button.
+- Add a carousel.
+- Add Sui Overflow co-branding.
+- Add a hero illustration.
+- Use a gradient background.
 
-**Visual**: a horizontal flow of five labels, connected by arrows or chevrons.
+---
 
+## Section 2: What you get
+
+**Layout**: 3 columns at desktop (≥768px), stacked at mobile.
+
+**Structure** (per column):
 ```
-Learn → Idea → Build → Ship → Grow
+[ small heading ]
+[ one-sentence body ]
 ```
-
-Under each label, two or three real trigger phrases from the catalog. Examples (build phase picks the final set from `plans/04-SKILLS-CATALOG.md`):
-
-- **Learn**: "I'm new to Sui, teach me", "I'm coming from Solana, what's different"
-- **Idea**: "what should I build on Sui", "stress-test this idea"
-- **Build**: "scaffold my project", "build a Move module", "integrate Walrus"
-- **Ship**: "deploy to mainnet", "submit to Sui Overflow"
-- **Grow**: "set up analytics", "launch in community"
-
-**Explainer** (one short paragraph below the flow):
-
-> "Skills hand off through the filesystem. The idea phase writes a brief, the build phase reads it, the ship phase reads what build produced. No retyping, no re-prompting your agent's memory."
-
-**Constraints**:
-
-- Five phases is the count. Not four (we lose the "Grow" anti-slop continuation), not six (the Sui-Overflow-specific bits dilute Build).
-- The arrows must imply continuation, not strict gating. Skills can be invoked standalone too; the diagram should not suggest you must traverse left-to-right.
-- Mobile: the five phases stack vertically with arrows pointing down. Do not hide phases behind a "see more" toggle.
-
-### 4. Why anti-slop matters
-
-The differentiator section. The two paragraphs that earn the click to GitHub.
 
 **Copy**:
 
-> "Most hackathon submissions are slop. Polished landing page, broken flow, no path to a second user. They die when the prize is paid out."
->
-> "Sui Overflow 2026 explicitly judges on real-world application, polish, and sustainability. Suiperpower is built around that bar. Build skills run a checklist before they call themselves done. Ship skills refuse to fake telemetry, fake users, or fake code coverage. The bar is in the markdown, public, auditable."
+| Column 1 | Column 2 | Column 3 |
+|---|---|---|
+| **Skills that route by intent** | **A Sui knowledge base your agent can read** | **Anti-slop quality gates** |
+| Type what you want to do. The right skill loads. No flag memorization, no doc spelunking. | Move, objects, PTBs, Walrus, DeepBook, Scallop. The agent uses it before it writes a line. | Every build skill ends with a "will this survive past the hackathon" check. Slop fails the gate. |
 
-**CTA below the second paragraph**: a single text link reading "Read the quality bar →", linking to `github.com/<org>/suiperpower/blob/main/plans/12-ANTI-SLOP-FRAMEWORK.md`.
+**Assets**: none.
 
-**Constraints**:
+**Links**: none.
 
-- Two paragraphs. Not three. Not one. The first establishes the problem, the second establishes our answer. A third paragraph would weaken both.
-- No statistics ("78% of hackathon projects ..."). We do not have credible source data and faking it would itself be slop.
-- The CTA is text. No button styling. The visitor reading this section is here for substance, not buttons.
+**Behavior**: static.
 
-### 5. From the builder
+**Do not**: add a fourth column. Add icons unless they are restrained, monochrome, and from the same family.
 
-A pull-quote with attribution. Sets a face and credentials behind the abstract anti-slop argument above.
+---
+
+## Section 3: The journey
+
+**Layout**: horizontal flow on desktop, vertical stack on mobile.
+
+**Structure**:
+```
+[ Learn ]  →  [ Idea ]  →  [ Build ]  →  [ Ship ]  →  [ Grow ]
+   ·            ·             ·             ·            ·
+[ phrase ]  [ phrase ]    [ phrase ]    [ phrase ]   [ phrase ]
+[ phrase ]  [ phrase ]    [ phrase ]    [ phrase ]   [ phrase ]
+
+[ one-paragraph explainer below the flow ]
+```
 
 **Copy**:
 
-> "Most Sui hackathon submissions stop the day the prize lands. They were built for the hackathon, not for users. I built Suiperpower because that is the trap I want the next batch of builders to skip. Build a Sui product that earns real users, real traction, and eventually, real funding."
->
-> Kelvin Adithya, co-founder of [PIVY](https://pivy.me), 1st place at Sui Overflow 2025 (Payment and Wallets track)
+| Phase | Label | Trigger phrases (italic, smaller text) |
+|---|---|---|
+| 1 | Learn | "I'm new to Sui, teach me" / "I'm coming from Solana, what's different" |
+| 2 | Idea | "what should I build on Sui" / "stress-test this idea" |
+| 3 | Build | "scaffold my project" / "build a Move module" / "integrate Walrus" |
+| 4 | Ship | "deploy to mainnet" / "submit to Sui Overflow" |
+| 5 | Grow | "set up analytics" / "launch in community" |
 
-**Constraints**:
+**Explainer paragraph** (below the flow, max-width readable):
 
-- Reads as a quote, not as a marketing testimonial. Plain text, left-aligned, with a thin vertical accent or a leading quotation mark, nothing more.
-- Attribution one line below, smaller, with the role and Overflow 2025 win as the credibility anchor.
-- No headshot in v1. Words carry the weight, not a face. (Headshot already lives later in section 8.)
-- Link "PIVY" to pivy.me. Do not link "Sui Overflow 2025" anywhere; the year + track does the work.
+> Skills hand off through the filesystem. The idea phase writes a brief, the build phase reads it, the ship phase reads what build produced. No retyping, no re-prompting your agent's memory.
 
-### 6. Built with Sui sponsors
+**Assets**: none. Phase nodes are styled text + arrow glyphs (no custom icons).
 
-Single horizontal band of five logos. This is social proof, not a sponsor billboard.
+**Links**: none.
 
-**Copy** (one sentence above the logos):
+**Behavior**: static. No hover animations on phase nodes.
 
-> "First-class integration skills, knowledge docs, and clonable patterns for the Sui Overflow 2026 sponsors. The recommender refuses sponsor tracks the project does not actually use."
+**Do not**: add a sixth phase. Hide phases behind a "see more" toggle on mobile.
 
-**Logos**, in this order, equal sizing:
+---
 
-**Walrus · DeepBook · OpenZeppelin · OtterSec · Scallop**
+## Section 4: Why anti-slop matters
+
+**Layout**: single column, max-width readable (~640px).
+
+**Structure**:
+```
+[ section heading ]
+[ paragraph 1 ]
+[ paragraph 2 ]
+[ text link ]
+```
+
+**Copy**:
+
+| Element | Text |
+|---|---|
+| Heading | Why anti-slop matters |
+| Paragraph 1 | Most hackathon submissions are slop. Polished landing page, broken flow, no path to a second user. They die when the prize is paid out. |
+| Paragraph 2 | Sui Overflow 2026 explicitly judges on real-world application, polish, and sustainability. Suiperpower is built around that bar. Build skills run a checklist before they call themselves done. Ship skills refuse to fake telemetry, fake users, or fake code coverage. The bar is in the markdown, public, auditable. |
+| Text link | Read the quality bar → |
+
+**Links**:
+- "Read the quality bar →" → `https://github.com/<org>/suiperpower/blob/main/plans/12-ANTI-SLOP-FRAMEWORK.md`
+
+**Assets**: none.
+
+**Behavior**: static.
+
+**Do not**: add a third paragraph, add statistics, style the link as a button.
+
+---
+
+## Section 5: From the builder
+
+**Layout**: single column, max-width readable. Blockquote treatment.
+
+**Structure**:
+```
+[ pull-quote, paragraph ]
+[ attribution line, smaller, below ]
+```
+
+**Copy**:
+
+> Most Sui hackathon submissions stop the day the prize lands. They were built for the hackathon, not for users. I built Suiperpower because that is the trap I want the next batch of builders to skip. Build a Sui product that earns real users, real traction, and eventually, real funding.
+
+**Attribution** (smaller, single line):
+Kelvin Adithya, co-founder of [PIVY](https://pivy.me), 1st place at Sui Overflow 2025 (Payment and Wallets track)
+
+**Assets**: none in v1 (no headshot here, the headshot is in section 8).
+
+**Links**:
+- "PIVY" → `https://pivy.me`
+- "Sui Overflow 2025" → no link
+
+**Behavior**: static.
+
+**Do not**: add a headshot here, link the Overflow 2025 mention, add a "read more" expansion.
+
+---
+
+## Section 6: Sui Overflow 2026 ready
+
+This section positions Suiperpower as the tool that gets you ready to submit a real, competitive Overflow 2026 entry. Sponsors are part of that readiness, not the headline.
+
+**Layout**: stacked, top to bottom.
+
+**Structure**:
+```
+[ section heading ]
+[ one-sentence intro ]
+
+[ sponsor band: Walrus · DeepBook · OpenZeppelin · OtterSec · Scallop ]
+
+[ small label: "with first-class skills for every track" ]
+
+[ 3-bullet "what you get for Overflow" list ]
+```
+
+**Copy**:
+
+| Element | Text |
+|---|---|
+| Heading | Sui Overflow 2026 ready |
+| Intro (one sentence under heading) | First-class integration skills for every sponsor track, plus a submission generator that refuses to ship fakes. |
+| Label under sponsor band | with first-class skills for every track |
+| Bullet 1 | **Track recommender that pushes back.** `/pick-my-sui-track` refuses to recommend a sponsor track unless your project actually uses the sponsor's tech. No padding the application. |
+| Bullet 2 | **Submission generator with teeth.** `/submit-to-sui-overflow` captures your package-id, validates media dimensions, drafts deepsurge.xyz form copy, and refuses to package against placeholder content. |
+| Bullet 3 | **Real sponsor integrations, not stickers.** Walrus storage, DeepBook orderbook, Scallop money-market, OpenZeppelin Sui libs, OtterSec audit prep. Each one is its own skill with knowledge docs and clonable patterns. |
+
+**Assets** (5 sponsor logos, in this order, equal sizing):
+
+| Order | Sponsor | Logo source |
+|---|---|---|
+| 1 | Walrus | walrus.site brand assets |
+| 2 | DeepBook | deepbook.tech brand assets |
+| 3 | OpenZeppelin | openzeppelin.com brand assets |
+| 4 | OtterSec | ottersec.io brand assets |
+| 5 | Scallop | scallop.io brand assets |
+
+**Links**:
 
 Each logo links to the corresponding skill on GitHub:
 
-- Walrus → `skills/build/walrus-storage/SKILL.md`
-- DeepBook → `skills/build/deepbook-orderbook/SKILL.md`
-- OpenZeppelin → `skills/build/openzeppelin-sui-libs/SKILL.md`
-- OtterSec → `skills/build/ottersec-prep/SKILL.md`
-- Scallop → `skills/build/scallop-money-market/SKILL.md`
+| Logo | Link |
+|---|---|
+| Walrus | `https://github.com/<org>/suiperpower/blob/main/skills/build/walrus-storage/SKILL.md` |
+| DeepBook | `https://github.com/<org>/suiperpower/blob/main/skills/build/deepbook-orderbook/SKILL.md` |
+| OpenZeppelin | `https://github.com/<org>/suiperpower/blob/main/skills/build/openzeppelin-sui-libs/SKILL.md` |
+| OtterSec | `https://github.com/<org>/suiperpower/blob/main/skills/build/ottersec-prep/SKILL.md` |
+| Scallop | `https://github.com/<org>/suiperpower/blob/main/skills/build/scallop-money-market/SKILL.md` |
 
-**Constraints**:
+The bullet keywords link to their respective skills:
 
-- Logos in grayscale or single-color treatment, not full-color. Full-color sponsor logos read as advertising; grayscale reads as social proof.
-- No sponsor descriptions on hover. Visitors who want detail click through.
-- No internal sponsor page. We deliberately do not have one.
-- Order is **Walrus first** (headline partner), then alphabetical for the rest. If a sponsor disengages, drop their logo, do not rearrange and pretend.
+- "Track recommender" → `https://github.com/<org>/suiperpower/blob/main/skills/ship/pick-my-sui-track/SKILL.md`
+- "Submission generator" → `https://github.com/<org>/suiperpower/blob/main/skills/ship/submit-to-sui-overflow/SKILL.md`
 
-### 7. Final CTA
+**Behavior**:
+- Sponsor logos in grayscale or single-color treatment by default. On hover (desktop), can fade to full color.
+- Sponsor band wraps to two rows on mobile (Walrus + DeepBook + OpenZeppelin on row 1, OtterSec + Scallop on row 2). Never horizontal-scroll.
+- The 3 bullets stack on every viewport (no 3-column treatment, the bullets are dense enough that columns hurt readability).
 
-Mirror of the hero install block. The visitor has now read the full case for installing. Give them the command again, in the same shape, so muscle memory takes over.
-
-**Copy** (one line above):
-
-> "Install once. Use it on every Sui project, not just one hackathon."
-
-**Install block**:
-
-```
-curl -fsSL https://suiperpower.dev/setup.sh | bash
-```
-
-**Two text links below the block**:
-
-- "Browse skills on GitHub →" → `github.com/<org>/suiperpower/tree/main/skills`
-- "Contributions welcome →" → `github.com/<org>/suiperpower/blob/main/CONTRIBUTING.md`
-
-**Constraints**:
-
-- Identical visual treatment to the hero install block. Same font, same width, same copy button behavior. Repetition is the point.
-- No "Get started in 30 seconds" headline. The install command is the get-started.
-- Two links below, not three. A third dilutes the conversion choice.
-
-### 8. Made by
-
-Three visual tiers, top to bottom. The team section earns its trust by being specific and personal, not generic.
-
-**Tier 1, founders** (equal weight, side by side):
-
-- **Kelvin Adithya** → https://klvn.dev
-- **Febi Mettasari** → https://www.instagram.com/febimettasari
-
-**Tier 2, intern** (smaller, single line under the founders):
-
-- with help from our intern, **Louis Arvin** → https://www.linkedin.com/in/louis-arvin-8a8488268
-
-**Tier 3, website credit** (smallest, visually separated by a thin divider or extra spacing):
-
-- site by **Tengku Farhan** → https://hanebox.xyz
-
-**Constraints**:
-
-- Each person has a real photo. Round or square crop, all the same shape and aspect ratio across the row.
-- Same eye-line across all photos in a row, so the row reads as a row, not as floating heads.
-- Founder photos larger than the intern photo. Tengku's photo same size as the intern's, on its own row.
-- Names below photos, linked to the URL listed. **No** role labels under tier 1 names ("Kelvin Adithya" only, not "Kelvin Adithya, co-founder"). Roles only appear in the connector copy ("with help from our intern, ...").
-- Photos must be real, not avatars. Missing photo means a clean placeholder, never a generic avatar fallback.
-- No social-icon clutter. One link per person, the one listed. Add Twitter / GitHub icons only if the person specifically asks.
-- Consistent contrast and crop. Mismatched lighting tells visitors the team is not a real team.
-
-### Footer
-
-One line, left-aligned. That is it.
-
-- Wordmark
-- GitHub
-- X / Twitter
-- Telegram (Sui Overflow Telegram link)
-- MIT license
-
-No copyright marketing fluff. No "all rights reserved". No "made with love". No newsletter signup. No "back to top" arrow.
+**Do not**:
+- Frame this section as "our partners" or "trusted by". It is not a partner band, it is a readiness statement.
+- Add hover tooltips with sponsor descriptions.
+- Build an internal sponsor page.
+- Rearrange the sponsor order if a sponsor disengages (drop the logo instead).
+- Add Sui Foundation logo or any "official" framing. We are independent.
 
 ---
 
-## Section completion criteria
+## Section 7: Final CTA
 
-Use this when reviewing each section before launch. A section is `done` when every box checks.
+**Layout**: centered column. Mirror of the hero install block, same dimensions.
 
-| Section | Copy locked | Links resolve | Mobile-tested | A11y-tested |
-|---|---|---|---|---|
-| 1. Hero | ☐ | ☐ | ☐ | ☐ |
-| 2. What this gives you | ☐ | ☐ | ☐ | ☐ |
-| 3. The journey | ☐ | ☐ | ☐ | ☐ |
-| 4. Why anti-slop matters | ☐ | ☐ | ☐ | ☐ |
-| 5. From the builder | ☐ | ☐ | ☐ | ☐ |
-| 6. Sponsors | ☐ | ☐ | ☐ | ☐ |
-| 7. Final CTA | ☐ | ☐ | ☐ | ☐ |
-| 8. Made by | ☐ | ☐ (and consent confirmed) | ☐ | ☐ |
+**Structure**:
+```
+[ one-line above install ]
+[ install code block ]
+[ 2 text links below, on one line ]
+```
+
+**Copy**:
+
+| Element | Text |
+|---|---|
+| Line above | Install once. Use it on every Sui project, not just one hackathon. |
+| Install command | `curl -fsSL https://suiperpower.dev/setup.sh \| bash` |
+| Link 1 | Browse skills on GitHub → |
+| Link 2 | Contributions welcome → |
+
+**Links**:
+- "Browse skills on GitHub →" → `https://github.com/<org>/suiperpower/tree/main/skills`
+- "Contributions welcome →" → `https://github.com/<org>/suiperpower/blob/main/CONTRIBUTING.md`
+
+**Assets**: none.
+
+**Behavior**: same copy-button behavior as the hero install block.
+
+**Do not**: add a third link, restyle the install block, add a "you're 30 seconds away" headline.
 
 ---
 
-## Cross-cutting constraints
+## Section 8: Made by
 
-These apply to the whole page, not any one section.
+**Layout**: two stacked rows.
+
+**Structure**:
+```
+ROW 1 (founders, larger photos, side by side):
+  [ photo ]   [ photo ]
+  Kelvin      Febi
+
+ROW 2 (intern + site credit, smaller photos, on the same row,
+       separated by a divider or extra spacing):
+  [ photo ]                |                   [ photo ]
+  with help from           |                   site by
+  our intern,              |                   Tengku Farhan
+  Louis Arvin              |
+```
+
+(Mobile: row 2's two photos stack vertically, divider becomes horizontal spacing.)
+
+**People**:
+
+| Group | Name | Link |
+|---|---|---|
+| Founder | Kelvin Adithya | https://klvn.dev |
+| Founder | Febi Mettasari | https://www.instagram.com/febimettasari |
+| Intern | Louis Arvin | https://www.linkedin.com/in/louis-arvin-8a8488268 |
+| Site credit | Tengku Farhan | https://hanebox.xyz |
+
+**Connector copy**:
+
+- Above the intern photo (small text): `with help from our intern,`
+- Above the Tengku photo (small text): `site by`
+
+**Assets** (4 photos):
+- `/public/team/kelvin.jpg`
+- `/public/team/febi.jpg`
+- `/public/team/louis.jpg`
+- `/public/team/tengku.jpg`
+
+All four photos: same aspect ratio, same crop style (round or square), consistent lighting.
+
+**Links**: each name links to the URL above.
+
+**Behavior**:
+- Founder photos render at one size.
+- Intern and Tengku photos render at a smaller size (same as each other).
+- No role labels under names. Roles only appear in the connector copy.
+
+**Do not**: use avatar fallbacks if photos are missing (use a clean placeholder), add Twitter / GitHub icons next to names, label Tengku as "smaller" than Louis (they're equal size, just on different visual rows-or-zones).
+
+---
+
+## Footer
+
+**Layout**: one line, left-aligned.
+
+**Copy**: render these as inline text-links separated by middle dots:
+
+```
+suiperpower  ·  GitHub  ·  X  ·  Telegram  ·  MIT
+```
+
+**Links**:
+
+| Label | URL |
+|---|---|
+| `suiperpower` (wordmark) | `/` |
+| GitHub | `https://github.com/<org>/suiperpower` |
+| X | `https://x.com/<handle>` (handle pending, see `plans/19` row 6) |
+| Telegram | `https://go.sui.io/suioverflow2026-tg` |
+| MIT | `https://github.com/<org>/suiperpower/blob/main/LICENSE` |
+
+**Do not**: add "© 2026 all rights reserved", "made with love", a newsletter signup, a back-to-top arrow.
+
+---
+
+## Global rules
+
+These apply to every section.
 
 ### Mobile-first
 
-The site must work, look composed, and convert on a phone before it earns a desktop polish pass. Real-world traffic from X / Twitter shares is mobile-heavy. Build for a 390-pixel viewport first, then scale up.
-
-- Hero install block must remain copyable with one tap on mobile.
-- The five-phase journey diagram stacks vertically on mobile, no horizontal scroll.
-- Sponsor logos wrap to two rows on mobile. They never horizontal-scroll.
+- Build for 390px viewport first.
+- All sections single-column on mobile.
+- Hero install block remains one-tap copyable.
+- Sponsor logos wrap to two rows, never horizontal-scroll.
+- The 5-phase journey stacks vertically on mobile (arrows point down).
 
 ### Performance budget
 
-A single static page with no third-party scripts should load in under one second on a fast 4G connection. Hard limits:
+- Lighthouse Performance: 95+.
+- Total JS shipped: under 100 KB compressed.
+- Web fonts: max 2 families (one sans, one mono).
+- Images: Next.js `<Image>` only, no raw `<img>`.
+- Third-party scripts: Plausible OR Vercel Analytics, nothing else.
 
-- Lighthouse Performance score: 95 or above.
-- Total JavaScript on the page: under 100 KB compressed.
-- No third-party scripts except Plausible or Vercel Analytics (privacy-friendly only, per `plans/19` row 20).
-- No web fonts above two families. One sans + one mono is the budget.
-- Images optimized through Next.js `<Image>`. No raw `<img>` tags.
+### Accessibility (WCAG AA)
 
-### Accessibility floor
-
-WCAG AA, no exceptions.
-
-- All text passes contrast against its background at AA contrast.
-- Every interactive element is keyboard-reachable in tab order.
-- Photos in section 8 have descriptive `alt` text including the person's name and role.
-- Sponsor logos have `alt` text naming the sponsor.
-- The install code block is a real `<pre><code>` element, screen-reader reads it as code, not as decoration.
-- No `outline: none` on focus. Focus rings stay visible.
+- All text passes AA contrast.
+- All interactive elements keyboard-reachable.
+- Focus rings visible (no `outline: none` without a replacement).
+- Section 8 photos: `alt` text includes name + role.
+- Sponsor logos: `alt` text names the sponsor.
+- Install code block is a real `<pre><code>`, screen-reader reads it as code.
 
 ### Open Graph card
 
-`/public/og-image.png` ships with the launch.
+- File: `/public/og-image.png`
+- Dimensions: 1200 × 630
+- Content: wordmark + tagline + install command (centered)
+- Dark background matching the hero
+- Test before launch on: X / Twitter, Telegram, Slack, Discord
+- No team photos, no sponsor logos on the OG card
 
-- Dimensions: 1200 × 630.
-- Content: wordmark + tagline + the install command as the visual centerpiece.
-- Dark background to match the hero.
-- No team photos, no sponsor logos. The OG card is for the install command.
-- Tested on Twitter / X, Telegram, Slack, and Discord before launch.
+### Meta
 
----
-
-## What is intentionally NOT on the website
-
-This is the load-bearing exclusion list. Anything here that gets re-added in v1 reverts the design intent.
-
-- Signup flow
-- Dashboard
-- "Submit your project for review" form (use deepsurge.xyz)
-- Blog
-- Catalog browser pages (skills, repos, MCPs, ideas live on GitHub)
-- Skill detail pages (read SKILL.md on GitHub)
-- Sponsor detail pages
-- Sui Overflow 2026 dedicated landing page (the participant playbook is in `plans/24`, the website does not need it)
-- Changelog page (use GitHub Releases)
-- Privacy page (link to repo's `PRIVACY.md` if needed)
-- Terms page (MIT license is the terms)
-- "Compare suiperpower vs solana-new" framing
-- Pricing page (free, open source, no paid tier)
-- Docs site (markdown on GitHub is the docs)
-- "Powered by AI" badges anywhere
-- "As featured in" press strip (we have no press)
-- Newsletter signup
-- Live chat widget
-
-If a future contributor wants to add any of the above, they justify it in `plans/19-OPEN-QUESTIONS.md` first. No silent additions.
+- Title: `Suiperpower — <TAGLINE>` (placeholder until tagline locks)
+- Description: `Skills, knowledge, and a CLI for shipping production Sui products with Claude Code, Codex, or Cursor.`
+- Sitemap: one entry, `/`
+- robots.txt: allow all
+- JSON-LD: a single `Organization` block
 
 ---
 
-## SEO and metadata
+## Routes and files
 
-Basic only. The CLI is the product, not the website. SEO traffic to a one-page site is a vanity metric, but bad metadata still loses real installs from social shares.
+```
+app/page.tsx          The landing (only page component)
+app/layout.tsx        Root layout, meta, JSON-LD
+app/sitemap.ts        Programmatic sitemap (single entry)
+app/robots.ts         Programmatic robots.txt
+public/setup.sh       The install script (raw text, served as text/x-shellscript)
+public/og-image.png   OG card
+public/team/*.jpg     4 team photos
+```
 
-- Meta title: "Suiperpower, build Sui that ships."
-- Meta description: "Skills, knowledge, and a CLI for shipping production Sui products with Claude Code, Codex, or Cursor."
-- Open Graph image at `/public/og-image.png` (spec above)
-- Sitemap with one entry, `/`
-- robots.txt allowing all
-- Structured data: a single `Organization` JSON-LD block, no more
+**Routes the site exposes**:
+
+```
+/                  Landing
+/setup.sh          Install script
+/og-image.png      OG card
+/sitemap.xml       Sitemap
+/robots.txt        Robots
+```
+
+**Routes the site does NOT expose**: `/install`, `/skills`, `/repos`, `/mcps`, `/ideas`, `/docs`, `/sponsors`, `/overflow`, `/changelog`, `/privacy`, `/terms`. All of that lives in the GitHub repo.
+
+---
 
 ## Build and deploy
 
-- Vercel deployment from the GitHub repo's `main` branch
-- Single static page, builds in seconds
-- `setup.sh` served from `/public/setup.sh` via Vercel rewrite, content-type `text/x-shellscript`
-- Cache `/setup.sh` short (5 minutes) so a fix to install logic ships fast
-- Cache the page itself with stale-while-revalidate so updates propagate fast without a flash of stale content
-
-## Routing implementation
-
-- App Router (Next.js 14+)
-- `app/page.tsx`, the landing (the only page component)
-- `app/layout.tsx`, root layout with meta tags + JSON-LD
-- `public/setup.sh`, raw text install script
-- `public/og-image.png`, OG card
-- `app/sitemap.ts`, programmatic sitemap, single entry
-- `app/robots.ts`, programmatic robots.txt
-
-No `(marketing)` group, no `[slug]` routes, no `generateStaticParams`. Single static page, intentionally.
+- Vercel deployment from `main` branch
+- Static export
+- `setup.sh` served via Vercel rewrite, `Content-Type: text/x-shellscript`
+- `setup.sh` cache: short (5 min), so install fixes propagate fast
+- Page cache: stale-while-revalidate
 
 ---
 
-## Future expansion (deliberately deferred)
+## Out of scope (do not build, even if you have time)
 
-If post-launch traffic and signal justify it, add in this order. Not before.
+- Login / signup / dashboard
+- Catalog browser pages
+- Skill detail pages
+- Sponsor detail pages
+- Docs site
+- Blog
+- Changelog page
+- Privacy / Terms pages (compliance-only, deferred)
+- Newsletter signup
+- Live chat
+- "Powered by AI" badges
+- "As featured in" press strip
 
-1. `/skills` and `/skills/<name>`, only if visitors are demonstrably searching for individual skills (signal: high bounce on hero with referrer matching `?skill=<name>` or similar).
-2. `/docs`, only if the GitHub markdown is repeatedly cited as too hard to navigate by non-developer visitors.
-3. `/blog`, only if there is a real content cadence, not "we should have a blog because everyone has a blog."
-
-None of this ships in v1. The single-page site is the bet, and the bet is that the install command, not website content, is what converts.
+If a feature isn't in this doc, don't build it. If it should be, propose it via `plans/19-OPEN-QUESTIONS.md`.
 
 ---
 
-## Quick reference: what changed from previous versions of this doc
+## Appendix: principles (read once, then ignore)
 
-For anyone reading this doc with stale expectations:
+For context only. Do not optimize against these directly; they are the *why* behind the constraints above.
 
-- Multi-page architecture (`/skills`, `/docs`, `/sponsors`, `/overflow`, `/changelog`, `/privacy`, `/terms`) was removed. The site is single-page.
-- "From the builder" quote section (5) was added.
-- "Made by" team section (8) was added.
-- Narrative spine, mobile-first, performance budget, accessibility floor, OG card spec, and section completion criteria were added in the audit pass.
-- Voice was tightened across all sections to match `plans/15-BRAND.md`.
+- The CLI is the product. The site exists to convert visitors into people who have run the install command.
+- The site is single-page on purpose. The GitHub repo carries everything else.
+- We borrow only the install-block hero pattern from solana.new. Everything else is Suiperpower-native. The site should not feel like a Sui re-skin to anyone who has seen both.
+- Anti-slop is the product differentiator. Section 4 and section 5 carry that argument; do not water them down.
+- Repetition of the install block (hero + final CTA) is intentional. Most visitors install at the hero or at the CTA. The middle sections exist for the visitors who need convincing.
+
+Voice rules live in `plans/15-BRAND.md`. Do-not-use phrase list lives there too.

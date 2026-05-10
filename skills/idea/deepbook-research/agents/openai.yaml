@@ -1,0 +1,16 @@
+name: deepbook-research
+version: 1
+phase: idea
+description: |
+  Query DeepBook trading data and pool activity to find market niches,
+  underserved pairs, and product opportunities. Use when the user says
+  "DeepBook research", "find DeepBook market gaps", "DeepBook pools",
+  "underserved DeepBook pairs", "trading data on Sui", "DeepBook
+  opportunities", or "what to build on DeepBook".
+prompt_path: ../SKILL.md
+references:
+  - ../references/deepbook-data-queries.md
+  - ../references/gap-categories.md
+knowledge:
+  - skills/data/sui-knowledge/sponsor-docs/deepbook.md
+  - skills/data/sui-knowledge/04-protocols-and-sdks.md

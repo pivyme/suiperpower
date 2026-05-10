@@ -1,0 +1,166 @@
+---
+name: find-next-sui-idea
+description: Help the user pick a Sui product idea from a curated corpus, or stress test their own, and write the initial idea-context.md. Use when the user says "what should I build on Sui", "find me a Sui idea", "I do not know what to build", "Sui Overflow idea", "give me a hackathon idea", "Sui native opportunities", or "pick my next project". Reads the curated idea sources under skills/data/ideas/ and writes .suiperpower/idea-context.md.
+---
+
+## Preamble (run first)
+
+```bash
+_TEL_TIER=$(cat ~/.suiperpower/config.json 2>/dev/null | grep -o '"telemetryTier": *"[^"]*"' | head -1 | sed 's/.*"telemetryTier": *"//;s/"$//' || echo "anonymous")
+_TEL_TIER="${_TEL_TIER:-anonymous}"
+_TEL_PROMPTED=$([ -f ~/.suiperpower/.telemetry-prompted ] && echo "yes" || echo "no")
+_TEL_START=$(date +%s)
+_SESSION_ID="$$-$(date +%s)"
+mkdir -p ~/.suiperpower
+echo "TELEMETRY: $_TEL_TIER"
+echo "TEL_PROMPTED: $_TEL_PROMPTED"
+if [ "$_TEL_TIER" != "off" ]; then
+  _TEL_EVENT='{"skill":"find-next-sui-idea","phase":"idea","event":"started","ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'"}'
+  echo "$_TEL_EVENT" >> ~/.suiperpower/telemetry.jsonl 2>/dev/null || true
+  _CONVEX_URL=$(cat ~/.suiperpower/config.json 2>/dev/null | grep -o '"convexUrl":"[^"]*"' | head -1 | cut -d'"' -f4 || echo "")
+  [ -n "$_CONVEX_URL" ] && curl -s -X POST "$_CONVEX_URL/api/mutation" \
+    -H "Content-Type: application/json" \
+    -d '{"path":"telemetry:track","args":{"skill":"find-next-sui-idea","phase":"idea","status":"started","version":"0.1.0","platform":"'$(uname -s)-$(uname -m)'","timestamp":'$(date +%s)000'}}' \
+    >/dev/null 2>&1 &
+  true
+fi
+```
+
+If `TEL_PROMPTED` is `no`, before doing real work, ask the user:
+
+> Help suiperpower get better. We track which skills get used and how long they take. No code, no file paths, no PII. Change anytime in `~/.suiperpower/config.json`.
+>
+> A) Sure, anonymous
+> B) No thanks
+
+Write the answer to `~/.suiperpower/config.json` `telemetryTier` field and create `~/.suiperpower/.telemetry-prompted`. Then continue.
+
+## What this skill does
+
+Picks (or pressure-tests) a Sui product idea. Reads the curated idea corpus under `skills/data/ideas/` (a16z state-of-crypto, YC RFS, Alliance, Superteam Sui, and our own sui-native-gaps list), filters by what is buildable on Sui specifically, scores by market timing and Sui-native fit, and lands on a chosen idea. Writes the canonical `.suiperpower/idea-context.md` so downstream skills (validate-idea, competitive-landscape, scaffold-project) inherit the framing.
+
+The bias of this skill: prefer ideas that are uniquely good on Sui (object model, parallelism, Walrus storage, DeepBook orderbook, low fees). Reject ideas that would be just as easy or easier on EVM or Solana, those are not where new builders should compete.
+
+## When to use it
+
+- The user has time to build but no idea picked.
+- The user has a fuzzy idea and wants it pressure-tested against alternatives.
+- The user is targeting Sui Overflow 2026 and wants to align idea selection to a sponsor track.
+- The user is migrating from EVM or Solana and wants to find a Sui-native angle.
+
+## When NOT to use it
+
+- The user already has a chosen idea and a write-up. Route to `validate-idea`.
+- The user wants ecosystem research without idea selection. Route to `deepbook-research`, `walrus-research`, or `competitive-landscape`.
+- The user wants to copy an existing project. There are better skills for forking; this skill picks new bets.
+
+If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.
+
+## Inputs
+
+- The user's interest or background (DeFi, consumer, infra, gaming, identity, mobile, AI tooling).
+- Constraints: time horizon (hackathon weekend, 4-week sprint, multi-month), team size, prior Sui experience.
+- Optional: an already-half-formed idea the user wants stress tested.
+
+If unclear, ask three questions:
+
+- What domain interests you most?
+- What is your timeline (weekend, 4 weeks, 3+ months)?
+- What is one product (on any chain) you wish existed?
+
+## Outputs
+
+Three idea candidates, ranked. Each candidate includes:
+
+- one-line product description
+- the Sui-native angle (why Sui, not EVM)
+- target user
+- riskiest assumption
+- shortest path to a usable v1
+- which sponsor track (if any) it aligns with
+
+Plus the chosen idea, written to `.suiperpower/idea-context.md`:
+
+```markdown
+## idea-context, <timestamp>
+- chosen idea: <one sentence>
+- target user: <one sentence>
+- Sui-native angle: <one paragraph>
+- riskiest assumption: <one sentence>
+- shortest v1 scope: <bullet list, 3-7 items>
+- aligned sponsor tracks: <list>
+- corpus sources cited: <list of file paths>
+- runner-up ideas: <list>
+- chosen on: <date>
+```
+
+## Workflow
+
+1. **Profile the user**
+   - Domain, timeline, prior chain experience, prior Sui experience.
+   - Read `references/profile-questions.md` if more context is needed.
+
+2. **Filter the corpus**
+   - Read all five idea source files under `skills/data/ideas/`.
+   - Filter by domain match.
+   - Filter out ideas that would be easier on EVM or Solana (these are listed in `references/non-sui-native-rejection-list.md`).
+
+3. **Score remaining candidates**
+   - Sui-native fit (1-5): does the object model, parallelism, Walrus, DeepBook, or low fees create real advantage?
+   - Market timing (1-5): is the demand visible (revenue, users, search trends, sponsor priority)?
+   - Builder fit (1-5): can this user, with this timeline, ship a v1?
+   - Differentiation (1-5): is there a non-trivial existing competitor on Sui already?
+   - Sum and rank.
+
+4. **Present three candidates**
+   - Top three by score, structured as above.
+   - Include the corpus source for each.
+
+5. **Pick one**
+   - Confirm with the user. If they want to override the score-pick with a corpus-pick they preferred, accept (the score is a tool, not a verdict).
+
+6. **Write idea-context.md**
+   - Use the template above.
+   - Cite source files in the corpus citations field.
+
+7. **Hand off**
+   - Recommend `validate-idea` next.
+   - Recommend `competitive-landscape` if the runner-ups have unclear competition.
+   - Recommend `pick-my-sui-track` if Sui Overflow is the target.
+
+## Quality gate (anti-slop)
+
+Before reporting done:
+
+- Does the chosen idea have a Sui-native angle that does not collapse to "Sui has lower fees"? (Lower fees alone are not a moat.)
+- Is the riskiest assumption named, in one sentence, and does it cite a falsifiable test?
+- Did the corpus get cited (at least one source file)? "I made it up" is not a corpus.
+- Is the shortest v1 scope under 7 items, each a concrete deliverable?
+- Did `idea-context.md` actually get written, with all required fields?
+
+If any answer is no, the skill keeps working.
+
+## References
+
+On-demand references (load when relevant to the user's question):
+
+- `references/profile-questions.md`: Questions to draw out user domain and constraint.
+- `references/scoring-rubric.md`: How to score Sui-native fit, timing, builder fit, differentiation.
+- `references/non-sui-native-rejection-list.md`: Idea shapes to reject because EVM or Solana fits better.
+
+Knowledge docs:
+
+- `skills/data/ideas/sui-native-gaps.json`: Gaps we curate.
+- `skills/data/ideas/a16z-state-of-crypto-2026.json`
+- `skills/data/ideas/yc-rfs-crypto.json`
+- `skills/data/ideas/alliance-ideas.json`
+- `skills/data/ideas/superteam-sui-ideas.json`
+- `skills/data/sui-knowledge/06-opensource-research.md`: Where to look for adjacent research.
+
+## Use in your agent
+
+- Claude Code: `claude "/find-next-sui-idea <your message>"`
+- Codex: `codex "/find-next-sui-idea <your message>"`
+- Cursor: paste a chat message that includes a phrase like "what should I build on Sui", or load `~/.cursor/rules/find-next-sui-idea.mdc` and reference it.
+
+If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.
