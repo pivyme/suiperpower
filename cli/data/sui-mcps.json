@@ -1,0 +1,67 @@
+{
+  "version": "0.1.0",
+  "generatedAt": "2026-05-11T00:00:00Z",
+  "schema": "plans/07-ECOSYSTEM-CATALOG.md",
+  "mcps": [
+    {
+      "id": "blockscout-sui",
+      "name": "Blockscout MCP",
+      "publisher": "Blockscout",
+      "url": "https://github.com/blockscout/mcp-server",
+      "installCmd": "npx -y @blockscout/mcp-server",
+      "configSnippet": "{\"mcpServers\":{\"blockscout\":{\"command\":\"npx\",\"args\":[\"-y\",\"@blockscout/mcp-server\"]}}}",
+      "description": "Multi-chain block explorer access. Useful for Sui chain reads via supported endpoints, plus EVM comparisons during research.",
+      "tools": ["get_block_info", "get_transaction_info", "get_address_info", "get_token_transfers_by_address"],
+      "useCases": ["analytics", "research", "indexer-replacement"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "deepbook-mcp",
+      "name": "DeepBook Research MCP",
+      "publisher": "Suiperpower",
+      "url": "https://github.com/kwekKwek/suiperpower/tree/main/mcps/deepbook",
+      "installCmd": "npx -y suiperpower-deepbook-mcp",
+      "configSnippet": "{\"mcpServers\":{\"deepbook\":{\"command\":\"npx\",\"args\":[\"-y\",\"suiperpower-deepbook-mcp\"]}}}",
+      "description": "Thin wrapper over the DeepBook indexer. Pool listings, recent trades, depth at price.",
+      "tools": ["list_pools", "recent_trades", "depth_at_price", "pool_volume_24h"],
+      "useCases": ["research", "market-niche-discovery"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "pyth-sui-mcp",
+      "name": "Pyth Sui Price Feed MCP",
+      "publisher": "Pyth",
+      "url": "https://github.com/pyth-network/pyth-mcp",
+      "installCmd": "npx -y @pyth/mcp-server",
+      "configSnippet": "{\"mcpServers\":{\"pyth\":{\"command\":\"npx\",\"args\":[\"-y\",\"@pyth/mcp-server\"]}}}",
+      "description": "Pyth oracle price feeds, useful when designing or verifying Sui DeFi pricing logic.",
+      "tools": ["get_price_feed", "list_feeds", "feed_metadata"],
+      "useCases": ["defi-research", "oracle-integration"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-rpc-mcp",
+      "name": "Sui RPC MCP",
+      "publisher": "Suiperpower",
+      "url": "https://github.com/kwekKwek/suiperpower/tree/main/mcps/sui-rpc",
+      "installCmd": "npx -y suiperpower-sui-rpc-mcp",
+      "configSnippet": "{\"mcpServers\":{\"sui-rpc\":{\"command\":\"npx\",\"args\":[\"-y\",\"suiperpower-sui-rpc-mcp\"]}}}",
+      "description": "Thin wrapper over Sui JSON-RPC for object reads, transaction reads, and dry runs.",
+      "tools": ["sui_getObject", "sui_getTransactionBlock", "sui_dryRunTransactionBlock", "sui_executeTransactionBlock"],
+      "useCases": ["debugging", "object-inspection", "ptb-dry-run"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "walrus-mcp",
+      "name": "Walrus MCP",
+      "publisher": "Suiperpower",
+      "url": "https://github.com/kwekKwek/suiperpower/tree/main/mcps/walrus",
+      "installCmd": "npx -y suiperpower-walrus-mcp",
+      "configSnippet": "{\"mcpServers\":{\"walrus\":{\"command\":\"npx\",\"args\":[\"-y\",\"suiperpower-walrus-mcp\"]}}}",
+      "description": "Wrapper over the Walrus aggregator and publisher endpoints. Store, retrieve, inspect blobs.",
+      "tools": ["walrus_store_blob", "walrus_get_blob", "walrus_blob_metadata"],
+      "useCases": ["walrus-integration", "demo-validation"],
+      "lastChecked": "2026-05-11"
+    }
+  ]
+}

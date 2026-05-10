@@ -1,0 +1,91 @@
+{
+  "version": "0.1.0",
+  "generatedAt": "2026-05-11T00:00:00Z",
+  "schema": "plans/07-ECOSYSTEM-CATALOG.md",
+  "skills": [
+    {
+      "id": "deepbook-orderbook-skill",
+      "name": "DeepBook Orderbook (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "ecosystem",
+      "url": "https://github.com/kwekKwek/suiperpower/tree/main/skills/build/deepbook-orderbook",
+      "description": "First-class skill for building on DeepBook with quality gate requiring a real testnet order placed and settled.",
+      "agents": ["claude", "codex", "cursor"],
+      "phase": "build",
+      "tags": ["deepbook", "orderbook", "sponsor"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "kiosk-marketplace-skill",
+      "name": "Kiosk Marketplace (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "ecosystem",
+      "url": "https://github.com/kwekKwek/suiperpower/tree/main/skills/build/kiosk-marketplace",
+      "description": "Build a Kiosk-based marketplace with a full listing and purchase flow demoed end to end.",
+      "agents": ["claude", "codex", "cursor"],
+      "phase": "build",
+      "tags": ["kiosk", "marketplace"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "openzeppelin-sui-skill",
+      "name": "OpenZeppelin Sui Libs (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "ecosystem",
+      "url": "https://github.com/kwekKwek/suiperpower/tree/main/skills/build/openzeppelin-sui-libs",
+      "description": "Identify hand-rolled patterns OZ Sui replaces and migrate them to vetted primitives.",
+      "agents": ["claude", "codex", "cursor"],
+      "phase": "build",
+      "tags": ["security", "primitives", "sponsor"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "ottersec-prep-skill",
+      "name": "OtterSec Audit Prep (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "ecosystem",
+      "url": "https://github.com/kwekKwek/suiperpower/tree/main/skills/build/ottersec-prep",
+      "description": "Walk the OtterSec checklist with every P0 item recorded as resolved or accepted-with-rationale.",
+      "agents": ["claude", "codex", "cursor"],
+      "phase": "build",
+      "tags": ["audit", "security", "sponsor"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "scallop-money-market-skill",
+      "name": "Scallop Money Market (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "ecosystem",
+      "url": "https://github.com/kwekKwek/suiperpower/tree/main/skills/build/scallop-money-market",
+      "description": "Deposit, borrow, and repay against a live Scallop pool with quality gate enforcing all three.",
+      "agents": ["claude", "codex", "cursor"],
+      "phase": "build",
+      "tags": ["lending", "money-market", "sponsor"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-zk-login-skill",
+      "name": "Sui zkLogin (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "ecosystem",
+      "url": "https://github.com/kwekKwek/suiperpower/tree/main/skills/build/sui-zk-login",
+      "description": "Add zkLogin with a real OAuth provider end to end, not a stub.",
+      "agents": ["claude", "codex", "cursor"],
+      "phase": "build",
+      "tags": ["zklogin", "auth"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "walrus-storage-skill",
+      "name": "Walrus Storage (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "ecosystem",
+      "url": "https://github.com/kwekKwek/suiperpower/tree/main/skills/build/walrus-storage",
+      "description": "Store and retrieve blobs on Walrus with the demo rendering a real stored blob.",
+      "agents": ["claude", "codex", "cursor"],
+      "phase": "build",
+      "tags": ["walrus", "storage", "sponsor-headline"],
+      "lastChecked": "2026-05-11"
+    }
+  ]
+}

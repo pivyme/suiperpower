@@ -124,6 +124,100 @@ When implementing a skill or adding catalog content, hold to:
 
 Skills should be in the senior-friend voice (direct, not condescending, no marketing-speak). No em-dashes anywhere (Kelvin's project rule). Comments concise and direct.
 
+## Skill authoring and review (handover rules)
+
+This section is required reading any time you are asked to **generate a new skill, review an existing skill, or recheck skills for accuracy**. Read it fully before touching any file in `skills/`.
+
+### Source-of-truth rule (anti-hallucination)
+
+Skills must be grounded in real, current sources. You are not allowed to invent API names, function signatures, package names, version numbers, sponsor program details, RPC methods, contract addresses, or behavior.
+
+Before writing or editing any technical claim in a skill:
+
+1. The author (Kelvin or contributor) provides the source. This can be a URL, a pasted block of docs, a GitHub repo path, or a specific file in this repo.
+2. You read or fetch that source. If a URL is provided and you can fetch it, fetch it. If text is pasted, treat the pasted text as the canonical reference for this turn.
+3. You only write claims that the source explicitly supports. If the source does not cover a claim you want to make, either drop the claim or ask the author for a source.
+4. If the author has not yet given a source for a topic the skill needs, **stop and ask**. Do not guess from training data. Sui, Walrus, DeepBook, Scallop, zkLogin, Seal, Nautilus and similar topics drift fast; outdated training data is the most common source of bad skills.
+5. When fetching a URL, prefer the canonical source: official docs site, official GitHub README, or the project's reference documentation. Avoid third-party tutorials, blog posts, or AI-generated summaries as primary references.
+
+If a source contradicts an earlier-saved memory or an older plan doc, the source wins. Update the memory or the plan doc, do not paper over it.
+
+### Cross-check workflow when handed material
+
+When the author gives you a link, a pasted doc dump, or both, do this in order:
+
+1. Restate, in one or two sentences, what you understood the skill is supposed to do and which source covers what. Confirm with the author before generating.
+2. Skim the source for the specific facts the skill needs (function names, flags, addresses, fees, network endpoints, configuration steps). Quote them mentally; do not paraphrase loosely.
+3. Draft the skill. Every load-bearing technical claim must trace back to a line you can point to in the source.
+4. After drafting, do a self-review pass: read each technical sentence in the skill and ask "where in the source did this come from?". If you can't answer, delete the sentence or flag it for the author.
+5. List any unverified claims at the bottom of your reply (not in the skill file) so the author knows what still needs a source.
+
+If the pasted doc is huge, do not copy it into the skill. Reference the URL, extract the minimum the skill needs, and rely on the user's agent fetching the link at runtime if deeper detail is needed.
+
+### Context-efficiency rules
+
+Skills are loaded into a coding agent's context window. They compete with the user's actual code for tokens. Optimize ruthlessly.
+
+- **Length target**: ~80 to 250 lines for most skills. ~400 lines is a hard ceiling. If you feel the need to go longer, you are usually duplicating docs. Link instead.
+- **Link, don't inline**: prefer `See https://docs.sui.io/...` or `See skills/build/<name>/references/<file>.md` over pasting docs into the skill body. Reference material that rarely changes can live in a sibling `references/` file; the skill body covers when and how to use it.
+- **No verbose preambles**: do not restate what the skill is in three different ways. Frontmatter `description` covers discovery; the body goes straight to operating instructions.
+- **No filler**: cut "in this section we will", "it is important to note that", "as a best practice", and similar. Direct voice only.
+- **One example beats five**: pick the most representative example and ship it. Edge-case examples belong in references, not the main skill body.
+- **Tables and lists over prose** for enumerations (commands, flags, decision rules).
+- **No marketing copy**: the skill teaches the agent what to do, not why Sui is great.
+
+If a skill needs deep reference material (full RPC method list, full Move stdlib reference, full sponsor program rules), put it in `<skill>/references/*.md` and have the skill body say "fetch X for full details". This keeps the load-time footprint small while giving the agent a path to drill in.
+
+### Format and structure (must match)
+
+Every skill follows the contract in `plans/05-SKILL-FORMAT.md` and clones from `plans/22-SAMPLE-SKILL.md` for shape. Before submitting any skill, verify:
+
+- Frontmatter is valid (Anthropic skill spec compliant) and `description` triggers cleanly via `plans/23-SKILL-ROUTER-SPEC.md`.
+- Skill lives under the correct phase directory (`learn/`, `idea/`, `build/`, `ship/`, `grow/`).
+- No code generation lives inside the skill (we generate files via the CLI / agent, not via skill text).
+- Naming is kebab-case, matches the catalog id in `cli/`.
+- Voice matches `plans/15-BRAND.md` (senior-friend, no banned phrases, no em-dashes, no emojis in product copy).
+- Hand-off context, if the skill writes one, follows the spec in `plans/30-SHARED-GUIDES-SPEC.md`.
+
+### Common mistakes to avoid
+
+These are the recurring failure modes in skill authoring. Catch them in your own self-review before handing back to the author:
+
+- **Inventing function names or APIs** that sound plausible but do not exist. Especially common with Sui SDK methods, Move stdlib functions, Walrus / DeepBook / Scallop calls. Always verify against source.
+- **Stale package names or versions** (`@mysten/sui.js` is the old name, current is `@mysten/sui`). Always confirm the current published name from the official source the day you write.
+- **Confusing Sui Move with Aptos Move or Core Move**. The dialects diverge. Capabilities, abilities, object model, and stdlib differ. Source-check anything Move-specific.
+- **Outdated sponsor program details** (track names, prize structure, judging criteria, deadlines). These change per Overflow cycle. Always reference the current Overflow source given by the author.
+- **Pasting full doc pages into the skill body** instead of linking. Wastes context, goes stale, hard to maintain.
+- **Adding "best practices" that are actually opinions**, not sourced. If the author or canonical docs do not say it, do not assert it.
+- **Skipping the trigger-phrase check** in `plans/23-SKILL-ROUTER-SPEC.md`. A skill that triggers on the wrong prompts is worse than no skill.
+- **Marketing voice creeping in** ("seamlessly", "powerful", "robust", "leverage"). Cut on sight.
+- **Em-dashes** (project-wide ban). Use commas or periods.
+- **Forgetting the senior-friend voice**: skills should sound like a senior engineer giving a junior a clear instruction, not a tutorial site.
+- **Hand-waving the unknown**: if you do not know, say "ask the author" or "fetch X at runtime", do not fill the gap with confident guesses.
+
+### When to push back on the author
+
+Be a critical thinker, not a sycophant. Push back if:
+
+- The proposed skill duplicates an existing skill (check `plans/04-SKILLS-CATALOG.md` and `skills/` first).
+- The skill is too narrow to deserve its own file (fold into a related skill instead).
+- The author's pasted source contradicts the official docs you can verify.
+- The skill is asking you to write code generation logic that should live in the CLI, not in skill markdown.
+- The trigger phrase collides with an existing skill's router entry.
+
+### Quick handover checklist
+
+When the author says "review this skill" or "generate a skill for X", run this loop:
+
+1. Confirm scope and source: "Is the canonical source [link] or do you have a different one?"
+2. Read the source (fetch URL or read pasted text).
+3. Confirm the skill's trigger phrases and phase placement against `plans/23-SKILL-ROUTER-SPEC.md`.
+4. Draft or review against `plans/22-SAMPLE-SKILL.md` shape and `plans/05-SKILL-FORMAT.md` rules.
+5. Self-review: every technical claim traces to a source line, length is within target, voice matches brand.
+6. Report back: file diff plus a short list of any unverified claims and any open questions for the author.
+
+If at any point you are unsure about a fact, **ask before writing**. A delay is cheaper than a wrong skill shipped to thousands of agents.
+
 ## Conventions
 
 - ESM only (`.js` extensions in imports under NodeNext).

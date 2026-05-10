@@ -133,11 +133,11 @@ Quality bar: `plans/29-DOCS-AUTHORING-STANDARDS.md` for every markdown / JSON fi
 - [x] write `skills/README.md` (catalog overview grouped by phase, one-liner per skill, links to SKILL.md sources)
 - [x] verify every authored skill ends with the "consult skills/SKILL_ROUTER.md and hand off" line
 
-## Phase 19: Ecosystem catalog data [ ]
-- [ ] write `cli/data/clonable-repos.json` per `plans/07-ECOSYSTEM-CATALOG.md` (Sui ecosystem repos, schema validated, sorted alphabetically by id, ~40 entries seed list)
-- [ ] write `cli/data/sui-skills.json` (Sui ecosystem-published skills: Walrus, DeepBook, Scallop, OZ, OtterSec entries; schema in 07)
-- [ ] write `cli/data/sui-mcps.json` (Sui-relevant MCP servers)
-- [ ] write `cli/data/sui-ideas.json` (top idea picks promoted from `skills/data/ideas/*.json`, deduped)
+## Phase 19: Ecosystem catalog data [x]
+- [x] write `cli/data/clonable-repos.json` per `plans/07-ECOSYSTEM-CATALOG.md` (Sui ecosystem repos, schema validated, sorted alphabetically by id, ~40 entries seed list)
+- [x] write `cli/data/sui-skills.json` (Sui ecosystem-published skills: Walrus, DeepBook, Scallop, OZ, OtterSec entries; schema in 07)
+- [x] write `cli/data/sui-mcps.json` (Sui-relevant MCP servers)
+- [x] write `cli/data/sui-ideas.json` (top idea picks promoted from `skills/data/ideas/*.json`, deduped)
 
 ## Phase 20: CLI install / health commands [ ]
 - [ ] write `cli/init.ts` per `plans/03-INSTALL-FLOW.md` and `plans/08-CLI-DESIGN.md` (writes to `~/.claude/skills`, `~/.codex/skills`, `~/.cursor/rules`; manifest at `~/.suiperpower/skills-installed.json`; supports `--vendor`, `--convex-url`, `--agent`)
