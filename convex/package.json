@@ -1,0 +1,13 @@
+{
+  "name": "@suiperpower/convex",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "convex:dev": "convex dev",
+    "convex:deploy": "convex deploy"
+  },
+  "dependencies": {
+    "convex": "^1.34.1"
+  }
+}

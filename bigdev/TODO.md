@@ -199,12 +199,12 @@ Mirror solana-new's optional per-skill install path so users who do not want the
 - [x] add a row to `cli/data/sui-skills.json` schema for `skillsSh: { id: string, npxCmd: string }` so the `suiperpower skills` TUI can show the per-skill install command alongside each entry. Schema updated in `plans/07-ECOSYSTEM-CATALOG.md`, data file populated for all seven Suiperpower-published rows
 - [x] add to Phase 29 pre-publish gate: `pnpm package:skills` runs clean, every tarball validates against the index sha256, and `index.json` lists every shipped skill (gate addition recorded in Phase 29 step list)
 
-## Phase 25: Convex backend [ ]
-- [ ] write `convex/schema.ts` per `plans/13-CONVEX-BACKEND.md` (telemetry + feedback tables, indexes by_skill / by_timestamp)
-- [ ] write `convex/telemetry.ts` (`track` mutation; field validation matches schema; respects tier passthrough)
-- [ ] write `convex/feedback.ts` (`submit` mutation)
-- [ ] write `.env.example` (`NEXT_PUBLIC_CONVEX_URL`, `CONVEX_DEPLOY_KEY`, `SUIPERPOWER_TELEMETRY` override)
-- [ ] write `.env.local-stub` (local-mock defaults so loop iterations do not pause for real Convex setup)
+## Phase 25: Convex backend [x]
+- [x] write `convex/schema.ts` per `plans/13-CONVEX-BACKEND.md` (telemetry + feedback tables, indexes by_skill / by_timestamp)
+- [x] write `convex/telemetry.ts` (`track` mutation; field validation matches schema; respects tier passthrough)
+- [x] write `convex/feedback.ts` (`submit` mutation)
+- [x] write `.env.example` (`NEXT_PUBLIC_CONVEX_URL`, `CONVEX_DEPLOY_KEY`, `SUIPERPOWER_TELEMETRY` override)
+- [x] write `.env.local-stub` (local-mock defaults so loop iterations do not pause for real Convex setup)
 
 ## Phase 26: Tests and CI matrix [ ]
 - [ ] write skill linter under `scripts/lint-skills.ts` (frontmatter present, name == folder, description trigger phrase count, sections present, telemetry preamble byte-identical, no em-dashes, no banned words, Sui terms capitalized) per `plans/05-SKILL-FORMAT.md` and `plans/15-BRAND.md`
