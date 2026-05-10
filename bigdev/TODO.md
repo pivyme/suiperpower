@@ -42,31 +42,31 @@ Quality bar: `plans/29-DOCS-AUTHORING-STANDARDS.md` for every markdown / JSON fi
 - [x] write `skills/data/sui-knowledge/sponsor-docs/openzeppelin-sui.md`
 - [x] write `skills/data/sui-knowledge/sponsor-docs/ottersec-checklist.md`
 
-## Phase 6: Shared procedural guides [ ]
-- [ ] write `skills/data/guides/rpc-wallet-guide.md` per `plans/30-SHARED-GUIDES-SPEC.md`
-- [ ] write `skills/data/guides/deploy-runbook.md` (Sui CLI publish flow, devnet to mainnet, cost ref)
-- [ ] write `skills/data/guides/security-checklist.md` (P0 to P3, Sui Move specific findings only)
-- [ ] write `skills/data/guides/package-id-capture.md` (jq recipe, deploy-context.md write rules)
-- [ ] write `skills/data/guides/deepsurge-submission.md` per `plans/10-HACKATHON-SUBMISSION.md`
+## Phase 6: Shared procedural guides [x]
+- [x] write `skills/data/guides/rpc-wallet-guide.md` per `plans/30-SHARED-GUIDES-SPEC.md`
+- [x] write `skills/data/guides/deploy-runbook.md` (Sui CLI publish flow, devnet to mainnet, cost ref)
+- [x] write `skills/data/guides/security-checklist.md` (P0 to P3, Sui Move specific findings only)
+- [x] write `skills/data/guides/package-id-capture.md` (jq recipe, deploy-context.md write rules)
+- [x] write `skills/data/guides/deepsurge-submission.md` per `plans/10-HACKATHON-SUBMISSION.md`
 
-## Phase 7: Curated idea sources [ ]
-- [ ] write `skills/data/ideas/sui-native-gaps.json` per `plans/16-CONTENT-PLAN.md` (gaps curated by us; schema in `plans/07-ECOSYSTEM-CATALOG.md`)
-- [ ] write `skills/data/ideas/a16z-state-of-crypto-2026.json` (entries adapted to Sui)
-- [ ] write `skills/data/ideas/yc-rfs-crypto.json`
-- [ ] write `skills/data/ideas/alliance-ideas.json`
-- [ ] write `skills/data/ideas/superteam-sui-ideas.json`
+## Phase 7: Curated idea sources [x]
+- [x] write `skills/data/ideas/sui-native-gaps.json` per `plans/16-CONTENT-PLAN.md` (gaps curated by us; schema in `plans/07-ECOSYSTEM-CATALOG.md`)
+- [x] write `skills/data/ideas/a16z-state-of-crypto-2026.json` (entries adapted to Sui)
+- [x] write `skills/data/ideas/yc-rfs-crypto.json`
+- [x] write `skills/data/ideas/alliance-ideas.json`
+- [x] write `skills/data/ideas/superteam-sui-ideas.json`
 
-## Phase 8: Telemetry preamble injector script [ ]
-- [ ] write `scripts/inject-preamble.ts` per `plans/05-SKILL-FORMAT.md` (replaces the bash preamble in any `SKILL.md`, parameterized on `<skill-name>`, `<phase>`, `<version>`)
-- [ ] include the verbatim preamble template inside the script as a constant
-- [ ] add a `pnpm preamble:check` script entry to `package.json` that runs the injector in `--check` mode against every skill
+## Phase 8: Telemetry preamble injector script [x]
+- [x] write `scripts/inject-preamble.ts` per `plans/05-SKILL-FORMAT.md` (replaces the bash preamble in any `SKILL.md`, parameterized on `<skill-name>`, `<phase>`, `<version>`)
+- [x] include the verbatim preamble template inside the script as a constant
+- [x] add a `pnpm preamble:check` script entry to `package.json` that runs the injector in `--check` mode against every skill
 
-## Phase 9: Canonical sample skill, build-with-move [ ]
-- [ ] write `skills/build/build-with-move/SKILL.md` per `plans/22-SAMPLE-SKILL.md` (full content, run preamble injector after)
-- [ ] write `skills/build/build-with-move/agents/openai.yaml` mirroring the frontmatter
-- [ ] write `skills/build/build-with-move/references/move-syntax-cheatsheet.md`
-- [ ] write `skills/build/build-with-move/references/common-move-pitfalls.md`
-- [ ] write `skills/build/build-with-move/references/package-manifest-example.md`
+## Phase 9: Canonical sample skill, build-with-move [x]
+- [x] write `skills/build/build-with-move/SKILL.md` per `plans/22-SAMPLE-SKILL.md` (full content, run preamble injector after)
+- [x] write `skills/build/build-with-move/agents/openai.yaml` mirroring the frontmatter
+- [x] write `skills/build/build-with-move/references/move-syntax-cheatsheet.md`
+- [x] write `skills/build/build-with-move/references/common-move-pitfalls.md`
+- [x] write `skills/build/build-with-move/references/package-manifest-example.md`
 
 ## Phase 10: Sui-unique build skills batch 1 [ ]
 - [ ] author `skills/build/walrus-storage/` (SKILL.md + agents/openai.yaml + references) per `plans/04-SKILLS-CATALOG.md` and `plans/11-SPONSOR-INTEGRATION.md`. Quality gate: demo retrieves a stored blob and renders it.
