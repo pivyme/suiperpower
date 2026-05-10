@@ -10,6 +10,18 @@ Tagline: **Build something meaningful, on Sui**
 
 The launch occasion is Sui Overflow 2026, but Suiperpower is built as a long-lived production tool, not a hackathon helper.
 
+## What exists today (quick orientation)
+
+The repo is mid-build. As of the most recent commits (phase 21):
+
+- CLI scaffold is real: `cli/index.ts` plus `banner`, `branding`, `doctor`, `init`, `feedback`, `telemetry`, `update`, `update-check`, `uninstall`, `repos`, `completion`, `workspace-setup`, `agent-cli`, `interactive-universal`, `colors`. Run with `pnpm dev`.
+- Skills tree is partially populated: `learn/`, `idea/`, `build/`, `ship/` directories with phase content; `SKILL_ROUTER.md` and `skills/README.md` catalog overview committed.
+- Planning is fully drafted: 31 docs in `plans/`, indexed by `plans/README.md`.
+- Backend, website, and the `install.sh` curl one-liner are not yet on disk. Treat anything in those areas as "from plans" until code lands.
+- Tracking: `TODO.md` (project-wide), `MANUAL-TODO.md` (manual checklist), `bigdev/TODO.md` (loop phases).
+
+Check `git log --oneline | head -20` before assuming a phase is done. CLAUDE.md updates lag commits.
+
 ## Tech stack
 
 - **Language**: TypeScript (strict, ESM, NodeNext)
@@ -25,22 +37,25 @@ The launch occasion is Sui Overflow 2026, but Suiperpower is built as a long-liv
 
 ## Project structure
 
-See `plans/02-PROJECT-STRUCTURE.md` for the full tree. Summary:
+See `plans/02-PROJECT-STRUCTURE.md` for the full target tree. Current state on disk (May 2026):
 
 ```
 suiperpower/
-├── README.md, CLAUDE.md, AGENTS.md, LICENSE, CONTRIBUTING.md
-├── package.json, pnpm-workspace.yaml, tsconfig.json, vercel.json
-├── install.sh, setup, suiperpower-pass.sh
-├── cli/                CLI source + catalog data
-├── skills/             All journey skills + knowledge base + shared data
-├── convex/             Backend (telemetry + feedback)
-├── public/             setup.sh, logo, og-image
-├── scripts/            Build / release tooling (cursor-rules generator, preamble injector)
-└── plans/              Source-of-truth planning docs (this folder)
+├── README.md, CLAUDE.md, TODO.md, MANUAL-TODO.md   # planning + tracking
+├── package.json, pnpm-workspace.yaml, tsconfig.json
+├── cli/                CLI source (index, banner, branding, doctor, init,
+│                       feedback, telemetry, update, uninstall, repos,
+│                       completion, workspace-setup, agent-cli) + cli/data/
+├── skills/             SKILL_ROUTER.md + README.md + phase folders + skills/data/
+├── scripts/            inject-preamble.ts (release tooling)
+├── bigdev/             Autonomous build loop: TODO.md, autobuild launcher, claude/ state
+├── plans/              Source-of-truth planning docs (31 files + README index)
+└── reference/          Vendored solana-new-main for pattern reference only
 ```
 
-Skills live under `skills/<phase>/<name>/SKILL.md`. Phases: `learn/`, `idea/`, `build/`, `ship/`, `grow/`.
+Planned but not yet on disk: `convex/` (backend), `public/` (website assets + setup.sh), `install.sh`, `setup`, `suiperpower-pass.sh`, `AGENTS.md`, `LICENSE`, `CONTRIBUTING.md`, `vercel.json`, a website tree.
+
+Skills live under `skills/<phase>/<name>/SKILL.md`. Phases: `learn/`, `idea/`, `build/`, `ship/`, `grow/`. As of today `learn/`, `idea/`, `build/`, `ship/` exist; `grow/` is planned.
 
 ## Key design decisions and why
 
@@ -94,13 +109,22 @@ For navigation across all 31 plan docs, **start at `plans/README.md`**, the top-
 
 If you are a coding agent picking up work and skipping the index: read 00 → 04 → 12 → 02 first. Then 22 (sample skill) and 26 (example journey) for concreteness, then 20 (contributing) and 21 (testing) before authoring anything that ships. 30 is required reading before authoring any shared guide or phase-handoff context-file. Everything else is on demand.
 
-## Build commands (once code exists)
+## Build commands
+
+Real today (defined in `package.json`):
 
 ```bash
 pnpm install                  # install workspace deps
-pnpm dev                      # run CLI locally with hot reload
-pnpm build                    # build CLI to dist/
-pnpm test                     # run unit + integration tests
+pnpm dev                      # run CLI locally via tsx (cli/index.ts)
+pnpm build                    # tsc to dist/ + chmod +x dist/cli/index.js
+pnpm setup                    # run ./setup script
+pnpm preamble:check           # verify telemetry preamble injection on skills
+```
+
+Planned (will land as the relevant phase ships, do not invoke before then):
+
+```bash
+pnpm test                     # unit + integration tests
 pnpm test:install             # CI test the install flow in a fresh container
 pnpm lint                     # ESLint + Prettier check
 pnpm typecheck                # tsc --noEmit
@@ -112,7 +136,19 @@ pnpm web:dev                  # Next.js website dev server
 pnpm web:build                # Next.js production build
 ```
 
-(Exact commands finalized in build phase. CLAUDE.md updates when scripts are real.)
+Update this file as scripts are added so future agents do not invoke commands that do not exist.
+
+### Autonomous build loop (bigdev)
+
+The project ships its own loop runner in `bigdev/`. Day-to-day:
+
+```bash
+./bigdev/autobuild              # start / continue the build loop (reads bigdev/TODO.md)
+./bigdev/autobuild say "rule"   # add durable rule (commits to bigdev/claude/requirements-log.md)
+./bigdev/autobuild fix "msg"    # one-shot transient correction (gitignored bigdev/claude/inject.md)
+```
+
+See `bigdev/TODO.md` for phase progress and the launcher script for details.
 
 ## Quality bar reference
 

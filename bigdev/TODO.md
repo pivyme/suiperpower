@@ -165,13 +165,13 @@ Brand stays `suiperpower` (domain, npm package, GitHub repo, `BRAND.PRODUCT_NAME
 - [x] write `cli/workspace-setup.ts` (creates `.suiperpower/` in user project, README, `.env.example`)
 - [x] write `cli/repos.ts` (reads `cli/data/clonable-repos.json`, renders TUI list)
 
-## Phase 22: CLI interactive TUIs [ ]
-- [ ] write `cli/interactive-universal.ts` (shared TUI primitives: list picker, fuzzy-find, keyboard nav, no third-party UI lib)
-- [ ] write `cli/interactive-onboarding.ts` (no-args entry, options menu per `plans/08-CLI-DESIGN.md`)
-- [ ] write `cli/interactive-skills.ts` (`suiperpower skills` browser)
-- [ ] write `cli/interactive-mcps.ts` (`suiperpower mcps` browser)
-- [ ] write `cli/interactive-search.ts` (`suiperpower search <query>` and `ideas`; fuzzy match across skills + repos + mcps + ideas)
-- [ ] write `cli/interactive-journey.ts` (guided journey TUI, idea -> build -> ship)
+## Phase 22: CLI interactive TUIs [x]
+- [x] write `cli/interactive-universal.ts` (shared TUI primitives: list picker, fuzzy-find, keyboard nav, no third-party UI lib)
+- [x] write `cli/interactive-onboarding.ts` (no-args entry, options menu per `plans/08-CLI-DESIGN.md`)
+- [x] write `cli/interactive-skills.ts` (`suiperpower skills` browser)
+- [x] write `cli/interactive-mcps.ts` (`suiperpower mcps` browser)
+- [x] write `cli/interactive-search.ts` (`suiperpower search <query>` and `ideas`; fuzzy match across skills + repos + mcps + ideas)
+- [x] write `cli/interactive-journey.ts` (guided journey TUI, idea -> build -> ship)
 
 ## Phase 23: Cursor rules generator [ ]
 - [ ] write `scripts/generate-cursor-rules.ts` per `plans/05-SKILL-FORMAT.md` and `plans/09-MULTI-AGENT-PARITY.md` (renders SKILL.md to `.mdc`, inlines `references/` content under "## References (inlined)")
