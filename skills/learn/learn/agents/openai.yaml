@@ -1,0 +1,13 @@
+name: learn
+version: 1
+phase: learn
+description: |
+  Capture session learnings and decisions to .suiperpower/learnings.md so the
+  next skill, and the user's future self, can pick up where this session left
+  off. Use when the user says "what have we learned", "save what we figured
+  out", "log this learning", "log decisions", "capture session notes", "wrap
+  up this session", "review my learnings", or "log learnings".
+prompt_path: ../SKILL.md
+references:
+  - ../references/learning-prompts.md
+  - ../references/append-only-rules.md

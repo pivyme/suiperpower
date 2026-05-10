@@ -114,9 +114,9 @@ Quality bar: `plans/29-DOCS-AUTHORING-STANDARDS.md` for every markdown / JSON fi
 - [x] author `skills/build/roast-my-product/` (brutal critique, numbered weakness list)
 - [x] author `skills/build/product-review/` (balanced UX review, prioritized roadmap)
 
-## Phase 16: Learn phase skills [ ]
-- [ ] author `skills/learn/sui-beginner/` (Sui from scratch, framing for EVM / Solana migrants)
-- [ ] author `skills/learn/learn/` (writes session learnings to `.suiperpower/learnings.md` per phase-handoff spec)
+## Phase 16: Learn phase skills [x]
+- [x] author `skills/learn/sui-beginner/` (Sui from scratch, framing for EVM / Solana migrants)
+- [x] author `skills/learn/learn/` (writes session learnings to `.suiperpower/learnings.md` per phase-handoff spec)
 
 ## Phase 17: Ship phase skills [ ]
 - [ ] author `skills/ship/deploy-to-testnet/` (uses `guides/deploy-runbook.md`, captures package id via `guides/package-id-capture.md`, writes `deploy-context.md`)
