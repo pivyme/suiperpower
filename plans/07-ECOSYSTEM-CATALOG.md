@@ -116,7 +116,7 @@ If a Sui-native MCP server does not exist for a given need (e.g. dedicated Myste
 {
   "version": "0.1.0",
   "generatedAt": "2026-XX-XXT00:00:00Z",
-  "sources": ["a16z-state-of-crypto-2026", "yc-rfs-crypto", "alliance-ideas", "sui-native-gaps", "superteam-sui-ideas"],
+  "sources": ["a16z-state-of-crypto-2026", "yc-rfs-crypto", "alliance-ideas", "sui-native-gaps"],
   "ideas": [
     {
       "id": "perpetuals-with-deepbook-settlement",
@@ -141,7 +141,6 @@ Idea sources (initial seed in `16-CONTENT-PLAN.md`):
 - `yc-rfs-crypto` (rewritten for Sui where the original was chain-agnostic)
 - `alliance-ideas` (cross-chain ideas that fit Sui)
 - `sui-native-gaps` (curated by us, things that only make sense because of Sui's primitives)
-- `superteam-sui-ideas` (if Superteam Sui chapter exists / publishes)
 
 ## Initial seed (v1 launch target counts)
 

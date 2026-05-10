@@ -107,12 +107,12 @@ Quality bar: `plans/29-DOCS-AUTHORING-STANDARDS.md` for every markdown / JSON fi
 - [x] author `skills/idea/walrus-research/`
 - [x] author `skills/idea/overflow-copilot/` (past Sui hackathon project search; analog to colosseum-copilot but Sui-only)
 
-## Phase 15: Anti-slop skills [ ]
-- [ ] author `skills/build/validate-business-model/` per `plans/12-ANTI-SLOP-FRAMEWORK.md` (5 questions, refuses to claim model exists if unanswered)
-- [ ] author `skills/build/retention-loop/` (day 1/2/7/30 anchors, single-paragraph loop output)
-- [ ] author `skills/build/will-real-users-pay/` (cheap pricing experiment recipe)
-- [ ] author `skills/build/roast-my-product/` (brutal critique, numbered weakness list)
-- [ ] author `skills/build/product-review/` (balanced UX review, prioritized roadmap)
+## Phase 15: Anti-slop skills [x]
+- [x] author `skills/build/validate-business-model/` per `plans/12-ANTI-SLOP-FRAMEWORK.md` (5 questions, refuses to claim model exists if unanswered)
+- [x] author `skills/build/retention-loop/` (day 1/2/7/30 anchors, single-paragraph loop output)
+- [x] author `skills/build/will-real-users-pay/` (cheap pricing experiment recipe)
+- [x] author `skills/build/roast-my-product/` (brutal critique, numbered weakness list)
+- [x] author `skills/build/product-review/` (balanced UX review, prioritized roadmap)
 
 ## Phase 16: Learn phase skills [ ]
 - [ ] author `skills/learn/sui-beginner/` (Sui from scratch, framing for EVM / Solana migrants)

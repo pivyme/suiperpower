@@ -12,7 +12,6 @@ Suiperpower's `find-next-sui-idea` skill needs a real corpus of ideas to recomme
 | YC Requests for Startups, crypto category | Y Combinator's published RFS | Adapt prompts to "what would this look like on Sui" |
 | Alliance DAO ideas | Alliance accelerator's published ideas | Cross-chain ideas, cherry-pick fits |
 | Sui-native gaps (curated by us) | Ideas that only make sense because of Sui's primitives | Original content, our differentiator |
-| Superteam Sui ideas | If Superteam Sui chapter publishes, ingest | Optional, depends on availability |
 | Past Sui Overflow patterns | Winning categories from past hackathons | Pattern-mine for whitespace |
 | OpenAI / Anthropic AI agent ideas | If applicable to Sui (AI-on-chain) | Adapt prompts |
 
@@ -24,7 +23,6 @@ skills/data/ideas/
 ├── yc-rfs-crypto.json
 ├── alliance-ideas.json
 ├── sui-native-gaps.json          ← our original content
-├── superteam-sui-ideas.json      ← if available
 ├── past-overflow-patterns.json   ← curated from past hackathons
 └── ai-on-sui.json                ← AI x Sui ideas (small)
 ```
@@ -159,10 +157,6 @@ Read past Sui Overflow winners (2023, 2024, 2025) and extract:
 - Demos that were memorable (extract the pattern)
 
 For Suiperpower this is tactical: it tells our `find-next-sui-idea` users "here is what won before, here is what is still open."
-
-## superteam-sui-ideas.json (optional)
-
-If Superteam launches a Sui chapter and publishes ideas, ingest. Otherwise skip in v1.
 
 ## ai-on-sui.json
 

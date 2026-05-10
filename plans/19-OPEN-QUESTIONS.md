@@ -54,7 +54,7 @@ Status values: `open`, `decided`, `deferred`.
 | # | Question | Status | Needed by | Owner | Notes |
 |---|---|---|---|---|---|
 | 26 | Past Sui Overflow winner data: where to source | `open` | T-2w | Build phase research | Check overflow.sui.io, Sui Foundation blog, past hackathon retros |
-| 27 | Whether Superteam Sui chapter exists with publishable ideas | `open` | T-2w | Kelvin | If no, drop `superteam-sui-ideas.json` from v1 |
+| 27 | Whether Superteam Sui chapter exists with publishable ideas | `decided: no, dropped` | n/a | n/a | Confirmed no Superteam Sui chapter exists. `superteam-sui-ideas.json` removed from `plans/02`, `plans/07`, `plans/16` on 2026-05-10. |
 | 28 | a16z 2026 State of Crypto, publish date | `open` | T-2w | Kelvin | If not yet released, use 2025 with Sui re-tagging |
 | 29 | YC's most-recent crypto RFS list URL | `open` | T-2w | Build phase research | ycombinator.com/rfs |
 
@@ -89,6 +89,7 @@ Append a row. Set status `open`. Add a needed-by date. Tag an owner. Move to `de
 | 18 | Never bundle agent API keys | 2026-05-10 |
 | 19 | `--quiet` mode supported | 2026-05-10 |
 | 20 | Privacy-friendly analytics (Plausible / Vercel) | 2026-05-10 |
+| 27 | No Superteam Sui chapter, `superteam-sui-ideas.json` dropped | 2026-05-10 |
 
 ## Cross-references to detailed plans
 

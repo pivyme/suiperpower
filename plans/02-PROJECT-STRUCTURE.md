@@ -138,8 +138,7 @@ suiperpower/
 │       │   ├── a16z-state-of-crypto-2026.json
 │       │   ├── yc-rfs-crypto.json
 │       │   ├── alliance-ideas.json
-│       │   ├── sui-native-gaps.json     (curated by us, see 16-CONTENT-PLAN.md)
-│       │   └── superteam-sui-ideas.json
+│       │   └── sui-native-gaps.json     (curated by us, see 16-CONTENT-PLAN.md)
 │       └── specs/
 │           └── phase-handoff.md          contract for .suiperpower/<phase>-context.md
 │

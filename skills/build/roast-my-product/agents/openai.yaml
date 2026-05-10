@@ -1,0 +1,14 @@
+name: roast-my-product
+version: 1
+phase: build
+description: |
+  Play the harshest investor in the room and produce a numbered list of every
+  weakness in the product, positioning, demo, and brand, so the user can fix
+  the top three before submitting or pitching. Use when the user says "roast
+  my product", "be brutal", "what are the weaknesses", "investor critique",
+  "harsh feedback", "what would a VC say", "tear apart my pitch", or "roast
+  my pitch".
+prompt_path: ../SKILL.md
+references:
+  - ../references/seven-dimensions.md
+  - ../references/severity-rubric.md
