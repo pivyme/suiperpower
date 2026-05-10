@@ -128,10 +128,10 @@ Quality bar: `plans/29-DOCS-AUTHORING-STANDARDS.md` for every markdown / JSON fi
 - [x] author `skills/ship/video-craft/`
 - [x] author `skills/ship/apply-grant/` (Sui Foundation grant flow)
 
-## Phase 18: Skill router + skills README [ ]
-- [ ] write `skills/SKILL_ROUTER.md` per `plans/23-SKILL-ROUTER-SPEC.md` (full per-row routing table, every v1 skill, common-wrong-pick column)
-- [ ] write `skills/README.md` (catalog overview grouped by phase, one-liner per skill, links to SKILL.md sources)
-- [ ] verify every authored skill ends with the "consult skills/SKILL_ROUTER.md and hand off" line
+## Phase 18: Skill router + skills README [x]
+- [x] write `skills/SKILL_ROUTER.md` per `plans/23-SKILL-ROUTER-SPEC.md` (full per-row routing table, every v1 skill, common-wrong-pick column)
+- [x] write `skills/README.md` (catalog overview grouped by phase, one-liner per skill, links to SKILL.md sources)
+- [x] verify every authored skill ends with the "consult skills/SKILL_ROUTER.md and hand off" line
 
 ## Phase 19: Ecosystem catalog data [ ]
 - [ ] write `cli/data/clonable-repos.json` per `plans/07-ECOSYSTEM-CATALOG.md` (Sui ecosystem repos, schema validated, sorted alphabetically by id, ~40 entries seed list)
