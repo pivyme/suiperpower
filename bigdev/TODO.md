@@ -82,15 +82,15 @@ Quality bar: `plans/29-DOCS-AUTHORING-STANDARDS.md` for every markdown / JSON fi
 - [x] author `skills/build/ptb-composer/`. Quality gate: PTB compiles + dry-runs against testnet.
 - [x] author `skills/build/object-model-design/`. Quality gate: owned vs shared decision recorded with rationale per object.
 
-## Phase 12: General build skills [ ]
-- [ ] author `skills/build/scaffold-project/` (writes initial `build-context.md`, picks template per `plans/06-SUI-KNOWLEDGE-BASE.md` `04-protocols-and-sdks`)
-- [ ] author `skills/build/build-with-claude/` (multi-step pair-programming, quality gate per sub-step)
-- [ ] author `skills/build/virtual-sui-incubator/` (deep-dive teaching skill)
-- [ ] author `skills/build/build-mobile-sui/` (Sui Mobile SDK, references rpc-wallet-guide.md)
-- [ ] author `skills/build/launch-coin/` (Sui Move coin standard, treasury cap handling)
-- [ ] author `skills/build/debug-move/` (compile errors + runtime + capability leakage)
-- [ ] author `skills/build/review-move/` per `plans/12-ANTI-SLOP-FRAMEWORK.md` (P0-P3 walk, OZ migration suggestions)
-- [ ] author `skills/build/navigate-skills/` (meta skill listing what is available, reads `cli/data/sui-skills.json`)
+## Phase 12: General build skills [x]
+- [x] author `skills/build/scaffold-project/` (writes initial `build-context.md`, picks template per `plans/06-SUI-KNOWLEDGE-BASE.md` `04-protocols-and-sdks`)
+- [x] author `skills/build/build-with-claude/` (multi-step pair-programming, quality gate per sub-step)
+- [x] author `skills/build/virtual-sui-incubator/` (deep-dive teaching skill)
+- [x] author `skills/build/build-mobile-sui/` (Sui Mobile SDK, references rpc-wallet-guide.md)
+- [x] author `skills/build/launch-coin/` (Sui Move coin standard, treasury cap handling)
+- [x] author `skills/build/debug-move/` (compile errors + runtime + capability leakage)
+- [x] author `skills/build/review-move/` per `plans/12-ANTI-SLOP-FRAMEWORK.md` (P0-P3 walk, OZ migration suggestions)
+- [x] author `skills/build/navigate-skills/` (meta skill listing what is available, reads `cli/data/sui-skills.json`)
 
 ## Phase 13: Frontend / design build skills [ ]
 - [ ] author `skills/build/brand-design/` (color, typography, name)
