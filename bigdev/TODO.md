@@ -1,10 +1,10 @@
 # Suiperpower bigdev TODO
 
-29 phases, AI-skills-first ordering. Source-of-truth plan docs live in `plans/`. Use `plans/README.md` as the index. The build loop reads the per-phase plan reference column to know which doc to load.
+28 active phases plus 1 deferred (Phase 27, website, owned by Kelvin separately and out of scope here). AI-skills-first ordering. Source-of-truth plan docs live in `plans/`. Use `plans/README.md` as the index. The build loop reads the per-phase plan reference column to know which doc to load.
 
 Reference patterns (NOT content) may be adapted from `reference/solana-new-main/`. Never bring Solana-specific content, branding, or copy across. Suiperpower is for the Sui network only.
 
-No demo polish phases (the user is not presenting). No landing page polish (a placeholder text page is enough).
+No demo polish phases (the user is not presenting). **The `web/` folder is fully deferred and out of scope for this build loop.** Kelvin handles the website separately. Do not scaffold `web/`, do not write Next.js code, do not add `web:*` scripts. The CLI is the product; the build loop ships the CLI.
 
 Quality bar: `plans/29-DOCS-AUTHORING-STANDARDS.md` for every markdown / JSON file authored. `plans/15-BRAND.md` for every user-facing string. No em-dashes. No banned words. Sui terms capitalized.
 
@@ -14,6 +14,17 @@ Quality bar: `plans/29-DOCS-AUTHORING-STANDARDS.md` for every markdown / JSON fi
 - [x] write `tsconfig.json` (strict, ESM, NodeNext, `outDir: dist`, `rootDir: .`, `module: NodeNext`, `target: ES2022`)
 - [x] write `.npmignore` excluding `plans/`, `bigdev/`, `reference/`, `web/`, dev configs
 - [x] write `.editorconfig` (utf-8, lf, 2-space indent, final newline)
+
+## Phase 1.5: suiper short bin alias [x]
+Brand stays `suiperpower` (domain, npm package, GitHub repo, `BRAND.PRODUCT_NAME`). The CLI bin gets a second entry, `suiper`, so daily typing is faster. Both bins resolve to the same `dist/cli/index.js`. Decision rationale: typing pain on `suiperpower` is real, switching the brand loses distinctiveness, the alias pattern (e.g. `kubectl` for Kubernetes, `gh` for GitHub CLI) gives both wins.
+
+- [x] update `package.json` `bin` field from `"bin": "./dist/cli/index.js"` to `"bin": { "suiperpower": "./dist/cli/index.js", "suiper": "./dist/cli/index.js" }`
+- [x] verify `cli/index.ts` does not branch on `process.argv[1]` name; both invocations must route through the same dispatcher map
+- [x] update `plans/08-CLI-DESIGN.md` brand-strings + invocation section to document both bins as canonical (long form + short alias)
+- [x] update `plans/15-BRAND.md` "CLI command" section to record the alias decision (both supported, `suiper` is the preferred daily-use form, `suiperpower` is the unambiguous brand form)
+- [x] update `README.md` quickstart and `install.sh` post-install banner to show `suiper` first with a one-liner noting `suiperpower` works identically (install.sh portion baked into Phase 24)
+- [x] add to Phase 24 install verification: `bash -c "suiperpower --version && suiper --version"` produces matching output
+- [x] add to Phase 29 pre-publish gate: `package.json` ships with both bin entries; verify `npm pack` tarball lists both, and that a clean `npm install -g` creates symlinks for both under `node_modules/.bin/`
 
 ## Phase 2: CLI brand + color foundation [x]
 - [x] write `cli/branding.ts` per `plans/08-CLI-DESIGN.md` (single source of truth, `BRAND` const exports `PRODUCT_NAME`, `TAGLINE`, `INSTALL_URL`, `WEBSITE_URL`, `GH_REPO` placeholder, `NPM_PKG`, `CONFIG_DIR`, `CONVEX_URL_DEFAULT` placeholder, `TELEGRAM_URL`, `HACKATHON_URL`, `SUBMISSION_URL`)
@@ -168,11 +179,12 @@ Quality bar: `plans/29-DOCS-AUTHORING-STANDARDS.md` for every markdown / JSON fi
 - [ ] verify a sample skill (`build-with-move`) round-trips correctly under `--check` mode
 
 ## Phase 24: install.sh + curl one-liner host [ ]
-- [ ] write `install.sh` per `plans/03-INSTALL-FLOW.md` (banner, prereq check, npm install -g, agent CLI install, `suiperpower init`, `suiperpower doctor`, telemetry opt-in only on TTY, quickstart print). Adapt patterns from `reference/solana-new-main/install.sh` but rebrand fully.
+- [ ] write `install.sh` per `plans/03-INSTALL-FLOW.md` (banner, prereq check, npm install -g, agent CLI install, `suiperpower init`, `suiperpower doctor`, telemetry opt-in only on TTY, quickstart print). Adapt patterns from `reference/solana-new-main/install.sh` but rebrand fully. The post-install banner shows `suiper` first with a one-liner noting `suiperpower` works identically (per Phase 1.5 alias decision).
 - [ ] copy/symlink `install.sh` into `public/setup.sh` and add `vercel.json` rewrite `/setup.sh -> /public/setup.sh`
 - [ ] write `setup` (bash convenience that calls `install.sh` for local dev)
 - [ ] write `suiperpower-pass.sh` (local dev helper mirroring `solana-pass.sh` shape but Sui-specific commands)
 - [ ] sanity test: `bash install.sh` in a fresh shell does not error out at the prereq + npm-install + init steps (mocked npm registry OK, see Phase 26)
+- [ ] add bin verification: `bash -c "suiperpower --version && suiper --version"` produces matching output (per Phase 1.5 alias decision)
 
 ## Phase 25: Convex backend [ ]
 - [ ] write `convex/schema.ts` per `plans/13-CONVEX-BACKEND.md` (telemetry + feedback tables, indexes by_skill / by_timestamp)
@@ -188,14 +200,12 @@ Quality bar: `plans/29-DOCS-AUTHORING-STANDARDS.md` for every markdown / JSON fi
 - [ ] write multi-agent install matrix test (asserts skills appear under `~/.claude/skills`, `~/.codex/skills`, `~/.cursor/rules`)
 - [ ] add `pnpm test`, `pnpm test:install`, `pnpm lint:skills`, `pnpm lint:catalog`, `pnpm typecheck` scripts to root `package.json`
 
-## Phase 27: Website placeholder [ ]
-- [ ] scaffold `web/` as a minimal Next.js 14 App Router project (no styling, no Tailwind, no design system; just the framework so Vercel deploy works)
-- [ ] write `web/app/page.tsx` with placeholder text only: project name, tagline, a single `pre`-rendered link list pointing at `plans/README.md` and `https://github.com/<your-handle>/suiperpower`. Per user instruction the landing page is intentionally text-only for v1.
-- [ ] write `web/app/layout.tsx` (no styling, just metadata)
-- [ ] add `web:dev`, `web:build`, `web:start` scripts; verify `pnpm web:build` produces a clean Next build
+## Phase 27: Website (deferred, owned by Kelvin)
+
+Skipped by the build loop. Kelvin handles `web/` separately, on his own timeline, against `plans/14-WEBSITE-STRUCTURE.md`. Do not scaffold `web/`, do not write Next.js code, do not add `web:*` scripts to `package.json`, do not add a `web/` workspace to `pnpm-workspace.yaml`. If a later phase asks "did the website ship", the answer is "out of scope, see Kelvin." This block exists only so the phase number stays stable; there is no work to do here.
 
 ## Phase 28: Root docs [ ]
-- [ ] write `README.md` per `plans/15-BRAND.md` voice (what Suiperpower is, install one-liner, quickstart commands, link to `plans/README.md`, telemetry posture, MIT). No marketing-speak. No banned words.
+- [ ] write `README.md` per `plans/15-BRAND.md` voice (what Suiperpower is, install one-liner, quickstart commands, link to `plans/README.md`, telemetry posture, MIT). No marketing-speak. No banned words. Quickstart shows `suiper` first with a one-liner noting `suiperpower` works identically (per Phase 1.5 alias decision).
 - [ ] write `AGENTS.md` (Codex / generic-agent context, mirrors `CLAUDE.md` shape)
 - [ ] write `CONTRIBUTING.md` per `plans/20-CONTRIBUTING-PLAN.md` (PR shapes, supply-chain rules, reviewer checklists, code-of-conduct outline)
 - [ ] write `LICENSE` (MIT)
@@ -203,6 +213,7 @@ Quality bar: `plans/29-DOCS-AUTHORING-STANDARDS.md` for every markdown / JSON fi
 ## Phase 29: Pre-publish gate [ ]
 - [ ] write `scripts/publish.ts` (pre-publish: typecheck, lint:skills, lint:catalog, build, smoke-test install in a Docker layer, version sync between `package.json`, `cli/branding.ts`, and `skills-lock.json`)
 - [ ] generate `skills-lock.json` listing every shipped skill with sha256 of the rendered file content (manifest used by `update`)
-- [ ] verify `package.json` `files` field matches `plans/02-PROJECT-STRUCTURE.md` (dist + skills/ + cli/data/, never plans / bigdev / reference / web)
+- [ ] verify `package.json` `files` field matches `plans/02-PROJECT-STRUCTURE.md` (dist + skills/ + cli/data/, never plans / bigdev / reference)
+- [ ] verify `package.json` ships both `suiperpower` and `suiper` bin entries; verify `npm pack` tarball lists both bins, and that a clean `npm install -g` creates symlinks for both under `node_modules/.bin/` (per Phase 1.5 alias decision)
 - [ ] add `publish:dry` script (`npm pack` + diff against expected file list)
 - [ ] final: `pnpm publish:dry` clean run; commit; output `<promise>ALL PHASES COMPLETE</promise>`

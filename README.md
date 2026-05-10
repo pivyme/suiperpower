@@ -16,6 +16,13 @@ Installs to `~/.claude/skills/`, `~/.codex/skills/`, and `~/.cursor/rules/`. Not
 
 **Requirements**: Node.js 20+ and git.
 
+The CLI ships two bin entries that resolve to the same dispatcher: `suiper` for daily typing, `suiperpower` for unambiguous brand. Use either, both work everywhere.
+
+```bash
+suiper init        # same as: suiperpower init
+suiper doctor      # same as: suiperpower doctor
+```
+
 ## Quick start
 
 ```bash
@@ -156,7 +163,7 @@ Full tree in [plans/02-PROJECT-STRUCTURE.md](plans/02-PROJECT-STRUCTURE.md).
 Want your teammates to get all skills automatically when they clone?
 
 ```bash
-suiperpower init --vendor
+suiper init --vendor
 ```
 
 Copies skills into `<your-repo>/.claude/skills/suiperpower/`, `<repo>/.codex/skills/suiperpower/`, and `<repo>/.cursor/rules/suiperpower/`. Commit them, teammates clone, ready to go.
@@ -164,7 +171,7 @@ Copies skills into `<your-repo>/.claude/skills/suiperpower/`, `<repo>/.codex/ski
 ## Update
 
 ```bash
-suiperpower update
+suiper update
 ```
 
 Or re-curl the install URL. Both are idempotent and supported.
@@ -172,7 +179,7 @@ Or re-curl the install URL. Both are idempotent and supported.
 ## Uninstall
 
 ```bash
-suiperpower uninstall
+suiper uninstall
 ```
 
 Removes only files Suiperpower wrote. Your own skills are untouched.

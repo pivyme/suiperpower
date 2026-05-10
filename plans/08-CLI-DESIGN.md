@@ -33,6 +33,21 @@ suiperpower --help
 suiperpower completion bash|zsh   # print shell completion script
 ```
 
+### Bin invocation: `suiperpower` and `suiper`
+
+The npm package ships with two bin entries that resolve to the same `dist/cli/index.js`:
+
+```json
+"bin": {
+  "suiperpower": "./dist/cli/index.js",
+  "suiper": "./dist/cli/index.js"
+}
+```
+
+`suiperpower` is the canonical brand form. `suiper` is the daily-use short alias. Both invocations route through the same dispatcher; `cli/index.ts` does not branch on `process.argv[0]` or `process.argv[1]`. Anything documented as `suiperpower <cmd>` in this file works identically as `suiper <cmd>`.
+
+Documentation convention: examples in user-facing copy (README quickstart, install banner, onboarding output) lead with `suiper` for ergonomics and note that `suiperpower` works identically. Internal references (plan docs, schema fields, config dir `.suiperpower`, brand constants) keep the long form. The pattern mirrors `kubectl` / `gh`: a memorable brand, a fast daily verb.
+
 ## File responsibilities
 
 ```

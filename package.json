@@ -6,7 +6,8 @@
   "description": "Skills, knowledge, and a CLI for shipping production Sui products. think. build. ship.",
   "type": "module",
   "bin": {
-    "suiperpower": "./dist/cli/index.js"
+    "suiperpower": "./dist/cli/index.js",
+    "suiper": "./dist/cli/index.js"
   },
   "files": [
     "dist/",
@@ -38,5 +39,9 @@
   },
   "dependencies": {
     "convex": "^1.34.1"
-  }
+  },
+  "workspaces": [
+    "cli",
+    "convex"
+  ]
 }

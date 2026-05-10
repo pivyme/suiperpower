@@ -35,7 +35,14 @@ We deliberately do not use the three-beat structure that solana-new uses ("think
 
 ## CLI command
 
-`suiperpower` (the npm bin). Always lowercase, always one word. Never `sp`, never `sui-pp`, never aliased.
+The npm package ships two bin entries that both resolve to the same dispatcher:
+
+- `suiperpower` is the canonical brand form. Always lowercase, always one word. Used in install scripts, error messages, docs where unambiguous identity matters.
+- `suiper` is the short alias for daily typing. Same behavior, no flags, no behavioral branching.
+
+Decision rationale: the long form keeps the brand intact (domain, npm package, GitHub repo). The short alias removes typing pain. Pattern matches `kubectl` plus shorter community conventions, and `gh` for the GitHub CLI. No third-letter abbreviation (`sp`, `sui-pp`) is shipped, the alias is the only short form.
+
+When writing docs, prefer `suiper` in install banners and quickstarts where the user has just learned the brand and will type the command often. Use `suiperpower` in error messages, the `--help` header, and anywhere the brand needs to read in full.
 
 ## Voice
 
