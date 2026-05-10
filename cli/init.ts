@@ -19,6 +19,7 @@ import { fileURLToPath } from "node:url";
 import { BRAND } from "./branding.js";
 import { accent, bold, dim, muted, ok } from "./colors.js";
 import { detectAgentCliPaths } from "./agent-cli.js";
+import { renderMdc as renderCursorRule } from "../scripts/generate-cursor-rules.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -135,13 +136,19 @@ function copySkillToClaudeOrCodex(skill: SkillEntry, dest: string): string[] {
 }
 
 function renderCursorMdc(skill: SkillEntry, destDir: string): string[] {
-  // Phase 23 will swap this out for scripts/generate-cursor-rules.ts that
-  // inlines references/. For Phase 20 we ship a minimal valid .mdc that
-  // contains the SKILL.md content so Cursor users see it immediately.
+  // Use the renderer in scripts/generate-cursor-rules.ts so init and the
+  // standalone generator stay byte-identical.
   mkdirSync(destDir, { recursive: true });
-  const skillMd = readFileSync(join(skill.srcDir, "SKILL.md"), "utf8");
   const out = join(destDir, `${skill.name}.mdc`);
-  writeFileSync(out, skillMd);
+  writeFileSync(
+    out,
+    renderCursorRule({
+      name: skill.name,
+      phase: skill.phase,
+      dir: skill.srcDir,
+      skillMdPath: join(skill.srcDir, "SKILL.md"),
+    }),
+  );
   return [out];
 }
 

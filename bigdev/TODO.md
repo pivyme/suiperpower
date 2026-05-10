@@ -173,10 +173,10 @@ Brand stays `suiperpower` (domain, npm package, GitHub repo, `BRAND.PRODUCT_NAME
 - [x] write `cli/interactive-search.ts` (`suiperpower search <query>` and `ideas`; fuzzy match across skills + repos + mcps + ideas)
 - [x] write `cli/interactive-journey.ts` (guided journey TUI, idea -> build -> ship)
 
-## Phase 23: Cursor rules generator [ ]
-- [ ] write `scripts/generate-cursor-rules.ts` per `plans/05-SKILL-FORMAT.md` and `plans/09-MULTI-AGENT-PARITY.md` (renders SKILL.md to `.mdc`, inlines `references/` content under "## References (inlined)")
-- [ ] wire into `init.ts` so Cursor rules emit to `~/.cursor/rules/` whenever Cursor is detected
-- [ ] verify a sample skill (`build-with-move`) round-trips correctly under `--check` mode
+## Phase 23: Cursor rules generator [x]
+- [x] write `scripts/generate-cursor-rules.ts` per `plans/05-SKILL-FORMAT.md` and `plans/09-MULTI-AGENT-PARITY.md` (renders SKILL.md to `.mdc`, inlines `references/` content under "## References (inlined)")
+- [x] wire into `init.ts` so Cursor rules emit to `~/.cursor/rules/` whenever Cursor is detected
+- [x] verify a sample skill (`build-with-move`) round-trips correctly under `--check` mode
 
 ## Phase 24: install.sh + curl one-liner host [ ]
 - [ ] write `install.sh` per `plans/03-INSTALL-FLOW.md` (banner, prereq check, npm install -g, agent CLI install, `suiperpower init`, `suiperpower doctor`, telemetry opt-in only on TTY, quickstart print). Adapt patterns from `reference/solana-new-main/install.sh` but rebrand fully. The post-install banner shows `suiper` first with a one-liner noting `suiperpower` works identically (per Phase 1.5 alias decision).
