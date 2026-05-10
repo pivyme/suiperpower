@@ -1,0 +1,25 @@
+{
+  "buildCommand": "bash scripts/package-skills.sh",
+  "outputDirectory": "public",
+  "rewrites": [
+    { "source": "/setup.sh", "destination": "/setup.sh" },
+    { "source": "/skills.tar.gz", "destination": "/skills.tar.gz" },
+    { "source": "/(.*)", "destination": "https://solana-new-landing.vercel.app/$1" }
+  ],
+  "headers": [
+    {
+      "source": "/setup.sh",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=300" }
+      ]
+    },
+    {
+      "source": "/skills.tar.gz",
+      "headers": [
+        { "key": "Content-Type", "value": "application/gzip" },
+        { "key": "Cache-Control", "value": "public, max-age=300" }
+      ]
+    }
+  ]
+}

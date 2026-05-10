@@ -1,0 +1,57 @@
+node_modules
+dist
+.env
+.env.local
+.env.production
+.env*.local
+.solana-new/
+.telemetry/
+
+# Build artifacts & test outputs
+test-solana-pay/
+tmp-smoke/
+test-cli-claude
+*.tsbuildinfo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Convex generated files
+convex/_generated/
+
+# Not shipped yet — experimental build pipeline
+mcp/
+qdrant/
+core/planner/
+core/executor/
+core/validator/
+core/scaffold/
+core/repair/
+core/telemetry/
+core/agents/
+core/knowledge/
+core/router/suggest-ecosystem.ts
+cli/state.ts
+tests/
+scripts/*
+!scripts/bootstrap-agent-setup.sh
+!scripts/package-skills.sh
+public/skills.tar.gz
+shared/utils/
+shared/types/contracts.ts
+shared/types/*.schema.json
+shared/constants/market-catalog.json
+docs/market-catalog.md
+docs/testing-guide.md
+docs/runtime.md
+PRD.md
+
+.claude/
+.agents/

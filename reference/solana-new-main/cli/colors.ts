@@ -1,0 +1,91 @@
+// Shared ANSI escape codes and gradient utilities
+
+// Respect NO_COLOR convention (https://no-color.org/) and --no-color flag
+const NO_COLOR = !!(process.env.NO_COLOR || process.argv.includes("--no-color"));
+function c(code: string): string { return NO_COLOR ? "" : code; }
+
+export const RESET = c("\x1b[0m");
+export const DIM = c("\x1b[2m");
+export const BOLD = c("\x1b[1m");
+export const CYAN = c("\x1b[36m");
+export const GREEN = c("\x1b[32m");
+export const YELLOW = c("\x1b[33m");
+export const MAGENTA = c("\x1b[35m");
+export const BLUE = c("\x1b[34m");
+export const RED = c("\x1b[31m");
+
+// Terminal control sequences (functional, not cosmetic — always enabled)
+export const ALT_SCREEN_ON = "\x1b[?1049h";
+export const ALT_SCREEN_OFF = "\x1b[?1049l";
+export const CURSOR_HIDE = "\x1b[?25l";
+export const CURSOR_SHOW = "\x1b[?25h";
+export const CLEAR_SCREEN = "\x1b[H\x1b[J";
+
+// Gradient color stops (purple → pink)
+const GRADIENT_STOPS: Array<[number, number, number]> = [
+  [130, 80, 255], [155, 65, 245], [180, 50, 230],
+  [205, 40, 205], [230, 35, 170], [255, 25, 120],
+];
+
+export function gradientLine(text: string): string {
+  if (NO_COLOR) return text;
+  const chars = text.split("");
+  const step = (GRADIENT_STOPS.length - 1) / Math.max(chars.length - 1, 1);
+  return chars.map((c, i) => {
+    const t = i * step;
+    const idx = Math.min(Math.floor(t), GRADIENT_STOPS.length - 2);
+    const f = t - idx;
+    const [r1, g1, b1] = GRADIENT_STOPS[idx];
+    const [r2, g2, b2] = GRADIENT_STOPS[idx + 1];
+    const r = Math.round(r1 + (r2 - r1) * f);
+    const g = Math.round(g1 + (g2 - g1) * f);
+    const b = Math.round(b1 + (b2 - b1) * f);
+    return `\x1b[38;2;${r};${g};${b}m${c}`;
+  }).join("") + RESET;
+}
+
+// Legacy gradient aliases — import from branding.ts for new code
+// Kept for backward compat during migration; re-export from branding
+export { GRADIENT_PRODUCT as GRADIENT_SOLANA_DOT_NEW, GRADIENT_PRODUCT_DASH as GRADIENT_SOLANA_DASH_NEW } from "./branding.js";
+
+// Competition thresholds
+export const COMPETITION_HIGH = 30;
+export const COMPETITION_MEDIUM = 15;
+
+// Footer padding helper
+export function padFooter(lines: string[], footer: string[], rows: number): string[] {
+  while (lines.length < rows - footer.length) lines.push("");
+  lines.push(...footer);
+  return lines.slice(0, rows);
+}
+
+// Bordered insight box
+export function insightBox(text: string, width = 60): string[] {
+  const inner = width - 4;
+  const words = text.split(" ");
+  const wrapped: string[] = [];
+  let line = "";
+  for (const word of words) {
+    if (line.length + word.length + 1 > inner) {
+      wrapped.push(line);
+      line = word;
+    } else {
+      line = line ? `${line} ${word}` : word;
+    }
+  }
+  if (line) wrapped.push(line);
+
+  const top = `  \u250c Copilot Insight ${"─".repeat(Math.max(width - 19, 0))}\u2510`;
+  const bot = `  \u2514${"─".repeat(width - 2)}\u2518`;
+  const lines = [top];
+  for (const l of wrapped) {
+    lines.push(`  \u2502 ${l}${" ".repeat(Math.max(inner - l.length, 0))} \u2502`);
+  }
+  lines.push(bot);
+  return lines;
+}
+
+// Kebab-case slug helper
+export function toKebabSlug(text: string): string {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}

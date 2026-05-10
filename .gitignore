@@ -1,0 +1,65 @@
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Editors
+.vscode/
+.idea/
+*.iml
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.turbo/
+*.tsbuildinfo
+coverage/
+.nyc_output/
+
+# Vercel
+.vercel/
+
+# Convex
+.convex/
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Per-project skill context (Suiperpower runtime, see plans/01-ARCHITECTURE.md)
+.suiperpower/
+
+# bigdev autonomous build loop artifacts (when wired up)
+bigdev/claude/auto-build-logs/
+bigdev/claude/auto-build.lock
+bigdev/claude/inject.md
+
+# Local dev caches
+.cache/
+tmp/
+
+# Archives we don't want in the repo
+*.zip
+*.tar.gz
+*.tgz
+
+# Skills install manifest cache (generated on a user's machine)
+~/.suiperpower/
+
+# Logs
+logs/
+*.log

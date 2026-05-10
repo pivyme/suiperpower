@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "dist",
+    "rootDir": ".",
+    "strict": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "sourceMap": true
+  },
+  "include": [
+    "cli/index.ts",
+    "cli/branding.ts",
+    "cli/telemetry.ts",
+    "cli/interactive-journey.ts",
+    "cli/interactive-search.ts",
+    "cli/interactive-skills.ts",
+    "cli/interactive-mcps.ts",
+    "cli/interactive-universal.ts",
+    "cli/interactive-onboarding.ts",
+    "cli/banner.ts",
+    "cli/data/*.json"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}
