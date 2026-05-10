@@ -75,12 +75,12 @@ Quality bar: `plans/29-DOCS-AUTHORING-STANDARDS.md` for every markdown / JSON fi
 - [x] author `skills/build/sui-zk-login/`. Quality gate: real OAuth provider end-to-end, not stub.
 - [x] author `skills/build/kiosk-marketplace/`. Quality gate: full kiosk listing + purchase flow.
 
-## Phase 11: Sui-unique build skills batch 2 [ ]
-- [ ] author `skills/build/sponsored-transactions/`. Quality gate: real sponsor flow, not stubbed signing.
-- [ ] author `skills/build/ottersec-prep/` referencing `sponsor-docs/ottersec-checklist.md` and `guides/security-checklist.md`. Quality gate: every P0 item has a recorded answer.
-- [ ] author `skills/build/openzeppelin-sui-libs/` referencing `sponsor-docs/openzeppelin-sui.md`. Quality gate: identify hand-rolled patterns OZ replaces.
-- [ ] author `skills/build/ptb-composer/`. Quality gate: PTB compiles + dry-runs against testnet.
-- [ ] author `skills/build/object-model-design/`. Quality gate: owned vs shared decision recorded with rationale per object.
+## Phase 11: Sui-unique build skills batch 2 [x]
+- [x] author `skills/build/sponsored-transactions/`. Quality gate: real sponsor flow, not stubbed signing.
+- [x] author `skills/build/ottersec-prep/` referencing `sponsor-docs/ottersec-checklist.md` and `guides/security-checklist.md`. Quality gate: every P0 item has a recorded answer.
+- [x] author `skills/build/openzeppelin-sui-libs/` referencing `sponsor-docs/openzeppelin-sui.md`. Quality gate: identify hand-rolled patterns OZ replaces.
+- [x] author `skills/build/ptb-composer/`. Quality gate: PTB compiles + dry-runs against testnet.
+- [x] author `skills/build/object-model-design/`. Quality gate: owned vs shared decision recorded with rationale per object.
 
 ## Phase 12: General build skills [ ]
 - [ ] author `skills/build/scaffold-project/` (writes initial `build-context.md`, picks template per `plans/06-SUI-KNOWLEDGE-BASE.md` `04-protocols-and-sdks`)

@@ -52,7 +52,7 @@ If we ever need a privacy notice or terms link for compliance, we add them later
 
 ## Landing page section list
 
-Order matters. Keep it short. Seven sections and a footer. No more.
+Order matters. Keep it short. Eight sections and a footer. No more.
 
 ### 1. Hero
 
@@ -134,6 +134,32 @@ Two text links below the block:
 
 - "Browse skills on GitHub →" (links to repo `skills/` folder)
 - "Contributions welcome →" (links to repo `CONTRIBUTING.md`)
+
+### 8. Made by
+
+A small team section. Three visual tiers, top to bottom.
+
+**Tier 1, founders** (equal weight, side by side):
+
+- **Kelvin Adithya**, https://klvn.dev
+- **Febi Mettasari**, https://www.instagram.com/febimettasari
+
+**Tier 2, intern** (smaller, single line under the founders):
+
+- with help from our intern, **Louis Arvin**, https://www.linkedin.com/in/louis-arvin-8a8488268
+
+**Tier 3, website credit** (smallest, visually separated by a thin divider or extra spacing):
+
+- site by **Tengku Farhan**, https://hanebox.xyz
+
+Visual treatment notes for the build phase (constraints, not styling decisions):
+
+- Each person has a photo. Round or square crops, all the same shape and aspect ratio. Same eye-line across the row so the row reads as a row, not as floating heads.
+- Founder photos larger than the intern photo. Tengku's photo same size as the intern's, kept on its own row.
+- Names below photos, linked to the URL listed above. No role labels under names in tier 1 ("Kelvin Adithya" only, not "Kelvin Adithya, co-founder"). Role only used in the connector copy ("with help from our intern, ...").
+- Photos must be real, not avatars. If a photo is missing, leave a clean placeholder rather than shipping an avatar fallback.
+- No social-icon clutter. One link per person, the one listed. Do not add Twitter / GitHub icons next to names unless the person explicitly asks for it.
+- Contrast and crop should be consistent. Mismatched lighting across photos is a tell that the team is not real.
 
 ### Footer
 
