@@ -12,13 +12,17 @@ The launch occasion is Sui Overflow 2026, but Suiperpower is built as a long-liv
 
 ## What exists today (quick orientation)
 
-The repo is mid-build. As of the most recent commits (phase 21):
+The repo is mid-build. As of the most recent commits (phase 29 + monorepo refactor):
 
-- CLI scaffold is real: `cli/index.ts` plus `banner`, `branding`, `doctor`, `init`, `feedback`, `telemetry`, `update`, `update-check`, `uninstall`, `repos`, `completion`, `workspace-setup`, `agent-cli`, `interactive-universal`, `colors`. Run with `pnpm dev`.
-- Skills tree is partially populated: `learn/`, `idea/`, `build/`, `ship/` directories with phase content; `SKILL_ROUTER.md` and `skills/README.md` catalog overview committed.
-- Planning is fully drafted: 31 docs in `plans/`, indexed by `plans/README.md`.
-- Backend, website, and the `install.sh` curl one-liner are not yet on disk. Treat anything in those areas as "from plans" until code lands.
-- Tracking: `TODO.md` (project-wide), `MANUAL-TODO.md` (manual checklist), `bigdev/TODO.md` (loop phases).
+- **Monorepo layout**: pnpm workspaces with three packages, `core/` (the publishable `suiperpower` npm package), `convex/` (`@suiperpower/convex` backend), `web/` (`@suiperpower/web` website). Root `package.json` proxies common scripts to `core` via `pnpm -F suiperpower`.
+- **CLI scaffold** is real under `core/cli/`: `index.ts` plus `banner`, `branding`, `doctor`, `init`, `feedback`, `telemetry`, `update`, `update-check`, `uninstall`, `repos`, `completion`, `workspace-setup`, `agent-cli`, `interactive-onboarding`, `interactive-skills`, `interactive-mcps`, `interactive-search`, `interactive-journey`, `interactive-universal`, `colors`. Run with `pnpm dev` from the repo root.
+- **Skills tree** is partially populated under `core/skills/`: `learn/`, `idea/`, `build/`, `ship/` directories with phase content; `SKILL_ROUTER.md` and `skills/README.md` catalog overview committed. `grow/` not yet on disk.
+- **Scripts** under `core/scripts/`: `inject-preamble.ts`, `lint-skills.ts`, `lint-catalog.ts`, `generate-skills-index.ts`, `generate-skills-lock.ts`, `generate-cursor-rules.ts`, `package-skills.sh`, `test-install.sh`, `publish.ts`.
+- **Install + setup** wired: `core/install.sh` (curl one-liner target), `core/setup`, `core/suiperpower-pass.sh`, `core/skills-lock.json`, `web/public/setup.sh`, `web/vercel.json`.
+- **Convex backend** scaffolded: `convex/schema.ts`, `convex/telemetry.ts`, `convex/feedback.ts`.
+- **Top-level docs landed**: `README.md`, `AGENTS.md`, `CONTRIBUTING.md`, `LICENSE`.
+- **Planning** is fully drafted: 31 docs in `plans/`, indexed by `plans/README.md`.
+- **Tracking**: `TODO.md` (project-wide), `MANUAL-TODO.md` (manual checklist). The autonomous build loop now lives under `scratchpads/bigdev/` (gitignored, local-only).
 
 Check `git log --oneline | head -20` before assuming a phase is done. CLAUDE.md updates lag commits.
 
@@ -37,25 +41,43 @@ Check `git log --oneline | head -20` before assuming a phase is done. CLAUDE.md 
 
 ## Project structure
 
-See `plans/02-PROJECT-STRUCTURE.md` for the full target tree. Current state on disk (May 2026):
+See `plans/02-PROJECT-STRUCTURE.md` for the full target tree (note: that doc still describes the pre-monorepo layout; the actual repo shape is below). Current state on disk (May 2026):
 
 ```
 suiperpower/
 ├── README.md, CLAUDE.md, TODO.md, MANUAL-TODO.md   # planning + tracking
-├── package.json, pnpm-workspace.yaml, tsconfig.json
-├── cli/                CLI source (index, banner, branding, doctor, init,
-│                       feedback, telemetry, update, uninstall, repos,
-│                       completion, workspace-setup, agent-cli) + cli/data/
-├── skills/             SKILL_ROUTER.md + README.md + phase folders + skills/data/
-├── scripts/            inject-preamble.ts (release tooling)
-├── bigdev/             Autonomous build loop: TODO.md, autobuild launcher, claude/ state
-├── plans/              Source-of-truth planning docs (31 files + README index)
-└── reference/          Vendored solana-new-main for pattern reference only
+├── AGENTS.md, CONTRIBUTING.md, LICENSE             # contributor + legal docs
+├── package.json, pnpm-workspace.yaml               # monorepo root (workspaces: core, convex, web)
+├── core/                                           # published npm package "suiperpower"
+│   ├── package.json, tsconfig.json
+│   ├── cli/                CLI source (index, banner, branding, doctor, init,
+│   │                       feedback, telemetry, update, update-check, uninstall,
+│   │                       repos, completion, workspace-setup, agent-cli,
+│   │                       interactive-*, colors) + cli/data/
+│   ├── skills/             SKILL_ROUTER.md + README.md + phase folders (learn,
+│   │                       idea, build, ship) + skills/data/
+│   ├── scripts/            inject-preamble, lint-skills, lint-catalog,
+│   │                       generate-skills-index, generate-skills-lock,
+│   │                       generate-cursor-rules, package-skills.sh,
+│   │                       test-install.sh, publish.ts
+│   ├── install.sh          curl one-liner entrypoint
+│   ├── setup, suiperpower-pass.sh
+│   ├── skills-lock.json    generated, content-addressed skill manifest
+│   └── dist/               build output (gitignored)
+├── convex/                                         # @suiperpower/convex backend
+│   ├── package.json
+│   ├── schema.ts, telemetry.ts, feedback.ts
+├── web/                                            # @suiperpower/web website
+│   ├── package.json, vercel.json
+│   └── public/             setup.sh (mirrored to suiperpower.dev/setup.sh) + assets
+├── plans/                  Source-of-truth planning docs (31 files + README index)
+├── reference/              Vendored solana-new-main for pattern reference only
+└── scratchpads/            Local-only, gitignored (autonomous build loop, ephemeral notes)
 ```
 
-Planned but not yet on disk: `convex/` (backend), `public/` (website assets + setup.sh), `install.sh`, `setup`, `suiperpower-pass.sh`, `AGENTS.md`, `LICENSE`, `CONTRIBUTING.md`, `vercel.json`, a website tree.
+Planned but not yet on disk: a Next.js app under `web/` (today `web/` is static assets + `vercel.json` only), a `grow/` skill phase under `core/skills/`.
 
-Skills live under `skills/<phase>/<name>/SKILL.md`. Phases: `learn/`, `idea/`, `build/`, `ship/`, `grow/`. As of today `learn/`, `idea/`, `build/`, `ship/` exist; `grow/` is planned.
+Skills live under `core/skills/<phase>/<name>/SKILL.md`. Phases: `learn/`, `idea/`, `build/`, `ship/`, `grow/`. As of today `learn/`, `idea/`, `build/`, `ship/` exist; `grow/` is planned.
 
 ## Key design decisions and why
 
@@ -111,44 +133,55 @@ If you are a coding agent picking up work and skipping the index: read 00 → 04
 
 ## Build commands
 
-Real today (defined in `package.json`):
+Run from the repo root. The root `package.json` proxies to `core` via `pnpm -F suiperpower`; you can also `cd core/` and invoke scripts directly.
+
+Real today (defined in `package.json` + `core/package.json`):
 
 ```bash
 pnpm install                  # install workspace deps
-pnpm dev                      # run CLI locally via tsx (cli/index.ts)
-pnpm build                    # tsc to dist/ + chmod +x dist/cli/index.js
-pnpm setup                    # run ./setup script
+pnpm dev                      # run CLI locally via tsx (core/cli/index.ts)
+pnpm build                    # tsc to core/dist/ + chmod +x dist/cli/index.js
+pnpm setup                    # run core/setup
+pnpm typecheck                # tsc --noEmit on core
 pnpm preamble:check           # verify telemetry preamble injection on skills
+pnpm lint:skills              # validate SKILL.md frontmatter + structure
+pnpm lint:catalog             # validate cli/data/*.json catalog entries
+pnpm package:skills           # build skills.sh per-skill bundles + index
+pnpm skills:lock              # regenerate core/skills-lock.json
+pnpm test                     # typecheck + lint:skills + lint:catalog + preamble:check
+pnpm test:install             # exercise install flow via core/scripts/test-install.sh
+pnpm publish:dry              # core/scripts/publish.ts gated pre-publish check
+```
+
+Convex backend scripts live in `convex/package.json` (run from `convex/` or via `pnpm -F @suiperpower/convex <script>`):
+
+```bash
+pnpm -F @suiperpower/convex convex:dev      # Convex dev backend
+pnpm -F @suiperpower/convex convex:deploy   # Convex deploy to prod
 ```
 
 Planned (will land as the relevant phase ships, do not invoke before then):
 
 ```bash
-pnpm test                     # unit + integration tests
-pnpm test:install             # CI test the install flow in a fresh container
-pnpm lint                     # ESLint + Prettier check
-pnpm typecheck                # tsc --noEmit
-pnpm publish:dry              # npm pack + verify contents
-pnpm publish                  # actual npm publish (gated)
-pnpm convex:dev               # Convex dev backend
-pnpm convex:deploy            # Convex deploy to prod
-pnpm web:dev                  # Next.js website dev server
+pnpm lint                     # ESLint + Prettier check (not yet wired)
+pnpm publish                  # actual npm publish (gated, not yet wired at root)
+pnpm web:dev                  # Next.js website dev server (web/ is static-only today)
 pnpm web:build                # Next.js production build
 ```
 
 Update this file as scripts are added so future agents do not invoke commands that do not exist.
 
-### Autonomous build loop (bigdev)
+### Autonomous build loop (local-only)
 
-The project ships its own loop runner in `bigdev/`. Day-to-day:
+The autobuild loop lives at `scratchpads/bigdev/` and is gitignored (see `.gitignore`: `scratchpads/`). It is a local-only working tool, not part of the published package. Day-to-day, if the directory exists on your machine:
 
 ```bash
-./bigdev/autobuild              # start / continue the build loop (reads bigdev/TODO.md)
-./bigdev/autobuild say "rule"   # add durable rule (commits to bigdev/claude/requirements-log.md)
-./bigdev/autobuild fix "msg"    # one-shot transient correction (gitignored bigdev/claude/inject.md)
+./scratchpads/bigdev/autobuild              # start / continue the build loop
+./scratchpads/bigdev/autobuild say "rule"   # add durable rule (requirements-log.md)
+./scratchpads/bigdev/autobuild fix "msg"    # one-shot transient correction (inject.md)
 ```
 
-See `bigdev/TODO.md` for phase progress and the launcher script for details.
+Because the loop is gitignored, do not reference `scratchpads/bigdev/*` paths in committed code or skills.
 
 ## Quality bar reference
 
@@ -258,7 +291,7 @@ If at any point you are unsure about a fact, **ask before writing**. A delay is 
 
 - ESM only (`.js` extensions in imports under NodeNext).
 - Strict TypeScript, no implicit any.
-- Single source of truth for branding strings: `cli/branding.ts`.
+- Single source of truth for branding strings: `core/cli/branding.ts`.
 - Skills are plain markdown, no code generation in skills.
 - Catalog data is JSON, sorted alphabetically by id.
 - Naming: kebab-case for skills / files / folders / catalog ids.
@@ -271,7 +304,7 @@ If at any point you are unsure about a fact, **ask before writing**. A delay is 
 
 If you (an AI agent) discover something during implementation that should be a durable rule for all future work on this codebase, add it to `plans/19-OPEN-QUESTIONS.md` as a `decided:` entry with a date, then propagate to the relevant plan doc.
 
-If you are inside an autonomous build loop, durable rules go to `bigdev/claude/requirements-log.md` (committed, read every iteration). One-shot transient corrections go to `bigdev/claude/inject.md` (gitignored). Drive both via the launcher: `./bigdev/autobuild say "rule"` for durable, `./bigdev/autobuild fix "msg"` for one-shot. The loop reads `bigdev/TODO.md` and works through phases referencing `plans/`.
+If you are inside the local autonomous build loop (`scratchpads/bigdev/`, gitignored), durable rules go to `scratchpads/bigdev/claude/requirements-log.md` (local-only, read every iteration). One-shot transient corrections go to `scratchpads/bigdev/claude/inject.md`. Drive both via the launcher: `./scratchpads/bigdev/autobuild say "rule"` for durable, `./scratchpads/bigdev/autobuild fix "msg"` for one-shot. The loop reads `scratchpads/bigdev/TODO.md` and works through phases referencing `plans/`. None of these paths are committed, so do not reference them from anything in `core/` or `plans/`.
 
 Commit rule (project-wide, including the build loop): Kelvin is the sole committer. Never add a `Co-Authored-By` line to any commit, ever.
 
