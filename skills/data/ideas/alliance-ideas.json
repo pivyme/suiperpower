@@ -1,0 +1,92 @@
+{
+  "version": "0.1.0",
+  "generatedAt": "2026-05-10T00:00:00Z",
+  "source": "alliance-ideas",
+  "sourceNote": "Adapted from Alliance DAO accelerator's published ideas. Cherry-picks chain-agnostic themes that fit Sui. Drops EVM-specific themes.",
+  "ideas": [
+    {
+      "id": "alliance-bot-resistant-airdrops",
+      "title": "Bot-resistant airdrop infrastructure",
+      "summary": "Airdrop tooling that filters bots via zkLogin identity plus on-chain behavior heuristics.",
+      "source": "alliance-ideas",
+      "category": "auth",
+      "fitForSui": "zkLogin gives a humanity signal without doxxing. Capabilities scope the eligibility checks.",
+      "marketSignal": "Airdrop sybil attacks are a recurring industry theme; existing tools are EVM-centric.",
+      "competitors": ["gitcoin-passport-evm", "no-sui-native-equivalent"],
+      "difficulty": "medium",
+      "recommendedTrack": "general",
+      "sponsorTags": [],
+      "addedAt": "2026-05-10"
+    },
+    {
+      "id": "alliance-cross-chain-yield",
+      "title": "Cross-chain yield routing into Sui",
+      "summary": "Bridge USDC from EVM and Solana, deposit into Sui money markets, return yield to the user's home chain.",
+      "source": "alliance-ideas",
+      "category": "defi",
+      "fitForSui": "Sui yield rates often exceed EVM majors; routing tooling does not exist for retail users.",
+      "marketSignal": "Cross-chain yield aggregators (Stargate, Across) prove the route demand.",
+      "competitors": ["stargate-evm", "no-sui-native-equivalent"],
+      "difficulty": "hard",
+      "recommendedTrack": "scallop",
+      "sponsorTags": ["scallop"],
+      "addedAt": "2026-05-10"
+    },
+    {
+      "id": "alliance-dao-treasury-tools",
+      "title": "DAO treasury management with multisig and on-chain payroll",
+      "summary": "Multisig-controlled DAO treasury that schedules payroll, vesting, and grants via Sui objects.",
+      "source": "alliance-ideas",
+      "category": "tooling",
+      "fitForSui": "Sui multisig is supported natively; vesting state lives in objects with capability access.",
+      "marketSignal": "Squads on Solana clears billions in volume; no Sui-native equivalent at maturity.",
+      "competitors": ["squads-solana", "safe-evm"],
+      "difficulty": "medium",
+      "recommendedTrack": "general",
+      "sponsorTags": [],
+      "addedAt": "2026-05-10"
+    },
+    {
+      "id": "alliance-defi-mobile-first",
+      "title": "Mobile-first DeFi consumer app",
+      "summary": "DeFi product designed for mobile from the first byte. zkLogin sign-in, sponsored gas, native push notifications.",
+      "source": "alliance-ideas",
+      "category": "mobile",
+      "fitForSui": "Sui Mobile SDK plus zkLogin plus sponsored gas is the most mobile-friendly stack on any L1.",
+      "marketSignal": "Crypto mobile penetration is low; consumer DeFi has had no mobile-native breakout.",
+      "competitors": ["jupiter-mobile-solana", "no-sui-native-hit"],
+      "difficulty": "medium",
+      "recommendedTrack": "general",
+      "sponsorTags": [],
+      "addedAt": "2026-05-10"
+    },
+    {
+      "id": "alliance-gasless-onboarding",
+      "title": "Gasless onboarding kit for non-crypto apps",
+      "summary": "Drop-in SDK that adds Sui-backed receipts and tokens to any consumer app, with zero crypto UX.",
+      "source": "alliance-ideas",
+      "category": "auth",
+      "fitForSui": "zkLogin plus sponsored tx is purpose-built for gasless onboarding. EVM equivalents need account abstraction plumbing.",
+      "marketSignal": "Web2 product onboarding to crypto is a recurring theme; existing SDKs are heavy.",
+      "competitors": ["privy-evm", "dynamic-evm"],
+      "difficulty": "medium",
+      "recommendedTrack": "general",
+      "sponsorTags": [],
+      "addedAt": "2026-05-10"
+    },
+    {
+      "id": "alliance-onchain-affiliate-rails",
+      "title": "On-chain affiliate and referral rails",
+      "summary": "Verifiable referral attribution and payout via Sui capability objects. Marketers cannot under-pay, partners cannot inflate.",
+      "source": "alliance-ideas",
+      "category": "tooling",
+      "fitForSui": "Capability objects model attribution cleanly; sponsored tx hides crypto from affiliates.",
+      "marketSignal": "Affiliate fraud is a documented loss vector for ecommerce; verifiable rails are a known ask.",
+      "competitors": ["impact-offchain", "no-onchain-equivalent"],
+      "difficulty": "medium",
+      "recommendedTrack": "general",
+      "sponsorTags": [],
+      "addedAt": "2026-05-10"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "version": "0.1.0",
+  "generatedAt": "2026-05-10T00:00:00Z",
+  "source": "superteam-sui-ideas",
+  "sourceNote": "Placeholder corpus pending a Superteam Sui chapter or equivalent regional builder DAO. Skills should treat this list as supplementary; sui-native-gaps and a16z-state-of-crypto-2026 carry the bulk of the corpus until this source matures.",
+  "status": "seed",
+  "ideas": [
+    {
+      "id": "superteam-localized-stablecoin-onramp",
+      "title": "Region-specific stablecoin on-ramp",
+      "summary": "Localized fiat-to-USDC on-ramp with partner banks in one region. Sui as the on-chain settlement layer.",
+      "source": "superteam-sui-ideas",
+      "category": "defi",
+      "fitForSui": "Sui's USDC native plus sponsored tx removes wallet friction for users new to crypto.",
+      "marketSignal": "Stablecoin adoption in emerging markets is climbing; localized on-ramps remain underbuilt.",
+      "competitors": ["regional-onramps-offchain", "no-sui-native-equivalent"],
+      "difficulty": "medium",
+      "recommendedTrack": "general",
+      "sponsorTags": [],
+      "addedAt": "2026-05-10"
+    },
+    {
+      "id": "superteam-builder-bounty-board",
+      "title": "Builder bounty board with on-chain escrow",
+      "summary": "Bounty marketplace where payment lives in a Sui escrow object, released by a milestone capability.",
+      "source": "superteam-sui-ideas",
+      "category": "tooling",
+      "fitForSui": "Sui escrow objects plus capability-gated release model bounties cleanly. PTBs settle disputes atomically.",
+      "marketSignal": "Bounty platforms (Replit, Superteam Earn) prove demand; on-chain escrow is the unmet primitive.",
+      "competitors": ["superteam-earn-offchain", "no-sui-native-equivalent"],
+      "difficulty": "medium",
+      "recommendedTrack": "general",
+      "sponsorTags": [],
+      "addedAt": "2026-05-10"
+    },
+    {
+      "id": "superteam-creator-tipping",
+      "title": "Creator tipping with on-chain receipts",
+      "summary": "Lightweight tipping product for creators. Sponsored tx, zkLogin, every tip becomes a kiosk receipt.",
+      "source": "superteam-sui-ideas",
+      "category": "auth",
+      "fitForSui": "Sui's UX stack (zkLogin plus sponsored gas) is the only L1 that delivers Venmo-grade tipping flow.",
+      "marketSignal": "Creator tipping (Twitter Tip Jar, Cash App) has retention; crypto-native equivalents are wallet-blocked.",
+      "competitors": ["tipping-evm", "no-sui-native-equivalent"],
+      "difficulty": "medium",
+      "recommendedTrack": "general",
+      "sponsorTags": [],
+      "addedAt": "2026-05-10"
+    },
+    {
+      "id": "superteam-event-ticketing",
+      "title": "Event ticketing with kiosk-based resale",
+      "summary": "Tickets minted as kiosk objects. Resale rules enforced by capability. Anti-scalping by design.",
+      "source": "superteam-sui-ideas",
+      "category": "nft",
+      "fitForSui": "Kiosk's transfer policy primitive enforces resale rules at the protocol layer, not in app code.",
+      "marketSignal": "Ticket scalping is a billion-dollar global problem; existing crypto attempts have not stuck.",
+      "competitors": ["pos-event-evm", "yellowheart-evm"],
+      "difficulty": "medium",
+      "recommendedTrack": "general",
+      "sponsorTags": [],
+      "addedAt": "2026-05-10"
+    }
+  ]
+}
