@@ -1,0 +1,42 @@
+{
+  "name": "suiperpower",
+  "version": "0.1.0",
+  "private": false,
+  "license": "MIT",
+  "description": "Skills, knowledge, and a CLI for shipping production Sui products. think. build. ship.",
+  "type": "module",
+  "bin": {
+    "suiperpower": "./dist/cli/index.js"
+  },
+  "files": [
+    "dist/",
+    "skills/learn/",
+    "skills/idea/",
+    "skills/build/",
+    "skills/ship/",
+    "skills/grow/",
+    "skills/data/",
+    "skills/README.md",
+    "skills/SKILL_ROUTER.md",
+    "cli/data/",
+    "install.sh",
+    "skills-lock.json"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && chmod +x dist/cli/index.js",
+    "dev": "tsx cli/index.ts",
+    "setup": "./setup",
+    "preamble:check": "tsx scripts/inject-preamble.ts --check"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.14",
+    "tsx": "^4.20.0",
+    "typescript": "^5.8.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "convex": "^1.34.1"
+  }
+}

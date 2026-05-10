@@ -1,0 +1,45 @@
+# Source we do not ship
+plans/
+bigdev/
+reference/
+web/
+scripts/
+convex/
+public/
+
+# Dev tooling
+.github/
+.vscode/
+.idea/
+*.iml
+.editorconfig
+
+# Build inputs
+tsconfig.json
+pnpm-workspace.yaml
+pnpm-lock.yaml
+
+# Tests
+**/*.test.ts
+**/*.spec.ts
+
+# Env / secrets
+.env
+.env.*
+.env.example
+.env.local-stub
+
+# Local dev artifacts
+.suiperpower/
+.cache/
+tmp/
+*.log
+
+# Source TypeScript (we ship dist/)
+cli/**/*.ts
+!cli/data/**
+
+# Misc
+*.tsbuildinfo
+coverage/
+.nyc_output/
