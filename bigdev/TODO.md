@@ -157,13 +157,13 @@ Brand stays `suiperpower` (domain, npm package, GitHub repo, `BRAND.PRODUCT_NAME
 - [x] write `cli/update.ts` (calls `init.ts` after `npm install -g suiperpower@latest`, prints changelog summary)
 - [x] write `cli/uninstall.ts` (reads manifest, removes only files we own, prompts before deleting `~/.suiperpower/`)
 
-## Phase 21: CLI utility commands [ ]
-- [ ] write `cli/telemetry.ts` (tiny helper for CLI commands; same Convex schema; respects tier in `~/.suiperpower/config.json`)
-- [ ] write `cli/feedback.ts` (interactive prompts: skill, rating, free-text, optional contact; submits via Convex)
-- [ ] write `cli/update-check.ts` (async `npm view suiperpower version` cached 24h in `~/.suiperpower/.update-check`, one-line nudge)
-- [ ] write `cli/completion.ts` (bash + zsh completion scripts emitted to stdout)
-- [ ] write `cli/workspace-setup.ts` (creates `.suiperpower/` in user project, README, `.env.example`)
-- [ ] write `cli/repos.ts` (reads `cli/data/clonable-repos.json`, renders TUI list)
+## Phase 21: CLI utility commands [x]
+- [x] write `cli/telemetry.ts` (tiny helper for CLI commands; same Convex schema; respects tier in `~/.suiperpower/config.json`)
+- [x] write `cli/feedback.ts` (interactive prompts: skill, rating, free-text, optional contact; submits via Convex)
+- [x] write `cli/update-check.ts` (async `npm view suiperpower version` cached 24h in `~/.suiperpower/.update-check`, one-line nudge)
+- [x] write `cli/completion.ts` (bash + zsh completion scripts emitted to stdout)
+- [x] write `cli/workspace-setup.ts` (creates `.suiperpower/` in user project, README, `.env.example`)
+- [x] write `cli/repos.ts` (reads `cli/data/clonable-repos.json`, renders TUI list)
 
 ## Phase 22: CLI interactive TUIs [ ]
 - [ ] write `cli/interactive-universal.ts` (shared TUI primitives: list picker, fuzzy-find, keyboard nav, no third-party UI lib)
