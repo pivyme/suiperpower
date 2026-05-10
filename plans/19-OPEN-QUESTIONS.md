@@ -38,6 +38,9 @@ Status values: `open`, `decided`, `deferred`.
 | 18 | Whether to bundle Anthropic / OpenAI / Cursor API keys in any way | `decided: no` | n/a | n/a | User brings their own. We never store keys. |
 | 19 | Whether the CLI should have a `--quiet` mode that skips banners | `decided: yes` | T-1w | Build phase | Banner shown by `init`, suppressed elsewhere if `--quiet` or non-TTY |
 | 20 | Whether to include analytics like Plausible on the website | `decided: yes, privacy-friendly` | T-1w | Build phase | Plausible or Vercel Analytics. No GA. |
+| 21 | skills.sh third-party namespace flow | `decided: 2026-05-11, no formal namespace` | n/a | n/a | The skills.sh CLI resolves identifiers as GitHub shorthand (`owner/repo[/path]`), there is no registration step. We ship per-skill tarballs at `public/skills/<name>.tar.gz` plus an `index.json` catalog for our own discoverability, and document `npx skills add kwekKwek/suiperpower/skills/<phase>/<name>` as the canonical per-skill install. Discovery placement on skills.sh is informal (PR / issue against `vercel-labs/skills` if needed). Documented in `plans/03-INSTALL-FLOW.md`. |
+| 22 | skills.sh expected index file format | `decided: 2026-05-11, our own schema` | n/a | n/a | skills.sh does not consume an external index file from third parties. The `public/skills/index.json` we emit is Suiperpower's own catalog (id, phase, description, tarballUrl, githubPath, npxCmd, sha256, size, version), used by our CLI TUI and any future curl-flow per-skill installer. |
+| 23 | Whether to inline `references/` into SKILL.md at package time | `decided: 2026-05-11, no` | n/a | n/a | Stay as sibling files in the tarball. The Anthropic skill spec supports `references/` directly. Inlining only happens for the Cursor `.mdc` render via `scripts/generate-cursor-rules.ts`. |
 
 ## Sponsor-specific open questions
 

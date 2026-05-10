@@ -215,6 +215,48 @@ The same `install.sh` we ship in the repo, served by Vercel from `public/setup.s
 
 Cache-busting via Vercel's default short-cache headers (we are not the high-traffic site needing CDN tuning).
 
+## Per-skill install (a la carte via skills.sh)
+
+For users who do not want the full curl one-liner but already know which one or two skills they need, every shipped skill is also installable on its own through the [skills.sh](https://skills.sh) CLI. The skills.sh CLI resolves identifiers as GitHub shorthand, so a user types:
+
+```
+npx skills add kwekKwek/suiperpower/skills/build/build-with-move
+```
+
+That fetches the SKILL.md plus `references/` and `agents/openai.yaml` directly from the repo and lands them under the user's active agent dir. No registry account, no extra hosting, no namespace claim. The skills.sh website acts as a discovery leaderboard, not a gating registry.
+
+The full curl one-liner stays the canonical install. Per-skill install is a secondary surface for users who already have a target skill in mind.
+
+### What we ship for the per-skill path
+
+`scripts/package-skills.sh` (run in CI before each release) emits:
+
+```
+public/
+  skills/
+    <skill-name>.tar.gz       one tarball per skill, root is the skill folder
+    index.json                 catalog of every per-skill tarball (id, phase, tarballUrl, githubPath, sha256, size, version)
+  skills.tar.gz                aggregate, used by the curl-flow installer
+```
+
+`vercel.json` rewrites:
+
+```
+/skills.tar.gz              -> /public/skills.tar.gz
+/skills/index.json          -> /public/skills/index.json
+/skills/:skill.tar.gz       -> /public/skills/:skill.tar.gz
+```
+
+`cli/data/sui-skills.json` carries an optional `skillsSh: { id, npxCmd }` field per entry. The `suiperpower skills` TUI shows the `npxCmd` next to each catalog row so a user can copy it directly.
+
+### Listing on skills.sh
+
+skills.sh discovery is GitHub-based, not registration-based. Once the repo is public and skills are committed under `skills/<phase>/<name>/`, the leaderboard surfaces them organically. To improve placement, Kelvin opens a discovery PR (or issue) against `vercel-labs/skills` referencing the canonical repo URL. Track that step in `MANUAL-TODO.md` rather than blocking the build loop on it.
+
+### Self-containment requirement
+
+The per-skill install only works if every skill folder is fully self-contained: no cross-skill imports, no references that resolve outside the skill folder. `scripts/package-skills.sh` packages from `skills/<phase>/<name>/` and nothing else. If a skill needs shared knowledge (`skills/data/...`), the SKILL.md links the path the agent can fetch at runtime. References stay as sibling files in the tarball; they are not inlined at package time. Inlining only happens for the Cursor `.mdc` render in `scripts/generate-cursor-rules.ts`.
+
 ## Reference implementation
 
 `reference/solana-new-main/install.sh` is the closest working example. Suiperpower's install.sh adapts it with:

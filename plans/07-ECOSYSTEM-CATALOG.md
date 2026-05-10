@@ -74,6 +74,10 @@ Categories (controlled vocabulary):
       "agents": ["claude", "codex", "cursor"],
       "phase": "build",
       "tags": ["walrus", "storage", "sponsor-headline"],
+      "skillsSh": {
+        "id": "walrus-storage",
+        "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/walrus-storage"
+      },
       "lastChecked": "2026-XX-XX"
     }
   ]
@@ -81,6 +85,8 @@ Categories (controlled vocabulary):
 ```
 
 `publisherType`: `official` (Sui Foundation / Mysten), `ecosystem` (a project on Sui), `community` (independent author).
+
+`skillsSh` is optional. Present only for skills that ship a per-skill install path via the skills.sh CLI (`npx skills add <github-shorthand>`). The `id` is the shipped folder name, the `npxCmd` is the literal command a user types. The TUI in `cli/interactive-skills.ts` shows this command alongside the catalog entry. For Suiperpower-published skills the path is `kwekKwek/suiperpower/skills/<phase>/<id>`. For ecosystem skills hosted in their own repos, fill the path their owner publishes.
 
 ### sui-mcps.json
 

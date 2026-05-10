@@ -4,6 +4,22 @@ The full v1 skill catalog, grouped by phase. Every entry links to the canonical 
 
 Skill format and authoring rules: `plans/05-SKILL-FORMAT.md`. Quality bar: `plans/12-ANTI-SLOP-FRAMEWORK.md`. Voice: `plans/15-BRAND.md`.
 
+## Two install paths
+
+The recommended install is the curl one-liner. It writes every skill to all three agent dirs and sets up doctor / update / uninstall:
+
+```
+curl -fsSL https://suiperpower.dev/setup.sh | bash
+```
+
+If you only want one or two specific skills, install them a la carte through the [skills.sh](https://skills.sh) CLI. Identifiers resolve as GitHub shorthand:
+
+```
+npx skills add kwekKwek/suiperpower/skills/build/build-with-move
+```
+
+Both paths land the same SKILL.md plus `references/` and `agents/openai.yaml`. The curl flow additionally installs the `suiperpower` and `suiper` CLI bins, the ecosystem catalog, and the doctor / update commands. See `plans/03-INSTALL-FLOW.md` for details.
+
 ## Learn
 
 Orientation skills. Use these first if the user is new to Sui or wants to capture session state.

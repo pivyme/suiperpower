@@ -13,6 +13,10 @@
       "agents": ["claude", "codex", "cursor"],
       "phase": "build",
       "tags": ["deepbook", "orderbook", "sponsor"],
+      "skillsSh": {
+        "id": "deepbook-orderbook",
+        "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/deepbook-orderbook"
+      },
       "lastChecked": "2026-05-11"
     },
     {
@@ -25,6 +29,10 @@
       "agents": ["claude", "codex", "cursor"],
       "phase": "build",
       "tags": ["kiosk", "marketplace"],
+      "skillsSh": {
+        "id": "kiosk-marketplace",
+        "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/kiosk-marketplace"
+      },
       "lastChecked": "2026-05-11"
     },
     {
@@ -37,6 +45,10 @@
       "agents": ["claude", "codex", "cursor"],
       "phase": "build",
       "tags": ["security", "primitives", "sponsor"],
+      "skillsSh": {
+        "id": "openzeppelin-sui-libs",
+        "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/openzeppelin-sui-libs"
+      },
       "lastChecked": "2026-05-11"
     },
     {
@@ -49,6 +61,10 @@
       "agents": ["claude", "codex", "cursor"],
       "phase": "build",
       "tags": ["audit", "security", "sponsor"],
+      "skillsSh": {
+        "id": "ottersec-prep",
+        "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/ottersec-prep"
+      },
       "lastChecked": "2026-05-11"
     },
     {
@@ -61,6 +77,10 @@
       "agents": ["claude", "codex", "cursor"],
       "phase": "build",
       "tags": ["lending", "money-market", "sponsor"],
+      "skillsSh": {
+        "id": "scallop-money-market",
+        "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/scallop-money-market"
+      },
       "lastChecked": "2026-05-11"
     },
     {
@@ -73,6 +93,10 @@
       "agents": ["claude", "codex", "cursor"],
       "phase": "build",
       "tags": ["zklogin", "auth"],
+      "skillsSh": {
+        "id": "sui-zk-login",
+        "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/sui-zk-login"
+      },
       "lastChecked": "2026-05-11"
     },
     {
@@ -85,6 +109,10 @@
       "agents": ["claude", "codex", "cursor"],
       "phase": "build",
       "tags": ["walrus", "storage", "sponsor-headline"],
+      "skillsSh": {
+        "id": "walrus-storage",
+        "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/walrus-storage"
+      },
       "lastChecked": "2026-05-11"
     }
   ]

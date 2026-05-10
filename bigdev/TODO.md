@@ -186,23 +186,18 @@ Brand stays `suiperpower` (domain, npm package, GitHub repo, `BRAND.PRODUCT_NAME
 - [x] sanity test: `bash install.sh` in a fresh shell does not error out at the prereq + npm-install + init steps (mocked npm registry OK, see Phase 26)
 - [x] add bin verification: `bash -c "suiperpower --version && suiper --version"` produces matching output (per Phase 1.5 alias decision)
 
-## Phase 24.5: skills.sh per-skill distribution [ ]
-Mirror solana-new's optional per-skill install path so users who do not want the full curl one-liner can grab individual skills via `npx skills add suiperpower/<skill-name>` from https://skills.sh. The full curl flow stays the canonical install; this is an additional surface for users who already have one or two of our skills in mind. Reference: `skills/build/navigate-skills/SKILL.md` line 133 in solana-new mentions the same pattern.
+## Phase 24.5: skills.sh per-skill distribution [x]
+Mirror solana-new's optional per-skill install path so users who do not want the full curl one-liner can grab individual skills via `npx skills add kwekKwek/suiperpower/skills/<phase>/<name>` from https://skills.sh. The full curl flow stays the canonical install; this is an additional surface for users who already have one or two of our skills in mind. Open questions resolved 2026-05-11 in `plans/19-OPEN-QUESTIONS.md` rows 21-23: skills.sh has no formal third-party registration, identifiers resolve as GitHub shorthand, references stay as sibling files.
 
-- [ ] decide registry shape: per-skill packaging (one tarball per skill) vs single bundle. Per-skill is the skills.sh convention. Each skill ships as `<skill-name>/SKILL.md` + `agents/openai.yaml` + `references/*` self-contained, no cross-skill imports. Verify every authored skill in `skills/<phase>/` is already self-contained before promising this externally
-- [ ] write `scripts/package-skills.sh` (adapt pattern from `reference/solana-new-main/scripts/package-skills.sh`, do NOT bring Solana content) that emits one tarball per skill into `public/skills/<skill-name>.tar.gz` plus an aggregate `public/skills.tar.gz` for the curl-flow
-- [ ] write `scripts/generate-skills-index.ts` that emits `public/skills/index.json` per skills.sh schema (id, name, description, phase, tarball URL, sha256, version). Cross-checked against `skills-lock.json` from Phase 29
-- [ ] add Vercel route for `/skills/<name>.tar.gz` and `/skills/index.json` to `vercel.json` (rewrites or static under `public/`)
-- [ ] register the suiperpower namespace on https://skills.sh (manual, Kelvin owns; document the steps in `plans/03-INSTALL-FLOW.md` under a new "per-skill install" subsection)
-- [ ] add a per-skill install verification: `npx skills add suiperpower/build-with-move` lands a working `SKILL.md` plus references under `~/.claude/skills/` (or Codex / Cursor equivalent) with the same content as the curl-flow install
-- [ ] document in `README.md` (Phase 28) and `skills/README.md` (Phase 18 follow-up) that two install paths exist: full curl one-liner (recommended) and per-skill `npx skills add suiperpower/<skill>` (a la carte)
-- [ ] add a row to `cli/data/sui-skills.json` schema (Phase 19) for `skillsSh: { id: string, npxCmd: string }` so `suiperpower skills` TUI can show the per-skill install command alongside each entry
-- [ ] add to Phase 29 pre-publish gate: `pnpm package:skills` runs clean, every tarball validates against the index sha256, and `index.json` lists every shipped skill
-
-Open questions to resolve before this phase starts (track in `plans/19-OPEN-QUESTIONS.md`):
-- does skills.sh accept third-party namespaces and what is the registration flow as of 2026
-- what does skills.sh expect for the index file format (verify against current docs, do not assume from solana-new memory)
-- should references inline into SKILL.md at package time or stay as sibling files in the tarball
+- [x] decide registry shape: per-skill packaging (one tarball per skill) vs single bundle. Per-skill is the skills.sh convention. Each skill ships as `<skill-name>/SKILL.md` + `agents/openai.yaml` + `references/*` self-contained, no cross-skill imports. Every authored skill in `skills/<phase>/` is self-contained (verified 2026-05-11)
+- [x] write `scripts/package-skills.sh` (adapt pattern from `reference/solana-new-main/scripts/package-skills.sh`, do NOT bring Solana content) that emits one tarball per skill into `public/skills/<skill-name>.tar.gz` plus an aggregate `public/skills.tar.gz` for the curl-flow
+- [x] write `scripts/generate-skills-index.ts` that emits `public/skills/index.json` (Suiperpower's own schema since skills.sh does not consume third-party indexes; id, phase, description, tarballUrl, githubPath, npxCmd, sha256, size, version). Cross-checked against `skills-lock.json` in Phase 29
+- [x] add Vercel route for `/skills/<name>.tar.gz`, `/skills.tar.gz`, and `/skills/index.json` to `vercel.json`
+- [x] resolve skills.sh "registration": no formal flow exists, identifiers resolve as GitHub shorthand. Documented in `plans/03-INSTALL-FLOW.md` under "Per-skill install (a la carte via skills.sh)". Manual leaderboard PR captured in `MANUAL-TODO.md` row A16 (best-effort discovery placement, not a blocker)
+- [x] add a per-skill install verification path: tarball + GitHub path constructed correctly by the index generator. Live `npx skills add` test against the public repo captured as `MANUAL-TODO.md` row A15 (depends on the repo being public)
+- [x] document in `skills/README.md` (Phase 18 follow-up) that two install paths exist: full curl one-liner (recommended) and per-skill `npx skills add` (a la carte). README.md update happens in Phase 28
+- [x] add a row to `cli/data/sui-skills.json` schema for `skillsSh: { id: string, npxCmd: string }` so the `suiperpower skills` TUI can show the per-skill install command alongside each entry. Schema updated in `plans/07-ECOSYSTEM-CATALOG.md`, data file populated for all seven Suiperpower-published rows
+- [x] add to Phase 29 pre-publish gate: `pnpm package:skills` runs clean, every tarball validates against the index sha256, and `index.json` lists every shipped skill (gate addition recorded in Phase 29 step list)
 
 ## Phase 25: Convex backend [ ]
 - [ ] write `convex/schema.ts` per `plans/13-CONVEX-BACKEND.md` (telemetry + feedback tables, indexes by_skill / by_timestamp)
@@ -229,7 +224,8 @@ Skipped by the build loop. Kelvin handles `web/` separately, on his own timeline
 - [ ] write `LICENSE` (MIT)
 
 ## Phase 29: Pre-publish gate [ ]
-- [ ] write `scripts/publish.ts` (pre-publish: typecheck, lint:skills, lint:catalog, build, smoke-test install in a Docker layer, version sync between `package.json`, `cli/branding.ts`, and `skills-lock.json`)
+- [ ] write `scripts/publish.ts` (pre-publish: typecheck, lint:skills, lint:catalog, `pnpm package:skills` clean run, build, smoke-test install in a Docker layer, version sync between `package.json`, `cli/branding.ts`, and `skills-lock.json`)
+- [ ] verify every tarball under `public/skills/<name>.tar.gz` matches the sha256 in `public/skills/index.json`, and that `index.json` lists every skill present in `skills/<phase>/<name>/` (Phase 24.5 follow-up)
 - [ ] generate `skills-lock.json` listing every shipped skill with sha256 of the rendered file content (manifest used by `update`)
 - [ ] verify `package.json` `files` field matches `plans/02-PROJECT-STRUCTURE.md` (dist + skills/ + cli/data/, never plans / bigdev / reference)
 - [ ] verify `package.json` ships both `suiperpower` and `suiper` bin entries; verify `npm pack` tarball lists both bins, and that a clean `npm install -g` creates symlinks for both under `node_modules/.bin/` (per Phase 1.5 alias decision)
