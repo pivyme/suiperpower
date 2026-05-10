@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Package skills for distribution.
-# Emits one tarball per skill under public/skills/<name>.tar.gz plus an aggregate
-# public/skills.tar.gz used by the curl-flow installer. Run via:
+# Emits one tarball per skill under web/public/skills/<name>.tar.gz plus an aggregate
+# web/public/skills.tar.gz used by the curl-flow installer. Run via:
 #   ./scripts/package-skills.sh
 # or:
 #   pnpm package:skills
@@ -9,10 +9,11 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+WEB_PUBLIC="$(cd "$ROOT/.." && pwd)/web/public"
 
 SKILLS_ROOT="$ROOT/skills"
-OUT_DIR="$ROOT/public/skills"
-AGGREGATE="$ROOT/public/skills.tar.gz"
+OUT_DIR="$WEB_PUBLIC/skills"
+AGGREGATE="$WEB_PUBLIC/skills.tar.gz"
 PHASES=(learn idea build ship grow)
 
 mkdir -p "$OUT_DIR"

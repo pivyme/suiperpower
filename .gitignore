@@ -19,7 +19,7 @@ pnpm-debug.log*
 
 # Build outputs
 dist/
-/build/
+build/
 out/
 .next/
 .turbo/
@@ -47,10 +47,8 @@ coverage/
 # Per-project skill context (Suiperpower runtime, see plans/01-ARCHITECTURE.md)
 .suiperpower/
 
-# bigdev autonomous build loop artifacts (when wired up)
-bigdev/claude/auto-build-logs/
-bigdev/claude/auto-build.lock
-bigdev/claude/inject.md
+# Scratchpads (bigdev autobuild loop, local notes, anything ephemeral)
+scratchpads/
 
 # Local dev caches
 .cache/

@@ -1,0 +1,7 @@
+{
+  "name": "@suiperpower/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Suiperpower website. Static assets today (public/, vercel.json), Next.js app to follow."
+}

@@ -1,6 +1,6 @@
-# Source we do not ship
+# Source we do not ship (siblings live outside core/, listed for safety)
 plans/
-bigdev/
+scratchpads/
 reference/
 web/
 scripts/

@@ -20,10 +20,6 @@
   ],
   "exclude": [
     "dist",
-    "node_modules",
-    "bigdev",
-    "reference",
-    "plans",
-    "web"
+    "node_modules"
   ]
 }

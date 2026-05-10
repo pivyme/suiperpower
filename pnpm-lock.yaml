@@ -7,10 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      convex:
-        specifier: ^1.34.1
-        version: 1.38.0
     devDependencies:
       '@types/node':
         specifier: ^22.13.14
@@ -21,6 +17,20 @@ importers:
       typescript:
         specifier: ^5.8.2
         version: 5.9.3
+
+  convex:
+    dependencies:
+      convex:
+        specifier: ^1.34.1
+        version: 1.38.0
+
+  core:
+    dependencies:
+      convex:
+        specifier: ^1.34.1
+        version: 1.38.0
+
+  web: {}
 
 packages:
 

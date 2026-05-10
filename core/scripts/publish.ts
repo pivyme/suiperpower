@@ -10,7 +10,9 @@ import { createHash } from "node:crypto";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const REPO_ROOT = resolve(fileURLToPath(import.meta.url), "..", "..");
+const CORE_ROOT = resolve(fileURLToPath(import.meta.url), "..", "..");
+const REPO_ROOT = resolve(CORE_ROOT, "..");
+const WEB_PUBLIC = join(REPO_ROOT, "web", "public");
 
 const args = process.argv.slice(2);
 const realPublish = args.includes("--publish");
@@ -28,11 +30,11 @@ function step(name: string, fn: () => void): void {
 }
 
 function run(cmd: string, ...rest: string[]): void {
-  execFileSync(cmd, rest, { cwd: REPO_ROOT, stdio: "inherit" });
+  execFileSync(cmd, rest, { cwd: CORE_ROOT, stdio: "inherit" });
 }
 
 function runQuiet(cmd: string, ...rest: string[]): string {
-  return execFileSync(cmd, rest, { cwd: REPO_ROOT, encoding: "utf8" });
+  return execFileSync(cmd, rest, { cwd: CORE_ROOT, encoding: "utf8" });
 }
 
 function readJson<T = any>(path: string): T {
@@ -40,7 +42,7 @@ function readJson<T = any>(path: string): T {
 }
 
 function checkPackageShape(): void {
-  const pkg = readJson<any>(join(REPO_ROOT, "package.json"));
+  const pkg = readJson<any>(join(CORE_ROOT, "package.json"));
   if (typeof pkg.bin !== "object" || pkg.bin === null) {
     throw new Error("package.json bin must be an object");
   }
@@ -77,31 +79,31 @@ function checkPackageShape(): void {
 }
 
 function checkVersionSync(): void {
-  const pkg = readJson<any>(join(REPO_ROOT, "package.json"));
-  if (existsSync(join(REPO_ROOT, "skills-lock.json"))) {
-    const lock = readJson<any>(join(REPO_ROOT, "skills-lock.json"));
+  const pkg = readJson<any>(join(CORE_ROOT, "package.json"));
+  if (existsSync(join(CORE_ROOT, "skills-lock.json"))) {
+    const lock = readJson<any>(join(CORE_ROOT, "skills-lock.json"));
     if (lock.version !== pkg.version) {
       throw new Error(`skills-lock.json version ${lock.version} != package.json ${pkg.version}`);
     }
   }
-  if (existsSync(join(REPO_ROOT, "public", "skills", "index.json"))) {
-    const idx = readJson<any>(join(REPO_ROOT, "public", "skills", "index.json"));
+  if (existsSync(join(WEB_PUBLIC, "skills", "index.json"))) {
+    const idx = readJson<any>(join(WEB_PUBLIC, "skills", "index.json"));
     for (const s of idx.skills ?? []) {
       if (s.version !== pkg.version) {
-        throw new Error(`public/skills/index.json entry ${s.id} version ${s.version} != package.json ${pkg.version}`);
+        throw new Error(`web/public/skills/index.json entry ${s.id} version ${s.version} != package.json ${pkg.version}`);
       }
     }
   }
 }
 
 function checkTarballHashes(): void {
-  const idxPath = join(REPO_ROOT, "public", "skills", "index.json");
+  const idxPath = join(WEB_PUBLIC, "skills", "index.json");
   if (!existsSync(idxPath)) {
-    throw new Error("public/skills/index.json missing, run pnpm package:skills");
+    throw new Error("web/public/skills/index.json missing, run pnpm package:skills");
   }
   const idx = readJson<any>(idxPath);
   for (const s of idx.skills ?? []) {
-    const tarball = join(REPO_ROOT, "public", "skills", `${s.id}.tar.gz`);
+    const tarball = join(WEB_PUBLIC, "skills", `${s.id}.tar.gz`);
     if (!existsSync(tarball)) {
       throw new Error(`tarball missing for ${s.id}`);
     }

@@ -1,5 +1,5 @@
 #!/usr/bin/env tsx
-// Emits public/skills/index.json describing every shipped skill: id, phase,
+// Emits web/public/skills/index.json describing every shipped skill: id, phase,
 // description from SKILL.md frontmatter, tarball URL, sha256, byte size, and
 // the GitHub shorthand a user can pass to `npx skills add` for an a la carte
 // install. Run after scripts/package-skills.sh so every tarball exists.
@@ -11,9 +11,10 @@ import { createHash } from "node:crypto";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const REPO_ROOT = resolve(fileURLToPath(import.meta.url), "..", "..");
-const SKILLS_ROOT = join(REPO_ROOT, "skills");
-const TARBALL_DIR = join(REPO_ROOT, "public", "skills");
+const CORE_ROOT = resolve(fileURLToPath(import.meta.url), "..", "..");
+const REPO_ROOT = resolve(CORE_ROOT, "..");
+const SKILLS_ROOT = join(CORE_ROOT, "skills");
+const TARBALL_DIR = join(REPO_ROOT, "web", "public", "skills");
 const INDEX_PATH = join(TARBALL_DIR, "index.json");
 const PHASES = ["learn", "idea", "build", "ship", "grow"] as const;
 
@@ -46,7 +47,7 @@ interface Index {
 }
 
 function readPackageVersion(): string {
-  const pkg = JSON.parse(readFileSync(join(REPO_ROOT, "package.json"), "utf8"));
+  const pkg = JSON.parse(readFileSync(join(CORE_ROOT, "package.json"), "utf8"));
   return pkg.version ?? "0.0.0";
 }
 
