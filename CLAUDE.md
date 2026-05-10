@@ -6,7 +6,7 @@ Context for any AI agent (Claude Code, Codex, Cursor) working on the Suiperpower
 
 Suiperpower is the open platform behind https://suiperpower.dev. It packages skills, knowledge, ecosystem catalog, and a CLI so an AI coding agent can take a developer from "what should I build on Sui" to a deployed, sustainable product. Distributed via curl one-liner. Built around an explicit anti-slop quality bar so projects survive past hackathons, not just win them.
 
-Tagline: **think. build. ship.**
+Tagline: **build Sui that ships.**
 
 The launch occasion is Sui Overflow 2026, but Suiperpower is built as a long-lived production tool, not a hackathon helper.
 
@@ -78,8 +78,21 @@ Skills live under `skills/<phase>/<name>/SKILL.md`. Phases: `learn/`, `idea/`, `
 | `plans/17-LAUNCH-PLAN.md` | T-4w to T+12w plan, sponsor outreach, launch day |
 | `plans/18-ROADMAP.md` | v0.1 → v2.0 versioning |
 | `plans/19-OPEN-QUESTIONS.md` | Live tracker for unresolved decisions |
+| `plans/20-CONTRIBUTING-PLAN.md` | PR shapes, supply-chain rules, reviewer checklists, code of conduct outline |
+| `plans/21-TESTING-STRATEGY.md` | Test layers, CI matrix, multi-agent install testing, smoke tests |
+| `plans/22-SAMPLE-SKILL.md` | Canonical fully-written reference skill (build-with-move) for authors to clone |
+| `plans/23-SKILL-ROUTER-SPEC.md` | Per-row routing table covering every v1 skill and common-wrong-pick patterns |
+| `plans/24-OVERFLOW-2026-PLAYBOOK.md` | Participant-facing playbook, source for the website /overflow page |
+| `plans/25-SECURITY-POSTURE.md` | Trust model, threat model, mitigations, incident response, public commitments |
+| `plans/26-EXAMPLE-USER-JOURNEY.md` | Worked walkthrough of a fictional builder from install to submission |
+| `plans/27-GOVERNANCE-AND-SUSTAINABILITY.md` | Maintainer model, decision authority, conflict of interest, post-launch maintenance |
+| `plans/28-COMPETITIVE-LANDSCAPE.md` | Sui dev tooling landscape, positioning, differentiators, cooperation strategy |
+| `plans/29-DOCS-AUTHORING-STANDARDS.md` | Structural and mechanical rules for all markdown / JSON / CLI output |
+| `plans/30-SHARED-GUIDES-SPEC.md` | Sui-native rpc-wallet / deploy-runbook / security / package-id / deepsurge guides + phase-handoff spec |
 
-If you are a coding agent picking up work, read 00 → 04 → 12 → 02 first. Everything else is on demand.
+For navigation across all 31 plan docs, **start at `plans/README.md`**, the top-level index. It groups docs by category (foundation, skills, sponsors, ops, etc.), gives reading paths for common scenarios, and lists which docs pair together.
+
+If you are a coding agent picking up work and skipping the index: read 00 → 04 → 12 → 02 first. Then 22 (sample skill) and 26 (example journey) for concreteness, then 20 (contributing) and 21 (testing) before authoring anything that ships. 30 is required reading before authoring any shared guide or phase-handoff context-file. Everything else is on demand.
 
 ## Build commands (once code exists)
 
@@ -128,7 +141,9 @@ Skills should be in the senior-friend voice (direct, not condescending, no marke
 
 If you (an AI agent) discover something during implementation that should be a durable rule for all future work on this codebase, add it to `plans/19-OPEN-QUESTIONS.md` as a `decided:` entry with a date, then propagate to the relevant plan doc.
 
-If you are inside an autonomous build loop, durable rules go to `bigdev/claude/requirements-log.md` (committed, read every iteration). One-shot transient corrections go to `bigdev/claude/inject.md` (gitignored). Both wired up if and when the build loop is initialized.
+If you are inside an autonomous build loop, durable rules go to `bigdev/claude/requirements-log.md` (committed, read every iteration). One-shot transient corrections go to `bigdev/claude/inject.md` (gitignored). Drive both via the launcher: `./bigdev/autobuild say "rule"` for durable, `./bigdev/autobuild fix "msg"` for one-shot. The loop reads `bigdev/TODO.md` and works through phases referencing `plans/`.
+
+Commit rule (project-wide, including the build loop): Kelvin is the sole committer. Never add a `Co-Authored-By` line to any commit, ever.
 
 ## What this project is NOT
 

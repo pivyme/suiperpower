@@ -16,9 +16,9 @@ Installs to `~/.claude/skills/`, `~/.codex/skills/`, and `~/.cursor/rules/`. Not
 
 ## Tagline
 
-**think. build. ship.**
+**build Sui that ships.**
 
-The same three-beat used by solana-new because the journey shape is the same: discovery, implementation, distribution. The work behind each beat is different on Sui.
+A single declarative line. "ships" carries the anti-slop weight: most hackathon builds never reach a working live URL, and the ones that do rarely survive the prize being paid. Suiperpower is the path that gets to a real, working, sustained ship.
 
 ## Who it is for
 
@@ -80,6 +80,8 @@ See `plans/18-ROADMAP.md` for the full roadmap. v1 (the Sui Overflow 2026 launch
 
 ## Reading order for these plans
 
+For navigation across all 31 plan docs, start at `plans/README.md` (the index).
+
 If you only have 10 minutes, read in this order:
 
 1. This file (00-OVERVIEW)
@@ -87,6 +89,14 @@ If you only have 10 minutes, read in this order:
 3. `04-SKILLS-CATALOG.md`, what users actually invoke
 4. `12-ANTI-SLOP-FRAMEWORK.md`, the differentiating thesis
 5. `18-ROADMAP.md`, what ships when
+
+If you have 30 minutes, then add:
+
+6. `26-EXAMPLE-USER-JOURNEY.md`, worked walkthrough that makes everything above concrete
+7. `22-SAMPLE-SKILL.md`, what a real SKILL.md looks like end to end
+8. `24-OVERFLOW-2026-PLAYBOOK.md`, the user-facing pitch and journey
+
+Before writing or shipping anything: read `20-CONTRIBUTING-PLAN.md`, `21-TESTING-STRATEGY.md`, and `29-DOCS-AUTHORING-STANDARDS.md`. Before authoring any shared guide or phase-handoff context-file, read `30-SHARED-GUIDES-SPEC.md`.
 
 Everything else is depth-on-demand.
 

@@ -4,7 +4,7 @@ Phased implementation steps for Suiperpower v1. Each phase is independently test
 
 When the build loop runs, it works through these top to bottom, marking each `[x]` when done. Steps are concrete and checkable.
 
-References throughout point to the source-of-truth docs in `plans/`.
+References throughout point to the source-of-truth docs in `plans/` (now 30 docs covering 00-29).
 
 ---
 
@@ -17,6 +17,9 @@ References throughout point to the source-of-truth docs in `plans/`.
 - [ ] Add `vercel.json` (rewrite `/setup.sh` → `/public/setup.sh`)
 - [ ] Add `CLAUDE.md` (already authored under root)
 - [ ] Add `README.md` (already authored under root)
+- [ ] Author `CONTRIBUTING.md` from `plans/20-CONTRIBUTING-PLAN.md`
+- [ ] Author `AGENTS.md` (Codex / generic-agent context, mirrors `CLAUDE.md`)
+- [ ] Set up `markdownlint` config per `plans/29-DOCS-AUTHORING-STANDARDS.md`
 
 ## Phase 1: branding.ts (single source of truth) [ ]
 - [ ] Create `cli/branding.ts` with all brand strings from `plans/15-BRAND.md` and `plans/08-CLI-DESIGN.md`
@@ -41,14 +44,15 @@ References throughout point to the source-of-truth docs in `plans/`.
 - [ ] Local test: `pnpm dev init` and `pnpm dev doctor` run cleanly
 
 ## Phase 4: First five skills end-to-end [ ]
-- [ ] Author `skills/idea/find-next-sui-idea/SKILL.md` per `plans/05-SKILL-FORMAT.md`
+- [ ] Author `skills/idea/find-next-sui-idea/SKILL.md` per `plans/05-SKILL-FORMAT.md`, modeled on `plans/22-SAMPLE-SKILL.md`
 - [ ] Author `skills/build/scaffold-project/SKILL.md`
 - [ ] Author `skills/build/build-with-claude/SKILL.md`
-- [ ] Author `skills/build/build-with-move/SKILL.md`
+- [ ] Author `skills/build/build-with-move/SKILL.md` (use `plans/22-SAMPLE-SKILL.md` directly as the reference)
 - [ ] Author `skills/ship/deploy-to-testnet/SKILL.md`
 - [ ] Add `agents/openai.yaml` for each
 - [ ] Author `scripts/inject-preamble.ts` to inject the canonical telemetry preamble
 - [ ] Run injector across all five skills
+- [ ] Author `skills/SKILL_ROUTER.md` from `plans/23-SKILL-ROUTER-SPEC.md`
 - [ ] `init` writes them to `~/.claude/skills/`
 
 ## Phase 5: Multi-agent install [ ]
@@ -58,14 +62,22 @@ References throughout point to the source-of-truth docs in `plans/`.
 - [ ] `~/.suiperpower/skills-installed.json` manifest written for uninstall safety
 - [ ] Test: install fresh on a machine, confirm all three dirs populated
 
-## Phase 6: Knowledge base v0 [ ]
+## Phase 6: Knowledge base + shared guides v0 [ ]
 - [ ] `skills/data/sui-knowledge/01-what-and-why-sui.md`
 - [ ] `skills/data/sui-knowledge/03-move-and-objects.md`
 - [ ] `skills/data/sui-knowledge/cookbook-index.md`
 - [ ] `skills/data/sui-knowledge/sponsor-docs/walrus.md`
 - [ ] `skills/data/sui-knowledge/sponsor-docs/deepbook.md`
+- [ ] Author shared guides per `plans/30-SHARED-GUIDES-SPEC.md`:
+  - [ ] `skills/data/guides/rpc-wallet-guide.md`
+  - [ ] `skills/data/guides/deploy-runbook.md`
+  - [ ] `skills/data/guides/security-checklist.md`
+  - [ ] `skills/data/guides/package-id-capture.md`
+  - [ ] `skills/data/guides/deepsurge-submission.md`
+- [ ] Author phase-handoff spec: `skills/data/specs/phase-handoff.md` per `plans/30-SHARED-GUIDES-SPEC.md`
 - [ ] Cross-reference: `build-with-move` SKILL.md links to 03-move-and-objects
 - [ ] Cross-reference: `scaffold-project` links to walrus.md when storage intent
+- [ ] Cross-reference: `deploy-to-testnet` and `deploy-to-mainnet` link to `deploy-runbook.md` and `package-id-capture.md`
 
 ## Phase 7: Catalog v0 [ ]
 - [ ] `cli/data/clonable-repos.json` with 15-20 entries (Mysten official + DeFi + auth + storage)
@@ -194,8 +206,9 @@ References throughout point to the source-of-truth docs in `plans/`.
 - [ ] `app/skills/page.tsx` + `app/skills/[name]/page.tsx`
 - [ ] `app/repos/page.tsx`, `app/mcps/page.tsx`, `app/ideas/page.tsx`
 - [ ] `app/docs/[slug]/page.tsx` from `skills/data/sui-knowledge/`
-- [ ] `app/sponsors/page.tsx`, `app/overflow/page.tsx`
-- [ ] `app/changelog/page.tsx`, `app/privacy/page.tsx`, `app/terms/page.tsx`
+- [ ] `app/sponsors/page.tsx`, `app/overflow/page.tsx` (source content from `plans/24-OVERFLOW-2026-PLAYBOOK.md`)
+- [ ] `app/privacy/page.tsx` aligned with `plans/25-SECURITY-POSTURE.md` public commitments
+- [ ] `app/changelog/page.tsx`, `app/terms/page.tsx`
 - [ ] No styling beyond defaults (per project rule, structure-only for v1 plans)
 
 ## Phase 22: Vercel deployment + setup.sh live [ ]
@@ -276,6 +289,8 @@ References throughout point to the source-of-truth docs in `plans/`.
 - Phase 17 (full catalog) can be a stretch target for v1. Floor target: 30 repos, 8 mcps, 100 ideas.
 - Phases 25-27 are mandatory before launch. Do not skip.
 - Phase 24 (closed beta) can run in parallel with Phases 11-16.
+
+Read order before starting any phase: `00-OVERVIEW`, `01-ARCHITECTURE`, the relevant phase doc, plus `22-SAMPLE-SKILL` (if authoring a skill), `21-TESTING-STRATEGY` (before merging anything), `25-SECURITY-POSTURE` (before any install / publish step), and `29-DOCS-AUTHORING-STANDARDS` (always).
 
 If a phase fails the quality gate (build broken, skill doesn't actually work end-to-end), do not move on. Diagnose and fix, then continue.
 

@@ -68,12 +68,12 @@ Quality bar: `plans/29-DOCS-AUTHORING-STANDARDS.md` for every markdown / JSON fi
 - [x] write `skills/build/build-with-move/references/common-move-pitfalls.md`
 - [x] write `skills/build/build-with-move/references/package-manifest-example.md`
 
-## Phase 10: Sui-unique build skills batch 1 [ ]
-- [ ] author `skills/build/walrus-storage/` (SKILL.md + agents/openai.yaml + references) per `plans/04-SKILLS-CATALOG.md` and `plans/11-SPONSOR-INTEGRATION.md`. Quality gate: demo retrieves a stored blob and renders it.
-- [ ] author `skills/build/deepbook-orderbook/` per same. Quality gate: demo places + settles a real testnet order.
-- [ ] author `skills/build/scallop-money-market/` per same. Quality gate: deposit + borrow + repay against live Scallop pool.
-- [ ] author `skills/build/sui-zk-login/`. Quality gate: real OAuth provider end-to-end, not stub.
-- [ ] author `skills/build/kiosk-marketplace/`. Quality gate: full kiosk listing + purchase flow.
+## Phase 10: Sui-unique build skills batch 1 [x]
+- [x] author `skills/build/walrus-storage/` (SKILL.md + agents/openai.yaml + references) per `plans/04-SKILLS-CATALOG.md` and `plans/11-SPONSOR-INTEGRATION.md`. Quality gate: demo retrieves a stored blob and renders it.
+- [x] author `skills/build/deepbook-orderbook/` per same. Quality gate: demo places + settles a real testnet order.
+- [x] author `skills/build/scallop-money-market/` per same. Quality gate: deposit + borrow + repay against live Scallop pool.
+- [x] author `skills/build/sui-zk-login/`. Quality gate: real OAuth provider end-to-end, not stub.
+- [x] author `skills/build/kiosk-marketplace/`. Quality gate: full kiosk listing + purchase flow.
 
 ## Phase 11: Sui-unique build skills batch 2 [ ]
 - [ ] author `skills/build/sponsored-transactions/`. Quality gate: real sponsor flow, not stubbed signing.

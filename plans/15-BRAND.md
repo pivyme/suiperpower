@@ -10,13 +10,15 @@ Pronunciation: "soop-er-power" (the "Sui" front blends, the rest reads as "super
 
 ## Tagline
 
-**think. build. ship.**
+**build Sui that ships.**
 
-Three lowercase beats with periods. Mirrors solana-new's tagline structure because the journey shape is the same. Acceptable variants for limited spaces:
+A single lowercase declarative line, period at the end. The verb "ships" is the load-bearing word: it carries the anti-slop differentiator (most hackathon builds never reach a working live URL, and the ones that do rarely survive the prize being paid). Acceptable variants for limited spaces:
 
-- "think. build. ship." (default)
-- "ship on Sui, idea to launch" (long-form subtitle)
-- "skills, knowledge, and a CLI for shipping production Sui products" (descriptive)
+- "build Sui that ships." (default, full)
+- "build Sui." (compact, e.g. favicon-adjacent contexts)
+- "skills, knowledge, and a CLI for shipping production Sui products" (descriptive long-form)
+
+We deliberately do not use the three-beat structure that solana-new uses ("think. build. ship."). The structure invites direct comparison and we are not a Sui re-skin of solana-new.
 
 ## URLs
 
@@ -75,6 +77,18 @@ All brand strings live in `cli/branding.ts`. Anywhere else that needs them impor
 - "Decentralized" as a value claim (Sui is decentralized; the tool is open-source markdown, not a decentralized system)
 - "Powered by AI" in skill outputs (the user knows)
 
+### Phrases borrowed from solana-new (do not use)
+
+To avoid being read as a Sui re-skin of solana-new, never use any of the following phrases verbatim or near-verbatim. They are theirs. Pick our own words.
+
+- "think. build. ship." (their tagline)
+- "build useful and tasteful crypto apps" / "useful and tasteful" as a paired phrase
+- "founder mode ON" / any "founder mode" framing
+- "Your Agents are ready. Are you?" or any near-paraphrase
+- "a tasteful and useful crypto app using AI in few hours"
+
+The word "tasteful" alone is fine in normal English. The pairing "useful and tasteful" and the three-beat tagline are the signature lifts to avoid.
+
 ## What we always say
 
 - "Sui" not "the Sui blockchain" (redundant)
@@ -96,19 +110,39 @@ If the Sui Foundation later wants to formally endorse / co-distribute, we update
 
 ## Logo
 
-(Out of scope for the planning phase per Kelvin's "no styling".) Placeholder: an SVG with the text "suiperpower" in a monospace font, lowercase. Final logo design happens during the build phase or after.
+(Final design out of scope for the planning phase per Kelvin's "no styling" rule.)
+
+Direction stub the build phase can build on:
+
+- Wordmark over a symbol. The product name is the asset; an icon is secondary.
+- Lowercase `suiperpower` in a clean modern monospace (e.g. Geist Mono, JetBrains Mono, IBM Plex Mono). Letterforms slightly tightened.
+- Optional symbol: a single `✦` or a stylized "S" curve that hints at flow / wave (Sui's chain identity often plays on water and flow). Symbol is optional and never replaces the wordmark.
+- Asset deliverables target: SVG (source), PNG 1280x1280 (for hackathon submission usage), PNG 512x512 favicon, dark + light variants.
+- Path: `public/suiperpower-logo.svg`, `public/suiperpower-logo-dark.svg`, `public/og-image.png`.
+
+We will not lock the logo in plans. The build phase picks fonts and final marks. The wordmark-first principle is the durable rule.
 
 ## Color (deferred)
 
-(Out of scope for the planning phase. Kelvin will decide the color choices when styling begins.)
+(Final palette out of scope for the planning phase. Kelvin decides during build.)
 
-The only constraint we record now: avoid colors that read as "official Sui Foundation". Sui's primary blue (`#4DA2FF`) is fine as an accent in moderation; using it as the dominant brand color would conflate us with the Foundation.
+Constraints recorded now:
+
+- Avoid colors that read as "official Sui Foundation". Sui's primary blue (`#4DA2FF`) is fine as an accent in moderation; using it as the dominant brand color would conflate us with the Foundation.
+- Default mode is dark: terminals are dark, the website's hero is dark by default.
+- Conservative palette: one accent color, neutral grays for text + background, sparing use of green / red for CLI status indicators.
+- High contrast for accessibility (WCAG AA minimum).
 
 ## Typography (deferred)
 
 (Out of scope for the planning phase.)
 
-Constraint: use a monospace font for the CLI install command on the website. CLI banner uses ASCII characters only (no custom fonts in the terminal).
+Constraints recorded now:
+
+- Monospace for the CLI install command on the website (Geist Mono or similar).
+- Sans-serif for body copy on the website (Geist Sans or similar; avoid generic-feel choices like Inter unless deliberately wanted).
+- CLI banner uses ASCII characters only (no custom fonts in the terminal).
+- Code blocks always use the monospace stack with consistent line-height across the site.
 
 ## Tone of voice in error messages
 

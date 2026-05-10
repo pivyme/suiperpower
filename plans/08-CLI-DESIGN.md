@@ -72,7 +72,7 @@ cli/
 export const BRAND = {
   PRODUCT_NAME: "suiperpower",
   PRODUCT_NAME_TITLE: "Suiperpower",
-  TAGLINE: "think. build. ship.",
+  TAGLINE: "build Sui that ships.",
   INSTALL_URL: "https://suiperpower.dev/setup.sh",
   WEBSITE_URL: "https://suiperpower.dev",
   GH_REPO: "<your-handle>/suiperpower",
@@ -116,7 +116,7 @@ When the user types `suiperpower` with no args, run `interactive-onboarding.ts`:
 ```
 ┌──────────────────────────────────────────────┐
 │  suiperpower                                 │
-│  think. build. ship.                         │
+│  build Sui that ships.                       │
 │                                              │
 │  What do you want to do?                     │
 │                                              │
@@ -222,7 +222,7 @@ Use case: a team lead vendors suiperpower into the team monorepo. Teammates clon
 suiperpower --help
 
   suiperpower v0.2.0
-  think. build. ship.
+  build Sui that ships.
 
   Commands
 

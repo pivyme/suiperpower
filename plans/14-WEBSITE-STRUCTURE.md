@@ -2,250 +2,207 @@
 
 ## Scope of this doc
 
-Information architecture, routes, sections, copy outline. No styling. No design system. No component implementation. The web team or Kelvin handles styling later.
+Information architecture, sections, copy outline. No styling. No design system. No component implementation. The web team or Kelvin handles styling later.
 
 ## What the website is
 
-`suiperpower.dev` is a content site. Three jobs:
+`suiperpower.dev` is a **single-page** content site. Two jobs:
 
 1. Host `/setup.sh` (the curl install target).
-2. Show the install command above the fold so a visitor can install in under 30 seconds.
-3. Browse the catalog (skills, repos, MCPs, ideas) without leaving the browser.
+2. Show the install command above the fold so a visitor can install in under 30 seconds, plus enough scroll-context to know what they are installing and why.
 
-Not a webapp. No login. No dashboard. No signup. The CLI is the product.
+Not a webapp. No login. No dashboard. No signup. No catalog browser, no skill detail pages, no docs site, no blog. The CLI is the product. The site exists to convert.
+
+If a user wants the full skill list, knowledge docs, sponsor pages, contributing guide, or release notes, they go to the **GitHub repo**, which already renders all of it. We do not duplicate that on the website.
+
+## Reference, not template
+
+`solana.new` is the structural reference for the install hero (code block, "using in-built N+ skills, MCPs and CLIs" subline). We borrow that pattern because it works. Everything else (sections, copy, ordering, narrative spine) is Suiperpower-specific. The site should not feel like a Sui re-skin of solana.new to anyone who has seen both.
+
+Concretely, the things we do **not** copy:
+
+- The "build useful & tasteful crypto apps" left-rail skill table on the landing
+- The "founder mode ON" pillar layout
+- The "Your Agents are ready. Are you?" purple CTA
+- Their dark gradient hero treatment
+
+We can use a **terminal-style install block in the hero**. That is the only direct lift.
 
 ## Stack (proposed, not styled)
 
-- Next.js (App Router) on Vercel
-- File-based routes
-- Catalog pages render at build time from `cli/data/*.json`
-- Static export where possible
-- MDX for the docs section
+- Next.js (App Router) on Vercel, single page at `/`
+- Static export
+- `setup.sh` served from `/public/setup.sh`
+- `og-image.png` served from `/public/og-image.png`
+- No CMS, no MDX, no catalog rendering on the site
 
 ## Routes
 
 ```
-/                       Landing
-/install                Install instructions (also linked from landing)
-/skills                 Catalog browser, skills (filterable)
-/skills/<skill-name>    Individual skill page (renders SKILL.md)
-/repos                  Catalog browser, ecosystem repos
-/mcps                   Catalog browser, MCP servers
-/ideas                  Catalog browser, curated ideas
-/docs                   Docs index
-/docs/<doc-name>        Individual doc page (renders skills/data/sui-knowledge/*.md)
-/sponsors               Sponsor list (Walrus, DeepBook, OpenZeppelin, OtterSec, Scallop)
-/overflow               Sui Overflow 2026 landing (for Overflow participants specifically)
-/changelog              Release notes
-/privacy                Privacy / telemetry policy
-/terms                  Terms of use
-/setup.sh               The bash install script (rewritten to /public/setup.sh)
+/                       The landing page (the only real route)
+/setup.sh               The bash install script (from /public/setup.sh)
+/og-image.png           Open Graph card
+/sitemap.xml            One-entry sitemap (just /)
+/robots.txt             Allow all
 ```
 
-## Landing page (`/`) section list
+That is the entire website. No `/install`, no `/skills`, no `/repos`, no `/mcps`, no `/ideas`, no `/docs`, no `/sponsors`, no `/overflow`, no `/changelog`, no `/privacy`, no `/terms`. All of that lives in the GitHub repo as markdown.
 
-Copy outline only. Order matters.
+If we ever need a privacy notice or terms link for compliance, we add them later as static pages. They are not blocking launch.
 
-1. **Hero**
-   - Title: "Suiperpower"
-   - Tagline: "think. build. ship."
-   - Subtitle: "Skills, knowledge, and a CLI for shipping production Sui products with Claude Code, Codex, or Cursor."
-   - Install command in a code block (one-line, copyable)
-   - Link to "What it is" (anchor) and "Browse skills" (route)
+## Landing page section list
 
-2. **Install command (repeated, callout)**
-   ```
-   curl -fsSL https://suiperpower.dev/setup.sh | bash
-   ```
-   With a one-liner: "Installs to ~/.claude/skills/, ~/.codex/skills/, ~/.cursor/rules/. Nothing touches your PATH."
+Order matters. Keep it short. Seven sections and a footer. No more.
 
-3. **What you get** (4-up grid, no styling)
-   - 30+ skills across Learn / Idea / Build / Ship
-   - Sui knowledge base (Move, objects, PTBs, Walrus, DeepBook, Scallop)
-   - Ecosystem catalog (40+ clonable repos, MCPs, curated ideas)
-   - Anti-slop quality gates baked into every build skill
+### 1. Hero
 
-4. **Quickstart**
-   - Three example commands a user can run after install:
-     - `claude "/find-next-sui-idea what should I build for Sui Overflow?"`
-     - `claude "/scaffold-project escrow with Walrus storage"`
-     - `claude "/submit-to-sui-overflow"`
-   - One-liner: "Skills auto-route by intent. No memorization needed."
+- **Wordmark**: "suiperpower" (lowercase, top-left, small)
+- **Top-right nav**: GitHub link with star count, that is it
+- **Headline**: `build Sui that ships.`
+- **Subhead** (one sentence): "Skills, knowledge, and a CLI for shipping production Sui products with Claude Code, Codex, or Cursor."
+- **Install block** (terminal-style, copyable):
+  ```
+  curl -fsSL https://suiperpower.dev/setup.sh | bash
+  ```
+- **Below install** (small, one line): "30+ Sui-native skills, knowledge base, ecosystem catalog. One install. Three agents."
+- **Agent badges** (3 small icons inline): Claude Code, Codex, Cursor
 
-5. **Why it exists**
-   - Two paragraphs:
-     - "Most hackathon submissions are slop. They die when the prize is paid."
-     - "Sui Overflow 2026 explicitly rewards polish, real-world application, and sustainability. Suiperpower is built around that bar. Every build skill includes a 'will this survive past the hackathon' gate."
+No carousel. No gradient hero animation. No Overflow co-branding in the hero. The hero is for install conversion, not partnerships.
 
-6. **Sui Overflow 2026 callout**
-   - Box with Overflow logo / link to overflow.sui.io
-   - Text: "Made for Sui Overflow 2026 participants. Free, open-source, no signup. Sponsors: Walrus, DeepBook, OpenZeppelin, OtterSec, Scallop."
-   - Link to /overflow page
+### 2. What this gives you
 
-7. **How it works** (3 steps)
-   - Step 1: Install (curl one-liner)
-   - Step 2: Open your AI agent (Claude Code, Codex, Cursor)
-   - Step 3: Ask. Skills route by intent. Outputs flow phase to phase.
+Three-column grid. One sentence per column. No icons unless they are tasteful.
 
-8. **Skill catalog preview** (table, top 12 skills)
-   - Two columns: skill name, what it does
-   - Link: "Browse all skills →"
+- **Skills that route by intent**, "Type what you want to do. The right skill loads. No flag memorization, no doc spelunking."
+- **A Sui knowledge base your agent can read**, "Move, objects, PTBs, Walrus, DeepBook, Scallop. The agent uses it before it writes a line."
+- **Anti-slop quality gates**, "Every build skill ends with a 'will this survive past the hackathon' check. Slop fails the gate."
 
-9. **Ecosystem catalog preview** (table, 8 repos)
-   - Two columns: repo, what it is
-   - Link: "Browse all repos →"
+### 3. The journey
 
-10. **Built for**
-    - "Sui Overflow 2026 participants"
-    - "Solo Sui builders past the hackathon"
-    - "EVM / Solana devs migrating to Sui"
-    - "Sui ecosystem teams who want a default integration story"
+Visual: a horizontal flow of five labels, **Learn → Idea → Build → Ship → Grow**.
 
-11. **Sponsors band**
-    - Five logos: Walrus, DeepBook, OpenZeppelin, OtterSec, Scallop
-    - One-liner per sponsor with link to their integration skill page
+Under each label, two or three example trigger phrases (real ones from the catalog). One short paragraph below the flow:
 
-12. **Open source**
-    - Link to GitHub repo
-    - "Skills are markdown. Read every one. Audit-friendly by design."
-    - License (MIT)
-    - Contributing pointer
+> "Skills hand off through the filesystem. The idea phase writes a brief, the build phase reads it, the ship phase reads what build produced. No retyping, no re-prompting your agent's memory."
 
-13. **Footer**
-    - Privacy / Terms / Changelog / Telegram / Twitter / GitHub
-    - Built by [your handle / Kwek Labs]
-    - No copyright marketing fluff
+This section is the part that visually distinguishes us from solana.new. They show four pillars. We show a five-phase pipeline because Suiperpower is opinionated about handoff, that is the actual product story.
 
-## /install page
+### 4. Why anti-slop matters
 
-Step-by-step:
+Two short paragraphs. This is the differentiator and the section that earns the click to GitHub.
 
-1. Prerequisites (Node 20+, git)
-2. The install command
-3. Optional: install Claude Code / Codex / Cursor first if you have not
-4. What gets installed where
-5. How to update (`suiperpower update`)
-6. How to uninstall (`suiperpower uninstall`)
-7. Telemetry opt-in explanation (link to /privacy)
-8. Troubleshooting (common errors and fixes)
-9. Next: try a skill (with example commands)
+> "Most hackathon submissions are slop. Polished landing page, broken flow, no path to a second user. They die when the prize is paid out."
+>
+> "Sui Overflow 2026 explicitly judges on real-world application, polish, and sustainability. Suiperpower is built around that bar. Build skills run a checklist before they call themselves done. Ship skills refuse to fake telemetry, fake users, or fake code coverage. The bar is in the markdown, public, auditable."
 
-## /skills page
+CTA below the second paragraph: a single text link to `github.com/<org>/suiperpower/blob/main/plans/12-ANTI-SLOP-FRAMEWORK.md` with text "Read the quality bar."
 
-- Phase tabs: Learn / Idea / Build / Ship / Grow
-- Filter by phase, by sponsor, by Sui-unique
-- Each row: name, one-line description, trigger phrase example, link to detail page
+### 5. From the builder
 
-## /skills/<skill-name> page
+A single pull-quote with attribution. Sets a face and credentials behind the anti-slop argument above. Kept short, no surrounding paragraphs.
 
-- Renders the SKILL.md from the GitHub repo (build-time fetch + markdown render)
-- Shows: name, description, trigger phrases, what it reads, what it writes, the workflow
-- Sidebar: related skills (from SKILL_ROUTER), referenced knowledge docs, agent install snippet
+> "Most Sui hackathon submissions stop the day the prize lands. They were built for the hackathon, not for users. I built Suiperpower because that is the trap I want the next batch of builders to skip. Build a Sui product that earns real users, real traction, and eventually, real funding."
+>
+> Kelvin Adithya, co-founder of [PIVY](https://pivy.me), 1st place at Sui Overflow 2025 (Payment and Wallets track)
 
-## /repos page
+Visual treatment notes for the build phase (not styling decisions, just constraints):
 
-- Filter by category (defi, nft, examples, template, etc.)
-- Each row: name, owner, description, license, last-checked date
-- Link to GitHub repo
+- Quote should read as a quote, not a marketing testimonial. Plain text, left-aligned, with a thin vertical accent or a leading quotation mark, nothing more.
+- Attribution one line below, smaller, with the role and the Overflow 2025 win as the credibility anchor.
+- No headshot in v1. The words carry the weight, not a face. Headshot is optional later if it ships well.
+- Link "PIVY" to pivy.me. Do not link "Sui Overflow 2025" anywhere; the year matters more than a link.
 
-## /mcps page
+### 6. Built with Sui sponsors
 
-- Each row: name, publisher, install command, use cases
-- Copy-button on the install command
+Single horizontal band. Five logos: **Walrus, DeepBook, OpenZeppelin, OtterSec, Scallop.**
 
-## /ideas page
+One sentence above: "First-class integration skills, knowledge docs, and clonable patterns for the Sui Overflow 2026 sponsors. The recommender refuses sponsor tracks the project does not actually use."
 
-- Filter by source (a16z, YC, Alliance, Sui-native gaps)
-- Filter by category (defi, nft, infra, social, gaming, AI, RWA)
-- Filter by difficulty
-- Each row: title, summary, source, fit-for-Sui rationale, recommended track
+Each logo links to the corresponding skill on GitHub (`/skills/build/walrus-storage/SKILL.md` etc). No internal sponsor page.
 
-## /docs page
+### 7. Final CTA
 
-- Index of `skills/data/sui-knowledge/*.md` rendered as nav
-- Sections:
-  - Sui (01 + 02 + cookbook-index)
-  - Move + objects (03)
-  - Protocols + SDKs (04)
-  - App layer (05)
-  - Open source (06)
-  - Sponsor docs (Walrus, DeepBook, Scallop, OpenZeppelin, OtterSec)
+Mirror the hero install block. One line above:
 
-## /sponsors page
+> "Install once. Use it on every Sui project, not just one hackathon."
 
-- One section per sponsor:
-  - Logo
-  - One-paragraph what they do
-  - Link to their integration skill (`walrus-storage`, `deepbook-orderbook`, etc.)
-  - Link to their knowledge doc
-  - Link to their ecosystem repos in our catalog
-  - External link to their official docs
+```
+curl -fsSL https://suiperpower.dev/setup.sh | bash
+```
 
-## /overflow page
+Two text links below the block:
 
-For Sui Overflow 2026 participants specifically.
+- "Browse skills on GitHub →" (links to repo `skills/` folder)
+- "Contributions welcome →" (links to repo `CONTRIBUTING.md`)
 
-Sections:
+### Footer
 
-1. Suiperpower for Sui Overflow 2026 (hero, 1 sentence)
-2. Why this beats spreading across many submissions (link to Sui team's quality message)
-3. The four-step path: install → idea → build → submit
-4. Submission generator preview (what `/submit-to-sui-overflow` produces)
-5. Sponsor track recommender
-6. Anti-slop checklist (the same one in `12-ANTI-SLOP-FRAMEWORK.md`, condensed)
-7. Telegram + Twitter links
-8. Submit URL: deepsurge.xyz/hackathons/...
+One line. Left-aligned.
 
-## /changelog page
+- Wordmark
+- GitHub
+- X / Twitter
+- Telegram
+- MIT license
 
-Released versions, top to bottom. One section per release: date, version, what changed (added skills, fixed skills, catalog updates).
+That is it. No copyright marketing fluff. No "all rights reserved". No "made with love". No newsletter signup.
 
-## /privacy page
+## What is intentionally NOT on the website
 
-- What we collect (anonymous telemetry, opt-in)
-- What we do not collect (file paths, code, prompts, PII)
-- Tier model explained
-- How to opt out (`telemetryTier: "off"`)
-- Convex source link
-- Contact for privacy questions
+This is the load-bearing list. Anything here that gets re-added in v1 reverts the design intent of the site.
 
-## /terms page
+- Signup flow
+- Dashboard
+- "Submit your project for review" form (use deepsurge.xyz)
+- Blog (v1)
+- Catalog browser pages (skills, repos, MCPs, ideas live on GitHub)
+- Skill detail pages (read SKILL.md on GitHub)
+- Sponsor detail pages
+- Sui Overflow 2026 dedicated landing page (the launch playbook is in `plans/24`, the website does not need it)
+- Changelog page (use GitHub Releases)
+- Privacy page (link to repo's `PRIVACY.md` if needed)
+- Terms page (MIT license is the terms)
+- "Compare suiperpower vs solana-new" framing
+- Pricing page (free, open source, no paid tier)
+- Docs site (markdown on GitHub is the docs)
 
-Standard MIT-license-compatible terms. Use of CLI does not transfer ownership of any code the user generates.
+If a future contributor wants to add any of the above, they should justify it in `plans/19-OPEN-QUESTIONS.md` first.
 
 ## SEO essentials (basic)
 
-- Each route has a meta title and description
-- Open Graph image at `/public/og-image.png` (we ship a default, can be improved later)
-- Sitemap at `/sitemap.xml`
+- One meta title: "Suiperpower, build Sui that ships."
+- One meta description: "Skills, knowledge, and a CLI for shipping production Sui products with Claude Code, Codex, or Cursor."
+- Open Graph image at `/public/og-image.png`
+- Sitemap with one entry, `/`
 - robots.txt allowing all
 
-Not optimizing aggressively. The CLI is the product, not the website.
+Not optimizing aggressively. The CLI is the product, not the website. SEO traffic to a one-page site is a vanity metric.
 
 ## Build / deploy
 
 - Vercel deployment from the GitHub repo's `main` branch
-- Catalog routes prebuild from `cli/data/*.json` at deploy time, so a catalog PR triggers a redeploy
-- `setup.sh` served from `/public/setup.sh` via Vercel rewrite
+- Single static page, builds in seconds
+- `setup.sh` served from `/public/setup.sh` via Vercel rewrite, content-type `text/x-shellscript`
+- Cache `/setup.sh` short (5 min) so a fix to install logic ships fast
 
-## Routing implementation notes (no styling)
+## Routing implementation notes
 
 - App Router (Next.js 14+)
-- `app/page.tsx` → landing
-- `app/install/page.tsx` → install
-- `app/skills/page.tsx` → skill list
-- `app/skills/[name]/page.tsx` → skill detail (generateStaticParams from skills folder)
-- `app/repos/page.tsx`, `app/mcps/page.tsx`, `app/ideas/page.tsx` → from JSON
-- `app/docs/[slug]/page.tsx` → from `skills/data/sui-knowledge/`
-- `app/(marketing)/sponsors/page.tsx`, `app/overflow/page.tsx`
-- `app/changelog/page.tsx`, `app/privacy/page.tsx`, `app/terms/page.tsx`
-- `public/setup.sh` (raw, served as text)
+- `app/page.tsx`, the landing (the only page component)
+- `app/layout.tsx`, root layout with meta tags
+- `public/setup.sh`, raw text install script
+- `public/og-image.png`, OG card
+- `app/sitemap.ts`, programmatic sitemap, single entry
+- `app/robots.ts`, programmatic robots.txt
 
-## What is intentionally not on the website
+No `(marketing)` group, no `[slug]` routes, no `generateStaticParams`. Single static page.
 
-- A signup flow
-- A dashboard
-- A "submit your project for review" form (use deepsurge.xyz)
-- A blog (in v1, MDX docs cover the educational content; blog can come later)
-- A "compare suiperpower vs solana-new" page (not the right framing, we are for Sui)
-- A pricing page (free, open source, no commercial offering)
+## Future expansion (deliberately deferred)
+
+If post-launch traffic and signal justify it, in this order:
+
+1. `/skills` and `/skills/<name>` (catalog browser, only if visitors are clearly searching for individual skills)
+2. `/docs` (only if the GitHub markdown is not enough for non-developer visitors)
+3. `/blog` (only if there is a real content cadence, not "we should have a blog")
+
+None of this ships in v1. The single-page site is the bet, and the bet is that the CLI install command, not website content, is what converts.

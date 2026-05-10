@@ -218,15 +218,17 @@ If a breaking change to a skill's interface (input / output context file shape) 
 
 When adding a new skill, the author:
 
-1. Creates the folder under `skills/<phase>/<name>/`.
-2. Writes `SKILL.md` with the section template above.
-3. Adds the canonical telemetry preamble via `scripts/inject-preamble.ts <skill-path>`.
-4. Adds `agents/openai.yaml` mirroring the frontmatter.
-5. Optionally adds `references/` files for on-demand loading.
-6. Updates `cli/data/sui-skills.json` if the skill is catalog-listed.
-7. Updates `skills/README.md` with a one-line entry.
-8. Updates `skills/SKILL_ROUTER.md` if the skill could be confused with a nearby skill.
-9. Adds an entry to `04-SKILLS-CATALOG.md` (this plan doc).
-10. Runs `suiperpower init` locally to verify install to all three agent dirs.
+1. Reads `22-SAMPLE-SKILL.md` for the canonical reference (build-with-move) and copies its structure.
+2. Creates the folder under `skills/<phase>/<name>/`.
+3. Writes `SKILL.md` with the section template above.
+4. Adds the canonical telemetry preamble via `scripts/inject-preamble.ts <skill-path>`.
+5. Adds `agents/openai.yaml` mirroring the frontmatter.
+6. Optionally adds `references/` files for on-demand loading.
+7. Updates `cli/data/sui-skills.json` if the skill is catalog-listed.
+8. Updates `skills/README.md` with a one-line entry.
+9. Updates `skills/SKILL_ROUTER.md` if the skill could be confused with a nearby skill (see `23-SKILL-ROUTER-SPEC.md`).
+10. Adds an entry to `04-SKILLS-CATALOG.md` (this plan doc).
+11. Runs `pnpm lint:skills` locally to catch issues.
+12. Runs `suiperpower init` locally to verify install to all three agent dirs.
 
-Time-to-first-PR for an experienced contributor: under 10 minutes once the spec is internalized.
+Time-to-first-PR for an experienced contributor: under 90 minutes once the spec is internalized. Reference `22-SAMPLE-SKILL.md` for the gold-standard skill that authors should pattern-match against.

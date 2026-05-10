@@ -1,0 +1,198 @@
+#!/usr/bin/env bash
+# Launch the auto-build loop. Survives terminal close via tmux.
+#
+# Usage:
+#   ./bigdev/autobuild              start (or attach to running) build session
+#   ./bigdev/autobuild status       show whether a session is active, durable rules count
+#   ./bigdev/autobuild kill         stop the running build cleanly
+#   ./bigdev/autobuild logs         tail the latest iteration log
+#   ./bigdev/autobuild watch        live-tail the current iter without attaching tmux
+#   ./bigdev/autobuild say "msg"    add durable rule to bigdev/claude/requirements-log.md (persists)
+#   ./bigdev/autobuild fix "msg"    one-shot inject for next iter only (transient)
+#   ./bigdev/autobuild log          view durable steering log
+#
+# Pass extra env to the underlying wrapper:
+#   MAX=20 ./bigdev/autobuild
+#   QUIET=1 ./bigdev/autobuild
+
+set -uo pipefail
+cd "$(dirname "$0")/.."
+
+PROJECT_SLUG="$(basename "$PWD" | tr -c 'A-Za-z0-9' '-' | tr -s '-' | sed 's/^-//;s/-$//')"
+PROJECT_HASH="$(printf '%s' "$PWD" | shasum -a 1 2>/dev/null | cut -c1-6)"
+SESSION="${AUTOBUILD_SESSION:-autobuild-${PROJECT_SLUG}-${PROJECT_HASH}}"
+
+WRAPPER="bigdev/claude/auto-build.sh"
+LOG_DIR="bigdev/claude/auto-build-logs"
+LOCK_FILE="bigdev/claude/auto-build.lock"
+REQ_LOG="bigdev/claude/requirements-log.md"
+INJECT="bigdev/claude/inject.md"
+
+if [[ ! -f "$WRAPPER" ]]; then
+  echo "missing $WRAPPER" >&2
+  exit 1
+fi
+
+case "${1:-start}" in
+  status)
+    echo "project: $PWD"
+    echo "session: $SESSION"
+    if command -v tmux >/dev/null 2>&1 && tmux has-session -t "$SESSION" 2>/dev/null; then
+      echo "state:   running in tmux"
+      echo "attach:  tmux attach -t $SESSION"
+    elif [[ -f "$LOCK_FILE" ]] && kill -0 "$(cat "$LOCK_FILE" 2>/dev/null)" 2>/dev/null; then
+      echo "state:   running (foreground, pid $(cat "$LOCK_FILE"))"
+    else
+      echo "state:   not running"
+    fi
+    if [[ -f "$REQ_LOG" ]]; then
+      RULES=$(grep -cE '^- \[' "$REQ_LOG" 2>/dev/null || echo 0)
+      RULES=${RULES//[^0-9]/}
+      echo "durable rules: ${RULES:-0}  (./bigdev/autobuild log to view)"
+    fi
+    if [[ -f "$INJECT" ]]; then
+      echo "pending one-shot inject: $INJECT (will apply next iter)"
+    fi
+    exit 0
+    ;;
+  kill|stop)
+    if command -v tmux >/dev/null 2>&1 && tmux has-session -t "$SESSION" 2>/dev/null; then
+      tmux kill-session -t "$SESSION"
+      echo "killed tmux session: $SESSION"
+    fi
+    if [[ -f "$LOCK_FILE" ]]; then
+      LOCK_PID=$(cat "$LOCK_FILE" 2>/dev/null || echo "")
+      if [[ -n "$LOCK_PID" ]] && kill -0 "$LOCK_PID" 2>/dev/null; then
+        kill "$LOCK_PID" 2>/dev/null && echo "killed wrapper pid $LOCK_PID" || true
+      fi
+      rm -f "$LOCK_FILE"
+    fi
+    echo "done"
+    exit 0
+    ;;
+  logs)
+    LATEST=$(ls -t "$LOG_DIR"/iter-*.log 2>/dev/null | head -1)
+    if [[ -z "$LATEST" ]]; then
+      echo "no logs yet in $LOG_DIR"
+      exit 1
+    fi
+    echo "tailing $LATEST (Ctrl-C to stop)"
+    tail -f "$LATEST"
+    exit 0
+    ;;
+  watch)
+    trap 'pkill -P $$ 2>/dev/null; exit 0' INT TERM
+    LAST=""
+    while true; do
+      LATEST=$(ls -t "$LOG_DIR"/iter-*.log 2>/dev/null | head -1)
+      if [[ -z "$LATEST" ]]; then
+        echo "no iter logs yet, retrying in 2s..."
+        sleep 2 & wait $! 2>/dev/null
+        continue
+      fi
+      if [[ "$LATEST" != "$LAST" ]]; then
+        echo ""
+        echo "--- $LATEST ---"
+        LAST="$LATEST"
+      fi
+      timeout 30 tail -F -n 100 "$LATEST" 2>/dev/null &
+      wait $! 2>/dev/null || true
+    done
+    ;;
+  say)
+    shift
+    MSG="$*"
+    if [[ -z "$MSG" ]]; then
+      echo "usage: ./bigdev/autobuild say \"your durable rule\"" >&2
+      echo "  tip: wrap in single quotes to keep \$vars and backticks literal" >&2
+      exit 1
+    fi
+    mkdir -p bigdev/claude
+    if [[ ! -f "$REQ_LOG" ]]; then
+      cat > "$REQ_LOG" <<'EOF'
+# Requirements Log
+
+Durable steering accumulated during the autonomous build. Append-only, project memory, committed to git.
+
+The build loop reads this every iteration and treats every entry as authoritative. If an entry belongs in CLAUDE.md or a plan, the loop will promote it and append `(promoted -> file)` to the entry.
+
+Add new rules with: `./bigdev/autobuild say "your rule"`
+
+---
+
+EOF
+    fi
+    TS="$(date '+%Y-%m-%d %H:%M')"
+    printf '\n- [%s] %s\n' "$TS" "$MSG" >> "$REQ_LOG"
+    echo "logged to $REQ_LOG"
+    echo "  the next iteration reads the log and applies all rules in order"
+    echo "  (a build iter currently running keeps its old prompt; the new rule kicks in next iter)"
+    echo "  view all rules:  ./bigdev/autobuild log"
+    exit 0
+    ;;
+  fix)
+    shift
+    MSG="$*"
+    if [[ -z "$MSG" ]]; then
+      echo "usage: ./bigdev/autobuild fix \"transient correction\"" >&2
+      echo "  tip: wrap in single quotes to keep \$vars and backticks literal" >&2
+      exit 1
+    fi
+    mkdir -p bigdev/claude
+    printf '%s\n' "$MSG" > "$INJECT"
+    echo "one-shot inject queued for next iter (archived after use)"
+    echo "  this is transient. for durable rules use: ./bigdev/autobuild say \"...\""
+    exit 0
+    ;;
+  log)
+    if [[ ! -f "$REQ_LOG" ]]; then
+      echo "no requirements log yet."
+      echo "add a rule with: ./bigdev/autobuild say \"your rule\""
+      exit 0
+    fi
+    if command -v less >/dev/null 2>&1; then
+      less -R "$REQ_LOG"
+    else
+      cat "$REQ_LOG"
+    fi
+    exit 0
+    ;;
+  start|"")
+    ;;
+  *)
+    echo "usage: $0 [start|kill|status|logs|watch|say \"msg\"|fix \"msg\"|log]"
+    exit 1
+    ;;
+esac
+
+if ! command -v tmux >/dev/null 2>&1; then
+  echo "tmux not installed, running in foreground (terminal close will kill it)"
+  echo "install with: brew install tmux"
+  echo ""
+  exec bash "$WRAPPER"
+fi
+
+if tmux has-session -t "$SESSION" 2>/dev/null; then
+  echo "attaching to existing build session..."
+  echo "(detach: Ctrl-B then D  |  kill: ./bigdev/autobuild kill)"
+  exec tmux attach -t "$SESSION"
+fi
+
+echo "starting build in tmux session: $SESSION"
+echo "(per-project session, safe to run alongside other repos)"
+echo "(detach: Ctrl-B then D  |  reattach: ./bigdev/autobuild  |  kill: ./bigdev/autobuild kill)"
+echo "(scroll: trackpad/PgUp, or Ctrl-B then [ for keyboard scroll)"
+echo "(steer durable: ./bigdev/autobuild say \"rule\"  |  one-shot: ./bigdev/autobuild fix \"msg\")"
+echo ""
+
+ENV_PASSTHROUGH=""
+for var in MAX QUIET ITER_TIMEOUT VALIDATE LOG_RETENTION; do
+  if [[ -n "${!var:-}" ]]; then
+    ENV_PASSTHROUGH+="$var=${!var} "
+  fi
+done
+
+tmux new-session -d -s "$SESSION" "${ENV_PASSTHROUGH}bash $WRAPPER"
+tmux set-option -t "$SESSION" -g mouse on 2>/dev/null || true
+tmux set-option -t "$SESSION" -g history-limit 50000 2>/dev/null || true
+exec tmux attach -t "$SESSION"

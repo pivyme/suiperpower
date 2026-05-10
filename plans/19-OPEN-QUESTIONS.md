@@ -89,3 +89,21 @@ Append a row. Set status `open`. Add a needed-by date. Tag an owner. Move to `de
 | 18 | Never bundle agent API keys | 2026-05-10 |
 | 19 | `--quiet` mode supported | 2026-05-10 |
 | 20 | Privacy-friendly analytics (Plausible / Vercel) | 2026-05-10 |
+
+## Cross-references to detailed plans
+
+Several open-question areas have full plan docs that supersede informal notes here:
+
+- Contribution / supply-chain rules: see `20-CONTRIBUTING-PLAN.md`
+- Testing strategy: see `21-TESTING-STRATEGY.md`
+- Sample SKILL.md (resolves "what does a real skill look like"): see `22-SAMPLE-SKILL.md`
+- Skill routing seed: see `23-SKILL-ROUTER-SPEC.md`
+- Overflow participant playbook: see `24-OVERFLOW-2026-PLAYBOOK.md`
+- Security posture (resolves "is curl-to-bash trustworthy"): see `25-SECURITY-POSTURE.md`
+- Worked example journey: see `26-EXAMPLE-USER-JOURNEY.md`
+- Governance / sustainability: see `27-GOVERNANCE-AND-SUSTAINABILITY.md`
+- Competitive landscape: see `28-COMPETITIVE-LANDSCAPE.md`
+- Docs authoring standards: see `29-DOCS-AUTHORING-STANDARDS.md`
+- Shared guides + phase-handoff specs: see `30-SHARED-GUIDES-SPEC.md`
+
+Open questions that remain genuinely open (not subsumed by another plan): rows above.
