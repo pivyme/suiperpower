@@ -217,11 +217,11 @@ Mirror solana-new's optional per-skill install path so users who do not want the
 
 Skipped by the build loop. Kelvin handles `web/` separately, on his own timeline, against `plans/14-WEBSITE-STRUCTURE.md`. Do not scaffold `web/`, do not write Next.js code, do not add `web:*` scripts to `package.json`, do not add a `web/` workspace to `pnpm-workspace.yaml`. If a later phase asks "did the website ship", the answer is "out of scope, see Kelvin." This block exists only so the phase number stays stable; there is no work to do here.
 
-## Phase 28: Root docs [ ]
-- [ ] write `README.md` per `plans/15-BRAND.md` voice (what Suiperpower is, install one-liner, quickstart commands, link to `plans/README.md`, telemetry posture, MIT). No marketing-speak. No banned words. Quickstart shows `suiper` first with a one-liner noting `suiperpower` works identically (per Phase 1.5 alias decision).
-- [ ] write `AGENTS.md` (Codex / generic-agent context, mirrors `CLAUDE.md` shape)
-- [ ] write `CONTRIBUTING.md` per `plans/20-CONTRIBUTING-PLAN.md` (PR shapes, supply-chain rules, reviewer checklists, code-of-conduct outline)
-- [ ] write `LICENSE` (MIT)
+## Phase 28: Root docs [x]
+- [x] write `README.md` per `plans/15-BRAND.md` voice (what Suiperpower is, install one-liner, quickstart commands, per-skill install path, link to `plans/README.md`, telemetry posture, MIT). Quickstart shows `suiper` first with a one-liner noting `suiperpower` works identically.
+- [x] write `AGENTS.md` (Codex / generic-agent context, mirrors `CLAUDE.md` shape)
+- [x] write `CONTRIBUTING.md` per `plans/20-CONTRIBUTING-PLAN.md` (PR shapes, supply-chain rules, reviewer checklists, code-of-conduct outline)
+- [x] write `LICENSE` (MIT)
 
 ## Phase 29: Pre-publish gate [ ]
 - [ ] write `scripts/publish.ts` (pre-publish: typecheck, lint:skills, lint:catalog, `pnpm package:skills` clean run, build, smoke-test install in a Docker layer, version sync between `package.json`, `cli/branding.ts`, and `skills-lock.json`)

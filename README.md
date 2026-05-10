@@ -158,6 +158,17 @@ Full tree in [plans/02-PROJECT-STRUCTURE.md](plans/02-PROJECT-STRUCTURE.md).
 
 `suiperpower init` writes to all three by default. Detail in [plans/09-MULTI-AGENT-PARITY.md](plans/09-MULTI-AGENT-PARITY.md).
 
+## Per-skill install
+
+Already know which one or two skills you want? Install them a la carte through the [skills.sh](https://skills.sh) CLI. Identifiers resolve as GitHub shorthand:
+
+```bash
+npx skills add kwekKwek/suiperpower/skills/build/build-with-move
+npx skills add kwekKwek/suiperpower/skills/idea/find-next-sui-idea
+```
+
+The full curl one-liner stays the canonical install. Per-skill is for users who already have a target. See [plans/03-INSTALL-FLOW.md](plans/03-INSTALL-FLOW.md).
+
 ## Use in your repo (vendor mode)
 
 Want your teammates to get all skills automatically when they clone?
