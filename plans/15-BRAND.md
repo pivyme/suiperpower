@@ -10,12 +10,14 @@ Pronunciation: "soop-er-power" (the "Sui" front blends, the rest reads as "super
 
 ## Tagline
 
-**build Sui that ships.**
+**Build something meaningful, on Sui**
 
-A single lowercase declarative line, period at the end. The verb "ships" is the load-bearing word: it carries the anti-slop differentiator (most hackathon builds never reach a working live URL, and the ones that do rarely survive the prize being paid). Acceptable variants for limited spaces:
+A single inviting line. Capital B at the start, comma in the middle, no trailing period. The "meaningful" word does the load-bearing work: it covers real users, real traction, real revenue, products their builders are proud of, all in one inclusive term. Welcoming to hackathon participants and long-term builders both.
 
-- "build Sui that ships." (default, full)
-- "build Sui." (compact, e.g. favicon-adjacent contexts)
+Acceptable variants for limited spaces:
+
+- "Build something meaningful, on Sui" (default, full)
+- "Build something meaningful" (compact, when the Sui context is already obvious)
 - "skills, knowledge, and a CLI for shipping production Sui products" (descriptive long-form)
 
 We deliberately do not use the three-beat structure that solana-new uses ("think. build. ship."). The structure invites direct comparison and we are not a Sui re-skin of solana-new.

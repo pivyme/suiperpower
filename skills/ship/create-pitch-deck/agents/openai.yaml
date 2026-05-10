@@ -1,0 +1,14 @@
+name: create-pitch-deck
+version: 1
+phase: ship
+description: |
+  Draft a 10-slide pitch deck grounded in the project's actual context files
+  (idea, business model, retention loop, deploy artifacts), pick a structure
+  based on audience (judges, investors, grant program), and refuse to claim a
+  metric the source files do not back. Use when the user says "create a pitch
+  deck", "investor deck", "draft my deck", "pitch deck", "make a deck", "deck
+  for hackathon", "deck for grant", or "deck for VCs".
+prompt_path: ../SKILL.md
+references:
+  - ../references/deck-structures.md
+  - ../references/no-fake-metrics.md

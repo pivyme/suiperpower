@@ -5,7 +5,7 @@
 export const BRAND = {
   PRODUCT_NAME: "suiperpower",
   PRODUCT_NAME_TITLE: "Suiperpower",
-  TAGLINE: "think. build. ship.",
+  TAGLINE: "Build something meaningful, on Sui",
   DESCRIPTION: "skills, knowledge, and a CLI for shipping production Sui products",
 
   INSTALL_URL: "https://suiperpower.dev/setup.sh",

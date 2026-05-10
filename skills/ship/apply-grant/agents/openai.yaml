@@ -1,0 +1,14 @@
+name: apply-grant
+version: 1
+phase: ship
+description: |
+  Draft a Sui Foundation grant application grounded in the project's deployed
+  work, with concrete deliverables, milestones with payouts tied to
+  verifiable outcomes, a public-good rationale, and a sustainability plan
+  that does not say "we will figure it out". Use when the user says "apply
+  for a grant", "Sui Foundation grant", "grant application", "ecosystem
+  grant", "draft my grant", "submit grant", or "Sui grant".
+prompt_path: ../SKILL.md
+references:
+  - ../references/milestone-templates.md
+  - ../references/budget-line-items.md

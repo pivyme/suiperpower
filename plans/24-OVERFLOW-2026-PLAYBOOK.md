@@ -378,4 +378,4 @@ That is the bar. Suiperpower's job is to make hitting it the path of least resis
 
 Build something you would be proud to have your name on. Sui Overflow 2026 is a launch occasion, not a destination. The product you ship here is the product you might still be running in 2027.
 
-build Sui that ships.
+Build something meaningful, on Sui

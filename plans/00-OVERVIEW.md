@@ -16,9 +16,9 @@ Installs to `~/.claude/skills/`, `~/.codex/skills/`, and `~/.cursor/rules/`. Not
 
 ## Tagline
 
-**build Sui that ships.**
+**Build something meaningful, on Sui**
 
-A single declarative line. "ships" carries the anti-slop weight: most hackathon builds never reach a working live URL, and the ones that do rarely survive the prize being paid. Suiperpower is the path that gets to a real, working, sustained ship.
+A single inviting line. "Meaningful" is the load-bearing word: it covers real users, real traction, real revenue, products their builders are proud of, all in one term. Inclusive of any builder, hackathon participant or not, since Suiperpower is built for production Sui projects long-term, not just Overflow 2026.
 
 ## Who it is for
 

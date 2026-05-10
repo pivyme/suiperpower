@@ -118,15 +118,15 @@ Quality bar: `plans/29-DOCS-AUTHORING-STANDARDS.md` for every markdown / JSON fi
 - [x] author `skills/learn/sui-beginner/` (Sui from scratch, framing for EVM / Solana migrants)
 - [x] author `skills/learn/learn/` (writes session learnings to `.suiperpower/learnings.md` per phase-handoff spec)
 
-## Phase 17: Ship phase skills [ ]
-- [ ] author `skills/ship/deploy-to-testnet/` (uses `guides/deploy-runbook.md`, captures package id via `guides/package-id-capture.md`, writes `deploy-context.md`)
-- [ ] author `skills/ship/deploy-to-mainnet/` (refuses unless `validate-business-model`, `retention-loop`, `review-move` outputs exist; reuses guides)
-- [ ] author `skills/ship/pick-my-sui-track/` per `plans/11-SPONSOR-INTEGRATION.md` (track must score 3 on load-bearing integration)
-- [ ] author `skills/ship/submit-to-sui-overflow/` per `plans/10-HACKATHON-SUBMISSION.md` (deepsurge form fill, preflight gate, captures `submission-context.md`)
-- [ ] author `skills/ship/create-pitch-deck/`
-- [ ] author `skills/ship/marketing-video/`
-- [ ] author `skills/ship/video-craft/`
-- [ ] author `skills/ship/apply-grant/` (Sui Foundation grant flow)
+## Phase 17: Ship phase skills [x]
+- [x] author `skills/ship/deploy-to-testnet/` (uses `guides/deploy-runbook.md`, captures package id via `guides/package-id-capture.md`, writes `deploy-context.md`)
+- [x] author `skills/ship/deploy-to-mainnet/` (refuses unless `validate-business-model`, `retention-loop`, `review-move` outputs exist; reuses guides)
+- [x] author `skills/ship/pick-my-sui-track/` per `plans/11-SPONSOR-INTEGRATION.md` (track must score 3 on load-bearing integration)
+- [x] author `skills/ship/submit-to-sui-overflow/` per `plans/10-HACKATHON-SUBMISSION.md` (deepsurge form fill, preflight gate, captures `submission-context.md`)
+- [x] author `skills/ship/create-pitch-deck/`
+- [x] author `skills/ship/marketing-video/`
+- [x] author `skills/ship/video-craft/`
+- [x] author `skills/ship/apply-grant/` (Sui Foundation grant flow)
 
 ## Phase 18: Skill router + skills README [ ]
 - [ ] write `skills/SKILL_ROUTER.md` per `plans/23-SKILL-ROUTER-SPEC.md` (full per-row routing table, every v1 skill, common-wrong-pick column)

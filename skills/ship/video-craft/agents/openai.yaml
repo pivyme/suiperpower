@@ -1,0 +1,13 @@
+name: video-craft
+version: 1
+phase: ship
+description: |
+  Polish frame-level video quality, pacing, captions, color, and audio for a
+  demo or marketing cut, with a structured pass over each issue category
+  before declaring the video ready. Use when the user says "polish my video",
+  "improve my video frames", "improve my demo video", "video review", "make
+  my video better", "video polish", or "edit pass".
+prompt_path: ../SKILL.md
+references:
+  - ../references/loudness-targets.md
+  - ../references/pacing-rules.md

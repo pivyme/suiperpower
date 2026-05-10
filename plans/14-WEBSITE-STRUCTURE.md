@@ -6,7 +6,6 @@ A single-page site at `suiperpower.dev`. This doc is the build spec for the fron
 
 | What | Status | Where it lands |
 |---|---|---|
-| Final tagline | **Pending Kelvin's pick.** Current placeholder: `build Sui that ships.` (do not ship this verbatim, Kelvin flagged it as off). See alternatives in chat history. | Section 1 headline, meta title, OG card |
 | GitHub org / handle for repo URL | Pending, see `plans/19` row 1 | All `<org>` placeholders below |
 | OG image final art | Not yet produced | `/public/og-image.png` |
 | Team photos (4) | Not yet collected, see `MANUAL-TODO.md` A14 | `/public/team/*.jpg` |
@@ -83,7 +82,7 @@ Eight sections + top bar + footer. Render in this order on every viewport.
 
 | Element | Text |
 |---|---|
-| Headline (H1) | `<TAGLINE>` (placeholder until Kelvin locks; current draft `build Sui that ships.`) |
+| Headline (H1) | `Build something meaningful, on Sui` |
 | Subhead | Skills, knowledge, and a CLI for shipping production Sui products with Claude Code, Codex, or Cursor. |
 | Install command (in a `<pre><code>` block) | `curl -fsSL https://suiperpower.dev/setup.sh \| bash` |
 | Below install (small) | 30+ Sui-native skills, knowledge base, ecosystem catalog. One install. Three agents. |
@@ -454,7 +453,7 @@ These apply to every section.
 
 ### Meta
 
-- Title: `Suiperpower — <TAGLINE>` (placeholder until tagline locks)
+- Title: `Suiperpower: Build something meaningful, on Sui`
 - Description: `Skills, knowledge, and a CLI for shipping production Sui products with Claude Code, Codex, or Cursor.`
 - Sitemap: one entry, `/`
 - robots.txt: allow all

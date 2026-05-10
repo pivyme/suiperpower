@@ -1,0 +1,14 @@
+name: marketing-video
+version: 1
+phase: ship
+description: |
+  Plan a 30 to 60 second product marketing video for Twitter, YouTube Shorts,
+  or a launch landing page, with a tight script, a shot list, and on-screen
+  text plan, grounded in the project's load-bearing flow rather than stock
+  visuals. Use when the user says "marketing video", "promo video", "launch
+  video", "Twitter video", "YouTube short", "shorts", "make a promo", or
+  "trailer".
+prompt_path: ../SKILL.md
+references:
+  - ../references/channel-specs.md
+  - ../references/script-beats.md

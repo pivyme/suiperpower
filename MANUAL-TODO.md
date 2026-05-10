@@ -39,7 +39,7 @@ These are personal-judgment or registration tasks. Cannot be delegated.
 | A8 | Pick the long-term Vercel account owner | Project linked to GitHub repo, deploy preview working | S | open |
 | A9 | Decide footer copy for "Built by ..." | Final line locked, written into `plans/14-WEBSITE-STRUCTURE.md` footer section | S | open |
 | A10 | Approve Kelvin's quote on the landing | Final wording locked in `plans/14-WEBSITE-STRUCTURE.md` section 5 | S | done |
-| A11 | Approve final tagline `build Sui that ships.` | Confirmed across CLAUDE.md, README, all plans | S | done |
+| A11 | Approve final tagline `Build something meaningful, on Sui` | Confirmed across CLAUDE.md, README, all plans on 2026-05-11 | S | done |
 | A12 | Logo direction call | Either ship a wordmark-only logo or commission a mark, decision in `plans/19` row 31 | M | open |
 | A13 | Privacy policy text | Real policy reflecting the Convex schema in `plans/13`, not boilerplate. Lawyer-reviewed if possible. | M | open |
 | A14 | Collect team photos for the landing "Made by" section | Four photos: Kelvin Adithya, Febi Mettasari, Louis Arvin, Tengku Farhan. Same aspect ratio, consistent crop, consistent lighting. Saved to `public/team/<firstname>.jpg`. Confirm each person OK with photo + link going public. | S | open |

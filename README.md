@@ -1,6 +1,6 @@
 # suiperpower
 
-> build Sui that ships.
+> Build something meaningful, on Sui
 
 The open platform behind [suiperpower.dev](https://suiperpower.dev). Skills, knowledge, and a CLI for shipping production Sui products with Claude Code, Codex, or Cursor.
 

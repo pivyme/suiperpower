@@ -6,7 +6,7 @@ Context for any AI agent (Claude Code, Codex, Cursor) working on the Suiperpower
 
 Suiperpower is the open platform behind https://suiperpower.dev. It packages skills, knowledge, ecosystem catalog, and a CLI so an AI coding agent can take a developer from "what should I build on Sui" to a deployed, sustainable product. Distributed via curl one-liner. Built around an explicit anti-slop quality bar so projects survive past hackathons, not just win them.
 
-Tagline: **build Sui that ships.**
+Tagline: **Build something meaningful, on Sui**
 
 The launch occasion is Sui Overflow 2026, but Suiperpower is built as a long-lived production tool, not a hackathon helper.
 

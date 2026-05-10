@@ -1,0 +1,14 @@
+name: deploy-to-mainnet
+version: 1
+phase: ship
+description: |
+  Publish to Sui mainnet only after the project has cleared the anti-slop
+  gates (validate-business-model, retention-loop, review-move) and the
+  testnet deploy was exercised, then capture the mainnet artifacts and lock
+  the upgrade policy intentionally. Use when the user says "deploy to
+  mainnet", "ship to production", "go to mainnet", "mainnet publish",
+  "production deploy", or "publish to Sui mainnet".
+prompt_path: ../SKILL.md
+references:
+  - ../references/gate-rationale.md
+  - ../references/upgrade-policy-choice.md

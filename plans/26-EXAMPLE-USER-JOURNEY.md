@@ -29,7 +29,7 @@ Output:
 
 ```
 suiperpower
-build Sui that ships.
+Build something meaningful, on Sui
 
   ✓ Node.js v20.11.0
   ✓ git installed
