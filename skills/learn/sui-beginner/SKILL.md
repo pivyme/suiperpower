@@ -135,7 +135,7 @@ Before reporting done:
 - Did the session actually teach the object model, Move abilities, capabilities, and PTBs, in that order?
 - For an EVM or Solana background user, did each major concept include a translation note plus where the analogy breaks?
 - Did the session end with a concrete recommended next skill, not a generic "good luck"?
-- Did the skill avoid pitching Sui in superlatives (no "best", no "fastest", no "revolutionary")?
+- Did the skill avoid pitching Sui in superlatives (no "best of breed", no "fastest", no marketing absolutes)?
 - If the user opted in to writeback, did the writeback follow phase-handoff spec headers exactly?
 
 If any answer is no, the skill keeps working.

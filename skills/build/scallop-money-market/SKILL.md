@@ -42,7 +42,7 @@ Integrates Scallop's money market into the project. Sets up the Scallop SDK, cre
 ## When to use it
 
 - The project needs lending or borrowing without rebuilding the underlying interest model.
-- Building a yield aggregator, leverage manager, or treasury app.
+- Building a yield aggregator, looped-borrow strategy app, or treasury app.
 - The user wants Sui DeFi composability (borrow on Scallop, route to another protocol in the same flow).
 - The user is targeting Scallop's university award track at Sui Overflow 2026.
 

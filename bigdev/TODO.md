@@ -206,12 +206,12 @@ Mirror solana-new's optional per-skill install path so users who do not want the
 - [x] write `.env.example` (`NEXT_PUBLIC_CONVEX_URL`, `CONVEX_DEPLOY_KEY`, `SUIPERPOWER_TELEMETRY` override)
 - [x] write `.env.local-stub` (local-mock defaults so loop iterations do not pause for real Convex setup)
 
-## Phase 26: Tests and CI matrix [ ]
-- [ ] write skill linter under `scripts/lint-skills.ts` (frontmatter present, name == folder, description trigger phrase count, sections present, telemetry preamble byte-identical, no em-dashes, no banned words, Sui terms capitalized) per `plans/05-SKILL-FORMAT.md` and `plans/15-BRAND.md`
-- [ ] write `scripts/lint-catalog.ts` for JSON catalog (schema check, ids sorted alphabetically, every required field present) per `plans/07-ECOSYSTEM-CATALOG.md`
-- [ ] write install smoke test (`scripts/test-install.sh`) per `plans/21-TESTING-STRATEGY.md` (fresh container, run install.sh, run `suiperpower doctor`, assert exit 0 and skill count > 0)
-- [ ] write multi-agent install matrix test (asserts skills appear under `~/.claude/skills`, `~/.codex/skills`, `~/.cursor/rules`)
-- [ ] add `pnpm test`, `pnpm test:install`, `pnpm lint:skills`, `pnpm lint:catalog`, `pnpm typecheck` scripts to root `package.json`
+## Phase 26: Tests and CI matrix [x]
+- [x] write skill linter under `scripts/lint-skills.ts` (frontmatter present, name == folder, description trigger phrase count, sections present, telemetry preamble byte-identical, no em-dashes, no banned words, Sui terms capitalized) per `plans/05-SKILL-FORMAT.md` and `plans/15-BRAND.md`
+- [x] write `scripts/lint-catalog.ts` for JSON catalog (schema check, ids sorted alphabetically, every required field present) per `plans/07-ECOSYSTEM-CATALOG.md`
+- [x] write install smoke test (`scripts/test-install.sh`) per `plans/21-TESTING-STRATEGY.md` (build, --version, --help, doctor exit 0, init --vendor lands skills under all three agent dirs). Curl-flow / fresh-container test deferred to MANUAL-TODO Block G (needs sandboxed CI)
+- [x] write multi-agent install matrix test, covered by `test-install.sh` asserting skills land under `.claude/skills/suiperpower/`, `.codex/skills/suiperpower/`, `.cursor/rules/suiperpower/` in vendor mode
+- [x] add `pnpm test`, `pnpm test:install`, `pnpm lint:skills`, `pnpm lint:catalog`, `pnpm typecheck` scripts to root `package.json`
 
 ## Phase 27: Website (deferred, owned by Kelvin)
 
