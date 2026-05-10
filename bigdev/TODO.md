@@ -1,6 +1,6 @@
 # Suiperpower bigdev TODO
 
-28 active phases plus 1 deferred (Phase 27, website, owned by Kelvin separately and out of scope here). AI-skills-first ordering. Source-of-truth plan docs live in `plans/`. Use `plans/README.md` as the index. The build loop reads the per-phase plan reference column to know which doc to load.
+29 active phases plus 1 deferred (Phase 27, website, owned by Kelvin separately and out of scope here). Phase 24.5 is the per-skill skills.sh distribution path. AI-skills-first ordering. Source-of-truth plan docs live in `plans/`. Use `plans/README.md` as the index. The build loop reads the per-phase plan reference column to know which doc to load.
 
 Reference patterns (NOT content) may be adapted from `reference/solana-new-main/`. Never bring Solana-specific content, branding, or copy across. Suiperpower is for the Sui network only.
 
@@ -178,13 +178,31 @@ Brand stays `suiperpower` (domain, npm package, GitHub repo, `BRAND.PRODUCT_NAME
 - [x] wire into `init.ts` so Cursor rules emit to `~/.cursor/rules/` whenever Cursor is detected
 - [x] verify a sample skill (`build-with-move`) round-trips correctly under `--check` mode
 
-## Phase 24: install.sh + curl one-liner host [ ]
-- [ ] write `install.sh` per `plans/03-INSTALL-FLOW.md` (banner, prereq check, npm install -g, agent CLI install, `suiperpower init`, `suiperpower doctor`, telemetry opt-in only on TTY, quickstart print). Adapt patterns from `reference/solana-new-main/install.sh` but rebrand fully. The post-install banner shows `suiper` first with a one-liner noting `suiperpower` works identically (per Phase 1.5 alias decision).
-- [ ] copy/symlink `install.sh` into `public/setup.sh` and add `vercel.json` rewrite `/setup.sh -> /public/setup.sh`
-- [ ] write `setup` (bash convenience that calls `install.sh` for local dev)
-- [ ] write `suiperpower-pass.sh` (local dev helper mirroring `solana-pass.sh` shape but Sui-specific commands)
-- [ ] sanity test: `bash install.sh` in a fresh shell does not error out at the prereq + npm-install + init steps (mocked npm registry OK, see Phase 26)
-- [ ] add bin verification: `bash -c "suiperpower --version && suiper --version"` produces matching output (per Phase 1.5 alias decision)
+## Phase 24: install.sh + curl one-liner host [x]
+- [x] write `install.sh` per `plans/03-INSTALL-FLOW.md` (banner, prereq check, npm install -g, agent CLI install, `suiperpower init`, `suiperpower doctor`, telemetry opt-in only on TTY, quickstart print). Adapt patterns from `reference/solana-new-main/install.sh` but rebrand fully. The post-install banner shows `suiper` first with a one-liner noting `suiperpower` works identically (per Phase 1.5 alias decision).
+- [x] copy/symlink `install.sh` into `public/setup.sh` and add `vercel.json` rewrite `/setup.sh -> /public/setup.sh`
+- [x] write `setup` (bash convenience that calls `install.sh` for local dev)
+- [x] write `suiperpower-pass.sh` (local dev helper mirroring `solana-pass.sh` shape but Sui-specific commands)
+- [x] sanity test: `bash install.sh` in a fresh shell does not error out at the prereq + npm-install + init steps (mocked npm registry OK, see Phase 26)
+- [x] add bin verification: `bash -c "suiperpower --version && suiper --version"` produces matching output (per Phase 1.5 alias decision)
+
+## Phase 24.5: skills.sh per-skill distribution [ ]
+Mirror solana-new's optional per-skill install path so users who do not want the full curl one-liner can grab individual skills via `npx skills add suiperpower/<skill-name>` from https://skills.sh. The full curl flow stays the canonical install; this is an additional surface for users who already have one or two of our skills in mind. Reference: `skills/build/navigate-skills/SKILL.md` line 133 in solana-new mentions the same pattern.
+
+- [ ] decide registry shape: per-skill packaging (one tarball per skill) vs single bundle. Per-skill is the skills.sh convention. Each skill ships as `<skill-name>/SKILL.md` + `agents/openai.yaml` + `references/*` self-contained, no cross-skill imports. Verify every authored skill in `skills/<phase>/` is already self-contained before promising this externally
+- [ ] write `scripts/package-skills.sh` (adapt pattern from `reference/solana-new-main/scripts/package-skills.sh`, do NOT bring Solana content) that emits one tarball per skill into `public/skills/<skill-name>.tar.gz` plus an aggregate `public/skills.tar.gz` for the curl-flow
+- [ ] write `scripts/generate-skills-index.ts` that emits `public/skills/index.json` per skills.sh schema (id, name, description, phase, tarball URL, sha256, version). Cross-checked against `skills-lock.json` from Phase 29
+- [ ] add Vercel route for `/skills/<name>.tar.gz` and `/skills/index.json` to `vercel.json` (rewrites or static under `public/`)
+- [ ] register the suiperpower namespace on https://skills.sh (manual, Kelvin owns; document the steps in `plans/03-INSTALL-FLOW.md` under a new "per-skill install" subsection)
+- [ ] add a per-skill install verification: `npx skills add suiperpower/build-with-move` lands a working `SKILL.md` plus references under `~/.claude/skills/` (or Codex / Cursor equivalent) with the same content as the curl-flow install
+- [ ] document in `README.md` (Phase 28) and `skills/README.md` (Phase 18 follow-up) that two install paths exist: full curl one-liner (recommended) and per-skill `npx skills add suiperpower/<skill>` (a la carte)
+- [ ] add a row to `cli/data/sui-skills.json` schema (Phase 19) for `skillsSh: { id: string, npxCmd: string }` so `suiperpower skills` TUI can show the per-skill install command alongside each entry
+- [ ] add to Phase 29 pre-publish gate: `pnpm package:skills` runs clean, every tarball validates against the index sha256, and `index.json` lists every shipped skill
+
+Open questions to resolve before this phase starts (track in `plans/19-OPEN-QUESTIONS.md`):
+- does skills.sh accept third-party namespaces and what is the registration flow as of 2026
+- what does skills.sh expect for the index file format (verify against current docs, do not assume from solana-new memory)
+- should references inline into SKILL.md at package time or stay as sibling files in the tarball
 
 ## Phase 25: Convex backend [ ]
 - [ ] write `convex/schema.ts` per `plans/13-CONVEX-BACKEND.md` (telemetry + feedback tables, indexes by_skill / by_timestamp)

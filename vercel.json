@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    { "source": "/setup.sh", "destination": "/public/setup.sh" }
+  ],
+  "headers": [
+    {
+      "source": "/(public/)?setup.sh",
+      "headers": [
+        { "key": "Content-Type", "value": "text/x-shellscript; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=300, must-revalidate" }
+      ]
+    }
+  ]
+}

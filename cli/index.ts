@@ -29,13 +29,18 @@ const handlers: Record<string, () => Promise<Module>> = {
 };
 
 function readVersion(): string {
-  try {
-    const here = dirname(fileURLToPath(import.meta.url));
-    const pkg = JSON.parse(readFileSync(join(here, "..", "..", "package.json"), "utf8"));
-    return typeof pkg.version === "string" ? pkg.version : "0.0.0";
-  } catch {
-    return "0.0.0";
+  // dist layout: dist/cli/index.js -> ../../package.json
+  // dev (tsx): cli/index.ts -> ../package.json
+  const here = dirname(fileURLToPath(import.meta.url));
+  for (const rel of ["../package.json", "../../package.json"]) {
+    try {
+      const pkg = JSON.parse(readFileSync(join(here, rel), "utf8")) as { version?: string };
+      if (typeof pkg.version === "string") return pkg.version;
+    } catch {
+      // try next
+    }
   }
+  return "0.0.0";
 }
 
 function printHelp(): void {
