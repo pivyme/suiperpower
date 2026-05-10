@@ -1,0 +1,16 @@
+name: frontend-design-guidelines
+version: 1
+phase: build
+description: |
+  Apply tasteful frontend defaults to a Sui dapp, layout, spacing, hierarchy,
+  accessibility, without copying the standard crypto template look. Use when
+  the user says "build a frontend", "design taste check", "review my UI",
+  "frontend defaults", "spacing and typography", "make my dapp look good", or
+  "frontend looks generic".
+prompt_path: ../SKILL.md
+references:
+  - ../references/template-look-markers.md
+  - ../references/component-defaults.md
+  - ../references/sui-frontend-patterns.md
+knowledge:
+  - skills/data/sui-knowledge/05-app-layer-and-consumer.md

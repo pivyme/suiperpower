@@ -1,0 +1,13 @@
+name: number-formatting
+version: 1
+phase: build
+description: |
+  Format token amounts, USD values, percentages, gas, and addresses correctly
+  in a Sui dapp UI, including MIST to SUI conversion. Use when the user says
+  "format numbers in my UI", "convert MIST to SUI", "format token amounts",
+  "decimal handling", "format USD price", "tabular figures", or "my numbers
+  look ugly".
+prompt_path: ../SKILL.md
+references:
+  - ../references/format-helpers.md
+  - ../references/decimals-by-token.md

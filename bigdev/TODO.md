@@ -92,12 +92,12 @@ Quality bar: `plans/29-DOCS-AUTHORING-STANDARDS.md` for every markdown / JSON fi
 - [x] author `skills/build/review-move/` per `plans/12-ANTI-SLOP-FRAMEWORK.md` (P0-P3 walk, OZ migration suggestions)
 - [x] author `skills/build/navigate-skills/` (meta skill listing what is available, reads `cli/data/sui-skills.json`)
 
-## Phase 13: Frontend / design build skills [ ]
-- [ ] author `skills/build/brand-design/` (color, typography, name)
-- [ ] author `skills/build/frontend-design-guidelines/`
-- [ ] author `skills/build/number-formatting/` (Sui-native helpers, MIST conversion)
-- [ ] author `skills/build/page-load-animations/`
-- [ ] author `skills/build/design-taste/`
+## Phase 13: Frontend / design build skills [x]
+- [x] author `skills/build/brand-design/` (color, typography, name)
+- [x] author `skills/build/frontend-design-guidelines/`
+- [x] author `skills/build/number-formatting/` (Sui-native helpers, MIST conversion)
+- [x] author `skills/build/page-load-animations/`
+- [x] author `skills/build/design-taste/`
 
 ## Phase 14: Idea phase skills [ ]
 - [ ] author `skills/idea/find-next-sui-idea/` (writes initial `idea-context.md`, scoring rubric)

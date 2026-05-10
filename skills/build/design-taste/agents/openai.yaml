@@ -1,0 +1,14 @@
+name: design-taste
+version: 1
+phase: build
+description: |
+  Diagnose why a Sui dapp looks generic, AI-generated, or "not premium", and
+  produce a specific list of moves to fix it. Use when the user says "this
+  looks generic", "looks AI-generated", "not premium", "it feels cheap",
+  "design taste", "make this look intentional", "design looks off", or "what
+  is wrong with my UI".
+prompt_path: ../SKILL.md
+references:
+  - ../references/generic-markers.md
+  - ../references/ai-generated-markers.md
+  - ../references/the-one-move.md

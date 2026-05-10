@@ -1,0 +1,12 @@
+name: brand-design
+version: 1
+phase: build
+description: |
+  Pick a name, color palette, and typography for a Sui product without slipping
+  into generic crypto aesthetics. Use when the user says "pick brand colors",
+  "name my product", "what should my logo look like", "brand my Sui project",
+  "design my brand", "pick a typeface", or "my project name is bad".
+prompt_path: ../SKILL.md
+references:
+  - ../references/anti-generic-checklist.md
+  - ../references/palette-recipes.md
