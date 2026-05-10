@@ -33,7 +33,9 @@
     "lint:skills": "tsx scripts/lint-skills.ts",
     "lint:catalog": "tsx scripts/lint-catalog.ts",
     "test": "pnpm typecheck && pnpm lint:skills && pnpm lint:catalog && pnpm preamble:check",
-    "test:install": "./scripts/test-install.sh"
+    "test:install": "./scripts/test-install.sh",
+    "skills:lock": "tsx scripts/generate-skills-lock.ts",
+    "publish:dry": "tsx scripts/publish.ts"
   },
   "devDependencies": {
     "@types/node": "^22.13.14",

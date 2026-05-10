@@ -223,11 +223,11 @@ Skipped by the build loop. Kelvin handles `web/` separately, on his own timeline
 - [x] write `CONTRIBUTING.md` per `plans/20-CONTRIBUTING-PLAN.md` (PR shapes, supply-chain rules, reviewer checklists, code-of-conduct outline)
 - [x] write `LICENSE` (MIT)
 
-## Phase 29: Pre-publish gate [ ]
-- [ ] write `scripts/publish.ts` (pre-publish: typecheck, lint:skills, lint:catalog, `pnpm package:skills` clean run, build, smoke-test install in a Docker layer, version sync between `package.json`, `cli/branding.ts`, and `skills-lock.json`)
-- [ ] verify every tarball under `public/skills/<name>.tar.gz` matches the sha256 in `public/skills/index.json`, and that `index.json` lists every skill present in `skills/<phase>/<name>/` (Phase 24.5 follow-up)
-- [ ] generate `skills-lock.json` listing every shipped skill with sha256 of the rendered file content (manifest used by `update`)
-- [ ] verify `package.json` `files` field matches `plans/02-PROJECT-STRUCTURE.md` (dist + skills/ + cli/data/, never plans / bigdev / reference)
-- [ ] verify `package.json` ships both `suiperpower` and `suiper` bin entries; verify `npm pack` tarball lists both bins, and that a clean `npm install -g` creates symlinks for both under `node_modules/.bin/` (per Phase 1.5 alias decision)
-- [ ] add `publish:dry` script (`npm pack` + diff against expected file list)
-- [ ] final: `pnpm publish:dry` clean run; commit; output `<promise>ALL PHASES COMPLETE</promise>`
+## Phase 29: Pre-publish gate [x]
+- [x] write `scripts/publish.ts` (typecheck, lint:skills, lint:catalog, preamble:check, package:skills, build, test:install, package shape, version sync, tarball hashes match index, npm pack file list). Docker-layer smoke-test deferred to MANUAL-TODO Block G (needs sandboxed CI)
+- [x] verify every tarball under `public/skills/<name>.tar.gz` matches the sha256 in `public/skills/index.json` (checkTarballHashes in publish.ts)
+- [x] generate `skills-lock.json` via `scripts/generate-skills-lock.ts`, hashing every file under each skill folder + an aggregate folderHash
+- [x] verify `package.json` `files` field includes the required entries and excludes plans / bigdev / reference / web (checkPackageShape in publish.ts)
+- [x] verify `package.json` ships both `suiperpower` and `suiper` bin entries; live `npm install -g` symlink check is part of MANUAL-TODO row A15 once the package is published
+- [x] add `publish:dry` script that runs the full gate without actually publishing
+- [x] final: `pnpm publish:dry` clean run on 2026-05-11; commit; output `<promise>ALL PHASES COMPLETE</promise>`

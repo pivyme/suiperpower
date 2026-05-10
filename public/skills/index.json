@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-05-10T17:53:16.817Z",
+  "generatedAt": "2026-05-10T18:07:15.013Z",
   "publisher": "suiperpower",
   "publisherUrl": "https://suiperpower.dev",
   "totalSkills": 45,
@@ -12,7 +12,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/apply-grant.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/ship/apply-grant",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/ship/apply-grant",
-      "sha256": "d909207e3822075f62b09c3610ee23de8c793c8c5fef95888ca7c8bbad183f27",
+      "sha256": "ecbb698f2bd20d2661bbe14f3b1a5cd00bc0f5b21c17750897a19a3833d012fe",
       "size": 6704,
       "version": "0.1.0"
     },
@@ -23,7 +23,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/brand-design.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/brand-design",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/brand-design",
-      "sha256": "9f6bd435a2983e6f5e9db0873a18adc0bda02271582e92342eb440665005ab27",
+      "sha256": "41cb6daa44429361a5790a1350c0bb79ce462b4c9f37119d5197d9e2d6c8dde8",
       "size": 5826,
       "version": "0.1.0"
     },
@@ -34,7 +34,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/build-mobile-sui.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/build-mobile-sui",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/build-mobile-sui",
-      "sha256": "19066c14a184824a9619e5cc726b757cdb1e64e9422dccb676b9acc97d96f678",
+      "sha256": "a0eeb34e2dcb6081b6ee6941f48d3745fce1d52c0a596cf3e94463e2968241be",
       "size": 7352,
       "version": "0.1.0"
     },
@@ -45,7 +45,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/build-with-claude.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/build-with-claude",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/build-with-claude",
-      "sha256": "9fccb1443debdc13bc06cc5006ae2fe816c6826297ac3c3140d50b949ae0e4fb",
+      "sha256": "5a62b76f9672c7a21aa801bbc236e7aea279863d83b6a2cd14015216512ea129",
       "size": 5970,
       "version": "0.1.0"
     },
@@ -56,7 +56,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/build-with-move.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/build-with-move",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/build-with-move",
-      "sha256": "6f249e837a9250a32ab837e6dc17dfe584cdf48a117c8ef91ce54541873c9240",
+      "sha256": "1718db24158e61b119fc92948d3286b1b5616e29b04bf4ccea96e937402fa9f2",
       "size": 9413,
       "version": "0.1.0"
     },
@@ -67,7 +67,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/competitive-landscape.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/idea/competitive-landscape",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/idea/competitive-landscape",
-      "sha256": "6011a86b6d95a880d06369b569d1bbd2dd0f37d3667d60cfe024a59979b8ee1c",
+      "sha256": "e60b67a761b250605da90eedd6ed6e1428d0747844e549467d206e267562b5c5",
       "size": 6914,
       "version": "0.1.0"
     },
@@ -78,7 +78,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/create-pitch-deck.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/ship/create-pitch-deck",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/ship/create-pitch-deck",
-      "sha256": "613c2080f1d9c378f271afaf279d45ecef911bb238477078ec9bc45eecba61c7",
+      "sha256": "84f3cda023c8cf17b690315cb3e01ae83a62f470830db85e98837147d1de06fe",
       "size": 6458,
       "version": "0.1.0"
     },
@@ -89,7 +89,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/debug-move.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/debug-move",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/debug-move",
-      "sha256": "56728073c08baf446e51fcd038e7e7fe8c6e072f49ecfb82765b09b82cbdebf4",
+      "sha256": "f9b1b6ff5436aabd7d5f2fdab0c4cb478a06b58bb29b956505a4f817d7426927",
       "size": 8632,
       "version": "0.1.0"
     },
@@ -100,7 +100,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/deepbook-orderbook.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/deepbook-orderbook",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/deepbook-orderbook",
-      "sha256": "3be1d7f48946ed7ab8a892fb40ad9aa568aa8dba365141ae6f31788d97dca3c6",
+      "sha256": "c108fb7969839938416496102f29dcf4c3b5483e0c3713fd23f0a89a8d484b40",
       "size": 7483,
       "version": "0.1.0"
     },
@@ -111,7 +111,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/deepbook-research.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/idea/deepbook-research",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/idea/deepbook-research",
-      "sha256": "318d7847117cd888785c59049550f145aa9d6001ba35e72694e164b95d8d9884",
+      "sha256": "51b05e0616df442bde9d5fe2bc91a0c3a92c1452abb17b6d81883a9c73f95420",
       "size": 7143,
       "version": "0.1.0"
     },
@@ -122,7 +122,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/deploy-to-mainnet.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/ship/deploy-to-mainnet",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/ship/deploy-to-mainnet",
-      "sha256": "7023d06dff2a02ad46a92bd396ad5d5632d752cdceb7b32dc799a0cbc4de6ab2",
+      "sha256": "daad886d9838ebc62c89923033ace5ae5e65da94385db3726fc4705be1ae6f16",
       "size": 6488,
       "version": "0.1.0"
     },
@@ -133,7 +133,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/deploy-to-testnet.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/ship/deploy-to-testnet",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/ship/deploy-to-testnet",
-      "sha256": "df401029e275e854ecfc6566bd618bd106f6397cab22d8a270f1848a3b99f2cb",
+      "sha256": "09059cafc076a9d3a6c103353954f49bbea4792f0f6ce7fb6f04e7bfdda92227",
       "size": 5747,
       "version": "0.1.0"
     },
@@ -144,7 +144,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/design-taste.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/design-taste",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/design-taste",
-      "sha256": "88f9661e8a2bffeee64bfd78369bfc0d1f8a298b9cf7d756973241b9d3394761",
+      "sha256": "4fbd571715cb170c08f448e70cb611f190fb44b9291f385c3cbada7deeb7a7a7",
       "size": 7936,
       "version": "0.1.0"
     },
@@ -155,7 +155,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/find-next-sui-idea.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/idea/find-next-sui-idea",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/idea/find-next-sui-idea",
-      "sha256": "e0fe1abd1a72afa9a4821dae64154eedbe5f43ec24cf6227fb67d538dbb4f028",
+      "sha256": "c4e19e6cc0d94a7ce8bf1f017c4e4e3d04ac254775e5e128442a70eb0e3d416c",
       "size": 8350,
       "version": "0.1.0"
     },
@@ -166,7 +166,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/frontend-design-guidelines.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/frontend-design-guidelines",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/frontend-design-guidelines",
-      "sha256": "88686ccb657187d5c80c38deca26583dd6ae092dd93d3e7dff2c0552657ad62c",
+      "sha256": "b8c4534630f3d6bd815011b1c81084295dc6ad05d4f4095a23e01f3c6bd9a86f",
       "size": 8415,
       "version": "0.1.0"
     },
@@ -177,7 +177,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/kiosk-marketplace.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/kiosk-marketplace",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/kiosk-marketplace",
-      "sha256": "0dd4500e77c15dde7cc3616c23c9a475a84934fb004620c3da193dadf6df5711",
+      "sha256": "c276adaae712d210d08256e03b1d1a3ca0b4530a7e6b3bd5cd2b2e7e57f2f9e2",
       "size": 8078,
       "version": "0.1.0"
     },
@@ -188,7 +188,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/launch-coin.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/launch-coin",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/launch-coin",
-      "sha256": "0e132086b4aef0ff5e5c14c67fc3264ca51705a37e09b41857f057f28fbdab55",
+      "sha256": "ed40ddc8579ccf6e944c28885af49b91a3632138a26104e7831fe5ef9c7d6f91",
       "size": 7352,
       "version": "0.1.0"
     },
@@ -199,7 +199,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/learn.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/learn/learn",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/learn/learn",
-      "sha256": "60a6c3f0710d13ac893e22bbff075ac2efeb1745cbcb64d89488b505c1f61960",
+      "sha256": "b503666febc61dfee74913dd66b20bb3b1a61c75879f1ef8648e6007d2a577e9",
       "size": 5960,
       "version": "0.1.0"
     },
@@ -210,7 +210,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/marketing-video.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/ship/marketing-video",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/ship/marketing-video",
-      "sha256": "f5cd7bd9d3c8fb925e1a422d841f9aaf5bc467b4e03a6834de60a781a90c74e1",
+      "sha256": "0b5117080b86b6ade65b40d9bc66fd8970f20fde60b3e70a20df2a9da5ae5049",
       "size": 5775,
       "version": "0.1.0"
     },
@@ -221,7 +221,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/navigate-skills.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/navigate-skills",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/navigate-skills",
-      "sha256": "3f41316ffefbc3656e01501f1289a9c1be41ee0e8b80b960ee9dc93cbf8f6e24",
+      "sha256": "947238fcb56088507c649cd238d9ed19cc94bc943acbbd266270df6c1e0ce00f",
       "size": 6035,
       "version": "0.1.0"
     },
@@ -232,7 +232,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/number-formatting.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/number-formatting",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/number-formatting",
-      "sha256": "51dbb3d19161be0b97a2923307c230e16231be0a34a7cb6b63fd5405b5950abb",
+      "sha256": "6c2d53526dbf2ff165418378a7c676b0f77ea224e17cda7bb3b5150a8d6b3827",
       "size": 6469,
       "version": "0.1.0"
     },
@@ -243,7 +243,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/object-model-design.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/object-model-design",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/object-model-design",
-      "sha256": "f89bf24234fe0c88019ded01266458b667d1d7ec6a3face1e494c3aa208893d7",
+      "sha256": "5b918264b03194245a2015fd3124f6d1c18a7d9d751963d4a53eea985cb0ecb7",
       "size": 9833,
       "version": "0.1.0"
     },
@@ -254,7 +254,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/openzeppelin-sui-libs.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/openzeppelin-sui-libs",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/openzeppelin-sui-libs",
-      "sha256": "9c8352f7e09fbe7a9d85dfcdf2f38a87911c7639f48704c42da7d152c98624e7",
+      "sha256": "29645d9b84a6c91696779f34e59a8faaed5b68fd947822a70dd5428c08793e2b",
       "size": 7937,
       "version": "0.1.0"
     },
@@ -265,7 +265,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/ottersec-prep.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/ottersec-prep",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/ottersec-prep",
-      "sha256": "3abc9a712673bb6130dbe74d1f5b519fd3ee5b3d451675569a2dc3d5e6d91c6c",
+      "sha256": "598812e0b59d17f842a95bf443e277149e0830f60cd4453d65ab2d8f0ab8518b",
       "size": 9824,
       "version": "0.1.0"
     },
@@ -276,7 +276,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/overflow-copilot.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/idea/overflow-copilot",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/idea/overflow-copilot",
-      "sha256": "133b8a1df9b39ccc2e1872db3f872c189a8ed4c6c412d2b966449a6e1d176b9d",
+      "sha256": "b21429297cb99f719b2d6c55460cc361da5b3e84206ed51424573fa7df4fd209",
       "size": 6435,
       "version": "0.1.0"
     },
@@ -287,7 +287,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/page-load-animations.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/page-load-animations",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/page-load-animations",
-      "sha256": "49993b289196ae8da9a39b13231a4993774f09fbd7c6d9986f2a114358e4db4b",
+      "sha256": "93a982b98ea93b58e9892ec99f971ae3b6154648d62b1cff8c1876f0ab3ed8ff",
       "size": 6468,
       "version": "0.1.0"
     },
@@ -298,7 +298,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/pick-my-sui-track.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/ship/pick-my-sui-track",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/ship/pick-my-sui-track",
-      "sha256": "167d593d74e614df4613503410d02519ae91e0acc39084452a17e094aa3fc833",
+      "sha256": "6e5d0260f7c44196e8e6a0fd164cca6ab6d8ff5cb6c0c73e0eaaad646bb92b63",
       "size": 5905,
       "version": "0.1.0"
     },
@@ -309,7 +309,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/product-review.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/product-review",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/product-review",
-      "sha256": "89287692c43e5d05c85a28392609234e49e6a59a4a689c7213afd1f0b7bea6b1",
+      "sha256": "ac03329aa951548732d17c17803b06e7da99fe05a41154eb2382880eef9957f6",
       "size": 6887,
       "version": "0.1.0"
     },
@@ -320,7 +320,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/ptb-composer.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/ptb-composer",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/ptb-composer",
-      "sha256": "157213899c2bcf0df2460485fe578595a34c1aaf0bd054c7d040d961458ee15a",
+      "sha256": "9f7bc980c75d2da3b584fa3b4a16b9507b51ccfb93376ff409f352dc9cc6736d",
       "size": 8463,
       "version": "0.1.0"
     },
@@ -331,7 +331,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/retention-loop.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/retention-loop",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/retention-loop",
-      "sha256": "fdca195a7e2dec8c5b71aca19a4a9d3f37f57518b185763ae9907df773b2c1ed",
+      "sha256": "c13207e4749ad71a263c5ee92ca735d47b26cc2554805bcd4654aa2f10ace5e0",
       "size": 6929,
       "version": "0.1.0"
     },
@@ -342,7 +342,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/review-move.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/review-move",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/review-move",
-      "sha256": "6ffc384ed7b2bab521701a6a023cead8ad8ea1a160931d0d087093f9c02b239b",
+      "sha256": "0d2f8f86e486cb675169e1dc38391753f78a0884e3a80e54f71555861049e89c",
       "size": 8386,
       "version": "0.1.0"
     },
@@ -353,7 +353,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/roast-my-product.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/roast-my-product",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/roast-my-product",
-      "sha256": "e3f38916c74282b7cd9a0169c6a66c8f0a03a93d684b887b1ea9cfad10266f05",
+      "sha256": "a5eb98c9b8a37c516e28d82553d738fdd9889e2cc8a6d2f0d369794724172591",
       "size": 6972,
       "version": "0.1.0"
     },
@@ -364,7 +364,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/scaffold-project.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/scaffold-project",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/scaffold-project",
-      "sha256": "d8fab8a88ea70ac92d21ad70a8850d9b8903eeafbf6347824c2a477df6ed1834",
+      "sha256": "63cc21ea6a0513c12632acc2b6f8e55feaa1f99d93f25d0ecec644e4e137f4d6",
       "size": 6629,
       "version": "0.1.0"
     },
@@ -375,8 +375,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/scallop-money-market.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/scallop-money-market",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/scallop-money-market",
-      "sha256": "6def8d5caf1ee4009712dff24c59da230252cc91b0c75a3e5d9b6b40249e000f",
-      "size": 7382,
+      "sha256": "72d7d0d22488d9a8016707f08cfe62be9700e50188e6490bf3349fc447dab45c",
+      "size": 7386,
       "version": "0.1.0"
     },
     {
@@ -386,7 +386,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/sponsored-transactions.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/sponsored-transactions",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/sponsored-transactions",
-      "sha256": "b5b4f85420fe3c1f20dbab8fa5b0d4eee13d063d01c274f9643328c6222869aa",
+      "sha256": "eba2d4324c32653904a02bdb1a52927af631eb524e8d361c591d95de32b02382",
       "size": 8802,
       "version": "0.1.0"
     },
@@ -397,7 +397,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/submit-to-sui-overflow.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/ship/submit-to-sui-overflow",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/ship/submit-to-sui-overflow",
-      "sha256": "d734fabf84e81aef6df99943bed3320cf85d9c2ef02313407bea9869f0049892",
+      "sha256": "6b78b2dd1d7c001886908ea13e2711239fea05671b1bea7a289c8857926270f2",
       "size": 6866,
       "version": "0.1.0"
     },
@@ -408,8 +408,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/sui-beginner.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/learn/sui-beginner",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/learn/sui-beginner",
-      "sha256": "12d8fa7db8f98576f11844b5f11ac7ae8de1b43f23e7cd49b8535940d1a4e9fb",
-      "size": 7492,
+      "sha256": "119383f355c31a21c8c2ee394a43122dd8b4a384e239cc28f95f4a5ddd4c2062",
+      "size": 7506,
       "version": "0.1.0"
     },
     {
@@ -419,7 +419,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/sui-zk-login.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/sui-zk-login",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/sui-zk-login",
-      "sha256": "c652b8d5253352674dcab1651899e50c60af1ecf4803f5a4e12408a9916ba3c6",
+      "sha256": "72c9e9607c41a8941f4ac8acae03f37be1a100ebd52c559b8491dbf7430cbe31",
       "size": 9102,
       "version": "0.1.0"
     },
@@ -430,7 +430,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/validate-business-model.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/validate-business-model",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/validate-business-model",
-      "sha256": "f9000123e42c0606045a66bc5f68a59b0b2a9d3a57833fae20ac641ec855922d",
+      "sha256": "37b6a8dc23bce44254132208e59d9e23b421fc2052a0f77ce98091f2268d0bb9",
       "size": 6975,
       "version": "0.1.0"
     },
@@ -441,7 +441,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/validate-idea.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/idea/validate-idea",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/idea/validate-idea",
-      "sha256": "36731559a98f7d4d4bd7cab52287e3971b55c04a704dddceb6991261d99e022b",
+      "sha256": "f93aa219c7b5b64dc01db2b47a04751afa9c397d8e71969e206af5af88f2e915",
       "size": 6629,
       "version": "0.1.0"
     },
@@ -452,7 +452,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/video-craft.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/ship/video-craft",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/ship/video-craft",
-      "sha256": "8247ec3bc6924e91b8afd9ee1e5ea00c04795838b5a5a9ed5e72f1d793bcc6ad",
+      "sha256": "edf7bd07194d6e4f1a5583032bf094a0ce0e32f2f4da1a9a2b41ccd81a498db1",
       "size": 5671,
       "version": "0.1.0"
     },
@@ -463,7 +463,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/virtual-sui-incubator.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/virtual-sui-incubator",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/virtual-sui-incubator",
-      "sha256": "3333fc3c66e7afdcb4249f3872de981d8def67ff81507488bd1bf176e149caba",
+      "sha256": "27e19643506dd63676b18875d43509e6dae7977167e1532cc90353e5b7e491fb",
       "size": 7622,
       "version": "0.1.0"
     },
@@ -474,7 +474,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/walrus-research.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/idea/walrus-research",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/idea/walrus-research",
-      "sha256": "c9563d5d14aacf902469127daadc8a6254e64a22d2782bda7020c19391c90762",
+      "sha256": "99e12d0e98ea7f696ece832ac624da892ae2826826a2df360ee8cb6d5e2a2149",
       "size": 7240,
       "version": "0.1.0"
     },
@@ -485,7 +485,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/walrus-storage.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/walrus-storage",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/walrus-storage",
-      "sha256": "f454b2e791a8074178ad39b52103371a0dfd01d1c0a46e4ac55953a22663a880",
+      "sha256": "c7125b3a273a134e9fec149c51805f1822e0158f0698b7ac5e4650d75b2c6e67",
       "size": 8192,
       "version": "0.1.0"
     },
@@ -496,7 +496,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/will-real-users-pay.tar.gz",
       "githubPath": "kwekKwek/suiperpower/skills/build/will-real-users-pay",
       "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/will-real-users-pay",
-      "sha256": "4b63f2a131b31962b043cdb41d17b368d2906de2b0ef24c564d0ba0b02312250",
+      "sha256": "65bb4c8bf4533cdb1e52bd29df361100978a015f8c5c9dc64ce5c6452b42622a",
       "size": 6528,
       "version": "0.1.0"
     }
