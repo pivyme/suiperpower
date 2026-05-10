@@ -1,0 +1,17 @@
+name: build-with-move
+version: 1
+phase: build
+description: |
+  Author Sui Move modules and packages with a senior Move dev as your pair.
+  Use when the user says "build a Move module", "write a Move package",
+  "help me with Move", "add a function to my contract", "create a smart contract on Sui",
+  "scaffold a Move package", or "I need to write Move code".
+  Reads .suiperpower/build-context.md if present.
+prompt_path: ../SKILL.md
+references:
+  - ../references/move-syntax-cheatsheet.md
+  - ../references/common-move-pitfalls.md
+  - ../references/package-manifest-example.md
+knowledge:
+  - skills/data/sui-knowledge/03-move-and-objects.md
+  - skills/data/sui-knowledge/sponsor-docs/openzeppelin-sui.md

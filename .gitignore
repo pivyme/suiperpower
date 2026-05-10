@@ -19,13 +19,17 @@ pnpm-debug.log*
 
 # Build outputs
 dist/
-build/
+/build/
 out/
 .next/
 .turbo/
 *.tsbuildinfo
 coverage/
 .nyc_output/
+
+# Move package build artifacts (inside any Move package)
+**/Move.toml.lock
+**/sources/.move-build/
 
 # Vercel
 .vercel/
