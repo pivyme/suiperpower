@@ -13,10 +13,10 @@ const tx = new Transaction();
 
 client.deepbook.balanceManager.createAndShareBalanceManager()(tx);
 
-const result = await suiClient.signAndExecuteTransaction({
+const result = await client.core.signAndExecuteTransaction({
   transaction: tx,
   signer,
-  options: { showObjectChanges: true },
+  include: { objectTypes: true },
 });
 
 const balanceManagerId = result.objectChanges?.find(
@@ -43,7 +43,7 @@ client.deepbook.balanceManager.depositIntoManager(
   100,           // amount in human units
 )(tx);
 
-await suiClient.signAndExecuteTransaction({ transaction: tx, signer });
+await client.core.signAndExecuteTransaction({ transaction: tx, signer });
 ```
 
 For a buy order, deposit quote token (e.g. USDC). For a sell order, deposit base token (e.g. SUI). Pay-with-DEEP requires DEEP balance separately.
@@ -59,7 +59,7 @@ client.deepbook.balanceManager.withdrawFromManager(
   50,
 )(tx);
 
-await suiClient.signAndExecuteTransaction({ transaction: tx, signer });
+await client.core.signAndExecuteTransaction({ transaction: tx, signer });
 ```
 
 Withdraws move funds back to the wallet's spot balance. Open orders that need the withdrawn balance reject when matched.

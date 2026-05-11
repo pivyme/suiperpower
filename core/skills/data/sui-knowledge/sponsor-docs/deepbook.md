@@ -56,9 +56,11 @@ client.deepbook.deepBook.placeLimitOrder({
   payWithDeep: true,                 // default is true; set false if no DEEP balance
 })(tx);
 
-const bytes = await tx.build({ client: suiClient });
-const { signature } = await signer.signTransaction(bytes);
-await suiClient.executeTransaction({ transaction: bytes, signatures: [signature] });
+const result = await client.core.signAndExecuteTransaction({
+  transaction: tx,
+  signer,
+  include: { effects: true },
+});
 ```
 
 Cancellation (also curried):

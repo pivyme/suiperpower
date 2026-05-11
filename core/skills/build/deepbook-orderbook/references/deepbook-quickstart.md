@@ -13,11 +13,11 @@ pnpm add @mysten/sui @mysten/deepbook-v3
 The SDK uses the `$extend` pattern to add DeepBook methods onto a Sui client.
 
 ```ts
-import { SuiClient, getFullnodeUrl } from "@mysten/sui/client";
+import { SuiGrpcClient } from "@mysten/sui/grpc";
 import { deepbook } from "@mysten/deepbook-v3";
 import { Transaction } from "@mysten/sui/transactions";
 
-const suiClient = new SuiClient({ url: getFullnodeUrl("testnet") });
+const suiClient = new SuiGrpcClient({ network: "testnet" });
 
 const client = suiClient.$extend(
   deepbook({ address: userAddr, env: "testnet" }),
@@ -43,10 +43,10 @@ client.deepbook.deepBook.placeLimitOrder({
   payWithDeep: true,           // default is true; set false to pay fees in input token
 })(tx);
 
-const result = await suiClient.signAndExecuteTransaction({
+const result = await client.core.signAndExecuteTransaction({
   transaction: tx,
   signer,
-  options: { showEffects: true, showEvents: true },
+  include: { effects: true },
 });
 
 console.log("digest:", result.digest);
@@ -65,7 +65,7 @@ client.deepbook.deepBook.cancelOrder({
   orderId: openOrderId,
 })(tx);
 
-await suiClient.signAndExecuteTransaction({ transaction: tx, signer });
+await client.core.signAndExecuteTransaction({ transaction: tx, signer });
 ```
 
 ## Read level-2 book
