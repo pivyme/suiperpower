@@ -105,7 +105,7 @@ A guided session, optionally followed by an entry written to `.suiperpower/learn
 
 6. **Show the SDKs and wallets**
    - `@mysten/sui` for TypeScript clients.
-   - `@mysten/dapp-kit` for React.
+   - `@mysten/dapp-kit-react` for React.
    - Slush for the user wallet, plus zkLogin for OAuth-style login.
    - Reference: `skills/data/sui-knowledge/04-protocols-and-sdks.md`.
 

@@ -86,6 +86,25 @@ Apple's OAuth flow returns the JWT once, on first sign-in. Subsequent logins by 
 
 Apple also requires a server-side step to verify; pure browser flows do not work cleanly for Apple Sign-in.
 
+## Deprecated standalone package
+
+The `@mysten/zklogin` standalone package is deprecated. All zkLogin utilities (`generateNonce`, `generateRandomness`, `jwtToAddress`, `genAddressSeed`, `getZkLoginSignature`, `getExtendedEphemeralPublicKey`) now live under `@mysten/sui/zklogin`. If you see imports from `@mysten/zklogin` in older examples, replace them with `@mysten/sui/zklogin`.
+
+## legacyAddress parameter required in SDK v2
+
+`jwtToAddress(jwt, salt)` no longer works in SDK v2. The function now requires a third argument:
+
+```ts
+jwtToAddress(idToken, userSalt, false); // new deployments
+jwtToAddress(idToken, userSalt, true);  // backward compat with SDK v1 addresses
+```
+
+Omitting the third argument throws a runtime error. For new projects, always pass `false`. Only pass `true` if your app already has users whose addresses were derived under SDK v1 and you need continuity.
+
+## RS256 is the only supported JWT signing algorithm
+
+zkLogin only supports RS256 (RSA with SHA-256) for JWT signatures. If the OAuth provider signs with a different algorithm (ES256, PS256, etc.), the ZK proof will fail. Google, Apple, Facebook, and Twitch all use RS256 by default. If configuring a custom or enterprise provider, verify the signing algorithm before integrating.
+
 ## Logout
 
 Logout is local. There is no "log this user out of zkLogin" call to make on chain. The flow is:
@@ -96,4 +115,4 @@ Logout is local. There is no "log this user out of zkLogin" call to make on chai
 
 Re-login produces a new ephemeral key but the same Sui address (assuming the salt is the same).
 
-Last updated: 2026-05-10.
+Last updated: 2026-05-11.

@@ -96,16 +96,16 @@ const { txBytes, sponsorSig } = await callSponsorAPI(txKindBase64, userAddress);
 
 const userSig = await userSigner.signTransaction(fromB64(txBytes));
 
-const result = await sui.executeTransactionBlock({
-  transactionBlock: txBytes,
-  signature: [sponsorSig, userSig.signature],
+const result = await sui.executeTransaction({
+  transaction: txBytes,
+  signatures: [sponsorSig, userSig.signature],
   options: { showEffects: true },
 });
 
 console.log("digest:", result.digest);
 ```
 
-Either the client or the server can call `executeTransactionBlock`; the signatures are the same either way.
+Either the client or the server can call `executeTransaction`; the signatures are the same either way.
 
 ## Inspecting on chain
 
@@ -128,4 +128,4 @@ Both expose an API similar to the server flow above. They handle:
 
 For first integration, use a third-party. Move to self-hosted only if cost or policy demands.
 
-Last updated: 2026-05-10.
+Last updated: 2026-05-11.

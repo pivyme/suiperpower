@@ -28,7 +28,11 @@ sui client call --package <PACKAGE_ID> --module <module_name> --function <fn> --
 The TS SDK exposes the same data programmatically:
 
 ```ts
-const client = new SuiClient({ url: getFullnodeUrl("mainnet") });
+import { SuiGrpcClient } from "@mysten/sui/grpc";
+
+const client = new SuiGrpcClient({ network: "mainnet", baseUrl: "https://fullnode.mainnet.sui.io:443" });
+// getNormalizedMoveModulesByPackage is JSON-RPC specific. If using the gRPC client,
+// use client.core methods or fall back to a JSON-RPC client for module introspection.
 const normalized = await client.getNormalizedMoveModulesByPackage({ package: PACKAGE_ID });
 ```
 
@@ -145,4 +149,4 @@ Outcome:
 - For competitive landscape mapping: `skills/idea/competitive-landscape/`.
 - For past-hackathon search: `skills/idea/overflow-copilot/`.
 
-Last updated: 2026-05-10.
+Last updated: 2026-05-11. Updated for SDK v2.0 (SuiGrpcClient replaces SuiClient).

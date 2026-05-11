@@ -31,9 +31,11 @@ Adds end-to-end zkLogin to a Sui app. Walks through OAuth provider registration,
 
 ## When to use it
 
-- The user wants users to sign in with Google, Apple, Facebook, or Twitch instead of a wallet seed phrase.
+- The user wants users to sign in with Google, Apple, Facebook, Twitch, Slack, Kakao, or Microsoft instead of a wallet seed phrase.
 - The user is building consumer-facing Sui apps where wallet friction kills onboarding.
 - The user wants a passwordless Sui address tied to an OAuth identity.
+
+Supported providers (SDK v2): Google, Apple, Facebook, Twitch, Slack, Kakao, Microsoft (devnet only), AWS (tenant-based), Karrier One, Credenza3 (all networks).
 
 ## When NOT to use it
 
@@ -53,9 +55,10 @@ If you activated this and the user actually wants something else, consult `skill
 If unclear, interview the user for:
 
 - Which provider(s) does the target audience use? Google is the safest first pick.
-- What is the salt management plan? Self-hosted salt service, Mysten Salt service, or per-user-derived salt?
+- What is the salt management plan? Self-hosted salt service, Mysten Salt service (`https://salt.api.mystenlabs.com/get_salt`), or per-user-derived salt?
 - Mainnet, testnet, or both?
-- What is the prover service? Mysten's, self-hosted, or a third-party?
+- What is the prover service? Mysten's (`https://prover-dev.mystenlabs.com/v1` for devnet/testnet), self-hosted, or a third-party?
+- For production, consider Enoki (Mysten's managed zkLogin service) which handles key management, salt, and proving.
 
 ## Outputs
 
@@ -105,6 +108,7 @@ The skill never deletes files outside the integration source path without explic
 
 7. **Address derivation**
    - Derive the user's Sui address from the JWT, salt, and proof.
+   - In SDK v2, `jwtToAddress(jwt, salt, legacyAddress)` requires a third boolean parameter. Pass `false` for new deployments, `true` only for backward compatibility with addresses derived under SDK v1.
    - Display the address to the user (truncated form fine).
 
 8. **Sign and execute**

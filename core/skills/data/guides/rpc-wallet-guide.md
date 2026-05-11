@@ -85,13 +85,13 @@ Pick the SDK by use case.
 
 | Use case | SDK | Install |
 |---|---|---|
-| Web dApp, crypto users | @mysten/dapp-kit | pnpm i @mysten/dapp-kit @mysten/sui @tanstack/react-query |
+| Web dApp, crypto users | @mysten/dapp-kit-react | pnpm i @mysten/dapp-kit-react @mysten/sui |
 | Web dApp, social login | @mysten/enoki (zkLogin) | pnpm i @mysten/enoki |
 | Sui Wallet only | dapp-kit's wallet integration | included with dapp-kit |
 | Mobile (React Native) | Sui Mobile SDK | per Mysten Mobile SDK guide |
 | AI agent or backend bot | @mysten/sui Keypair | pnpm i @mysten/sui |
 
-For the dapp-kit setup, wrap the app in `SuiClientProvider` and `WalletProvider` near the root. The dapp-kit docs at sdk.mystenlabs.com cover the full setup; we do not duplicate it here.
+For the dapp-kit-react setup, wrap the app in `DAppKitProvider` near the root (replaces the old `SuiClientProvider` + `WalletProvider` pair). The dapp-kit docs at sdk.mystenlabs.com cover the full setup; we do not duplicate it here.
 
 ## Environment Variables Pattern
 
@@ -133,4 +133,4 @@ For depth on protocol and SDK choices, see `skills/data/sui-knowledge/04-protoco
 
 `scaffold-project`, `build-with-claude`, `deploy-to-testnet`, `deploy-to-mainnet`, `sui-zk-login`, `sponsored-transactions`, `build-mobile-sui`.
 
-*Last updated: 2026-05-10. Targets Sui CLI v1.x and @mysten/dapp-kit current stable.*
+*Last updated: 2026-05-11. Targets Sui CLI v1.x and @mysten/dapp-kit-react (SDK v2.0).*

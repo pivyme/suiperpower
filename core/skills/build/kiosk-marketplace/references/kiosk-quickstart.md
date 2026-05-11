@@ -10,12 +10,14 @@ pnpm add @mysten/sui @mysten/kiosk
 
 ## Init
 
+The Kiosk SDK does not support `SuiGrpcClient` yet. Use `SuiJsonRpcClient` (aliased as `SuiClient`) for Kiosk operations.
+
 ```ts
 import { SuiClient, getFullnodeUrl } from "@mysten/sui/client";
-import { KioskClient, Network } from "@mysten/kiosk";
+import { kiosk } from "@mysten/kiosk";
 
 const sui = new SuiClient({ url: getFullnodeUrl("testnet") });
-const kioskClient = new KioskClient({ client: sui, network: Network.TESTNET });
+const kioskClient = sui.$extend(kiosk());
 ```
 
 ## Create a Kiosk for the seller
@@ -25,7 +27,7 @@ import { Transaction } from "@mysten/sui/transactions";
 import { KioskTransaction } from "@mysten/kiosk";
 
 const tx = new Transaction();
-const kioskTx = new KioskTransaction({ transaction: tx, kioskClient });
+const kioskTx = new KioskTransaction({ transaction: tx, kioskClient: sui });
 
 kioskTx.create();
 kioskTx.shareAndTransferCap(sellerAddress);
@@ -52,7 +54,7 @@ Persist `kioskId` and `kioskCapId` per seller.
 const tx = new Transaction();
 const kioskTx = new KioskTransaction({
   transaction: tx,
-  kioskClient,
+  kioskClient: sui,
   cap: { kioskId, objectId: kioskCapId, isPersonal: false },
 });
 
@@ -71,7 +73,7 @@ Now `MyAsset` lives inside the Kiosk and is listed at the price. The seller's wa
 
 ```ts
 const tx = new Transaction();
-const kioskTx = new KioskTransaction({ transaction: tx, kioskClient });
+const kioskTx = new KioskTransaction({ transaction: tx, kioskClient: sui });
 
 kioskTx.purchaseAndResolvePolicies({
   itemType: `${PACKAGE_ID}::my_collection::MyAsset`,
@@ -98,7 +100,7 @@ The seller's payout sits in the Kiosk's purse. Withdraw separately:
 const tx = new Transaction();
 const kioskTx = new KioskTransaction({
   transaction: tx,
-  kioskClient,
+  kioskClient: sui,
   cap: { kioskId, objectId: kioskCapId, isPersonal: false },
 });
 
@@ -109,7 +111,7 @@ await sui.signAndExecuteTransaction({ transaction: tx, signer: sellerSigner });
 ## Read listings
 
 ```ts
-const data = await kioskClient.getKiosk({
+const data = await sui.getKiosk({
   id: kioskId,
   options: { withListingPrices: true, withObjects: true },
 });
@@ -127,4 +129,4 @@ kioskTx.create({ kind: "Personal" });
 
 For a marketplace with seller flexibility, the standard non-personal Kiosk is fine.
 
-Last updated: 2026-05-10.
+Last updated: 2026-05-11.
