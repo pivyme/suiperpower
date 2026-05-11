@@ -10,7 +10,7 @@ Mitigations:
 
 - Default to a generous epoch count for production content.
 - For user-uploaded content, surface the expiry to the user and let them extend.
-- For canonical content (NFT media), use `permanent=true`.
+- For canonical content (NFT media), use `deletable=false` to make the blob permanent.
 
 ## Encryption is your problem
 
@@ -18,13 +18,18 @@ Walrus stores bytes as-is. There is no built-in encryption.
 
 If the blob is sensitive:
 
-- Encrypt client-side before upload (AES-GCM with a key derived from a user secret, or a wrapped key stored separately).
+- Use Seal (`@mysten/seal`) for decentralized access-controlled encryption. Seal lets you define who can decrypt via Move access policies on Sui. See `references/seal-encryption.md`.
+- Alternatively, encrypt client-side before upload (AES-GCM with a key derived from a user secret, or a wrapped key stored separately).
 - Document the key management plan in `build-context.md`.
 - Never put plaintext PII directly into a Walrus blob.
 
+## Default is deletable (v1.33+)
+
+Since Walrus v1.33+, blobs are deletable by default. Older code or docs that assume permanent-by-default will behave differently. If you need permanence, explicitly pass `deletable=false` when storing. Do not assume a blob will persist beyond its paid epoch count unless you made it permanent.
+
 ## Public endpoints are best-effort
 
-The public publisher and aggregator are convenient for development. They are not SLA-backed.
+The public publisher and aggregator are convenient for development. They are not SLA-backed. Public publishers also enforce a **10 MiB default blob size limit**.
 
 For production:
 
@@ -63,4 +68,4 @@ If you need uniqueness per upload, salt the content with a per-upload nonce.
 
 Aggregators cache reads. If a blob's lifetime is extended on chain, the aggregator may still serve the old "not found" response for a window. Cache TTLs are short but real.
 
-Last updated: 2026-05-10.
+Last updated: 2026-05-11.

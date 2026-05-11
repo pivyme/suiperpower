@@ -110,7 +110,7 @@ The skill never deletes files outside the integration source path without explic
 
 7. **Lifetime + cost note**
    - Document the chosen epoch count and what happens when it expires.
-   - If permanence is required, set the `permanent` flag and note WAL cost implications.
+   - If permanence is required, set `deletable=false` and note WAL cost implications.
 
 8. **Writeback**
    - Append session details to `.suiperpower/build-context.md`.
@@ -135,6 +135,7 @@ On-demand references (load when relevant to the user's question):
 - `references/walrus-quickstart.md`: Minimal upload and retrieve recipes for HTTP publisher, CLI, and TS SDK.
 - `references/walrus-pitfalls.md`: Lifetime expiry, encryption, public endpoint reliability, network mismatches, WAL token balance.
 - `references/walrus-move-commit.md`: Pattern for committing a `blobId` on chain inside a Move Object.
+- `references/seal-encryption.md`: Seal decentralized encryption for access-controlled Walrus blobs.
 
 Knowledge docs (load when scope expands beyond what is in references):
 

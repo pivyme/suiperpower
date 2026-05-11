@@ -2,14 +2,23 @@
 
 Three surfaces, pick the one that fits. Default network is testnet for development.
 
-## Endpoints (testnet)
+## Endpoints
+
+Testnet:
 
 ```
 PUBLISHER:  https://publisher.walrus-testnet.walrus.space
 AGGREGATOR: https://aggregator.walrus-testnet.walrus.space
 ```
 
-Verify these against the official Walrus docs at the time of integration. Mainnet endpoints are different.
+Mainnet (live since March 2025):
+
+```
+PUBLISHER:  https://publisher.walrus.space
+AGGREGATOR: https://aggregator.walrus.space
+```
+
+Verify these against the official Walrus docs at the time of integration. Cross-network reads silently return not-found.
 
 ## HTTP publisher (no SDK)
 
@@ -28,13 +37,15 @@ Response (truncated):
 {
   "newlyCreated": {
     "blobObject": {
-      "blobId": "0xb0fa...",
+      "blobId": "Tl3GHxEB...",
       "registeredEpoch": 12,
       "size": 13
     }
   }
 }
 ```
+
+Blob IDs are base64url-encoded strings, not hex. Do not prefix with `0x`.
 
 Capture `blobId`. That is the content-addressed identifier you read with later.
 
@@ -44,7 +55,9 @@ Read:
 curl -o hello-out.txt "$AGGREGATOR/v1/blobs/$BLOB_ID"
 ```
 
-## TS SDK (browser or Node)
+## HTTP API wrapper (browser or Node)
+
+Raw `fetch()` against the publisher. No SDK dependency. Good enough for simple integrations.
 
 ```ts
 import fs from "node:fs";
@@ -80,6 +93,32 @@ console.log("ok", id, back.byteLength === data.byteLength);
 
 Note that the response shape has two cases. A fresh upload returns `newlyCreated`. If the same content already exists, the publisher returns `alreadyCertified` with the existing `blobId`. Handle both.
 
+## @mysten/walrus SDK (recommended for production)
+
+The `@mysten/walrus` package provides `WalrusClient` with typed methods, automatic retries, and proper error handling. Prefer it over raw `fetch()` for anything beyond prototyping.
+
+```bash
+npm install @mysten/walrus @mysten/sui
+```
+
+```ts
+import { WalrusClient } from "@mysten/walrus";
+import { getFullnodeUrl, SuiClient } from "@mysten/sui/client";
+
+const walrus = await WalrusClient.$extend({
+  suiClient: new SuiClient({ url: getFullnodeUrl("testnet") }),
+  network: "testnet",
+});
+
+// Store
+const { blobId } = await walrus.writeBlob({ blob: myData, epochs: 5 });
+
+// Read
+const data = await walrus.readBlob({ blobId });
+```
+
+See the `@mysten/walrus` README for the full API surface (deletable blobs, extend lifetime, etc.).
+
 ## CLI
 
 For one-off uploads or scripts:
@@ -93,11 +132,23 @@ walrus read <blob_id> --out hello-out.txt
 
 The CLI requires `walrus` installed and a wallet with WAL balance. For first integration, prefer the HTTP publisher; switch to the CLI when you need offline batch operations.
 
-## Permanent vs deletable
+Use `walrus info` to check current epoch length, storage pricing, and system parameters.
 
-The publisher accepts `?permanent=true` to mark a blob as permanent. Permanent blobs cost more up front and cannot be deleted for storage refund. Default is deletable, paid for N epochs.
+## Deletable vs permanent
 
-Pick deletable for user-uploaded content where the user controls lifetime. Pick permanent for canonical, never-changing content (NFT media, archival datasets).
+Since Walrus v1.33+, blobs are **deletable by default**. The HTTP publisher accepts `?deletable=false` to make a blob permanent. There is no `?permanent=true` parameter.
+
+```bash
+# Deletable (default), blob can be deleted for storage refund
+curl -X PUT "$PUBLISHER/v1/blobs?epochs=5" --data-binary @./file.txt
+
+# Permanent, cannot be deleted, costs more up front
+curl -X PUT "$PUBLISHER/v1/blobs?epochs=5&deletable=false" --data-binary @./file.txt
+```
+
+Pick deletable for user-uploaded content where the user controls lifetime. Pick permanent (`deletable=false`) for canonical, never-changing content (NFT media, archival datasets).
+
+Note: public publishers enforce a **10 MiB default blob size limit**. For larger blobs, run your own publisher or use the CLI.
 
 ## Choosing epochs
 
@@ -112,4 +163,18 @@ A Walrus epoch is roughly two weeks; verify the current value at integration tim
 
 Document the choice in `.suiperpower/build-context.md`. Surprises about expiry come from undocumented choices.
 
-Last updated: 2026-05-10. Targeting Walrus testnet stable.
+## Walrus Sites
+
+Walrus Sites lets you host static frontends (HTML/CSS/JS) directly on Walrus, served from a custom domain. The `site-builder` CLI handles packaging and deployment:
+
+```bash
+walrus-sites publish ./dist
+```
+
+Useful for fully decentralized dApps where the frontend itself should be censorship-resistant. See the Walrus Sites docs for details.
+
+## Encryption
+
+Walrus stores bytes as-is. For access-controlled content, use Seal (`@mysten/seal`) to encrypt client-side before upload. Seal provides decentralized secrets management with on-chain access policies. See `references/seal-encryption.md` for the integration pattern.
+
+Last updated: 2026-05-11. Targeting Walrus testnet and mainnet.
