@@ -72,7 +72,7 @@ function main(): void {
     name: "suiperpower",
     owner: {
       name: "Kelvin Adithya",
-      email: "eternate17@gmail.com",
+      email: "kelvin.kn17@gmail.com",
     },
     metadata: {
       description: "Build something meaningful, on Sui",

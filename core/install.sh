@@ -93,6 +93,23 @@ else
   warn "Cursor not detected. If you use Cursor, install from https://cursor.com (skills still write to ~/.cursor/rules/)"
 fi
 
+# Auto-install the Suiperpower plugin into Claude Code.
+# Idempotent; both subcommands no-op if already added/installed. Silent failure
+# (e.g. repo not yet public) falls back to the manual instructions printed below.
+if has_cmd claude; then
+  log "Installing suiperpower plugin in Claude Code"
+  if claude plugin marketplace add pivyme/suiperpower >/dev/null 2>&1; then
+    ok "marketplace added"
+    if claude plugin install suiper@suiperpower >/dev/null 2>&1; then
+      ok "plugin installed, skills available as /suiper:<name>"
+    else
+      warn "plugin install failed, run manually: claude plugin install suiper@suiperpower"
+    fi
+  else
+    warn "marketplace add failed (repo may be private), see manual steps below"
+  fi
+fi
+
 # Helper to run suiperpower
 run_ss() {
   if has_cmd "$SHORT_NAME"; then
