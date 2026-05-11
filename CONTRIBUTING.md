@@ -1,10 +1,10 @@
 # Contributing to Suiperpower
 
-Suiperpower is a community asset. Most of its long-term value comes from people other than the original maintainer adding skills, catalog entries, knowledge updates, and bug fixes. This doc is the source-of-truth for how that happens. Source plan: [plans/20-CONTRIBUTING-PLAN.md](plans/20-CONTRIBUTING-PLAN.md).
+Suiperpower is a community asset. Most of its long-term value comes from people other than the original maintainer adding skills, catalog entries, knowledge updates, and bug fixes. This doc is the source-of-truth for how that happens.
 
 ## Who can contribute
 
-Anyone with a GitHub account. We do not require contributors to be Sui Foundation, sponsor employees, or part of any team. We do require contributions to meet the quality bar in this doc and the brand voice in [plans/15-BRAND.md](plans/15-BRAND.md).
+Anyone with a GitHub account. We do not require contributors to be Sui Foundation, sponsor employees, or part of any team. We do require contributions to meet the quality bar in this doc and the brand voice rules in the "Voice and style" section below.
 
 ## What you can contribute
 
@@ -34,7 +34,7 @@ Reviewer checks:
 - URL is reachable (returns 200)
 - License is permissive (MIT, Apache-2.0, BSD, ISC); GPL is flagged for discussion
 - Description in our voice, not pasted marketing copy
-- Category is from the controlled vocabulary in [plans/07-ECOSYSTEM-CATALOG.md](plans/07-ECOSYSTEM-CATALOG.md)
+- Category is from the controlled vocabulary used by existing rows in the same file
 - For MCPs: install command works, MCP responds to tool list, no surprising network calls
 - Sorted alphabetically by id
 
@@ -46,7 +46,7 @@ Adds a new journey skill under `skills/<phase>/<name>/`.
 
 Branch: `skill/<phase>-<name>`. New folder contains:
 
-- `SKILL.md` per [plans/05-SKILL-FORMAT.md](plans/05-SKILL-FORMAT.md), shape from [plans/22-SAMPLE-SKILL.md](plans/22-SAMPLE-SKILL.md)
+- `SKILL.md` following the Anthropic skill spec; clone shape from an existing skill under `core/skills/`
 - `agents/openai.yaml` mirroring the frontmatter
 - Optional `references/` files
 
@@ -54,7 +54,6 @@ You also update:
 
 - `skills/SKILL_ROUTER.md` if the new skill is confusable with nearby ones
 - `skills/README.md` adding the new row
-- `plans/04-SKILLS-CATALOG.md` (the canonical catalog of v1 skills)
 - `cli/data/sui-skills.json` if the skill should appear in the ecosystem catalog
 
 Reviewer checks:
@@ -62,9 +61,9 @@ Reviewer checks:
 - Folder name equals frontmatter `name:`
 - Telemetry preamble byte-identical (run `pnpm preamble:check`)
 - Description packs trigger phrases real users would actually say
-- Workflow is numbered, ends with a writeback to `.suiperpower/<phase>-context.md` per [plans/30-SHARED-GUIDES-SPEC.md](plans/30-SHARED-GUIDES-SPEC.md)
-- Quality gate (anti-slop) section is non-trivial; see [plans/12-ANTI-SLOP-FRAMEWORK.md](plans/12-ANTI-SLOP-FRAMEWORK.md)
-- Voice matches `15-BRAND.md` (no em-dashes, no banned words)
+- Workflow is numbered, ends with a writeback to `.suiperpower/<phase>-context.md` so the next phase can pick up state
+- Quality gate (anti-slop) section is non-trivial: every build / ship skill must end with a real "will this survive past the hackathon" check, not a checkbox
+- Voice matches the "Voice and style" rules below (no em-dashes, no banned words)
 - References are real and reachable
 - Manual test in Claude Code on a fresh container
 
@@ -82,7 +81,7 @@ Reviewer checks:
 - Code blocks tagged with the language
 - Sui-specific terms capitalized (Move, Object, PTB, Walrus, DeepBook, Scallop, Kiosk, zkLogin)
 - No em-dashes
-- Length stays within target (see [plans/06-SUI-KNOWLEDGE-BASE.md](plans/06-SUI-KNOWLEDGE-BASE.md))
+- Length stays tight: under ~400 lines per doc, link out for deep reference material
 - For sponsor docs: sponsor team pinged for accuracy review (or a reason logged)
 
 ## CLI / backend code PR
@@ -98,7 +97,7 @@ Reviewer checks:
 - No new runtime dependencies unless explicitly justified. CLI policy is zero deps except Convex client.
 - No hardcoded brand strings outside `cli/branding.ts`
 - Behavior documented in the relevant plan doc (or a doc-update PR alongside)
-- No telemetry events without a privacy review against [plans/13-CONVEX-BACKEND.md](plans/13-CONVEX-BACKEND.md)
+- No telemetry events without a privacy review: no code, no file paths, no PII, opt-in anonymous by default
 
 ## Bug fix PR
 
@@ -106,7 +105,7 @@ Branch: `fix/<short-description>`. Reproduction steps in the PR description. Fix
 
 ## Voice and style
 
-Tied to [plans/15-BRAND.md](plans/15-BRAND.md). The hard rules:
+The hard rules:
 
 | Rule | Example |
 |---|---|
@@ -123,9 +122,7 @@ Tied to [plans/15-BRAND.md](plans/15-BRAND.md). The hard rules:
 
 ## Supply-chain rules
 
-Suiperpower runs in users' terminals and tells AI agents to run commands. Every external thing we recommend must pass these checks. Detail in [plans/20-CONTRIBUTING-PLAN.md](plans/20-CONTRIBUTING-PLAN.md) under "Supply-chain rules".
-
-Highlights:
+Suiperpower runs in users' terminals and tells AI agents to run commands. Every external thing we recommend must pass these checks.
 
 - Repos: permissive license, last commit within 12 months, verifiable publisher
 - MCPs: public package, tool list documented, no paid-key requirement for basic use, tested in fresh environment
@@ -154,8 +151,6 @@ Adopted from [Contributor Covenant 2.1](https://www.contributor-covenant.org/ver
 
 Vulnerabilities should NOT be opened as public issues. Email `security@suiperpower.dev` (mailbox provisioned at launch) or DM the maintainer. We respond within 24 hours. Critical reports (install script compromise, npm package compromise) trigger a same-day patch and a public advisory.
 
-Detail in [plans/25-SECURITY-POSTURE.md](plans/25-SECURITY-POSTURE.md).
-
 ## DCO
 
 Suiperpower uses the [Developer Certificate of Origin](https://developercertificate.org/). Each commit must include a `Signed-off-by:` line, added with `git commit -s`. We do not use a CLA. MIT plus DCO is enough.
@@ -170,8 +165,6 @@ pnpm test               # typecheck + lint:skills + lint:catalog + preamble:chec
 pnpm test:install       # CLI smoke test (build, version, doctor, vendor-mode init)
 pnpm package:skills     # build per-skill tarballs and index.json under public/skills/
 ```
-
-For the autonomous build loop: `bigdev/autobuild`. See [bigdev/TODO.md](bigdev/TODO.md).
 
 ## Recognition
 

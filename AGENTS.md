@@ -25,7 +25,7 @@ The launch occasion is Sui Overflow 2026, but Suiperpower is a long-lived produc
 
 ## Project structure
 
-Source-of-truth tree: `plans/02-PROJECT-STRUCTURE.md`. On-disk shape today:
+On-disk shape today:
 
 ```
 suiperpower/
@@ -38,19 +38,10 @@ suiperpower/
 │   ├── install.sh      curl one-liner bootstrap
 │   └── skills-lock.json
 ├── convex/             telemetry + feedback backend
-├── web/                static setup assets + website shell
-├── scratchpads/        local-only build loop and notes, gitignored
-├── plans/              source-of-truth planning docs (31 files)
-└── reference/          vendored solana-new-main for pattern reference only
+└── web/                static setup assets + website shell
 ```
 
 Skills live under `core/skills/<phase>/<name>/SKILL.md`. Phases: `learn/`, `idea/`, `build/`, `ship/`, `grow/`. As of today `learn/`, `idea/`, `build/`, `ship/` exist; `grow/` is planned.
-
-## Plans index
-
-`plans/README.md` is the index. Categories: foundation (00-03), skills authoring (04-05, 22-23, 29-30), knowledge / sponsors (06, 11), catalog (07), CLI (08), multi-agent (09), hackathon (10), anti-slop (12), backend (13), website (14, deferred), brand (15), content (16), launch (17), roadmap (18), open questions (19), contributing (20), testing (21), security (25), governance (27), competitive landscape (28).
-
-If you are picking up work cold: read 00 → 04 → 12 → 02 → 22 → 26 in that order. 30 is required reading before authoring any shared guide.
 
 ## Build commands
 
@@ -63,14 +54,12 @@ pnpm build                    # tsc to core/dist/ + chmod +x dist/cli/index.js
 pnpm typecheck                # tsc --noEmit
 pnpm preamble:check           # verify the telemetry preamble in every SKILL.md
 pnpm package:skills           # build per-skill tarballs and index.json under web/public/skills/
-pnpm lint:skills              # validate every core/skills/**/SKILL.md against plans/05 + plans/15
-pnpm lint:catalog             # validate every core/cli/data/*.json against plans/07
+pnpm lint:skills              # validate every core/skills/**/SKILL.md (frontmatter, voice, banned words)
+pnpm lint:catalog             # validate every core/cli/data/*.json (schema, sort order, reachable URLs)
 pnpm test                     # typecheck + lint:skills + lint:catalog + preamble:check
 pnpm test:install             # CLI smoke test (build, version, doctor, vendor-mode init)
 pnpm setup                    # run ./setup local-dev convenience
 ```
-
-For the autonomous build loop, use `./scratchpads/bigdev/autobuild` if it exists locally. `scratchpads/` is gitignored, so do not reference those paths from committed code or skills.
 
 ## Conventions
 
@@ -89,12 +78,12 @@ For the autonomous build loop, use `./scratchpads/bigdev/autobuild` if it exists
 
 When implementing a skill or adding catalog content, hold to:
 
-- `plans/12-ANTI-SLOP-FRAMEWORK.md`, the quality bar this project embodies
-- `plans/15-BRAND.md`, the voice of every user-facing string
-- `plans/05-SKILL-FORMAT.md`, the structure every SKILL.md follows
-- `plans/29-DOCS-AUTHORING-STANDARDS.md`, the mechanical rules for all markdown / JSON / CLI output
+- The anti-slop quality bar this project embodies: every build / ship skill must end with a real "will this survive past the hackathon" gate, not a checkbox
+- The senior-friend voice: direct, no marketing-speak, no em-dashes, banned words enforced by `pnpm lint:skills`
+- The Anthropic skill format: valid frontmatter, byte-identical telemetry preamble, kebab-case naming, folder name matches frontmatter `name:`
+- Mechanical doc rules: code blocks language-tagged, dates `YYYY-MM-DD`, Sui terms capitalized (Move, Object, PTB, Walrus, DeepBook, Scallop, Kiosk, zkLogin)
 
-Every build / ship skill ends with a non-trivial Quality gate (anti-slop). Examples in `plans/12`.
+Every build / ship skill ends with a non-trivial Quality gate (anti-slop). Use existing skills under `core/skills/build/` and `core/skills/ship/` as canonical examples.
 
 ## Skill authoring (must read before touching skills/)
 
@@ -112,11 +101,9 @@ If unsure, ask. A delay is cheaper than a wrong skill shipped to thousands of ag
 
 ## Mid-build steering
 
-If you discover something during implementation that should be a durable rule for all future work on this codebase, add it to `plans/19-OPEN-QUESTIONS.md` as a `decided:` entry with a date, then propagate to the relevant plan doc.
+If you discover something during implementation that should be a durable rule for all future work on this codebase, raise it in a GitHub Discussion or PR comment so the maintainer can fold it into `CLAUDE.md` / `AGENTS.md`.
 
-If you are inside the autonomous build loop, durable rules go to `bigdev/claude/requirements-log.md` (committed). One-shot transient corrections go to `bigdev/claude/inject.md` (gitignored). Drive both via the launcher: `./bigdev/autobuild say "rule"` for durable, `./bigdev/autobuild fix "msg"` for one-shot.
-
-Commit rule (project-wide, including the build loop): Kelvin is the sole committer. Never add a `Co-Authored-By` line to any commit, ever.
+Commit rule (project-wide): Kelvin is the sole committer. Never add a `Co-Authored-By` line to any commit, ever.
 
 ## What this project is NOT
 

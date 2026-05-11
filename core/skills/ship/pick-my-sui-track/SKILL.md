@@ -1,6 +1,6 @@
 ---
 name: pick-my-sui-track
-description: Map the project to a single Sui Overflow track based on integration depth, scoring each sponsor (Walrus, DeepBook, OpenZeppelin, OtterSec, Scallop) on a 0-3 scale and refusing to recommend any track that does not score 3 on a load-bearing flow. Use when the user says "which track", "which Overflow track", "which sponsor track", "pick my track", "what track should I submit to", "Sui Overflow track", or "track recommendation". Reads .suiperpower/idea-context.md, .suiperpower/build-context.md, and the user's Move package, writes .suiperpower/track-pick.md.
+description: Recommend the right Sui Overflow 2026 track based on real project fit. Scores the project against the four official tracks (Agentic Web, DeFi & Payments, Walrus, DeepBook) on a 0-3 depth scale and refuses to recommend a track where the fit is aspirational. Surfaces the official "team's prerogative" policy. Use when the user says "which track", "which Overflow track", "pick my track", "what track should I submit to", "Sui Overflow track", or "track recommendation". Reads .suiperpower/idea-context.md, .suiperpower/build-context.md, and the project source; writes .suiperpower/track-pick.md.
 ---
 
 ## Preamble (run first)
@@ -27,20 +27,35 @@ Write the answer to `~/.suiperpower/config.json` `telemetryTier` field and creat
 
 ## What this skill does
 
-Walks the project's actual code and configuration, scores integration depth for each sponsor on a 0 to 3 scale per `plans/11-SPONSOR-INTEGRATION.md`, and recommends a single primary track only if a sponsor scores 3 (load-bearing). Recommends a secondary track for any sponsor at score 2.
+Walks the project's actual code and demo flow, scores depth of fit against the four official Sui Overflow 2026 tracks on a 0 to 3 scale, and recommends a single primary track only if a track scores 3 (load-bearing).
 
-Refuses to recommend a sponsor track unless the integration is genuinely load-bearing. Aspirational integrations ("we plan to use Walrus next") score 0.
+The four official tracks:
+
+- **Agentic Web**: autonomous AI agents that act, transact, and coordinate using Sui's object model.
+- **DeFi & Payments**: financial primitives or payment rails.
+- **Walrus**: applications built on Walrus decentralized storage.
+- **DeepBook**: trading or liquidity applications powered by DeepBook's on-chain orderbook.
+
+If overflow.sui.io ever changes its track list mid-cycle, this skill should be re-verified against the current page before recommending.
+
+### Official policy
+
+Per overflow.sui.io: "You must select the one track that best represents your project."
+
+Per the Overflow 2026 organizers (Telegram, paraphrased): track choice is the team's prerogative. Teams pick where the project aligns most strongly.
+
+This skill stays opinionated within that policy. It will not bless a track recommendation where the fit is aspirational, because judges score against what they see in the demo, not what is claimed in the description.
 
 ## When to use it
 
 - After the project compiles and at least one demo flow runs end to end.
-- Before drafting the submission, so the right track is picked early.
-- When the user is choosing between two plausible tracks and wants a tie-breaker.
+- Before drafting the submission, so the right track is locked in early.
+- When the user is torn between two plausible tracks and wants a tie-breaker.
 
 ## When NOT to use it
 
-- Pre-build, when the integration depth cannot be measured.
-- For thematic tracks that do not have a sponsor scoring rubric. Note them separately; this skill is sponsor-track focused.
+- Pre-build, when fit cannot be measured against real code.
+- For prize sponsor eligibility (OpenZeppelin, OtterSec, Scallop). Those are prize partners inside tracks, not tracks themselves; see "Prize sponsors" below.
 - For grant track decisions. Route to `apply-grant`.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.
@@ -49,106 +64,115 @@ If you activated this and the user actually wants something else, consult `skill
 
 - `.suiperpower/idea-context.md`: project intent and target user.
 - `.suiperpower/build-context.md`: stack, package id, modules used.
-- The Move package source files (for static scoring of sponsor calls).
-- Optional: a recorded demo of the load-bearing flow, if available, to confirm the score.
+- Move package source and any frontend code (for static evidence of integrations).
+- Optional: a recording of the load-bearing demo flow.
 
 ## Outputs
 
-A `.suiperpower/track-pick.md` with per-sponsor scores, the primary track recommendation, optional secondary track, and the reasoning:
+Append to `.suiperpower/track-pick.md`:
 
 ```markdown
 ## Track pick, <timestamp>
 
-### Sponsor scores
-- Walrus: <0 | 1 | 2 | 3>, evidence: <one sentence with file or call site>
-- DeepBook: <0 | 1 | 2 | 3>, evidence: ...
-- OpenZeppelin: <0 | 1 | 2 | 3>, evidence: ...
-- OtterSec: <0 | 1 | 2 | 3>, evidence: ...
-- Scallop: <0 | 1 | 2 | 3>, evidence: ...
+### Track fit scores
+- Agentic Web: <0 | 1 | 2 | 3>, evidence: <one sentence>
+- DeFi & Payments: <0 | 1 | 2 | 3>, evidence: <one sentence>
+- Walrus: <0 | 1 | 2 | 3>, evidence: <one sentence>
+- DeepBook: <0 | 1 | 2 | 3>, evidence: <one sentence>
 
 ### Primary track
-- recommended: <sponsor name | none>
+- recommended: <track name | none of the four>
 - reasoning: <one paragraph>
 - caveats: <one paragraph if any>
 
-### Secondary track
-- recommended: <sponsor name | none>
-- reasoning: <one sentence>
-
 ### What is needed to upgrade a 2 to a 3
-- <if any sponsor sits at 2, what would tip it to load-bearing>
+- <if any track sits at 2, what would tip it to load-bearing>
+
+### Prize sponsor eligibility (informational, not tracks)
+- OpenZeppelin (1st place DeFi & Payments): <yes | no>, evidence: ...
+- OtterSec (3rd place DeFi & Payments): <yes | no>, evidence: ...
+- Scallop (University Award): <yes | no>, evidence: ...
 
 ### Verdict
-- ready to submit to a sponsor track: <yes | no>
-- if no: which sponsor to deepen, or recommend a thematic-only submission
+- ready to submit to one of the four tracks: <yes | no>
+- if no: which of the four to deepen, with the concrete change needed to get there
 ```
 
 ## Workflow
 
 1. **Read project state**
    - Open `idea-context.md` and `build-context.md`.
-   - Walk the Move package to find imports of sponsor packages and call sites.
-   - Walk the frontend or PTB code if available, for SDK calls (`@mysten/walrus`, `@deepbook/sdk`, `@scallop/sdk`).
+   - Walk the Move package and frontend for integration evidence.
+   - Walk the user-visible demo flow end to end.
 
-2. **Score each sponsor on the 0 to 3 scale**
-   - 0: no imports, no calls. Aspirational mentions count as 0.
-   - 1: imported in `Move.toml` or referenced in docs only, but not actually called.
-   - 2: one or more calls in the codebase, but the project still functions if removed.
-   - 3: used on the load-bearing flow; removing the integration breaks the demo.
+2. **Score each of the four tracks on 0 to 3**
+   - 0: no real fit.
+   - 1: thematic adjacency only (a mention in docs, an aspirational claim in the description).
+   - 2: real code or theme present, but the project still works as something else if you removed it.
+   - 3: load-bearing. Remove this and the demo, or the project's reason to exist, breaks.
 
-3. **Verify the load-bearing claim**
-   - For any sponsor at 3, confirm by walking the demo flow:
-     - Walrus: is a stored blob retrieved and rendered as part of the user-visible flow?
-     - DeepBook: is at least one real testnet order placed and settled?
-     - OpenZeppelin: is at least one OZ Sui module replacing what would have been a hand-rolled equivalent?
-     - OtterSec: are P0 items from the OtterSec checklist completed and recorded?
-     - Scallop: is a deposit, borrow, or repay completed against a live Scallop pool in the demo?
-   - If the load-bearing claim cannot be verified, downgrade the score to 2.
+   See `references/scoring-rubric.md` for per-track examples and edge cases.
+
+3. **Verify load-bearing claims**
+   - For any track at 3, run the matching test from `references/load-bearing-tests.md`.
+   - If the test does not produce the stated outcome, downgrade to 2.
 
 4. **Recommend the primary track**
-   - If exactly one sponsor scores 3, recommend that as primary.
-   - If two or more score 3, recommend the one most central to the user-visible value. Use `idea-context.md` to break ties.
-   - If no sponsor scores 3, recommend `none` and explain.
+   - If exactly one of the four scores 3, recommend that as primary.
+   - If two score 3, recommend the one most central to the user-visible value. Use `idea-context.md` to break the tie.
+   - If none scores 3, primary is `none`. Name the highest-scoring track and the concrete change needed to upgrade it to 3. Do not bless a 2 as a submission-ready pick.
 
-5. **Recommend a secondary track**
-   - The highest-scoring sponsor at 2, if any. State explicitly that a secondary track is informational; submission rules may not allow secondary submission for the user's hackathon.
+5. **Note prize sponsor eligibility**
+   - Prize sponsors sit inside tracks, not in place of them. Scoring is informational so the user knows what else is reachable from their primary track.
+   - OpenZeppelin: 1st place sponsor for DeFi & Payments. Eligible if the project uses load-bearing OZ Sui modules.
+   - OtterSec: 3rd place sponsor for DeFi & Payments. Eligible if the project completed a real OtterSec-style security pass with P0 items resolved.
+   - Scallop: University Award sponsor. Eligible per the Overflow university award criteria, not gated on Scallop integration.
 
 6. **Name what would upgrade a 2 to a 3**
-   - For each sponsor at 2, write one concrete change that would make it load-bearing. Example: "DeepBook is at 2 because the demo skips order settlement. Add a settlement call in the demo path to upgrade to 3."
+   - For each track at 2, write one concrete change. Example: "Walrus is at 2 because the demo's hero image is served from a CDN with the Walrus blob as fallback. Move the canonical render to Walrus to upgrade to 3."
 
 7. **Write the verdict**
-   - If primary is `none`, the user is not ready to submit to a sponsor track. Recommend deepening the highest-scoring sponsor or submitting to a thematic-only track instead.
-   - If primary is named, the user is ready. Recommend `submit-to-sui-overflow`.
+   - If primary is named, recommend `submit-to-sui-overflow`.
+   - If primary is `none`, do not block the user. Surface the team-prerogative policy, name the highest-scoring track, and give the concrete upgrade path. The user can still submit; the skill just refuses to call a 2 a 3.
 
 8. **Writeback**
-   - Append `.suiperpower/track-pick.md` with the entry.
+   - Append the entry to `.suiperpower/track-pick.md`.
 
 ## Quality gate (anti-slop)
 
 Before reporting done:
 
-- Was every sponsor scored, with a one-sentence evidence string? (No skipped sponsors.)
-- Was the load-bearing claim verified by walking the demo flow, not by trusting the import list?
-- Was a sponsor at 3 demoted if the demo flow did not actually use it?
-- Was the upgrade-path note written for every sponsor at 2?
+- Was every one of the four tracks scored, with a one-sentence evidence string? (No skipped tracks.)
+- Was every load-bearing claim verified by walking the demo flow, not by trusting an import list?
+- Was a track at 3 demoted if the demo flow did not actually exercise it?
+- Was the upgrade-path note written for every track at 2?
+- If no track scored 3, did the writeup name the highest-scoring track and the concrete upgrade change instead of blessing a 2 as a submission-ready pick?
+- Did the prize sponsor eligibility section stay informational (not framed as a fifth track)?
 - Did the writeback happen?
 
 If any answer is no, the skill keeps working.
 
+## Where to get help
+
+Sui Overflow 2026 runs dedicated Telegram groups for the two main sponsor tracks. If the recommendation is Walrus or DeepBook, point the user at the matching group so they can talk to mentors and team members directly:
+
+- Walrus track Telegram: https://go.sui.io/ofw-walrus-tg
+- DeepBook track Telegram: https://go.sui.io/ofw-deepbook-tg
+- General Sui Overflow Telegram: https://go.sui.io/suioverflow2026-tg
+
 ## References
 
-On-demand references (load when relevant to the user's question):
+On-demand references (load when the skill needs the detail):
 
-- `references/scoring-rubric.md`: Detailed examples of what scores 0, 1, 2, 3 for each sponsor.
-- `references/load-bearing-tests.md`: Concrete tests to verify a 3 score per sponsor.
+- `references/scoring-rubric.md`: 0 to 3 examples per track, including edge cases.
+- `references/load-bearing-tests.md`: concrete tests to verify a 3 score per track.
 
 Canonical:
 
+- Sui Overflow 2026 tracks: https://overflow.sui.io
+- Participant Handbook: https://go.sui.io/overflow26-participant-handbook
 - `skills/data/sui-knowledge/sponsor-docs/walrus.md`
 - `skills/data/sui-knowledge/sponsor-docs/deepbook.md`
-- `skills/data/sui-knowledge/sponsor-docs/openzeppelin-sui.md`
-- `skills/data/sui-knowledge/sponsor-docs/ottersec-checklist.md`
-- `skills/data/sui-knowledge/sponsor-docs/scallop.md`
 
 ## Use in your agent
 

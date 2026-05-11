@@ -71,7 +71,7 @@ Suiperpower is built around that bar. Every build skill embeds a "will this surv
 | **Build** | `scaffold-project`, `build-with-claude`, `virtual-sui-incubator`, `build-with-move`, `ptb-composer`, `object-model-design`, `walrus-storage`, `deepbook-orderbook`, `scallop-money-market`, `sui-zk-login`, `sponsored-transactions`, `kiosk-marketplace`, `build-mobile-sui`, `launch-coin`, `debug-move`, `review-move`, `ottersec-prep`, `openzeppelin-sui-libs`, `brand-design`, `frontend-design-guidelines`, `number-formatting`, `page-load-animations`, `design-taste`, `product-review`, `roast-my-product`, `validate-business-model`, `retention-loop`, `will-real-users-pay`, `navigate-skills` |
 | **Ship** | `deploy-to-testnet`, `deploy-to-mainnet`, `pick-my-sui-track`, `submit-to-sui-overflow`, `create-pitch-deck`, `marketing-video`, `video-craft`, `apply-grant` |
 
-Full descriptions and trigger phrases in [plans/04-SKILLS-CATALOG.md](plans/04-SKILLS-CATALOG.md).
+Browse the live skill set under [`core/skills/`](core/skills/).
 
 ## How phases connect
 
@@ -100,7 +100,6 @@ Every build skill has a "will this survive past the hackathon" gate. First-class
 
 `/submit-to-sui-overflow` refuses to generate a submission against placeholder content. The live URL must work, the package must verify on chain, the media must exist at the right dimensions. The skill is on your side, not the judges'.
 
-Full framework in [plans/12-ANTI-SLOP-FRAMEWORK.md](plans/12-ANTI-SLOP-FRAMEWORK.md).
 
 ## Sponsor integrations
 
@@ -112,7 +111,7 @@ Full framework in [plans/12-ANTI-SLOP-FRAMEWORK.md](plans/12-ANTI-SLOP-FRAMEWORK
 | **OtterSec** | Prize sponsor | `/ottersec-prep` |
 | **Scallop** | University award sponsor | `/scallop-money-market` |
 
-`/pick-my-sui-track` recommends the right track based on actual integration depth, not marketing intent. Detail in [plans/11-SPONSOR-INTEGRATION.md](plans/11-SPONSOR-INTEGRATION.md).
+`/pick-my-sui-track` recommends the right track based on actual integration depth, not marketing intent.
 
 ## Ecosystem catalog
 
@@ -145,13 +144,10 @@ core/cli/           CLI source + ecosystem catalog data
 core/skills/        Journey skills + Sui knowledge base + curated ideas
 convex/             Telemetry + feedback backend
 web/public/         setup.sh + assets served by the website
-plans/              Source-of-truth planning docs
 core/install.sh     Bash bootstrap, hosted at suiperpower.dev/setup.sh
 README.md           This file
 CLAUDE.md           Context for AI agents working on Suiperpower itself
 ```
-
-Full tree in [plans/02-PROJECT-STRUCTURE.md](plans/02-PROJECT-STRUCTURE.md).
 
 ## Multi-agent
 
@@ -161,7 +157,7 @@ Full tree in [plans/02-PROJECT-STRUCTURE.md](plans/02-PROJECT-STRUCTURE.md).
 | Codex | `~/.codex/skills/<skill-name>/` |
 | Cursor | `~/.cursor/rules/<skill-name>.mdc` |
 
-`suiperpower init` writes Codex and Cursor formats by default and prints the Claude plugin install commands. `suiperpower init --vendor` writes all three into the current repo under namespaced project folders. Detail in [plans/09-MULTI-AGENT-PARITY.md](plans/09-MULTI-AGENT-PARITY.md).
+`suiperpower init` writes Codex and Cursor formats by default and prints the Claude plugin install commands. `suiperpower init --vendor` writes all three into the current repo under namespaced project folders.
 
 ## Per-skill install
 
@@ -172,7 +168,7 @@ npx skills add pivyme/suiperpower/skills/build/build-with-move
 npx skills add pivyme/suiperpower/skills/idea/find-next-sui-idea
 ```
 
-The full curl one-liner stays the canonical install. Per-skill is for users who already have a target. See [plans/03-INSTALL-FLOW.md](plans/03-INSTALL-FLOW.md).
+The full curl one-liner stays the canonical install. Per-skill is for users who already have a target.
 
 ## Use in your repo (vendor mode)
 

@@ -1,6 +1,6 @@
 # Deepsurge Submission Guide
 
-Walk-through for submitting to deepsurge.xyz, the Sui Overflow 2026 submission portal. The full submission spec lives in `plans/10-HACKATHON-SUBMISSION.md`; this guide is the user-facing recipe.
+Walk-through for submitting to deepsurge.xyz, the Sui Overflow 2026 submission portal. This guide is the user-facing recipe; the `/submit-to-sui-overflow` skill drives it end to end.
 
 ## What deepsurge.xyz is
 
@@ -71,7 +71,7 @@ After the form returns a confirmation:
 - Take a screenshot of the confirmation page. Save under `docs/submission/confirmation.png`.
 - Append the submission record to `.suiperpower/submission-context.md` under the Submission section.
 - Post in Sui Overflow Telegram (https://go.sui.io/suioverflow2026-tg). Short message, link to the live demo.
-- Optional: tweet the submission with sponsor mentions. The template is in `plans/10-HACKATHON-SUBMISSION.md`.
+- Optional: tweet the submission with sponsor mentions. Keep it short: project name, one-line value prop, demo link, tag each sponsor whose integration is genuinely load-bearing.
 
 If something is wrong after submission (typo in description, wrong package id), check whether deepsurge allows edits within the submission window. If not, contact the organizers via Telegram immediately.
 

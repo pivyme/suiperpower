@@ -131,7 +131,7 @@ Per file:
 
 - **Submission**: per-submission record. Submission timestamp, project name, primary track, secondary tags, network, package id, live URL, demo video URL. Append-only (in case of re-submission).
 - **Assets**: file paths to logo / media / descriptions / scripts. Scalar overwrite, latest paths win.
-- **Preflight**: checklist results from `plans/10-HACKATHON-SUBMISSION.md`. Scalar overwrite per run.
+- **Preflight**: checklist results from the day-of preflight gate (live URL check, package verified on chain, media at spec, demo video plays). Scalar overwrite per run.
 - **Confirmation**: deepsurge confirmation screenshot path, Telegram post link, tweet link. Scalar overwrite.
 
 ### learnings.md

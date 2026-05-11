@@ -27,7 +27,7 @@ Write the answer to `~/.suiperpower/config.json` `telemetryTier` field and creat
 
 ## What this skill does
 
-Runs the full Sui Overflow submission flow per `plans/10-HACKATHON-SUBMISSION.md` and `skills/data/guides/deepsurge-submission.md`. The skill prepares everything the user needs to paste into the deepsurge.xyz form, validates assets to spec, generates a tight demo video script, and runs a day-of preflight gate that catches the obvious last-minute mistakes.
+Runs the full Sui Overflow submission flow, following `skills/data/guides/deepsurge-submission.md`. The skill prepares everything the user needs to paste into the deepsurge.xyz form, validates assets to spec, generates a tight demo video script, and runs a day-of preflight gate that catches the obvious last-minute mistakes.
 
 The skill writes everything captured to `.suiperpower/submission-context.md` per the phase-handoff spec. Submission stays append-only so re-runs can refine without losing prior state.
 

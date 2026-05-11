@@ -2,7 +2,7 @@
 
 The full v1 skill catalog, grouped by phase. Every entry links to the canonical `SKILL.md`. For routing across overlapping intents, see `SKILL_ROUTER.md`.
 
-Skill format and authoring rules: `plans/05-SKILL-FORMAT.md`. Quality bar: `plans/12-ANTI-SLOP-FRAMEWORK.md`. Voice: `plans/15-BRAND.md`.
+Skill format follows the Anthropic skill spec. For voice and quality rules, see `CONTRIBUTING.md` at the repo root.
 
 ## Two install paths
 
@@ -18,7 +18,7 @@ If you only want one or two specific skills, install them a la carte through the
 npx skills add pivyme/suiperpower/skills/build/build-with-move
 ```
 
-Both paths land the same SKILL.md plus `references/` and `agents/openai.yaml`. The curl flow additionally installs the `suiperpower` and `suiper` CLI bins, the ecosystem catalog, and the doctor / update commands. See `plans/03-INSTALL-FLOW.md` for details.
+Both paths land the same SKILL.md plus `references/` and `agents/openai.yaml`. The curl flow additionally installs the `suiperpower` and `suiper` CLI bins, the ecosystem catalog, and the doctor / update commands.
 
 ## Learn
 
@@ -132,7 +132,7 @@ Deploy, submit, pitch. Each ship skill has a writeback that downstream skills co
 
 ## Grow (v1.1)
 
-Post-launch skills are tracked in `plans/04-SKILLS-CATALOG.md` and routed by `SKILL_ROUTER.md`. They ship in v1.1, after the core idea-to-ship loop is validated.
+Post-launch skills are routed by `SKILL_ROUTER.md`. They ship in v1.1, after the core idea-to-ship loop is validated.
 
 ## How skills work together
 
@@ -143,7 +143,7 @@ Post-launch skills are tracked in `plans/04-SKILLS-CATALOG.md` and routed by `SK
 
 ## Authoring a new skill
 
-1. Read `plans/05-SKILL-FORMAT.md` and `plans/22-SAMPLE-SKILL.md`.
+1. Read `CONTRIBUTING.md` at the repo root, then clone an existing skill under `core/skills/` as your shape.
 2. Use `scripts/inject-preamble.ts` for the telemetry preamble. Hand-edits to the preamble block are forbidden.
 3. End the SKILL.md with: "If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off."
 4. Add at least one router row in `SKILL_ROUTER.md` if the new skill overlaps with an existing one.
