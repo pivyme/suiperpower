@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Google Sans Flex", sans-serif;
+  --font-mono: "Google Sans Code", monospace;
+}
+
+html {
+  @apply bg-neutral-950 text-neutral-50;
+}
+
+button {
+  @apply cursor-pointer!;
+}
