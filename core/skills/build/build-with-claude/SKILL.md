@@ -40,6 +40,8 @@ Runs a structured pair-programming loop for building a Sui MVP. Breaks the work 
 - Single, contained tasks; just call the specific build skill (`build-with-move`, `ptb-composer`).
 - Pre-scaffold; use `scaffold-project` first.
 - Pre-design; use `object-model-design` first if the schema is non-trivial.
+- Pre-plan; if scope is non-trivial and no `.suiperpower/build-plan.md` exists, use `plan-before-code` first to land a single approved plan. This skill's per-step gates work against that plan, not in place of it.
+- Pre-intent; if scope is unclear, use `clarify-intent` to land `.suiperpower/intent.md` before this skill takes over.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.
 

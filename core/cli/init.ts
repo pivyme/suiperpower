@@ -11,6 +11,8 @@ import {
   readFileSync,
   readdirSync,
   rmSync,
+  rmdirSync,
+  statSync,
   writeFileSync,
 } from "node:fs";
 import { homedir } from "node:os";
@@ -264,6 +266,90 @@ function cleanupLegacyGlobalClaudeFiles(): number {
   return removed;
 }
 
+function readPriorManifest(vendor: boolean): Manifest | null {
+  const p = manifestPath(vendor);
+  if (!existsSync(p)) return null;
+  try {
+    return JSON.parse(readFileSync(p, "utf8")) as Manifest;
+  } catch {
+    return null;
+  }
+}
+
+// Skills get renamed or removed across versions. Without cleanup, the old
+// directory keeps living under ~/.codex/skills/<old-name>/ and the old .mdc
+// keeps living under ~/.cursor/rules/<old-name>.mdc, double-triggering. We
+// diff the prior manifest's skill names against the current set and remove
+// orphans from every install target.
+function removeOrphanSkills(
+  prior: Manifest | null,
+  currentNames: Set<string>,
+  targets: { claude: string; codex: string; cursor: string },
+  writeClaude: boolean,
+): string[] {
+  if (!prior) return [];
+  const removed: string[] = [];
+  for (const s of prior.skills ?? []) {
+    if (currentNames.has(s.name)) continue;
+    const candidates = [join(targets.codex, s.name), join(targets.cursor, `${s.name}.mdc`)];
+    if (writeClaude) candidates.push(join(targets.claude, s.name));
+    let touched = false;
+    for (const p of candidates) {
+      if (!existsSync(p)) continue;
+      try {
+        rmSync(p, { recursive: true, force: true });
+        touched = true;
+      } catch {
+        // ignore
+      }
+    }
+    if (touched) removed.push(s.name);
+  }
+  return removed;
+}
+
+// Mirror of uninstall.ts pruneEmptyDirsRecursive, kept local so init has no
+// cross-module dep on uninstall. cpSync leaves empty placeholder dirs behind
+// (agents/, references/) and shared-knowledge subtrees that no file in the
+// manifest anchors. Sweep them after every init.
+function pruneEmptyDirs(root: string): void {
+  if (!existsSync(root)) return;
+  const visit = (dir: string): boolean => {
+    let entries: string[];
+    try {
+      entries = readdirSync(dir);
+    } catch {
+      return false;
+    }
+    let allRemoved = true;
+    for (const name of entries) {
+      const full = join(dir, name);
+      let st;
+      try {
+        st = statSync(full);
+      } catch {
+        allRemoved = false;
+        continue;
+      }
+      if (st.isDirectory()) {
+        const childEmptied = visit(full);
+        if (!childEmptied) allRemoved = false;
+      } else {
+        allRemoved = false;
+      }
+    }
+    if (!allRemoved) return false;
+    if (dir === root) return true;
+    try {
+      rmdirSync(dir);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+  visit(root);
+}
+
 export async function run(args: string[]): Promise<void> {
   const { vendor, agent, convexUrl } = parseFlags(args);
   const skills = discoverSkills();
@@ -275,6 +361,10 @@ export async function run(args: string[]): Promise<void> {
   // so it stays. Codex and Cursor have no plugin model, flat copy for both.
   const writeClaude = vendor;
   const legacyCleaned = !vendor ? cleanupLegacyGlobalClaudeFiles() : 0;
+  const prior = readPriorManifest(vendor);
+  const currentNames = new Set(skills.map((s) => s.name));
+  const orphans = removeOrphanSkills(prior, currentNames, targets, writeClaude);
+
   if (writeClaude) mkdirSync(targets.claude, { recursive: true });
   mkdirSync(targets.codex, { recursive: true });
   mkdirSync(targets.cursor, { recursive: true });
@@ -311,6 +401,13 @@ export async function run(args: string[]): Promise<void> {
   mkdirSync(dirname(mPath), { recursive: true });
   writeFileSync(mPath, JSON.stringify(manifest, null, 2));
 
+  // cpSync copies empty placeholder dirs (agents/, references/) when a skill
+  // has them. Those never enter the manifest (walk only records files), so on
+  // reinstall they accumulate. Sweep each install root bottom-up.
+  for (const root of [targets.codex, targets.cursor, ...(writeClaude ? [targets.claude] : [])]) {
+    pruneEmptyDirs(root);
+  }
+
   // Best-effort: install Claude Code or Codex if neither is present and we are interactive.
   if (!vendor && !agent && process.stdout.isTTY) {
     const have = detectAgentCliPaths();
@@ -322,6 +419,7 @@ export async function run(args: string[]): Promise<void> {
   if (agent) {
     console.log(`${BRAND.PRODUCT_NAME} init, ${installed.length} skills (${vendor ? "vendor" : "global"})`);
     for (const s of installed) console.log(`  + ${s}`);
+    for (const s of orphans) console.log(`  - ${s} (orphan, removed)`);
     console.log(`manifest: ${mPath}`);
     return;
   }
@@ -330,6 +428,9 @@ export async function run(args: string[]): Promise<void> {
   console.log(`  ${bold(`${BRAND.PRODUCT_NAME} init`)} ${muted(vendor ? "(vendor)" : "(global)")}`);
   console.log("");
   console.log(`  ${ok(`${installed.length} skills installed`)}`);
+  if (orphans.length > 0) {
+    console.log(`  ${muted(`removed ${orphans.length} renamed/retired skill(s)`)}`);
+  }
   if (writeClaude) {
     console.log(`  ${dim(targets.claude)} ${muted("(Claude Code)")}`);
   } else {

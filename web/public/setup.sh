@@ -93,6 +93,23 @@ else
   warn "Cursor not detected. If you use Cursor, install from https://cursor.com (skills still write to ~/.cursor/rules/)"
 fi
 
+# Auto-install the Suiperpower plugin into Claude Code.
+# Idempotent; both subcommands no-op if already added/installed. Silent failure
+# (e.g. repo not yet public) falls back to the manual instructions printed below.
+if has_cmd claude; then
+  log "Installing suiperpower plugin in Claude Code"
+  if claude plugin marketplace add pivyme/suiperpower >/dev/null 2>&1; then
+    ok "marketplace added"
+    if claude plugin install suiper@suiperpower >/dev/null 2>&1; then
+      ok "plugin installed, skills available as /suiper:<name>"
+    else
+      warn "plugin install failed, run manually: claude plugin install suiper@suiperpower"
+    fi
+  else
+    warn "marketplace add failed (repo may be private), see manual steps below"
+  fi
+fi
+
 # Helper to run suiperpower
 run_ss() {
   if has_cmd "$SHORT_NAME"; then
@@ -175,13 +192,27 @@ printf "  ${CYAN}+--------------------------------------------------------------
 printf "\n"
 printf "  ${GREEN}${BOLD}Setup complete${RESET}\n\n"
 
-printf "  ${BOLD}Daily use${RESET} ${DIM}(both bins work, ${SHORT_NAME} is the short alias)${RESET}\n\n"
-printf "    ${CYAN}${SHORT_NAME} doctor${RESET}                ${DIM}health check${RESET}\n"
-printf "    ${CYAN}${SHORT_NAME} skills${RESET}                ${DIM}browse installed skills${RESET}\n"
-printf "    ${CYAN}${SHORT_NAME} repos${RESET}                 ${DIM}browse Sui ecosystem repos${RESET}\n"
-printf "    ${CYAN}${SHORT_NAME} update${RESET}                ${DIM}pull latest skills${RESET}\n"
+printf "  ${BOLD}Your CLI${RESET} ${DIM}(${PRODUCT_NAME} and ${SHORT_NAME} are the same binary, use whichever)${RESET}\n\n"
+printf "    ${BOLD}Manage${RESET}\n"
+printf "      ${CYAN}${SHORT_NAME}${RESET}                      ${DIM}interactive onboarding menu${RESET}\n"
+printf "      ${CYAN}${SHORT_NAME} doctor${RESET}               ${DIM}health check, never blocks${RESET}\n"
+printf "      ${CYAN}${SHORT_NAME} update${RESET}               ${DIM}pull the latest skills + CLI${RESET}\n"
+printf "      ${CYAN}${SHORT_NAME} init${RESET}                 ${DIM}re-run install for Codex + Cursor${RESET}\n"
+printf "      ${CYAN}${SHORT_NAME} init --vendor${RESET}        ${DIM}vendor skills into the current repo${RESET}\n"
+printf "      ${CYAN}${SHORT_NAME} uninstall${RESET}            ${DIM}remove tracked skills + config${RESET}\n"
 printf "\n"
-printf "  ${DIM}${PRODUCT_NAME} <cmd> works identically.${RESET}\n"
+printf "    ${BOLD}Browse${RESET}\n"
+printf "      ${CYAN}${SHORT_NAME} skills${RESET}               ${DIM}installed skills (idea, build, ship)${RESET}\n"
+printf "      ${CYAN}${SHORT_NAME} repos${RESET}                ${DIM}Sui ecosystem starter repos${RESET}\n"
+printf "      ${CYAN}${SHORT_NAME} mcps${RESET}                 ${DIM}MCP servers for Sui${RESET}\n"
+printf "      ${CYAN}${SHORT_NAME} ideas${RESET}                ${DIM}curated build ideas${RESET}\n"
+printf "      ${CYAN}${SHORT_NAME} search <q>${RESET}           ${DIM}search across all of the above${RESET}\n"
+printf "\n"
+printf "    ${BOLD}Work${RESET}\n"
+printf "      ${CYAN}${SHORT_NAME} journey${RESET}              ${DIM}guided TUI, idea to ship${RESET}\n"
+printf "      ${CYAN}${SHORT_NAME} workspace-setup${RESET}      ${DIM}seed .suiperpower/ in this repo${RESET}\n"
+printf "      ${CYAN}${SHORT_NAME} feedback${RESET}             ${DIM}send a note to the team${RESET}\n"
+printf "      ${CYAN}${SHORT_NAME} --help${RESET}               ${DIM}full command list${RESET}\n"
 
 printf "\n"
 printf "  ${BOLD}Claude Code, one-time install${RESET} ${DIM}(namespaced, no collision with other packs)${RESET}\n\n"
@@ -202,10 +233,6 @@ printf "  ${DIM}Skills auto-route by intent inside Claude. In Codex / Cursor use
 printf "  ${DIM}name (no /suiper: prefix). Same trigger phrases work across all three.${RESET}\n"
 printf "\n"
 
-printf "  ${BOLD}Vendor into your repo ${DIM}(optional)${RESET}\n"
-printf "  ${DIM}Teammates clone, skills come with the project.${RESET}\n\n"
-printf "    ${CYAN}${SHORT_NAME} init --vendor${RESET}\n"
-printf "\n"
 printf "  ${DIM}Docs   ${WEBSITE_URL}${RESET}\n"
 printf "  ${DIM}Source ${GITHUB_REPO_URL}${RESET}\n"
 printf "\n"

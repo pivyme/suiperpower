@@ -448,7 +448,9 @@ The contract pattern is adapted directly from `reference/solana-new-main/skills/
 <project-root>/
   .suiperpower/
     idea-context.md           Written by Idea-phase skills
-    build-context.md          Written by Build-phase skills
+    intent.md                 Written by clarify-intent (intent-loop entry gate)
+    build-plan.md             Written by plan-before-code (intent-loop middle gate)
+    build-context.md          Written by Build-phase skills, verify-against-intent appends verdicts
     deploy-context.md         Written by Ship-phase deploy skills
     submission-context.md     Written by submit-to-sui-overflow
     learnings.md              Written by /learn across sessions
@@ -475,9 +477,53 @@ Sections:
   - Day 1, Day 2, Day 7, Day 30 anchors plus a single-paragraph loop description
 - **Source Reports** (accumulating list of artifact filenames)
 
+### intent.md
+
+Written by: `clarify-intent`.
+
+Read by: `plan-before-code`, `verify-against-intent`, and any build skill that wants to confirm scope before writing code.
+
+The intent-loop entry gate. Sits between `idea-context.md` and `build-context.md`. Lets the agent stop and pin down problem, audience, success criteria, and out-of-scope before any code lands.
+
+Sections:
+
+- **One-sentence summary** (required, in the user's own words after confirmation)
+- **Problem** (the underlying pain, not the surface request)
+- **Audience** (who uses this, what they do today instead)
+- **Success criteria** (observable, checkable outcomes, numbered)
+- **Out of scope** (things the user might assume but are not in)
+- **Constraints** (timeline, stack, risk tolerance: hackathon demo vs production)
+- **Open questions** (anything the skill could not pin down, left as open)
+
+Append-only when re-run in the same project. If intent materially changes mid-build, write a new dated section rather than overwriting (so `verify-against-intent` can detect drift between historical and current intent).
+
+### build-plan.md
+
+Written by: `plan-before-code`.
+
+Read by: `verify-against-intent`, and any downstream build skill that wants to confirm planned scope before implementing.
+
+The intent-loop middle gate. Turns `intent.md` into a file-level plan the user has approved.
+
+Sections:
+
+- **Linked intent** (pointer to `intent.md`, one-line summary)
+- **Object model** (per-object: owned / shared / immutable, abilities, purpose)
+- **Capabilities** (who holds, what they gate)
+- **Modules** (per-module: purpose, public functions, dependencies)
+- **Entry points** (public functions and PTBs the user calls)
+- **Tests** (each tied to a success criterion in `intent.md`)
+- **Frontend or off-chain pieces** (if any)
+- **Sponsor integrations** (load-bearing only, per `plans/11-SPONSOR-INTEGRATION.md`)
+- **Risks and unknowns** (with how the team will resolve each)
+- **Order of build** (numbered, first step proves the riskiest unknown)
+- **What "done" looks like** (observable outcome tied to intent success criteria)
+
+Plans are session-bound. If scope changes mid-build, write a new dated plan section rather than overwriting (so audit trail and `verify-against-intent` drift detection both work).
+
 ### build-context.md
 
-Written by: `scaffold-project`, `build-with-claude`, `build-with-move`, `walrus-storage`, `deepbook-orderbook`, `scallop-money-market`, `sui-zk-login`, `sponsored-transactions`, `kiosk-marketplace`, `build-mobile-sui`, `launch-coin`, `review-move`.
+Written by: `scaffold-project`, `build-with-claude`, `build-with-move`, `walrus-storage`, `deepbook-orderbook`, `scallop-money-market`, `sui-zk-login`, `sponsored-transactions`, `kiosk-marketplace`, `build-mobile-sui`, `launch-coin`, `review-move`, `verify-against-intent`.
 
 Sections:
 

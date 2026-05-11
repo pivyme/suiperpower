@@ -35,10 +35,13 @@ learn          validate-idea           build-with-claude              deploy-to-
                                        validate-business-model
                                        retention-loop
                                        will-real-users-pay
+                                       clarify-intent
+                                       plan-before-code
+                                       verify-against-intent
                                        navigate-skills
 ```
 
-Total v1 target: ~38 skills. Split: Learn 2, Idea 6, Build 24, Ship 8, Grow 4 (Grow ships v1.1 unless schedule allows).
+Total v1 target: ~41 skills. Split: Learn 2, Idea 6, Build 27, Ship 8, Grow 4 (Grow ships v1.1 unless schedule allows). Build includes the intent-loop gates (clarify-intent, plan-before-code, verify-against-intent) plus the meta-skill navigate-skills.
 
 ## Trigger phrases
 
@@ -94,6 +97,9 @@ Each skill's `SKILL.md` `description:` field includes the phrases below so Claud
 | `validate-business-model` | "what's my business model", "how will this make money" |
 | `retention-loop` | "what's my retention loop", "why will users come back" |
 | `will-real-users-pay` | "will users pay for this", "willingness to pay check" |
+| `clarify-intent` | "build me X", "let's start building", "step back", "what am I really trying to do", "I'm not sure what I want yet" |
+| `plan-before-code` | "make a plan", "plan this out", "before we code", "walk me through the approach", "outline the implementation" |
+| `verify-against-intent` | "did we do it right", "does this match what I asked", "review what we built", "verify the build", "audit my session" |
 | `navigate-skills` | "what skills are available", "list skills" |
 
 ### Ship

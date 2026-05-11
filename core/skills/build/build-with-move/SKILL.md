@@ -111,6 +111,10 @@ The skill never deletes files outside `sources/` and `tests/` without explicit u
    - Append session details to `.suiperpower/build-context.md`.
    - List any open issues you intentionally left for follow-up.
 
+7. **Closing handoff**
+   - If `.suiperpower/intent.md` exists and the session was non-trivial (new module, new sponsor integration, or material changes to public functions), recommend `verify-against-intent` as the next step so drift is caught before shipping.
+   - If no `intent.md` exists and the session was non-trivial, surface that gap once: offer `clarify-intent` to backfill, do not force it.
+
 ## Quality gate (anti-slop)
 
 Before reporting done, the skill asks itself the following and refuses to declare success if any answer is no:

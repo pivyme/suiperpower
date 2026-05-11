@@ -1,9 +1,9 @@
 // `suiperpower uninstall` reads the manifest written by init.ts and removes only files we own.
 // User-authored skills in the same directories are untouched. Prompts before deleting ~/.suiperpower/.
 
-import { existsSync, readFileSync, readdirSync, rmSync, statSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, rmSync, rmdirSync, statSync } from "node:fs";
 import { homedir } from "node:os";
-import { dirname, join } from "node:path";
+import { join } from "node:path";
 import { createInterface } from "node:readline/promises";
 
 import { BRAND } from "./branding.js";
@@ -48,24 +48,45 @@ function tryRmFile(p: string): boolean {
   return false;
 }
 
-function pruneEmptyDirs(start: string, stopAt: string): void {
-  let dir = start;
-  while (dir !== stopAt && dir !== "/" && dir.startsWith(stopAt)) {
+// Walk the tree bottom-up and remove every empty directory under root.
+// Leaves root itself in place if it ends up empty, since root is the agent's
+// canonical dir (~/.codex/skills, ~/.cursor/rules) that other tools may rely on.
+function pruneEmptyDirsRecursive(root: string): void {
+  if (!existsSync(root)) return;
+  const visit = (dir: string): boolean => {
+    let entries: string[];
     try {
-      if (!existsSync(dir)) {
-        dir = dirname(dir);
+      entries = readdirSync(dir);
+    } catch {
+      return false;
+    }
+    let allRemoved = true;
+    for (const name of entries) {
+      const full = join(dir, name);
+      let st;
+      try {
+        st = statSync(full);
+      } catch {
+        allRemoved = false;
         continue;
       }
-      const st = statSync(dir);
-      if (!st.isDirectory()) break;
-      const entries = readdirSync(dir);
-      if (entries.length > 0) break;
-      rmSync(dir, { recursive: false, force: true });
-    } catch {
-      break;
+      if (st.isDirectory()) {
+        const emptiedChild = visit(full);
+        if (!emptiedChild) allRemoved = false;
+      } else {
+        allRemoved = false;
+      }
     }
-    dir = dirname(dir);
-  }
+    if (!allRemoved) return false;
+    if (dir === root) return true;
+    try {
+      rmdirSync(dir);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+  visit(root);
 }
 
 export async function run(args: string[]): Promise<void> {
@@ -101,13 +122,15 @@ export async function run(args: string[]): Promise<void> {
     if (tryRmFile(p)) removed += 1;
   }
 
-  // Prune empty install dirs but never the user's home.
+  // Bottom-up sweep, removes every empty dir under each agent install root.
+  // cpSync leaves empty `agents/` and `references/` placeholders behind, plus
+  // the shared knowledge tree, and none of those end up in the file manifest.
   const installDirs = [
     join(homedir(), ".claude", "skills"),
     join(homedir(), ".codex", "skills"),
     join(homedir(), ".cursor", "rules"),
   ];
-  for (const d of installDirs) pruneEmptyDirs(d, dirname(d));
+  for (const d of installDirs) pruneEmptyDirsRecursive(d);
 
   // Optionally remove ~/.suiperpower/
   const cfgDir = join(homedir(), BRAND.CONFIG_DIR);
