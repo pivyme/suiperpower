@@ -1,6 +1,6 @@
 ---
 name: pick-my-sui-track
-description: Recommend the right Sui Overflow 2026 track based on real project fit. Scores the project against the four official tracks (Agentic Web, DeFi & Payments, Walrus, DeepBook) on a 0-3 depth scale and refuses to recommend a track where the fit is aspirational. Surfaces the official "team's prerogative" policy. Use when the user says "which track", "which Overflow track", "pick my track", "what track should I submit to", "Sui Overflow track", or "track recommendation". Reads .suiperpower/idea-context.md, .suiperpower/build-context.md, and the project source; writes .suiperpower/track-pick.md.
+description: Recommend the right Sui Overflow 2026 track based on real project fit. Scores the project against all eleven official tracks (3 core, 8 specialized) on a 0-3 depth scale and refuses to recommend a track where the fit is aspirational. Surfaces the official "team's prerogative" policy. Use when the user says "which track", "which Overflow track", "pick my track", "what track should I submit to", "Sui Overflow track", or "track recommendation". Reads .suiperpower/idea-context.md, .suiperpower/build-context.md, and the project source; writes .suiperpower/track-pick.md.
 ---
 
 ## Preamble (run first)
@@ -27,14 +27,24 @@ Write the answer to `~/.suiperpower/config.json` `telemetryTier` field and creat
 
 ## What this skill does
 
-Walks the project's actual code and demo flow, scores depth of fit against the four official Sui Overflow 2026 tracks on a 0 to 3 scale, and recommends a single primary track only if a track scores 3 (load-bearing).
+Walks the project's actual code and demo flow, scores depth of fit against all eleven official Sui Overflow 2026 tracks on a 0 to 3 scale, and recommends a single primary track only if a track scores 3 (load-bearing).
 
-The four official tracks:
+The eleven official tracks:
 
+**Core tracks ($62.5K each)**:
 - **Agentic Web**: autonomous AI agents that act, transact, and coordinate using Sui's object model.
-- **DeFi & Payments**: financial primitives or payment rails.
-- **Walrus**: applications built on Walrus decentralized storage.
-- **DeepBook**: trading or liquidity applications powered by DeepBook's on-chain orderbook.
+- **DeFi & Payments**: financial primitives or payment rails on Sui.
+- **Infra & DevX**: developer tools, SDKs, indexers, and infrastructure that make Sui easier to build on.
+
+**Specialized tracks**:
+- **Walrus** ($70K): applications built on Walrus decentralized storage.
+- **DeepBook** ($70K): trading or liquidity applications powered by DeepBook's on-chain orderbook.
+- **ONE Championship** ($70K): consumer apps in sports, entertainment, fan engagement, gaming, NFTs.
+- **EVE Frontier** ($50K): Smart Assembly mods, tools, or experiences for EVE Frontier.
+- **Degen** (TBD): meme launches, gamified trading, bonding curves, viral degen culture.
+- **Payments & Wallets** (TBD): wallet UX, payment rails, sponsored transactions.
+- **Entertainment & Culture** (TBD): NFTs, gaming, social, consumer culture apps.
+- **Explorations** (TBD): RWA, DePIN, multi-chain, novel experiments.
 
 If overflow.sui.io ever changes its track list mid-cycle, this skill should be re-verified against the current page before recommending.
 
@@ -55,7 +65,7 @@ This skill stays opinionated within that policy. It will not bless a track recom
 ## When NOT to use it
 
 - Pre-build, when fit cannot be measured against real code.
-- For prize sponsor eligibility (OpenZeppelin, OtterSec, Scallop). Those are prize partners inside tracks, not tracks themselves; see "Prize sponsors" below.
+- For special award eligibility (OpenZeppelin, OtterSec, Scallop, Hippo). Those are prize partners or special awards, not tracks themselves; see "Special awards and prize sponsors" below.
 - For grant track decisions. Route to `apply-grant`.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.
@@ -74,28 +84,38 @@ Append to `.suiperpower/track-pick.md`:
 ```markdown
 ## Track pick, <timestamp>
 
-### Track fit scores
+### Track fit scores (core)
 - Agentic Web: <0 | 1 | 2 | 3>, evidence: <one sentence>
 - DeFi & Payments: <0 | 1 | 2 | 3>, evidence: <one sentence>
+- Infra & DevX: <0 | 1 | 2 | 3>, evidence: <one sentence>
+
+### Track fit scores (specialized)
 - Walrus: <0 | 1 | 2 | 3>, evidence: <one sentence>
 - DeepBook: <0 | 1 | 2 | 3>, evidence: <one sentence>
+- ONE Championship: <0 | 1 | 2 | 3>, evidence: <one sentence>
+- EVE Frontier: <0 | 1 | 2 | 3>, evidence: <one sentence>
+- Degen: <0 | 1 | 2 | 3>, evidence: <one sentence>
+- Payments & Wallets: <0 | 1 | 2 | 3>, evidence: <one sentence>
+- Entertainment & Culture: <0 | 1 | 2 | 3>, evidence: <one sentence>
+- Explorations: <0 | 1 | 2 | 3>, evidence: <one sentence>
 
 ### Primary track
-- recommended: <track name | none of the four>
+- recommended: <track name | none of the eleven>
 - reasoning: <one paragraph>
 - caveats: <one paragraph if any>
 
 ### What is needed to upgrade a 2 to a 3
 - <if any track sits at 2, what would tip it to load-bearing>
 
-### Prize sponsor eligibility (informational, not tracks)
-- OpenZeppelin (1st place DeFi & Payments): <yes | no>, evidence: ...
-- OtterSec (3rd place DeFi & Payments): <yes | no>, evidence: ...
-- Scallop (University Award): <yes | no>, evidence: ...
+### Special awards and prize sponsor eligibility (informational, not tracks)
+- OpenZeppelin (1st place DeFi & Payments sponsor): <yes | no>, evidence: ...
+- OtterSec (3rd place DeFi & Payments sponsor): <yes | no>, evidence: ...
+- Scallop University Award ($2.5K x 10 teams): <yes | no>, evidence: ...
+- Hippo Community Award ($25K): <eligible by default, community-voted>
 
 ### Verdict
-- ready to submit to one of the four tracks: <yes | no>
-- if no: which of the four to deepen, with the concrete change needed to get there
+- ready to submit to one of the eleven tracks: <yes | no>
+- if no: which track to deepen, with the concrete change needed to get there
 ```
 
 ## Workflow
@@ -105,7 +125,7 @@ Append to `.suiperpower/track-pick.md`:
    - Walk the Move package and frontend for integration evidence.
    - Walk the user-visible demo flow end to end.
 
-2. **Score each of the four tracks on 0 to 3**
+2. **Score each of the eleven tracks on 0 to 3**
    - 0: no real fit.
    - 1: thematic adjacency only (a mention in docs, an aspirational claim in the description).
    - 2: real code or theme present, but the project still works as something else if you removed it.
@@ -118,22 +138,23 @@ Append to `.suiperpower/track-pick.md`:
    - If the test does not produce the stated outcome, downgrade to 2.
 
 4. **Recommend the primary track**
-   - If exactly one of the four scores 3, recommend that as primary.
-   - If two score 3, recommend the one most central to the user-visible value. Use `idea-context.md` to break the tie.
+   - If exactly one of the eleven scores 3, recommend that as primary.
+   - If two or more score 3, recommend the one most central to the user-visible value. Use `idea-context.md` to break the tie.
    - If none scores 3, primary is `none`. Name the highest-scoring track and the concrete change needed to upgrade it to 3. Do not bless a 2 as a submission-ready pick.
 
-5. **Note prize sponsor eligibility**
-   - Prize sponsors sit inside tracks, not in place of them. Scoring is informational so the user knows what else is reachable from their primary track.
+5. **Note special awards and prize sponsor eligibility**
+   - These sit alongside tracks, not in place of them. Scoring is informational so the user knows what else is reachable from their primary track.
    - OpenZeppelin: 1st place sponsor for DeFi & Payments. Eligible if the project uses load-bearing OZ Sui modules.
    - OtterSec: 3rd place sponsor for DeFi & Payments. Eligible if the project completed a real OtterSec-style security pass with P0 items resolved.
-   - Scallop: University Award sponsor. Eligible per the Overflow university award criteria, not gated on Scallop integration.
+   - Scallop University Award: $2.5K x 10 teams. Eligible per the Overflow university award criteria, not gated on Scallop integration.
+   - Hippo Community Award: $25K total, community-voted. All submitted projects are eligible by default. Mention this so the user knows it exists but do not score it.
 
 6. **Name what would upgrade a 2 to a 3**
    - For each track at 2, write one concrete change. Example: "Walrus is at 2 because the demo's hero image is served from a CDN with the Walrus blob as fallback. Move the canonical render to Walrus to upgrade to 3."
 
 7. **Write the verdict**
    - If primary is named, recommend `submit-to-sui-overflow`.
-   - If primary is `none`, do not block the user. Surface the team-prerogative policy, name the highest-scoring track, and give the concrete upgrade path. The user can still submit; the skill just refuses to call a 2 a 3.
+   - If primary is `none`, do not block the user. Surface the team-prerogative policy, name the highest-scoring track from all eleven, and give the concrete upgrade path. The user can still submit; the skill just refuses to call a 2 a 3.
 
 8. **Writeback**
    - Append the entry to `.suiperpower/track-pick.md`.
@@ -142,23 +163,25 @@ Append to `.suiperpower/track-pick.md`:
 
 Before reporting done:
 
-- Was every one of the four tracks scored, with a one-sentence evidence string? (No skipped tracks.)
+- Were all eleven tracks scored, with a one-sentence evidence string? (No skipped tracks.)
 - Was every load-bearing claim verified by walking the demo flow, not by trusting an import list?
 - Was a track at 3 demoted if the demo flow did not actually exercise it?
 - Was the upgrade-path note written for every track at 2?
 - If no track scored 3, did the writeup name the highest-scoring track and the concrete upgrade change instead of blessing a 2 as a submission-ready pick?
-- Did the prize sponsor eligibility section stay informational (not framed as a fifth track)?
+- Did the special awards section stay informational (not framed as a twelfth track)?
 - Did the writeback happen?
 
 If any answer is no, the skill keeps working.
 
 ## Where to get help
 
-Sui Overflow 2026 runs dedicated Telegram groups for the two main sponsor tracks. If the recommendation is Walrus or DeepBook, point the user at the matching group so they can talk to mentors and team members directly:
+Sui Overflow 2026 runs dedicated Telegram groups for sponsor tracks. Point the user at the matching group so they can talk to mentors and team members directly:
 
+- General Sui Overflow Telegram: https://go.sui.io/suioverflow2026-tg
 - Walrus track Telegram: https://go.sui.io/ofw-walrus-tg
 - DeepBook track Telegram: https://go.sui.io/ofw-deepbook-tg
-- General Sui Overflow Telegram: https://go.sui.io/suioverflow2026-tg
+
+For tracks without a known dedicated Telegram, direct the user to the general Overflow group.
 
 ## References
 

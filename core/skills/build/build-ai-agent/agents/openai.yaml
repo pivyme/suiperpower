@@ -1,0 +1,16 @@
+name: build-ai-agent
+version: 1
+phase: build
+description: |
+  Build autonomous AI agents that transact on Sui using PTBs, zkLogin wallets,
+  MemWal memory, Nautilus TEEs, and Atoma inference. Use when the user says
+  "AI agent on Sui", "build an agent", "agentic web", "autonomous agent",
+  "agent that transacts", "AI trading bot", "agent wallet", "agent memory",
+  "build with Nautilus", "Atoma on Sui", "multi-agent coordination",
+  or "agent PTB composition".
+  Reads .suiperpower/build-context.md if present.
+prompt_path: ../SKILL.md
+references:
+  - ../references/agent-architecture.md
+  - ../references/agent-tooling.md
+  - ../references/agent-pitfalls.md

@@ -1,13 +1,8 @@
 name: pick-my-sui-track
 version: 1
 phase: ship
-description: |
-  Map the project to a single Sui Overflow track based on integration depth,
-  scoring each sponsor (Walrus, DeepBook, OpenZeppelin, OtterSec, Scallop) on
-  a 0-3 scale and refusing to recommend any track that does not score 3 on a
-  load-bearing flow. Use when the user says "which track", "which Overflow
-  track", "which sponsor track", "pick my track", "what track should I submit
-  to", "Sui Overflow track", or "track recommendation".
+description: >-
+  Recommend the right Sui Overflow 2026 track based on real project fit. Scores the project against all eleven official tracks (3 core, 8 specialized) on a 0-3 depth scale and refuses to recommend a track where the fit is aspirational. Surfaces the official "team's prerogative" policy. Use when the user says "which track", "which Overflow track", "pick my track", "what track should I submit to", "Sui Overflow track", or "track recommendation". Reads .suiperpower/idea-context.md, .suiperpower/build-context.md, and the project source; writes .suiperpower/track-pick.md.
 prompt_path: ../SKILL.md
 references:
   - ../references/scoring-rubric.md

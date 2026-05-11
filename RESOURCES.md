@@ -59,8 +59,17 @@ All canonical sources used for the skill recheck audit. These are the URLs that 
 | Resource | URL | Covers |
 |----------|-----|--------|
 | Seal Docs | https://seal-docs.wal.app/ | On-chain access control, encryption, key servers |
-| Seal GitHub | https://github.com/MystenLabs/seal | Source code, examples |
-| @mysten/seal npm | https://www.npmjs.com/package/@mysten/seal | SDK package |
+| Seal GitHub | https://github.com/MystenLabs/seal | Source code, examples, 7 Move patterns |
+| Seal SDK Source | https://github.com/MystenLabs/ts-sdks/tree/main/packages/seal | SealClient, SessionKey, EncryptedObject |
+| Seal SDK Docs | https://sdk.mystenlabs.com/seal | $extend pattern, API reference |
+| @mysten/seal npm | https://www.npmjs.com/package/@mysten/seal | SDK package (^1.1.0) |
+| Seal Blog Post | https://blog.sui.io/seal-programmable-access-control/ | Technical overview, architecture |
+| Seal Decentralized Key Server | https://blog.sui.io/introducing-decentralized-seal-key-server-testnet/ | 3-of-5 threshold, committee mode |
+| Seal Move Patterns | https://github.com/MystenLabs/seal/tree/main/move/patterns/sources | whitelist, subscription, account_based, private_data, tle, voting, key_request |
+| Sui Stack Messaging (Seal+Walrus) | https://github.com/MystenLabs/sui-stack-messaging | E2E encrypted messaging example |
+| Awesome Seal | https://github.com/MystenLabs/awesome-seal | Ecosystem projects using Seal |
+
+**Package IDs**: Mainnet `0xcb83a2...b447b7`, Testnet `0x8d9088...aa54b2`. Aggregator (testnet): `https://seal-aggregator-testnet.mystenlabs.com`
 
 ## MemWal (AI Agent Memory on Walrus)
 
@@ -68,6 +77,84 @@ All canonical sources used for the skill recheck audit. These are the URLs that 
 |----------|-----|--------|
 | MemWal Docs | https://docs.memwal.ai/ | Encrypted AI memory on Walrus |
 | MemWal GitHub | https://github.com/MystenLabs/MemWal | Source, integration examples |
+| @mysten-incubation/memwal npm | https://www.npmjs.com/package/@mysten-incubation/memwal | SDK: full-service, manual, ai (Vercel), oc (OpenClaw) |
+
+## Pyth Oracle (Price Feeds on Sui)
+
+| Resource | URL | Covers |
+|----------|-----|--------|
+| Pyth Sui Integration Guide | https://docs.pyth.network/price-feeds/core/use-real-time-data/pull-integration/sui | Pull model, PTB pattern, Move integration |
+| Pyth Sui Contract Addresses | https://docs.pyth.network/price-feeds/contract-addresses/sui | State IDs, package IDs (mainnet + testnet) |
+| Pyth Best Practices | https://docs.pyth.network/price-feeds/core/best-practices | Exponent handling, confidence, staleness |
+| Pyth Price Feed IDs | https://docs.pyth.network/price-feeds/core/price-feed-ids | Feed ID lookup |
+| @pythnetwork/pyth-sui-js npm | https://www.npmjs.com/package/@pythnetwork/pyth-sui-js | SuiPythClient, SuiPriceServiceConnection |
+| Pyth Move Source | https://github.com/pyth-network/pyth-crosschain/tree/main/target_chains/sui/contracts | pyth.move, price.move, price_info.move, hot_potato_vector.move |
+| Pyth TS SDK Source | https://github.com/pyth-network/pyth-crosschain/tree/main/target_chains/sui/sdk/js | client.ts, SuiPriceServiceConnection.ts |
+| Hermes Mainnet | https://hermes.pyth.network | Price data API (Stable channel) |
+| Hermes Testnet | https://hermes-beta.pyth.network | Price data API (Beta channel) |
+
+**Key IDs**: SUI/USD `23d731...65744`, BTC/USD `e62df6...5b43`, ETH/USD `ff6149...0ace`
+
+## Nautilus (Off-Chain TEE Compute)
+
+| Resource | URL | Covers |
+|----------|-----|--------|
+| Nautilus Sui Docs | https://docs.sui.io/guides/developer/nautilus | Overview, developer guide |
+| Nautilus Using Guide | https://docs.sui.io/guides/developer/nautilus/using-nautilus | Step-by-step walkthrough |
+| Nautilus GitHub | https://github.com/MystenLabs/nautilus | Rust server, Move contracts, deploy scripts |
+| Nautilus Design Doc | https://github.com/MystenLabs/nautilus/blob/main/Design.md | Trust model, architecture |
+| Nautilus Usage Guide | https://github.com/MystenLabs/nautilus/blob/main/UsingNautilus.md | Full developer guide |
+| Nautilus enclave.move | https://github.com/MystenLabs/nautilus/blob/main/move/enclave/sources/enclave.move | Core verification module |
+| Sui Framework nitro_attestation | https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/packages/sui-framework/sources/crypto/nitro_attestation.move | On-chain attestation verification |
+| Nautilus Blog Post | https://blog.sui.io/nautilus-offchain-security-privacy-web3/ | Launch announcement |
+| Marlin Oyster (managed TEE) | https://blog.marlin.org/scaling-confidential-compute-on-sui-nautilus-and-marlin-oyster-integration | Managed Nautilus deployment |
+
+## SuiNS (Name Service + MVR)
+
+| Resource | URL | Covers |
+|----------|-----|--------|
+| SuiNS Docs | https://docs.suins.io/ | Registration, resolution, subnames, pricing |
+| SuiNS SDK Docs | https://docs.suins.io/developer/sdk.md | SuinsClient, SuinsTransaction |
+| SuiNS Contracts | https://github.com/MystenLabs/suins-contracts | Move source code |
+| MVR (Move Registry) | https://docs.suins.io/move-registry | Human-readable package naming |
+| MVR CLI | https://docs.suins.io/move-registry/tooling/mvr-cli.md | `mvr add`, `mvr resolve` |
+| MVR GitHub | https://github.com/MystenLabs/mvr | CLI source + web app |
+| @mysten/suins npm | https://www.npmjs.com/package/@mysten/suins | SDK package |
+
+## Walrus Sites (Decentralized Hosting)
+
+| Resource | URL | Covers |
+|----------|-----|--------|
+| Walrus Sites Sui Docs | https://docs.sui.io/sui-stack/walrus/sui-stack-walrus-sites | Architecture, constraints, portals |
+| Walrus Sites GitHub | https://github.com/MystenLabs/walrus-sites | site-builder CLI source |
+| Example Walrus Sites | https://github.com/MystenLabs/example-walrus-sites | Demo dApp with NFT sites |
+| site-builder Install | https://docs.wal.app/docs/sites/getting-started/installing-the-site-builder | `suiup install site-builder@mainnet` |
+| site-builder Usage | https://docs.wal.app/docs/sites/getting-started/using-the-site-builder | deploy, convert, sitemap, destroy |
+
+## DefiLlama (DeFi Research API)
+
+| Resource | URL | Covers |
+|----------|-----|--------|
+| DefiLlama API Docs | https://api-docs.defillama.com/ | All endpoints, no auth required |
+| TVL/Protocols API | https://api.llama.fi | /v2/chains, /protocols, /tvl/{name} |
+| DEX Volume Sui | https://api.llama.fi/overview/dexs/Sui | Sui DEX volumes by protocol |
+| Fees/Revenue Sui | https://api.llama.fi/overview/fees/Sui | Sui fee data by protocol |
+| Yields API | https://yields.llama.fi | /pools (filter chain=Sui) |
+| Stablecoins API | https://stablecoins.llama.fi | /stablecoincharts/Sui |
+| @defillama/api npm | https://www.npmjs.com/package/@defillama/api | JS SDK |
+
+## AI Agents on Sui
+
+| Resource | URL | Covers |
+|----------|-----|--------|
+| Sui Agentic Vision Blog | https://blog.sui.io/agentic-execution-ai-agents-need-blockchain/ | Why Sui for AI agents |
+| Composable Systems Blog | https://blog.sui.io/from-apps-to-composable-systems/ | PTBs as agent tool use |
+| Atoma Network GitHub | https://github.com/atoma-network/atoma-node | Decentralized AI inference |
+| Atoma Sui Blog | https://blog.sui.io/atoma-ai-artificial-intelligence-blockchain/ | Atoma integration details |
+| Sui Agent Kit (Pelagos) | https://github.com/pelagosaionsui/sui-agent-kit | LangChain/Vercel AI framework |
+| Sui AI Agent Kit (Caterpillar) | https://github.com/caterpillardev/Sui-AI-Agent-Kit | MCP-based agent framework |
+| Talus Network | https://talus.network/ | On-chain agent framework (mainnet) |
+| Turnkey Sui Agent Analysis | https://www.turnkey.com/blog/sui-for-ai-blockchain-infrastructure-for-multi-agent-systems | Architecture analysis |
 
 ## DeepBook
 
@@ -147,6 +234,30 @@ openzeppelin_math = { r.mvr = "@openzeppelin-move/integer-math" }
 | Enoki (Mysten managed zkLogin) | https://docs.enoki.mystenlabs.com | Production zkLogin service |
 | Mysten Salt Service | https://salt.api.mystenlabs.com/get_salt | zkLogin salt endpoint |
 | Mysten Prover (dev) | https://prover-dev.mystenlabs.com/v1 | zkLogin proof generation (dev/testnet) |
+
+## Sui Overflow 2025 Winners
+
+| Resource | URL | Covers |
+|----------|-----|--------|
+| 2025 Winners Blog | https://blog.sui.io/2025-sui-overflow-hackathon-winners/ | All 46 winners, tracks, technologies |
+| Walrus Hackathon Highlights | https://blog.walrus.xyz/walrus-hackathon-highlight-summer25/ | Walrus-specific project details |
+| Suithetic Deep Dive | https://blog.sui.io/verifiable-ai-data-sui-stack/ | Atoma + Walrus + Seal pattern |
+
+**Top tech by winner count**: Walrus (14+), AI/ML (8+), Seal (4), Pyth (3), zkLogin (3), ZK proofs (3), Kiosk (2), Nautilus (1)
+
+## Catalog Data Sources (Repos, MCPs, Skills)
+
+| Resource | URL | Covers |
+|----------|-----|--------|
+| Awesome Sui | https://github.com/sui-foundation/awesome-sui | Curated Sui ecosystem repos |
+| Awesome Walrus | https://github.com/MystenLabs/awesome-walrus | Walrus ecosystem tools and SDKs |
+| Awesome Seal | https://github.com/MystenLabs/awesome-seal | Seal ecosystem projects |
+| Awesome Web3 MCPs | https://github.com/demcp/awesome-web3-mcp-servers | Blockchain MCP server registry |
+| Awesome Blockchain MCPs | https://github.com/royyannick/awesome-blockchain-mcps | Another MCP list |
+| Awesome Agent Skills | https://github.com/VoltAgent/awesome-agent-skills | Claude Code skill registry |
+| MystenLabs GitHub Org | https://github.com/orgs/MystenLabs/repositories | All official repos |
+| Suimate Skills | https://skills.suimate.ai/ | Community Sui agent skills |
+| MCP Pizza (Sui) | https://www.mcp.pizza/mcp-server/HuK2/sui-mcp | MCP directory |
 
 ## solana-new (Reference Implementation)
 

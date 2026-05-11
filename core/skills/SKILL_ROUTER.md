@@ -72,6 +72,15 @@ Format: each row is a piece of intent in the user's voice, the canonical right s
 | "create a market on DeepBook" | deepbook-orderbook | scaffold-project |
 | "integrate Scallop" | scallop-money-market | scaffold-project |
 | "borrow / lend on Sui" | scallop-money-market | scaffold-project |
+| "encrypt data on Sui" | seal-access-control | build-with-move |
+| "access control with Seal" | seal-access-control | build-with-move |
+| "threshold encryption" | seal-access-control | build-with-move |
+| "add a price feed" | pyth-oracle | build-with-move |
+| "integrate Pyth oracle" | pyth-oracle | build-with-move, deepbook-orderbook |
+| "get token price on-chain" | pyth-oracle | deepbook-research |
+| "build an AI agent on Sui" | build-ai-agent | build-with-claude, scaffold-project |
+| "autonomous agent wallet" | build-ai-agent | sui-zk-login, sponsored-transactions |
+| "agent with PTBs" | build-ai-agent | ptb-composer |
 | "use OpenZeppelin Sui libs" | openzeppelin-sui-libs | build-with-move |
 | "secure primitives for Sui" | openzeppelin-sui-libs | review-move |
 | "prepare for an audit" | ottersec-prep | review-move |

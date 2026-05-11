@@ -71,6 +71,9 @@ Everything from scaffold to debug. Ordered roughly the way a build flows.
 | [scallop-money-market](build/scallop-money-market/SKILL.md) | Deposit, borrow, and repay against a live Scallop pool. |
 | [openzeppelin-sui-libs](build/openzeppelin-sui-libs/SKILL.md) | Identify hand-rolled patterns OZ Sui replaces. |
 | [ottersec-prep](build/ottersec-prep/SKILL.md) | Walk the OtterSec checklist, every P0 item has a recorded answer. |
+| [seal-access-control](build/seal-access-control/SKILL.md) | Add Seal threshold encryption with the right Move pattern for your access policy. |
+| [pyth-oracle](build/pyth-oracle/SKILL.md) | Integrate Pyth pull-based price feeds with proper staleness and confidence checks. |
+| [build-ai-agent](build/build-ai-agent/SKILL.md) | Build an autonomous AI agent on Sui with PTBs, wallets, memory, and compute. |
 
 ### Auth and UX
 
