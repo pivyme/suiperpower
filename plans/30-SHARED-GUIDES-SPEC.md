@@ -448,7 +448,9 @@ The contract pattern is adapted directly from `reference/solana-new-main/skills/
 <project-root>/
   .suiperpower/
     idea-context.md           Written by Idea-phase skills
-    build-context.md          Written by Build-phase skills
+    intent.md                 Written by clarify-intent (intent-loop entry gate)
+    build-plan.md             Written by plan-before-code (intent-loop middle gate)
+    build-context.md          Written by Build-phase skills, verify-against-intent appends verdicts
     deploy-context.md         Written by Ship-phase deploy skills
     submission-context.md     Written by submit-to-sui-overflow
     learnings.md              Written by /learn across sessions
@@ -475,9 +477,60 @@ Sections:
   - Day 1, Day 2, Day 7, Day 30 anchors plus a single-paragraph loop description
 - **Source Reports** (accumulating list of artifact filenames)
 
+### intent.md
+
+Written by: `clarify-intent`.
+
+Read by: `plan-before-code`, `verify-against-intent`, and any build skill that wants to confirm scope before writing code.
+
+The intent-loop entry gate. Sits between `idea-context.md` and `build-context.md`. Lets the agent stop and pin down the Sui-specific scope (on-chain shape, off-chain shape, sponsor posture, network and upgrade authority) before any Move code lands.
+
+Sections (Sui-shaped, all required unless noted):
+
+- **One-sentence summary** (in the user's voice, after confirmation)
+- **Problem and audience** (problem, audience, smallest valuable shape)
+- **On-chain shape** (user-held Objects, protocol shared Objects, capabilities and holders, Move modules expected, PTB composability)
+- **Off-chain shape** (frontend, auth strategy, off-chain services)
+- **Sponsor integrations** (load-bearing only; decorative drops recorded with rationale)
+- **Network and upgrade authority** (target network at launch, upgrade authority intent, package id capture plan)
+- **Success criteria** (observable on-chain or off-chain outcomes, each tied to a network)
+- **Out of scope** (things the user might assume but are not in)
+- **Constraints** (deadline, risk tolerance, existing assets like Move package id)
+- **Open questions** (anything the skill could not pin down, left as open)
+
+Append-only when re-run in the same project. If intent materially changes mid-build, write a new dated section rather than overwriting, so `verify-against-intent` can detect drift between historical and current intent.
+
+### build-plan.md
+
+Written by: `plan-before-code`.
+
+Read by: `verify-against-intent`, and any downstream build skill that wants to confirm planned scope before implementing.
+
+The intent-loop middle gate. Turns `intent.md` into a file-level Move plan with explicit decisions on the expensive-to-reverse choices.
+
+Sections (Sui-shaped):
+
+- **Linked intent** (pointer to `intent.md`, one-line summary)
+- **Package layout** (package name, single vs multi-package, pinned `Move.toml` deps)
+- **Object model** (per Object: ownership, abilities with rationale, purpose, creator / mutator / destroyer functions)
+- **Capabilities** (per cap: holder at init, gates, transferability)
+- **Modules** (per module: purpose, public entry functions, friend modules, stdlib deps)
+- **Public entry points** (signature, caller, gas posture, abort codes)
+- **PTB shape** (composability, canonical sequence if chained, gas envelope)
+- **Tests** (one per `intent.md` success criterion, plus expected-failure tests for cap-gated functions)
+- **Frontend or off-chain pieces** (stack, routes, auth, chain calls)
+- **Sponsor integrations** (per sponsor: surface, load-bearing test commitment for `verify-against-intent`, source URL)
+- **Network rollout** (devnet -> testnet -> mainnet order, per-network exit criterion)
+- **Upgrade authority** (strategy, where the upgrade cap lives, package id capture)
+- **Risks and unknowns** (severity, resolution path)
+- **Order of build** (first step proves the riskiest unknown)
+- **What "done" looks like** (observable outcome tied to an `intent.md` success criterion, on a named network)
+
+Plans are session-bound. If scope changes mid-build, write a new dated plan section rather than overwriting, so audit trail and `verify-against-intent` drift detection both work.
+
 ### build-context.md
 
-Written by: `scaffold-project`, `build-with-claude`, `build-with-move`, `walrus-storage`, `deepbook-orderbook`, `scallop-money-market`, `sui-zk-login`, `sponsored-transactions`, `kiosk-marketplace`, `build-mobile-sui`, `launch-coin`, `review-move`.
+Written by: `scaffold-project`, `build-with-claude`, `build-with-move`, `walrus-storage`, `deepbook-orderbook`, `scallop-money-market`, `sui-zk-login`, `sponsored-transactions`, `kiosk-marketplace`, `build-mobile-sui`, `launch-coin`, `review-move`, `verify-against-intent`.
 
 Sections:
 

@@ -16,7 +16,7 @@ The repo is mid-build. As of the most recent commits (phase 29 + monorepo refact
 
 - **Monorepo layout**: pnpm workspaces with three packages, `core/` (the publishable `suiperpower` npm package), `convex/` (`@suiperpower/convex` backend), `web/` (`@suiperpower/web` website). Root `package.json` proxies common scripts to `core` via `pnpm -F suiperpower`.
 - **CLI scaffold** is real under `core/cli/`: `index.ts` plus `banner`, `branding`, `doctor`, `init`, `feedback`, `telemetry`, `update`, `update-check`, `uninstall`, `repos`, `completion`, `workspace-setup`, `agent-cli`, `interactive-onboarding`, `interactive-skills`, `interactive-mcps`, `interactive-search`, `interactive-journey`, `interactive-universal`, `colors`. Run with `pnpm dev` from the repo root.
-- **Skills tree** is partially populated under `core/skills/`: `learn/`, `idea/`, `build/`, `ship/` directories with phase content; `SKILL_ROUTER.md` and `skills/README.md` catalog overview committed. `grow/` not yet on disk.
+- **Skills tree** is partially populated under `core/skills/`: `learn/`, `idea/`, `build/`, `ship/` directories with phase content; `SKILL_ROUTER.md` and `skills/README.md` catalog overview committed. `grow/` not yet on disk. Build phase now includes the three intent-loop gates (`clarify-intent`, `plan-before-code`, `verify-against-intent`) that wrap technical build skills, see the "Intent-loop convention" section below.
 - **Scripts** under `core/scripts/`: `inject-preamble.ts`, `lint-skills.ts`, `lint-catalog.ts`, `generate-skills-index.ts`, `generate-skills-lock.ts`, `generate-cursor-rules.ts`, `package-skills.sh`, `test-install.sh`, `publish.ts`.
 - **Install + setup** wired: `core/install.sh` (curl one-liner target), `core/setup`, `core/suiperpower-pass.sh`, `core/skills-lock.json`, `web/public/setup.sh`, `web/vercel.json`.
 - **Convex backend** scaffolded: `convex/schema.ts`, `convex/telemetry.ts`, `convex/feedback.ts`.
@@ -90,7 +90,7 @@ Skills live under `core/skills/<phase>/<name>/SKILL.md`. Phases: `learn/`, `idea
 - **Anti-slop quality gates as first-class skills**: see `plans/12-ANTI-SLOP-FRAMEWORK.md`. Every build / ship skill embeds a gate. This is the differentiator.
 - **Sponsor integrations are real**: Walrus / DeepBook / Scallop have first-class skills, knowledge docs, catalog entries. /pick-my-sui-track refuses to recommend a sponsor track unless the integration is load-bearing (see `plans/11-SPONSOR-INTEGRATION.md`).
 - **No webapp, no signup, no dashboard in v1**: the CLI is the product. Website is content-only (catalog browsing + install).
-- **Skills handoff via filesystem** (`.suiperpower/<phase>-context.md`): no global state, no DB on the user critical path.
+- **Skills handoff via filesystem** (`.suiperpower/<phase>-context.md`, plus intent-loop artifacts `intent.md` and `build-plan.md`): no global state, no DB on the user critical path. Schemas in `plans/30-SHARED-GUIDES-SPEC.md`.
 - **Telemetry opt-in, anonymous default**: documented prominently. Source is public.
 
 ## Plans folder reference
@@ -289,6 +289,24 @@ When the author says "review this skill" or "generate a skill for X", run this l
 6. Report back: file diff plus a short list of any unverified claims and any open questions for the author.
 
 If at any point you are unsure about a fact, **ask before writing**. A delay is cheaper than a wrong skill shipped to thousands of agents.
+
+### Intent-loop convention (for new and reviewed build skills)
+
+Suiperpower has a three-skill intent loop wrapping the build phase:
+
+- `clarify-intent` writes `.suiperpower/intent.md` with Sui-specific scope (Objects, capabilities, sponsor posture, target network, upgrade authority) before any code.
+- `plan-before-code` writes `.suiperpower/build-plan.md` with forced Move decisions (ability rationale, capability holders, PTB shape, package layout, upgrade strategy, per-sponsor verification commitments) before any code.
+- `verify-against-intent` reads disk after a build session and checks drift: Object abilities, capability holders at init, sponsor load-bearing tests, `sui move build` pass, `Move.toml` pinning, per-network deploy state.
+
+When authoring or reviewing a **non-trivial build skill** (touches more than one Move module, includes a sponsor integration, or composes a multi-step PTB), apply this convention:
+
+1. **Closing handoff step**: end the Workflow with a step that recommends `verify-against-intent` as the next skill when `.suiperpower/intent.md` exists. If `intent.md` is absent and the session was non-trivial, surface the gap once and offer `clarify-intent` to backfill. Do not force either; the user opts in. The canonical shape is `core/skills/build/build-with-move/SKILL.md` workflow step 7.
+2. **Optional intent reading**: list `.suiperpower/intent.md` and `.suiperpower/build-plan.md` in the Inputs section as optional. If present, tailor the work to the recorded scope. If absent, proceed without blocking.
+3. **Router fallback**: the "Intent-loop closing gate" section in `core/skills/SKILL_ROUTER.md` covers routing behavior, but in-skill handoffs are preferred because they survive agents that skip the router.
+
+Trivial skills (single-function tweaks, debug, review, design taste, idea-phase skills) skip this convention. The intent loop is for build sessions that produce new Move surface or a new sponsor integration. When in doubt: if the skill writes to `build-context.md`, it probably qualifies; if not, it does not.
+
+Schema reference for `intent.md` and `build-plan.md`: `plans/30-SHARED-GUIDES-SPEC.md`.
 
 ## Conventions
 

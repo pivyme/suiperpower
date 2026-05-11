@@ -128,6 +128,28 @@ Format: each row is a piece of intent in the user's voice, the canonical right s
 | "will users pay for this" | will-real-users-pay | validate-business-model |
 | "willingness to pay check" | will-real-users-pay | validate-business-model |
 
+## Build, intent loop (anti-slop gates)
+
+| User said | Right skill | Common wrong picks |
+|---|---|---|
+| "build me X" (no other context) | clarify-intent | scaffold-project, build-with-claude, build-with-move |
+| "let's start building" | clarify-intent | scaffold-project, build-with-claude |
+| "make a quick prototype" | clarify-intent | scaffold-project, build-with-move |
+| "step back" | clarify-intent | navigate-skills |
+| "what am I really trying to do" | clarify-intent | navigate-skills, validate-idea |
+| "I'm not sure what I want yet" | clarify-intent | validate-idea, find-next-sui-idea |
+| "make a plan" | plan-before-code | scaffold-project, build-with-claude |
+| "plan this out" | plan-before-code | scaffold-project |
+| "before we code" | plan-before-code | build-with-claude, build-with-move |
+| "walk me through the approach" | plan-before-code | build-with-claude |
+| "outline the implementation" | plan-before-code | build-with-claude, build-with-move |
+| "did we do it right" | verify-against-intent | review-move, product-review |
+| "does this match what I asked" | verify-against-intent | review-move, product-review |
+| "is this what I wanted" | verify-against-intent | product-review, roast-my-product |
+| "review what we built" | verify-against-intent | review-move, product-review |
+| "verify the build" | verify-against-intent | review-move |
+| "audit my session" | verify-against-intent | review-move, ottersec-prep |
+
 ## Build, meta
 
 | User said | Right skill | Common wrong picks |
@@ -169,6 +191,14 @@ These skills are not yet shipped in v1. Rows are present so the router does not 
 | "warm intro to other Sui projects" | partnership-outreach | community-launch |
 | "launch in community" | community-launch | partnership-outreach |
 | "post on X or Sui Discord" | community-launch | partnership-outreach |
+
+## Intent-loop closing gate
+
+After any non-trivial build skill finishes (`build-with-move`, `build-with-claude`, `scaffold-project`, `walrus-storage`, `deepbook-orderbook`, `scallop-money-market`, `sui-zk-login`, `sponsored-transactions`, `kiosk-marketplace`, `build-mobile-sui`, `launch-coin`, `openzeppelin-sui-libs`), recommend `verify-against-intent` as the closing handoff if `.suiperpower/intent.md` exists.
+
+This is the back-half of the intent loop. The user does not have to ask for it; the build skill suggests it as the next step. The skill itself is opt-in (the user activates it), but the suggestion is automatic.
+
+If `intent.md` does not exist, do not suggest `verify-against-intent`. There is nothing to verify against, and pushing the user through a useless gate is anti-slop on our side. Suggest `clarify-intent` instead if scope feels unclear.
 
 ## Routing edge cases
 

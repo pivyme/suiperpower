@@ -109,6 +109,16 @@ Everything from scaffold to debug. Ordered roughly the way a build flows.
 | [roast-my-product](build/roast-my-product/SKILL.md) | Brutal critique with a numbered weakness list and top-three to fix. |
 | [product-review](build/product-review/SKILL.md) | Balanced UX review with a prioritized roadmap. |
 
+### Intent loop (anti-slop gates)
+
+Three behavioral gates that wrap the technical build skills. `clarify-intent` runs before code, `plan-before-code` runs before non-trivial implementation, `verify-against-intent` runs after a session reports done. Each writes to `.suiperpower/` so downstream skills can chain.
+
+| Skill | One-liner |
+|---|---|
+| [clarify-intent](build/clarify-intent/SKILL.md) | Pause before code and pin down the real problem, audience, and success criteria into `intent.md`. |
+| [plan-before-code](build/plan-before-code/SKILL.md) | Turn `intent.md` into a file-level plan the user approves before any code is generated. |
+| [verify-against-intent](build/verify-against-intent/SKILL.md) | After a build session, check each success criterion against what was actually built and call drift honestly. |
+
 ### Meta
 
 | Skill | One-liner |
