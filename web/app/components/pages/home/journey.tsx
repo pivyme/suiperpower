@@ -181,7 +181,7 @@ function JourneyCard({ phase, index }: { phase: Phase; index: number }) {
         {phase.label}
       </h3>
 
-      <p className="mt-2 md:mt-3 text-sm md:text-base text-white/50 font-medium">
+      <p className="mt-2 md:mt-3 text-sm md:text-lg text-white/50 font-medium">
         {phase.description}
       </p>
     </div>
