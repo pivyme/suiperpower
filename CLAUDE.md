@@ -47,6 +47,7 @@ See `plans/02-PROJECT-STRUCTURE.md` for the full target tree (note: that doc sti
 suiperpower/
 ├── README.md, CLAUDE.md, TODO.md, MANUAL-TODO.md   # planning + tracking
 ├── AGENTS.md, CONTRIBUTING.md, LICENSE             # contributor + legal docs
+├── .claude-plugin/marketplace.json                 # Claude Code plugin marketplace (generated)
 ├── package.json, pnpm-workspace.yaml               # monorepo root (workspaces: core, convex, web)
 ├── core/                                           # published npm package "suiperpower"
 │   ├── package.json, tsconfig.json
@@ -82,6 +83,7 @@ Skills live under `core/skills/<phase>/<name>/SKILL.md`. Phases: `learn/`, `idea
 ## Key design decisions and why
 
 - **Single npm package**: easiest install, easiest versioning, lowest cognitive cost for users. Validated by solana-new's adoption.
+- **Claude Code skills ship as a plugin, not a flat copy**: `.claude-plugin/marketplace.json` at the repo root declares one plugin named `suiper`. Users install via `/plugin marketplace add pivyme/suiperpower` then `/plugin install suiper@suiperpower`. Skills auto-namespace as `/suiper:scaffold-project` etc, so installing alongside solana-new or any other pack causes zero collision. Codex and Cursor still receive flat copies because neither has a plugin/namespacing model today. Regenerate after adding or renaming a skill: `pnpm marketplace:gen`.
 - **Skills as plain markdown**: transparent, audit-friendly, anyone can read or fork.
 - **Multi-agent parity from v1**: Claude Code + Codex + Cursor. Excluding any leaves users on the table for a few hundred lines of conversion code.
 - **Convex backend**: zero-ops, free tier sufficient, same pattern as solana-new.
@@ -148,6 +150,7 @@ pnpm lint:skills              # validate SKILL.md frontmatter + structure
 pnpm lint:catalog             # validate cli/data/*.json catalog entries
 pnpm package:skills           # build skills.sh per-skill bundles + index
 pnpm skills:lock              # regenerate core/skills-lock.json
+pnpm marketplace:gen          # regenerate .claude-plugin/marketplace.json from skills tree
 pnpm test                     # typecheck + lint:skills + lint:catalog + preamble:check
 pnpm test:install             # exercise install flow via core/scripts/test-install.sh
 pnpm publish:dry              # core/scripts/publish.ts gated pre-publish check

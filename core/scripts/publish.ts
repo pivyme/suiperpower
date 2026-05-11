@@ -13,6 +13,7 @@ import { fileURLToPath } from "node:url";
 const CORE_ROOT = resolve(fileURLToPath(import.meta.url), "..", "..");
 const REPO_ROOT = resolve(CORE_ROOT, "..");
 const WEB_PUBLIC = join(REPO_ROOT, "web", "public");
+const MARKETPLACE_PATH = join(REPO_ROOT, ".claude-plugin", "marketplace.json");
 
 const args = process.argv.slice(2);
 const realPublish = args.includes("--publish");
@@ -115,6 +116,30 @@ function checkTarballHashes(): void {
   }
 }
 
+function checkClaudeMarketplace(): void {
+  if (!existsSync(MARKETPLACE_PATH)) {
+    throw new Error(".claude-plugin/marketplace.json missing, run pnpm marketplace:gen");
+  }
+  const pkg = readJson<any>(join(CORE_ROOT, "package.json"));
+  const marketplace = readJson<any>(MARKETPLACE_PATH);
+  if (marketplace?.metadata?.version !== pkg.version) {
+    throw new Error(
+      `.claude-plugin/marketplace.json version ${marketplace?.metadata?.version} != package.json ${pkg.version}`,
+    );
+  }
+  const plugin = marketplace?.plugins?.find((p: any) => p.name === "suiper");
+  if (!plugin) {
+    throw new Error('.claude-plugin/marketplace.json missing plugin "suiper"');
+  }
+  if (plugin.source !== "./core") {
+    throw new Error('Claude plugin source must equal "./core"');
+  }
+  const skills: string[] = plugin.skills ?? [];
+  if (!skills.includes("./skills/build/build-with-move")) {
+    throw new Error("Claude plugin marketplace missing build-with-move skill");
+  }
+}
+
 function checkPackTarball(): void {
   // npm pack --dry-run prints the file list. We assert it includes dist/, skills/, cli/data/.
   const out = runQuiet("npm", "pack", "--dry-run", "--json");
@@ -145,10 +170,12 @@ function main(): void {
   step("lint:catalog", () => run("pnpm", "lint:catalog"));
   step("preamble:check", () => run("pnpm", "preamble:check"));
   step("package:skills", () => run("pnpm", "package:skills"));
+  step("generate Claude marketplace", () => run("pnpm", "marketplace:gen"));
   step("generate skills-lock.json", () => run("pnpm", "tsx", "scripts/generate-skills-lock.ts"));
   step("build", () => run("pnpm", "build"));
   step("test:install", () => run("pnpm", "test:install"));
   step("package.json shape", checkPackageShape);
+  step("Claude marketplace shape", checkClaudeMarketplace);
   step("version sync", checkVersionSync);
   step("tarball hashes match index", checkTarballHashes);
   step("npm pack file list", checkPackTarball);

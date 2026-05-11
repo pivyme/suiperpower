@@ -35,6 +35,7 @@
     "test": "pnpm typecheck && pnpm lint:skills && pnpm lint:catalog && pnpm preamble:check",
     "test:install": "./scripts/test-install.sh",
     "skills:lock": "tsx scripts/generate-skills-lock.ts",
+    "marketplace:gen": "tsx scripts/generate-marketplace.ts",
     "publish:dry": "tsx scripts/publish.ts"
   },
   "engines": {

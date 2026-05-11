@@ -21,7 +21,7 @@ const PHASES = ["learn", "idea", "build", "ship", "grow"] as const;
 const PUBLISHER = "suiperpower";
 const PUBLISHER_URL = "https://suiperpower.dev";
 const TARBALL_BASE = "https://suiperpower.dev/skills";
-const GH_REPO = "kwekKwek/suiperpower";
+const GH_REPO = "pivyme/suiperpower";
 
 type Phase = (typeof PHASES)[number];
 

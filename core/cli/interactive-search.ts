@@ -3,15 +3,13 @@
 // Top results are grouped by source. Each result prints the right command to act on it.
 
 import { existsSync, readFileSync, readdirSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 
 import { BRAND } from "./branding.js";
 import { accent, bold, dim, muted } from "./colors.js";
 import { detectPreferredAgentCli } from "./agent-cli.js";
 import { searchAndPick, type PickItem } from "./interactive-universal.js";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { getCliDataRoot, getSkillsRoot } from "./paths.js";
 
 type Source = "skill" | "repo" | "mcp" | "idea";
 
@@ -24,15 +22,7 @@ interface Hit {
 }
 
 function findCli(): string {
-  const candidates = [
-    join(__dirname, "data"),
-    join(__dirname, "..", "cli", "data"),
-    join(__dirname, "..", "..", "cli", "data"),
-  ];
-  for (const p of candidates) {
-    if (existsSync(p)) return p;
-  }
-  return "";
+  return getCliDataRoot();
 }
 
 function loadJson<T>(rel: string): T | null {
@@ -48,13 +38,7 @@ function loadJson<T>(rel: string): T | null {
 }
 
 function loadSkills(): Hit[] {
-  const skillsRoot = (() => {
-    const dev = join(__dirname, "..", "skills");
-    if (existsSync(dev)) return dev;
-    const built = join(__dirname, "..", "..", "skills");
-    if (existsSync(built)) return built;
-    return "";
-  })();
+  const skillsRoot = getSkillsRoot();
   if (!skillsRoot) return [];
   const out: Hit[] = [];
   for (const phase of readdirSync(skillsRoot, { withFileTypes: true })) {

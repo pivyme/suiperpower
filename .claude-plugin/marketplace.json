@@ -1,0 +1,66 @@
+{
+  "name": "suiperpower",
+  "owner": {
+    "name": "Kelvin Adithya",
+    "email": "eternate17@gmail.com"
+  },
+  "metadata": {
+    "description": "Build something meaningful, on Sui",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "suiper",
+      "description": "Skills, knowledge, and journeys for shipping production Sui products. Think. Build. Ship.",
+      "source": "./core",
+      "strict": false,
+      "skills": [
+        "./skills/ship/apply-grant",
+        "./skills/build/brand-design",
+        "./skills/build/build-mobile-sui",
+        "./skills/build/build-with-claude",
+        "./skills/build/build-with-move",
+        "./skills/idea/competitive-landscape",
+        "./skills/ship/create-pitch-deck",
+        "./skills/build/debug-move",
+        "./skills/build/deepbook-orderbook",
+        "./skills/idea/deepbook-research",
+        "./skills/ship/deploy-to-mainnet",
+        "./skills/ship/deploy-to-testnet",
+        "./skills/build/design-taste",
+        "./skills/idea/find-next-sui-idea",
+        "./skills/build/frontend-design-guidelines",
+        "./skills/build/kiosk-marketplace",
+        "./skills/build/launch-coin",
+        "./skills/learn/learn",
+        "./skills/ship/marketing-video",
+        "./skills/build/navigate-skills",
+        "./skills/build/number-formatting",
+        "./skills/build/object-model-design",
+        "./skills/build/openzeppelin-sui-libs",
+        "./skills/build/ottersec-prep",
+        "./skills/idea/overflow-copilot",
+        "./skills/build/page-load-animations",
+        "./skills/ship/pick-my-sui-track",
+        "./skills/build/product-review",
+        "./skills/build/ptb-composer",
+        "./skills/build/retention-loop",
+        "./skills/build/review-move",
+        "./skills/build/roast-my-product",
+        "./skills/build/scaffold-project",
+        "./skills/build/scallop-money-market",
+        "./skills/build/sponsored-transactions",
+        "./skills/ship/submit-to-sui-overflow",
+        "./skills/learn/sui-beginner",
+        "./skills/build/sui-zk-login",
+        "./skills/build/validate-business-model",
+        "./skills/idea/validate-idea",
+        "./skills/ship/video-craft",
+        "./skills/build/virtual-sui-incubator",
+        "./skills/idea/walrus-research",
+        "./skills/build/walrus-storage",
+        "./skills/build/will-real-users-pay"
+      ]
+    }
+  ]
+}

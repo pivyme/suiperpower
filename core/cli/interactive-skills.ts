@@ -3,28 +3,18 @@
 // and prints the agent command for the picked skill.
 
 import { existsSync, readFileSync, readdirSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 
 import { BRAND } from "./branding.js";
 import { accent, bold, dim, muted } from "./colors.js";
 import { detectPreferredAgentCli } from "./agent-cli.js";
 import { searchAndPick, type PickItem } from "./interactive-universal.js";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { getSkillsRoot } from "./paths.js";
 
 interface SkillInfo {
   name: string;
   phase: string;
   description: string;
-}
-
-function getSkillsRoot(): string {
-  const dev = join(__dirname, "..", "skills");
-  if (existsSync(dev)) return dev;
-  const built = join(__dirname, "..", "..", "skills");
-  if (existsSync(built)) return built;
-  return "";
 }
 
 function parseDescription(skillMd: string): string {

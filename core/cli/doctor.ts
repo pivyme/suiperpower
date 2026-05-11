@@ -4,14 +4,12 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { homedir } from "node:os";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 
 import { BRAND } from "./branding.js";
 import { bold, dim, err, muted, ok, warn } from "./colors.js";
 import { detectAgentCliPaths } from "./agent-cli.js";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { getCliDataRoot, getSkillsRoot as findSkillsRoot } from "./paths.js";
 
 type Status = "pass" | "warn" | "fail";
 
@@ -34,16 +32,16 @@ function tryExec(bin: string, args: string[]): string {
   }
 }
 
-function getSkillsRoot(): string {
-  const dev = join(__dirname, "..", "skills");
-  if (existsSync(dev)) return dev;
-  const built = join(__dirname, "..", "..", "skills");
-  if (existsSync(built)) return built;
-  return "";
+function installedSkillsRoot(): string {
+  try {
+    return findSkillsRoot();
+  } catch {
+    return "";
+  }
 }
 
 function expectedSkills(): string[] {
-  const root = getSkillsRoot();
+  const root = installedSkillsRoot();
   if (!root) return [];
   const out: string[] = [];
   for (const phase of readdirSync(root, { withFileTypes: true })) {
@@ -67,9 +65,7 @@ function readJson<T>(path: string): T | null {
 }
 
 function catalogCounts(): { repos: number; skills: number; mcps: number; ideas: number } {
-  const cliData = join(__dirname, "data");
-  const altCliData = join(__dirname, "..", "cli", "data");
-  const root = existsSync(cliData) ? cliData : altCliData;
+  const root = getCliDataRoot();
   const counts = { repos: 0, skills: 0, mcps: 0, ideas: 0 };
   if (!existsSync(root)) return counts;
   const repos = readJson<{ repos: unknown[] }>(join(root, "clonable-repos.json"));
@@ -81,6 +77,14 @@ function catalogCounts(): { repos: number; skills: number; mcps: number; ideas: 
   counts.mcps = mcps?.mcps?.length ?? 0;
   counts.ideas = ideas?.ideas?.length ?? 0;
   return counts;
+}
+
+function countSkillDirs(root: string, expected: string[]): number {
+  return expected.filter((s) => existsSync(join(root, s, "SKILL.md"))).length;
+}
+
+function countCursorRules(root: string, expected: string[]): number {
+  return expected.filter((s) => existsSync(join(root, `${s}.mdc`))).length;
 }
 
 function suiActiveEnv(): { env: string; address: string } {
@@ -184,19 +188,37 @@ export async function run(args: string[]): Promise<void> {
   }
 
   const expected = expectedSkills();
-  const claudeDir = join(homedir(), ".claude", "skills");
   const codexDir = join(homedir(), ".codex", "skills");
-  const installedCount = expected.filter(
-    (s) => existsSync(join(claudeDir, s)) || existsSync(join(codexDir, s)),
-  ).length;
+  const cursorDir = join(homedir(), ".cursor", "rules");
+  const total = expected.length;
+  const codexCount = countSkillDirs(codexDir, expected);
+  const cursorCount = countCursorRules(cursorDir, expected);
   checks.push({
     group: "Suiperpower",
-    label: "skills",
-    status: installedCount === expected.length && expected.length > 0 ? "pass" : "warn",
-    detail:
-      expected.length === 0
-        ? "no skills discovered"
-        : `${installedCount}/${expected.length} installed`,
+    label: "Claude plugin",
+    status: "pass",
+    detail: "namespaced install via /plugin marketplace add pivyme/suiperpower",
+  });
+  checks.push({
+    group: "Suiperpower",
+    label: "Codex skills",
+    status: total > 0 && codexCount === total ? "pass" : "warn",
+    detail: total === 0 ? "no skills discovered" : `${codexCount}/${total} installed`,
+  });
+  checks.push({
+    group: "Suiperpower",
+    label: "Cursor rules",
+    status: total > 0 && cursorCount === total ? "pass" : "warn",
+    detail: total === 0 ? "no rules discovered" : `${cursorCount}/${total} installed`,
+  });
+  const sharedOk =
+    existsSync(join(codexDir, "skills", "SKILL_ROUTER.md")) &&
+    existsSync(join(codexDir, "cli", "data", "sui-skills.json"));
+  checks.push({
+    group: "Suiperpower",
+    label: "shared knowledge",
+    status: sharedOk ? "pass" : "warn",
+    detail: sharedOk ? "Codex router and catalogs installed" : `missing, run: ${BRAND.PRODUCT_NAME} init`,
   });
 
   const counts = catalogCounts();

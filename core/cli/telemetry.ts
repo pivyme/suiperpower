@@ -10,13 +10,11 @@ import {
   writeFileSync,
 } from "node:fs";
 import { homedir, platform, arch } from "node:os";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 import { randomUUID } from "node:crypto";
 
 import { BRAND, ENV } from "./branding.js";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { readPackageVersion } from "./paths.js";
 
 const CFG_DIR = join(homedir(), BRAND.CONFIG_DIR);
 const CFG_FILE = join(CFG_DIR, "config.json");
@@ -71,18 +69,6 @@ export function setTier(tier: Tier): void {
   writeConfig(cfg);
 }
 
-function readVersion(): string {
-  for (const rel of ["../package.json", "../../package.json"]) {
-    try {
-      const p = JSON.parse(readFileSync(join(__dirname, rel), "utf8")) as { version?: string };
-      if (p.version) return p.version;
-    } catch {
-      // try next
-    }
-  }
-  return "0.0.0";
-}
-
 export function track(
   fields: Pick<TelemetryEvent, "skill" | "phase" | "status"> &
     Partial<Pick<TelemetryEvent, "durationMs" | "category">>,
@@ -97,7 +83,7 @@ export function track(
       status: fields.status,
       durationMs: fields.durationMs,
       category: tier === "community" ? fields.category ?? cfg.category : undefined,
-      version: readVersion(),
+      version: readPackageVersion(),
       platform: `${platform()}-${arch()}`,
       tier,
       timestamp: Date.now(),

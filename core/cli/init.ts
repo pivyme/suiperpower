@@ -14,14 +14,12 @@ import {
 } from "node:fs";
 import { homedir } from "node:os";
 import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
 
 import { BRAND } from "./branding.js";
 import { accent, bold, dim, muted, ok } from "./colors.js";
 import { detectAgentCliPaths } from "./agent-cli.js";
+import { getCliDataRoot, getSkillsRoot, readPackageVersion } from "./paths.js";
 import { renderMdc as renderCursorRule } from "../scripts/generate-cursor-rules.js";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
 interface SkillEntry {
   phase: string;
@@ -39,26 +37,8 @@ interface Manifest {
 
 const VALID_PHASES = new Set(["learn", "idea", "build", "ship", "grow"]);
 
-// Resolve skills root: works in dev (cli/ next to skills/) and in dist (dist/cli/ → ../../skills/).
-function getSkillsRoot(): string {
-  const dev = join(__dirname, "..", "skills");
-  if (existsSync(dev)) return dev;
-  const built = join(__dirname, "..", "..", "skills");
-  if (existsSync(built)) return built;
-  throw new Error("skills/ directory not found");
-}
-
 function getSkillsDataRoot(): string {
   return join(getSkillsRoot(), "data");
-}
-
-function getCliDataRoot(): string {
-  // dev: cli/data/, dist: dist/cli/data/ or sibling
-  const dev = join(__dirname, "data");
-  if (existsSync(dev)) return dev;
-  const root = join(__dirname, "..", "cli", "data");
-  if (existsSync(root)) return root;
-  return "";
 }
 
 function discoverSkills(): SkillEntry[] {
@@ -118,7 +98,7 @@ function targetDirs(vendor: boolean): { claude: string; codex: string; cursor: s
   };
 }
 
-function copySkillToClaudeOrCodex(skill: SkillEntry, dest: string): string[] {
+function copySkillToClaudeOrCodex(skill: SkillEntry, dest: string, rewriteCodexYaml: boolean): string[] {
   mkdirSync(dest, { recursive: true });
   const written: string[] = [];
   cpSync(skill.srcDir, dest, {
@@ -131,8 +111,19 @@ function copySkillToClaudeOrCodex(skill: SkillEntry, dest: string): string[] {
       return true;
     },
   });
+  if (rewriteCodexYaml) rewriteOpenAiYamlForInstalledLayout(dest);
   walk(dest, (f) => written.push(f));
   return written;
+}
+
+function rewriteOpenAiYamlForInstalledLayout(skillDest: string): void {
+  const yamlPath = join(skillDest, "agents", "openai.yaml");
+  if (!existsSync(yamlPath)) return;
+  const raw = readFileSync(yamlPath, "utf8");
+  const rewritten = raw
+    .replace(/^(\s*-\s+)skills\//gm, "$1../../skills/")
+    .replace(/^(\s*-\s+)cli\//gm, "$1../../cli/");
+  if (rewritten !== raw) writeFileSync(yamlPath, rewritten);
 }
 
 function renderCursorMdc(skill: SkillEntry, destDir: string): string[] {
@@ -160,27 +151,42 @@ function walk(dir: string, fn: (file: string) => void): void {
   }
 }
 
-function copySharedData(targets: string[]): string[] {
-  // Skills reference ../../data/* paths. Mirror skills/data into each agent dir
-  // so those paths resolve regardless of installation root.
+function copyDirFresh(src: string, dest: string, written: string[]): void {
+  if (!existsSync(src)) return;
+  if (existsSync(dest)) rmSync(dest, { recursive: true, force: true });
+  mkdirSync(dirname(dest), { recursive: true });
+  cpSync(src, dest, {
+    recursive: true,
+    filter: (p) => {
+      const base = p.split("/").pop() ?? "";
+      return base !== ".DS_Store";
+    },
+  });
+  walk(dest, (f) => written.push(f));
+}
+
+function copySharedKnowledge(targets: string[]): string[] {
+  // Keep both the canonical source-tree paths (`skills/data/*`, `cli/data/*`)
+  // and the older root `data/*` mirror available. Skills mention the canonical
+  // paths in prose, while installed Codex YAML is rewritten to `../../skills/*`.
   const dataRoot = getSkillsDataRoot();
   const cliData = getCliDataRoot();
+  const skillsRoot = getSkillsRoot();
   const written: string[] = [];
   for (const target of targets) {
-    const dest = join(target, "data");
-    if (existsSync(dest)) rmSync(dest, { recursive: true, force: true });
-    mkdirSync(dest, { recursive: true });
-    if (existsSync(dataRoot)) {
-      cpSync(dataRoot, dest, { recursive: true });
-    }
+    copyDirFresh(skillsRoot, join(target, "skills"), written);
+    if (cliData) copyDirFresh(cliData, join(target, "cli", "data"), written);
+
+    const legacyDest = join(target, "data");
+    copyDirFresh(dataRoot, legacyDest, written);
     if (cliData) {
-      const catalogDest = join(dest, "catalogs");
+      const catalogDest = join(legacyDest, "catalogs");
       mkdirSync(catalogDest, { recursive: true });
       for (const f of readdirSync(cliData)) {
         if (f.endsWith(".json")) cpSync(join(cliData, f), join(catalogDest, f));
       }
+      walk(catalogDest, (f) => written.push(f));
     }
-    walk(dest, (f) => written.push(f));
   }
   return written;
 }
@@ -204,17 +210,6 @@ function writeConfig(convexUrl: string | undefined): void {
   writeFileSync(cfgPath, JSON.stringify(cfg, null, 2));
 }
 
-function readPackageVersion(): string {
-  try {
-    const p = JSON.parse(
-      readFileSync(join(__dirname, "..", "..", "package.json"), "utf8"),
-    ) as { version?: string };
-    return p.version ?? "0.0.0";
-  } catch {
-    return "0.0.0";
-  }
-}
-
 function parseFlags(args: string[]): {
   vendor: boolean;
   agent: boolean;
@@ -233,11 +228,45 @@ function parseFlags(args: string[]): {
   return { vendor, agent, convexUrl };
 }
 
+// Older versions installed skills flat into ~/.claude/skills/. We now ship those
+// via the plugin marketplace, so those flat copies are orphaned and would
+// double-trigger alongside the namespaced /suiper:* versions. On a global init,
+// remove any previously-tracked files that lived under ~/.claude/skills/.
+function cleanupLegacyGlobalClaudeFiles(): number {
+  const mPath = manifestPath(false);
+  if (!existsSync(mPath)) return 0;
+  let manifest: Manifest;
+  try {
+    manifest = JSON.parse(readFileSync(mPath, "utf8")) as Manifest;
+  } catch {
+    return 0;
+  }
+  const claudeRoot = join(homedir(), ".claude", "skills");
+  let removed = 0;
+  for (const f of manifest.files ?? []) {
+    if (!f.startsWith(claudeRoot + "/") && f !== claudeRoot) continue;
+    try {
+      rmSync(f, { force: true });
+      removed += 1;
+    } catch {
+      // ignore
+    }
+  }
+  return removed;
+}
+
 export async function run(args: string[]): Promise<void> {
   const { vendor, agent, convexUrl } = parseFlags(args);
   const skills = discoverSkills();
   const targets = targetDirs(vendor);
-  mkdirSync(targets.claude, { recursive: true });
+
+  // Global Claude lives behind the plugin marketplace, not flat copy, so we
+  // skip writing to ~/.claude/skills/ to avoid colliding with other packs.
+  // Vendor mode is already namespaced under <project>/.claude/skills/suiperpower/
+  // so it stays. Codex and Cursor have no plugin model, flat copy for both.
+  const writeClaude = vendor;
+  const legacyCleaned = !vendor ? cleanupLegacyGlobalClaudeFiles() : 0;
+  if (writeClaude) mkdirSync(targets.claude, { recursive: true });
   mkdirSync(targets.codex, { recursive: true });
   mkdirSync(targets.cursor, { recursive: true });
 
@@ -245,17 +274,20 @@ export async function run(args: string[]): Promise<void> {
   const installed: string[] = [];
 
   for (const skill of skills) {
-    const claudeDest = join(targets.claude, skill.name);
     const codexDest = join(targets.codex, skill.name);
-    if (existsSync(claudeDest)) rmSync(claudeDest, { recursive: true, force: true });
     if (existsSync(codexDest)) rmSync(codexDest, { recursive: true, force: true });
-    allWritten.push(...copySkillToClaudeOrCodex(skill, claudeDest));
-    allWritten.push(...copySkillToClaudeOrCodex(skill, codexDest));
+    if (writeClaude) {
+      const claudeDest = join(targets.claude, skill.name);
+      if (existsSync(claudeDest)) rmSync(claudeDest, { recursive: true, force: true });
+      allWritten.push(...copySkillToClaudeOrCodex(skill, claudeDest, false));
+    }
+    allWritten.push(...copySkillToClaudeOrCodex(skill, codexDest, true));
     allWritten.push(...renderCursorMdc(skill, targets.cursor));
     installed.push(skill.name);
   }
 
-  allWritten.push(...copySharedData([targets.claude, targets.codex]));
+  const sharedTargets = writeClaude ? [targets.claude, targets.codex] : [targets.codex];
+  allWritten.push(...copySharedKnowledge(sharedTargets));
 
   if (!vendor) writeConfig(convexUrl);
 
@@ -289,13 +321,26 @@ export async function run(args: string[]): Promise<void> {
   console.log(`  ${bold(`${BRAND.PRODUCT_NAME} init`)} ${muted(vendor ? "(vendor)" : "(global)")}`);
   console.log("");
   console.log(`  ${ok(`${installed.length} skills installed`)}`);
-  console.log(`  ${dim(targets.claude)} ${muted("(Claude Code)")}`);
+  if (writeClaude) {
+    console.log(`  ${dim(targets.claude)} ${muted("(Claude Code)")}`);
+  } else {
+    console.log(`  ${muted("Claude Code: install via plugin marketplace, see below")}`);
+    if (legacyCleaned > 0) {
+      console.log(
+        `  ${muted(`removed ${legacyCleaned} legacy file(s) from ~/.claude/skills/`)}`,
+      );
+    }
+  }
   console.log(`  ${dim(targets.codex)} ${muted("(Codex)")}`);
   console.log(`  ${dim(targets.cursor)} ${muted("(Cursor)")}`);
   console.log("");
   console.log(`  ${muted("manifest:")} ${mPath}`);
   console.log("");
   if (!vendor) {
+    console.log(`  ${bold("Claude Code, one-time install:")}`);
+    console.log(`  ${accent("/plugin marketplace add pivyme/suiperpower")}`);
+    console.log(`  ${accent("/plugin install suiper@suiperpower")}`);
+    console.log("");
     console.log(`  ${muted("next:")} ${accent(`${BRAND.PRODUCT_NAME} doctor`)}`);
     console.log("");
   }

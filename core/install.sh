@@ -6,7 +6,7 @@ set -euo pipefail
 PRODUCT_NAME="suiperpower"
 SHORT_NAME="suiper"
 NPM_PACKAGE="suiperpower"
-GITHUB_REPO_URL="https://github.com/kwekKwek/suiperpower"
+GITHUB_REPO_URL="https://github.com/pivyme/suiperpower"
 WEBSITE_URL="https://suiperpower.dev"
 
 RED='\033[0;31m'
@@ -104,9 +104,11 @@ run_ss() {
   fi
 }
 
-# Install skills
-log "Installing journey skills"
-mkdir -p "$HOME/.claude/skills" "$HOME/.codex/skills" "$HOME/.cursor/rules"
+# Install skills for Codex + Cursor (flat, no plugin system in those tools).
+# Claude Code skills land via the plugin marketplace flow printed at the end,
+# so we deliberately skip ~/.claude/skills/ to avoid colliding with other packs.
+log "Installing journey skills (Codex + Cursor)"
+mkdir -p "$HOME/.codex/skills" "$HOME/.cursor/rules"
 run_ss init
 
 # Doctor (never blocks)
@@ -165,7 +167,8 @@ ok "Telemetry: $TELEMETRY_CHOICE"
 printf "\n"
 printf "  ${CYAN}+--------------------------------------------------------------+${RESET}\n"
 printf "  ${CYAN}|${RESET} ${BOLD}Skills installed${RESET}                                              ${CYAN}|${RESET}\n"
-printf "  ${CYAN}|${RESET}   ~/.claude/skills/    ~/.codex/skills/    ~/.cursor/rules/    ${CYAN}|${RESET}\n"
+printf "  ${CYAN}|${RESET}   ~/.codex/skills/    ~/.cursor/rules/                       ${CYAN}|${RESET}\n"
+printf "  ${CYAN}|${RESET}   Claude Code: see plugin install steps below                ${CYAN}|${RESET}\n"
 printf "  ${CYAN}+--------------------------------------------------------------+${RESET}\n"
 
 # Done
@@ -181,15 +184,22 @@ printf "\n"
 printf "  ${DIM}${PRODUCT_NAME} <cmd> works identically.${RESET}\n"
 
 printf "\n"
-printf "  ${BOLD}Get started${RESET} ${DIM}(open Claude Code, Codex, or Cursor and ask):${RESET}\n\n"
-printf "    ${CYAN}claude \"/find-next-sui-idea what should I build for Sui Overflow?\"${RESET}\n"
-printf "    ${CYAN}claude \"/scaffold-project escrow with Walrus storage\"${RESET}\n"
-printf "    ${CYAN}claude \"/build-with-claude help me build the MVP\"${RESET}\n"
-printf "    ${CYAN}claude \"/build-with-move add the lock function\"${RESET}\n"
-printf "    ${CYAN}claude \"/deploy-to-testnet\"${RESET}\n"
-printf "    ${CYAN}claude \"/submit-to-sui-overflow\"${RESET}\n"
+printf "  ${BOLD}Claude Code, one-time install${RESET} ${DIM}(namespaced, no collision with other packs)${RESET}\n\n"
+printf "    ${CYAN}claude${RESET}\n"
+printf "    ${DIM}then inside Claude, run:${RESET}\n"
+printf "    ${CYAN}/plugin marketplace add pivyme/suiperpower${RESET}\n"
+printf "    ${CYAN}/plugin install suiper@suiperpower${RESET}\n"
 printf "\n"
-printf "  ${DIM}Skills auto-route by intent. Same trigger phrases work in Codex and Cursor.${RESET}\n"
+printf "  ${BOLD}Get started${RESET} ${DIM}(open Claude Code, Codex, or Cursor and ask):${RESET}\n\n"
+printf "    ${CYAN}claude \"/suiper:find-next-sui-idea what should I build for Sui Overflow?\"${RESET}\n"
+printf "    ${CYAN}claude \"/suiper:scaffold-project escrow with Walrus storage\"${RESET}\n"
+printf "    ${CYAN}claude \"/suiper:build-with-claude help me build the MVP\"${RESET}\n"
+printf "    ${CYAN}claude \"/suiper:build-with-move add the lock function\"${RESET}\n"
+printf "    ${CYAN}claude \"/suiper:deploy-to-testnet\"${RESET}\n"
+printf "    ${CYAN}claude \"/suiper:submit-to-sui-overflow\"${RESET}\n"
+printf "\n"
+printf "  ${DIM}Skills auto-route by intent inside Claude. In Codex / Cursor use the bare${RESET}\n"
+printf "  ${DIM}name (no /suiper: prefix). Same trigger phrases work across all three.${RESET}\n"
 printf "\n"
 
 printf "  ${BOLD}Vendor into your repo ${DIM}(optional)${RESET}\n"

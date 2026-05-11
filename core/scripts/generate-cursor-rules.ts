@@ -11,14 +11,21 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSy
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { getPackageRoot } from "../cli/paths.js";
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const ROOT = join(__dirname, "..");
+const ROOT = getPackageRoot() || join(__dirname, "..");
 
 interface Skill {
   name: string;
   phase: string;
   dir: string;
   skillMdPath: string;
+}
+
+interface SharedReference {
+  rel: string;
+  abs: string;
 }
 
 const VALID_PHASES = new Set(["learn", "idea", "build", "ship", "grow"]);
@@ -59,11 +66,60 @@ function listReferences(skillDir: string): string[] {
     .map((f) => join(refDir, f));
 }
 
+function listYamlKnowledge(skillDir: string): string[] {
+  const yaml = join(skillDir, "agents", "openai.yaml");
+  if (!existsSync(yaml)) return [];
+  const raw = readFileSync(yaml, "utf8");
+  const out: string[] = [];
+  for (const line of raw.split("\n")) {
+    const m = line.match(/^\s*-\s+((?:skills|cli)\/[^\s#]+)\s*$/);
+    if (m) out.push(m[1]);
+  }
+  return out;
+}
+
+function listBodyKnowledge(body: string): string[] {
+  const out = new Set<string>();
+  const backtick = /`((?:skills|cli)\/[^`\s)]+)`/g;
+  for (const m of body.matchAll(backtick)) out.add(m[1]);
+  return [...out];
+}
+
+function resolveSharedReference(rel: string): SharedReference | null {
+  const clean = rel.replace(/[.,;:]+$/, "");
+  const abs = join(ROOT, clean);
+  if (!existsSync(abs)) return null;
+  try {
+    if (!statSync(abs).isFile()) return null;
+  } catch {
+    return null;
+  }
+  return { rel: clean, abs };
+}
+
+function listSharedReferences(skill: Skill, body: string): SharedReference[] {
+  const refs = new Map<string, SharedReference>();
+  for (const rel of [...listBodyKnowledge(body), ...listYamlKnowledge(skill.dir)]) {
+    const resolved = resolveSharedReference(rel);
+    if (resolved) refs.set(resolved.rel, resolved);
+  }
+  return [...refs.values()].sort((a, b) => a.rel.localeCompare(b.rel));
+}
+
+function renderReferenceText(ref: SharedReference): string {
+  const text = readFileSync(ref.abs, "utf8").trim();
+  if (ref.rel.endsWith(".json")) {
+    return `### ${ref.rel}\n\n\`\`\`json\n${text}\n\`\`\`\n`;
+  }
+  return `### ${ref.rel}\n\n${text}\n`;
+}
+
 export function renderMdc(skill: Skill): string {
   const content = readFileSync(skill.skillMdPath, "utf8");
   const { fm, body } = parseFrontmatter(content);
   const desc = fm.description ?? "";
   const refs = listReferences(skill.dir);
+  const sharedRefs = listSharedReferences(skill, body);
 
   const refsBlock =
     refs.length === 0
@@ -77,11 +133,16 @@ export function renderMdc(skill: Skill): string {
           })
           .join("\n");
 
+  const sharedRefsBlock =
+    sharedRefs.length === 0
+      ? ""
+      : "\n\n## Shared references (inlined)\n\n" + sharedRefs.map(renderReferenceText).join("\n");
+
   const escapedDesc = desc.replace(/\n/g, " ").trim();
   const front = ["---", `description: ${escapedDesc}`, "globs:", "alwaysApply: false", "---"].join(
     "\n",
   );
-  return `${front}\n\n${body.trim()}${refsBlock}\n`;
+  return `${front}\n\n${body.trim()}${refsBlock}${sharedRefsBlock}\n`;
 }
 
 export function generateAll(skillsRoot: string, outDir: string): { written: string[] } {

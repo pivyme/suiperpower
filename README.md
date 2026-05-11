@@ -12,7 +12,12 @@ Made for [Sui Overflow 2026](https://overflow.sui.io) participants. Built to kee
 curl -fsSL https://suiperpower.dev/setup.sh | bash
 ```
 
-Installs to `~/.claude/skills/`, `~/.codex/skills/`, and `~/.cursor/rules/`. Nothing touches your PATH or runs in the background.
+Installs the `suiper` / `suiperpower` CLI, writes Codex skills to `~/.codex/skills/`, and writes Cursor rules to `~/.cursor/rules/`. Claude Code uses the namespaced plugin flow printed by the installer:
+
+```text
+/plugin marketplace add pivyme/suiperpower
+/plugin install suiper@suiperpower
+```
 
 **Requirements**: Node.js 20+ and git.
 
@@ -26,15 +31,15 @@ suiper doctor      # same as: suiperpower doctor
 ## Quick start
 
 ```bash
-claude "/find-next-sui-idea what should I build for Sui Overflow?"
-claude "/scaffold-project escrow with Walrus storage"
-claude "/build-with-claude help me build the MVP"
-claude "/build-with-move add the lock function"
-claude "/deploy-to-testnet"
-claude "/submit-to-sui-overflow"
+claude "/suiper:find-next-sui-idea what should I build for Sui Overflow?"
+claude "/suiper:scaffold-project escrow with Walrus storage"
+claude "/suiper:build-with-claude help me build the MVP"
+claude "/suiper:build-with-move add the lock function"
+claude "/suiper:deploy-to-testnet"
+claude "/suiper:submit-to-sui-overflow"
 ```
 
-Skills auto-route by intent. You ask in natural language, the right skill activates. Same commands work in Codex and Cursor.
+Skills auto-route by intent. Use the `/suiper:` prefix in Claude Code. Use the bare skill name in Codex and Cursor.
 
 ## Why it exists
 
@@ -50,9 +55,9 @@ Suiperpower is built around that bar. Every build skill embeds a "will this surv
 
 ## What you get
 
-- **~30 journey skills** across Learn, Idea, Build, Ship phases
+- **45 journey skills** across Learn, Idea, Build, Ship phases
 - **Sui knowledge base**: Move + objects, PTBs, Walrus, DeepBook, Scallop, OpenZeppelin, OtterSec
-- **Ecosystem catalog**: clonable repos, MCP servers, ecosystem skills, 150+ curated startup ideas
+- **Ecosystem catalog**: clonable repos, MCP servers, ecosystem skills, curated Sui startup ideas
 - **Anti-slop quality gates** wired into every build skill
 - **Hackathon submission generator**: package-id capture, deepsurge.xyz form copy, demo video script, day-of preflight
 - **Sponsor integrations**: Walrus (headline), DeepBook (track), OpenZeppelin (prize), OtterSec (prize), Scallop (university award)
@@ -113,14 +118,14 @@ Full framework in [plans/12-ANTI-SLOP-FRAMEWORK.md](plans/12-ANTI-SLOP-FRAMEWORK
 
 Curated catalog the skills search and recommend from.
 
-| Catalog | v1 target |
+| Catalog | Current seed |
 |---|---|
-| Repos | 40-60 |
-| Ecosystem skills | 15-25 |
-| MCP servers | 10-15 |
-| Curated ideas | 150+ |
+| Repos | 33 |
+| Ecosystem skills | 7 |
+| MCP servers | 5 |
+| Curated ideas | 15 |
 
-Catalog data lives in `cli/data/`. Skills reference it automatically.
+Catalog data lives in `core/cli/data/`. Skills reference it automatically.
 
 ## Telemetry
 
@@ -136,12 +141,12 @@ Source: [convex/telemetry.ts](convex/telemetry.ts). Read it before you trust it.
 ## Project structure
 
 ```
-cli/                CLI source + ecosystem catalog data
-skills/             Journey skills + Sui knowledge base + curated ideas
+core/cli/           CLI source + ecosystem catalog data
+core/skills/        Journey skills + Sui knowledge base + curated ideas
 convex/             Telemetry + feedback backend
-public/             setup.sh + assets served by the website
+web/public/         setup.sh + assets served by the website
 plans/              Source-of-truth planning docs
-install.sh          Bash bootstrap, hosted at suiperpower.dev/setup.sh
+core/install.sh     Bash bootstrap, hosted at suiperpower.dev/setup.sh
 README.md           This file
 CLAUDE.md           Context for AI agents working on Suiperpower itself
 ```
@@ -152,19 +157,19 @@ Full tree in [plans/02-PROJECT-STRUCTURE.md](plans/02-PROJECT-STRUCTURE.md).
 
 | Agent | Skills install path |
 |---|---|
-| Claude Code | `~/.claude/skills/<skill-name>/` |
+| Claude Code | Plugin marketplace, namespaced as `/suiper:<skill-name>` |
 | Codex | `~/.codex/skills/<skill-name>/` |
 | Cursor | `~/.cursor/rules/<skill-name>.mdc` |
 
-`suiperpower init` writes to all three by default. Detail in [plans/09-MULTI-AGENT-PARITY.md](plans/09-MULTI-AGENT-PARITY.md).
+`suiperpower init` writes Codex and Cursor formats by default and prints the Claude plugin install commands. `suiperpower init --vendor` writes all three into the current repo under namespaced project folders. Detail in [plans/09-MULTI-AGENT-PARITY.md](plans/09-MULTI-AGENT-PARITY.md).
 
 ## Per-skill install
 
 Already know which one or two skills you want? Install them a la carte through the [skills.sh](https://skills.sh) CLI. Identifiers resolve as GitHub shorthand:
 
 ```bash
-npx skills add kwekKwek/suiperpower/skills/build/build-with-move
-npx skills add kwekKwek/suiperpower/skills/idea/find-next-sui-idea
+npx skills add pivyme/suiperpower/skills/build/build-with-move
+npx skills add pivyme/suiperpower/skills/idea/find-next-sui-idea
 ```
 
 The full curl one-liner stays the canonical install. Per-skill is for users who already have a target. See [plans/03-INSTALL-FLOW.md](plans/03-INSTALL-FLOW.md).
@@ -177,7 +182,7 @@ Want your teammates to get all skills automatically when they clone?
 suiper init --vendor
 ```
 
-Copies skills into `<your-repo>/.claude/skills/suiperpower/`, `<repo>/.codex/skills/suiperpower/`, and `<repo>/.cursor/rules/suiperpower/`. Commit them, teammates clone, ready to go.
+Copies skills into `<repo>/.claude/skills/suiperpower/`, `<repo>/.codex/skills/suiperpower/`, and `<repo>/.cursor/rules/suiperpower/`. Commit them, teammates clone, ready to go.
 
 ## Update
 

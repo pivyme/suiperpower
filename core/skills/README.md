@@ -15,7 +15,7 @@ curl -fsSL https://suiperpower.dev/setup.sh | bash
 If you only want one or two specific skills, install them a la carte through the [skills.sh](https://skills.sh) CLI. Identifiers resolve as GitHub shorthand:
 
 ```
-npx skills add kwekKwek/suiperpower/skills/build/build-with-move
+npx skills add pivyme/suiperpower/skills/build/build-with-move
 ```
 
 Both paths land the same SKILL.md plus `references/` and `agents/openai.yaml`. The curl flow additionally installs the `suiperpower` and `suiper` CLI bins, the ecosystem catalog, and the doctor / update commands. See `plans/03-INSTALL-FLOW.md` for details.

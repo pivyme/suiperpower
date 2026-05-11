@@ -1,5 +1,7 @@
 # 03. Install flow
 
+> Partial revision needed (2026-05-11): Claude Code skills now ship via the plugin marketplace at `.claude-plugin/marketplace.json`, not flat copy to `~/.claude/skills/`. Codex and Cursor still flat-install. See decision 15a in `19-OPEN-QUESTIONS.md`. Sections below that describe `~/.claude/skills/` writes are stale for Claude; the rest holds.
+
 ## The promise
 
 ```bash
@@ -220,7 +222,7 @@ Cache-busting via Vercel's default short-cache headers (we are not the high-traf
 For users who do not want the full curl one-liner but already know which one or two skills they need, every shipped skill is also installable on its own through the [skills.sh](https://skills.sh) CLI. The skills.sh CLI resolves identifiers as GitHub shorthand, so a user types:
 
 ```
-npx skills add kwekKwek/suiperpower/skills/build/build-with-move
+npx skills add pivyme/suiperpower/skills/build/build-with-move
 ```
 
 That fetches the SKILL.md plus `references/` and `agents/openai.yaml` directly from the repo and lands them under the user's active agent dir. No registry account, no extra hosting, no namespace claim. The skills.sh website acts as a discovery leaderboard, not a gating registry.

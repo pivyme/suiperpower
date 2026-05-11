@@ -2,14 +2,12 @@
 // Picking a row prints the install command and config snippet.
 
 import { existsSync, readFileSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 
 import { BRAND } from "./branding.js";
 import { accent, bold, dim, muted } from "./colors.js";
 import { searchAndPick, type PickItem } from "./interactive-universal.js";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { getCliDataRoot } from "./paths.js";
 
 interface Mcp {
   id: string;
@@ -25,15 +23,8 @@ interface Mcp {
 }
 
 function findCatalog(): string {
-  const candidates = [
-    join(__dirname, "data", "sui-mcps.json"),
-    join(__dirname, "..", "cli", "data", "sui-mcps.json"),
-    join(__dirname, "..", "..", "cli", "data", "sui-mcps.json"),
-  ];
-  for (const p of candidates) {
-    if (existsSync(p)) return p;
-  }
-  return "";
+  const path = join(getCliDataRoot(), "sui-mcps.json");
+  return existsSync(path) ? path : "";
 }
 
 function loadMcps(): Mcp[] {

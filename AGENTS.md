@@ -17,6 +17,7 @@ The launch occasion is Sui Overflow 2026, but Suiperpower is a long-lived produc
 - **Package manager**: pnpm workspaces
 - **CLI**: zero runtime deps (Convex client is the only exception)
 - **Backend**: Convex (telemetry + feedback only)
+- **Website**: static setup assets today, full site is separate from the core CLI work
 - **Skills**: plain markdown (Anthropic skill spec) with optional `references/` and `agents/openai.yaml`
 - **Knowledge base**: plain markdown
 - **Ecosystem catalog**: plain JSON
@@ -29,19 +30,21 @@ Source-of-truth tree: `plans/02-PROJECT-STRUCTURE.md`. On-disk shape today:
 ```
 suiperpower/
 ├── README.md, CLAUDE.md, AGENTS.md, CONTRIBUTING.md, LICENSE
-├── package.json, pnpm-workspace.yaml, tsconfig.json, vercel.json
-├── cli/                CLI source + cli/data/ ecosystem catalog
+├── package.json, pnpm-workspace.yaml
+├── core/               publishable npm package "suiperpower"
+│   ├── cli/            CLI source + cli/data/ ecosystem catalog
+│   ├── skills/         SKILL_ROUTER.md + per-phase skill folders + skills/data/
+│   ├── scripts/        release tooling (preamble injector, lint, package)
+│   ├── install.sh      curl one-liner bootstrap
+│   └── skills-lock.json
 ├── convex/             telemetry + feedback backend
-├── skills/             SKILL_ROUTER.md + per-phase skill folders + skills/data/
-├── scripts/            release tooling (preamble injector, lint, package)
-├── public/             setup.sh + skills tarballs + index.json
-├── install.sh          curl one-liner bootstrap
-├── bigdev/             autonomous build loop
+├── web/                static setup assets + website shell
+├── scratchpads/        local-only build loop and notes, gitignored
 ├── plans/              source-of-truth planning docs (31 files)
 └── reference/          vendored solana-new-main for pattern reference only
 ```
 
-Skills live under `skills/<phase>/<name>/SKILL.md`. Phases: `learn/`, `idea/`, `build/`, `ship/`, `grow/`. As of today `learn/`, `idea/`, `build/`, `ship/` exist; `grow/` is planned.
+Skills live under `core/skills/<phase>/<name>/SKILL.md`. Phases: `learn/`, `idea/`, `build/`, `ship/`, `grow/`. As of today `learn/`, `idea/`, `build/`, `ship/` exist; `grow/` is planned.
 
 ## Plans index
 
@@ -55,25 +58,25 @@ Real today:
 
 ```bash
 pnpm install                  # install workspace deps
-pnpm dev                      # run CLI locally via tsx (cli/index.ts)
-pnpm build                    # tsc to dist/ + chmod +x dist/cli/index.js
+pnpm dev                      # run CLI locally via tsx (core/cli/index.ts)
+pnpm build                    # tsc to core/dist/ + chmod +x dist/cli/index.js
 pnpm typecheck                # tsc --noEmit
 pnpm preamble:check           # verify the telemetry preamble in every SKILL.md
-pnpm package:skills           # build per-skill tarballs and index.json under public/skills/
-pnpm lint:skills              # validate every SKILL.md against plans/05 + plans/15
-pnpm lint:catalog             # validate every cli/data/*.json against plans/07
+pnpm package:skills           # build per-skill tarballs and index.json under web/public/skills/
+pnpm lint:skills              # validate every core/skills/**/SKILL.md against plans/05 + plans/15
+pnpm lint:catalog             # validate every core/cli/data/*.json against plans/07
 pnpm test                     # typecheck + lint:skills + lint:catalog + preamble:check
 pnpm test:install             # CLI smoke test (build, version, doctor, vendor-mode init)
 pnpm setup                    # run ./setup local-dev convenience
 ```
 
-For the autonomous build loop: `./bigdev/autobuild`. See `bigdev/TODO.md` for phase progress.
+For the autonomous build loop, use `./scratchpads/bigdev/autobuild` if it exists locally. `scratchpads/` is gitignored, so do not reference those paths from committed code or skills.
 
 ## Conventions
 
 - ESM only (`.js` extensions in imports under NodeNext).
 - Strict TypeScript, no implicit any.
-- Single source of truth for branding strings: `cli/branding.ts`.
+- Single source of truth for branding strings: `core/cli/branding.ts`.
 - Skills are plain markdown, no code generation in skills.
 - Catalog data is JSON, sorted alphabetically by id.
 - Naming: kebab-case for skills, files, folders, catalog ids.

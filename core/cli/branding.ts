@@ -11,8 +11,8 @@ export const BRAND = {
   INSTALL_URL: "https://suiperpower.dev/setup.sh",
   WEBSITE_URL: "https://suiperpower.dev",
 
-  GH_REPO: "<your-handle>/suiperpower",
-  GH_URL: "https://github.com/<your-handle>/suiperpower",
+  GH_REPO: "pivyme/suiperpower",
+  GH_URL: "https://github.com/pivyme/suiperpower",
 
   NPM_PKG: "suiperpower",
   CONFIG_DIR: ".suiperpower",

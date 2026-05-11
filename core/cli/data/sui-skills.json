@@ -8,14 +8,14 @@
       "name": "DeepBook Orderbook (Suiperpower)",
       "publisher": "Suiperpower",
       "publisherType": "ecosystem",
-      "url": "https://github.com/kwekKwek/suiperpower/tree/main/skills/build/deepbook-orderbook",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/deepbook-orderbook",
       "description": "First-class skill for building on DeepBook with quality gate requiring a real testnet order placed and settled.",
       "agents": ["claude", "codex", "cursor"],
       "phase": "build",
       "tags": ["deepbook", "orderbook", "sponsor"],
       "skillsSh": {
         "id": "deepbook-orderbook",
-        "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/deepbook-orderbook"
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/deepbook-orderbook"
       },
       "lastChecked": "2026-05-11"
     },
@@ -24,14 +24,14 @@
       "name": "Kiosk Marketplace (Suiperpower)",
       "publisher": "Suiperpower",
       "publisherType": "ecosystem",
-      "url": "https://github.com/kwekKwek/suiperpower/tree/main/skills/build/kiosk-marketplace",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/kiosk-marketplace",
       "description": "Build a Kiosk-based marketplace with a full listing and purchase flow demoed end to end.",
       "agents": ["claude", "codex", "cursor"],
       "phase": "build",
       "tags": ["kiosk", "marketplace"],
       "skillsSh": {
         "id": "kiosk-marketplace",
-        "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/kiosk-marketplace"
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/kiosk-marketplace"
       },
       "lastChecked": "2026-05-11"
     },
@@ -40,14 +40,14 @@
       "name": "OpenZeppelin Sui Libs (Suiperpower)",
       "publisher": "Suiperpower",
       "publisherType": "ecosystem",
-      "url": "https://github.com/kwekKwek/suiperpower/tree/main/skills/build/openzeppelin-sui-libs",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/openzeppelin-sui-libs",
       "description": "Identify hand-rolled patterns OZ Sui replaces and migrate them to vetted primitives.",
       "agents": ["claude", "codex", "cursor"],
       "phase": "build",
       "tags": ["security", "primitives", "sponsor"],
       "skillsSh": {
         "id": "openzeppelin-sui-libs",
-        "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/openzeppelin-sui-libs"
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/openzeppelin-sui-libs"
       },
       "lastChecked": "2026-05-11"
     },
@@ -56,14 +56,14 @@
       "name": "OtterSec Audit Prep (Suiperpower)",
       "publisher": "Suiperpower",
       "publisherType": "ecosystem",
-      "url": "https://github.com/kwekKwek/suiperpower/tree/main/skills/build/ottersec-prep",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/ottersec-prep",
       "description": "Walk the OtterSec checklist with every P0 item recorded as resolved or accepted-with-rationale.",
       "agents": ["claude", "codex", "cursor"],
       "phase": "build",
       "tags": ["audit", "security", "sponsor"],
       "skillsSh": {
         "id": "ottersec-prep",
-        "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/ottersec-prep"
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/ottersec-prep"
       },
       "lastChecked": "2026-05-11"
     },
@@ -72,14 +72,14 @@
       "name": "Scallop Money Market (Suiperpower)",
       "publisher": "Suiperpower",
       "publisherType": "ecosystem",
-      "url": "https://github.com/kwekKwek/suiperpower/tree/main/skills/build/scallop-money-market",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/scallop-money-market",
       "description": "Deposit, borrow, and repay against a live Scallop pool with quality gate enforcing all three.",
       "agents": ["claude", "codex", "cursor"],
       "phase": "build",
       "tags": ["lending", "money-market", "sponsor"],
       "skillsSh": {
         "id": "scallop-money-market",
-        "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/scallop-money-market"
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/scallop-money-market"
       },
       "lastChecked": "2026-05-11"
     },
@@ -88,14 +88,14 @@
       "name": "Sui zkLogin (Suiperpower)",
       "publisher": "Suiperpower",
       "publisherType": "ecosystem",
-      "url": "https://github.com/kwekKwek/suiperpower/tree/main/skills/build/sui-zk-login",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/sui-zk-login",
       "description": "Add zkLogin with a real OAuth provider end to end, not a stub.",
       "agents": ["claude", "codex", "cursor"],
       "phase": "build",
       "tags": ["zklogin", "auth"],
       "skillsSh": {
         "id": "sui-zk-login",
-        "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/sui-zk-login"
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/sui-zk-login"
       },
       "lastChecked": "2026-05-11"
     },
@@ -104,14 +104,14 @@
       "name": "Walrus Storage (Suiperpower)",
       "publisher": "Suiperpower",
       "publisherType": "ecosystem",
-      "url": "https://github.com/kwekKwek/suiperpower/tree/main/skills/build/walrus-storage",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/walrus-storage",
       "description": "Store and retrieve blobs on Walrus with the demo rendering a real stored blob.",
       "agents": ["claude", "codex", "cursor"],
       "phase": "build",
       "tags": ["walrus", "storage", "sponsor-headline"],
       "skillsSh": {
         "id": "walrus-storage",
-        "npxCmd": "npx skills add kwekKwek/suiperpower/skills/build/walrus-storage"
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/walrus-storage"
       },
       "lastChecked": "2026-05-11"
     }

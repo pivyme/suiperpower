@@ -1,5 +1,7 @@
 # 09. Multi-agent parity
 
+> Partial revision needed (2026-05-11): Claude Code skills now install via the plugin marketplace (`/plugin marketplace add pivyme/suiperpower` → `/plugin install suiper@suiperpower`), namespaced as `/suiper:<skill-name>`. The Claude Code section below describing flat copy to `~/.claude/skills/<skill-name>/` is stale. Codex + Cursor sections still apply. See decision 15a in `19-OPEN-QUESTIONS.md`.
+
 ## Goal
 
 A user with Claude Code, Codex, or Cursor gets the same skills, the same trigger phrases, the same outputs. We ship a single source-of-truth (`SKILL.md`) and adapt at install time for each agent's native format.

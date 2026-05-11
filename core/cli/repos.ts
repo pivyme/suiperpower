@@ -2,13 +2,11 @@
 // Filterable by category and tag. Selecting a row prints the clone command and details.
 
 import { existsSync, readFileSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 
 import { BRAND } from "./branding.js";
 import { accent, bold, dim, muted } from "./colors.js";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { getCliDataRoot } from "./paths.js";
 
 interface Repo {
   id: string;
@@ -31,15 +29,8 @@ interface Catalog {
 }
 
 function findCatalog(): string {
-  const candidates = [
-    join(__dirname, "data", "clonable-repos.json"),
-    join(__dirname, "..", "cli", "data", "clonable-repos.json"),
-    join(__dirname, "..", "..", "cli", "data", "clonable-repos.json"),
-  ];
-  for (const p of candidates) {
-    if (existsSync(p)) return p;
-  }
-  return "";
+  const path = join(getCliDataRoot(), "clonable-repos.json");
+  return existsSync(path) ? path : "";
 }
 
 function loadRepos(): Repo[] {

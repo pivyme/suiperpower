@@ -1,10 +1,8 @@
 #!/usr/bin/env node
-import { readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
-import { dirname, join } from "node:path";
 
 import { BRAND } from "./branding.js";
 import { accent, bold, muted } from "./colors.js";
+import { readPackageVersion } from "./paths.js";
 
 type Handler = (args: string[]) => Promise<void>;
 type Module = { run: Handler; runIdeas?: Handler };
@@ -25,22 +23,13 @@ const handlers: Record<string, () => Promise<Module>> = {
   search: () => load("interactive-search"),
   feedback: () => load("feedback"),
   journey: () => load("interactive-journey"),
+  workspace: () => load("workspace-setup"),
+  "workspace-setup": () => load("workspace-setup"),
   completion: () => load("completion"),
 };
 
 function readVersion(): string {
-  // dist layout: dist/cli/index.js -> ../../package.json
-  // dev (tsx): cli/index.ts -> ../package.json
-  const here = dirname(fileURLToPath(import.meta.url));
-  for (const rel of ["../package.json", "../../package.json"]) {
-    try {
-      const pkg = JSON.parse(readFileSync(join(here, rel), "utf8")) as { version?: string };
-      if (typeof pkg.version === "string") return pkg.version;
-    } catch {
-      // try next
-    }
-  }
-  return "0.0.0";
+  return readPackageVersion();
 }
 
 function printHelp(): void {
@@ -64,6 +53,8 @@ function printHelp(): void {
     "    search <query>       Search across all of the above",
     "",
     "    journey              Guided journey TUI, idea to ship",
+    "    workspace-setup      Create .suiperpower/ context files in this repo",
+    "    workspace            Alias for workspace-setup",
     "    feedback             Send feedback to the team",
     "    completion <shell>   Print shell completion script",
     "",

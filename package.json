@@ -17,6 +17,7 @@
     "test": "pnpm -F suiperpower test",
     "test:install": "pnpm -F suiperpower test:install",
     "skills:lock": "pnpm -F suiperpower skills:lock",
+    "marketplace:gen": "pnpm -F suiperpower marketplace:gen",
     "publish:dry": "pnpm -F suiperpower publish:dry"
   },
   "devDependencies": {

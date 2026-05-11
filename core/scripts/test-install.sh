@@ -51,8 +51,8 @@ CURSOR_DIR="$TMP/.cursor/rules/suiperpower"
 [ -d "$CODEX_DIR" ]  || fail "no skills landed at $CODEX_DIR"
 [ -d "$CURSOR_DIR" ] || fail "no .mdc rules landed at $CURSOR_DIR"
 
-CLAUDE_COUNT=$(find "$CLAUDE_DIR" -name SKILL.md | wc -l | tr -d ' ')
-CODEX_COUNT=$(find "$CODEX_DIR" -name SKILL.md | wc -l | tr -d ' ')
+CLAUDE_COUNT=$(find "$CLAUDE_DIR" -maxdepth 2 -name SKILL.md | wc -l | tr -d ' ')
+CODEX_COUNT=$(find "$CODEX_DIR" -maxdepth 2 -name SKILL.md | wc -l | tr -d ' ')
 CURSOR_COUNT=$(find "$CURSOR_DIR" -name '*.mdc' | wc -l | tr -d ' ')
 
 [ "$CLAUDE_COUNT" -gt 0 ] || fail "no SKILL.md files under $CLAUDE_DIR"
@@ -60,6 +60,28 @@ CURSOR_COUNT=$(find "$CURSOR_DIR" -name '*.mdc' | wc -l | tr -d ' ')
 [ "$CURSOR_COUNT" -gt 0 ] || fail "no .mdc files under $CURSOR_DIR"
 
 pass "init landed $CLAUDE_COUNT skills under Claude, $CODEX_COUNT under Codex, $CURSOR_COUNT .mdc rules under Cursor"
+
+log "checking shared knowledge and agent metadata"
+[ -f "$CLAUDE_DIR/skills/SKILL_ROUTER.md" ] || fail "Claude shared router missing"
+[ -f "$CODEX_DIR/skills/SKILL_ROUTER.md" ] || fail "Codex shared router missing"
+[ -f "$CODEX_DIR/skills/data/sui-knowledge/03-move-and-objects.md" ] || fail "Codex shared Sui knowledge missing"
+[ -f "$CODEX_DIR/cli/data/sui-skills.json" ] || fail "Codex catalog mirror missing"
+grep -q "../../skills/data/sui-knowledge/03-move-and-objects.md" "$CODEX_DIR/build-with-move/agents/openai.yaml" || fail "Codex knowledge paths were not rewritten for install layout"
+grep -q "Shared references (inlined)" "$CURSOR_DIR/build-with-move.mdc" || fail "Cursor shared references block missing"
+grep -q "skills/data/sui-knowledge/03-move-and-objects.md" "$CURSOR_DIR/build-with-move.mdc" || fail "Cursor shared Sui knowledge not inlined"
+pass "shared knowledge resolves for Claude, Codex, and Cursor"
+
+log "checking built CLI catalog discovery"
+DOCTOR_OUT=$(node "$CLI" doctor --agent)
+printf "%s\n" "$DOCTOR_OUT" | grep -Eq "catalog: [1-9][0-9]* repos, [1-9][0-9]* mcps, [1-9][0-9]* ecosystem skills, [1-9][0-9]* ideas" || fail "doctor catalog counts are zero from built CLI"
+pass "built CLI finds packaged catalogs"
+
+log "checking workspace setup command"
+( cd "$TMP" && node "$CLI" workspace-setup --agent >/dev/null ) || fail "workspace-setup exited non-zero"
+[ -f "$TMP/.suiperpower/README.md" ] || fail "workspace README missing"
+[ -f "$TMP/.suiperpower/idea-context.md" ] || fail "idea-context placeholder missing"
+[ -f "$TMP/.env.example" ] || fail ".env.example missing"
+pass "workspace-setup"
 
 log "smoke test complete"
 green "all checks passed"

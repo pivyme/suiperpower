@@ -4,14 +4,12 @@
 
 import { appendFileSync, mkdirSync, readFileSync } from "node:fs";
 import { homedir, platform, arch } from "node:os";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 import { createInterface } from "node:readline/promises";
 
 import { BRAND, ENV } from "./branding.js";
 import { accent, bold, dim, muted, ok, warn } from "./colors.js";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { readPackageVersion } from "./paths.js";
 
 interface Submission {
   skill?: string;
@@ -21,18 +19,6 @@ interface Submission {
   version: string;
   platform: string;
   timestamp: number;
-}
-
-function readVersion(): string {
-  for (const rel of ["../package.json", "../../package.json"]) {
-    try {
-      const p = JSON.parse(readFileSync(join(__dirname, rel), "utf8")) as { version?: string };
-      if (p.version) return p.version;
-    } catch {
-      // try next
-    }
-  }
-  return "0.0.0";
 }
 
 function readConvexUrl(): string | undefined {
@@ -98,7 +84,7 @@ export async function run(args: string[]): Promise<void> {
       rating: Number.isFinite(ratingNum) && ratingNum >= 1 && ratingNum <= 5 ? ratingNum : undefined,
       text,
       contact: contact || undefined,
-      version: readVersion(),
+      version: readPackageVersion(),
       platform: `${platform()}-${arch()}`,
       timestamp: Date.now(),
     };

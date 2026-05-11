@@ -43,7 +43,7 @@ These are personal-judgment or registration tasks. Cannot be delegated.
 | A12 | Logo direction call | Either ship a wordmark-only logo or commission a mark, decision in `plans/19` row 31 | M | open |
 | A13 | Privacy policy text | Real policy reflecting the Convex schema in `plans/13`, not boilerplate. Lawyer-reviewed if possible. | M | open |
 | A14 | Collect team photos for the landing "Made by" section | Four photos: Kelvin Adithya, Febi Mettasari, Louis Arvin, Tengku Farhan. Same aspect ratio, consistent crop, consistent lighting. Saved to `public/team/<firstname>.jpg`. Confirm each person OK with photo + link going public. | S | open |
-| A15 | Verify per-skill install via skills.sh after the repo is public | After the GitHub repo is live at `github.com/kwekKwek/suiperpower`, run `npx skills add kwekKwek/suiperpower/skills/build/build-with-move` on a fresh machine. Confirm SKILL.md, references/, and agents/openai.yaml all land under the active agent's skills dir, byte-identical to the curl-flow install. | S | open |
+| A15 | Verify per-skill install via skills.sh after the repo is public | After the GitHub repo is live at `github.com/pivyme/suiperpower`, run `npx skills add pivyme/suiperpower/skills/build/build-with-move` on a fresh machine. Confirm SKILL.md, references/, and agents/openai.yaml all land under the active agent's skills dir, byte-identical to the curl-flow install. | S | open |
 | A16 | Optional: PR `vercel-labs/skills` for skills.sh leaderboard discovery | Once the repo is public, open a discovery PR or issue against `github.com/vercel-labs/skills` referencing the canonical Suiperpower repo URL. skills.sh has no formal registration flow, this is best-effort placement. | S | open |
 
 ---

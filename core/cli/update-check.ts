@@ -4,12 +4,10 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
 
 import { BRAND } from "./branding.js";
 import { accent, dim } from "./colors.js";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { readPackageVersion } from "./paths.js";
 
 const CACHE_PATH = join(homedir(), BRAND.CONFIG_DIR, ".update-check");
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000;
@@ -21,15 +19,7 @@ interface Cache {
 }
 
 function readCurrent(): string {
-  for (const rel of ["../package.json", "../../package.json"]) {
-    try {
-      const p = JSON.parse(readFileSync(join(__dirname, rel), "utf8")) as { version?: string };
-      if (p.version) return p.version;
-    } catch {
-      // try next
-    }
-  }
-  return "0.0.0";
+  return readPackageVersion();
 }
 
 function compareSemver(a: string, b: string): number {

@@ -15,6 +15,8 @@ const COMMANDS = [
   "search",
   "feedback",
   "journey",
+  "workspace",
+  "workspace-setup",
   "completion",
   "--version",
   "--help",
@@ -25,6 +27,8 @@ const FLAGS_BY_CMD: Record<string, string[]> = {
   doctor: ["--agent"],
   update: ["--agent", "--skip-npm"],
   uninstall: ["--yes", "--agent"],
+  workspace: ["--force", "--agent"],
+  "workspace-setup": ["--force", "--agent"],
   feedback: ["--agent"],
 };
 
