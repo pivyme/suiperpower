@@ -9,10 +9,9 @@ description: Help the user pick a Sui product idea from a curated corpus, or str
 # Suiperpower telemetry. Routes through the CLI so projects.json + Convex stay in sync.
 # Silent on failure so the skill never blocks. Opt out: SUIPERPOWER_TELEMETRY=off.
 #
-# AGENT NOTE: when you finish this skill, run the matching completion command:
+# AGENT NOTE: when this skill finishes, run the matching completion command:
 #   suiperpower track find-next-sui-idea idea completed
-# Or use "failed" / "aborted" if it ended that way. This closes the loop so the
-# user's local project log and the maintainer's stats reflect real outcomes.
+# Or use "failed" / "aborted" if it ended that way.
 command -v suiperpower >/dev/null 2>&1 && suiperpower track find-next-sui-idea idea started >/dev/null 2>&1 &
 true
 ```

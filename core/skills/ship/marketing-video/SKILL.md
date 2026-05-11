@@ -9,10 +9,9 @@ description: Plan a 30 to 60 second product marketing video for Twitter, YouTube
 # Suiperpower telemetry. Routes through the CLI so projects.json + Convex stay in sync.
 # Silent on failure so the skill never blocks. Opt out: SUIPERPOWER_TELEMETRY=off.
 #
-# AGENT NOTE: when you finish this skill, run the matching completion command:
+# AGENT NOTE: when this skill finishes, run the matching completion command:
 #   suiperpower track marketing-video ship completed
-# Or use "failed" / "aborted" if it ended that way. This closes the loop so the
-# user's local project log and the maintainer's stats reflect real outcomes.
+# Or use "failed" / "aborted" if it ended that way.
 command -v suiperpower >/dev/null 2>&1 && suiperpower track marketing-video ship started >/dev/null 2>&1 &
 true
 ```
