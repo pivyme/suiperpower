@@ -20,10 +20,10 @@ The DeepBook TS SDK does not expose a `getPools()` or list-all-pools method. To 
 For SDK initialization, use the `$extend` pattern:
 
 ```ts
-import { SuiClient, getFullnodeUrl } from "@mysten/sui/client";
+import { SuiGrpcClient } from "@mysten/sui/grpc";
 import { deepbook } from "@mysten/deepbook-v3";
 
-const suiClient = new SuiClient({ url: getFullnodeUrl("mainnet") });
+const suiClient = new SuiGrpcClient({ network: "mainnet" });
 const client = suiClient.$extend(deepbook({ address: userAddr }));
 ```
 

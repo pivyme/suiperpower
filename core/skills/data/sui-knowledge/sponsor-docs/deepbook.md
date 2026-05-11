@@ -35,12 +35,12 @@ When NOT to use it:
 Using DeepBook v3 TS SDK:
 
 ```ts
-import { SuiClient, getFullnodeUrl } from "@mysten/sui/client";
+import { SuiGrpcClient } from "@mysten/sui/grpc";
 import { deepbook } from "@mysten/deepbook-v3";
 import { Transaction } from "@mysten/sui/transactions";
 
-// Init: use the $extend pattern
-const suiClient = new SuiClient({ url: getFullnodeUrl("testnet") });
+// Init: use the $extend pattern (SuiGrpcClient is the recommended transport in SDK v2.0)
+const suiClient = new SuiGrpcClient({ network: "testnet" });
 const client = suiClient.$extend(deepbook({ address: userAddr, env: "testnet" }));
 
 const tx = new Transaction();
@@ -56,7 +56,9 @@ client.deepbook.deepBook.placeLimitOrder({
   payWithDeep: true,                 // default is true; set false if no DEEP balance
 })(tx);
 
-await suiClient.signAndExecuteTransaction({ transaction: tx, signer });
+const bytes = await tx.build({ client: suiClient });
+const { signature } = await signer.signTransaction(bytes);
+await suiClient.executeTransaction({ transaction: bytes, signatures: [signature] });
 ```
 
 Cancellation (also curried):

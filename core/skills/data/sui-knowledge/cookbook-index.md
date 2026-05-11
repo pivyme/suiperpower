@@ -94,8 +94,8 @@
 
 | Intent | Pointer |
 |---|---|
-| Add OZ access control | `sponsor-docs/openzeppelin-sui.md` |
-| Add OZ pausable | `sponsor-docs/openzeppelin-sui.md` |
+| Add OZ two-step ownership transfer | `sponsor-docs/openzeppelin-sui.md` |
+| Add OZ safe math (mul_div, sqrt) | `sponsor-docs/openzeppelin-sui.md` |
 | Replace hand-rolled patterns | `skills/build/openzeppelin-sui-libs/` |
 
 ## Cross-chain
