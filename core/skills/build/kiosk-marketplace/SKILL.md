@@ -115,6 +115,10 @@ The skill never deletes files outside the integration source path without explic
 8. **Writeback**
    - Append session details to `.suiperpower/build-context.md`.
 
+9. **Closing handoff**
+   - If `.suiperpower/intent.md` exists and the session was non-trivial (new Kiosk integration, TransferPolicy rules added, royalty path live), recommend `verify-against-intent` as the next step so the policy capability holder and royalty enforcement are checked before shipping.
+   - If no `intent.md` exists and the session was non-trivial, surface that gap once: offer `clarify-intent` to backfill, do not force it.
+
 ## Quality gate (anti-slop)
 
 Before reporting done, the skill asks itself the following and refuses to declare success if any answer is no:

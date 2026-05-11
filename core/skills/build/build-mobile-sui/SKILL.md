@@ -105,6 +105,10 @@ The skill never deletes files outside the integration source path without explic
 7. **Writeback**
    - Append session details to `.suiperpower/build-context.md`.
 
+8. **Closing handoff**
+   - If `.suiperpower/intent.md` exists and the session was non-trivial (new mobile wallet flow, on-device key custody, deep-link plumbing, first real on-chain tx from the device), recommend `verify-against-intent` as the next step so the auth and custody choices are checked before shipping.
+   - If no `intent.md` exists and the session was non-trivial, surface that gap once: offer `clarify-intent` to backfill, do not force it.
+
 ## Quality gate (anti-slop)
 
 Before reporting done, the skill asks itself the following and refuses to declare success if any answer is no:

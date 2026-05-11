@@ -117,6 +117,10 @@ The skill never deletes files outside the integration source path without explic
 10. **Writeback**
     - Append session details to `.suiperpower/build-context.md`.
 
+11. **Closing handoff**
+    - If `.suiperpower/intent.md` exists and the session was non-trivial (new zkLogin integration, salt service decision, provider list, real signed transaction), recommend `verify-against-intent` as the next step so the auth surface and key-custody choices are checked before shipping.
+    - If no `intent.md` exists and the session was non-trivial, surface that gap once: offer `clarify-intent` to backfill, do not force it.
+
 ## Quality gate (anti-slop)
 
 Before reporting done, the skill asks itself the following and refuses to declare success if any answer is no:
