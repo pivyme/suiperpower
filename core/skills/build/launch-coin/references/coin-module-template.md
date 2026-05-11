@@ -2,12 +2,66 @@
 
 Three patterns covering fixed, capped, and open supply.
 
-## Pattern A: fixed supply (TreasuryCap burned)
+## Pattern A: fixed supply (TreasuryCap consumed)
+
+Two sub-patterns. Both permanently prevent future minting. Choose whichever fits your module's needs.
+
+### A1: Wrapper pattern (TreasuryCap stored, no public mint exposed)
 
 ```move
 module my_pkg::my_coin;
 
 use sui::coin::{Self, TreasuryCap};
+use sui::transfer;
+use sui::tx_context::TxContext;
+use sui::url::{Self, Url};
+use std::option;
+
+public struct MY_COIN has drop {}
+
+const INITIAL_SUPPLY: u64 = 1_000_000_000_000_000; // 1B at 6 decimals
+
+/// Holds the TreasuryCap permanently. No public mint function exists.
+public struct LockedTreasury has key {
+    id: UID,
+    cap: TreasuryCap<MY_COIN>,
+}
+
+fun init(witness: MY_COIN, ctx: &mut TxContext) {
+    let (mut treasury, metadata) = coin::create_currency(
+        witness,
+        6,                              // decimals
+        b"MYCOIN",                       // symbol
+        b"My Coin",                      // name
+        b"Utility token of My App",      // description
+        option::some(url::new_unsafe_from_bytes(b"https://example.com/icon.png")),
+        ctx,
+    );
+
+    // Mint full supply to deployer
+    let coin = coin::mint(&mut treasury, INITIAL_SUPPLY, ctx);
+    transfer::public_transfer(coin, ctx.sender());
+
+    // Freeze metadata so it cannot change
+    transfer::public_freeze_object(metadata);
+
+    // Lock the TreasuryCap inside a struct with no public mint function.
+    // This makes supply permanently fixed.
+    let locked = LockedTreasury {
+        id: object::new(ctx),
+        cap: treasury,
+    };
+    transfer::transfer(locked, ctx.sender());
+}
+```
+
+### A2: treasury_into_supply pattern (TreasuryCap consumed irreversibly)
+
+```move
+module my_pkg::my_coin;
+
+use sui::coin::{Self, TreasuryCap};
+use sui::balance::{Self, Supply};
 use sui::transfer;
 use sui::tx_context::TxContext;
 use sui::url::{Self, Url};
@@ -35,16 +89,20 @@ fun init(witness: MY_COIN, ctx: &mut TxContext) {
     // Freeze metadata so it cannot change
     transfer::public_freeze_object(metadata);
 
-    // Burn the TreasuryCap so no more can ever be minted
-    let dummy = coin::mint(&mut treasury, 0, ctx);
-    coin::burn(&mut treasury, dummy);
-    transfer::public_freeze_object(treasury); // freezing the cap also makes it unusable
+    // Convert TreasuryCap into Supply. This is irreversible: Supply cannot
+    // be converted back to TreasuryCap. Without the TreasuryCap, coin::mint
+    // cannot be called. The Supply object can be destroyed or stored.
+    let supply = coin::treasury_into_supply(treasury);
+    // If you do not need the Supply, you can drop it via balance::destroy_supply
+    // (only if current supply is zero, otherwise store it).
+    // Here we transfer it to the deployer for safekeeping.
+    // Alternatively, wrap it in a module-level struct.
 }
 ```
 
-Note on freezing the TreasuryCap: freezing renders it immutable; you cannot mint with `&mut TreasuryCap`. Combined with the OTW pattern (init runs once), supply is fixed forever.
+**Important: never freeze or share the TreasuryCap.** The official Sui docs explicitly warn against this: sharing allows anyone to mint, and freezing may allow malicious actors to call functions as the currency owner. Use one of the two patterns above instead.
 
-For total destruction, use a custom `destroy` flow if the framework supports it; freezing is sufficient for "no more mints."
+Note: `coin::burn` burns a `Coin<T>` (the second argument), not a TreasuryCap. The TreasuryCap is passed as `&mut` to authorize the burn. It remains usable afterward.
 
 ## Pattern B: capped supply
 
@@ -170,4 +228,4 @@ module my_pkg::my_coin_tests {
 }
 ```
 
-Last updated: 2026-05-10.
+Last updated: 2026-05-11.

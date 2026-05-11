@@ -35,50 +35,47 @@ When NOT to use it:
 Using DeepBook v3 TS SDK:
 
 ```ts
+import { SuiClient, getFullnodeUrl } from "@mysten/sui/client";
+import { deepbook } from "@mysten/deepbook-v3";
 import { Transaction } from "@mysten/sui/transactions";
-import { DeepBookClient } from "@mysten/deepbook-v3";
+
+// Init: use the $extend pattern
+const suiClient = new SuiClient({ url: getFullnodeUrl("testnet") });
+const client = suiClient.$extend(deepbook({ address: userAddr, env: "testnet" }));
 
 const tx = new Transaction();
 
-const balanceManagerId = "0x..."; // user's BalanceManager
-const poolKey = "SUI_USDC";        // example pool
-
-// Place a limit order: buy 10 SUI at 1.50 USDC each
-const orderArgs = {
-  poolKey,
-  balanceManager: balanceManagerId,
-  clientOrderId: 1,
+// Place a limit order: buy 10 SUI at 1.50 DBUSDC each (curried pattern)
+client.deepbook.deepBook.placeLimitOrder({
+  poolKey: "SUI_DBUSDC",             // testnet pool key
+  balanceManagerKey: "MANAGER_1",    // string key, not object ID
+  clientOrderId: "1",                // string, not number
   price: 1.50,
   quantity: 10,
-  isBid: true,            // bid = buy
-  payWithDeep: false,     // pay fees in input token, not DEEP
-};
-
-deepbook.placeLimitOrder(tx, orderArgs);
-
-await client.signAndExecuteTransaction({ transaction: tx, signer });
-```
-
-Cancellation:
-
-```ts
-deepbook.cancelOrder(tx, {
-  poolKey,
-  balanceManager: balanceManagerId,
-  orderId: "0x...",
-});
-```
-
-Read book state:
-
-```ts
-const level2 = await client.getLevel2BookStatus({
-  poolKey,
-  priceLow: 1.40,
-  priceHigh: 1.60,
   isBid: true,
-});
+  payWithDeep: true,                 // default is true; set false if no DEEP balance
+})(tx);
+
+await suiClient.signAndExecuteTransaction({ transaction: tx, signer });
 ```
+
+Cancellation (also curried):
+
+```ts
+client.deepbook.deepBook.cancelOrder({
+  poolKey: "SUI_DBUSDC",
+  balanceManagerKey: "MANAGER_1",
+  orderId: "0x...",
+})(tx);
+```
+
+Read book state (positional args, not an object):
+
+```ts
+const level2 = await client.deepbook.getLevel2Range("SUI_DBUSDC", 1.40, 1.60, true);
+```
+
+Alternative: `getLevel2TicksFromMid(poolKey, ticks)` for a snapshot around mid-price.
 
 For Move-side integration (a smart contract calling DeepBook), import the DeepBook framework from the official package and follow the entry function signatures. Orderbook calls are best done from the client when possible; on-chain composition is reserved for atomic settlement flows.
 
@@ -86,14 +83,24 @@ For Move-side integration (a smart contract calling DeepBook), import the DeepBo
 
 - **Tick and lot violations.** Orders not aligned to the pool's tick and lot are rejected. Read pool params before placing.
 - **BalanceManager not funded.** A user must deposit into their BalanceManager before placing orders. Many first-time integrations skip this and see "insufficient funds" with confusing context.
-- **Pay-with-DEEP optionality.** Fees can be paid in DEEP token at a discount. If DEEP balance is zero and `payWithDeep: true`, the order rejects.
+- **Pay-with-DEEP default.** `payWithDeep` defaults to `true`. If the BalanceManager has zero DEEP balance and you do not explicitly set `payWithDeep: false`, the order rejects.
 - **Stale prices.** A market order placed against a stale local view of the book may slip; always use a slippage limit.
 - **Pool migration between v2 and v3.** Some older Sui pools are v2; new development should use v3.
-- **Pool creation requires a capability.** Anyone cannot create new DeepBook pools at will; check the current pool-creation policy.
+- **Pool creation.** DeepBook v3 supports `createPermissionlessPool`, so anyone can create a pool. However, pool creation has costs and constraints; check the SDK for current parameters.
+
+## Specialized pool types
+
+DeepBook offers more than standard spot CLOB pools:
+
+- **DeepBook Predict** (testnet): prediction-market pools for binary or multi-outcome events.
+- **DeepBook Margin** (mainnet): margin trading pools with leverage and liquidation mechanics.
+- **DeepBook Sandbox**: a simulated environment for testing order flows without real funds.
+
+Check the official docs and SDK for availability on your target network before building against these.
 
 ## Where to go deeper
 
-- DeepBook docs: `https://docs.sui.io/standards/deepbookv3`
+- DeepBook docs: `https://docs.sui.io/standards/deepbook`
 - DeepBook GitHub: `https://github.com/MystenLabs/deepbookv3`
 - DeepBook TS SDK: `@mysten/deepbook-v3`
 - Suiperpower skill: `skills/build/deepbook-orderbook/`

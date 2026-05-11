@@ -17,7 +17,7 @@ When NOT to use it:
 
 - Pure ephemeral caching where IPFS or a centralized CDN is enough.
 - Sub-millisecond read latency requirements; Walrus is fast but not CDN-fast.
-- Encrypted data without a plan for key management; Walrus does not encrypt for you.
+- Encrypted data without a plan for key management; Walrus does not encrypt for you. See Seal (`@mysten/seal`) for threshold encryption with on-chain access control.
 
 ## Key concepts
 
@@ -25,34 +25,49 @@ When NOT to use it:
 - **Epoch**: Walrus's time unit for storage commitments. A blob is paid for to live N epochs.
 - **Storage Node**: a Walrus participant holding shards of blobs.
 - **Certification**: when enough storage nodes acknowledge they hold the blob's shards, the blob is "certified" on Sui.
-- **Deletable vs permanent**: at write time you choose whether the blob can be deleted (storage refund applies) or is permanent.
+- **Deletable vs permanent**: at write time you choose whether the blob can be deleted or is permanent.
 - **Storage cost**: paid in WAL token (the Walrus utility token); cost is a function of size and epoch count.
 - **Aggregator and publisher**: edge nodes that abstract chunking, erasure coding, and certification from end users. Most apps go through these rather than running their own storage node.
 
 ## Minimal integration recipe
 
-Using the Walrus TS SDK or HTTP API via a public publisher:
+Preferred approach: use the `@mysten/walrus` TS SDK (`npm install @mysten/walrus @mysten/sui`).
 
 ```ts
-import fs from "node:fs";
+import { SuiGrpcClient } from '@mysten/sui/grpc';
+import { walrus, WalrusFile } from '@mysten/walrus';
 
-const PUBLISHER = "https://publisher.walrus-testnet.walrus.space";
-const AGGREGATOR = "https://aggregator.walrus-testnet.walrus.space";
+const client = new SuiGrpcClient({
+  network: 'testnet',
+}).$extend(walrus());
 
-// Write
-const data = fs.readFileSync("./hello.txt");
-const writeResp = await fetch(`${PUBLISHER}/v1/blobs?epochs=5`, {
-  method: "PUT",
-  body: data,
+// Write a blob
+const { blobId } = await client.walrus.writeBlob({
+  blob: new TextEncoder().encode('Hello, Walrus'),
+  deletable: true,
+  epochs: 3,
+  signer: keypair, // Ed25519Keypair from @mysten/sui
 });
-const { newlyCreated } = await writeResp.json();
-const blobId: string = newlyCreated.blobObject.blobId;
 
-// Read
-const readResp = await fetch(`${AGGREGATOR}/v1/blobs/${blobId}`);
-const buf = Buffer.from(await readResp.arrayBuffer());
-fs.writeFileSync("./hello-out.txt", buf);
+// Read a blob
+const data = await client.walrus.readBlob({ blobId });
 ```
+
+For higher-level file operations, use `WalrusFile`:
+
+```ts
+const file = WalrusFile.from({
+  contents: new TextEncoder().encode('Hello'),
+  identifier: 'README.md',
+});
+const results = await client.walrus.writeFiles({
+  files: [file],
+  epochs: 3,
+  signer: keypair,
+});
+```
+
+The raw HTTP API via public publisher/aggregator endpoints is also available but the SDK is the preferred TS approach.
 
 CLI alternative:
 
@@ -76,18 +91,31 @@ The blob id is the content hash; you can commit it on chain and treat the on-cha
 ## Common pitfalls
 
 - **Lifetime expiry.** A blob paid for N epochs is reclaimed after epoch N. If you want longer life, extend or pay more up front. Apps that "lose" a blob usually let it expire by accident.
-- **Encryption is your problem.** Walrus stores bytes. If the data is sensitive, encrypt client-side before upload. Key management is fully your responsibility.
+- **Encryption is your problem.** Walrus stores bytes. If the data is sensitive, encrypt client-side before upload. Consider Seal (`@mysten/seal`) for threshold encryption with on-chain access policies, or bring your own key management.
 - **Public publishers / aggregators are best-effort.** They are convenient for development. For production, run your own or use a paid Walrus service provider.
 - **Blob id is content-addressed.** Two identical files have the same blob id. Re-uploading the same data does not create a new blob; it extends the existing one if you pay for more epochs.
 - **Mainnet vs testnet endpoints differ.** Verify you are pointing at the right network's publisher and aggregator. Cross-network reads will silently return "not found."
 - **Cost in WAL.** WAL is a separate token from SUI. Apps that route gas through SUI but storage through WAL need to manage two balances.
 
+## Encryption with Seal
+
+For encrypting data before storing on Walrus, use Seal (`@mysten/seal`). Seal provides threshold encryption with on-chain access control on Sui. Encrypted data can be stored on Walrus, on Sui as Objects, or any storage.
+
+- Package: `npm install @mysten/seal`
+- Docs: `https://seal-docs.wal.app/`
+- Status: beta (testnet). Check for mainnet availability before shipping.
+
+Seal extends a `SuiGrpcClient` the same way the Walrus SDK does. Encrypt client-side before uploading to Walrus; key management is handled by a committee of Seal key servers, with access policies defined on-chain.
+
 ## Where to go deeper
 
-- Walrus official docs: `https://docs.walrus.site/`
+- Walrus official docs: `https://docs.wal.app/`
+- Walrus TS SDK docs: `https://sdk.mystenlabs.com/walrus`
+- Seal SDK docs: `https://sdk.mystenlabs.com/seal`
+- Seal project docs: `https://seal-docs.wal.app/`
 - Walrus GitHub: `https://github.com/MystenLabs/walrus`
-- Walrus Sites (static-site hosting on Walrus): `https://github.com/MystenLabs/walrus-sites`
+- Walrus Sites docs: `https://docs.wal.app/docs/sites/getting-started/installing-the-site-builder`
 - Suiperpower skill: `skills/build/walrus-storage/`
 - Idea-phase research skill: `skills/idea/walrus-research/`
 
-Last updated: 2026-05-10. Targeting Walrus testnet stable.
+Last updated: 2026-05-11. Walrus mainnet is live (Epoch 1 began March 25, 2025). The `@mysten/walrus` SDK currently documents testnet configuration; verify mainnet endpoint availability before deploying to production.

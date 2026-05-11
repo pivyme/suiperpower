@@ -13,7 +13,7 @@ Decimals cannot be changed after publish. The `CoinMetadata` Object is the sourc
 
 ## Supply
 
-- **Fixed**: full supply minted in `init`, `TreasuryCap` burned. No more coins ever. Pick when distribution is final at launch (airdrops, fair launches, fully-on-chain governance tokens).
+- **Fixed**: full supply minted in `init`, TreasuryCap consumed (via wrapper struct or `treasury_into_supply`). No more coins ever. Pick when distribution is final at launch (airdrops, fair launches, fully-on-chain governance tokens).
 - **Capped**: `TreasuryCap` retained, but a wrapper `mint` function enforces an upper bound. Pick when emissions follow a schedule (vesting, staking rewards, gradual unlocks) and the cap must be public and provable.
 - **Open**: `TreasuryCap` retained with no on-chain cap. Pick only when a stablecoin or a wrapped asset, where supply tracks an off-chain backing.
 
@@ -21,7 +21,7 @@ Document who holds `TreasuryCap` in every case (multisig address, burned, or nam
 
 ## Custody of TreasuryCap
 
-- **Burned**: the cleanest signal. Use the burn-after-mint trick (`coin::mint(&mut treasury, 0, ctx); coin::burn(&mut treasury, dummy);`). Once burned, supply is mathematically frozen.
+- **Consumed**: the cleanest signal. Two options: (a) wrap the TreasuryCap in a module-level struct that exposes no public mint function, or (b) call `coin::treasury_into_supply(treasury)` to irreversibly convert it into `Supply<T>`. Never freeze or share the TreasuryCap (official Sui docs explicitly warn against both). Note: `coin::burn` burns a `Coin<T>`, not a TreasuryCap; the TreasuryCap authorizes the burn via `&mut` reference and remains intact afterward.
 - **Multisig**: transfer the cap into a Sui multisig Object. Document the threshold and the signer set. This is the right answer for almost every coin that wants future emissions.
 - **Module-bound**: keep the cap inside a struct stored at module level, with `mint` only callable by holding a separate `AdminCap`. Composes well with governance later.
 - **EOA-held**: only acceptable when the cap holder is documented and the project owner explicitly accepts the rug-pull risk perception.
@@ -54,7 +54,7 @@ In `.suiperpower/build-context.md`, append:
 - decimals: <n>
 - total supply policy: <fixed | capped | open>
 - cap: <amount or none>
-- TreasuryCap custody: <burned | multisig:<addr> | module-bound | eoa:<addr>>
+- TreasuryCap custody: <consumed:wrapper | consumed:treasury_into_supply | multisig:<addr> | module-bound | eoa:<addr>>
 - CoinMetadata frozen: <yes | no>
 - icon hosting: <walrus | self-hosted CDN | other>
 - rationale: <one to three sentences>

@@ -27,7 +27,7 @@ Write the answer to `~/.suiperpower/config.json` `telemetryTier` field and creat
 
 ## What this skill does
 
-Integrates Scallop's money market into the project. Sets up the Scallop SDK, creates the user's Obligation Object, walks through deposit-borrow-repay end to end against a live pool, surfaces oracle and liquidation risk, and verifies the round-trip works on testnet before declaring done.
+Integrates Scallop's money market into the project. Sets up the Scallop SDK (mainnet only, testnet not supported), creates the user's Obligation Object, walks through deposit-borrow-repay end to end against a live pool, surfaces oracle and liquidation risk, and verifies the round-trip works on mainnet before declaring done.
 
 ## When to use it
 
@@ -63,7 +63,7 @@ If unclear, interview the user for:
 - Scallop SDK client setup.
 - Obligation Object creation and persistence.
 - Deposit, borrow, repay, withdraw flows.
-- A live testnet round-trip: deposit, borrow, repay, observable on suiscan.
+- A live mainnet round-trip: deposit, borrow, repay, observable on suiscan. (SDK is mainnet-only.)
 - Append to `.suiperpower/build-context.md`:
 
   ```markdown
@@ -86,12 +86,14 @@ The skill never deletes files outside the integration source path without explic
    - Confirm the asset list and the flow shape (deposit only, full deposit-borrow-repay, leveraged loop).
 
 2. **Network and SDK setup**
-   - Default to mainnet for current pool data; testnet when running automated demos.
-   - Install `@scallop-io/sui-scallop-sdk` and the Sui client.
+   - The SDK only supports mainnet. Testnet has no address package IDs and will error. Use mainnet for all integration work.
+   - Install `@scallop-io/sui-scallop-sdk` and `@mysten/sui`.
+   - Initialize with the `Scallop` class (not `ScallopClient` directly), passing `addressId`, `networkType`, and `secretKey`. Call `await scallopSDK.init()` before using any sub-clients.
    - Verify SDK version matches a current Scallop docs reference.
 
 3. **Obligation Object**
-   - Create the user's Obligation. This is a per-user Object holding their cross-market positions.
+   - Create the user's Obligation via `openObligationEntry()` on the ScallopTxBlock. This is a per-user Object holding their cross-market positions.
+   - Each address can hold up to 5 Obligation sub-accounts. For first integration, treat it as a singleton.
    - Persist the Obligation id. Do not regenerate per session.
 
 4. **Deposit**
@@ -99,15 +101,15 @@ The skill never deletes files outside the integration source path without explic
    - Submit and capture the digest. Verify the position appears in `getObligationAccount`.
 
 5. **Borrow**
-   - Confirm the post-borrow health factor before submitting. Refuse to submit a borrow that would put the position below 1.05 unless the user explicitly opts in.
+   - Confirm the post-borrow risk level before submitting. Refuse to submit a borrow that would push risk above a safe threshold unless the user explicitly opts in.
    - Submit and capture the digest.
 
 6. **Repay**
-   - Query the live "amount owed" before constructing repay. Interest accrues continuously, so paying the original borrow amount leaves dust debt.
+   - Query the live amount owed via `getObligationAccount(obligationId)` before constructing repay. Interest accrues continuously, so paying the original borrow amount leaves dust debt.
    - Submit and capture the digest. Confirm the borrow record is closed or reduced.
 
 7. **Risk surfacing**
-   - Compute and display the position's health factor.
+   - Compute and display the position's risk level. Scallop uses "Risk Level" with `liquidation_factor` and `borrow_weight` per market, not a generic "health factor" with "collateral_factor".
    - Document the oracle source (Pyth feed) and the liquidation threshold.
    - For end-user UIs, add a clear "this position can be liquidated if X happens" message.
 
@@ -118,9 +120,9 @@ The skill never deletes files outside the integration source path without explic
 
 Before reporting done, the skill asks itself the following and refuses to declare success if any answer is no:
 
-- Did a real testnet (or mainnet, with the user's consent) deposit, borrow, and repay all settle, with digests recorded?
+- Did a real mainnet deposit, borrow, and repay all settle, with digests recorded? (SDK only supports mainnet.)
 - Is the Obligation id persisted, not regenerated each run?
-- Does the borrow path compute health factor before submission and refuse below 1.05 by default?
+- Does the borrow path compute the risk level before submission and refuse if it would exceed the safe threshold?
 - Does the repay path query live amount-owed, not assume the original borrow amount?
 - Is liquidation risk documented in the user-facing UI, not hidden behind a tooltip?
 - Is the oracle source named (Pyth feed id, etc.) so the user knows where the price comes from?
@@ -132,7 +134,7 @@ If any answer is no, the skill reports the gap and works through it before claim
 On-demand references (load when relevant to the user's question):
 
 - `references/scallop-quickstart.md`: Deposit, borrow, repay recipes for the TS SDK.
-- `references/scallop-risk.md`: Health factor math, oracle drift, liquidation surface, borrow caps.
+- `references/scallop-risk.md`: Risk level math, oracle drift, liquidation surface, borrow caps.
 - `references/scallop-obligation.md`: Obligation Object lifecycle and ownership.
 
 Knowledge docs (load when scope expands beyond what is in references):
