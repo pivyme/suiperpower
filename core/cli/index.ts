@@ -25,6 +25,8 @@ const handlers: Record<string, () => Promise<Module>> = {
   journey: () => load("interactive-journey"),
   workspace: () => load("workspace-setup"),
   "workspace-setup": () => load("workspace-setup"),
+  projects: () => load("projects"),
+  track: () => load("track"),
   completion: () => load("completion"),
 };
 
@@ -55,6 +57,7 @@ function printHelp(): void {
     "    journey              Guided journey TUI, idea to ship",
     "    workspace-setup      Create .suiperpower/ context files in this repo",
     "    workspace            Alias for workspace-setup",
+    "    projects             View local project history (~/.suiperpower/projects.json)",
     "    feedback             Send feedback to the team",
     "    completion <shell>   Print shell completion script",
     "",
@@ -108,7 +111,11 @@ async function dispatch(argv: string[]): Promise<number> {
 
 const argv = process.argv.slice(2);
 dispatch(argv).then(
-  (code) => process.exit(code),
+  (code) => {
+    // Let the event loop drain so fire-and-forget telemetry POSTs can finish.
+    // Non-zero exits short-circuit; user errors don't wait on the network.
+    if (code !== 0) process.exit(code);
+  },
   (e) => {
     if (process.env.SUIPERPOWER_DEBUG) console.error(e);
     else console.error(`${BRAND.PRODUCT_NAME}: ${(e as Error).message ?? e}`);

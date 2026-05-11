@@ -15,7 +15,7 @@ The launch occasion is Sui Overflow 2026, but Suiperpower is a long-lived produc
 - **Language**: TypeScript (strict, ESM, NodeNext)
 - **Runtime**: Node.js 20+
 - **Package manager**: pnpm workspaces
-- **CLI**: zero runtime deps (Convex client is the only exception)
+- **CLI**: zero runtime deps. The Convex backend owns its own package dependencies.
 - **Backend**: Convex (telemetry + feedback only)
 - **Website**: static setup assets today, full site is separate from the core CLI work
 - **Skills**: plain markdown (Anthropic skill spec) with optional `references/` and `agents/openai.yaml`

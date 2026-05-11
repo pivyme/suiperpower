@@ -7,7 +7,7 @@ import { join } from "node:path";
 
 import { BRAND } from "./branding.js";
 import { accent, bold, dim, muted } from "./colors.js";
-import { detectPreferredAgentCli } from "./agent-cli.js";
+import { detectPreferredAgentCli, formatSkillInvocation } from "./agent-cli.js";
 import { searchAndPick, type PickItem } from "./interactive-universal.js";
 import { getSkillsRoot } from "./paths.js";
 
@@ -69,7 +69,7 @@ export async function run(args: string[]): Promise<void> {
   }
 
   if (agent) {
-    console.log(`${BRAND.PRODUCT_NAME} skills — ${all.length}`);
+    console.log(`${BRAND.PRODUCT_NAME} skills, ${all.length}`);
     for (const s of all) console.log(`- ${s.name} | ${s.phase} | ${s.description}`);
     return;
   }
@@ -82,7 +82,7 @@ export async function run(args: string[]): Promise<void> {
   const items: PickItem[] = all.map((s) => ({
     id: s.name,
     label: s.name,
-    hint: `${s.phase} — ${s.description.slice(0, 100)}`,
+    hint: `${s.phase}: ${s.description.slice(0, 100)}`,
     category: s.phase,
   }));
 
@@ -96,7 +96,7 @@ export async function run(args: string[]): Promise<void> {
   console.log("");
   console.log(`  ${bold("run this in your agent")}`);
   console.log("");
-  console.log(`    ${accent(`${cli} "/${picked.id}"`)}`);
+  console.log(`    ${accent(formatSkillInvocation(cli, picked.id))}`);
   console.log("");
   console.log(`  ${muted("source:")} skills/${picked.category}/${picked.id}/SKILL.md`);
   console.log("");

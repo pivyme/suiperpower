@@ -5,7 +5,7 @@
 Suiperpower asks users to do two trust-level things on day one:
 
 1. Pipe a script from `suiperpower.dev` straight into bash.
-2. Install a global npm package that writes files into `~/.claude/skills/`, `~/.codex/skills/`, `~/.cursor/rules/`, and runs telemetry calls.
+2. Install a global npm package that writes files into `~/.codex/skills/`, `~/.cursor/rules/`, points Claude Code at the plugin marketplace, and runs telemetry calls.
 
 The audience for this tool is sophisticated developers who will read the install script before running it. Our job is to make that read short, the surface narrow, and the ongoing posture transparent.
 
@@ -19,7 +19,7 @@ We ask the user to trust:
 |---|---|---|
 | `suiperpower.dev/setup.sh` | A bash script we host | Source is in the public repo at `public/setup.sh`; we publish a SHA256 per release |
 | `npm install -g suiperpower` | A globally-installed CLI | npm package source is the public repo; published builds match `git tag` |
-| Skills in `~/.claude/skills/` etc. | Markdown files telling the AI what to do | All skills are in the public repo, audit-friendly, no obfuscation |
+| Skills installed into agents | Markdown files telling the AI what to do | All skills are in the public repo, audit-friendly, no obfuscation |
 | Convex telemetry endpoint | A POST receiving skill names | Source is `convex/telemetry.ts`; schema rejects PII fields; user can opt out |
 | Catalog (clonable-repos, MCPs, ideas) | Curated lists | Every entry is reviewed by a maintainer per the rules in `20-CONTRIBUTING-PLAN.md` |
 | Sponsor knowledge docs | Information about Walrus, DeepBook, etc. | Source-linked claims; sponsor team review (best-effort) |
@@ -120,19 +120,19 @@ What could go wrong, who could do it, and how we mitigate.
 
 ### Threat 6, dependency supply-chain attack
 
-**Vector**: A transitive dependency of `convex/_generated` or our build tooling is compromised.
+**Vector**: A transitive dependency of the backend workspace or our build tooling is compromised.
 
 **Impact**: Build outputs include malicious code. Severity medium.
 
 **Mitigations**:
 
-- The CLI itself has zero runtime deps (Convex client is the only exception)
+- The CLI itself has zero runtime deps
 - DevDependencies are pinned in lockfile
 - CI runs `npm audit --production` and blocks high-severity findings
 - We do not use third-party install scripts in the bash setup beyond `npm install -g`
 - We do not depend on packages that have been compromised in the past (e.g. event-stream-style attacks)
 
-**Acceptance**: Convex client is a managed dependency; we trust Convex's own supply chain. If they get compromised, our CLI is compromised. We accept this for the v1 backend choice.
+**Acceptance**: Convex is a managed backend dependency. If the backend dependency chain is compromised, telemetry and feedback handling are at risk, but the published CLI install remains dependency-free.
 
 ### Threat 7, RPC / faucet / sponsor SDK abuse
 

@@ -34,14 +34,12 @@
     "lint:catalog": "tsx scripts/lint-catalog.ts",
     "test": "pnpm typecheck && pnpm lint:skills && pnpm lint:catalog && pnpm preamble:check",
     "test:install": "./scripts/test-install.sh",
+    "test:telemetry": "node --env-file=../.env --import tsx scripts/test-telemetry.ts",
     "skills:lock": "tsx scripts/generate-skills-lock.ts",
     "marketplace:gen": "tsx scripts/generate-marketplace.ts",
     "publish:dry": "tsx scripts/publish.ts"
   },
   "engines": {
     "node": ">=20.0.0"
-  },
-  "dependencies": {
-    "convex": "^1.34.1"
   }
 }

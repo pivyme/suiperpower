@@ -87,6 +87,24 @@ export function getAgentCliInstallHelp(): string {
     .join(" | ");
 }
 
+export function formatSkillInvocation(
+  cli: AgentCli | null,
+  skillName: string,
+  message = "",
+): string {
+  const target = cli ?? "claude";
+  const slash = target === "claude" ? `/suiper:${skillName}` : `/${skillName}`;
+  const prompt = message ? `${slash} ${message}` : slash;
+  if (target === "cursor") return `Cursor chat: "${prompt}"`;
+  return `${target} "${prompt}"`;
+}
+
+export function formatQuotedSkillCommand(cli: AgentCli | null, quotedCommand: string): string {
+  const m = quotedCommand.match(/^"\/([^\s"]+)(?:\s+([^"]*))?"$/);
+  if (!m) return `${cli ?? "claude"} ${quotedCommand}`;
+  return formatSkillInvocation(cli, m[1], m[2] ?? "");
+}
+
 export function tryInstallAgentCli(cli: AgentCli): boolean {
   const meta = AGENT_META[cli];
   if (!meta.npmPkg) return false;

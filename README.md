@@ -204,7 +204,7 @@ Removes only files Suiperpower wrote. Your own skills are untouched.
 
 We welcome PRs. Lowest-friction contributions:
 
-- Add a repo / MCP / idea to `cli/data/*.json`
+- Add a repo / MCP / idea to `core/cli/data/*.json`
 - Improve a skill's references or workflow
 - Add a sponsor doc
 

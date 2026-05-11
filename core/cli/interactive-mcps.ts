@@ -49,7 +49,7 @@ export async function run(args: string[]): Promise<void> {
   }
 
   if (agent) {
-    console.log(`${BRAND.PRODUCT_NAME} mcps — ${all.length}`);
+    console.log(`${BRAND.PRODUCT_NAME} mcps, ${all.length}`);
     for (const m of all) console.log(`- ${m.id} | ${m.publisher} | ${m.installCmd}`);
     return;
   }
@@ -62,7 +62,7 @@ export async function run(args: string[]): Promise<void> {
   const items: PickItem[] = all.map((m) => ({
     id: m.id,
     label: m.name,
-    hint: `${m.publisher} — ${m.description.slice(0, 100)}`,
+    hint: `${m.publisher}: ${m.description.slice(0, 100)}`,
   }));
 
   const picked = await searchAndPick(items, {

@@ -167,7 +167,7 @@ suiperpower/
 
 - **ESM only.** All imports use `.js` extensions, NodeNext module resolution.
 - **Strict TypeScript.** No implicit any.
-- **Zero runtime deps for the CLI.** Only devDependencies (tsx, typescript, @types/node) plus Convex client. The CLI is small, fast to install, audit-friendly.
+- **Zero runtime deps for the CLI.** Only devDependencies (tsx, typescript, @types/node). The Convex backend owns its own package dependencies. The CLI is small, fast to install, audit-friendly.
 - **Single source of truth for branding.** Every brand string (name, tagline, install URL, telemetry config dir) lives in `cli/branding.ts`. Never hardcoded elsewhere.
 - **Skills are plain markdown.** No code generation. A user can read any skill end-to-end before invoking it. Transparency is part of the trust model.
 - **Knowledge base is plain markdown.** Same reason.

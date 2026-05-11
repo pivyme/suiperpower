@@ -1,4 +1,5 @@
-// `suiperpower init` writes skills to ~/.claude/skills, ~/.codex/skills, ~/.cursor/rules.
+// `suiperpower init` writes Codex skills and Cursor rules globally.
+// Claude Code uses the plugin marketplace globally and vendor-mode flat copies.
 // `--vendor` writes to <project>/.claude/skills/suiperpower etc instead.
 // All writes are tracked in ~/.suiperpower/skills-installed.json so `update` and `uninstall`
 // only touch files we own.
@@ -20,6 +21,7 @@ import { accent, bold, dim, muted, ok } from "./colors.js";
 import { detectAgentCliPaths } from "./agent-cli.js";
 import { getCliDataRoot, getSkillsRoot, readPackageVersion } from "./paths.js";
 import { renderMdc as renderCursorRule } from "../scripts/generate-cursor-rules.js";
+import { track } from "./telemetry.js";
 
 interface SkillEntry {
   phase: string;
@@ -203,7 +205,14 @@ function writeConfig(convexUrl: string | undefined): void {
       cfg = {};
     }
   }
-  if (convexUrl) cfg.convexUrl = convexUrl;
+  // Resolve URL: explicit flag > env > existing config. Once written, the bash
+  // preamble in every SKILL.md can find it without the user passing flags.
+  const resolved =
+    convexUrl ||
+    process.env.SUIPERPOWER_CONVEX_URL ||
+    process.env.NEXT_PUBLIC_CONVEX_URL ||
+    (cfg.convexUrl as string | undefined);
+  if (resolved) cfg.convexUrl = resolved;
   if (!cfg.telemetryTier) cfg.telemetryTier = "anonymous";
   if (!cfg.installedAt) cfg.installedAt = new Date().toISOString();
   cfg.version = readPackageVersion();
@@ -311,7 +320,7 @@ export async function run(args: string[]): Promise<void> {
   }
 
   if (agent) {
-    console.log(`${BRAND.PRODUCT_NAME} init — ${installed.length} skills (${vendor ? "vendor" : "global"})`);
+    console.log(`${BRAND.PRODUCT_NAME} init, ${installed.length} skills (${vendor ? "vendor" : "global"})`);
     for (const s of installed) console.log(`  + ${s}`);
     console.log(`manifest: ${mPath}`);
     return;
@@ -344,6 +353,8 @@ export async function run(args: string[]): Promise<void> {
     console.log(`  ${muted("next:")} ${accent(`${BRAND.PRODUCT_NAME} doctor`)}`);
     console.log("");
   }
+
+  track({ skill: "init", phase: "cli", status: "completed" });
 }
 
 // Re-export helpers for `update` and `uninstall` to share manifest logic.

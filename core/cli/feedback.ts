@@ -10,6 +10,7 @@ import { createInterface } from "node:readline/promises";
 import { BRAND, ENV } from "./branding.js";
 import { accent, bold, dim, muted, ok, warn } from "./colors.js";
 import { readPackageVersion } from "./paths.js";
+import { track } from "./telemetry.js";
 
 interface Submission {
   skill?: string;
@@ -103,6 +104,8 @@ export async function run(args: string[]): Promise<void> {
     }
     console.log(`  ${muted("thanks. issues / RFCs:")} ${accent(BRAND.GH_URL)}`);
     console.log("");
+
+    track({ skill: "feedback", phase: "cli", status: "completed" });
   } finally {
     rl.close();
   }

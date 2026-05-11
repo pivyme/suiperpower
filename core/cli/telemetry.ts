@@ -15,6 +15,7 @@ import { randomUUID } from "node:crypto";
 
 import { BRAND, ENV } from "./branding.js";
 import { readPackageVersion } from "./paths.js";
+import { ensureForCwd, logEvent } from "./projects.js";
 
 const CFG_DIR = join(homedir(), BRAND.CONFIG_DIR);
 const CFG_FILE = join(CFG_DIR, "config.json");
@@ -91,6 +92,20 @@ export function track(
     };
     mkdirSync(CFG_DIR, { recursive: true });
     appendFileSync(LOG_FILE, JSON.stringify(event) + "\n");
+    // Local project log. Skip for cli-phase noise so the registry stays useful.
+    if (fields.phase !== "cli") {
+      try {
+        const project = ensureForCwd();
+        logEvent(project.id, {
+          kind: "skill",
+          value: fields.skill,
+          status: fields.status,
+          durationMs: fields.durationMs,
+        });
+      } catch {
+        // never crash on logging
+      }
+    }
     void sendToConvex(event, cfg.convexUrl);
   } catch {
     // never crash on telemetry
@@ -98,17 +113,28 @@ export function track(
 }
 
 async function sendToConvex(event: TelemetryEvent, convexUrl: string | undefined): Promise<void> {
-  const url = process.env[ENV.CONVEX_URL] || convexUrl || BRAND.CONVEX_URL_DEFAULT;
+  const url =
+    process.env[ENV.CONVEX_URL] ||
+    process.env.NEXT_PUBLIC_CONVEX_URL ||
+    convexUrl ||
+    BRAND.CONVEX_URL_DEFAULT;
   if (!url || url === BRAND.CONVEX_URL_DEFAULT) return;
+  // Mutation schema is strict. installationId is local-only, never send it.
+  const { installationId: _installationId, ...payload } = event;
+  const debug = Boolean(process.env.SUIPERPOWER_DEBUG);
   try {
-    await fetch(`${url.replace(/\/$/, "")}/api/mutation`, {
+    const res = await fetch(`${url.replace(/\/$/, "")}/api/mutation`, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ path: "telemetry:track", args: event }),
+      body: JSON.stringify({ path: "telemetry:track", args: payload }),
       signal: AbortSignal.timeout(3000),
     });
-  } catch {
-    // fire-and-forget
+    if (debug) {
+      const body = await res.text().catch(() => "");
+      console.error(`[telemetry] ${res.status} ${res.statusText} ${body.slice(0, 200)}`);
+    }
+  } catch (e) {
+    if (debug) console.error(`[telemetry] send failed:`, (e as Error).message);
   }
 }
 

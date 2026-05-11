@@ -31,7 +31,7 @@ Check `git log --oneline | head -20` before assuming a phase is done. CLAUDE.md 
 - **Language**: TypeScript (strict, ESM, NodeNext)
 - **Runtime**: Node.js 20+
 - **Package manager**: pnpm workspaces
-- **CLI**: zero runtime deps (Convex client is the only exception)
+- **CLI**: zero runtime deps. The Convex backend owns its own package dependencies.
 - **Backend**: Convex (telemetry + feedback only)
 - **Website**: Next.js 14+ App Router, deployed on Vercel
 - **Skills**: plain markdown (Anthropic skill spec) with optional `references/` and `agents/openai.yaml`

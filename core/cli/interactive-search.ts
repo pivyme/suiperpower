@@ -7,7 +7,7 @@ import { join } from "node:path";
 
 import { BRAND } from "./branding.js";
 import { accent, bold, dim, muted } from "./colors.js";
-import { detectPreferredAgentCli } from "./agent-cli.js";
+import { detectPreferredAgentCli, formatSkillInvocation } from "./agent-cli.js";
 import { searchAndPick, type PickItem } from "./interactive-universal.js";
 import { getCliDataRoot, getSkillsRoot } from "./paths.js";
 
@@ -54,7 +54,7 @@ function loadSkills(): Hit[] {
         source: "skill",
         id: sub.name,
         label: sub.name,
-        hint: `${phase.name} — ${desc.slice(0, 100)}`,
+        hint: `${phase.name}: ${desc.slice(0, 100)}`,
         meta: { phase: phase.name },
       });
     }
@@ -69,7 +69,7 @@ function loadRepos(): Hit[] {
     source: "repo",
     id: r.id,
     label: r.name,
-    hint: `${r.category} — ${r.description.slice(0, 100)}`,
+    hint: `${r.category}: ${r.description.slice(0, 100)}`,
     meta: { url: r.url, tags: r.tags },
   }));
 }
@@ -93,7 +93,7 @@ function loadIdeas(): Hit[] {
     source: "idea",
     id: i.id,
     label: i.title,
-    hint: `${i.category} — ${i.summary.slice(0, 100)}`,
+    hint: `${i.category}: ${i.summary.slice(0, 100)}`,
     meta: { idSource: i.source },
   }));
 }
@@ -115,13 +115,13 @@ function actionFor(hit: Hit): string {
   const cli = detectPreferredAgentCli() ?? "claude";
   switch (hit.source) {
     case "skill":
-      return `${cli} "/${hit.id}"`;
+      return formatSkillInvocation(cli, hit.id);
     case "repo":
       return `git clone ${(hit.meta as { url?: string }).url ?? ""}`;
     case "mcp":
       return `${(hit.meta as { installCmd?: string }).installCmd ?? ""}`;
     case "idea":
-      return `${cli} "/validate-idea ${hit.label}"`;
+      return formatSkillInvocation(cli, "validate-idea", hit.label);
   }
 }
 
@@ -190,7 +190,7 @@ export async function run(args: string[]): Promise<void> {
     return;
   }
   if (agent) {
-    console.log(`${BRAND.PRODUCT_NAME} search "${q}" — ${ranked.length}`);
+    console.log(`${BRAND.PRODUCT_NAME} search "${q}", ${ranked.length}`);
     for (const h of ranked) console.log(`- [${h.source}] ${h.id} | ${actionFor(h)}`);
     return;
   }
@@ -202,7 +202,7 @@ export async function run(args: string[]): Promise<void> {
     return;
   }
   console.log("");
-  console.log(`  ${bold(`${BRAND.PRODUCT_NAME} search`)} ${muted(`"${q}" — ${ranked.length}`)}`);
+  console.log(`  ${bold(`${BRAND.PRODUCT_NAME} search`)} ${muted(`"${q}", ${ranked.length}`)}`);
   renderHits(ranked);
 }
 
@@ -218,7 +218,7 @@ export async function runIdeas(args: string[]): Promise<void> {
     return;
   }
   if (agent) {
-    console.log(`${BRAND.PRODUCT_NAME} ideas — ${all.length}`);
+    console.log(`${BRAND.PRODUCT_NAME} ideas, ${all.length}`);
     for (const h of all) console.log(`- ${h.id} | ${h.label}`);
     return;
   }

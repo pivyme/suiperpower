@@ -3,7 +3,7 @@
 
 import { BRAND } from "./branding.js";
 import { accent, bold, dim, muted } from "./colors.js";
-import { detectPreferredAgentCli, getAgentMeta } from "./agent-cli.js";
+import { detectPreferredAgentCli, formatQuotedSkillCommand, getAgentMeta } from "./agent-cli.js";
 import { pick, type PickItem } from "./interactive-universal.js";
 import { printBanner } from "./banner.js";
 
@@ -69,8 +69,7 @@ export async function run(_args: string[]): Promise<void> {
   console.log("");
   if (opt.command.startsWith('"/')) {
     const meta = cli ? getAgentMeta(cli) : null;
-    const which = cli ?? "claude";
-    console.log(`    ${accent(`${which} ${opt.command}`)}`);
+    console.log(`    ${accent(formatQuotedSkillCommand(cli, opt.command))}`);
     if (!meta) {
       console.log("");
       console.log(`  ${muted("no agent CLI detected.")} install:`);

@@ -274,7 +274,7 @@ suiperpower --help
 - TUI via raw stdin readline (no ink, no blessed). The TUIs are simple list pickers, not full apps.
 - Banner uses Unicode box-drawing characters and ANSI bold / cyan.
 
-Why no UI library: keeps the dependency surface at zero runtime deps (Convex client is the only exception). Faster install, easier audit, no version churn from ecosystem libraries.
+Why no UI library: keeps the dependency surface at zero runtime deps. Faster install, easier audit, no version churn from ecosystem libraries.
 
 ## Performance budget
 

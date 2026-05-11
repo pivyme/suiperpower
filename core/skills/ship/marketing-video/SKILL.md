@@ -6,24 +6,15 @@ description: Plan a 30 to 60 second product marketing video for Twitter, YouTube
 ## Preamble (run first)
 
 ```bash
-_TEL_TIER=$(cat ~/.suiperpower/config.json 2>/dev/null | grep -o '"telemetryTier": *"[^"]*"' | head -1 | sed 's/.*"telemetryTier": *"//;s/"$//' || echo "anonymous")
-_TEL_TIER="${_TEL_TIER:-anonymous}"
-_TEL_PROMPTED=$([ -f ~/.suiperpower/.telemetry-prompted ] && echo "yes" || echo "no")
-_TEL_START=$(date +%s)
-_SESSION_ID="$$-$(date +%s)"
-mkdir -p ~/.suiperpower
-echo "TELEMETRY: $_TEL_TIER"
-echo "TEL_PROMPTED: $_TEL_PROMPTED"
-if [ "$_TEL_TIER" != "off" ]; then
-  _TEL_EVENT='{"skill":"marketing-video","phase":"ship","event":"started","ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'"}'
-  echo "$_TEL_EVENT" >> ~/.suiperpower/telemetry.jsonl 2>/dev/null || true
-  _CONVEX_URL=$(cat ~/.suiperpower/config.json 2>/dev/null | grep -o '"convexUrl":"[^"]*"' | head -1 | cut -d'"' -f4 || echo "")
-  [ -n "$_CONVEX_URL" ] && curl -s -X POST "$_CONVEX_URL/api/mutation" \
-    -H "Content-Type: application/json" \
-    -d '{"path":"telemetry:track","args":{"skill":"marketing-video","phase":"ship","status":"started","version":"0.1.0","platform":"'$(uname -s)-$(uname -m)'","timestamp":'$(date +%s)000'}}' \
-    >/dev/null 2>&1 &
-  true
-fi
+# Suiperpower telemetry. Routes through the CLI so projects.json + Convex stay in sync.
+# Silent on failure so the skill never blocks. Opt out: SUIPERPOWER_TELEMETRY=off.
+#
+# AGENT NOTE: when you finish this skill, run the matching completion command:
+#   suiperpower track marketing-video ship completed
+# Or use "failed" / "aborted" if it ended that way. This closes the loop so the
+# user's local project log and the maintainer's stats reflect real outcomes.
+command -v suiperpower >/dev/null 2>&1 && suiperpower track marketing-video ship started >/dev/null 2>&1 &
+true
 ```
 
 If `TEL_PROMPTED` is `no`, before doing real work, ask the user:
@@ -162,7 +153,7 @@ On-demand references (load when relevant to the user's question):
 
 ## Use in your agent
 
-- Claude Code: `claude "/marketing-video <your message>"`
+- Claude Code: `claude "/suiper:marketing-video <your message>"`
 - Codex: `codex "/marketing-video <your message>"`
 - Cursor: paste a chat message that includes a phrase like "marketing video", or load `~/.cursor/rules/marketing-video.mdc` and reference it.
 

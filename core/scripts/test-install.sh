@@ -16,6 +16,14 @@ log()   { printf "  > %s\n" "$1"; }
 fail()  { red "  FAIL: $1"; exit 1; }
 pass()  { green "  ok: $1"; }
 
+TMP=""
+TMP_HOME=""
+cleanup() {
+  [ -n "$TMP" ] && rm -rf "$TMP"
+  [ -n "$TMP_HOME" ] && rm -rf "$TMP_HOME"
+}
+trap cleanup EXIT
+
 log "building CLI"
 ( cd "$ROOT" && pnpm build >/dev/null )
 [ -x "$CLI" ] || fail "dist/cli/index.js missing or not executable"
@@ -34,9 +42,27 @@ log "checking doctor exits 0"
 node "$CLI" doctor >/dev/null || fail "doctor exited non-zero, must always be 0"
 pass "doctor"
 
+log "checking doctor does not initialize Sui wallet in clean HOME"
+TMP_HOME=$(mktemp -d)
+DOCTOR_CLEAN=$(HOME="$TMP_HOME" node "$CLI" doctor --agent)
+printf "%s\n" "$DOCTOR_CLEAN" | grep -Eq "no Sui client config|Sui CLI: not installed" || fail "doctor did not report missing Sui config or missing Sui CLI"
+[ ! -e "$TMP_HOME/.sui" ] || fail "doctor created ~/.sui in a clean HOME"
+pass "doctor clean HOME"
+
+log "checking global init uses Claude plugin flow"
+HOME="$TMP_HOME" node "$CLI" init --agent >/dev/null || fail "global init exited non-zero"
+GLOBAL_CODEX_COUNT=$(find "$TMP_HOME/.codex/skills" -mindepth 2 -maxdepth 2 -name SKILL.md | wc -l | tr -d ' ')
+GLOBAL_CURSOR_COUNT=$(find "$TMP_HOME/.cursor/rules" -name '*.mdc' | wc -l | tr -d ' ')
+[ "$GLOBAL_CODEX_COUNT" -gt 0 ] || fail "global init did not write Codex skills"
+[ "$GLOBAL_CURSOR_COUNT" -gt 0 ] || fail "global init did not write Cursor rules"
+[ ! -e "$TMP_HOME/.claude/skills" ] || fail "global init wrote flat Claude skills instead of using plugin flow"
+[ -f "$TMP_HOME/.codex/skills/skills/SKILL_ROUTER.md" ] || fail "global Codex shared router missing"
+grep -q "../../skills/data/sui-knowledge/03-move-and-objects.md" "$TMP_HOME/.codex/skills/build-with-move/agents/openai.yaml" || fail "global Codex knowledge paths were not rewritten"
+grep -q "Shared references (inlined)" "$TMP_HOME/.cursor/rules/build-with-move.mdc" || fail "global Cursor shared references block missing"
+pass "global init landed $GLOBAL_CODEX_COUNT Codex skills and $GLOBAL_CURSOR_COUNT Cursor rules, Claude stays plugin-only"
+
 log "running init --vendor in temp project"
 TMP=$(mktemp -d)
-trap 'rm -rf "$TMP"' EXIT
 ( cd "$TMP" && cat > package.json <<'JSON'
 {"name":"suiperpower-smoke","version":"0.0.0","private":true}
 JSON

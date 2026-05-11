@@ -8,6 +8,8 @@ import { join } from "node:path";
 
 import { BRAND } from "./branding.js";
 import { bold, dim, muted, ok } from "./colors.js";
+import { register as registerProject } from "./projects.js";
+import { track } from "./telemetry.js";
 
 const README = `# .${BRAND.CONFIG_DIR}/
 
@@ -51,12 +53,25 @@ SUIPERPOWER_TELEMETRY=
 SUIPERPOWER_CONVEX_URL=
 `;
 
+function takeFlagValue(args: string[], flag: string): string | undefined {
+  const idx = args.indexOf(flag);
+  if (idx === -1) return undefined;
+  const next = args[idx + 1];
+  if (!next || next.startsWith("-")) return undefined;
+  return next;
+}
+
 export async function run(args: string[]): Promise<void> {
   const force = args.includes("--force") || args.includes("-f");
   const agent = args.includes("--agent");
+  const concept = takeFlagValue(args, "--concept");
+  const name = takeFlagValue(args, "--name");
   const root = process.cwd();
   const dir = join(root, BRAND.CONFIG_DIR);
   mkdirSync(dir, { recursive: true });
+
+  // Register in the global project log. Idempotent.
+  const project = registerProject({ path: root, name, concept });
 
   const wrote: string[] = [];
   const existed: string[] = [];
@@ -100,6 +115,12 @@ export async function run(args: string[]): Promise<void> {
   for (const p of wrote) console.log(`  ${ok("+")} ${p}`);
   for (const p of existed) console.log(`  ${dim(`= ${p}`)}`);
   console.log("");
+  console.log(`  ${muted("project")}  ${project.name} ${dim(`[${project.phase}]`)}`);
+  if (project.concept) console.log(`  ${muted("concept")}  ${project.concept}`);
+  console.log(`  ${muted("history")}  run ${BRAND.PRODUCT_NAME} projects show ${project.name}`);
+  console.log("");
   console.log(`  ${muted("commit")} ${dir} ${muted("if your team wants shared context")}`);
   console.log("");
+
+  track({ skill: "workspace-setup", phase: "cli", status: "completed" });
 }

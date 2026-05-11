@@ -10,6 +10,7 @@ import { BRAND } from "./branding.js";
 import { bold, dim, err, muted, ok, warn } from "./colors.js";
 import { detectAgentCliPaths } from "./agent-cli.js";
 import { getCliDataRoot, getSkillsRoot as findSkillsRoot } from "./paths.js";
+import { track } from "./telemetry.js";
 
 type Status = "pass" | "warn" | "fail";
 
@@ -87,11 +88,18 @@ function countCursorRules(root: string, expected: string[]): number {
   return expected.filter((s) => existsSync(join(root, `${s}.mdc`))).length;
 }
 
-function suiActiveEnv(): { env: string; address: string } {
+function suiClientConfigPath(): string {
+  return join(homedir(), ".sui", "sui_config", "client.yaml");
+}
+
+function suiActiveEnv(): { env: string; address: string; configured: boolean } {
+  if (!existsSync(suiClientConfigPath())) {
+    return { env: "", address: "", configured: false };
+  }
   const out = tryExec("sui", ["client", "active-env"]);
   const env = out || "";
   const addr = tryExec("sui", ["client", "active-address"]);
-  return { env, address: addr };
+  return { env, address: addr, configured: true };
 }
 
 export async function run(args: string[]): Promise<void> {
@@ -146,18 +154,22 @@ export async function run(args: string[]): Promise<void> {
   const suiV = tryExec("sui", ["--version"]);
   if (suiV) {
     checks.push({ group: "Sui", label: "Sui CLI", status: "pass", detail: suiV });
-    const { env, address } = suiActiveEnv();
+    const { env, address, configured } = suiActiveEnv();
     checks.push({
       group: "Sui",
       label: "active env",
-      status: env ? "pass" : "warn",
-      detail: env || "no active env, run: sui client switch --env devnet",
+      status: configured && env ? "pass" : "warn",
+      detail: configured
+        ? env || "no active env, run: sui client switch --env devnet"
+        : `no Sui client config at ${suiClientConfigPath()}`,
     });
     checks.push({
       group: "Sui",
       label: "address",
-      status: address ? "pass" : "warn",
-      detail: address || "no active address, run: sui client new-address ed25519",
+      status: configured && address ? "pass" : "warn",
+      detail: configured
+        ? address || "no active address, run: sui client new-address ed25519"
+        : "no Sui client config, doctor did not initialize a wallet",
     });
   } else {
     checks.push({
@@ -252,4 +264,6 @@ export async function run(args: string[]): Promise<void> {
     console.log(`  ${mark} ${c.label}${pad}${dim(c.detail)}`);
   }
   console.log("");
+
+  track({ skill: "doctor", phase: "cli", status: "completed" });
 }

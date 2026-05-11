@@ -84,7 +84,7 @@ export async function run(args: string[]): Promise<void> {
   }
 
   if (agent) {
-    console.log(`${BRAND.PRODUCT_NAME} repos — ${filtered.length}/${all.length}`);
+    console.log(`${BRAND.PRODUCT_NAME} repos, ${filtered.length}/${all.length}`);
     for (const r of filtered) {
       console.log(`- ${r.id} | ${r.category} | ${r.url}`);
     }

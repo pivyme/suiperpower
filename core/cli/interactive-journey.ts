@@ -3,7 +3,7 @@
 
 import { BRAND } from "./branding.js";
 import { accent, bold, dim, muted } from "./colors.js";
-import { detectPreferredAgentCli } from "./agent-cli.js";
+import { detectPreferredAgentCli, formatQuotedSkillCommand } from "./agent-cli.js";
 import { pick, type PickItem } from "./interactive-universal.js";
 
 interface Stop {
@@ -18,7 +18,7 @@ const STOPS: Stop[] = [
     id: "learn-or-skip",
     label: "Learn the basics (optional)",
     hint: "skip if you have shipped Sui already",
-    command: '"/sui-beginner I am new to Sui — teach me the fundamentals"',
+    command: '"/sui-beginner I am new to Sui, teach me the fundamentals"',
   },
   {
     id: "find-idea",
@@ -90,7 +90,7 @@ export async function run(_args: string[]): Promise<void> {
   const cli = detectPreferredAgentCli() ?? "claude";
   console.log("");
   console.log(`  ${bold("run this in your agent")}`);
-  console.log(`    ${accent(`${cli} ${stop.command}`)}`);
+  console.log(`    ${accent(formatQuotedSkillCommand(cli, stop.command))}`);
   console.log("");
   console.log(`  ${muted("next stops are listed in this menu when you re-run")} ${accent(`${BRAND.PRODUCT_NAME} journey`)}`);
   console.log("");

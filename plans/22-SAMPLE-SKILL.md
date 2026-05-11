@@ -31,7 +31,7 @@ skills/build/build-with-move/
 ````markdown
 ---
 name: build-with-move
-description: Author Sui Move modules and packages with a senior Move dev as your pair. Use when the user says "build a Move module", "write a Move package", "help me with Move", "add a function to my contract", "create a smart contract on Sui", "scaffold a Move package", or "I need to write Move code". Reads .suiperpower/build-context.md if present. Leverages skills/data/sui-knowledge/03-move-and-objects.md and skills/data/sui-knowledge/sponsor-docs/openzeppelin-sui.md.
+description: Author Sui Move modules and packages with a senior Move dev as your pair. Use when the user says "build a Move module", "write a Move package", "help me with Move", "add a function to my contract", "create a smart contract on Sui", "scaffold a Move package", or "I need to write Move code". Reads .suiperpower/build-context.md if present. Uses skills/data/sui-knowledge/03-move-and-objects.md and skills/data/sui-knowledge/sponsor-docs/openzeppelin-sui.md.
 ---
 
 ## Preamble (run first)
@@ -180,7 +180,7 @@ Knowledge docs (load when scope expands beyond what is in references):
 
 ## Use in your agent
 
-- Claude Code: `claude "/build-with-move <your message>"`
+- Claude Code: `claude "/suiper:build-with-move <your message>"`
 - Codex: `codex "/build-with-move <your message>"`
 - Cursor: paste a chat message that includes a phrase like "write a Move module" or reference `~/.cursor/rules/build-with-move.mdc`
 ````
