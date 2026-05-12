@@ -87,11 +87,12 @@ const DEMOS: Demo[] = [
     prompt:
       "create a prediction market on Sui where users bet on outcomes with USDC",
     skills: [
-      "/suiper:stress-test-idea",
+      "/suiper:validate-idea",
+      "/suiper:plan-before-code",
       "/suiper:scaffold-project",
       "/suiper:build-with-move",
-      "/suiper:integrate-deepbook",
-      "/suiper:anti-slop-gate",
+      "/suiper:deepbook-orderbook",
+      "/suiper:verify-against-intent",
     ],
     knowledge: ["Move objects", "PTBs", "DeepBook v3", "Oracle patterns"],
     files: [
@@ -110,11 +111,12 @@ const DEMOS: Demo[] = [
     prompt:
       "build a fair-launch token launchpad with vesting and a DEX listing",
     skills: [
-      "/suiper:stress-test-idea",
+      "/suiper:validate-idea",
+      "/suiper:plan-before-code",
       "/suiper:scaffold-project",
       "/suiper:build-with-move",
-      "/suiper:integrate-deepbook",
-      "/suiper:anti-slop-gate",
+      "/suiper:deepbook-orderbook",
+      "/suiper:verify-against-intent",
     ],
     knowledge: [
       "Coin standard",
@@ -137,10 +139,11 @@ const DEMOS: Demo[] = [
     title: "Image gallery on Walrus",
     prompt: "build an image gallery that stores user uploads on Walrus",
     skills: [
+      "/suiper:plan-before-code",
       "/suiper:scaffold-project",
-      "/suiper:integrate-walrus",
-      "/suiper:rpc-and-wallet",
-      "/suiper:anti-slop-gate",
+      "/suiper:walrus-storage",
+      "/suiper:ptb-composer",
+      "/suiper:verify-against-intent",
     ],
     knowledge: ["Walrus blobs", "Sui wallet adapter", "Object ownership"],
     files: [
@@ -158,10 +161,11 @@ const DEMOS: Demo[] = [
     title: "NFT marketplace with Kiosk",
     prompt: "build an NFT marketplace using Kiosk with creator royalties",
     skills: [
+      "/suiper:plan-before-code",
       "/suiper:scaffold-project",
       "/suiper:build-with-move",
-      "/suiper:integrate-kiosk",
-      "/suiper:anti-slop-gate",
+      "/suiper:kiosk-marketplace",
+      "/suiper:verify-against-intent",
     ],
     knowledge: ["Kiosk", "TransferPolicy", "Display standard", "Royalties"],
     files: [
@@ -180,10 +184,11 @@ const DEMOS: Demo[] = [
     prompt:
       "build a dashboard that shows my Scallop positions and lets me supply USDC",
     skills: [
+      "/suiper:plan-before-code",
       "/suiper:scaffold-project",
-      "/suiper:integrate-scallop",
-      "/suiper:rpc-and-wallet",
-      "/suiper:anti-slop-gate",
+      "/suiper:scallop-money-market",
+      "/suiper:ptb-composer",
+      "/suiper:verify-against-intent",
     ],
     knowledge: ["Scallop SDK", "Market pools", "Obligation accounts"],
     files: [
@@ -201,10 +206,11 @@ const DEMOS: Demo[] = [
     title: "zkLogin sign-in flow",
     prompt: "add zkLogin sign-in so users can log in with Google",
     skills: [
+      "/suiper:plan-before-code",
       "/suiper:scaffold-project",
-      "/suiper:integrate-zklogin",
-      "/suiper:rpc-and-wallet",
-      "/suiper:anti-slop-gate",
+      "/suiper:sui-zk-login",
+      "/suiper:ptb-composer",
+      "/suiper:verify-against-intent",
     ],
     knowledge: ["zkLogin", "Ephemeral keys", "Salt service", "JWT proofs"],
     files: [
@@ -449,7 +455,7 @@ function ClaudeWelcome() {
         {` Welcome to Claude Code                       │
 │                                                 │
 │    /help for help · /status for setup           │
-│    suiperpower · 50+ skills loaded              │
+│    suiperpower · 60+ skills loaded              │
 │    cwd: ~/your-sui-project                      │
 ╰─────────────────────────────────────────────────╯`}
       </pre>
@@ -563,7 +569,7 @@ function CodexWelcome() {
         {` OpenAI codex CLI                             │
 │                                                 │
 │    model: gpt-5 · approval: full · sandbox      │
-│    suiperpower · 50+ skills loaded              │
+│    suiperpower · 60+ skills loaded              │
 │    cwd: ~/your-sui-project                      │
 ╰─────────────────────────────────────────────────╯`}
       </pre>

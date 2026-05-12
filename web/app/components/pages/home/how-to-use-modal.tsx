@@ -15,7 +15,7 @@ const STEPS: Step[] = [
     index: 1,
     title: "Install",
     description:
-      "One curl command. Adds 47 Sui skills, knowledge, and the CLI to your agent.",
+      "One curl command. Adds 60+ Sui skills, knowledge, and the CLI to your agent.",
     visual: InstallVisual,
   },
   {
