@@ -331,8 +331,16 @@ export function Playground() {
   );
 }
 
+const TYPE_SPEED_MS = 16;
+const PROMPT_TAIL_MS = 250;
+
+function promptDelay(prompt: string) {
+  return (prompt.length * TYPE_SPEED_MS + PROMPT_TAIL_MS) / 1000;
+}
+
 function ClaudeSession({ active }: { active: Demo }) {
   const skills = active.skills;
+  const base = promptDelay(active.prompt);
   return (
     <>
       <ClaudeWelcome />
@@ -341,7 +349,7 @@ function ClaudeSession({ active }: { active: Demo }) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.1 }}
+          transition={{ delay: base + 0 }}
         >
           <div className="text-white/90">
             <span className="text-amber-300/80 mr-2">⏺</span>
@@ -353,7 +361,7 @@ function ClaudeSession({ active }: { active: Demo }) {
                 key={s}
                 initial={{ opacity: 0, x: -4 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 + i * 0.08 }}
+                transition={{ delay: base + 0.1 + i * 0.08 }}
                 className="flex items-baseline gap-1"
               >
                 <span className="text-white/30">⎿</span>
@@ -366,7 +374,7 @@ function ClaudeSession({ active }: { active: Demo }) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.7 }}
+          transition={{ delay: base + 0.6 }}
         >
           <div className="text-white/90">
             <span className="text-amber-300/80 mr-2">⏺</span>
@@ -381,7 +389,7 @@ function ClaudeSession({ active }: { active: Demo }) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.95 }}
+          transition={{ delay: base + 0.85 }}
         >
           <div className="text-white/90">
             <span className="text-amber-300/80 mr-2">⏺</span>
@@ -393,7 +401,7 @@ function ClaudeSession({ active }: { active: Demo }) {
                 key={f.path}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1.05 + i * 0.06 }}
+                transition={{ delay: base + 0.95 + i * 0.06 }}
                 className="flex items-baseline gap-2 text-white/70"
               >
                 <span className="text-white/30">⎿</span>
@@ -410,7 +418,7 @@ function ClaudeSession({ active }: { active: Demo }) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.45 }}
+          transition={{ delay: base + 1.35 }}
         >
           <div className="text-white/90">
             <span className="text-amber-300/80 mr-2">⏺</span>
@@ -451,6 +459,7 @@ function ClaudeWelcome() {
 
 function CodexSession({ active }: { active: Demo }) {
   const skills = active.skills.map((s) => s.replace(/^\/suiper:/, ""));
+  const base = promptDelay(active.prompt);
   return (
     <>
       <CodexWelcome />
@@ -465,7 +474,7 @@ function CodexSession({ active }: { active: Demo }) {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
+          transition={{ delay: base + 0.1 }}
           className="ml-3 text-white/80"
         >
           Routing through suiperpower skills.
@@ -477,7 +486,7 @@ function CodexSession({ active }: { active: Demo }) {
               key={s}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 + i * 0.08 }}
+              transition={{ delay: base + 0.2 + i * 0.08 }}
               className="text-white/70"
             >
               <span className="text-blue-300/70 mr-1">●</span>
@@ -490,7 +499,7 @@ function CodexSession({ active }: { active: Demo }) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.85 }}
+          transition={{ delay: base + 0.75 }}
           className="ml-3 text-white/70"
         >
           <span className="text-blue-300/70 mr-1">●</span>
@@ -501,7 +510,7 @@ function CodexSession({ active }: { active: Demo }) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.0 }}
+          transition={{ delay: base + 0.9 }}
           className="ml-3"
         >
           <div className="text-white/70">
@@ -514,7 +523,7 @@ function CodexSession({ active }: { active: Demo }) {
                 key={f.path}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1.1 + i * 0.06 }}
+                transition={{ delay: base + 1.0 + i * 0.06 }}
                 className="flex flex-col md:flex-row md:items-baseline gap-0 md:gap-3"
               >
                 <span className="text-white/80 md:w-56 shrink-0">{f.path}</span>
@@ -527,7 +536,7 @@ function CodexSession({ active }: { active: Demo }) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
+          transition={{ delay: base + 1.4 }}
           className="ml-3 text-white/70"
         >
           <span className="text-blue-300/70 mr-1">●</span>
@@ -579,7 +588,7 @@ function PromptLine({
       i += 1;
       setTyped(prompt.slice(0, i));
       if (i >= prompt.length) clearInterval(id);
-    }, 16);
+    }, TYPE_SPEED_MS);
     return () => clearInterval(id);
   }, [prompt]);
 
@@ -592,7 +601,7 @@ function PromptLine({
       {prefix && <span className="text-blue-300/80 shrink-0">{prefix}</span>}
       <span className="text-white">
         {typed}
-        <span className="inline-block w-1.5 h-3.5 align-[-1px] bg-white/70 ml-0.5 animate-pulse" />
+        <span className="inline-block w-1.5 h-3.5 align-[-2.5px] bg-white/70 ml-0.5 animate-pulse" />
       </span>
     </div>
   );

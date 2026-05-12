@@ -1,11 +1,13 @@
-import { IconCopy, IconCopyCheck } from "@tabler/icons-react";
+import { IconCopy, IconCopyCheck, IconPlayerPlay } from "@tabler/icons-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { GrainGradient } from "@paper-design/shaders-react";
 import { GITHUB_LINK, INSTALL_SNIPPET } from "~/config";
+import { HowToUseModal } from "./how-to-use-modal";
 
 export function Hero() {
   const [isCopied, setCopied] = useState(false);
+  const [isHowToOpen, setHowToOpen] = useState(false);
 
   const handleCopy = async () => {
     if (isCopied) return;
@@ -47,36 +49,12 @@ export function Hero() {
           Suiperpower
         </h1>
         <p className="text-white/50 font-medium text-xl md:text-3xl mt-4 md:mt-5">
-          Build everthing on SUI as easy as prompt
+          Build everything on SUI as easy as prompt
         </p>
 
         <div className="mt-10 md:mt-12 w-full max-w-2xl flex flex-col gap-3 md:gap-4">
-          <div className="contents md:flex md:items-center md:justify-between md:gap-3">
-            <div className="font-medium bg-white rounded-xl text-black px-5 py-2 self-start text-sm md:text-base md:px-6">
-              Install
-            </div>
-            <div className="flex items-center order-3 md:order-none">
-              <div className="flex items-center gap-2 translate-x-2">
-                <img
-                  alt=""
-                  src="/assets/claude.webp"
-                  className="object-contain size-5 rounded-full"
-                />
-                <img
-                  alt=""
-                  src="/assets/cursor.webp"
-                  className="object-contain size-5 rounded-full -translate-x-1/2"
-                />
-                <img
-                  alt=""
-                  src="/assets/codex.webp"
-                  className="object-contain size-5 rounded-full -translate-x-full"
-                />
-              </div>
-              <p className="font-medium text-white/50 text-sm md:text-base">
-                50+ skills, CLIs and MCPs to use
-              </p>
-            </div>
+          <div className="font-medium bg-white rounded-xl text-black px-5 py-2 self-start text-sm md:text-base md:px-6">
+            Install
           </div>
 
           <button
@@ -114,6 +92,41 @@ export function Hero() {
               </AnimatePresence>
             </div>
           </button>
+
+          <div className="order-4 md:order-none flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-5">
+            <div className="flex flex-wrap items-center gap-5">
+              <button
+                onClick={() => setHowToOpen(true)}
+                className="inline-flex items-center gap-1.5 bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-md rounded-xl px-2.5 py-2 text-white/80 hover:text-white transition-colors font-medium text-sm"
+              >
+                <IconPlayerPlay className="size-4" />
+                How to use
+              </button>
+            </div>
+
+            <div className="flex items-center">
+              <div className="flex items-center gap-2 translate-x-2">
+                <img
+                  alt=""
+                  src="/assets/claude.webp"
+                  className="object-contain size-5 rounded-full"
+                />
+                <img
+                  alt=""
+                  src="/assets/cursor.webp"
+                  className="object-contain size-5 rounded-full -translate-x-1/2"
+                />
+                <img
+                  alt=""
+                  src="/assets/codex.webp"
+                  className="object-contain size-5 rounded-full -translate-x-full"
+                />
+              </div>
+              <p className="font-medium text-white/50 text-sm">
+                50+ skills, CLIs and MCPs to use
+              </p>
+            </div>
+          </div>
         </div>
       </div>
       <a
@@ -121,7 +134,7 @@ export function Hero() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub"
-        className="fixed top-6 right-4 md:top-10 md:right-10 opacity-50 hover:opacity-80"
+        className="absolute top-6 right-4 md:top-10 md:right-10 opacity-50 hover:opacity-80"
       >
         <img
           src="/assets/github-dark.svg"
@@ -129,6 +142,8 @@ export function Hero() {
           className="size-6 object-contain"
         />
       </a>
+
+      <HowToUseModal open={isHowToOpen} onClose={() => setHowToOpen(false)} />
     </div>
   );
 }

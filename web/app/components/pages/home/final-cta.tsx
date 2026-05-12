@@ -1,9 +1,11 @@
 import {
   IconArrowUpRight,
+  IconBrandGithub,
   IconCopy,
   IconCopyCheck,
 } from "@tabler/icons-react";
 import { useState } from "react";
+import { Link } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { GITHUB_LINK, INSTALL_SNIPPET } from "~/config";
 
@@ -80,12 +82,21 @@ export function FinalCTA() {
             </button>
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <a
-                href={`${GITHUB_LINK}/tree/main/skills`}
+              <Link
+                to="/skills"
                 className="group flex items-center gap-2 bg-white text-black hover:bg-white/90 transition-colors rounded-xl px-5 py-3 font-medium text-sm"
               >
-                Browse skills on GitHub
-                <IconArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                Explore skills
+                <IconArrowUpRight className="size-4" />
+              </Link>
+              <a
+                href={GITHUB_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white transition-colors rounded-xl border border-white/20 px-5 py-3 font-medium text-sm"
+              >
+                Contribute on GitHub
+                <IconBrandGithub className="size-4" />
               </a>
             </div>
           </div>
