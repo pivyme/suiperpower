@@ -67,7 +67,7 @@ export async function sponsorTx(req: { txKind: string; sender: string }) {
   tx.setSender(req.sender);
 
   // 3. Set gas
-  const sponsorGasCoins = await sui.getCoins({ owner: SPONSOR_ADDRESS });
+  const sponsorGasCoins = await sui.core.listCoins({ owner: SPONSOR_ADDRESS });
   tx.setGasOwner(SPONSOR_ADDRESS);
   tx.setGasPayment(
     sponsorGasCoins.data.slice(0, 1).map((c) => ({
@@ -96,10 +96,9 @@ const { txBytes, sponsorSig } = await callSponsorAPI(txKindBase64, userAddress);
 
 const userSig = await userSigner.signTransaction(fromB64(txBytes));
 
-const result = await sui.executeTransaction({
+const result = await sui.core.executeTransaction({
   transaction: txBytes,
   signatures: [sponsorSig, userSig.signature],
-  options: { showEffects: true },
 });
 
 console.log("digest:", result.digest);

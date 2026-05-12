@@ -105,7 +105,7 @@ Retain logs at least 30 days; for production with non-trivial sponsor budget, lo
 For high-stakes sponsoring, dry-run the tx before signing:
 
 ```ts
-const dryRun = await sui.dryRunTransactionBlock({ transactionBlock: txBytes });
+const dryRun = await sui.core.simulateTransaction({ transaction: txBytes });
 if (dryRun.effects.status.status !== "success") {
   throw new Error("dry run failed: " + dryRun.effects.status.error);
 }

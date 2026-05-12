@@ -103,7 +103,7 @@ The skill never deletes files outside the integration source path without explic
    - Either party submits with both signatures.
 
 6. **Other sponsorship models**
-   - Sui supports two additional patterns beyond user-initiated: sponsor-initiated (sponsor builds and proposes the tx, user reviews and signs) and GasData-object-based (pre-created gas objects the user can consume). See https://docs.sui.io/concepts/transactions/sponsored-transactions for details.
+   - Sui supports two additional patterns beyond user-proposed: sponsor-proposed (sponsor builds and proposes the tx, user reviews and signs) and GasData object-based (pre-created gas objects the user can consume). See https://docs.sui.io/concepts/transactions/sponsored-transactions for details.
 
 7. **Demo settlement**
    - Run a real sponsored tx on testnet. Verify both `sponsor` and `sender` are present in the on-chain tx with their addresses.
