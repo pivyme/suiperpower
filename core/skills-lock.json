@@ -1,7 +1,7 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-05-11T15:38:41.121Z",
-  "totalSkills": 48,
+  "generatedAt": "2026-05-12T04:22:10.432Z",
+  "totalSkills": 57,
   "skills": [
     {
       "id": "learn",
@@ -112,6 +112,28 @@
       ]
     },
     {
+      "id": "defillama-sui",
+      "phase": "idea",
+      "folderHash": "c90b8a99826e887bf68961e58d9ed7c09a7ab96bb1e8d0f82a5f19641149bcc5",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "fc708bc31b940425542aea19e5c95fe515ec1b038cffcac6dc20298a3513d631",
+          "size": 7457
+        },
+        {
+          "path": "agents/openai.yaml",
+          "sha256": "56bd35640f237eb23e587c7a9ad50a6a7dd4e6882af0049367063fe02f0c3702",
+          "size": 540
+        },
+        {
+          "path": "references/defillama-endpoints.md",
+          "sha256": "62213e9965d6a0ecb1c301f658026aaab60108fce95a5a3558ed037feb2ada0a",
+          "size": 5081
+        }
+      ]
+    },
+    {
       "id": "find-next-sui-idea",
       "phase": "idea",
       "folderHash": "a551f58ec91ca02a70470bf5deed177515e6ce16a765df247f9bad3c475e4527",
@@ -146,12 +168,12 @@
     {
       "id": "overflow-copilot",
       "phase": "idea",
-      "folderHash": "c74253ad1fe526d72e947c641b33f307e76c0696206de9f472306f75511080c5",
+      "folderHash": "cd4b31af9dda8f5ed1988ac363438d9ad412c5781f838bc88c356ef40a866ac2",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "d0c99612c526b977410683e0efafaf460ddcdec7a9cf17661563c821908c3687",
-          "size": 6171
+          "sha256": "5163b5d92e789aa242d99d3e90bc60cdf89a85ff0584ec4d8078c742cc4bc87e",
+          "size": 6554
         },
         {
           "path": "agents/openai.yaml",
@@ -162,6 +184,11 @@
           "path": "references/archive-search-patterns.md",
           "sha256": "11ddf060676ff02ea5389026701fe371ff1bdff6247bdcdb543092c0c993c919",
           "size": 3143
+        },
+        {
+          "path": "references/overflow-2025-winners.md",
+          "sha256": "30918145ad815a0d7775449ada649fba42cdcb22422160b26e01f9b664f5a380",
+          "size": 3561
         },
         {
           "path": "references/post-overflow-tracking.md",
@@ -284,6 +311,33 @@
       ]
     },
     {
+      "id": "build-data-pipeline",
+      "phase": "build",
+      "folderHash": "0661b14ffdc550d02dab57e4197ae6a3dc2fffc41997342a1427157e022e28b6",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "7540ffd276e0c943b3d264a4367eb786a0b6a3c3d0c8a9cdc1ea060d2810b95f",
+          "size": 9052
+        },
+        {
+          "path": "agents/openai.yaml",
+          "sha256": "d7c2052a14cbe208a8ec037c230f71c487eea744ddfcf472bb27af9c95a33aa0",
+          "size": 602
+        },
+        {
+          "path": "references/data-access-methods.md",
+          "sha256": "a77036f470138ec4ab6cc9818ea448b249a4e356ed9237fd3ca2dcc8f6c4352e",
+          "size": 5834
+        },
+        {
+          "path": "references/data-pipeline-pitfalls.md",
+          "sha256": "2d490fc654e4933d4a156f60a488b86597507f817a9d26b611b15b36c874689b",
+          "size": 2766
+        }
+      ]
+    },
+    {
       "id": "build-mobile-sui",
       "phase": "build",
       "folderHash": "db9ad171db9c8f9ad51622dadea080987693b7b35ca4e2850941a109103f7bfa",
@@ -370,6 +424,55 @@
       ]
     },
     {
+      "id": "cetus-swap",
+      "phase": "build",
+      "folderHash": "398e35cfe07ce30477da12bf55245dab6994a47c6762087449ed94099add48ef",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "2464b81579ac7e18b58a4be8cb708a2012364d445ee280ff5a03f80044528179",
+          "size": 8181
+        },
+        {
+          "path": "agents/openai.yaml",
+          "sha256": "9d16af14d79ad90b80050eb46891891e79628e9cf32398e55be28a00c8da445b",
+          "size": 466
+        },
+        {
+          "path": "references/cetus-quickstart.md",
+          "sha256": "486ee73203fac1b458059a6a136c92964992ef67923f8a5b643bccea2986353c",
+          "size": 6423
+        }
+      ]
+    },
+    {
+      "id": "cso",
+      "phase": "build",
+      "folderHash": "a78d2b01b8f04542c2f1bfa15d666dada50b966e8bb2a02e3ca8e5ee4eb4d6aa",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "be8b5dbd41b6a348c4481f3b7afa211c3950f9daea5a42f996dcbd2ef096e3ba",
+          "size": 9952
+        },
+        {
+          "path": "agents/openai.yaml",
+          "sha256": "c1ed9a4e42cdecc4ae7634c6bf6f98e88d71370ebff429823024ebf6b3936e41",
+          "size": 674
+        },
+        {
+          "path": "references/security-checklist.md",
+          "sha256": "fdfc5ff5dc963266a3c8810e38a1241643c60f48bd739ea8964673fb35d17b37",
+          "size": 6220
+        },
+        {
+          "path": "references/supply-chain-audit.md",
+          "sha256": "7ff18a46fbd08e57ae6dd2529c3c1c85348cfbe9ca18f53c85f38c5fef276590",
+          "size": 3246
+        }
+      ]
+    },
+    {
       "id": "debug-move",
       "phase": "build",
       "folderHash": "d2bb0cecd4e1eca381e45c63444612493b113c5bd697486082aeead6d719d446",
@@ -404,12 +507,12 @@
     {
       "id": "deepbook-orderbook",
       "phase": "build",
-      "folderHash": "2da50acb719177da7c3738c5dbd108e8f0b18673d58815967b92203f5e7fc53e",
+      "folderHash": "1b9f0e86ae54e5ee37c772e316be8b34307c96ef9f518c89268b3d794915f8df",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "7c828f9ed0fb5089078fc60c1cbb91ec8d2e309c31c14e16df485bf1bbec6606",
-          "size": 6998
+          "sha256": "a04c06533677d5dad5450598833b3d8c9a6b2360849be5ebf6c2592d083693a4",
+          "size": 7703
         },
         {
           "path": "agents/openai.yaml",
@@ -418,8 +521,8 @@
         },
         {
           "path": "references/balancemanager-setup.md",
-          "sha256": "c106288803d70a8635b433f2b5d1a2829532c988ad12573536508eb1e7094ffc",
-          "size": 3272
+          "sha256": "47f221c8db0fe931d3ce23fcd87776d046dd6f017053e5695839073c60a29288",
+          "size": 3330
         },
         {
           "path": "references/deepbook-pitfalls.md",
@@ -428,8 +531,8 @@
         },
         {
           "path": "references/deepbook-quickstart.md",
-          "sha256": "6b1c541acaf0584c9634244df20af68d14f5ca169f225ed32fd89303315a21cf",
-          "size": 3838
+          "sha256": "5d47d86136354468c92d44e8a8efa819e2a7ae28226dc55e1191a9da6a45ede0",
+          "size": 3783
         }
       ]
     },
@@ -462,6 +565,33 @@
           "path": "references/the-one-move.md",
           "sha256": "0b1c06944afd6415b4fe517260e115ece4a3deb8e3ff5263a66586951ce7337a",
           "size": 3362
+        }
+      ]
+    },
+    {
+      "id": "eve-frontier",
+      "phase": "build",
+      "folderHash": "f936058d257d1ececb6b174cc7022db4cb65275c4e5ba8055d71f8ad29725a59",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "c13ca21b78dad744cc078713d25874d7be510c8352c782f80820bad1f64ededf",
+          "size": 8406
+        },
+        {
+          "path": "agents/openai.yaml",
+          "sha256": "9df555e4ef788073b79e1cf7c75a23d344db4fbd070c1fdf78b235feffa805bc",
+          "size": 592
+        },
+        {
+          "path": "references/eve-assembly-types.md",
+          "sha256": "80beff003e82cd7d035d3e644bc31bea58aa8707c78fc168162e399351bf8394",
+          "size": 4128
+        },
+        {
+          "path": "references/eve-quickstart.md",
+          "sha256": "6ccf6e95c9d2cae05afdbfa1205a50eb8deeb184eecec904acfddf56bffcb276",
+          "size": 3411
         }
       ]
     },
@@ -553,6 +683,55 @@
           "path": "references/tokenomics-decisions.md",
           "sha256": "b9abb03d6f8b7fcd066ec1026b7956597d5c0a32d4168fbc72efff8c53f5627a",
           "size": 4539
+        }
+      ]
+    },
+    {
+      "id": "nautilus-offchain",
+      "phase": "build",
+      "folderHash": "c21a3d02579b621427058b70d475ce36b51746a6e1bfae5d50b21916cbe3a8cf",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "e5ef2191730e887039e41d56098fff89a5cdace905a02562a54966dbf4ba2d7d",
+          "size": 8681
+        },
+        {
+          "path": "agents/openai.yaml",
+          "sha256": "4799b39260aa95001b95fbf974aea22aa17e506917aaaf075bb4bdf2d9280b1c",
+          "size": 556
+        },
+        {
+          "path": "references/nautilus-architecture.md",
+          "sha256": "29baefdf32e502f3fe745a6a573f21ab043407395f5d76ab609e111110494e9f",
+          "size": 5603
+        },
+        {
+          "path": "references/nautilus-pitfalls.md",
+          "sha256": "df4388e51447ee852ef1a7c0046ab8a276e16e19765a986375ddc080dc10003e",
+          "size": 3376
+        }
+      ]
+    },
+    {
+      "id": "navi-lending",
+      "phase": "build",
+      "folderHash": "250f2bbef34b174eb8a3786538d1186bd235f7e47e4538920069251ba3f67062",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "5a2212e29e97d2ec834139849440059052d7997399d19f017116b22312e705c5",
+          "size": 8153
+        },
+        {
+          "path": "agents/openai.yaml",
+          "sha256": "dc3bb3c634f676be8776cf07dec26e820512e6b5533405407657cf66064a500f",
+          "size": 474
+        },
+        {
+          "path": "references/navi-quickstart.md",
+          "sha256": "6386294d6d30ca51e540e9f962d22c4aee84a1b3cf679950b745c7291a434268",
+          "size": 7893
         }
       ]
     },
@@ -795,7 +974,7 @@
     {
       "id": "pyth-oracle",
       "phase": "build",
-      "folderHash": "8af58761355d607fc22b19237e775db714acb0bd09a7c18ae3bfed3b77a6ebc9",
+      "folderHash": "73b4a2357ab261d499072b06946bf51e933690ecbb589e44b70ae7066d7566d2",
       "files": [
         {
           "path": "SKILL.md",
@@ -804,8 +983,8 @@
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "39200d0ad7b3497379d72f77c435e1b215fcaede38b78e95e71739065b461b9f",
-          "size": 558
+          "sha256": "3386bfc123e182cb31078c9ca10601733cdeead620cd6c8d9bbfea36c94f5b77",
+          "size": 549
         },
         {
           "path": "references/pyth-move-api.md",
@@ -913,12 +1092,12 @@
     {
       "id": "scaffold-project",
       "phase": "build",
-      "folderHash": "6a6fc72832b1f1fe8c54c16cffd60a74f9dc8cb60a81e9ce2b1d32046c28e94b",
+      "folderHash": "77cd47afad8fac2fc6b9de0f7890e125f58fde4bdf7be37b3d4bd75c1782d8f9",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "51e4f353e6b706596404fa78c46e96d892149c91b3773c2df69e8cd89b6732ba",
-          "size": 6620
+          "sha256": "bdf477541f46ddcd54c956b2c7ea8a5ab71a4465602255b24e8f903cf57be509",
+          "size": 6742
         },
         {
           "path": "agents/openai.yaml",
@@ -940,12 +1119,12 @@
     {
       "id": "scallop-money-market",
       "phase": "build",
-      "folderHash": "e987e4f4c3dc4b17eb1e79e248500614703358cebad609d8ba5074d53cf58eaf",
+      "folderHash": "10deb1d6678c6f971128c91c8335b7bb0e7ee6071fcc134a4fc02c3f6b6ff0fa",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "1db14eba0223a6ad06f834175edca01a3bada01a8231352beff2f13476fe1eec",
-          "size": 7599
+          "sha256": "d79727203533d3bb13669661a309a5ba21167dab473386484e4cbf09c32bb768",
+          "size": 7732
         },
         {
           "path": "agents/openai.yaml",
@@ -964,8 +1143,8 @@
         },
         {
           "path": "references/scallop-risk.md",
-          "sha256": "9ea8798b7ba2ba7041df04f9a1e3f55c5da56f8486d93f3286a298385cf18486",
-          "size": 3874
+          "sha256": "8cedd592bc30eda62fd1ba1bfba9c560478c3671ad7d37c37ebfa0314d2b4e17",
+          "size": 4155
         }
       ]
     },
@@ -1036,12 +1215,12 @@
     {
       "id": "sui-zk-login",
       "phase": "build",
-      "folderHash": "a5cadfbaefaebf627ddc9ed0984d3aeb08cf36eae47cbf1bf91900a289a365f4",
+      "folderHash": "508206d2cf24f8b6f3e3a1a459febaf1238a0c79b225906ac77bdf88337b8bdc",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "507fbab279d7becc8594d14b34552623aa19ebb0cb35f21f40cb8f7313669040",
-          "size": 7795
+          "sha256": "5b2450f70e036c0938299a533e72251c2d2695a09296dba5fe612910915b34ff",
+          "size": 8599
         },
         {
           "path": "agents/openai.yaml",
@@ -1050,8 +1229,8 @@
         },
         {
           "path": "references/zklogin-flow.md",
-          "sha256": "cf875689103829704d77023761b84e074fe87421c855c278965c7c6e60c1bc5e",
-          "size": 4569
+          "sha256": "211632099680f94e176d6ad69e8797f4b15daa2ea4ca2b5609637e7241f18205",
+          "size": 4579
         },
         {
           "path": "references/zklogin-pitfalls.md",
@@ -1062,6 +1241,33 @@
           "path": "references/zklogin-salt.md",
           "sha256": "b6d587dc8bc99130a33548e58b9c7177310e01c59e068cf7b1e3575ea003dc39",
           "size": 3806
+        }
+      ]
+    },
+    {
+      "id": "suins-integration",
+      "phase": "build",
+      "folderHash": "ec22d3b73e7c960c178d4df620515267cfec622883a9f5f348ad1e96674cd7df",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "a0ae67c1e40861f81ce3d6b3def2326404f8827405060c51acc5d58116739a61",
+          "size": 8415
+        },
+        {
+          "path": "agents/openai.yaml",
+          "sha256": "ff44df843586ce01be6d70e8b167db4290c2e6effd163847be83892105a6b4b7",
+          "size": 565
+        },
+        {
+          "path": "references/suins-pitfalls.md",
+          "sha256": "db871eb56d861375608176fc60832c6d3e508456d1d2dd949467eeb9450b0028",
+          "size": 2113
+        },
+        {
+          "path": "references/suins-quickstart.md",
+          "sha256": "9c6856ced710a1f3e37b0692037f68067940befb48d2f070f72de51113de6161",
+          "size": 5669
         }
       ]
     },
@@ -1120,14 +1326,41 @@
       ]
     },
     {
-      "id": "walrus-storage",
+      "id": "walrus-sites",
       "phase": "build",
-      "folderHash": "3c4f0d375968ca194d22cfee920b4c0af7a734e1743a16d21f1fe005a2670ef7",
+      "folderHash": "1edcee3175cbc606ee0c229679ab859271f7c70c1fdce006747e890f6a2d0577",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "c2de9d404835d171a0fc39073b04171d25121d1feace325a76a63bacd79ff86c",
-          "size": 7678
+          "sha256": "9c8a7577ce5cd89970c08c6bef11e662ef6ebf9aa08b64a8ac2cdd3497c38dc1",
+          "size": 7977
+        },
+        {
+          "path": "agents/openai.yaml",
+          "sha256": "df43ca4fe1fe2ead4890553fb7bd9b793c04bf6eb186bde48de184bb6df1a164",
+          "size": 580
+        },
+        {
+          "path": "references/walrus-sites-pitfalls.md",
+          "sha256": "b81d1f860ac50373d60caa301ad33a8cc642c1c6acf2c19800dd1b416a3b2ac9",
+          "size": 2453
+        },
+        {
+          "path": "references/walrus-sites-quickstart.md",
+          "sha256": "5fcb619a0bd4f5d530476270745b8ca1f745e4cacb6a394ca9fdf528a7c7b4ea",
+          "size": 3246
+        }
+      ]
+    },
+    {
+      "id": "walrus-storage",
+      "phase": "build",
+      "folderHash": "4e1c3e390b37bc10fc37cf5ee280abc749b4aa84707e2fedf9628f336656cf3d",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "a922f6360e17f4fd90c0b731d9cd9aae865a6af0577d9bf3659471601d45ced3",
+          "size": 8615
         },
         {
           "path": "agents/openai.yaml",
@@ -1136,8 +1369,8 @@
         },
         {
           "path": "references/seal-encryption.md",
-          "sha256": "a2a5e48d4e4e39ede67f5031253244e3156cfc22bf2fae111f878ff053d58906",
-          "size": 3432
+          "sha256": "9bc226b58b8929ace780921340191fd8fd47c3e7a768fa81e52209f7d2d366ac",
+          "size": 4038
         },
         {
           "path": "references/walrus-move-commit.md",
@@ -1146,13 +1379,13 @@
         },
         {
           "path": "references/walrus-pitfalls.md",
-          "sha256": "f88983c5748c50508dd620cc90df27580399e4d9fe6e99e61eb3375556649616",
-          "size": 3188
+          "sha256": "54013d8227c5b3fd84945840358d780403da268aea8be56db46a96ad74ed3ee5",
+          "size": 3249
         },
         {
           "path": "references/walrus-quickstart.md",
-          "sha256": "65c205fd77d5576a8dd3196d80170072c129a6502b1d3f80d023ee33176f8d26",
-          "size": 5639
+          "sha256": "27ee73bbb8c57ff9eeb0b1c7a2626e6726cd348fbaa7a6e6770d9d961c77c721",
+          "size": 5829
         }
       ]
     },
@@ -1321,7 +1554,7 @@
     {
       "id": "pick-my-sui-track",
       "phase": "ship",
-      "folderHash": "d95cf422040a495ccb2a03f297b39eaac87c8d7f00b8df5db4dc7aa07447e318",
+      "folderHash": "9a48bd4797213137c4f2e4fc7812d3444269674f22bc2f8589ee253189bb3063",
       "files": [
         {
           "path": "SKILL.md",
@@ -1330,8 +1563,8 @@
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "a81e4f60dbe91ea6b03d3f739c063708bf93f1ebbbf8e1481805a9929d8a0a17",
-          "size": 616
+          "sha256": "ebdbaa4d152120abd715165c9e6e5123ae124545d4135626a52497f96b494d8e",
+          "size": 750
         },
         {
           "path": "references/load-bearing-tests.md",
