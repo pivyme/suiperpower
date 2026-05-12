@@ -90,6 +90,7 @@ If you are an AI agent picking up work, **read this file first**. Every other do
 | File | Purpose |
 |---|---|
 | [17-LAUNCH-PLAN.md](17-LAUNCH-PLAN.md) | T-4w to T+12w plan, sponsor outreach, launch day |
+| [31-LAUNCH-VIDEO-CONCEPT.md](31-LAUNCH-VIDEO-CONCEPT.md) | 28 s Remotion motion-graphic spot, locked storyboard + build order |
 | [20-CONTRIBUTING-PLAN.md](20-CONTRIBUTING-PLAN.md) | PR shapes, supply-chain rules, reviewer checklists, code of conduct |
 | [21-TESTING-STRATEGY.md](21-TESTING-STRATEGY.md) | Six test layers, CI matrix, multi-agent install testing |
 | [27-GOVERNANCE-AND-SUSTAINABILITY.md](27-GOVERNANCE-AND-SUSTAINABILITY.md) | Maintainer model, decisions, conflict of interest, RFC process |

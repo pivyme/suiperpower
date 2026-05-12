@@ -91,6 +91,10 @@ If unclear, interview the user for:
 6. **Handoff note**
    - Next slice intent, blockers, open questions.
 
+7. **Closing handoff**
+   - If `.suiperpower/intent.md` exists and the slice was non-trivial (new module, new sponsor integration, or material changes to public functions or PTB shapes), recommend `verify-against-intent` as the next step so drift is caught before the next slice or shipping.
+   - If no `intent.md` exists and the slice was non-trivial, surface that gap once: offer `clarify-intent` to backfill, do not force it.
+
 ## Quality gate (anti-slop)
 
 Before reporting the slice done, the skill asks itself the following and refuses to declare success if any answer is no:

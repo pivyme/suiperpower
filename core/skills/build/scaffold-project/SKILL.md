@@ -115,6 +115,10 @@ The skill never deletes files outside the scaffolded directory without explicit 
    - Recommend `object-model-design` next if the project has non-trivial state.
    - Recommend `build-with-move` for direct Move authoring.
 
+9. **Closing handoff**
+   - If `.suiperpower/intent.md` exists and the scaffold was non-trivial (new sponsor integration wired in, multi-package layout, custom upgrade authority), recommend `verify-against-intent` as the next step so the generated tree is checked against recorded intent before code lands on top.
+   - If no `intent.md` exists and the scaffold was non-trivial, surface that gap once: offer `clarify-intent` to backfill, do not force it.
+
 ## Quality gate (anti-slop)
 
 Before reporting done, the skill asks itself the following and refuses to declare success if any answer is no:
