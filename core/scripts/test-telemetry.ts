@@ -8,10 +8,7 @@
 
 import { platform, arch } from "node:os";
 
-const URL_CANDIDATES = [
-  process.env.SUIPERPOWER_CONVEX_URL,
-  process.env.NEXT_PUBLIC_CONVEX_URL,
-];
+const URL_CANDIDATES = [process.env.SUIPERPOWER_CONVEX_URL, process.env.NEXT_PUBLIC_CONVEX_URL];
 const CONVEX_URL = URL_CANDIDATES.find((u) => u && u.startsWith("http"));
 
 if (!CONVEX_URL) {
@@ -79,9 +76,7 @@ async function main(): Promise<void> {
     await send(ev);
   }
   console.log("");
-  const dashHost = CONVEX_URL!
-    .replace("https://", "")
-    .replace(".convex.cloud", "");
+  const dashHost = CONVEX_URL!.replace("https://", "").replace(".convex.cloud", "");
   console.log(`  Dashboard: https://dashboard.convex.dev/d/${dashHost}/data?table=telemetry`);
   console.log("");
 }

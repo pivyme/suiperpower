@@ -91,7 +91,9 @@ function checkVersionSync(): void {
     const idx = readJson<any>(join(WEB_PUBLIC, "skills", "index.json"));
     for (const s of idx.skills ?? []) {
       if (s.version !== pkg.version) {
-        throw new Error(`web/public/skills/index.json entry ${s.id} version ${s.version} != package.json ${pkg.version}`);
+        throw new Error(
+          `web/public/skills/index.json entry ${s.id} version ${s.version} != package.json ${pkg.version}`,
+        );
       }
     }
   }
@@ -146,7 +148,12 @@ function checkPackTarball(): void {
   const parsed = JSON.parse(out);
   const entry = Array.isArray(parsed) ? parsed[0] : parsed;
   const filenames: string[] = (entry?.files ?? []).map((f: any) => f.path);
-  const need = ["dist/cli/index.js", "skills/build/build-with-move/SKILL.md", "cli/data/sui-skills.json", "install.sh"];
+  const need = [
+    "dist/cli/index.js",
+    "skills/build/build-with-move/SKILL.md",
+    "cli/data/sui-skills.json",
+    "install.sh",
+  ];
   for (const f of need) {
     if (!filenames.includes(f)) {
       throw new Error(`npm pack tarball missing required file: ${f}`);

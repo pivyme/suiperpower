@@ -9,43 +9,83 @@ import { printBanner } from "./banner.js";
 
 const OPTIONS: { item: PickItem; command: string }[] = [
   {
-    item: { id: "find-idea", label: "Find an idea to build", hint: "discover and rank Sui-fit ideas" },
+    item: {
+      id: "find-idea",
+      label: "Find an idea to build",
+      hint: "discover and rank Sui-fit ideas",
+    },
     command: '"/find-next-sui-idea what should I build for Sui Overflow?"',
   },
   {
-    item: { id: "scaffold", label: "Scaffold a project", hint: "lay down a starter that fits your idea" },
+    item: {
+      id: "scaffold",
+      label: "Scaffold a project",
+      hint: "lay down a starter that fits your idea",
+    },
     command: '"/scaffold-project set up my workspace"',
   },
   {
-    item: { id: "build", label: "Build with Claude / Codex / Cursor", hint: "guided pair-programming through the MVP" },
+    item: {
+      id: "build",
+      label: "Build with Claude / Codex / Cursor",
+      hint: "guided pair-programming through the MVP",
+    },
     command: '"/build-with-claude help me build the MVP"',
   },
   {
-    item: { id: "review-move", label: "Review my Move package", hint: "P0-P3 walk and OZ migration suggestions" },
+    item: {
+      id: "review-move",
+      label: "Review my Move package",
+      hint: "P0-P3 walk and OZ migration suggestions",
+    },
     command: '"/review-move check my Move package for security issues"',
   },
   {
-    item: { id: "deploy", label: "Deploy to testnet or mainnet", hint: "preflight gate, captures package id" },
+    item: {
+      id: "deploy",
+      label: "Deploy to testnet or mainnet",
+      hint: "preflight gate, captures package id",
+    },
     command: '"/deploy-to-testnet ship it"',
   },
   {
-    item: { id: "submit", label: "Submit to Sui Overflow 2026", hint: "deepsurge fill, preflight gate, captures submission-context" },
+    item: {
+      id: "submit",
+      label: "Submit to Sui Overflow 2026",
+      hint: "deepsurge fill, preflight gate, captures submission-context",
+    },
     command: '"/submit-to-sui-overflow prepare my submission"',
   },
   {
-    item: { id: "browse", label: "Browse the catalog", hint: "repos, MCPs, ecosystem skills, ideas" },
+    item: {
+      id: "browse",
+      label: "Browse the catalog",
+      hint: "repos, MCPs, ecosystem skills, ideas",
+    },
     command: `${BRAND.PRODUCT_NAME} search`,
   },
   {
-    item: { id: "doctor", label: "Run health check", hint: "node, agents, Sui CLI, skills, catalog" },
+    item: {
+      id: "doctor",
+      label: "Run health check",
+      hint: "node, agents, Sui CLI, skills, catalog",
+    },
     command: `${BRAND.PRODUCT_NAME} doctor`,
   },
   {
-    item: { id: "update", label: `Update ${BRAND.PRODUCT_NAME}`, hint: "pull latest skills and CLI" },
+    item: {
+      id: "update",
+      label: `Update ${BRAND.PRODUCT_NAME}`,
+      hint: "pull latest skills and CLI",
+    },
     command: `${BRAND.PRODUCT_NAME} update`,
   },
   {
-    item: { id: "uninstall", label: `Uninstall ${BRAND.PRODUCT_NAME}`, hint: "remove tracked files after confirmation" },
+    item: {
+      id: "uninstall",
+      label: `Uninstall ${BRAND.PRODUCT_NAME}`,
+      hint: "remove tracked files after confirmation",
+    },
     command: `${BRAND.PRODUCT_NAME} uninstall`,
   },
 ];

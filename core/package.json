@@ -29,7 +29,7 @@
     "setup": "./setup",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "preamble:check": "tsx scripts/inject-preamble.ts --check",
-    "package:skills": "./scripts/package-skills.sh && tsx scripts/generate-skills-index.ts",
+    "package:skills": "./scripts/package-skills.sh && node scripts/generate-skills-index.mjs",
     "skills:watch": "tsx scripts/watch-skills.ts",
     "lint:skills": "tsx scripts/lint-skills.ts",
     "lint:catalog": "tsx scripts/lint-catalog.ts",

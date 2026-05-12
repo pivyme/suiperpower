@@ -98,7 +98,7 @@ pnpm -F @suiperpower/convex convex:deploy   # Convex deploy to prod
 
 ### Skills artifact pipeline (keep this in sync, easy to forget)
 
-The website consumes generated artifacts at `web/public/skills/*.tar.gz`, `web/public/skills/index.json`, and a checked-in mirror at `web/app/data/skills-index.json`. They are all written by `pnpm package:skills` (which runs `core/scripts/package-skills.sh` then `core/scripts/generate-skills-index.ts`).
+The website consumes generated artifacts at `web/public/skills/*.tar.gz`, `web/public/skills/index.json`, and a checked-in mirror at `web/app/data/skills-index.json`. They are all written by `pnpm package:skills` (which runs `core/scripts/package-skills.sh` then `core/scripts/generate-skills-index.mjs`).
 
 Two automatic safety nets so you do not ship a stale `/skills` page:
 

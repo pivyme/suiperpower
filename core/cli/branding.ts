@@ -17,7 +17,7 @@ export const BRAND = {
   NPM_PKG: "suiperpower",
   CONFIG_DIR: ".suiperpower",
 
-  CONVEX_URL_DEFAULT: "<convex-url-placeholder>",
+  CONVEX_URL_DEFAULT: "https://efficient-squirrel-907.convex.cloud",
 
   TELEGRAM_URL: "https://go.sui.io/suioverflow2026-tg",
   HACKATHON_URL: "https://overflow.sui.io",

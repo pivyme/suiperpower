@@ -94,10 +94,18 @@ export async function run(args: string[]): Promise<void> {
 
   // Empty placeholders for the four context files. Skills create them on first write,
   // but laying down a stub helps users see the shape immediately.
-  for (const name of ["idea-context.md", "build-context.md", "deploy-context.md", "submission-context.md"]) {
+  for (const name of [
+    "idea-context.md",
+    "build-context.md",
+    "deploy-context.md",
+    "submission-context.md",
+  ]) {
     const p = join(dir, name);
     if (!existsSync(p)) {
-      writeFileSync(p, `# ${name}\n\nWritten by ${BRAND.PRODUCT_NAME} skills as you move through the journey.\n`);
+      writeFileSync(
+        p,
+        `# ${name}\n\nWritten by ${BRAND.PRODUCT_NAME} skills as you move through the journey.\n`,
+      );
       wrote.push(p);
     } else {
       existed.push(p);

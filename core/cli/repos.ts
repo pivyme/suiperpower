@@ -92,7 +92,9 @@ export async function run(args: string[]): Promise<void> {
   }
 
   console.log("");
-  console.log(`  ${bold(`${BRAND.PRODUCT_NAME} repos`)} ${muted(`${filtered.length}/${all.length}`)}`);
+  console.log(
+    `  ${bold(`${BRAND.PRODUCT_NAME} repos`)} ${muted(`${filtered.length}/${all.length}`)}`,
+  );
   if (category) console.log(`  ${muted("category:")} ${category}`);
   if (query) console.log(`  ${muted("query:")} ${query}`);
   console.log("");

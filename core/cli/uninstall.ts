@@ -96,7 +96,10 @@ export async function run(args: string[]): Promise<void> {
 
   if (!manifest) {
     if (agent) console.log("no manifest found");
-    else console.log(`  ${warn("no manifest found")} ${dim(`(expected at ~/${BRAND.CONFIG_DIR}/skills-installed.json)`)}`);
+    else
+      console.log(
+        `  ${warn("no manifest found")} ${dim(`(expected at ~/${BRAND.CONFIG_DIR}/skills-installed.json)`)}`,
+      );
     return;
   }
 
