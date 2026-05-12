@@ -1,87 +1,119 @@
-# Welcome to React Router!
+# @suiperpower/web
 
-A modern, production-ready template for building full-stack React applications using React Router.
+Marketing site and skills catalog for Suiperpower. Live at [suiperpower.dev](https://suiperpower.dev).
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+This package is one of three in the monorepo. The CLI lives in [`core/`](../core), the telemetry backend in [`convex/`](../convex). For project-wide context read the root [README.md](../README.md) and [CLAUDE.md](../CLAUDE.md).
 
-## Features
+## Stack
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- React Router v7 (Remix successor) with SSR + prerender
+- Vite 8
+- Tailwind CSS v4
+- TypeScript strict, ESM, NodeNext
+- Node.js 20+
+- Containerized via `Dockerfile`, deployed on Vercel
 
-## Getting Started
+## Routes
 
-### Installation
+| Path | File | What it is |
+|---|---|---|
+| `/` | `app/routes/home.tsx` | Landing page, install one-liner, skill index, team |
+| `/skills` | `app/routes/skills.tsx` | Browsable catalog with per-skill detail and tarball downloads |
 
-Install the dependencies:
+## Local development
 
-```bash
-npm install
-```
-
-### Development
-
-Start the development server with HMR:
+Run everything from the repo root. The `web` scripts proxy to the workspace.
 
 ```bash
-npm run dev
+pnpm install
+pnpm web:dev      # http://localhost:5173
 ```
 
-Your application will be available at `http://localhost:5173`.
+`pnpm web:dev` runs `predev` first, which invokes `pnpm -F suiperpower package:skills`. That rebuilds the tarballs under `public/skills/` and the index JSONs the site loads at runtime. You get fresh artifacts every boot without thinking about it.
 
-## Building for Production
-
-Create a production build:
+If you are editing skills under `core/skills/` while the dev server is running, open a second terminal:
 
 ```bash
-npm run build
+pnpm skills:watch   # rebuilds artifacts on every save, debounced 400ms
 ```
 
-## Deployment
+The dev server picks up regenerated tarballs and indexes without a restart.
 
-### Docker Deployment
-
-To build and run using Docker:
+## Build
 
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+pnpm web:build      # runs prebuild (package:skills), then react-router build
+pnpm -F @suiperpower/web start   # serve the built output locally
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+Output lands in `web/build/`:
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+```text
+build/
+├── client/    # static assets (hashed)
+└── server/    # SSR bundle
 ```
 
-## Styling
+## Skills artifact pipeline
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+The site reads three sets of artifacts that are generated, not authored:
 
----
+```text
+web/public/skills/*.tar.gz       # one per skill, served as downloads
+web/public/skills/index.json     # public manifest fetched at runtime
+web/app/data/skills-index.json   # checked-in mirror for SSR / build-time use
+```
 
-Built with ❤️ using React Router.
+All three are written by `pnpm package:skills` (which calls `core/scripts/package-skills.sh` and `core/scripts/generate-skills-index.ts`). The `predev` and `prebuild` hooks in this package's `package.json` run that command automatically, so Vercel deploys and local boots always get fresh data.
+
+Do not commit stale tarballs or indexes. If a skill is missing from the live site, run `pnpm package:skills` once and reload. CI does not currently regenerate.
+
+## Typecheck
+
+```bash
+pnpm -F @suiperpower/web typecheck
+```
+
+Runs `react-router typegen` to refresh route types, then `tsc`.
+
+## Docker
+
+```bash
+docker build -t suiperpower-web .
+docker run -p 3000:3000 suiperpower-web
+```
+
+Targets any container platform (Vercel, Fly.io, Cloud Run, Railway, etc.).
+
+## Project layout
+
+```text
+web/
+├── app/
+│   ├── components/    # UI primitives + sections
+│   ├── data/          # checked-in mirror of skills-index.json
+│   ├── routes/        # React Router v7 file routes
+│   ├── app.css        # Tailwind entry
+│   ├── config.ts      # public site config (URLs, brand)
+│   ├── root.tsx       # root layout + meta
+│   └── routes.ts      # route manifest
+├── public/            # static assets, including generated skills/*.tar.gz
+├── Dockerfile
+├── react-router.config.ts
+├── vite.config.ts
+└── tsconfig.json
+```
+
+## Conventions
+
+Follow the project-wide rules in [CLAUDE.md](../CLAUDE.md):
+
+- No em-dashes, commas or periods instead.
+- No emojis in product copy unless the user explicitly asked for them.
+- Capitalize Sui-specific terms (Move, Object, PTB, Walrus, DeepBook, Scallop, Kiosk, zkLogin).
+- Senior-friend voice. No "leverage", "cutting-edge", "world-class", "AI-powered", "Web3".
+- Strict TypeScript, no implicit any.
+
+## License
+
+[MIT](../LICENSE)
