@@ -57,12 +57,13 @@ client.deepbook.balanceManager.withdrawFromManager(
   "MANAGER_1",
   "DBUSDC",     // on testnet, use DBUSDC (not USDC)
   50,
+  recipientAddr, // address that receives the withdrawn coins
 )(tx);
 
 await client.core.signAndExecuteTransaction({ transaction: tx, signer });
 ```
 
-Withdraws move funds back to the wallet's spot balance. Open orders that need the withdrawn balance reject when matched.
+Withdraws funds to the specified recipient address. Open orders that need the withdrawn balance reject when matched.
 
 ## Check balance
 

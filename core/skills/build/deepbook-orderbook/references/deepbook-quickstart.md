@@ -20,7 +20,7 @@ import { Transaction } from "@mysten/sui/transactions";
 const suiClient = new SuiGrpcClient({ network: "testnet" });
 
 const client = suiClient.$extend(
-  deepbook({ address: userAddr, env: "testnet" }),
+  deepbook({ address: userAddr }),
 );
 ```
 
@@ -59,11 +59,11 @@ Note: `balanceManagerKey` is a string key (e.g. `"MANAGER_1"`) registered with t
 ```ts
 const tx = new Transaction();
 
-client.deepbook.deepBook.cancelOrder({
-  poolKey: "SUI_DBUSDC",
-  balanceManagerKey: "MANAGER_1",
-  orderId: openOrderId,
-})(tx);
+client.deepbook.deepBook.cancelOrder(
+  "SUI_DBUSDC",
+  "MANAGER_1",
+  openOrderId,
+)(tx);
 
 await client.core.signAndExecuteTransaction({ transaction: tx, signer });
 ```
