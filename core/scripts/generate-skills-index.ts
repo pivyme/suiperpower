@@ -23,6 +23,10 @@ const PUBLISHER = "suiperpower";
 const PUBLISHER_URL = "https://suiperpower.dev";
 const TARBALL_BASE = "https://suiperpower.dev/skills";
 const GH_REPO = "pivyme/suiperpower";
+// Vercel's `skills` CLI takes either `owner/repo` shorthand (whole repo) or a
+// full GitHub tree URL pointing at a subdirectory. To install a single skill
+// we need the full URL form. See https://github.com/vercel-labs/skills.
+const GH_TREE_BASE = `https://github.com/${GH_REPO}/tree/main/core/skills`;
 
 type Phase = (typeof PHASES)[number];
 
@@ -126,8 +130,8 @@ function main(): void {
       phase: skill.phase,
       description: fm.description ?? "",
       tarballUrl: `${TARBALL_BASE}/${skill.name}.tar.gz`,
-      githubPath: `${GH_REPO}/skills/${skill.phase}/${skill.name}`,
-      npxCmd: `npx skills add ${GH_REPO}/skills/${skill.phase}/${skill.name}`,
+      githubPath: `${GH_REPO}/core/skills/${skill.phase}/${skill.name}`,
+      npxCmd: `npx skills add ${GH_TREE_BASE}/${skill.phase}/${skill.name}`,
       sha256: sha256OfFile(tarball),
       size: st.size,
       version,

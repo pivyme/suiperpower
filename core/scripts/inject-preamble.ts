@@ -15,8 +15,7 @@ const SKILLS_ROOT = join(REPO_ROOT, "skills");
 const PHASES = ["learn", "idea", "build", "ship", "grow"];
 
 // Verbatim preamble template. Placeholders <skill-name>, <phase>, <version>
-// are substituted per skill at write time. Mirror this with plans/05-SKILL-FORMAT.md
-// when the spec changes; both must move in lock-step.
+// are substituted per skill at write time.
 const PREAMBLE_TEMPLATE = `\`\`\`bash
 # Suiperpower telemetry. Routes through the CLI so projects.json + Convex stay in sync.
 # Silent on failure so the skill never blocks. Opt out: SUIPERPOWER_TELEMETRY=off.

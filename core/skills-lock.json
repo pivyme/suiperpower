@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-05-12T14:41:46.892Z",
+  "generatedAt": "2026-05-12T19:02:01.475Z",
   "totalSkills": 60,
   "skills": [
     {
@@ -448,17 +448,17 @@
     {
       "id": "clarify-intent",
       "phase": "build",
-      "folderHash": "0d4d79b50781ee91e7dee40506e0b2bcd974dfa339cb63577f2e1b60a65bd331",
+      "folderHash": "efd910b0dd39f95b6ed43098431d6cd0c0322c48f08637bc725c6c1ca7d1a74c",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "bab87a63a009018a191e38812cb4560ca3d2b202a569d45f209cb8264f449255",
-          "size": 9289
+          "sha256": "e0a466e82a5bf77a380c1430722436fa5388f1a8aa3d65782fa510fc78984521",
+          "size": 8990
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "39c52a1e699a5efca713d7b3eaf223fd063ff33179334b106583aee122579b18",
-          "size": 443
+          "sha256": "915077406e1ed44f79f3340faf14ad756ddbf414a1b9ad05f5fb6bdfe7a8f7c1",
+          "size": 336
         }
       ]
     },
@@ -932,17 +932,17 @@
     {
       "id": "plan-before-code",
       "phase": "build",
-      "folderHash": "eed53426332335abf442caa16cdf09b2b4af3f10ebe1a6514c69f75e99f67e4d",
+      "folderHash": "22180adddacc349a31effe82b46edf97795c1b4b76140397bac7f494510628af",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "01d85b36aa3e1f7ae1e8e201d3571d780a070b466d1541bb04348932ac20dc24",
-          "size": 10322
+          "sha256": "e13bf6e10f77a7a323c87b4120f9174a5298fea1bd02a71215d63b59157991ca",
+          "size": 10064
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "26c3c2ad66c61192edda509f93a8ac16ee31acab427e1ba15597dce6d7ee037d",
-          "size": 486
+          "sha256": "d7c779edeb162778731708e5d188ea9189a1991cce1763ce633f6bf1f2377a40",
+          "size": 379
         }
       ]
     },
@@ -1335,17 +1335,17 @@
     {
       "id": "verify-against-intent",
       "phase": "build",
-      "folderHash": "e713b6b8f2ff6fedfec9a6568f6d4ad526726c27259c265f11ad4b5e106c0a43",
+      "folderHash": "6934adabba7f6ce889e76947e8f1a02ea9907433fab9f15bf907596309e251bd",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "48d82cb44c2b6434c7489699e3ed33427721956a2d2121af307254305eb9cc9d",
-          "size": 9804
+          "sha256": "c1452ede3e9050bab967affa85eafb2e80e01eaf7f76682d7283e4b40e946918",
+          "size": 9566
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "7e5663e6ca5dfc92f3d30599c8797b48b0be520a34907281fd88bc2b71e8d579",
-          "size": 492
+          "sha256": "401491deff8df235551756d74f9362774aceaa245be0972d163a1dd724225a60",
+          "size": 385
         }
       ]
     },

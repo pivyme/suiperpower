@@ -1,5 +1,5 @@
 #!/usr/bin/env tsx
-// Validates the JSON catalogs in cli/data against plans/07-ECOSYSTEM-CATALOG.md.
+// Validates the JSON catalogs in cli/data.
 // Hard-fails on schema mismatches, missing required fields, ids that are not
 // kebab-case, ids that are not sorted alphabetically, or duplicate ids. Run via:
 //   pnpm tsx scripts/lint-catalog.ts

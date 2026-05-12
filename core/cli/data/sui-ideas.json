@@ -1,7 +1,6 @@
 {
   "version": "0.2.0",
   "generatedAt": "2026-05-12T00:00:00Z",
-  "schema": "plans/07-ECOSYSTEM-CATALOG.md",
   "sources": [
     "a16z-state-of-crypto-2026",
     "ai-agent-ideas",

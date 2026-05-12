@@ -127,7 +127,7 @@ The skill stops here. No code. Hand off.
    - **Problem track**: What pain, for whom, what do they do today (on Sui or off)? What is the one thing the product has to do well? Do not push for a scope cut here, AI-assisted pace means the full product is often in reach, the job is to name the load-bearing surface, not shrink the build.
    - **On-chain track**: Do users hold Objects, or only the protocol? Which Objects are shared vs owned vs immutable? What capabilities exist and who holds each? Will users compose calls through PTBs?
    - **Off-chain track**: Frontend or no? If yes, Next.js or mobile? Auth via wallet adapter, zkLogin, or sponsored transactions? Any indexer, bot, or agent?
-   - **Sponsor track**: Any sponsor integration claimed (Walrus, DeepBook, Scallop, OZ Sui, zkLogin, OtterSec)? For each: is it load-bearing in the user flow, or decoration? Refuse to record decorative integrations as load-bearing. Refer to `plans/11-SPONSOR-INTEGRATION.md`.
+   - **Sponsor track**: Any sponsor integration claimed (Walrus, DeepBook, Scallop, OZ Sui, zkLogin, OtterSec)? For each: is it load-bearing in the user flow, or decoration? Refuse to record decorative integrations as load-bearing.
    - **Ship track**: Target network at launch (devnet, testnet, mainnet)? Upgrade authority intent (keep, burn, multisig)? Deadline and risk tolerance?
 
 4. **Push back on slop**
@@ -161,9 +161,6 @@ If any answer is no, the skill keeps working before handing off.
 
 Knowledge docs (load when scope expands):
 
-- `plans/12-ANTI-SLOP-FRAMEWORK.md`: Why this gate exists and what anti-slop means here.
-- `plans/11-SPONSOR-INTEGRATION.md`: Load-bearing vs decorative sponsor use, the test we apply.
-- `plans/30-SHARED-GUIDES-SPEC.md`: Phase-handoff context-file shape.
 - `core/skills/data/sui-knowledge/03-move-and-objects.md`: Object model and capability reference.
 
 ## Use in your agent

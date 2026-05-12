@@ -179,7 +179,7 @@ The skill stops here. No code. Hand off to the right build skill.
    - Any criterion with no testable path: flag in Risks.
 
 8. **Sponsor integrations**
-   - For each sponsor in intent: define the surface, then commit to how `verify-against-intent` will prove it is load-bearing (e.g. "a testnet tx hash where the Walrus blob is read into the UI", not "import path exists"). Refer to `plans/11-SPONSOR-INTEGRATION.md`.
+   - For each sponsor in intent: define the surface, then commit to how `verify-against-intent` will prove it is load-bearing (e.g. "a testnet tx hash where the Walrus blob is read into the UI", not "import path exists").
    - If you cannot define a load-bearing test, refuse the integration and write that down.
 
 9. **Network rollout and upgrade authority**
@@ -216,9 +216,6 @@ If any answer is no, the skill keeps working before handing off.
 
 Knowledge docs (load when scope expands):
 
-- `plans/12-ANTI-SLOP-FRAMEWORK.md`: Quality bar, gate philosophy.
-- `plans/11-SPONSOR-INTEGRATION.md`: Load-bearing vs decorative sponsor use.
-- `plans/30-SHARED-GUIDES-SPEC.md`: Phase-handoff context-file shape.
 - `core/skills/data/sui-knowledge/03-move-and-objects.md`: Object model, abilities, capability reference.
 - `core/skills/data/guides/deploy-runbook.md`: Network rollout and upgrade authority context.
 

@@ -182,9 +182,6 @@ If any answer is no, the skill keeps working before reporting done.
 
 Knowledge docs (load when scope expands):
 
-- `plans/12-ANTI-SLOP-FRAMEWORK.md`: Quality bar, gate philosophy.
-- `plans/11-SPONSOR-INTEGRATION.md`: Load-bearing vs decorative sponsor use, the test we apply here.
-- `plans/30-SHARED-GUIDES-SPEC.md`: Phase-handoff context-file shape.
 - `core/skills/data/sui-knowledge/03-move-and-objects.md`: Object model and ability reference.
 - `core/skills/data/guides/package-id-capture.md`: Where package id and upgrade cap state are recorded.
 

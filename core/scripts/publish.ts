@@ -72,7 +72,7 @@ function checkPackageShape(): void {
       throw new Error(`package.json files missing required entry: ${f}`);
     }
   }
-  for (const banned of ["plans/", "bigdev/", "reference/", "web/"]) {
+  for (const banned of ["scratchpads/", "web/"]) {
     if (pkg.files.includes(banned)) {
       throw new Error(`package.json files must not include ${banned}`);
     }
@@ -152,10 +152,10 @@ function checkPackTarball(): void {
       throw new Error(`npm pack tarball missing required file: ${f}`);
     }
   }
-  const banned = ["plans/00-OVERVIEW.md", "bigdev/TODO.md", "reference/solana-new-main/README.md"];
+  const bannedPrefixes = ["scratchpads/", "web/"];
   for (const f of filenames) {
-    for (const b of banned) {
-      if (f === b) {
+    for (const b of bannedPrefixes) {
+      if (f.startsWith(b)) {
         throw new Error(`npm pack tarball includes banned file: ${f}`);
       }
     }
