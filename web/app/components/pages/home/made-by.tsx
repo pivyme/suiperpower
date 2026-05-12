@@ -56,7 +56,7 @@ export function MadeBy() {
           </div>
 
           <a
-            href="https://blog.sui.io/2025-sui-overflow-hackathon-winners/"
+            href="https://blog.sui.io/2025-sui-overflow-hackathon-winners/#payments-and-wallets"
             target="_blank"
             rel="noopener noreferrer"
             className="group self-start md:self-end inline-flex flex-col bg-[#f3ede0] border-2 border-[#0b1430] min-w-[260px] shadow-[5px_5px_0_0_#FFE44D] hover:shadow-none hover:translate-x-[5px] hover:translate-y-[5px] transition-all"
