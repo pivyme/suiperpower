@@ -1,0 +1,8 @@
+name: suins-integration
+version: 1
+phase: build
+description: Use when integrating SuiNS name resolution, registering .sui names, doing reverse lookups, or using Move Registry (MVR) for named packages.
+prompt_path: ../SKILL.md
+references:
+  - ../references/suins-quickstart.md
+  - ../references/suins-pitfalls.md

@@ -94,7 +94,7 @@ The skill never deletes files outside the integration source path without explic
    - Wire results between commands using the result handles the SDK returns.
 
 4. **Dry-run**
-   - Run `dryRunTransactionBlock`. Inspect effects.
+   - Run `simulateTransaction`. Inspect effects.
    - Confirm balance changes match intent.
    - Confirm Objects created and transferred as expected.
    - Surface any "unexpected behavior" before signing.
@@ -119,7 +119,7 @@ Before reporting done, the skill asks itself the following and refuses to declar
 - Are command results wired correctly (no implicit assumption about ordering or stale references)?
 - Is the gas budget set explicitly and sized to fit the PTB's actual cost plus headroom?
 - For atomic flows, is there at least one negative test (a deliberate fail to confirm rollback works)?
-- If the PTB exceeds 100 commands or 100 inputs, has the user been warned about protocol limits?
+- If the PTB exceeds 1,024 commands (the protocol limit per PTB), has the user been warned?
 
 If any answer is no, the skill reports the gap and works through it before claiming the PTB is complete.
 

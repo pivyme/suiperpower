@@ -7,39 +7,40 @@
 For a new web app on Sui, the boring-and-correct defaults:
 
 - **Framework**: Next.js 14+ App Router or Vite + React.
-- **Wallet integration**: `@mysten/dapp-kit`. Wraps the Wallet Standard, exposes `useCurrentAccount`, `useSignAndExecuteTransaction`, `useSuiClient`.
-- **Query layer**: `@tanstack/react-query` (dapp-kit depends on it).
+- **Wallet integration**: `@mysten/dapp-kit-react` (React) or `@mysten/dapp-kit-core` (vanilla JS). Wraps the Wallet Standard, exposes `useCurrentAccount`, `useCurrentClient`.
+- **Query layer**: `@tanstack/react-query` (no longer a peer dep of dapp-kit-react, but still the recommended query layer for your app).
 - **Styling**: Tailwind. Skip enterprise component libraries unless the product requires them.
 - **Type-safe contract calls**: hand-written wrappers around `Transaction` from `@mysten/sui/transactions`.
 
 Install:
 
 ```bash
-pnpm add @mysten/sui @mysten/dapp-kit @tanstack/react-query
+pnpm add @mysten/sui @mysten/dapp-kit-react @tanstack/react-query
 ```
 
 Provider setup (Next.js App Router):
 
 ```tsx
 "use client";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { SuiClientProvider, WalletProvider, createNetworkConfig } from "@mysten/dapp-kit";
-import { getFullnodeUrl } from "@mysten/sui/client";
-import "@mysten/dapp-kit/dist/index.css";
+import { DAppKitProvider, createDAppKit } from "@mysten/dapp-kit-react";
 
-const { networkConfig } = createNetworkConfig({
-  testnet: { url: getFullnodeUrl("testnet") },
-  mainnet: { url: getFullnodeUrl("mainnet") },
+// SDK v2.0: SuiGrpcClient (from @mysten/sui/grpc) is the recommended transport.
+// createDAppKit replaces createNetworkConfig. DAppKitProvider replaces the
+// nested QueryClientProvider > SuiClientProvider > WalletProvider stack.
+// The CSS import (@mysten/dapp-kit/dist/index.css) is removed; dapp-kit-react
+// uses web components with CSS custom properties instead.
+
+const dAppKit = createDAppKit({
+  networks: {
+    testnet: { transport: "grpc" },
+    mainnet: { transport: "grpc" },
+  },
+  defaultNetwork: "testnet",
 });
-const queryClient = new QueryClient();
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <SuiClientProvider networks={networkConfig} defaultNetwork="testnet">
-        <WalletProvider>{children}</WalletProvider>
-      </SuiClientProvider>
-    </QueryClientProvider>
+    <DAppKitProvider dAppKit={dAppKit}>{children}</DAppKitProvider>
   );
 }
 ```
@@ -49,7 +50,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 Default UX:
 
 ```tsx
-import { ConnectButton, useCurrentAccount } from "@mysten/dapp-kit";
+import { ConnectButton, useCurrentAccount } from "@mysten/dapp-kit-react";
 
 export function Header() {
   const account = useCurrentAccount();
@@ -116,7 +117,7 @@ Server-side sponsor pattern:
 3. Server inspects the body. If it matches an allowed pattern (e.g. "mint one welcome NFT"), the server signs as gas payer.
 4. Server returns the signed sponsorship; client adds user signature; client submits the dual-signed transaction.
 
-Enoki can run this for you (`enoki.sponsorTransactionBlock`). For custom rules, run your own server.
+Enoki can run this for you (the Enoki SDK provides a sponsor method; check `@mysten/enoki` docs for the current API name, as it may have changed with SDK v2.0). For custom rules, run your own server.
 
 Footgun: a sponsor that signs anything is a hot wallet leak. Always validate the transaction body server-side. Never sponsor arbitrary user-submitted PTBs.
 
@@ -218,4 +219,4 @@ When studying a live app, look at:
 - Sponsored tx skill: `skills/build/sponsored-transactions/`.
 - Mobile skill: `skills/build/build-mobile-sui/`.
 
-Last updated: 2026-05-10.
+Last updated: 2026-05-11. Updated for Sui SDK v2.0 (dapp-kit-react, DAppKitProvider, gRPC transport).

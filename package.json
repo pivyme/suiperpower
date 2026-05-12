@@ -19,12 +19,21 @@
     "test:telemetry": "pnpm -F suiperpower test:telemetry",
     "skills:lock": "pnpm -F suiperpower skills:lock",
     "marketplace:gen": "pnpm -F suiperpower marketplace:gen",
-    "publish:dry": "pnpm -F suiperpower publish:dry"
+    "publish:dry": "pnpm -F suiperpower publish:dry",
+    "lint": "eslint core/cli/ core/scripts/",
+    "format": "prettier --check core/cli/ core/scripts/",
+    "format:fix": "prettier --write core/cli/ core/scripts/"
   },
   "devDependencies": {
+    "@eslint/js": "^9.27.0",
     "@types/node": "^22.13.14",
+    "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.5",
+    "globals": "^17.6.0",
+    "prettier": "^3.5.3",
     "tsx": "^4.20.0",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.32.1"
   },
   "engines": {
     "node": ">=20.0.0"

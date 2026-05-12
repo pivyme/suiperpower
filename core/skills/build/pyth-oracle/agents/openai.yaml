@@ -1,0 +1,10 @@
+name: pyth-oracle
+version: 1
+phase: build
+description: Use when integrating Pyth pull-based price feeds into a Sui Move package or reading real-time on-chain prices.
+  Integrate Pyth pull-based price feeds into a Sui project. Use when the user says "Pyth price feed", "oracle on Sui", "get token price on-chain", "price oracle", "integrate Pyth", "read price in Move", "DeFi price feed", "real-time price on Sui", "price data for my contract", or "on-chain price". Reads .suiperpower/build-context.md if present.
+prompt_path: ../SKILL.md
+references:
+  - ../references/pyth-quickstart.md
+  - ../references/pyth-move-api.md
+  - ../references/pyth-pitfalls.md

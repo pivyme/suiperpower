@@ -1,0 +1,9 @@
+name: build-ai-agent
+version: 1
+phase: build
+description: Use when building an autonomous AI agent on Sui that transacts via PTBs, uses zkLogin wallets, MemWal memory, Nautilus TEEs, or Atoma inference.
+prompt_path: ../SKILL.md
+references:
+  - ../references/agent-architecture.md
+  - ../references/agent-tooling.md
+  - ../references/agent-pitfalls.md

@@ -4,37 +4,35 @@ The Obligation is Scallop's per-user record. It tracks all collateral and borrow
 
 ## Creation
 
-The first deposit auto-creates the Obligation. The SDK handles this transparently:
+The first deposit via the ScallopClient auto-creates the Obligation transparently. You can also create one explicitly via the builder:
 
 ```ts
-const tx = await scallop.builder.deposit("usdc", amount);
-// internally: if no Obligation exists for the signer, creates one in the same tx
+const scallopBuilder = await scallopSDK.createScallopBuilder();
+const txBlock = scallopBuilder.createTxBlock();
+txBlock.setSender(senderAddress);
+
+// Explicit creation (needed before first borrow if not depositing first):
+txBlock.openObligationEntry();
+
+// Or for programmatic access to the obligation and key:
+const [obligation, obligationKey, hotPotato] = txBlock.openObligation();
 ```
+
+When using `depositQuick`, the SDK handles Obligation creation internally if none exists.
 
 The Obligation Object id is returned in the transaction effects. Capture it from `objectChanges` and persist it per user.
 
-```ts
-const result = await scallop.client.signAndExecuteTransaction({
-  transaction: tx,
-  signer,
-  options: { showObjectChanges: true },
-});
-
-const obligationId = result.objectChanges?.find(
-  (c) => c.type === "created" && c.objectType.includes("Obligation"),
-)?.objectId;
-```
-
-For subsequent sessions, query existing Obligations for the user:
+For subsequent sessions, query existing Obligations:
 
 ```ts
-const obligations = await scallop.query.getObligations(userAddress);
+const scallopQuery = scallopSDK.query;
+const obligations = await scallopQuery.getObligations(ownerAddress);
 const obligationId = obligations[0]?.id;
 ```
 
 ## Per-user singleton, mostly
 
-Conventionally one Obligation per user. The protocol allows multiple, useful for isolated risk buckets ("DCA bucket" vs "leveraged trade bucket"). For first integration, treat it as a singleton.
+Conventionally one Obligation per user. The protocol allows up to 5 per address, useful for isolated risk buckets ("DCA bucket" vs "leveraged trade bucket"). For first integration, treat it as a singleton.
 
 ## Ownership
 
@@ -42,21 +40,19 @@ The Obligation is owned by the address that created it. Owner-only operations: d
 
 There is no transfer flow for Obligations. If the user changes wallets, they must close out the old position and open a new one in the new wallet.
 
-## Health factor query
+## Obligation account query
 
 ```ts
-const account = await scallop.query.getObligationAccount(obligationId);
+const scallopQuery = scallopSDK.query;
+const account = await scallopQuery.getObligationAccount(obligationId);
 
 console.log({
-  collaterals: account.collaterals,        // [{ asset, amount, valueUsd }]
-  borrows: account.borrows,                // [{ asset, amount, valueUsd }]
-  healthFactor: account.healthFactor,      // number, < 1 means liquidatable
-  totalCollateralValueUsd: account.totalCollateralValueUsd,
-  totalBorrowValueUsd: account.totalBorrowValueUsd,
+  collaterals: account.collaterals,
+  borrows: account.borrows,
 });
 ```
 
-This is the canonical view for UIs and risk checks.
+This is the canonical view for UIs and risk checks. Scallop uses "Risk Level" terminology with `liquidation_factor` and `borrow_weight` per market. Refer to `references/scallop-risk.md` for the risk model details.
 
 ## Closing an Obligation
 
@@ -70,7 +66,7 @@ There is no "delete Obligation" call by design; the Object stays to preserve his
 
 ## Cross-market Obligations
 
-A single Obligation can hold multiple collateral and borrow positions across different markets. The health factor is computed across all of them. Adding a new collateral asset improves health; adding a new borrow asset reduces it.
+A single Obligation can hold multiple collateral and borrow positions across different markets. The risk level is computed across all of them. Adding a new collateral asset lowers risk; adding a new borrow asset raises it.
 
 For UIs that show "your position," show the cross-market view, not just one asset's slice.
 
@@ -78,4 +74,4 @@ For UIs that show "your position," show the cross-market view, not just one asse
 
 Obligations are owned Objects, so concurrent modifications from a single user are serialized at the wallet's tx level. No multi-signer race condition concerns. For app keepers operating on a user's Obligation, the keeper holds the user's signing capability or operates via a delegation pattern.
 
-Last updated: 2026-05-10.
+Last updated: 2026-05-11.

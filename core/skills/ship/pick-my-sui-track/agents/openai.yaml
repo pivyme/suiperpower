@@ -1,7 +1,7 @@
 name: pick-my-sui-track
 version: 1
 phase: ship
-description: Use when picking a Sui Overflow 2026 track. Scores fit against the four official tracks on a 0-3 depth scale, refuses aspirational picks.
+description: Use when picking a Sui Overflow 2026 track. Scores fit across all eleven official tracks on a 0-3 depth scale, refuses aspirational picks.
 prompt_path: ../SKILL.md
 references:
   - ../references/scoring-rubric.md

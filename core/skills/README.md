@@ -40,7 +40,8 @@ What to build, and is it any good. Run before the build phase to lock the scope.
 | [competitive-landscape](idea/competitive-landscape/SKILL.md) | Map who already builds something close, with an honest moat read. |
 | [deepbook-research](idea/deepbook-research/SKILL.md) | Query DeepBook trading activity to find market niches. |
 | [walrus-research](idea/walrus-research/SKILL.md) | Survey what kinds of apps use Walrus and where the gaps are. |
-| [overflow-copilot](idea/overflow-copilot/SKILL.md) | Search past Sui Overflow projects for patterns and gaps. |
+| [overflow-copilot](idea/overflow-copilot/SKILL.md) | Search past Sui Overflow projects for patterns and gaps. Now includes 2025 winner data. |
+| [defillama-sui](idea/defillama-sui/SKILL.md) | Research Sui DeFi market gaps using DefiLlama TVL, volume, fee, and yield data. |
 
 ## Build
 
@@ -69,8 +70,17 @@ Everything from scaffold to debug. Ordered roughly the way a build flows.
 | [walrus-storage](build/walrus-storage/SKILL.md) | Store and retrieve blobs on Walrus, with the demo actually rendering a stored blob. |
 | [deepbook-orderbook](build/deepbook-orderbook/SKILL.md) | Build a market on DeepBook, with a real testnet order placed and settled. |
 | [scallop-money-market](build/scallop-money-market/SKILL.md) | Deposit, borrow, and repay against a live Scallop pool. |
+| [cetus-swap](build/cetus-swap/SKILL.md) | Swap tokens and manage concentrated liquidity positions on Cetus CLMM. |
+| [navi-lending](build/navi-lending/SKILL.md) | Deposit, borrow, repay, and flash loan against NAVI Protocol lending pools. |
 | [openzeppelin-sui-libs](build/openzeppelin-sui-libs/SKILL.md) | Identify hand-rolled patterns OZ Sui replaces. |
 | [ottersec-prep](build/ottersec-prep/SKILL.md) | Walk the OtterSec checklist, every P0 item has a recorded answer. |
+| [seal-access-control](build/seal-access-control/SKILL.md) | Add Seal threshold encryption with the right Move pattern for your access policy. |
+| [pyth-oracle](build/pyth-oracle/SKILL.md) | Integrate Pyth pull-based price feeds with proper staleness and confidence checks. |
+| [build-ai-agent](build/build-ai-agent/SKILL.md) | Build an autonomous AI agent on Sui with PTBs, wallets, memory, and compute. |
+| [nautilus-offchain](build/nautilus-offchain/SKILL.md) | Verifiable off-chain compute on Sui using Nautilus TEEs with on-chain attestation. |
+| [suins-integration](build/suins-integration/SKILL.md) | Add .sui name resolution and MVR human-readable package naming. |
+| [walrus-sites](build/walrus-sites/SKILL.md) | Deploy a static site to Walrus for decentralized hosting via wal.app. |
+| [eve-frontier](build/eve-frontier/SKILL.md) | Build Smart Assembly mods for EVE Frontier on Sui. |
 
 ### Auth and UX
 
@@ -88,6 +98,8 @@ Everything from scaffold to debug. Ordered roughly the way a build flows.
 |---|---|
 | [debug-move](build/debug-move/SKILL.md) | Debug compile errors, runtime errors, and capability leakage. |
 | [review-move](build/review-move/SKILL.md) | P0 to P3 review pass with OZ migration suggestions. |
+| [cso](build/cso/SKILL.md) | Infrastructure security audit covering OWASP, STRIDE, supply chain, and Sui-specific checks. |
+| [build-data-pipeline](build/build-data-pipeline/SKILL.md) | Index and query Sui data via GraphQL RPC, event polling, or custom indexers. |
 
 ### Frontend and design
 

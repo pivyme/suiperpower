@@ -37,6 +37,10 @@ Format: each row is a piece of intent in the user's voice, the canonical right s
 | "what kinds of apps use Walrus" | walrus-research | walrus-storage |
 | "search past Sui Overflow projects" | overflow-copilot | find-next-sui-idea |
 | "what won at Sui Overflow last year" | overflow-copilot | find-next-sui-idea |
+| "DeFi research on Sui" | defillama-sui | competitive-landscape |
+| "Sui TVL analysis" | defillama-sui | competitive-landscape |
+| "what DeFi to build on Sui" | defillama-sui | find-next-sui-idea |
+| "DefiLlama data" | defillama-sui | competitive-landscape |
 
 ## Build, scaffold and pair-build
 
@@ -71,7 +75,36 @@ Format: each row is a piece of intent in the user's voice, the canonical right s
 | "build on DeepBook" | deepbook-orderbook | deepbook-research |
 | "create a market on DeepBook" | deepbook-orderbook | scaffold-project |
 | "integrate Scallop" | scallop-money-market | scaffold-project |
-| "borrow / lend on Sui" | scallop-money-market | scaffold-project |
+| "borrow / lend on Sui" | scallop-money-market | navi-lending |
+| "swap on Cetus" | cetus-swap | deepbook-orderbook |
+| "Cetus integration" | cetus-swap | deepbook-orderbook |
+| "AMM on Sui" | cetus-swap | deepbook-orderbook |
+| "concentrated liquidity on Sui" | cetus-swap | deepbook-orderbook |
+| "DEX swap on Sui" | cetus-swap | deepbook-orderbook |
+| "NAVI lending" | navi-lending | scallop-money-market |
+| "borrow on NAVI" | navi-lending | scallop-money-market |
+| "lend on NAVI" | navi-lending | scallop-money-market |
+| "flash loan on Sui" | navi-lending | scallop-money-market |
+| "NAVI Protocol integration" | navi-lending | scallop-money-market |
+| "lending protocol on Sui" | navi-lending | scallop-money-market, deepbook-orderbook |
+| "encrypt data on Sui" | seal-access-control | build-with-move |
+| "access control with Seal" | seal-access-control | build-with-move |
+| "threshold encryption" | seal-access-control | build-with-move |
+| "add a price feed" | pyth-oracle | build-with-move |
+| "integrate Pyth oracle" | pyth-oracle | build-with-move, deepbook-orderbook |
+| "get token price on-chain" | pyth-oracle | deepbook-research |
+| "build an AI agent on Sui" | build-ai-agent | build-with-claude, scaffold-project |
+| "autonomous agent wallet" | build-ai-agent | sui-zk-login, sponsored-transactions |
+| "agent with PTBs" | build-ai-agent | ptb-composer |
+| "off-chain compute on Sui" | nautilus-offchain | build-with-move |
+| "TEE on Sui" | nautilus-offchain | build-ai-agent |
+| "Nautilus enclave" | nautilus-offchain | build-with-move |
+| "register a .sui name" | suins-integration | scaffold-project |
+| "SuiNS name resolution" | suins-integration | scaffold-project |
+| "MVR package naming" | suins-integration | build-with-move |
+| "host on Walrus" | walrus-sites | walrus-storage |
+| "deploy static site to Sui" | walrus-sites | walrus-storage, deploy-to-mainnet |
+| "Walrus Sites hosting" | walrus-sites | walrus-storage |
 | "use OpenZeppelin Sui libs" | openzeppelin-sui-libs | build-with-move |
 | "secure primitives for Sui" | openzeppelin-sui-libs | review-move |
 | "prepare for an audit" | ottersec-prep | review-move |
@@ -101,6 +134,17 @@ Format: each row is a piece of intent in the user's voice, the canonical right s
 | "debug this Move error" | debug-move | review-move |
 | "review my Move code" | review-move | debug-move, ottersec-prep |
 | "audit my Move package" | review-move | ottersec-prep |
+| "security audit my app" | cso | review-move, ottersec-prep |
+| "infrastructure security" | cso | review-move |
+| "OWASP check" | cso | review-move |
+| "threat model" | cso | review-move |
+| "index Sui data" | build-data-pipeline | build-with-claude |
+| "query Sui events" | build-data-pipeline | build-with-move |
+| "build an indexer" | build-data-pipeline | build-with-claude |
+| "GraphQL on Sui" | build-data-pipeline | build-with-claude |
+| "EVE Frontier mod" | eve-frontier | scaffold-project |
+| "Smart Assembly" | eve-frontier | build-with-move |
+| "EVE hackathon" | eve-frontier | scaffold-project |
 
 ## Build, frontend and design
 

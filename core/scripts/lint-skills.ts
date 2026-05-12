@@ -112,18 +112,24 @@ function scanBody(file: string, body: string, issues: Issue[]): void {
     }
     if (inFence) continue;
     const lineNo = i + 1;
-    const lower = raw.toLowerCase();
+    const _lower = raw.toLowerCase();
 
     if (raw.includes("—") || raw.includes("–")) {
-      issues.push({ file, line: lineNo, level: "error", message: "em-dash or en-dash forbidden, use comma or period" });
+      issues.push({
+        file,
+        line: lineNo,
+        level: "error",
+        message: "em-dash or en-dash forbidden, use comma or period",
+      });
     }
 
     for (const word of BANNED_WORDS) {
       const w = word.toLowerCase();
       // Word-boundary match. Multi-word phrases ("cutting edge") match as a substring.
-      const re = w.includes(" ") || w.includes("-")
-        ? new RegExp(w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i")
-        : new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i");
+      const re =
+        w.includes(" ") || w.includes("-")
+          ? new RegExp(w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i")
+          : new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i");
       if (re.test(raw)) {
         issues.push({ file, line: lineNo, level: "error", message: `banned word "${word}"` });
       }
@@ -136,7 +142,12 @@ function scanBody(file: string, body: string, issues: Issue[]): void {
       if (re.test(stripLower)) {
         const reCanonical = new RegExp(`\\b${canonical}\\b`);
         if (!reCanonical.test(stripped)) {
-          issues.push({ file, line: lineNo, level: "warn", message: `Sui term "${term}" should be "${canonical}"` });
+          issues.push({
+            file,
+            line: lineNo,
+            level: "warn",
+            message: `Sui term "${term}" should be "${canonical}"`,
+          });
         }
       }
     }
@@ -149,7 +160,12 @@ function lintSkill(s: { phase: string; name: string; dir: string; skillMd: strin
   try {
     src = readFileSync(s.skillMd, "utf8");
   } catch {
-    issues.push({ file: s.skillMd, line: 0, level: "error", message: "SKILL.md missing or unreadable" });
+    issues.push({
+      file: s.skillMd,
+      line: 0,
+      level: "error",
+      message: "SKILL.md missing or unreadable",
+    });
     return issues;
   }
 
@@ -158,17 +174,37 @@ function lintSkill(s: { phase: string; name: string; dir: string; skillMd: strin
   if (!fm.name) {
     issues.push({ file: s.skillMd, line: 1, level: "error", message: "frontmatter missing name" });
   } else if (fm.name !== s.name) {
-    issues.push({ file: s.skillMd, line: 1, level: "error", message: `frontmatter name "${fm.name}" != folder "${s.name}"` });
+    issues.push({
+      file: s.skillMd,
+      line: 1,
+      level: "error",
+      message: `frontmatter name "${fm.name}" != folder "${s.name}"`,
+    });
   }
 
   if (!fm.description) {
-    issues.push({ file: s.skillMd, line: 1, level: "error", message: "frontmatter missing description" });
+    issues.push({
+      file: s.skillMd,
+      line: 1,
+      level: "error",
+      message: "frontmatter missing description",
+    });
   } else {
     if (fm.description.length < 80) {
-      issues.push({ file: s.skillMd, line: 1, level: "warn", message: `description shorter than 80 chars (${fm.description.length})` });
+      issues.push({
+        file: s.skillMd,
+        line: 1,
+        level: "warn",
+        message: `description shorter than 80 chars (${fm.description.length})`,
+      });
     }
     if (!/use when/i.test(fm.description)) {
-      issues.push({ file: s.skillMd, line: 1, level: "warn", message: 'description missing "Use when ..." trigger phrase block' });
+      issues.push({
+        file: s.skillMd,
+        line: 1,
+        level: "warn",
+        message: 'description missing "Use when ..." trigger phrase block',
+      });
     }
   }
 
@@ -178,24 +214,47 @@ function lintSkill(s: { phase: string; name: string; dir: string; skillMd: strin
     // trailing annotations like "## Preamble (run first)").
     const re = new RegExp(`^${section.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(\\b|\\s|$)`, "m");
     if (!re.test(body)) {
-      issues.push({ file: s.skillMd, line: 0, level: "error", message: `missing required section: ${section}` });
+      issues.push({
+        file: s.skillMd,
+        line: 0,
+        level: "error",
+        message: `missing required section: ${section}`,
+      });
     }
   }
 
   scanBody(s.skillMd, body, issues);
 
   if (!body.includes("skills/SKILL_ROUTER.md")) {
-    issues.push({ file: s.skillMd, line: 0, level: "error", message: "missing handoff line referencing skills/SKILL_ROUTER.md" });
+    issues.push({
+      file: s.skillMd,
+      line: 0,
+      level: "error",
+      message: "missing handoff line referencing skills/SKILL_ROUTER.md",
+    });
   }
 
   const openaiYaml = join(s.dir, "agents", "openai.yaml");
   try {
     const raw = readFileSync(openaiYaml, "utf8");
-    if (fm.description && !raw.includes(fm.description.slice(0, Math.min(60, fm.description.length)))) {
-      issues.push({ file: openaiYaml, line: 0, level: "warn", message: "openai.yaml description does not echo the frontmatter description" });
+    if (
+      fm.description &&
+      !raw.includes(fm.description.slice(0, Math.min(60, fm.description.length)))
+    ) {
+      issues.push({
+        file: openaiYaml,
+        line: 0,
+        level: "warn",
+        message: "openai.yaml description does not echo the frontmatter description",
+      });
     }
   } catch {
-    issues.push({ file: openaiYaml, line: 0, level: "error", message: "agents/openai.yaml missing" });
+    issues.push({
+      file: openaiYaml,
+      line: 0,
+      level: "error",
+      message: "agents/openai.yaml missing",
+    });
   }
 
   return issues;
@@ -218,7 +277,9 @@ function main(): void {
     console.log(`${tag} ${rel}:${i.line}  ${i.message}`);
   }
 
-  console.log(`\nlinted ${skills.length} skills, ${errors.length} errors, ${warns.length} warnings`);
+  console.log(
+    `\nlinted ${skills.length} skills, ${errors.length} errors, ${warns.length} warnings`,
+  );
   if (errors.length > 0 || (failOnWarn && warns.length > 0)) {
     process.exit(1);
   }

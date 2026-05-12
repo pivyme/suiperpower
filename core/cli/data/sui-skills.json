@@ -1,8 +1,302 @@
 {
-  "version": "0.1.0",
-  "generatedAt": "2026-05-11T00:00:00Z",
+  "version": "0.3.0",
+  "generatedAt": "2026-05-12T12:00:00Z",
   "schema": "plans/07-ECOSYSTEM-CATALOG.md",
   "skills": [
+    {
+      "id": "apply-grant-skill",
+      "name": "Apply for Grant (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/ship/apply-grant",
+      "description": "Draft a Sui Foundation grant application with concrete deliverables, milestones tied to verifiable outcomes, and a sustainability plan.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "ship",
+      "tags": [
+        "grant",
+        "funding",
+        "sui-foundation"
+      ],
+      "skillsSh": {
+        "id": "apply-grant",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/ship/apply-grant"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "brand-design-skill",
+      "name": "Brand Design (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/brand-design",
+      "description": "Pick a name, color palette, and typography for a Sui product without slipping into generic crypto aesthetics.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "brand",
+        "design",
+        "naming"
+      ],
+      "skillsSh": {
+        "id": "brand-design",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/brand-design"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "build-ai-agent-skill",
+      "name": "Build AI Agent (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/build-ai-agent",
+      "description": "Build an AI agent that interacts with Sui DeFi protocols. Covers agent kit setup, tool wiring, and on-chain execution.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "ai",
+        "agent",
+        "defi"
+      ],
+      "skillsSh": {
+        "id": "build-ai-agent",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/build-ai-agent"
+      },
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "build-data-pipeline-skill",
+      "name": "Build Data Pipeline (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/build-data-pipeline",
+      "description": "Index and query Sui on-chain data using GraphQL RPC, event polling, custom indexers, or gRPC.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "indexer",
+        "data",
+        "graphql",
+        "events"
+      ],
+      "skillsSh": {
+        "id": "build-data-pipeline",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/build-data-pipeline"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "build-mobile-sui-skill",
+      "name": "Build Mobile Sui (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/build-mobile-sui",
+      "description": "Build a mobile Sui app with deep-link wallet flows and on-device key custody using Sui Mobile SDK or React Native.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "mobile",
+        "react-native",
+        "ios",
+        "android"
+      ],
+      "skillsSh": {
+        "id": "build-mobile-sui",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/build-mobile-sui"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "build-with-claude-skill",
+      "name": "Build with Claude (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/build-with-claude",
+      "description": "Pair with a coding agent to build a Sui MVP step by step, breaking work into committable slices with quality gates.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "pair-programming",
+        "mvp",
+        "workflow"
+      ],
+      "skillsSh": {
+        "id": "build-with-claude",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/build-with-claude"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "build-with-move-skill",
+      "name": "Build with Move (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/build-with-move",
+      "description": "Author Sui Move modules and packages with a senior Move dev as your pair. Covers modern syntax, testing, and security patterns.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "move",
+        "smart-contract",
+        "pair-programming"
+      ],
+      "skillsSh": {
+        "id": "build-with-move",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/build-with-move"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "cetus-swap-skill",
+      "name": "Cetus Swap (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/cetus-swap",
+      "description": "Integrate Cetus CLMM for token swaps and concentrated liquidity positions on Sui, using the SDK V2.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "defi",
+        "dex",
+        "amm",
+        "cetus",
+        "swap",
+        "liquidity"
+      ],
+      "skillsSh": {
+        "id": "cetus-swap",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/cetus-swap"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "competitive-landscape-skill",
+      "name": "Competitive Landscape (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/idea/competitive-landscape",
+      "description": "Map the competitive landscape for a Sui product idea, on Sui and adjacent chains, and identify the defensible angle.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "idea",
+      "tags": [
+        "research",
+        "competitors",
+        "market-analysis"
+      ],
+      "skillsSh": {
+        "id": "competitive-landscape",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/idea/competitive-landscape"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "create-pitch-deck-skill",
+      "name": "Create Pitch Deck (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/ship/create-pitch-deck",
+      "description": "Draft a 10-slide pitch deck grounded in actual project context, structured for judges, investors, or grant programs.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "ship",
+      "tags": [
+        "pitch",
+        "deck",
+        "presentation"
+      ],
+      "skillsSh": {
+        "id": "create-pitch-deck",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/ship/create-pitch-deck"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "cso-skill",
+      "name": "CSO Infrastructure Audit (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/cso",
+      "description": "Run a comprehensive infrastructure security audit covering OWASP, STRIDE threat modeling, supply chain, RPC, and key management.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "security",
+        "owasp",
+        "threat-model",
+        "infrastructure"
+      ],
+      "skillsSh": {
+        "id": "cso",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/cso"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "debug-move-skill",
+      "name": "Debug Move (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/debug-move",
+      "description": "Diagnose Sui Move compile errors, runtime aborts, and capability leakage step by step.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "move",
+        "debugging",
+        "errors"
+      ],
+      "skillsSh": {
+        "id": "debug-move",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/debug-move"
+      },
+      "lastChecked": "2026-05-12"
+    },
     {
       "id": "deepbook-orderbook-skill",
       "name": "DeepBook Orderbook (Suiperpower)",
@@ -10,13 +304,185 @@
       "publisherType": "ecosystem",
       "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/deepbook-orderbook",
       "description": "First-class skill for building on DeepBook with quality gate requiring a real testnet order placed and settled.",
-      "agents": ["claude", "codex", "cursor"],
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
       "phase": "build",
-      "tags": ["deepbook", "orderbook", "sponsor"],
+      "tags": [
+        "deepbook",
+        "orderbook",
+        "sponsor"
+      ],
       "skillsSh": {
         "id": "deepbook-orderbook",
         "npxCmd": "npx skills add pivyme/suiperpower/skills/build/deepbook-orderbook"
       },
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "deepbook-research-skill",
+      "name": "DeepBook Research (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/idea/deepbook-research",
+      "description": "Query DeepBook trading data and pool activity to find market niches, underserved pairs, and product opportunities.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "idea",
+      "tags": [
+        "deepbook",
+        "research",
+        "trading",
+        "defi"
+      ],
+      "skillsSh": {
+        "id": "deepbook-research",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/idea/deepbook-research"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "defillama-sui-skill",
+      "name": "DefiLlama Sui Research (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/idea/defillama-sui",
+      "description": "Research Sui DeFi market gaps using DefiLlama data, TVL analysis, and yield opportunity mapping.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "idea",
+      "tags": [
+        "defi",
+        "defillama",
+        "tvl",
+        "research"
+      ],
+      "skillsSh": {
+        "id": "defillama-sui",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/idea/defillama-sui"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "deploy-to-mainnet-skill",
+      "name": "Deploy to Mainnet (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/ship/deploy-to-mainnet",
+      "description": "Publish to Sui mainnet after clearing anti-slop gates, with upgrade policy locking and mainnet artifact capture.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "ship",
+      "tags": [
+        "deploy",
+        "mainnet",
+        "production"
+      ],
+      "skillsSh": {
+        "id": "deploy-to-mainnet",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/ship/deploy-to-mainnet"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "deploy-to-testnet-skill",
+      "name": "Deploy to Testnet (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/ship/deploy-to-testnet",
+      "description": "Publish a Move package to Sui testnet, capture package ID and upgrade cap, and write deploy-context.md.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "ship",
+      "tags": [
+        "deploy",
+        "testnet"
+      ],
+      "skillsSh": {
+        "id": "deploy-to-testnet",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/ship/deploy-to-testnet"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "eve-frontier-skill",
+      "name": "EVE Frontier (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/eve-frontier",
+      "description": "Build on EVE Frontier's Smart Assembly system for the Sui Overflow 2026 track. Covers Smart Turrets, Gates, and Storage Units.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "eve-frontier",
+        "gaming",
+        "smart-assembly"
+      ],
+      "skillsSh": {
+        "id": "eve-frontier",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/eve-frontier"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "find-next-sui-idea-skill",
+      "name": "Find Next Sui Idea (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/idea/find-next-sui-idea",
+      "description": "Pick a Sui product idea from a curated corpus or stress test your own, then write the initial idea-context.md.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "idea",
+      "tags": [
+        "ideation",
+        "brainstorm",
+        "hackathon"
+      ],
+      "skillsSh": {
+        "id": "find-next-sui-idea",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/idea/find-next-sui-idea"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "getnimbus-sui-agent-kit",
+      "name": "GetNimbus Sui Agent Kit",
+      "publisher": "GetNimbus",
+      "publisherType": "community",
+      "url": "https://github.com/getnimbus/sui-agent-kit",
+      "description": "LangChain-compatible agent kit for Sui with 15+ actions including swaps, staking, lending, and portfolio queries.",
+      "agents": [
+        "langchain"
+      ],
+      "phase": "build",
+      "tags": [
+        "ai",
+        "agent",
+        "langchain",
+        "defi"
+      ],
       "lastChecked": "2026-05-11"
     },
     {
@@ -26,14 +492,222 @@
       "publisherType": "ecosystem",
       "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/kiosk-marketplace",
       "description": "Build a Kiosk-based marketplace with a full listing and purchase flow demoed end to end.",
-      "agents": ["claude", "codex", "cursor"],
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
       "phase": "build",
-      "tags": ["kiosk", "marketplace"],
+      "tags": [
+        "kiosk",
+        "marketplace"
+      ],
       "skillsSh": {
         "id": "kiosk-marketplace",
         "npxCmd": "npx skills add pivyme/suiperpower/skills/build/kiosk-marketplace"
       },
       "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "launch-coin-skill",
+      "name": "Launch Coin (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/launch-coin",
+      "description": "Launch a coin on Sui using the standard Move coin module, decide tokenomics, manage TreasuryCap, and confirm wallet rendering.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "coin",
+        "token",
+        "tokenomics"
+      ],
+      "skillsSh": {
+        "id": "launch-coin",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/launch-coin"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "learn-skill",
+      "name": "Learn (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/learn/learn",
+      "description": "Capture session learnings and decisions to .suiperpower/learnings.md so the next skill can pick up where this session left off.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "learn",
+      "tags": [
+        "learning",
+        "notes",
+        "session"
+      ],
+      "skillsSh": {
+        "id": "learn",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/learn/learn"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "marketing-video-skill",
+      "name": "Marketing Video (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/ship/marketing-video",
+      "description": "Plan a 30 to 60 second product marketing video with a tight script, shot list, and on-screen text plan.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "ship",
+      "tags": [
+        "video",
+        "marketing",
+        "launch"
+      ],
+      "skillsSh": {
+        "id": "marketing-video",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/ship/marketing-video"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "move-whisperer",
+      "name": "Move Whisperer",
+      "publisher": "0xCryptoZen",
+      "publisherType": "community",
+      "url": "https://github.com/0xCryptoZen/move-whisperer",
+      "description": "Claude Code skill that generates SKILL.md files from existing Move contracts. Reverse-engineers documentation from source.",
+      "agents": [
+        "claude"
+      ],
+      "phase": "build",
+      "tags": [
+        "move",
+        "documentation",
+        "codegen"
+      ],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "mystenlabs-sui-dev-skills",
+      "name": "MystenLabs Sui Dev Skills",
+      "publisher": "MystenLabs",
+      "publisherType": "ecosystem",
+      "url": "https://github.com/MystenLabs/sui-dev-skills",
+      "description": "Official Mysten-published Claude Code skills covering Sui Move development, TypeScript SDK usage, and frontend integration.",
+      "agents": [
+        "claude"
+      ],
+      "phase": "build",
+      "tags": [
+        "move",
+        "typescript",
+        "frontend",
+        "official"
+      ],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "nautilus-offchain-skill",
+      "name": "Nautilus Offchain (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/nautilus-offchain",
+      "description": "Build verifiable off-chain computation on Sui using Nautilus TEEs (AWS Nitro Enclaves).",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "nautilus",
+        "tee",
+        "offchain",
+        "enclave"
+      ],
+      "skillsSh": {
+        "id": "nautilus-offchain",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/nautilus-offchain"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "navi-lending-skill",
+      "name": "NAVI Lending (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/navi-lending",
+      "description": "Integrate NAVI Protocol for deposits, borrows, repays, and flash loans on Sui using the PTB-native lending SDK.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "defi",
+        "lending",
+        "navi",
+        "flash-loan",
+        "borrow"
+      ],
+      "skillsSh": {
+        "id": "navi-lending",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/navi-lending"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "nebryx-sui-dev",
+      "name": "Nebryx Sui Dev Skill",
+      "publisher": "Nebryx",
+      "publisherType": "community",
+      "url": "https://github.com/Nebryx/sui-dev-skill",
+      "description": "Claude Code skill for Sui Move development from Nebryx. Covers Move patterns and deployment.",
+      "agents": [
+        "claude"
+      ],
+      "phase": "build",
+      "tags": [
+        "move",
+        "development"
+      ],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "object-model-design-skill",
+      "name": "Object Model Design (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/object-model-design",
+      "description": "Design the Sui Object schema, choose owned vs shared vs immutable per Object, and document the rationale.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "objects",
+        "architecture",
+        "move"
+      ],
+      "skillsSh": {
+        "id": "object-model-design",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/object-model-design"
+      },
+      "lastChecked": "2026-05-12"
     },
     {
       "id": "openzeppelin-sui-skill",
@@ -42,9 +716,17 @@
       "publisherType": "ecosystem",
       "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/openzeppelin-sui-libs",
       "description": "Identify hand-rolled patterns OZ Sui replaces and migrate them to vetted primitives.",
-      "agents": ["claude", "codex", "cursor"],
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
       "phase": "build",
-      "tags": ["security", "primitives", "sponsor"],
+      "tags": [
+        "security",
+        "primitives",
+        "sponsor"
+      ],
       "skillsSh": {
         "id": "openzeppelin-sui-libs",
         "npxCmd": "npx skills add pivyme/suiperpower/skills/build/openzeppelin-sui-libs"
@@ -58,14 +740,240 @@
       "publisherType": "ecosystem",
       "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/ottersec-prep",
       "description": "Walk the OtterSec checklist with every P0 item recorded as resolved or accepted-with-rationale.",
-      "agents": ["claude", "codex", "cursor"],
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
       "phase": "build",
-      "tags": ["audit", "security", "sponsor"],
+      "tags": [
+        "audit",
+        "security",
+        "sponsor"
+      ],
       "skillsSh": {
         "id": "ottersec-prep",
         "npxCmd": "npx skills add pivyme/suiperpower/skills/build/ottersec-prep"
       },
       "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "overflow-copilot-skill",
+      "name": "Overflow Copilot (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/idea/overflow-copilot",
+      "description": "Search past Sui Overflow hackathon projects to find what has been built, what won, and where the gaps are.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "idea",
+      "tags": [
+        "overflow",
+        "hackathon",
+        "research"
+      ],
+      "skillsSh": {
+        "id": "overflow-copilot",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/idea/overflow-copilot"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "pick-my-sui-track-skill",
+      "name": "Pick My Sui Track (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/ship/pick-my-sui-track",
+      "description": "Recommend the right Sui Overflow 2026 track based on real project fit, scoring against all eleven official tracks.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "ship",
+      "tags": [
+        "overflow",
+        "track",
+        "hackathon"
+      ],
+      "skillsSh": {
+        "id": "pick-my-sui-track",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/ship/pick-my-sui-track"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "product-review-skill",
+      "name": "Product Review (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/product-review",
+      "description": "Walk the product as a first-time user and produce a prioritized roadmap of UX fixes across onboarding, empty states, and error states.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "ux",
+        "review",
+        "product"
+      ],
+      "skillsSh": {
+        "id": "product-review",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/product-review"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "ptb-composer-skill",
+      "name": "PTB Composer (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/ptb-composer",
+      "description": "Compose Sui Programmable Transaction Blocks that chain multiple Move calls and transfers atomically in a single transaction.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "ptb",
+        "transactions",
+        "atomic"
+      ],
+      "skillsSh": {
+        "id": "ptb-composer",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/ptb-composer"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "pyth-oracle-skill",
+      "name": "Pyth Oracle (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/pyth-oracle",
+      "description": "Integrate Pyth price feeds into a Sui Move contract. Covers feed selection, on-chain consumption, and staleness checks.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "oracle",
+        "pyth",
+        "price-feed",
+        "defi"
+      ],
+      "skillsSh": {
+        "id": "pyth-oracle",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/pyth-oracle"
+      },
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "retention-loop-skill",
+      "name": "Retention Loop (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/retention-loop",
+      "description": "Force a concrete retention loop articulation with day 1 / day 2 / day 7 / day 30 anchors in a single paragraph.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "retention",
+        "engagement",
+        "product"
+      ],
+      "skillsSh": {
+        "id": "retention-loop",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/retention-loop"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "review-move-skill",
+      "name": "Review Move (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/review-move",
+      "description": "Run an in-house P0 to P3 security review on a Sui Move package and surface OpenZeppelin migration suggestions.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "security",
+        "audit",
+        "move",
+        "review"
+      ],
+      "skillsSh": {
+        "id": "review-move",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/review-move"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "roast-my-product-skill",
+      "name": "Roast My Product (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/roast-my-product",
+      "description": "Play the harshest investor and produce a numbered list of every weakness in the product, positioning, demo, and brand.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "feedback",
+        "critique",
+        "product"
+      ],
+      "skillsSh": {
+        "id": "roast-my-product",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/roast-my-product"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "scaffold-project-skill",
+      "name": "Scaffold Project (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/scaffold-project",
+      "description": "Scaffold a new Sui project with the right stack, write build-context.md, and pick template defaults.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "scaffold",
+        "setup",
+        "template"
+      ],
+      "skillsSh": {
+        "id": "scaffold-project",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/scaffold-project"
+      },
+      "lastChecked": "2026-05-12"
     },
     {
       "id": "scallop-money-market-skill",
@@ -74,13 +982,138 @@
       "publisherType": "ecosystem",
       "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/scallop-money-market",
       "description": "Deposit, borrow, and repay against a live Scallop pool with quality gate enforcing all three.",
-      "agents": ["claude", "codex", "cursor"],
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
       "phase": "build",
-      "tags": ["lending", "money-market", "sponsor"],
+      "tags": [
+        "lending",
+        "money-market",
+        "sponsor"
+      ],
       "skillsSh": {
         "id": "scallop-money-market",
         "npxCmd": "npx skills add pivyme/suiperpower/skills/build/scallop-money-market"
       },
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "seal-access-control-skill",
+      "name": "Seal Access Control (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/seal-access-control",
+      "description": "Add Seal-based on-chain access control and encryption to a Sui dapp. Policy-based decryption using Move.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "seal",
+        "encryption",
+        "access-control",
+        "privacy"
+      ],
+      "skillsSh": {
+        "id": "seal-access-control",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/seal-access-control"
+      },
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sponsored-transactions-skill",
+      "name": "Sponsored Transactions (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/sponsored-transactions",
+      "description": "Add sponsored transactions to a Sui app so the sponsor pays gas while the user signs the Move calls.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "gas",
+        "sponsored",
+        "onboarding"
+      ],
+      "skillsSh": {
+        "id": "sponsored-transactions",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/sponsored-transactions"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "submit-to-sui-overflow-skill",
+      "name": "Submit to Sui Overflow (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/ship/submit-to-sui-overflow",
+      "description": "Drive the Sui Overflow submission end to end on deepsurge.xyz with package ID validation, media checks, and day-of preflight.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "ship",
+      "tags": [
+        "overflow",
+        "submission",
+        "hackathon"
+      ],
+      "skillsSh": {
+        "id": "submit-to-sui-overflow",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/ship/submit-to-sui-overflow"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "sui-beginner-skill",
+      "name": "Sui Beginner (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/learn/sui-beginner",
+      "description": "Teach Sui from scratch with explicit framing for builders coming from EVM or Solana so they map known concepts to Sui equivalents.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "learn",
+      "tags": [
+        "beginner",
+        "onboarding",
+        "evm",
+        "solana"
+      ],
+      "skillsSh": {
+        "id": "sui-beginner",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/learn/sui-beginner"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "sui-stack-plugin",
+      "name": "Sui Stack Claude Code Plugin",
+      "publisher": "0x-j",
+      "publisherType": "community",
+      "url": "https://github.com/0x-j/sui-stack-claude-code-plugin",
+      "description": "Claude Code plugin with 6 skills covering the full Sui stack: Move, PTBs, dApp Kit, indexers, and deployment.",
+      "agents": [
+        "claude"
+      ],
+      "phase": "build",
+      "tags": [
+        "full-stack",
+        "move",
+        "ptb",
+        "dapp-kit"
+      ],
       "lastChecked": "2026-05-11"
     },
     {
@@ -90,14 +1123,185 @@
       "publisherType": "ecosystem",
       "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/sui-zk-login",
       "description": "Add zkLogin with a real OAuth provider end to end, not a stub.",
-      "agents": ["claude", "codex", "cursor"],
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
       "phase": "build",
-      "tags": ["zklogin", "auth"],
+      "tags": [
+        "zklogin",
+        "auth"
+      ],
       "skillsSh": {
         "id": "sui-zk-login",
         "npxCmd": "npx skills add pivyme/suiperpower/skills/build/sui-zk-login"
       },
       "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "suimate-sui-skills",
+      "name": "SuiMate Sui Skills",
+      "publisher": "EasonC13",
+      "publisherType": "community",
+      "url": "https://github.com/EasonC13-agent/sui-skills",
+      "description": "Claude Code skills for Sui development from SuiMate. Covers 4 skills including Move, SDK, and dApp patterns.",
+      "agents": [
+        "claude"
+      ],
+      "phase": "build",
+      "tags": [
+        "move",
+        "sdk",
+        "dapp"
+      ],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "suins-integration-skill",
+      "name": "SuiNS Integration (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/suins-integration",
+      "description": "Integrate SuiNS name resolution and Move Registry (MVR) into a Sui project for human-readable addresses and named packages.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "suins",
+        "naming",
+        "mvr",
+        "registry"
+      ],
+      "skillsSh": {
+        "id": "suins-integration",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/suins-integration"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "validate-business-model-skill",
+      "name": "Validate Business Model (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/validate-business-model",
+      "description": "Force five concrete questions about who pays, how much, and why. Refuses to claim a business model exists without answers.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "business-model",
+        "monetization",
+        "pricing"
+      ],
+      "skillsSh": {
+        "id": "validate-business-model",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/validate-business-model"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "validate-idea-skill",
+      "name": "Validate Idea (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/idea/validate-idea",
+      "description": "Stress test a Sui product idea against demand, competition, feasibility, and Sui-native fit with a go/no-go recommendation.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "idea",
+      "tags": [
+        "validation",
+        "feasibility",
+        "go-no-go"
+      ],
+      "skillsSh": {
+        "id": "validate-idea",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/idea/validate-idea"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "video-craft-skill",
+      "name": "Video Craft (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/ship/video-craft",
+      "description": "Polish frame-level video quality, pacing, captions, color, and audio for a demo or marketing cut.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "ship",
+      "tags": [
+        "video",
+        "editing",
+        "polish"
+      ],
+      "skillsSh": {
+        "id": "video-craft",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/ship/video-craft"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "walrus-research-skill",
+      "name": "Walrus Research (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/idea/walrus-research",
+      "description": "Research Walrus storage usage patterns and surface product opportunities, underserved use cases, and integration gaps.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "idea",
+      "tags": [
+        "walrus",
+        "storage",
+        "research"
+      ],
+      "skillsSh": {
+        "id": "walrus-research",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/idea/walrus-research"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "walrus-sites-skill",
+      "name": "Walrus Sites (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/walrus-sites",
+      "description": "Deploy a static frontend to Walrus Sites for decentralized hosting on Sui.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "walrus",
+        "hosting",
+        "frontend",
+        "decentralized"
+      ],
+      "skillsSh": {
+        "id": "walrus-sites",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/walrus-sites"
+      },
+      "lastChecked": "2026-05-12"
     },
     {
       "id": "walrus-storage-skill",
@@ -106,14 +1310,46 @@
       "publisherType": "ecosystem",
       "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/walrus-storage",
       "description": "Store and retrieve blobs on Walrus with the demo rendering a real stored blob.",
-      "agents": ["claude", "codex", "cursor"],
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
       "phase": "build",
-      "tags": ["walrus", "storage", "sponsor-headline"],
+      "tags": [
+        "walrus",
+        "storage",
+        "sponsor-headline"
+      ],
       "skillsSh": {
         "id": "walrus-storage",
         "npxCmd": "npx skills add pivyme/suiperpower/skills/build/walrus-storage"
       },
       "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "will-real-users-pay-skill",
+      "name": "Will Real Users Pay (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/will-real-users-pay",
+      "description": "Run a cheap pricing experiment that produces a real signal from candidate users in two weeks or less.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "pricing",
+        "experiment",
+        "validation"
+      ],
+      "skillsSh": {
+        "id": "will-real-users-pay",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/will-real-users-pay"
+      },
+      "lastChecked": "2026-05-12"
     }
   ]
 }

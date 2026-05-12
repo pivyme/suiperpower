@@ -8,7 +8,7 @@ Orders not aligned to the pool's `tickSize` and `lotSize` reject. The SDK does n
 
 Mitigations:
 
-- Read `getPoolBookParams` once at app start and cache.
+- Read `poolBookParams(poolKey)` once at app start and cache.
 - Round in the UI layer before submitting.
 - Show a "minimum order: X" hint when the user types below `minSize`.
 
@@ -24,9 +24,9 @@ Mitigations:
 
 ## Pay-with-DEEP optionality
 
-DeepBook offers a fee discount when paid in DEEP token. If `payWithDeep: true` and the BalanceManager has zero DEEP, the order rejects.
+DeepBook offers a fee discount when paid in DEEP token. The default for `payWithDeep` is `true`. If the BalanceManager has zero DEEP balance and `payWithDeep` is not explicitly set to `false`, the order rejects.
 
-For first integration, use `payWithDeep: false`. Add the DEEP discount path only after the base flow works.
+For first integration, explicitly set `payWithDeep: false`. Add the DEEP discount path only after the base flow works and DEEP is deposited into the BalanceManager.
 
 ## Stale book reads
 
@@ -44,17 +44,19 @@ Some older Sui pools are v2 and use a different SDK. New development uses v3. Mi
 
 Confirm the pool version in the pool registry before integrating.
 
-## Pool creation requires a capability
+## Pool creation
 
-Anyone cannot freely create new DeepBook pools. The current policy gates pool creation behind a capability or governance flow. Check the live policy before assuming you can spin up a market for an arbitrary pair.
+DeepBook v3 supports `createPermissionlessPool`, which allows anyone to create a new pool for an arbitrary pair without a special capability. However, pool creation has costs and constraints (fee tier selection, minimum tick/lot sizing). Check the current SDK and docs for the exact parameters before assuming defaults.
 
-For projects that need a market that does not exist, plan for the pool-creation flow as a separate workstream, not a side effect.
+For projects that need a market that does not exist, treat pool creation as a deliberate step with its own testing, not a side effect of order placement.
+
+DeepBook also offers specialized pool types on testnet and mainnet. DeepBook Predict (testnet) supports prediction-market pools. DeepBook Margin (mainnet) supports margin trading. DeepBook Sandbox provides a simulated environment for testing. Check which pool type fits your use case.
 
 ## Order expiry and pruning
 
 Resting orders consume book slots. Long-lived orders without expiry can collide with re-listing logic during volatile periods.
 
-Set `expireTimestamp` for orders that should auto-cancel. For market-makers, replace orders frequently rather than relying on indefinite resting orders.
+Set `expiration` for orders that should auto-cancel. For market-makers, replace orders frequently rather than relying on indefinite resting orders.
 
 ## Frontend wallet vs backend keeper
 

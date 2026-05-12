@@ -29,9 +29,9 @@
 |---|---|
 | Set up dapp-kit in Next.js | `05-app-layer-and-consumer.md` "Frontend stack defaults" |
 | Add a connect button | `05-app-layer-and-consumer.md` "Wallet connection patterns" |
-| Sign and execute a PTB | `useSignAndExecuteTransaction` from `@mysten/dapp-kit` |
-| Read an Object from the frontend | `client.getObject({ id, options })` |
-| Subscribe to events | `client.subscribeEvent` (websocket fullnode required) |
+| Sign and execute a PTB | Action-based API from `@mysten/dapp-kit-react` (the old `useSignAndExecuteTransaction` hook was removed in SDK v2.0) |
+| Read an Object from the frontend | `client.core.getObject({ objectId, options })` (SDK v2.0 Core API; note param is `objectId`, not `id`) |
+| Subscribe to events | `client.subscribeEvent` (JSON-RPC websocket only, not available on gRPC client) |
 | Format SUI balance for display | `skills/build/number-formatting/` |
 
 ## PTBs
@@ -47,7 +47,7 @@
 
 | Intent | Pointer |
 |---|---|
-| Connect Slush, Sui Wallet, Phantom | `@mysten/dapp-kit` Wallet Standard support |
+| Connect Slush, Sui Wallet, Phantom | `@mysten/dapp-kit-react` (or `@mysten/dapp-kit-core` for non-React) Wallet Standard support |
 | Add zkLogin (dev) | `https://docs.sui.io/concepts/cryptography/zklogin` |
 | Add zkLogin (production) | Enoki, see `05-app-layer-and-consumer.md` "zkLogin in production" |
 | Sponsor a transaction | `https://docs.sui.io/concepts/transactions/sponsored-transactions` and `skills/build/sponsored-transactions/` |
@@ -94,8 +94,8 @@
 
 | Intent | Pointer |
 |---|---|
-| Add OZ access control | `sponsor-docs/openzeppelin-sui.md` |
-| Add OZ pausable | `sponsor-docs/openzeppelin-sui.md` |
+| Add OZ two-step ownership transfer | `sponsor-docs/openzeppelin-sui.md` |
+| Add OZ safe math (mul_div, sqrt) | `sponsor-docs/openzeppelin-sui.md` |
 | Replace hand-rolled patterns | `skills/build/openzeppelin-sui-libs/` |
 
 ## Cross-chain
@@ -157,4 +157,4 @@ If you cannot find your intent here, the answer is probably in:
 
 Recipes here are pointers, not full content. Length budget for this index: stays under 250 lines so the AI loads it cheaply on every skill.
 
-Last updated: 2026-05-10.
+Last updated: 2026-05-11. Updated for SDK v2.0 breaking changes.

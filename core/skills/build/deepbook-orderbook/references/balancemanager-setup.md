@@ -4,17 +4,19 @@ A BalanceManager is a Sui Object that holds the user's funds available for DeepB
 
 ## Create a BalanceManager
 
+Assumes you have initialized the client using the `$extend` pattern (see `deepbook-quickstart.md`).
+
 ```ts
 import { Transaction } from "@mysten/sui/transactions";
 
 const tx = new Transaction();
 
-deepbook.balanceManager.createAndShareBalanceManager()(tx);
+client.deepbook.balanceManager.createAndShareBalanceManager()(tx);
 
-const result = await sui.signAndExecuteTransaction({
+const result = await client.core.signAndExecuteTransaction({
   transaction: tx,
   signer,
-  options: { showObjectChanges: true },
+  include: { objectTypes: true },
 });
 
 const balanceManagerId = result.objectChanges?.find(
@@ -26,20 +28,22 @@ console.log("balanceManagerId:", balanceManagerId);
 
 Persist `balanceManagerId` per user in your app state. Regenerating it on every session is wasteful and breaks order tracking.
 
+Note: SDK methods that reference a BalanceManager in transaction calls use a `managerKey` string (e.g. `"MANAGER_1"`), which is a local alias registered with the SDK. Query methods also accept this string key. The raw object ID is needed only for on-chain lookups outside the SDK.
+
 ## Deposit funds
 
-Before placing orders, deposit input tokens into the BalanceManager.
+Before placing orders, deposit input tokens into the BalanceManager. The SDK uses positional args: `(managerKey, coinKey, amount)`.
 
 ```ts
 const tx = new Transaction();
 
-deepbook.balanceManager.depositIntoManager(
-  balanceManagerId,
-  "SUI",       // coinKey
-  100,          // amount in human units
+client.deepbook.balanceManager.depositIntoManager(
+  "MANAGER_1",  // managerKey (string alias, not object ID)
+  "SUI",        // coinKey
+  100,           // amount in human units
 )(tx);
 
-await sui.signAndExecuteTransaction({ transaction: tx, signer });
+await client.core.signAndExecuteTransaction({ transaction: tx, signer });
 ```
 
 For a buy order, deposit quote token (e.g. USDC). For a sell order, deposit base token (e.g. SUI). Pay-with-DEEP requires DEEP balance separately.
@@ -49,22 +53,23 @@ For a buy order, deposit quote token (e.g. USDC). For a sell order, deposit base
 ```ts
 const tx = new Transaction();
 
-deepbook.balanceManager.withdrawFromManager(
-  balanceManagerId,
-  "USDC",
+client.deepbook.balanceManager.withdrawFromManager(
+  "MANAGER_1",
+  "DBUSDC",     // on testnet, use DBUSDC (not USDC)
   50,
+  recipientAddr, // address that receives the withdrawn coins
 )(tx);
 
-await sui.signAndExecuteTransaction({ transaction: tx, signer });
+await client.core.signAndExecuteTransaction({ transaction: tx, signer });
 ```
 
-Withdraws move funds back to the wallet's spot balance. Open orders that need the withdrawn balance reject when matched.
+Withdraws funds to the specified recipient address. Open orders that need the withdrawn balance reject when matched.
 
 ## Check balance
 
 ```ts
-const balances = await deepbook.balanceManager.checkManagerBalance(
-  balanceManagerId,
+const balances = await client.deepbook.balanceManager.checkManagerBalance(
+  "MANAGER_1",
   "SUI",
 );
 

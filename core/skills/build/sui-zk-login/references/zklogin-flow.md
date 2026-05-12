@@ -8,12 +8,12 @@ In the browser, before redirecting to the OAuth provider:
 
 ```ts
 import { Ed25519Keypair } from "@mysten/sui/keypairs/ed25519";
-import { SuiClient, getFullnodeUrl } from "@mysten/sui/client";
+import { SuiGrpcClient } from "@mysten/sui/grpc";
 import { generateNonce, generateRandomness } from "@mysten/sui/zklogin";
 
-const sui = new SuiClient({ url: getFullnodeUrl("testnet") });
+const sui = new SuiGrpcClient({ network: "testnet" });
 
-const { epoch } = await sui.getLatestSuiSystemState();
+const { epoch } = await sui.core.getCurrentSystemState();
 const maxEpoch = Number(epoch) + 2; // valid for ~2 epochs
 
 const ephemeralKeypair = new Ed25519Keypair();
@@ -74,6 +74,9 @@ Salt determines the user's Sui address. Same JWT subject + same salt = same addr
 ```ts
 import { jwtToAddress } from "@mysten/sui/zklogin";
 
+// Third argument (legacyAddress) is optional, defaults to false.
+// Pass true only if you need backward compatibility with addresses
+// derived under SDK v1.
 const userAddress = jwtToAddress(idToken, userSalt);
 console.log("Sui address:", userAddress);
 ```
@@ -134,9 +137,9 @@ const zkLoginSignature = getZkLoginSignature({
   userSignature: ephemeralSignature,
 });
 
-const result = await sui.executeTransactionBlock({
-  transactionBlock: bytes,
-  signature: zkLoginSignature,
+const result = await sui.core.executeTransaction({
+  transaction: bytes,
+  signatures: [zkLoginSignature],
 });
 
 console.log("digest:", result.digest);
@@ -148,4 +151,4 @@ If the ephemeral key expires or the user clears `sessionStorage`, the user must 
 
 If the salt is lost (self-hosted, no backup), the address is unrecoverable. Salt management is the load-bearing decision.
 
-Last updated: 2026-05-10.
+Last updated: 2026-05-11.

@@ -2,75 +2,86 @@
 
 Surprises that come from assuming OZ Sui matches OZ EVM, or from skipping version discipline.
 
+Source: https://docs.openzeppelin.com/contracts-sui/1.x (v1.1.0)
+
+## The library is much smaller than OZ EVM
+
+OZ Contracts for Sui ships three packages: `openzeppelin_access` (two-step and delayed transfer), `openzeppelin_math` (integer math, u512, decimal scaling), and `openzeppelin_fp_math` (fixed-point types). That is it.
+
+There is no `access_control`, no `pausable`, no `ownable`, no `upgradeable`, no `signer_registry`, no `events` helpers. Do not search for these modules. If your project needs role-based access control or a pause mechanism, keep it hand-rolled.
+
 ## API parity is not one-to-one with OZ EVM
 
-A function called `transferOwnership` in OZ Solidity might be `transfer_ownership` (snake_case) and have different argument order or capability semantics in OZ Sui.
+OZ EVM's `Ownable2Step` changes a storage slot. OZ Sui's `two_step_transfer` wraps an entire object in a `TwoStepTransferWrapper<T>` and uses `Receiving<T>` for the accept flow. The mental model is completely different.
 
-Do not assume. Read the OZ Sui module's source at the pinned commit before calling its functions.
+Do not assume. Read the OZ Sui module's source or API docs at the pinned version before calling its functions.
 
-## Module naming changes between releases
+## Math functions return Option, not abort
 
-Early OZ Sui releases used certain names; later releases reorganized. Examples (illustrative): `access_control` could be moved into `auth::access_control` in a later release.
+`mul_div`, `checked_shl`, `checked_shr`, and `inv_mod` return `Option<T>`. They do not abort on overflow or invalid input. If you blindly call `.destroy_some()` without handling the `None` case, you get an abort at runtime with an unhelpful error.
 
-Pin a version, document it in `build-context.md`, and treat upgrades as a project (not a casual bump).
+Decide per call site: is `None` a programming error (abort is fine) or a user-input edge case (return an error)?
 
-## Capability by value vs by reference
+## delayed_transfer needs a Clock reference
 
-Most OZ Sui helpers expect a reference (`&Cap`). Passing by value (`Cap`) consumes the cap and breaks future operations.
+`schedule_transfer`, `schedule_unwrap`, `execute_transfer`, and `unwrap` all take `&Clock`. The Clock is a Sui framework shared object at address `0x6`. If you forget to pass it in your PTB or test, the call aborts.
 
-Compile error is clear:
+In tests, use `sui::test_scenario` clock utilities. In PTBs, include the Clock object.
 
+## two_step_transfer is for single-owned objects
+
+The docs state explicitly: "This package is designed for single-owned objects." `ctx.sender()` is stored as the owner-of-record during `wrap`.
+
+Do not use `two_step_transfer` directly in shared-object executor flows unless the signer identity maps explicitly to cancel authority. If your admin cap lives inside a shared object, restructure so the wrapper itself is single-owned.
+
+## Wrapper consumes the object
+
+When you `wrap(cap, ctx)`, the cap moves into the wrapper as a dynamic field. You access it via `borrow(&wrapper)` or `borrow_mut(&mut wrapper)`. You no longer hold the cap directly.
+
+Functions that previously took `&AdminCap` must be updated to take `&TwoStepTransferWrapper<AdminCap>` and call `borrow` internally. This changes your public API surface. Plan for it.
+
+## borrow_val is a hot potato
+
+`borrow_val` returns `(T, Borrow)`. The `Borrow` guard has no `drop`, so you must call `return_val` before the transaction ends. If you forget, the transaction aborts. This is intentional: it prevents extracting the wrapped object permanently through this path.
+
+Use `unwrap` if you genuinely want to destroy the wrapper and reclaim the object.
+
+## Dependency format is MVR, not git
+
+OZ Sui uses the MVR (Move Version Registry) for dependency resolution:
+
+```toml
+openzeppelin_access = { r.mvr = "@openzeppelin-move/access" }
 ```
-error: function consumes value of type Cap but value is shared
+
+Not:
+
+```toml
+OpenZeppelin = { git = "https://github.com/OpenZeppelin/openzeppelin-sui.git", rev = "..." }
 ```
 
-Easy to miss in PR review when the diff is small.
+The repo URL is `https://github.com/OpenZeppelin/contracts-sui` (not `openzeppelin-sui`, that 404s). But MVR is the intended dependency path. You need the MVR CLI installed (`mvr add @openzeppelin-move/access`).
 
-## Audit scope is per-module
+## Sui CLI version matters
 
-Just because OZ Sui exists does not mean every module is audited. Check the audit metadata in the OZ repo per module before relying on it for high-value paths.
+The repo requires Sui CLI 1.71.1 or compatible. If your project pins an older Sui framework revision, you may hit type conflicts between OZ's expected Sui stdlib and yours.
 
-If a module is unaudited, decide:
+Pin both deps consistently. If a conflict appears, update the older one to match.
 
-- Use it anyway and document the risk.
-- Do not use it; stay hand-rolled with audit on your code.
+## Experimental status
 
-## OZ's upgrade pattern does not replace Sui's native upgrade
-
-Sui has a protocol-level upgrade mechanism via `UpgradeCap`. OZ Sui's "upgradeable" module wraps that with policy (timelock, multisig, etc.). It does not replace it.
-
-Common confusion: a developer expects "OZ upgradeable" to handle all upgrades. The native `UpgradeCap` still exists and still has authority. The OZ wrapper enforces additional policy on top.
-
-If you import OZ upgradeable, make sure the `UpgradeCap` is held by the OZ policy contract, not loose somewhere else.
-
-## Dependency conflicts with Sui framework
-
-OZ Sui depends on the Sui framework. If your project pins a Sui framework rev that is much older or newer than OZ's pin, you can hit type conflicts.
-
-Mitigations:
-
-- Use a Sui framework rev compatible with the OZ release.
-- Pin both deps consistently.
-- If a conflict appears, the resolution is usually to update the older one to match the newer.
+The README states: "This is experimental software provided on an 'as is' and 'as available' basis." Past audits are in the `/audits` directory of the repo. Check audit coverage for the specific modules you adopt, not just the existence of audits.
 
 ## Refactoring tests is not optional
 
-OZ migration changes function signatures. Tests that used the hand-rolled pattern compile against old types and fail at runtime when the refactor lands.
+OZ migration changes function signatures and types. Tests that used the hand-rolled pattern break when the refactor lands. Update tests in the same commit. A passing `sui move test` is the whole point.
 
-Update tests as part of the same commit as the code refactor. A passing CI is the point of the migration.
+## Remove dead code completely
 
-## Removing the hand-rolled stubs completely
+After migration, dead structs and dead functions can linger. They look harmless but confuse future readers, show up in audit scope, and provide attack surface if accidentally reused. Delete them in the same commit as the migration.
 
-After migration, dead structs and dead functions can linger. They look harmless but:
+## OZ MCP server does not support Sui
 
-- Confuse future readers.
-- Show up in audit scope.
-- Provide attack surface if accidentally re-used.
+The OpenZeppelin MCP server at `mcp.openzeppelin.com` supports Solidity, Cairo, Stellar, and Stylus. It does not support Move or Sui. Do not attempt to use it for OZ Sui questions. Read the docs or repo directly.
 
-Delete them in the same commit as the migration. Do not leave a "we'll clean up later."
-
-## Documentation drift
-
-If your README or CLAUDE.md references the old pattern, update them. Audit reviewers read both code and docs; mismatched docs raise findings.
-
-Last updated: 2026-05-10.
+Last updated: 2026-05-11. Source: OZ Contracts for Sui v1.1.0.

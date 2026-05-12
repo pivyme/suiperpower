@@ -1,0 +1,8 @@
+name: nautilus-offchain
+version: 1
+phase: build
+description: Use when building verifiable off-chain compute on Sui via Nautilus TEEs (AWS Nitro Enclaves), or attested off-chain oracles.
+prompt_path: ../SKILL.md
+references:
+  - ../references/nautilus-architecture.md
+  - ../references/nautilus-pitfalls.md

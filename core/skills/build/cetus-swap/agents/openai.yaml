@@ -1,0 +1,7 @@
+name: cetus-swap
+version: 1
+phase: build
+description: Use when integrating Cetus CLMM on Sui for token swaps or concentrated liquidity, or when building a Sui DEX with AMM liquidity.
+prompt_path: ../SKILL.md
+references:
+  - ../references/cetus-quickstart.md

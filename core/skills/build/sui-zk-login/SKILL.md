@@ -31,9 +31,11 @@ Adds end-to-end zkLogin to a Sui app. Walks through OAuth provider registration,
 
 ## When to use it
 
-- The user wants users to sign in with Google, Apple, Facebook, or Twitch instead of a wallet seed phrase.
+- The user wants users to sign in with Google, Apple, Facebook, Twitch, Slack, Kakao, or Microsoft instead of a wallet seed phrase.
 - The user is building consumer-facing Sui apps where wallet friction kills onboarding.
 - The user wants a passwordless Sui address tied to an OAuth identity.
+
+Supported providers (SDK v2): Google, Apple, Facebook, Twitch, AWS (tenant-based), Karrier One, Credenza3 (all networks). Slack, Kakao, Microsoft are devnet only.
 
 ## When NOT to use it
 
@@ -53,9 +55,10 @@ If you activated this and the user actually wants something else, consult `skill
 If unclear, interview the user for:
 
 - Which provider(s) does the target audience use? Google is the safest first pick.
-- What is the salt management plan? Self-hosted salt service, Mysten Salt service, or per-user-derived salt?
+- What is the salt management plan? Self-hosted salt service, Mysten Salt service (`https://salt.api.mystenlabs.com/get_salt`), or per-user-derived salt?
 - Mainnet, testnet, or both?
-- What is the prover service? Mysten's, self-hosted, or a third-party?
+- What is the prover service? Mysten's (`https://prover-dev.mystenlabs.com/v1` for devnet/testnet), self-hosted, or a third-party?
+- For production, consider Enoki (Mysten's managed zkLogin service) which handles key management, salt, and proving.
 
 ## Outputs
 
@@ -105,6 +108,7 @@ The skill never deletes files outside the integration source path without explic
 
 7. **Address derivation**
    - Derive the user's Sui address from the JWT, salt, and proof.
+   - `jwtToAddress(jwt, salt, legacyAddress?)` accepts an optional third boolean. It defaults to `false`. Pass `true` only for backward compatibility with addresses derived under SDK v1.
    - Display the address to the user (truncated form fine).
 
 8. **Sign and execute**
@@ -120,6 +124,17 @@ The skill never deletes files outside the integration source path without explic
 11. **Closing handoff**
     - If `.suiperpower/intent.md` exists and the session was non-trivial (new zkLogin integration, salt service decision, provider list, real signed transaction), recommend `verify-against-intent` as the next step so the auth surface and key-custody choices are checked before shipping.
     - If no `intent.md` exists and the session was non-trivial, surface that gap once: offer `clarify-intent` to backfill, do not force it.
+
+## Production deployment options
+
+The manual flow above gives full control but requires running your own salt service, prover, and key management. For production, consider these managed services:
+
+| Service | What it handles | Docs |
+|---|---|---|
+| **Enoki** (Mysten Labs) | Managed zkLogin: salt, proving, ephemeral key management, sponsored transactions. Drop-in SDK. | https://docs.enoki.mystenlabs.com |
+| **Shinami** (third-party) | zkLogin API, gas station (sponsored txs), Node Service (RPC). Single vendor for auth + gas + infra. | https://docs.shinami.com |
+
+Both remove the need to self-host a prover and salt service. Evaluate based on custody requirements, cost, and vendor preference. The manual flow remains the right choice when you need full control over key material and salt storage.
 
 ## Quality gate (anti-slop)
 

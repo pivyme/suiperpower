@@ -27,19 +27,25 @@ Write the answer to `~/.suiperpower/config.json` `telemetryTier` field and creat
 
 ## What this skill does
 
-Surveys the user's Move package, identifies hand-rolled patterns OpenZeppelin's Sui libraries replace, pulls in the right OZ modules, and rewrites the affected code paths. Reduces audit surface and bugs by swapping bespoke patterns for audited ones. Refuses to declare success unless the rewrite still passes tests.
+Surveys the user's Move package for hand-rolled patterns that OZ Contracts for Sui (v1.1.0) replaces, pulls in the right OZ packages via MVR, and rewrites the affected code paths. The library covers three areas:
+
+1. **Safe ownership transfer** (`openzeppelin_access`): two-step transfer and time-locked delayed transfer wrappers for `key + store` objects.
+2. **Integer math** (`openzeppelin_math`): overflow-safe `mul_div`, `sqrt`, `log2`, `log10`, `average`, shift ops, modular arithmetic, `u512` wide type, and decimal scaling.
+3. **Fixed-point math** (`openzeppelin_fp_math`): `UD30x9` (unsigned) and `SD29x9` (signed) decimal types with 9 decimal places, matching Sui coin precision.
+
+That is the complete scope. There is no access_control role registry, no pausable, no ownable, no upgradeable wrapper in OZ Sui. If the user needs those patterns, they stay hand-rolled.
 
 ## When to use it
 
-- Pre-audit: identify hand-rolled access control or pausable patterns and replace with audited equivalents.
-- New project: pick up OZ patterns from day one rather than rolling custom.
-- Refactor: collapse duplicated boilerplate (admin-only checks, role registries) into the OZ module.
+- Admin capabilities that need safe two-step or time-locked ownership handoff.
+- Arithmetic-heavy DeFi logic (AMMs, lending, vaults) where hand-rolled `mul_div` or fixed-point math is a liability.
+- Decimal scaling between tokens with different precision (e.g., 6-decimal USDC to 9-decimal Sui coins).
 
 ## When NOT to use it
 
-- Toy or learning projects where hand-rolling teaches the underlying pattern.
-- Patterns OZ Sui does not yet cover; verify with the latest OZ Sui module list before assuming.
-- If the user's bespoke logic has constraints OZ does not match (rare); document and stay custom.
+- Patterns OZ Sui does not cover: role-based access control, pausable, multi-sig. Those stay hand-rolled.
+- Toy projects where hand-rolling teaches the underlying pattern.
+- If the user's bespoke logic has constraints OZ wrappers do not match (rare); document and stay custom.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.
 
@@ -50,21 +56,21 @@ If you activated this and the user actually wants something else, consult `skill
 
 If unclear, interview the user for:
 
-- Which patterns are present (admin-only ops, role hierarchy, pausable, upgrade policy)?
+- Which patterns are present (admin cap transfer, time-locked actions, hand-rolled arithmetic)?
 - Are there custom patterns the team is attached to for non-technical reasons?
 - What is the test coverage for the affected code paths? OZ migration without tests is dangerous.
 
 ## Outputs
 
-- Updated `Move.toml` with pinned OZ Sui dependency.
+- Updated `Move.toml` with MVR dependencies for the adopted OZ packages.
 - Move modules rewritten to use OZ primitives.
 - Tests updated and passing.
 - Append to `.suiperpower/build-context.md`:
 
   ```markdown
   ## openzeppelin-sui-libs session, <timestamp>
-  - oz version: <release-tag-or-commit>
-  - modules adopted: <list>
+  - oz version: 1.1.0 (contracts-sui)
+  - packages adopted: <list of openzeppelin_access, openzeppelin_math, openzeppelin_fp_math>
   - hand-rolled patterns removed: <list>
   - test count before / after: <n> / <n>
   - open issues: <list>
@@ -76,14 +82,20 @@ The skill never deletes files outside the integration source path without explic
 
 1. **Context gathering**
    - Read `.suiperpower/build-context.md` if present.
-   - Identify hand-rolled patterns: admin checks, role registries, pause/unpause, upgrade hooks.
+   - Identify hand-rolled patterns: admin cap transfers, manual delay logic, unsafe arithmetic.
 
-2. **OZ module survey**
-   - Cross-reference with the OZ Sui repo for current module list.
-   - Pick the matching module(s).
+2. **OZ package survey**
+   - Cross-reference with the three OZ packages. See `references/oz-modules-quickref.md`.
+   - Pick the matching package(s). Do not import packages the project does not need.
 
-3. **Pin the dependency**
-   - Add OZ to `Move.toml` with a pinned `rev` or release tag, never `main`.
+3. **Add MVR dependencies**
+   - Install the MVR CLI if not present. Add deps to `Move.toml`:
+     ```toml
+     openzeppelin_access = { r.mvr = "@openzeppelin-move/access" }
+     openzeppelin_math = { r.mvr = "@openzeppelin-move/integer-math" }
+     openzeppelin_fp_math = { r.mvr = "@openzeppelin-move/fixed-point-math" }
+     ```
+   - Only add the packages the project actually uses.
    - Run `sui move build`. Resolve any conflicts.
 
 4. **Migration plan**
@@ -94,13 +106,14 @@ The skill never deletes files outside the integration source path without explic
    - Replace one pattern at a time. Rebuild and run tests after each.
    - If a test fails, the migration is incomplete; do not move on.
 
-6. **API parity check**
-   - OZ Sui APIs are not one-to-one with OZ EVM APIs. Confirm semantics by reading the OZ module's source, not by analogy.
-   - In particular, capability-by-reference vs by-value: OZ Sui usually wants `&Cap`.
+6. **API check**
+   - OZ Sui APIs are not one-to-one with OZ EVM APIs. Read the OZ module's source, not by analogy.
+   - `two_step_transfer` wraps objects, not storage slots. `delayed_transfer` needs a `Clock` reference.
+   - Math functions return `Option<T>`, not abort-on-overflow. Handle the `None` case.
 
 7. **Test pass**
    - Run the full `sui move test` suite. Refuse to declare done if anything is red.
-   - For each replaced pattern, confirm the new test exercises the OZ-backed path, not just the old hand-rolled one.
+   - For each replaced pattern, confirm the new test exercises the OZ-backed path.
 
 8. **Writeback**
    - Append session details to `.suiperpower/build-context.md`.
@@ -113,12 +126,14 @@ The skill never deletes files outside the integration source path without explic
 
 Before reporting done, the skill asks itself the following and refuses to declare success if any answer is no:
 
-- Is the OZ dependency pinned to a specific `rev` or release tag, not `main`?
+- Are only the needed OZ packages added (no unused deps)?
 - For every hand-rolled pattern replaced, is the corresponding test still passing and exercising the OZ path?
-- Did `sui move build` produce zero warnings after the migration?
+- Did `sui move build` produce zero errors after the migration?
 - Are all hand-rolled stubs that OZ replaces actually removed, not left as dead code?
-- For capabilities, is the by-reference vs by-value choice correct (matches OZ's expectation)?
-- Is the OZ version recorded in `build-context.md` so future audits can pin against it?
+- For `two_step_transfer`: is the wrapper owned by the correct address, and is `accept_transfer` tested?
+- For `delayed_transfer`: is the `min_delay_ms` set to a sane value, and is the `Clock` passed correctly?
+- For math: are `Option` return values from `mul_div`/`inv_mod` handled (not blindly unwrapped)?
+- Are the OZ packages recorded in `build-context.md` so future audits can trace them?
 
 If any answer is no, the skill reports the gap and works through it before claiming the migration is complete.
 
@@ -126,13 +141,13 @@ If any answer is no, the skill reports the gap and works through it before claim
 
 On-demand references (load when relevant to the user's question):
 
-- `references/oz-modules-quickref.md`: Cheat-sheet of common OZ Sui modules and the patterns they replace.
+- `references/oz-modules-quickref.md`: All three OZ packages, their modules, types, and function signatures.
 - `references/migration-from-handrolled.md`: Step-by-step pattern migrations with before/after code.
-- `references/oz-pitfalls.md`: API parity surprises, version pin discipline, module-vs-package boundaries.
+- `references/oz-pitfalls.md`: API parity surprises, version discipline, common mistakes.
 
 Knowledge docs (load when scope expands beyond what is in references):
 
-- `skills/data/sui-knowledge/sponsor-docs/openzeppelin-sui.md`: Concepts, key modules, deeper integration notes.
+- `skills/data/sui-knowledge/sponsor-docs/openzeppelin-sui.md`: Overview, correct repo URLs, deeper integration notes.
 
 ## Use in your agent
 

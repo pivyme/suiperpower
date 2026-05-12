@@ -26,14 +26,14 @@ For high-volume apps, default to Blockvision or Shinami; Mysten public will rate
 | Language | Package | Use when |
 |---|---|---|
 | TypeScript | `@mysten/sui` | Web frontends, Node backends, AI agents |
-| TypeScript (UI) | `@mysten/dapp-kit` | React frontends, wallet adapters, query hooks |
+| TypeScript (UI) | `@mysten/dapp-kit-react` / `@mysten/dapp-kit-core` | React frontends (use `-react`), vanilla JS (use `-core`), wallet adapters |
 | TypeScript (auth) | `@mysten/enoki` | zkLogin in production, sponsored tx |
 | Rust | `sui-sdk` (in mystenlabs/sui repo) | Backend services, indexers, validators, agents |
 | Python | `pysui` (community) | Scripts, data analysis, less production-tested than TS |
 
 Defaults:
 
-- Web frontend: `@mysten/dapp-kit` + `@tanstack/react-query`.
+- Web frontend: `@mysten/dapp-kit-react` + `@tanstack/react-query`. SDK v2.0 uses `SuiGrpcClient` (from `@mysten/sui/grpc`) as the recommended transport; `SuiJsonRpcClient` from `@mysten/sui/jsonRpc` is the legacy fallback.
 - Server-side signing or AI agents: `@mysten/sui` Keypair APIs.
 - zkLogin or sponsored tx in production: pair `@mysten/sui` with Enoki.
 - Heavy backend (indexer, validator-adjacent): Rust SDK.
@@ -49,7 +49,7 @@ Defaults:
 | Suiet | Browser extension | Long-running independent wallet |
 | Nightly | Browser + mobile | Multi-chain |
 
-`@mysten/dapp-kit` integrates with most via the standard Wallet Standard. Test against at least Slush and Sui Wallet before launch.
+`@mysten/dapp-kit-react` (or `dapp-kit-core` for non-React) integrates with most via the standard Wallet Standard. Test against at least Slush and Sui Wallet before launch.
 
 ## Indexers
 
@@ -148,8 +148,8 @@ For mobile-first products, see `skills/build/build-mobile-sui/`.
 
 | Use case | RPC | SDK |
 |---|---|---|
-| Hobby testnet dApp | Mysten public testnet | `@mysten/dapp-kit` |
-| Production Web dApp | Blockvision / Shinami | `@mysten/dapp-kit` + Enoki |
+| Hobby testnet dApp | Mysten public testnet | `@mysten/dapp-kit-react` |
+| Production Web dApp | Blockvision / Shinami | `@mysten/dapp-kit-react` + Enoki |
 | AI agent | Mysten public mainnet (low volume) or Blockvision | `@mysten/sui` |
 | Indexer / analytics backend | Self-hosted indexer | Rust SDK |
 | Mobile app | Mysten public + paid fallback | Sui Mobile SDK |
@@ -160,4 +160,4 @@ For mobile-first products, see `skills/build/build-mobile-sui/`.
 - Pricing / TVL snapshots (snapshots go stale; use live dashboards)
 - Project-by-project integration walkthroughs (those live in skills under `skills/build/<protocol>-*`)
 
-Last updated: 2026-05-10.
+Last updated: 2026-05-11. Updated for Sui SDK v2.0 (dapp-kit-react/core split, gRPC transport).

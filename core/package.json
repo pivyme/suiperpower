@@ -34,7 +34,7 @@
     "lint:catalog": "tsx scripts/lint-catalog.ts",
     "setup:sync": "./scripts/check-setup-sync.sh --write",
     "setup:check": "./scripts/check-setup-sync.sh",
-    "test": "pnpm typecheck && pnpm lint:skills && pnpm lint:catalog && pnpm preamble:check && pnpm setup:check",
+    "test": "pnpm typecheck && pnpm -w lint && pnpm lint:skills && pnpm lint:catalog && pnpm preamble:check && pnpm setup:check",
     "test:install": "./scripts/test-install.sh",
     "test:telemetry": "node --env-file=../.env --import tsx scripts/test-telemetry.ts",
     "skills:lock": "tsx scripts/generate-skills-lock.ts",

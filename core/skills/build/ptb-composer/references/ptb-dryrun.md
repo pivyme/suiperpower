@@ -5,7 +5,7 @@ A dry-run returns what would happen if the PTB executed against current chain st
 ## What you get back
 
 ```ts
-const dryRun = await sui.dryRunTransactionBlock({ transactionBlock: txBytes });
+const dryRun = await sui.core.simulateTransaction({ transaction: txBytes });
 ```
 
 The response has:

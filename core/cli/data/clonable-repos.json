@@ -1,8 +1,25 @@
 {
-  "version": "0.1.0",
-  "generatedAt": "2026-05-11T00:00:00Z",
+  "version": "0.3.0",
+  "generatedAt": "2026-05-12T12:00:00Z",
   "schema": "plans/07-ECOSYSTEM-CATALOG.md",
   "repos": [
+    {
+      "id": "7k-aggregator-sdk",
+      "name": "7k Aggregator SDK",
+      "owner": "7k-ag",
+      "url": "https://github.com/7k-ag/7k-sdk-ts",
+      "description": "TypeScript SDK for the 7k DEX aggregator on Sui. Routes swaps across multiple liquidity sources.",
+      "category": "defi",
+      "tags": [
+        "aggregator",
+        "swap",
+        "sdk"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
     {
       "id": "aftermath-finance-sdk",
       "name": "Aftermath Finance SDK",
@@ -10,11 +27,139 @@
       "url": "https://github.com/AftermathFinance/aftermath-ts-sdk",
       "description": "TypeScript SDK for Aftermath, a multi-product Sui DeFi suite covering AMM, perpetuals, and aggregation.",
       "category": "defi",
-      "tags": ["amm", "perpetuals", "aggregator"],
+      "tags": [
+        "amm",
+        "perpetuals",
+        "aggregator"
+      ],
       "license": "MIT",
       "official": false,
       "stars": 0,
       "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "atoma-contracts",
+      "name": "Atoma Contracts",
+      "owner": "atoma-network",
+      "url": "https://github.com/atoma-network/atoma-contracts",
+      "description": "On-chain Move contracts for the Atoma decentralized AI compute network on Sui.",
+      "category": "tooling",
+      "tags": [
+        "ai",
+        "agent",
+        "compute",
+        "move"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "atoma-node",
+      "name": "Atoma Node",
+      "owner": "atoma-network",
+      "url": "https://github.com/atoma-network/atoma-node",
+      "description": "Node software for the Atoma decentralized AI inference network. Rust-based, runs AI workloads settled on Sui.",
+      "category": "backend",
+      "tags": [
+        "ai",
+        "agent",
+        "inference",
+        "rust"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "atoma-proxy",
+      "name": "Atoma Proxy",
+      "owner": "atoma-network",
+      "url": "https://github.com/atoma-network/atoma-proxy",
+      "description": "API proxy for routing AI inference requests to Atoma nodes with Sui-based settlement.",
+      "category": "backend",
+      "tags": [
+        "ai",
+        "agent",
+        "proxy"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "awesome-move",
+      "name": "Awesome Move",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/awesome-move",
+      "description": "Community-curated list of Move language resources, tools, libraries, and projects across Sui and other Move chains.",
+      "category": "examples",
+      "tags": [
+        "learning",
+        "curated-list",
+        "move",
+        "official"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "awesome-seal",
+      "name": "Awesome Seal",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/awesome-seal",
+      "description": "Curated list of tools and projects built with Seal, the programmable access control and encryption framework on Sui.",
+      "category": "examples",
+      "tags": [
+        "seal",
+        "encryption",
+        "curated-list",
+        "official"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "awesome-sui",
+      "name": "Awesome Sui",
+      "owner": "sui-foundation",
+      "url": "https://github.com/sui-foundation/awesome-sui",
+      "description": "Community-curated list of Sui ecosystem projects, tools, libraries, and learning resources.",
+      "category": "examples",
+      "tags": [
+        "learning",
+        "curated-list",
+        "ecosystem"
+      ],
+      "license": "MIT",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "awesome-walrus",
+      "name": "Awesome Walrus",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/awesome-walrus",
+      "description": "Curated list of developer tools, explorers, SDKs, and infrastructure projects in the Walrus storage ecosystem.",
+      "category": "examples",
+      "tags": [
+        "walrus",
+        "curated-list",
+        "storage",
+        "official"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
     },
     {
       "id": "bluefin-sdk",
@@ -23,7 +168,10 @@
       "url": "https://github.com/fireflyprotocol/bluefin-v2-client-ts",
       "description": "Client SDK for Bluefin, a Sui-native perpetuals exchange.",
       "category": "defi",
-      "tags": ["perpetuals", "derivatives"],
+      "tags": [
+        "perpetuals",
+        "derivatives"
+      ],
       "license": "Apache-2.0",
       "official": false,
       "stars": 0,
@@ -36,8 +184,80 @@
       "url": "https://github.com/BlueMove-OG",
       "description": "Reference frontend and Move modules for the BlueMove NFT marketplace on Sui.",
       "category": "nft",
-      "tags": ["nft", "marketplace", "kiosk"],
+      "tags": [
+        "nft",
+        "marketplace",
+        "kiosk"
+      ],
       "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "bucket-protocol-sdk",
+      "name": "Bucket Protocol SDK",
+      "owner": "Bucket-Protocol",
+      "url": "https://github.com/Bucket-Protocol/bucket-protocol-sdk",
+      "description": "TypeScript SDK for Bucket Protocol, a CDP-based stablecoin system on Sui.",
+      "category": "defi",
+      "tags": [
+        "cdp",
+        "stablecoin",
+        "sdk"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "cetus-aggregator",
+      "name": "Cetus Aggregator",
+      "owner": "CetusProtocol",
+      "url": "https://github.com/CetusProtocol/aggregator",
+      "description": "DEX aggregator from Cetus that routes swaps across Sui liquidity sources.",
+      "category": "defi",
+      "tags": [
+        "aggregator",
+        "swap",
+        "routing"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "cetus-integer-mate",
+      "name": "Cetus Integer Mate",
+      "owner": "CetusProtocol",
+      "url": "https://github.com/CetusProtocol/integer-mate",
+      "description": "Fixed-point math library in Move for DeFi calculations. Used by Cetus CLMM internals.",
+      "category": "defi",
+      "tags": [
+        "math",
+        "move-lib",
+        "fixed-point"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "cetus-move-stl",
+      "name": "Cetus Move STL",
+      "owner": "CetusProtocol",
+      "url": "https://github.com/CetusProtocol/move-stl",
+      "description": "Reusable Move data structures and utility library from Cetus. Linked lists, skip lists, and more.",
+      "category": "defi",
+      "tags": [
+        "move-lib",
+        "data-structures",
+        "utility"
+      ],
+      "license": "Apache-2.0",
       "official": false,
       "stars": 0,
       "lastChecked": "2026-05-11"
@@ -49,7 +269,11 @@
       "url": "https://github.com/CetusProtocol/cetus-clmm-sui-sdk",
       "description": "Concentrated liquidity AMM SDK for Cetus on Sui.",
       "category": "defi",
-      "tags": ["amm", "clmm", "liquidity"],
+      "tags": [
+        "amm",
+        "clmm",
+        "liquidity"
+      ],
       "license": "Apache-2.0",
       "official": false,
       "stars": 0,
@@ -62,9 +286,49 @@
       "url": "https://github.com/MystenLabs/deepbookv3",
       "description": "Official DeepBook v3 source and example clients. Central limit orderbook on Sui.",
       "category": "defi",
-      "tags": ["deepbook", "orderbook", "official", "sponsor"],
+      "tags": [
+        "deepbook",
+        "orderbook",
+        "official",
+        "sponsor"
+      ],
       "license": "Apache-2.0",
       "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "dubhe-engine",
+      "name": "Dubhe Engine",
+      "owner": "0xobelisk",
+      "url": "https://github.com/0xobelisk/dubhe",
+      "description": "Full-stack on-chain engine for building autonomous worlds and games on Sui.",
+      "category": "template",
+      "tags": [
+        "gaming",
+        "engine",
+        "full-stack"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "elizaos-plugin-sui",
+      "name": "ElizaOS Sui Plugin",
+      "owner": "elizaos-plugins",
+      "url": "https://github.com/elizaos-plugins/plugin-sui",
+      "description": "Sui plugin for ElizaOS, enabling AI agents to interact with Sui (transfers, swaps, staking).",
+      "category": "tooling",
+      "tags": [
+        "ai",
+        "agent",
+        "eliza",
+        "plugin"
+      ],
+      "license": "MIT",
+      "official": false,
       "stars": 0,
       "lastChecked": "2026-05-11"
     },
@@ -75,9 +339,84 @@
       "url": "https://github.com/MystenLabs/enoki-examples",
       "description": "Reference apps using Enoki for sponsored transactions and zkLogin.",
       "category": "auth",
-      "tags": ["enoki", "zklogin", "sponsored", "official"],
+      "tags": [
+        "enoki",
+        "zklogin",
+        "sponsored",
+        "official"
+      ],
       "license": "Apache-2.0",
       "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "fastcrypto",
+      "name": "fastcrypto",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/fastcrypto",
+      "description": "High-performance cryptographic library from Mysten. Used internally by Sui for signatures, hashing, and ZK.",
+      "category": "tooling",
+      "tags": [
+        "crypto",
+        "rust",
+        "official",
+        "library"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "flowx-sdk",
+      "name": "FlowX Finance SDK",
+      "owner": "FlowX-Finance",
+      "url": "https://github.com/FlowX-Finance/sdk",
+      "description": "TypeScript SDK for FlowX, a multi-product DEX and aggregator on Sui.",
+      "category": "defi",
+      "tags": [
+        "dex",
+        "aggregator",
+        "sdk"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "hop-aggregator-sdk",
+      "name": "Hop Aggregator SDK",
+      "owner": "hopaggregator",
+      "url": "https://github.com/hopaggregator/sdk",
+      "description": "TypeScript SDK for the Hop DEX aggregator on Sui.",
+      "category": "defi",
+      "tags": [
+        "aggregator",
+        "swap",
+        "sdk"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "interest-protocol-suitears",
+      "name": "Interest Protocol Suitears",
+      "owner": "interest-protocol",
+      "url": "https://github.com/interest-protocol/suitears",
+      "description": "Community Move library for Sui with common data structures, math, and DeFi primitives.",
+      "category": "defi",
+      "tags": [
+        "move-lib",
+        "math",
+        "data-structures",
+        "utility"
+      ],
+      "license": "MIT",
+      "official": false,
       "stars": 0,
       "lastChecked": "2026-05-11"
     },
@@ -88,9 +427,30 @@
       "url": "https://github.com/MystenLabs/apps/tree/main/kiosk",
       "description": "Reference Move and TypeScript code for the Sui Kiosk standard.",
       "category": "nft",
-      "tags": ["kiosk", "marketplace", "official"],
+      "tags": [
+        "kiosk",
+        "marketplace",
+        "official"
+      ],
       "license": "Apache-2.0",
       "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "ksui",
+      "name": "ksui",
+      "owner": "mcxross",
+      "url": "https://github.com/mcxross/ksui",
+      "description": "Kotlin Multiplatform SDK for Sui. Supports Android, iOS, JVM, and JS targets.",
+      "category": "tooling",
+      "tags": [
+        "kotlin",
+        "sdk",
+        "multiplatform"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
       "stars": 0,
       "lastChecked": "2026-05-11"
     },
@@ -101,9 +461,191 @@
       "url": "https://github.com/LayerZero-Labs/sui-omnichain",
       "description": "LayerZero omnichain integration for Sui.",
       "category": "cross-chain",
-      "tags": ["bridge", "omnichain", "messaging"],
+      "tags": [
+        "bridge",
+        "omnichain",
+        "messaging"
+      ],
       "license": "Apache-2.0",
       "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "memwal",
+      "name": "MemWal",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/MemWal",
+      "description": "Memory management SDK for Sui using Walrus storage. Remember, recall, and restore operations with encrypted Walrus uploads.",
+      "category": "storage",
+      "tags": [
+        "walrus",
+        "memory",
+        "encryption",
+        "official"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "messaging-sdk-example",
+      "name": "Messaging SDK Example",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/messaging-sdk-example",
+      "description": "Demo app showcasing Sui Stack components including end-to-end encrypted messaging with Seal and Walrus.",
+      "category": "examples",
+      "tags": [
+        "messaging",
+        "seal",
+        "walrus",
+        "official"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "move-book",
+      "name": "The Move Book",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/move-book",
+      "description": "Source for the official Move language reference book. Covers Sui Move syntax, abilities, objects, and patterns.",
+      "category": "examples",
+      "tags": [
+        "learning",
+        "move",
+        "official",
+        "documentation"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "movectf",
+      "name": "MoveCTF Challenges",
+      "owner": "movebit",
+      "url": "https://github.com/movebit/movectf-4",
+      "description": "Move security CTF challenges from MoveBit. Practice finding vulnerabilities in Sui Move contracts.",
+      "category": "audit",
+      "tags": [
+        "security",
+        "ctf",
+        "move",
+        "learning"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "movemate",
+      "name": "Movemate",
+      "owner": "pentagonxyz",
+      "url": "https://github.com/pentagonxyz/movemate",
+      "description": "Library of module building blocks for Move on Sui and Aptos. Governance, AMM, oracles, math, and data structures.",
+      "category": "defi",
+      "tags": [
+        "move-lib",
+        "math",
+        "governance",
+        "utility"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "mpay-sdk-sui",
+      "name": "MPay SDK for Sui",
+      "owner": "Momentum-Safe",
+      "url": "https://github.com/Momentum-Safe/mpay-sdk-sui",
+      "description": "SDK for MPay stream payments on Sui. Automate token streaming to recipients over a defined period.",
+      "category": "defi",
+      "tags": [
+        "payments",
+        "streaming",
+        "sdk"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "msafe-sui-app-store",
+      "name": "MSafe Sui App Store",
+      "owner": "Momentum-Safe",
+      "url": "https://github.com/Momentum-Safe/msafe-sui-app-store",
+      "description": "Multi-sig wallet app store integration for Sui. Demo dApp for MSafe multisig transaction flows.",
+      "category": "auth",
+      "tags": [
+        "multisig",
+        "wallet",
+        "governance"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "multisig-move",
+      "name": "Sui Multisig Move",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/multisig-move",
+      "description": "Move smart contract for verifying Sui multisig addresses on-chain. Confirms M-of-N key combinations.",
+      "category": "audit",
+      "tags": [
+        "multisig",
+        "move",
+        "official",
+        "security"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "multisig-wallet-move",
+      "name": "Multisig Wallet Move",
+      "owner": "pentagonxyz",
+      "url": "https://github.com/pentagonxyz/multisig-wallet-move",
+      "description": "Multisignature wallet in Move with support for adding and removing participants.",
+      "category": "audit",
+      "tags": [
+        "multisig",
+        "wallet",
+        "move",
+        "security"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "mvr",
+      "name": "Move Registry (MVR)",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/mvr",
+      "description": "On-chain Move package registry for Sui. Enables named, versioned package resolution.",
+      "category": "tooling",
+      "tags": [
+        "registry",
+        "move",
+        "official",
+        "packages"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
       "stars": 0,
       "lastChecked": "2026-05-11"
     },
@@ -114,7 +656,10 @@
       "url": "https://github.com/MystenLabs/apps",
       "description": "Reference applications including Kiosk, multisig, and example dapps.",
       "category": "examples",
-      "tags": ["official", "examples"],
+      "tags": [
+        "official",
+        "examples"
+      ],
       "license": "Apache-2.0",
       "official": true,
       "stars": 0,
@@ -127,7 +672,11 @@
       "url": "https://github.com/MystenLabs/sui/tree/main/sdk/dapp-kit",
       "description": "Official React hooks and components for connecting wallets and signing transactions on Sui.",
       "category": "frontend",
-      "tags": ["react", "wallet", "official"],
+      "tags": [
+        "react",
+        "wallet",
+        "official"
+      ],
       "license": "Apache-2.0",
       "official": true,
       "stars": 0,
@@ -140,7 +689,10 @@
       "url": "https://github.com/MystenLabs/sui-mobile",
       "description": "Mobile starter and SDK examples for Sui dapps on iOS and Android.",
       "category": "mobile",
-      "tags": ["mobile", "official"],
+      "tags": [
+        "mobile",
+        "official"
+      ],
       "license": "Apache-2.0",
       "official": true,
       "stars": 0,
@@ -153,7 +705,11 @@
       "url": "https://github.com/MystenLabs/sui/tree/main/crates/sui-sdk",
       "description": "Official Rust SDK for backend services and indexers.",
       "category": "backend",
-      "tags": ["rust", "indexer", "official"],
+      "tags": [
+        "rust",
+        "indexer",
+        "official"
+      ],
       "license": "Apache-2.0",
       "official": true,
       "stars": 0,
@@ -166,7 +722,10 @@
       "url": "https://github.com/MystenLabs/sui",
       "description": "The Sui chain source. Useful for reading internals, the framework, and protocol-level Move modules.",
       "category": "examples",
-      "tags": ["protocol", "official"],
+      "tags": [
+        "protocol",
+        "official"
+      ],
       "license": "Apache-2.0",
       "official": true,
       "stars": 0,
@@ -179,7 +738,28 @@
       "url": "https://github.com/MystenLabs/sui/tree/main/sdk/typescript",
       "description": "Official TypeScript SDK (@mysten/sui).",
       "category": "frontend",
-      "tags": ["typescript", "sdk", "official"],
+      "tags": [
+        "typescript",
+        "sdk",
+        "official"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "nautilus",
+      "name": "Nautilus",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/nautilus",
+      "description": "Trusted Execution Environment (TEE) framework for Sui. Run off-chain compute with on-chain attestation.",
+      "category": "tooling",
+      "tags": [
+        "tee",
+        "confidential-compute",
+        "official"
+      ],
       "license": "Apache-2.0",
       "official": true,
       "stars": 0,
@@ -192,20 +772,133 @@
       "url": "https://github.com/naviprotocol/navi-sdk",
       "description": "NAVI lending and yield SDK for Sui.",
       "category": "defi",
-      "tags": ["lending", "yield"],
+      "tags": [
+        "lending",
+        "yield"
+      ],
       "license": "MIT",
       "official": false,
       "stars": 0,
       "lastChecked": "2026-05-11"
     },
     {
+      "id": "nimbus-sui-agent-kit",
+      "name": "Nimbus Sui Agent Kit",
+      "owner": "getnimbus",
+      "url": "https://github.com/getnimbus/sui-agent-kit",
+      "description": "Open-source toolkit for connecting AI agents to Sui protocols. Supports token operations, swaps, and LangChain integration.",
+      "category": "tooling",
+      "tags": [
+        "ai",
+        "agent",
+        "sdk",
+        "langchain"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "nimbus-sui-indexer",
+      "name": "Nimbus Sui Indexer",
+      "owner": "getnimbus",
+      "url": "https://github.com/getnimbus/sui-indexer",
+      "description": "Sui data indexing into S3 and PostgreSQL. Real-time swap trade events and token price feeds.",
+      "category": "backend",
+      "tags": [
+        "indexer",
+        "analytics",
+        "data-pipeline"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "openzeppelin-sui-amm",
+      "name": "OpenZeppelin Sui Prop AMM",
+      "owner": "OpenZeppelin",
+      "url": "https://github.com/OpenZeppelin/openzeppelin-sui-amm",
+      "description": "Proprietary AMM (Prop AMM) on Sui from OpenZeppelin. On-chain market-making with real-time quote updates.",
+      "category": "defi",
+      "tags": [
+        "amm",
+        "market-making",
+        "sponsor"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
       "id": "openzeppelin-sui-libs",
       "name": "OpenZeppelin Sui Libraries",
       "owner": "OpenZeppelin",
-      "url": "https://github.com/OpenZeppelin/sui-contracts",
+      "url": "https://github.com/OpenZeppelin/contracts-sui",
       "description": "OZ-published Move libraries for Sui covering capabilities, access control, and upgrade safety.",
       "category": "audit",
-      "tags": ["security", "primitives", "sponsor"],
+      "tags": [
+        "security",
+        "primitives",
+        "sponsor"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "originbyte-nft-protocol",
+      "name": "OriginByte NFT Protocol",
+      "owner": "Origin-Byte",
+      "url": "https://github.com/Origin-Byte/nft-protocol",
+      "description": "Composable NFT framework for Sui with launchpad, marketplace, and royalty enforcement modules.",
+      "category": "nft",
+      "tags": [
+        "nft",
+        "launchpad",
+        "royalties",
+        "move"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "otter-sec-sui-ctf",
+      "name": "OtterSec Sui CTF Framework",
+      "owner": "otter-sec",
+      "url": "https://github.com/otter-sec/sui-ctf-framework",
+      "description": "Capture-the-flag framework for Sui Move security challenges. Good for learning common Move vulnerabilities.",
+      "category": "audit",
+      "tags": [
+        "security",
+        "ctf",
+        "learning",
+        "move"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "otter-sec-sui-token-gen",
+      "name": "OtterSec Sui Token Gen",
+      "owner": "otter-sec",
+      "url": "https://github.com/otter-sec/sui-token-gen",
+      "description": "Token generation tool for Sui from OtterSec. Scaffolds safe, auditor-approved token modules.",
+      "category": "audit",
+      "tags": [
+        "security",
+        "token",
+        "generator",
+        "sponsor"
+      ],
       "license": "MIT",
       "official": false,
       "stars": 0,
@@ -218,11 +911,118 @@
       "url": "https://github.com/OtterSec/sui-audits",
       "description": "Public Sui audit reports and reusable security checklists from OtterSec.",
       "category": "audit",
-      "tags": ["audit", "security", "sponsor"],
+      "tags": [
+        "audit",
+        "security",
+        "sponsor"
+      ],
       "license": "CC-BY-4.0",
       "official": false,
       "stars": 0,
       "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "pelagos-sui-agent-kit",
+      "name": "PelagosAI Sui Agent Kit",
+      "owner": "pelagosaionsui",
+      "url": "https://github.com/pelagosaionsui/sui-agent-kit",
+      "description": "Autonomous and composable AI agent framework on Sui. Supports wallet integration and rapid toolkit deployment.",
+      "category": "tooling",
+      "tags": [
+        "ai",
+        "agent",
+        "framework",
+        "sdk"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "polymedia-coinmeta",
+      "name": "Polymedia CoinMeta",
+      "owner": "juzybits",
+      "url": "https://github.com/juzybits/polymedia-coinmeta",
+      "description": "Sui coin metadata registry and lookup library. Maps coin types to names, symbols, and decimals.",
+      "category": "tooling",
+      "tags": [
+        "coin",
+        "metadata",
+        "registry"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "polymedia-suitcase",
+      "name": "Polymedia Suitcase",
+      "owner": "juzybits",
+      "url": "https://github.com/juzybits/polymedia-suitcase",
+      "description": "Collection of Sui developer utilities: TypeScript helpers, Move libraries, and CLI tools from Polymedia.",
+      "category": "tooling",
+      "tags": [
+        "utility",
+        "typescript",
+        "move-lib",
+        "devtools"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "polymedia-zklogin-demo",
+      "name": "Polymedia zkLogin Demo",
+      "owner": "juzybits",
+      "url": "https://github.com/juzybits/polymedia-zklogin-demo",
+      "description": "Minimal zkLogin demo app for Sui. Clear reference for OAuth-to-Sui-address flow.",
+      "category": "auth",
+      "tags": [
+        "zklogin",
+        "demo",
+        "oauth"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "pysui",
+      "name": "pysui",
+      "owner": "FrankC01",
+      "url": "https://github.com/FrankC01/pysui",
+      "description": "Python SDK for Sui. Covers RPC, transaction building, key management, and GraphQL queries.",
+      "category": "tooling",
+      "tags": [
+        "python",
+        "sdk"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "pyth-crosschain",
+      "name": "Pyth Crosschain",
+      "owner": "pyth-network",
+      "url": "https://github.com/pyth-network/pyth-crosschain",
+      "description": "Pyth Network monorepo with Sui Move contracts and JS SDK. Oracle price feeds for Sui at target_chains/sui/.",
+      "category": "oracle",
+      "tags": [
+        "oracle",
+        "price-feed",
+        "cross-chain"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
     },
     {
       "id": "pyth-sui-examples",
@@ -231,11 +1031,50 @@
       "url": "https://github.com/pyth-network/pyth-sui",
       "description": "Pyth Network Sui Move package and integration examples.",
       "category": "oracle",
-      "tags": ["oracle", "price-feed"],
+      "tags": [
+        "oracle",
+        "price-feed"
+      ],
       "license": "Apache-2.0",
       "official": false,
       "stars": 0,
       "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sagat",
+      "name": "Sagat",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/sagat",
+      "description": "Full-stack multisig wallet management app for Sui. Web UI plus SDK for creating and signing multisig transactions.",
+      "category": "auth",
+      "tags": [
+        "multisig",
+        "wallet",
+        "official",
+        "full-stack"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "scallop-lending-protocol",
+      "name": "Scallop Lending Protocol",
+      "owner": "scallop-io",
+      "url": "https://github.com/scallop-io/sui-lending-protocol",
+      "description": "Move contracts for Scallop, the largest money market on Sui. Over-collateralized lending with multi-network deployment.",
+      "category": "defi",
+      "tags": [
+        "lending",
+        "money-market",
+        "move",
+        "sponsor"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
     },
     {
       "id": "scallop-sdk",
@@ -244,11 +1083,50 @@
       "url": "https://github.com/scallop-io/sui-scallop-sdk",
       "description": "TypeScript SDK for Scallop, the largest money market on Sui. Sponsor of the Sui Overflow university award.",
       "category": "defi",
-      "tags": ["lending", "money-market", "sponsor"],
+      "tags": [
+        "lending",
+        "money-market",
+        "sponsor"
+      ],
       "license": "MIT",
       "official": false,
       "stars": 0,
       "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "seal",
+      "name": "Seal",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/seal",
+      "description": "On-chain access control and encryption framework for Sui. Policy-based decryption using Move.",
+      "category": "tooling",
+      "tags": [
+        "encryption",
+        "access-control",
+        "official",
+        "privacy"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sentio-sdk",
+      "name": "Sentio SDK",
+      "owner": "sentioxyz",
+      "url": "https://github.com/sentioxyz/sentio-sdk",
+      "description": "Indexer and analytics SDK from Sentio. Process Sui events, transactions, and object state changes into queryable data.",
+      "category": "backend",
+      "tags": [
+        "indexer",
+        "analytics",
+        "sdk"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
     },
     {
       "id": "slush-wallet",
@@ -257,11 +1135,67 @@
       "url": "https://github.com/MystenLabs/mysten-app-docs",
       "description": "Slush wallet docs and adapter examples. Slush is the canonical Sui wallet from Mysten.",
       "category": "auth",
-      "tags": ["wallet", "official"],
+      "tags": [
+        "wallet",
+        "official"
+      ],
       "license": "Apache-2.0",
       "official": true,
       "stars": 0,
       "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "springsui",
+      "name": "SpringSui",
+      "owner": "solendprotocol",
+      "url": "https://github.com/solendprotocol/springsui",
+      "description": "Liquid staking protocol for SUI. Stake SUI and receive sSUI while earning staking rewards.",
+      "category": "defi",
+      "tags": [
+        "liquid-staking",
+        "staking",
+        "lst"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-ai-agent-kit",
+      "name": "Sui AI Agent Kit",
+      "owner": "caterpillardev",
+      "url": "https://github.com/caterpillardev/Sui-AI-Agent-Kit",
+      "description": "Toolkit for building AI agents that interact with Sui DeFi protocols. Supports swaps, staking, and lending.",
+      "category": "tooling",
+      "tags": [
+        "ai",
+        "agent",
+        "defi",
+        "sdk"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-ai-agents",
+      "name": "Sui AI Agents",
+      "owner": "fantasyni",
+      "url": "https://github.com/fantasyni/sui-ai-agents",
+      "description": "Decentralized AI agent network on Sui. AiFi system with Walrus storage and SUI/BUCK payments.",
+      "category": "tooling",
+      "tags": [
+        "ai",
+        "agent",
+        "walrus",
+        "defi"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
     },
     {
       "id": "sui-bots-template",
@@ -270,11 +1204,102 @@
       "url": "https://github.com/MystenLabs/sui/tree/main/examples",
       "description": "Off-chain bot patterns: reactive listeners, gas station, sponsor signer.",
       "category": "backend",
-      "tags": ["bot", "indexer", "official"],
+      "tags": [
+        "bot",
+        "indexer",
+        "official"
+      ],
       "license": "Apache-2.0",
       "official": true,
       "stars": 0,
       "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-by-example",
+      "name": "Sui by Example",
+      "owner": "gdanezis",
+      "url": "https://github.com/gdanezis/sui-by-example",
+      "description": "Practical Sui examples using the Rust SDK. Step-by-step READMEs covering key Sui and blockchain concepts.",
+      "category": "examples",
+      "tags": [
+        "rust",
+        "examples",
+        "learning"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "sui-client-gen",
+      "name": "Sui Client Gen",
+      "owner": "kunalabs-io",
+      "url": "https://github.com/kunalabs-io/sui-client-gen",
+      "description": "TypeScript client generator for Sui Move packages. Generates typed SDK from on-chain ABI.",
+      "category": "tooling",
+      "tags": [
+        "codegen",
+        "typescript",
+        "sdk"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-colors",
+      "name": "Sui Colors",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/sui-colors",
+      "description": "On-chain color NFT example from Mysten. Reference for dynamic object display and rendering on Sui.",
+      "category": "nft",
+      "tags": [
+        "nft",
+        "display",
+        "official",
+        "example"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "sui-defi-sdk-canoe",
+      "name": "Canoe Sui DeFi SDK",
+      "owner": "Canoe-Finance",
+      "url": "https://github.com/Canoe-Finance/SUI-DEFI-SDK",
+      "description": "DeFi aggregation SDK for Sui covering multi-protocol swaps and liquidity operations.",
+      "category": "defi",
+      "tags": [
+        "defi",
+        "aggregator",
+        "sdk"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-dev-skills",
+      "name": "Sui Dev Skills",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/sui-dev-skills",
+      "description": "Official Claude skills for Sui development. Modular skills for Move, TypeScript SDK, and frontend integration.",
+      "category": "tooling",
+      "tags": [
+        "claude",
+        "skills",
+        "official",
+        "devtools"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
     },
     {
       "id": "sui-examples",
@@ -283,9 +1308,48 @@
       "url": "https://github.com/MystenLabs/sui/tree/main/examples",
       "description": "Canonical Move package examples shipped with the Sui repo.",
       "category": "examples",
-      "tags": ["move", "examples", "official"],
+      "tags": [
+        "move",
+        "examples",
+        "official"
+      ],
       "license": "Apache-2.0",
       "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-explorer",
+      "name": "Sui Explorer",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/sui-explorer",
+      "description": "Original Sui Explorer source code from Mysten. Archived reference for building block explorers on Sui.",
+      "category": "frontend",
+      "tags": [
+        "explorer",
+        "official",
+        "archived"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "sui-extension",
+      "name": "Sui Extension (VS Code)",
+      "owner": "zktx-io",
+      "url": "https://github.com/zktx-io/sui-extension",
+      "description": "VS Code extension for Sui Move development. Syntax highlighting, build, test, and deploy support.",
+      "category": "tooling",
+      "tags": [
+        "vscode",
+        "ide",
+        "move",
+        "devtools"
+      ],
+      "license": "MIT",
+      "official": false,
       "stars": 0,
       "lastChecked": "2026-05-11"
     },
@@ -296,11 +1360,68 @@
       "url": "https://github.com/MystenLabs/sui-dapp-starter",
       "description": "Vite + React + dApp Kit starter for new Sui frontends.",
       "category": "template",
-      "tags": ["template", "react", "vite", "official"],
+      "tags": [
+        "template",
+        "react",
+        "vite",
+        "official"
+      ],
       "license": "Apache-2.0",
       "official": true,
       "stars": 0,
       "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-gas-pool",
+      "name": "Sui Gas Pool",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/sui-gas-pool",
+      "description": "Gas station service for sponsoring Sui transactions. Manages a pool of gas coins for sponsored flows.",
+      "category": "backend",
+      "tags": [
+        "gas",
+        "sponsored",
+        "official",
+        "infrastructure"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-go-sdk",
+      "name": "Sui Go SDK",
+      "owner": "block-vision",
+      "url": "https://github.com/block-vision/sui-go-sdk",
+      "description": "Go SDK for Sui RPC and transaction building.",
+      "category": "tooling",
+      "tags": [
+        "go",
+        "sdk"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-groups",
+      "name": "Sui Groups",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/sui-groups",
+      "description": "On-chain group coordination for Sui. Membership, permissions, and encryption key governance. Used by messaging tooling.",
+      "category": "tooling",
+      "tags": [
+        "groups",
+        "membership",
+        "official",
+        "move"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
     },
     {
       "id": "sui-indexer-template",
@@ -309,7 +1430,64 @@
       "url": "https://github.com/MystenLabs/sui/tree/main/crates/sui-indexer",
       "description": "Reference indexer scaffolding for off-chain data pipelines.",
       "category": "backend",
-      "tags": ["indexer", "official"],
+      "tags": [
+        "indexer",
+        "official"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-move-analyzer",
+      "name": "Sui Move Analyzer",
+      "owner": "movebit",
+      "url": "https://github.com/movebit/sui-move-analyzer",
+      "description": "Language server and analysis tool for Sui Move. Powers IDE features like go-to-definition and diagnostics.",
+      "category": "tooling",
+      "tags": [
+        "lsp",
+        "move",
+        "ide",
+        "devtools"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-move-bootcamp",
+      "name": "Sui Move Bootcamp",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/sui-move-bootcamp",
+      "description": "Structured bootcamp materials for learning Sui Move from scratch. Exercises and solutions included.",
+      "category": "examples",
+      "tags": [
+        "learning",
+        "move",
+        "official",
+        "course"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-move-intro-course",
+      "name": "Sui Move Intro Course",
+      "owner": "sui-foundation",
+      "url": "https://github.com/sui-foundation/sui-move-intro-course",
+      "description": "Beginner-friendly Sui Move course from the Sui Foundation. Step-by-step lessons with code examples.",
+      "category": "examples",
+      "tags": [
+        "learning",
+        "move",
+        "course",
+        "beginner"
+      ],
       "license": "Apache-2.0",
       "official": true,
       "stars": 0,
@@ -322,11 +1500,177 @@
       "url": "https://github.com/MystenLabs/apps/tree/main/multisig",
       "description": "Patterns for Sui multisig governance and admin flows.",
       "category": "audit",
-      "tags": ["multisig", "governance", "official"],
+      "tags": [
+        "multisig",
+        "governance",
+        "official"
+      ],
       "license": "Apache-2.0",
       "official": true,
       "stars": 0,
       "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-owned-object-pools",
+      "name": "Sui Owned Object Pools",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/Sui_Owned_Object_Pools",
+      "description": "Reference implementation for parallel transaction execution using owned object pools on Sui.",
+      "category": "backend",
+      "tags": [
+        "concurrency",
+        "performance",
+        "official",
+        "pattern"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-packages",
+      "name": "Sui Packages",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/sui-packages",
+      "description": "Published bytecode and metadata for Sui packages on mainnet and testnet. Useful for verifying on-chain code.",
+      "category": "tooling",
+      "tags": [
+        "packages",
+        "bytecode",
+        "official",
+        "verification"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "sui-prover",
+      "name": "Sui Prover",
+      "owner": "asymptotic-code",
+      "url": "https://github.com/asymptotic-code/sui-prover",
+      "description": "Formal verification tool for Sui Move contracts. Proves properties about Move code.",
+      "category": "audit",
+      "tags": [
+        "formal-verification",
+        "prover",
+        "move",
+        "security"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-rpc-proxy",
+      "name": "SuiSec RPC Proxy",
+      "owner": "SuiSec",
+      "url": "https://github.com/SuiSec/sui-rpc-proxy",
+      "description": "Proxy tool for monitoring and analyzing network requests made by Sui wallets and dApps.",
+      "category": "tooling",
+      "tags": [
+        "security",
+        "rpc",
+        "monitoring",
+        "devtools"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "sui-rust-sdk-standalone",
+      "name": "Sui Rust SDK (standalone)",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/sui-rust-sdk",
+      "description": "Standalone Rust SDK for Sui integration. Lighter alternative to depending on the full Sui repo.",
+      "category": "backend",
+      "tags": [
+        "rust",
+        "sdk",
+        "official"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "sui-stack-hello-world",
+      "name": "Sui Stack Hello World",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/sui-stack-hello-world",
+      "description": "Quick-start Sui Stack template. Move smart contract plus React UI for a shared greeting dApp.",
+      "category": "template",
+      "tags": [
+        "template",
+        "react",
+        "move",
+        "official"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "sui-stack-messaging",
+      "name": "Sui Stack Messaging",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/sui-stack-messaging",
+      "description": "End-to-end encrypted messaging tooling on Sui. Powered by Seal threshold encryption and Walrus storage.",
+      "category": "tooling",
+      "tags": [
+        "messaging",
+        "seal",
+        "walrus",
+        "official",
+        "encryption"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "sui-stack-messaging-sdk",
+      "name": "Sui Stack Messaging SDK",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/sui-stack-messaging-sdk",
+      "description": "SDK for cross-chain messaging using the Sui stack. Enables message passing between Sui and other chains.",
+      "category": "cross-chain",
+      "tags": [
+        "messaging",
+        "cross-chain",
+        "official",
+        "sdk"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-tools",
+      "name": "Sui Tools",
+      "owner": "bartosian",
+      "url": "https://github.com/bartosian/sui-tools",
+      "description": "Monitoring and management tools for Sui nodes. Grafana dashboards, Prometheus, and alerting pre-configured.",
+      "category": "tooling",
+      "tags": [
+        "monitoring",
+        "grafana",
+        "devops",
+        "infrastructure"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
     },
     {
       "id": "sui-zk-login-example",
@@ -335,9 +1679,99 @@
       "url": "https://github.com/MystenLabs/sui/tree/main/examples/zk-login",
       "description": "OAuth-based zkLogin reference: Google, Apple, Twitch.",
       "category": "auth",
-      "tags": ["zklogin", "oauth", "official"],
+      "tags": [
+        "zklogin",
+        "oauth",
+        "official"
+      ],
       "license": "Apache-2.0",
       "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "suibase",
+      "name": "Suibase",
+      "owner": "ChainMovers",
+      "url": "https://github.com/ChainMovers/suibase",
+      "description": "Local Sui development environment manager. Spin up localnet, devnet, and testnet workspaces with a single command.",
+      "category": "tooling",
+      "tags": [
+        "devtools",
+        "localnet",
+        "environment"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "suiet-wallet-kit",
+      "name": "Suiet Wallet Kit",
+      "owner": "suiet",
+      "url": "https://github.com/suiet/wallet-kit",
+      "description": "React wallet connection kit for Sui dapps. Supports multiple wallets with a unified API.",
+      "category": "auth",
+      "tags": [
+        "wallet",
+        "react",
+        "connection-kit"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "suifrens-display-system",
+      "name": "SuiFrens Display System",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/suifrens-display-system",
+      "description": "React components and backend API for rendering SuiFren characters from dynamic on-chain data.",
+      "category": "nft",
+      "tags": [
+        "nft",
+        "display",
+        "gaming",
+        "official"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "suikit-swift",
+      "name": "SuiKit (Swift)",
+      "owner": "OpenDive",
+      "url": "https://github.com/OpenDive/SuiKit",
+      "description": "Swift SDK for Sui. Supports iOS and macOS development with native transaction building.",
+      "category": "mobile",
+      "tags": [
+        "swift",
+        "ios",
+        "sdk"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "suilend",
+      "name": "Suilend",
+      "owner": "suilend",
+      "url": "https://github.com/suilend/suilend",
+      "description": "Money market protocol on Sui. Lending, borrowing, and liquid staking with SpringSui integration.",
+      "category": "defi",
+      "tags": [
+        "lending",
+        "money-market",
+        "liquid-staking"
+      ],
+      "license": "MIT",
+      "official": false,
       "stars": 0,
       "lastChecked": "2026-05-11"
     },
@@ -348,11 +1782,103 @@
       "url": "https://github.com/MystenLabs/suins-contracts",
       "description": "Sui Name Service Move contracts and SDK.",
       "category": "tooling",
-      "tags": ["names", "registry", "official"],
+      "tags": [
+        "names",
+        "registry",
+        "official"
+      ],
       "license": "Apache-2.0",
       "official": true,
       "stars": 0,
       "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "suisec-blocklist",
+      "name": "SuiSec BlockList",
+      "owner": "SuiSec",
+      "url": "https://github.com/SuiSec/SuiSecBlockList",
+      "description": "Community-maintained blocklist of malicious Sui addresses, scam tokens, and phishing sites.",
+      "category": "audit",
+      "tags": [
+        "security",
+        "blocklist",
+        "scam-detection"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "suiup",
+      "name": "suiup",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/suiup",
+      "description": "Official Sui toolchain installer. Manages Sui CLI versions, similar to rustup for Rust.",
+      "category": "tooling",
+      "tags": [
+        "installer",
+        "cli",
+        "official",
+        "toolchain"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "suiware-dapp-starter",
+      "name": "Suiware dApp Starter",
+      "owner": "suiware",
+      "url": "https://github.com/suiware/sui-dapp-starter",
+      "description": "Full-stack Sui dApp starter with Move backend, React frontend, and wallet integration pre-wired.",
+      "category": "template",
+      "tags": [
+        "template",
+        "full-stack",
+        "react",
+        "move"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "suiware-kit",
+      "name": "Suiware Kit",
+      "owner": "suiware",
+      "url": "https://github.com/suiware/kit",
+      "description": "React component library and wallet kit for Sui dApp development.",
+      "category": "auth",
+      "tags": [
+        "wallet",
+        "react",
+        "components",
+        "kit"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "suiware-sui-explorer",
+      "name": "Suiware Local Explorer",
+      "owner": "suiware",
+      "url": "https://github.com/suiware/sui-explorer",
+      "description": "Local Sui Explorer for development. Browse objects, transactions, and packages on localnet.",
+      "category": "tooling",
+      "tags": [
+        "explorer",
+        "localnet",
+        "devtools"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
     },
     {
       "id": "switchboard-sui",
@@ -361,11 +1887,33 @@
       "url": "https://github.com/switchboard-xyz/sui-public",
       "description": "Switchboard oracles and randomness on Sui.",
       "category": "oracle",
-      "tags": ["oracle", "vrf", "price-feed"],
+      "tags": [
+        "oracle",
+        "vrf",
+        "price-feed"
+      ],
       "license": "Apache-2.0",
       "official": false,
       "stars": 0,
       "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "talus-nexus-sdk",
+      "name": "Talus Nexus SDK",
+      "owner": "Talus-Network",
+      "url": "https://github.com/Talus-Network/nexus-sdk",
+      "description": "SDK for building AI agents with the Nexus agentic workflow engine on Sui. Composable on-chain agent orchestration.",
+      "category": "tooling",
+      "tags": [
+        "ai",
+        "agent",
+        "framework",
+        "move"
+      ],
+      "license": "Apache-2.0",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
     },
     {
       "id": "tradeport-marketplace",
@@ -374,9 +1922,30 @@
       "url": "https://github.com/tradeport-xyz",
       "description": "NFT marketplace tooling for Sui.",
       "category": "nft",
-      "tags": ["nft", "marketplace"],
+      "tags": [
+        "nft",
+        "marketplace"
+      ],
       "license": "MIT",
       "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "ts-sdks",
+      "name": "Mysten TypeScript SDKs (monorepo)",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/ts-sdks",
+      "description": "Official monorepo for all Mysten TypeScript SDKs: @mysten/sui, dApp Kit, zkSend, Kiosk SDK, and more.",
+      "category": "frontend",
+      "tags": [
+        "typescript",
+        "sdk",
+        "official",
+        "monorepo"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
       "stars": 0,
       "lastChecked": "2026-05-11"
     },
@@ -387,11 +1956,66 @@
       "url": "https://github.com/turbos-finance/turbos-clmm-sdk",
       "description": "CLMM AMM SDK on Sui from Turbos.",
       "category": "defi",
-      "tags": ["amm", "clmm"],
+      "tags": [
+        "amm",
+        "clmm"
+      ],
       "license": "Apache-2.0",
       "official": false,
       "stars": 0,
       "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "tusky-ts-sdk",
+      "name": "Tusky TypeScript SDK",
+      "owner": "tusky-io",
+      "url": "https://github.com/tusky-io/ts-sdk",
+      "description": "TypeScript SDK for Tusky, a file system built on Walrus blob storage.",
+      "category": "storage",
+      "tags": [
+        "walrus",
+        "filesystem",
+        "sdk"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "use-sui-zklogin",
+      "name": "use-sui-zklogin",
+      "owner": "pixelbrawlgames",
+      "url": "https://github.com/pixelbrawlgames/use-sui-zklogin",
+      "description": "React hook for Sui zkLogin integration. Simplifies OAuth-to-Sui-address flow in dapps.",
+      "category": "auth",
+      "tags": [
+        "zklogin",
+        "react",
+        "hook"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "volo-liquid-staking",
+      "name": "Volo Liquid Staking",
+      "owner": "Sui-Volo",
+      "url": "https://github.com/Sui-Volo/volo-liquid-staking-contracts",
+      "description": "Move contracts for Volo liquid staking on Sui. Stake SUI and receive vSUI while keeping staking rewards.",
+      "category": "defi",
+      "tags": [
+        "liquid-staking",
+        "staking",
+        "lst",
+        "move"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-12"
     },
     {
       "id": "walrus-examples",
@@ -400,7 +2024,100 @@
       "url": "https://github.com/MystenLabs/walrus-docs",
       "description": "Reference apps and TS clients for Walrus blob storage. Headline sponsor of Sui Overflow 2026.",
       "category": "storage",
-      "tags": ["walrus", "storage", "official", "sponsor"],
+      "tags": [
+        "walrus",
+        "storage",
+        "official",
+        "sponsor"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "walrus-go-sdk",
+      "name": "Walrus Go SDK",
+      "owner": "namihq",
+      "url": "https://github.com/namihq/walrus-go",
+      "description": "Go SDK for interacting with Walrus blob storage.",
+      "category": "storage",
+      "tags": [
+        "walrus",
+        "go",
+        "sdk"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "walrus-python-sdk",
+      "name": "Walrus Python SDK",
+      "owner": "standard-crypto",
+      "url": "https://github.com/standard-crypto/walrus-python",
+      "description": "Python SDK for Walrus blob storage. Upload, download, and manage blobs from Python.",
+      "category": "storage",
+      "tags": [
+        "walrus",
+        "python",
+        "sdk"
+      ],
+      "license": "MIT",
+      "official": false,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "walrus-sites",
+      "name": "Walrus Sites",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/walrus-sites",
+      "description": "Deploy static websites on Walrus. CLI and framework for Walrus-hosted site publishing.",
+      "category": "storage",
+      "tags": [
+        "walrus",
+        "sites",
+        "hosting",
+        "official"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "walrus-sites-examples",
+      "name": "Walrus Sites Examples",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/example-walrus-sites",
+      "description": "Example static sites deployed on Walrus. Templates for React, Next.js, and plain HTML.",
+      "category": "storage",
+      "tags": [
+        "walrus",
+        "sites",
+        "examples",
+        "official"
+      ],
+      "license": "Apache-2.0",
+      "official": true,
+      "stars": 0,
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "walrus-sites-github-actions",
+      "name": "Walrus Sites GitHub Actions",
+      "owner": "MystenLabs",
+      "url": "https://github.com/MystenLabs/walrus-sites-github-actions",
+      "description": "GitHub Actions for deploying sites to Walrus. Automate Walrus site deployments in CI/CD.",
+      "category": "storage",
+      "tags": [
+        "walrus",
+        "ci-cd",
+        "github-actions",
+        "official"
+      ],
       "license": "Apache-2.0",
       "official": true,
       "stars": 0,
@@ -413,7 +2130,11 @@
       "url": "https://github.com/MystenLabs/walrus",
       "description": "Walrus blob storage chain source.",
       "category": "storage",
-      "tags": ["walrus", "official", "sponsor"],
+      "tags": [
+        "walrus",
+        "official",
+        "sponsor"
+      ],
       "license": "Apache-2.0",
       "official": true,
       "stars": 0,
@@ -426,7 +2147,10 @@
       "url": "https://github.com/wormhole-foundation/wormhole/tree/main/sui",
       "description": "Wormhole bridge integration for Sui.",
       "category": "cross-chain",
-      "tags": ["bridge", "messaging"],
+      "tags": [
+        "bridge",
+        "messaging"
+      ],
       "license": "Apache-2.0",
       "official": false,
       "stars": 0,

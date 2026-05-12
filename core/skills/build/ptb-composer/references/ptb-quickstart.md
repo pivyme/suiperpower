@@ -15,7 +15,7 @@ const [coin] = tx.splitCoins(tx.gas, [tx.pure.u64(1_000_000_000)]);
 // Send it to a recipient
 tx.transferObjects([coin], tx.pure.address(recipient));
 
-await sui.signAndExecuteTransaction({ transaction: tx, signer });
+await sui.core.signAndExecuteTransaction({ transaction: tx, signer });
 ```
 
 The split's result handle (`coin`) feeds the transfer command. They run in order, atomically.
@@ -34,7 +34,7 @@ const purchasedItem = tx.moveCall({
 
 tx.transferObjects([purchasedItem], tx.pure.address(buyer));
 
-await sui.signAndExecuteTransaction({ transaction: tx, signer });
+await sui.core.signAndExecuteTransaction({ transaction: tx, signer });
 ```
 
 The `paymentCoin` flows from split to the move call. The move call's return value flows to the transfer.
@@ -62,7 +62,7 @@ tx.moveCall({
   arguments: [tx.object(VAULT_ID), sui],
 });
 
-await sui.signAndExecuteTransaction({ transaction: tx, signer });
+await sui.core.signAndExecuteTransaction({ transaction: tx, signer });
 ```
 
 If any step aborts, the whole PTB rolls back. No partial state.
@@ -82,7 +82,7 @@ tx.moveCall({
   arguments: [tx.object(VAULT_ID), items],
 });
 
-await sui.signAndExecuteTransaction({ transaction: tx, signer });
+await sui.core.signAndExecuteTransaction({ transaction: tx, signer });
 ```
 
 Use this when a Move function takes `vector<Item>`.
@@ -94,7 +94,7 @@ const tx = new Transaction();
 // ... build commands ...
 tx.setGasBudget(50_000_000n); // 0.05 SUI
 
-await sui.signAndExecuteTransaction({ transaction: tx, signer });
+await sui.core.signAndExecuteTransaction({ transaction: tx, signer });
 ```
 
 Set gas budget when the auto-estimate is wrong (rare) or when you want predictability for production flows.
@@ -106,8 +106,8 @@ const tx = new Transaction();
 // ... build ...
 tx.setSender(sender);
 
-const dryRun = await sui.dryRunTransactionBlock({
-  transactionBlock: await tx.build({ client: sui }),
+const dryRun = await sui.core.simulateTransaction({
+  transaction: await tx.build({ client: sui }),
 });
 
 if (dryRun.effects.status.status !== "success") {

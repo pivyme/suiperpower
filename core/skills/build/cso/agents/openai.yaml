@@ -1,0 +1,8 @@
+name: cso
+version: 1
+phase: build
+description: Use when running an infrastructure security audit on a Sui project covering OWASP, STRIDE, dependencies, RPC, key management, and frontend hardening.
+prompt_path: ../SKILL.md
+references:
+  - ../references/security-checklist.md
+  - ../references/supply-chain-audit.md

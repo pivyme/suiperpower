@@ -41,7 +41,7 @@ Integrates Walrus blob storage into a Sui project end to end. Picks the right su
 - If the user has not picked a project yet, use `find-next-sui-idea` first.
 - If the user has not scaffolded a project, use `scaffold-project` first.
 - If the user wants to research what kinds of apps use Walrus, use `walrus-research` (idea phase) instead.
-- If the user wants to host a static site on Walrus Sites, surface that as a separate path (Walrus Sites is a different surface).
+- If the user wants to host a static site on Walrus Sites, use the `walrus-sites` skill instead.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.
 
@@ -97,6 +97,7 @@ The skill never deletes files outside the integration source path without explic
 
 4. **Encryption decision**
    - Walrus stores bytes as-is. If the blob is sensitive, client-side encrypt before upload. Document the key management plan in `build-context.md`.
+   - For access-gated content (NFT-gated, allowlist, token-gated, subscription), use Seal (`@mysten/seal`) for threshold encryption instead of plain AES. Encrypt with `SealClient` before uploading to Walrus, define a Move `seal_approve` function as the access policy, and decrypt after fetching using a SessionKey plus a `seal_approve` dry-run. See `references/seal-encryption.md` for the code pattern and `seal-access-control` skill for the full Move + TS integration.
 
 5. **Implementation**
    - Write the upload path. Capture `blobId` from the publisher response.
@@ -110,7 +111,7 @@ The skill never deletes files outside the integration source path without explic
 
 7. **Lifetime + cost note**
    - Document the chosen epoch count and what happens when it expires.
-   - If permanence is required, set the `permanent` flag and note WAL cost implications.
+   - Blobs are permanent by default. If the user needs deletable blobs (for storage refund on removal), pass `deletable=true` explicitly. Note WAL cost implications either way.
 
 8. **Writeback**
    - Append session details to `.suiperpower/build-context.md`.
@@ -139,6 +140,13 @@ On-demand references (load when relevant to the user's question):
 - `references/walrus-quickstart.md`: Minimal upload and retrieve recipes for HTTP publisher, CLI, and TS SDK.
 - `references/walrus-pitfalls.md`: Lifetime expiry, encryption, public endpoint reliability, network mismatches, WAL token balance.
 - `references/walrus-move-commit.md`: Pattern for committing a `blobId` on chain inside a Move Object.
+- `references/seal-encryption.md`: Seal decentralized encryption for access-controlled Walrus blobs.
+
+Related skills:
+
+- `walrus-sites`: Host static sites (SPAs, landing pages) directly on Walrus.
+- `seal-access-control`: Full Seal encryption integration (Move policy + TS SDK) for access-gated Walrus blobs.
+- `build-ai-agent`: For AI agent memory on Walrus, see MemWal (`@mysten-incubation/memwal`), which stores agent context as Walrus blobs with Seal encryption. Docs: https://github.com/MystenLabs/MemWal
 
 Knowledge docs (load when scope expands beyond what is in references):
 

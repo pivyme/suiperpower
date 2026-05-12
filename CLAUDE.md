@@ -151,7 +151,10 @@ pnpm lint:catalog             # validate cli/data/*.json catalog entries
 pnpm package:skills           # build skills.sh per-skill bundles + index
 pnpm skills:lock              # regenerate core/skills-lock.json
 pnpm marketplace:gen          # regenerate .claude-plugin/marketplace.json from skills tree
-pnpm test                     # typecheck + lint:skills + lint:catalog + preamble:check
+pnpm lint                     # ESLint on core/cli/ and core/scripts/
+pnpm format                   # Prettier check on core/cli/ and core/scripts/
+pnpm format:fix               # Prettier write on core/cli/ and core/scripts/
+pnpm test                     # typecheck + lint + lint:skills + lint:catalog + preamble:check
 pnpm test:install             # exercise install flow via core/scripts/test-install.sh
 pnpm publish:dry              # core/scripts/publish.ts gated pre-publish check
 ```
@@ -166,7 +169,6 @@ pnpm -F @suiperpower/convex convex:deploy   # Convex deploy to prod
 Planned (will land as the relevant phase ships, do not invoke before then):
 
 ```bash
-pnpm lint                     # ESLint + Prettier check (not yet wired)
 pnpm publish                  # actual npm publish (gated, not yet wired at root)
 pnpm web:dev                  # Next.js website dev server (web/ is static-only today)
 pnpm web:build                # Next.js production build

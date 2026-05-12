@@ -49,19 +49,19 @@ my-project/
 
 Use for a typical user-facing dapp.
 
-`web/lib/sui.ts` defines the Sui client and dapp-kit setup:
+`web/lib/sui.ts` defines the Sui client setup:
 
 ```ts
-import { SuiClient, getFullnodeUrl } from "@mysten/sui/client";
+import { SuiGrpcClient } from "@mysten/sui/grpc";
 
-export const sui = new SuiClient({ url: getFullnodeUrl("testnet") });
+export const sui = new SuiGrpcClient({ network: "testnet" });
 export const PACKAGE_ID = process.env.NEXT_PUBLIC_PACKAGE_ID!;
 ```
 
-`web/app/layout.tsx` wraps the app in `WalletProvider`:
+`web/app/layout.tsx` wraps the app in `DAppKitProvider`:
 
 ```tsx
-import { WalletProvider, SuiClientProvider } from "@mysten/dapp-kit";
+import { DAppKitProvider } from "@mysten/dapp-kit-react";
 // ... full provider setup
 ```
 
@@ -151,4 +151,4 @@ build/
 
 `.suiperpower/.update-check` and `.suiperpower/.telemetry-prompted` are local state, ignore.
 
-Last updated: 2026-05-10.
+Last updated: 2026-05-11.

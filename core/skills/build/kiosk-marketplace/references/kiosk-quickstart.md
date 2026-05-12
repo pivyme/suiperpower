@@ -10,12 +10,17 @@ pnpm add @mysten/sui @mysten/kiosk
 
 ## Init
 
-```ts
-import { SuiClient, getFullnodeUrl } from "@mysten/sui/client";
-import { KioskClient, Network } from "@mysten/kiosk";
+The Kiosk SDK requires `SuiJsonRpcClient` or `SuiGraphQLClient`. gRPC clients are not supported (the SDK depends on event queries). Use `$extend(kiosk())` to add the kiosk extension.
 
-const sui = new SuiClient({ url: getFullnodeUrl("testnet") });
-const kioskClient = new KioskClient({ client: sui, network: Network.TESTNET });
+```ts
+import { SuiJsonRpcClient, getJsonRpcFullnodeUrl } from "@mysten/sui/jsonRpc";
+import { kiosk } from "@mysten/kiosk";
+
+const client = new SuiJsonRpcClient({
+  url: getJsonRpcFullnodeUrl("testnet"),
+  network: "testnet",
+}).$extend(kiosk());
+// client.kiosk is now available for all kiosk operations
 ```
 
 ## Create a Kiosk for the seller
@@ -25,12 +30,13 @@ import { Transaction } from "@mysten/sui/transactions";
 import { KioskTransaction } from "@mysten/kiosk";
 
 const tx = new Transaction();
-const kioskTx = new KioskTransaction({ transaction: tx, kioskClient });
+const kioskTx = new KioskTransaction({ kioskClient: client.kiosk, transaction: tx });
 
 kioskTx.create();
 kioskTx.shareAndTransferCap(sellerAddress);
+kioskTx.finalize();
 
-const result = await sui.signAndExecuteTransaction({
+const result = await client.signAndExecuteTransaction({
   transaction: tx,
   signer: sellerSigner,
   options: { showObjectChanges: true },
@@ -51,18 +57,19 @@ Persist `kioskId` and `kioskCapId` per seller.
 ```ts
 const tx = new Transaction();
 const kioskTx = new KioskTransaction({
+  kioskClient: client.kiosk,
   transaction: tx,
-  kioskClient,
   cap: { kioskId, objectId: kioskCapId, isPersonal: false },
 });
 
 kioskTx.placeAndList({
   itemType: `${PACKAGE_ID}::my_collection::MyAsset`,
-  itemId: assetObjectId,
+  item: assetObjectId,
   price: 1_000_000_000n, // 1 SUI in MIST
 });
 
-await sui.signAndExecuteTransaction({ transaction: tx, signer: sellerSigner });
+kioskTx.finalize();
+await client.signAndExecuteTransaction({ transaction: tx, signer: sellerSigner });
 ```
 
 Now `MyAsset` lives inside the Kiosk and is listed at the price. The seller's wallet no longer holds it directly.
@@ -71,24 +78,21 @@ Now `MyAsset` lives inside the Kiosk and is listed at the price. The seller's wa
 
 ```ts
 const tx = new Transaction();
-const kioskTx = new KioskTransaction({ transaction: tx, kioskClient });
+const kioskTx = new KioskTransaction({ kioskClient: client.kiosk, transaction: tx });
 
-kioskTx.purchaseAndResolvePolicies({
+await kioskTx.purchaseAndResolve({
   itemType: `${PACKAGE_ID}::my_collection::MyAsset`,
   itemId: assetObjectId,
   price: 1_000_000_000n,
   sellerKiosk: kioskId,
 });
 
-// optionally place the bought item into the buyer's own Kiosk
-// kioskTx.placeInBuyerKiosk(...);
-
 kioskTx.finalize();
 
-await sui.signAndExecuteTransaction({ transaction: tx, signer: buyerSigner });
+await client.signAndExecuteTransaction({ transaction: tx, signer: buyerSigner });
 ```
 
-The PTB pays the seller, applies the TransferPolicy (royalty + any rules), and delivers the asset to the buyer.
+The PTB pays the seller, applies the TransferPolicy (royalty + any rules), and delivers the asset to the buyer. `purchaseAndResolve` automatically queries the TransferPolicy and resolves all rules.
 
 ## Withdraw seller proceeds
 
@@ -97,21 +101,22 @@ The seller's payout sits in the Kiosk's purse. Withdraw separately:
 ```ts
 const tx = new Transaction();
 const kioskTx = new KioskTransaction({
+  kioskClient: client.kiosk,
   transaction: tx,
-  kioskClient,
   cap: { kioskId, objectId: kioskCapId, isPersonal: false },
 });
 
 kioskTx.withdraw(sellerAddress, undefined); // undefined = withdraw all
-await sui.signAndExecuteTransaction({ transaction: tx, signer: sellerSigner });
+kioskTx.finalize();
+await client.signAndExecuteTransaction({ transaction: tx, signer: sellerSigner });
 ```
 
 ## Read listings
 
 ```ts
-const data = await kioskClient.getKiosk({
+const data = await client.kiosk.getKiosk({
   id: kioskId,
-  options: { withListingPrices: true, withObjects: true },
+  options: { withKioskFields: true, withListingPrices: true },
 });
 
 console.log(data.items, data.listings, data.kiosk.profits);
@@ -119,12 +124,15 @@ console.log(data.items, data.listings, data.kiosk.profits);
 
 ## Personal Kiosks
 
-A "personal" Kiosk binds the cap to a single owner address (cannot be transferred). Useful for self-sovereign collector wallets where the cap should never escape.
+A "personal" Kiosk binds the cap to a single owner address (cannot be transferred). Useful for self-sovereign collector wallets where the cap should never escape. Create one with `createPersonal()` instead of `create()`:
 
 ```ts
-kioskTx.create({ kind: "Personal" });
+kioskTx.createPersonal();
+kioskTx.shareAndTransferCap(ownerAddress);
 ```
 
-For a marketplace with seller flexibility, the standard non-personal Kiosk is fine.
+The SDK handles personal vs non-personal kiosks seamlessly through the cap wrapping.
 
-Last updated: 2026-05-10.
+For a marketplace with seller flexibility, the standard non-personal Kiosk (`create()`) is fine.
+
+Last updated: 2026-05-12.

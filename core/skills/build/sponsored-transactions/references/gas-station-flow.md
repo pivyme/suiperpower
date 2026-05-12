@@ -67,7 +67,7 @@ export async function sponsorTx(req: { txKind: string; sender: string }) {
   tx.setSender(req.sender);
 
   // 3. Set gas
-  const sponsorGasCoins = await sui.getCoins({ owner: SPONSOR_ADDRESS });
+  const sponsorGasCoins = await sui.core.listCoins({ owner: SPONSOR_ADDRESS });
   tx.setGasOwner(SPONSOR_ADDRESS);
   tx.setGasPayment(
     sponsorGasCoins.data.slice(0, 1).map((c) => ({
@@ -96,16 +96,15 @@ const { txBytes, sponsorSig } = await callSponsorAPI(txKindBase64, userAddress);
 
 const userSig = await userSigner.signTransaction(fromB64(txBytes));
 
-const result = await sui.executeTransactionBlock({
-  transactionBlock: txBytes,
-  signature: [sponsorSig, userSig.signature],
-  options: { showEffects: true },
+const result = await sui.core.executeTransaction({
+  transaction: txBytes,
+  signatures: [sponsorSig, userSig.signature],
 });
 
 console.log("digest:", result.digest);
 ```
 
-Either the client or the server can call `executeTransactionBlock`; the signatures are the same either way.
+Either the client or the server can call `executeTransaction`; the signatures are the same either way.
 
 ## Inspecting on chain
 
@@ -128,4 +127,4 @@ Both expose an API similar to the server flow above. They handle:
 
 For first integration, use a third-party. Move to self-hosted only if cost or policy demands.
 
-Last updated: 2026-05-10.
+Last updated: 2026-05-11.

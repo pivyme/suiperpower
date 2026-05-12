@@ -142,6 +142,16 @@ Knowledge docs (load when scope expands beyond what is in references):
 
 - `skills/data/sui-knowledge/sponsor-docs/deepbook.md`: Concepts, key terms, deeper integration notes.
 
+## Related DeepBook features
+
+These are separate DeepBook modules. Do not integrate them into the core orderbook flow unless the user specifically asks.
+
+| Feature | Status | What it is | Docs |
+|---|---|---|---|
+| **DeepBook Predict** | Testnet only | On-chain prediction markets built on the DeepBook engine. | https://docs.sui.io/onchain-finance/deepbook-predict/ |
+| **DeepBook Margin** | Mainnet | Margin trading with multiplier, settled through DeepBook pools. | https://docs.sui.io/onchain-finance/deepbook-margin |
+| **DeepBook Sandbox** | Dev tool | Docker-based local dev environment for testing DeepBook integrations without hitting testnet. | https://github.com/MystenLabs/deepbook-sandbox |
+
 ## Use in your agent
 
 - Claude Code: `claude "/suiper:deepbook-orderbook <your message>"`

@@ -19,7 +19,7 @@ pnpm-debug.log*
 
 # Build outputs
 dist/
-build/
+/build/
 out/
 .next/
 .turbo/
@@ -65,6 +65,9 @@ tmp/
 
 # Skills install manifest cache (generated on a user's machine)
 ~/.suiperpower/
+
+# Memory (agent research notes, local-only)
+memory/
 
 # Logs
 logs/

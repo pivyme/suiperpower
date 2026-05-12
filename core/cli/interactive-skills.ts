@@ -98,6 +98,6 @@ export async function run(args: string[]): Promise<void> {
   console.log("");
   console.log(`    ${accent(formatSkillInvocation(cli, picked.id))}`);
   console.log("");
-  console.log(`  ${muted("source:")} ${join(getSkillsRoot(), picked.category!, picked.id, "SKILL.md")}`);
+  console.log(`  ${muted("source:")} ${join(getSkillsRoot(), picked.category ?? "", picked.id, "SKILL.md")}`);
   console.log("");
 }

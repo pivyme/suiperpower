@@ -56,8 +56,8 @@ If unclear, interview the user for:
 - Coin name and symbol?
 - Decimals (6 for stablecoin-like, 9 for SUI-like, justify the choice)?
 - Initial supply at launch?
-- Fixed supply (burn TreasuryCap after initial mint), capped (mint up to X), or open (no cap)?
-- Who holds TreasuryCap (user, multisig, governance, burned)?
+- Fixed supply (consume TreasuryCap after initial mint), capped (mint up to X), or open (no cap)?
+- Who holds TreasuryCap (user, multisig, governance, consumed for fixed supply)?
 
 ## Outputs
 
@@ -73,7 +73,7 @@ If unclear, interview the user for:
   - decimals: <n>
   - initial supply: <amount>
   - supply policy: <fixed | capped | open>
-  - treasury cap holder: <addr | multisig | burned>
+  - treasury cap holder: <addr | multisig | consumed>
   - first mint tx digest: <digest>
   - first transfer tx digest: <digest>
   - open issues: <list>
@@ -94,8 +94,8 @@ The skill never deletes files outside the integration source path without explic
    - Decide whether `metadata` is shared, frozen, or transferred.
 
 3. **Supply policy**
-   - Fixed: mint the full initial supply in `init`, transfer to a treasury, then `coin::burn(treasury_cap)` at the end of `init` so no more can be minted.
-   - Capped: keep `TreasuryCap`, but enforce a cap inside a wrapper `mint` function.
+   - Fixed: mint the full initial supply in `init`, then consume the TreasuryCap so no more can ever be minted. Two correct approaches: (a) wrap the TreasuryCap inside a module-level struct that exposes no public mint function, or (b) call `coin::treasury_into_supply(treasury)` to irreversibly convert TreasuryCap into a `Supply<T>` and store or destroy it. Do NOT freeze or share the TreasuryCap (official Sui docs explicitly warn against this, as sharing allows anyone to mint and freezing may allow malicious use of currency-owner functions). Note: `coin::burn` burns a `Coin<T>`, not a TreasuryCap.
+   - Capped: keep `TreasuryCap`, but enforce a cap inside a wrapper `mint` function. The TreasuryCap is stored inside the wrapper struct, never exposed publicly.
    - Open: keep `TreasuryCap` and document who holds it.
 
 4. **Tests**
@@ -127,10 +127,10 @@ The skill never deletes files outside the integration source path without explic
 Before reporting done, the skill asks itself the following and refuses to declare success if any answer is no:
 
 - Did a real testnet mint and a real transfer settle, with digests recorded?
-- Is the supply policy explicit and enforced (fixed: cap burned; capped: cap checked; open: cap holder documented)?
+- Is the supply policy explicit and enforced (fixed: TreasuryCap consumed via wrapper or treasury_into_supply; capped: cap checked; open: cap holder documented)?
 - Is `CoinMetadata` configured with a sane name, symbol, decimals, and icon URL?
 - Does at least one wallet render the coin correctly with the chosen metadata?
-- Is `TreasuryCap` custody documented (multisig address, burned, or explicit holder), not just sent to a default EOA?
+- Is `TreasuryCap` custody documented (multisig address, consumed via wrapper/treasury_into_supply, or explicit holder), not just sent to a default EOA?
 - Are tests covering at least: initial mint amount, a transfer, and (for capped) the cap behavior?
 
 If any answer is no, the skill reports the gap and works through it before claiming the launch is complete.
