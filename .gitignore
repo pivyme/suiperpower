@@ -48,10 +48,10 @@ coverage/
 *.pem
 *.key
 
-# Per-project skill context (Suiperpower runtime, see plans/01-ARCHITECTURE.md)
+# Per-project skill context (Suiperpower runtime)
 .suiperpower/
 
-# Scratchpads (bigdev autobuild loop, local notes, anything ephemeral)
+# Scratchpads (local notes, plans, references, anything ephemeral)
 scratchpads/
 
 # Local dev caches

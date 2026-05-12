@@ -107,7 +107,6 @@ Commit rule (project-wide): Kelvin is the sole committer. Never add a `Co-Author
 
 ## What this project is NOT
 
-- Not a fork of solana-new. Format inspired by it, content is Sui-native from the first byte.
 - Not a webapp. The CLI is the product.
 - Not a Sui Foundation product. Independent, MIT, no endorsement claimed.
 - Not a paid product. Open source, free, no premium tier in v1.

@@ -262,7 +262,3 @@ Skills are forward-compatible by default: they ignore unknown sections.
 ## Changelog
 
 - **1.0** (2026-05-10): Initial spec. Five context files (idea, build, deploy, submission, learnings). Append-only and non-deletion rules. Bootstrap rule. UTC timestamps.
-
-## Origin acknowledgment
-
-The contract pattern (canonical section headers, append-only, bootstrap rule) is adapted from `reference/solana-new-main/skills/data/specs/phase-handoff.md`. The shape transferred cleanly; field names and example values are Sui-native, and the deploy and submission concerns are split into separate files because Sui's deploy lifecycle (devnet → testnet → mainnet, package id capture as a distinct concern) and the deepsurge.xyz hackathon submission flow each warrant their own context file.

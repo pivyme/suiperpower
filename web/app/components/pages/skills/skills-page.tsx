@@ -184,7 +184,8 @@ function SkillsHero() {
 }
 
 function CliHintBanner() {
-  const example = "npx skills add pivyme/suiperpower/skills/<phase>/<name>";
+  const example =
+    "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/<phase>/<name>";
   const [copied, setCopied] = useState(false);
 
   async function copy() {

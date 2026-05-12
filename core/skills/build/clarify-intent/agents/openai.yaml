@@ -5,7 +5,4 @@ description: Use when the user says "build me X", "scaffold this", or "step back
 prompt_path: ../SKILL.md
 references: []
 knowledge:
-  - plans/12-ANTI-SLOP-FRAMEWORK.md
-  - plans/11-SPONSOR-INTEGRATION.md
-  - plans/30-SHARED-GUIDES-SPEC.md
   - core/skills/data/sui-knowledge/03-move-and-objects.md

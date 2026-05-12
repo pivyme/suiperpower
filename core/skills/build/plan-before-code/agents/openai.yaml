@@ -5,8 +5,5 @@ description: Use when planning a Sui build after clarify-intent, or when the wor
 prompt_path: ../SKILL.md
 references: []
 knowledge:
-  - plans/12-ANTI-SLOP-FRAMEWORK.md
-  - plans/11-SPONSOR-INTEGRATION.md
-  - plans/30-SHARED-GUIDES-SPEC.md
   - core/skills/data/sui-knowledge/03-move-and-objects.md
   - core/skills/data/guides/deploy-runbook.md

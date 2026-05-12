@@ -2,8 +2,7 @@
 # CLI smoke test. Builds the CLI, runs --version / --help / doctor, then runs
 # init --vendor in a temporary project root and verifies skills land under all
 # three agent dirs. Does not exercise the curl one-liner (that runs npm install
-# globally and needs a sandboxed environment, see plans/21-TESTING-STRATEGY.md
-# layer 5 + MANUAL-TODO Block G).
+# globally and needs a sandboxed environment).
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"

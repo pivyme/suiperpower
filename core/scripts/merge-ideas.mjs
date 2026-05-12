@@ -40,7 +40,6 @@ if (bad.length > 0) {
 const result = {
   version: "0.1.0",
   generatedAt: "2026-05-11T00:00:00Z",
-  schema: "plans/07-ECOSYSTEM-CATALOG.md",
   sources,
   ideas: allIdeas,
 };

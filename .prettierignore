@@ -5,8 +5,6 @@ core/skills/
 core/cli/data/
 convex/
 web/
-plans/
-reference/
 scratchpads/
 pnpm-lock.yaml
 *.lock

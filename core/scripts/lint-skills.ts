@@ -1,5 +1,5 @@
 #!/usr/bin/env tsx
-// Lints every SKILL.md against plans/05-SKILL-FORMAT.md and plans/15-BRAND.md.
+// Lints every SKILL.md against the skill format and brand voice rules.
 // Hard-fails on: missing frontmatter, name != folder, missing required sections,
 // em-dashes, banned brand words. Warns on: short descriptions, missing trigger
 // phrase coverage, lowercase Sui terms outside code blocks. Exit 0 only if no

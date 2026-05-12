@@ -1,7 +1,7 @@
 import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 
-// Telemetry + feedback only. Schema matches plans/13-CONVEX-BACKEND.md.
+// Telemetry + feedback only.
 // No PII, no file paths, no prompts. Privacy posture documented in
 // the README and every skill's preamble.
 export default defineSchema({

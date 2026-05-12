@@ -1,7 +1,5 @@
 # Source we do not ship (siblings live outside core/, listed for safety)
-plans/
 scratchpads/
-reference/
 web/
 scripts/
 convex/

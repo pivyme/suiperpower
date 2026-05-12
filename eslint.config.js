@@ -22,8 +22,6 @@ export default tseslint.config(
       "**/*.mjs",
       "convex/",
       "web/",
-      "plans/",
-      "reference/",
       "scratchpads/",
     ],
   },
