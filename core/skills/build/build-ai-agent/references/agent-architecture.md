@@ -116,7 +116,7 @@ Use shared objects for bulletin boards, task queues, registries. Agents read and
 
 ### Events as signals
 
-Emit events via `sui::event::emit`. Other agents subscribe via `suix_subscribeEvent` RPC. Events are not stored in global state, making them lightweight for signaling.
+Emit events via `sui::event::emit`. Other agents poll via `queryEvents` RPC (the WebSocket `suix_subscribeEvent` method is deprecated). Events are not stored in global state, making them lightweight for signaling.
 
 ### PTB-internal coordination
 

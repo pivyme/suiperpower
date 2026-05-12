@@ -36,7 +36,7 @@ Fix:
 Agents that build transactions without checking gas costs. The transaction fails at execution, the agent retries in a loop, burning gas on repeated failures.
 
 Fix:
-- Use `dryRunTransactionBlock` before submitting to check effects and gas cost.
+- Use `simulateTransaction` before submitting to check effects and gas cost.
 - If the dry run fails, do not submit. Log the error and surface it.
 - For sponsored transactions, confirm the sponsor has sufficient balance before building the PTB.
 
@@ -73,9 +73,9 @@ Fix:
 Agents that poll chain state on a timer instead of subscribing to events. Polling is wasteful and introduces latency.
 
 Fix:
-- Use `suix_subscribeEvent` for real-time event streams.
-- Fall back to polling only when WebSocket connections are unavailable.
-- Set a reasonable reconnection strategy for dropped WebSocket connections.
+- Poll with `queryEvents` for event-driven flows (`suix_subscribeEvent` WebSocket is deprecated).
+- Set a reasonable polling interval (e.g. every checkpoint, every few seconds).
+- If using a third-party RPC that still offers WebSocket, treat it as best-effort and keep a polling fallback.
 
 ## No attestation verification for Nautilus results
 

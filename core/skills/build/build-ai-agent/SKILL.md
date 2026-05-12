@@ -132,7 +132,7 @@ Confirm the architecture with the user before writing code. If the use case does
 
 7. **Coordination (if multi-agent)**
    - Use shared objects as coordination points (bulletin boards, registries, task queues).
-   - Use `sui::event::emit` for agent-to-agent signals, subscribe via `suix_subscribeEvent`.
+   - Use `sui::event::emit` for agent-to-agent signals, poll via `queryEvents` (`suix_subscribeEvent` is deprecated).
    - For atomic multi-step coordination, compose within a single PTB.
 
 8. **Test end to end**
