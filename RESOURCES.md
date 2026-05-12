@@ -175,6 +175,63 @@ All canonical sources used for the skill recheck audit. These are the URLs that 
 | @mysten/deepbook-v3 npm | https://www.npmjs.com/package/@mysten/deepbook-v3 | SDK package |
 | DeepBook SDK Source | https://github.com/MystenLabs/ts-sdks/tree/main/packages/deepbook-v3 | TS SDK source, examples |
 
+## Cetus Protocol (DEX/AMM)
+
+| Resource | URL | Covers |
+|----------|-----|--------|
+| Cetus Docs | https://cetus-1.gitbook.io/cetus-docs | Protocol overview, CLMM mechanics, fee tiers, tokenomics |
+| Cetus Developer Docs | https://cetus-1.gitbook.io/cetus-developer-docs | SDK integration, contract addresses, aggregator, quick start |
+| Cetus CLMM SDK GitHub | https://github.com/CetusProtocol/cetus-clmm-sui-sdk | CLMM SDK source, examples, pool/position/swap operations |
+| Cetus Aggregator GitHub | https://github.com/CetusProtocol/aggregator | Multi-DEX aggregator SDK, route optimization, 25+ DEX support |
+| Cetus GitHub Org | https://github.com/CetusProtocol | All Cetus repos (CLMM, aggregator, vaults, farming) |
+| @cetusprotocol/cetus-sui-clmm-sdk npm | https://www.npmjs.com/package/@cetusprotocol/cetus-sui-clmm-sdk | CLMM SDK package (swap, liquidity, pool queries) |
+| @cetusprotocol/aggregator-sdk npm | https://www.npmjs.com/package/@cetusprotocol/aggregator-sdk | Aggregator SDK package (multi-DEX routing) |
+| Cetus App | https://app.cetus.zone/ | Live DEX frontend |
+
+## Haedal Protocol (Liquid Staking)
+
+| Resource | URL | Covers |
+|----------|-----|--------|
+| Haedal Docs | https://haedal-protocol.gitbook.io/haedal-protocol-docs | Protocol overview, haSUI, haWAL, HMM, haeVault |
+| Haedal GitHub Org | https://github.com/haedallsd | Contracts, audit reports, docs, adapters |
+| Haedal Website | https://www.haedal.xyz/ | Staking UI, APR info |
+
+**Note**: Haedal does not appear to publish a standalone public npm SDK. Integration is typically done via the Cetus Aggregator or NAVI wallet-client which include Haedal staking support.
+
+## NAVI Protocol (Lending)
+
+| Resource | URL | Covers |
+|----------|-----|--------|
+| NAVI Docs | https://docs.naviprotocol.io/ | Protocol overview, lending, borrowing, liquidation |
+| NAVI Docs (GitBook) | https://naviprotocol.gitbook.io/navi-protocol-docs | Alternate docs mirror |
+| NAVI SDK Docs | https://sdk.naviprotocol.io/lending | SDK setup, pool operations, flash loans, rewards |
+| NAVI SDK GitHub | https://github.com/naviprotocol/navi-sdk | SDK source, examples, integration guides |
+| NAVI GitHub Org | https://github.com/naviprotocol | All NAVI repos |
+| @naviprotocol/lending npm | https://www.npmjs.com/package/@naviprotocol/lending | Lending SDK (deposit, borrow, repay, withdraw, flash loans) |
+| @naviprotocol/wallet-client npm | https://www.npmjs.com/package/@naviprotocol/wallet-client | Unified wallet client (lending + swaps + staking) |
+| NAVI Website | https://naviprotocol.io/ | App frontend |
+
+## Suilend (Lending)
+
+| Resource | URL | Covers |
+|----------|-----|--------|
+| Suilend Docs | https://docs.suilend.fi/ | Protocol overview, lending, borrowing, SpringSui, STEAMM |
+| Suilend SDK Guide | https://docs.suilend.fi/ecosystem/suilend-sdk-guide | SDK setup, auto-generated bindings, usage examples |
+| Suilend GitHub | https://github.com/suilend/suilend | Move contracts source (money market on Sui) |
+| Suilend Frontend (public) | https://github.com/suilend/suilend-fe-public | Frontend source, SDK subfolder |
+| @suilend/sdk npm | https://www.npmjs.com/package/@suilend/sdk | TypeScript SDK (lending, borrowing, liquidity mining) |
+| @suilend/springsui-sdk npm | https://www.npmjs.com/package/@suilend/springsui-sdk | SpringSui liquid staking SDK |
+| Suilend Website | https://suilend.fi/ | App frontend |
+
+## Turbos Finance (DEX)
+
+| Resource | URL | Covers |
+|----------|-----|--------|
+| Turbos Docs | https://turbos.gitbook.io/turbos | Protocol overview, CLMM mechanics, developer guides |
+| Turbos CLMM SDK GitHub | https://github.com/turbos-finance/turbos-clmm-sdk | CLMM SDK source (swap, pool, position, NFT) |
+| Turbos GitHub Org | https://github.com/turbos-finance | All Turbos repos |
+| turbos-clmm-sdk npm | https://www.npmjs.com/package/turbos-clmm-sdk | CLMM SDK package (swap, liquidity, pool management) |
+
 ## OpenZeppelin Sui
 
 | Resource | URL | Covers |

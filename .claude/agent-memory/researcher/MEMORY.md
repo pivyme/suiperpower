@@ -1,0 +1,10 @@
+- [solana-new architecture reference](reference_solana_new_architecture.md) - Complete analysis of sendaifun/solana-new: 32 skills, 131 repos, 41 MCPs, CLI structure, install flow, multi-agent support
+- [suiperpower inventory 2026-05-11](project_inventory_2026_05_11.md) - Full codebase inventory at commit 49c6ce0: 45 skills, 33 repos, 5 MCPs, new projects/track/marketplace features
+- [Overflow 2026 research](reference_overflow_2026_research.md) - Tracks, prizes, 2025 winner patterns, Seal/Nautilus/Pyth/SuiNS details, skill gap analysis
+- [Nautilus deep research](reference_nautilus_deep_research.md) - Complete Nautilus TEE research: Move APIs, Rust server, attestation, PCRs, AWS/Marlin deployment, Seal integration
+- [Seal deep research](reference_seal_deep_research.md) - Complete Seal DSM research: SDK API, Move modules, key servers, 7 access patterns, code examples, key server IDs
+- [Agentic Web Sui research](reference_agentic_web_sui_research.md) - AI agents on Sui: PTBs, zkLogin wallets, MemWal, Nautilus TEE, Atoma, Talus Nexus, Seal, shared objects, frameworks
+- [DefiLlama API research](reference_defillama_api_research.md) - Verified endpoints, response shapes, rate limits, Sui chain ID, pro/free tiers, protocol list
+- [Sui Data Indexing research](reference_sui_data_indexing_research.md) - GraphQL RPC, gRPC, custom indexers, event polling, third-party services, JSON-RPC deprecation, hackathon recommendation
+- [Cetus Protocol deep research](reference_cetus_protocol_research.md) - Complete Cetus CLMM: SDK V2 APIs, contract addresses, fee tiers, swap/liquidity/position methods, aggregator, error codes, May 2025 exploit
+- [NAVI Protocol deep research](reference_navi_protocol_research.md) - Complete NAVI lending: SDK v1.4.3, 35 assets, method signatures, contract addresses, interest rate model, liquidation, flash loans, E-Mode
