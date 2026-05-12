@@ -90,7 +90,7 @@ A `.suiperpower/deploy-context.md` entry following the canonical headers from `s
 
 3. **Publish**
    - Run the publish command per `skills/data/guides/deploy-runbook.md`:
-     `sui client publish --gas-budget <budget> --json <package path>`
+     `sui client publish <package path> --gas-budget <budget> --json`
    - Capture the JSON output to a temp file.
 
 4. **Capture artifacts**

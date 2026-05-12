@@ -109,7 +109,7 @@ A `## Deploy, <timestamp>` block appended to `.suiperpower/deploy-context.md` wi
    - Verify the same Move package builds and tests pass: `sui move build`, `sui move test`.
 
 5. **Publish**
-   - Run `sui client publish --gas-budget <budget> --json <package path>`.
+   - Run `sui client publish <package path> --gas-budget <budget> --json`.
    - Capture JSON output to a temp file.
 
 6. **Capture artifacts**
