@@ -1,0 +1,13 @@
+name: nautilus-offchain
+version: 1
+phase: build
+description: |
+  Build verifiable off-chain computation on Sui using Nautilus TEEs (AWS Nitro Enclaves).
+  Use when the user says "off-chain compute", "TEE on Sui", "Nautilus",
+  "verifiable computation", "trusted execution", "enclave", "off-chain oracle",
+  "verifiable API call", "Nitro enclave Sui", or "run code off-chain with proof".
+  Reads .suiperpower/build-context.md if present.
+prompt_path: ../SKILL.md
+references:
+  - ../references/nautilus-architecture.md
+  - ../references/nautilus-pitfalls.md
