@@ -55,7 +55,7 @@ Suiperpower is built around that bar. Every build skill embeds a "will this surv
 
 ## What you get
 
-- **45 journey skills** across Learn, Idea, Build, Ship phases
+- **60 journey skills** across Learn, Idea, Build, Ship phases
 - **Sui knowledge base**: Move + objects, PTBs, Walrus, DeepBook, Scallop, OpenZeppelin, OtterSec
 - **Ecosystem catalog**: clonable repos, MCP servers, ecosystem skills, curated Sui startup ideas
 - **Anti-slop quality gates** wired into every build skill
@@ -67,8 +67,8 @@ Suiperpower is built around that bar. Every build skill embeds a "will this surv
 | Phase | Skills |
 |---|---|
 | **Learn** | `sui-beginner`, `learn` |
-| **Idea** | `find-next-sui-idea`, `validate-idea`, `competitive-landscape`, `deepbook-research`, `walrus-research`, `overflow-copilot` |
-| **Build** | `scaffold-project`, `build-with-claude`, `virtual-sui-incubator`, `build-with-move`, `ptb-composer`, `object-model-design`, `walrus-storage`, `deepbook-orderbook`, `scallop-money-market`, `sui-zk-login`, `sponsored-transactions`, `kiosk-marketplace`, `build-mobile-sui`, `launch-coin`, `debug-move`, `review-move`, `ottersec-prep`, `openzeppelin-sui-libs`, `brand-design`, `frontend-design-guidelines`, `number-formatting`, `page-load-animations`, `design-taste`, `product-review`, `roast-my-product`, `validate-business-model`, `retention-loop`, `will-real-users-pay`, `navigate-skills` |
+| **Idea** | `find-next-sui-idea`, `validate-idea`, `competitive-landscape`, `deepbook-research`, `defillama-sui`, `walrus-research`, `overflow-copilot` |
+| **Build** | `scaffold-project`, `build-with-claude`, `virtual-sui-incubator`, `build-with-move`, `ptb-composer`, `object-model-design`, `walrus-storage`, `walrus-sites`, `deepbook-orderbook`, `cetus-swap`, `scallop-money-market`, `navi-lending`, `pyth-oracle`, `seal-access-control`, `nautilus-offchain`, `suins-integration`, `build-ai-agent`, `build-data-pipeline`, `eve-frontier`, `sui-zk-login`, `sponsored-transactions`, `kiosk-marketplace`, `build-mobile-sui`, `launch-coin`, `debug-move`, `review-move`, `cso`, `ottersec-prep`, `openzeppelin-sui-libs`, `brand-design`, `frontend-design-guidelines`, `number-formatting`, `page-load-animations`, `design-taste`, `product-review`, `roast-my-product`, `validate-business-model`, `retention-loop`, `will-real-users-pay`, `clarify-intent`, `plan-before-code`, `verify-against-intent`, `navigate-skills` |
 | **Ship** | `deploy-to-testnet`, `deploy-to-mainnet`, `pick-my-sui-track`, `submit-to-sui-overflow`, `create-pitch-deck`, `marketing-video`, `video-craft`, `apply-grant` |
 
 Browse the live skill set under [`core/skills/`](core/skills/).
@@ -120,7 +120,7 @@ Curated catalog the skills search and recommend from.
 | Catalog | Current seed |
 |---|---|
 | Repos | 33 |
-| Ecosystem skills | 7 |
+| Skills catalog | 66 |
 | MCP servers | 5 |
 | Curated ideas | 15 |
 

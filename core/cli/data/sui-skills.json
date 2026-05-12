@@ -56,7 +56,7 @@
       "name": "Build AI Agent (Suiperpower)",
       "publisher": "Suiperpower",
       "publisherType": "journey",
-      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/build-ai-agent",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/build-ai-agent",
       "description": "Build an AI agent that interacts with Sui DeFi protocols. Covers agent kit setup, tool wiring, and on-chain execution.",
       "agents": [
         "claude",
@@ -201,6 +201,30 @@
       "lastChecked": "2026-05-12"
     },
     {
+      "id": "clarify-intent-skill",
+      "name": "Clarify Intent (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/clarify-intent",
+      "description": "Pin down Objects, capabilities, network, and upgrade authority before code, then write intent.md for downstream build skills.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "intent",
+        "planning",
+        "objects"
+      ],
+      "skillsSh": {
+        "id": "clarify-intent",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/clarify-intent"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
       "id": "competitive-landscape-skill",
       "name": "Competitive Landscape (Suiperpower)",
       "publisher": "Suiperpower",
@@ -302,7 +326,7 @@
       "name": "DeepBook Orderbook (Suiperpower)",
       "publisher": "Suiperpower",
       "publisherType": "ecosystem",
-      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/deepbook-orderbook",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/deepbook-orderbook",
       "description": "First-class skill for building on DeepBook with quality gate requiring a real testnet order placed and settled.",
       "agents": [
         "claude",
@@ -419,6 +443,30 @@
       "lastChecked": "2026-05-12"
     },
     {
+      "id": "design-taste-skill",
+      "name": "Design Taste (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/design-taste",
+      "description": "Diagnose why a Sui dapp looks generic, AI-generated, or not premium, then produce a specific fix list.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "design",
+        "frontend",
+        "quality"
+      ],
+      "skillsSh": {
+        "id": "design-taste",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/design-taste"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
       "id": "eve-frontier-skill",
       "name": "EVE Frontier (Suiperpower)",
       "publisher": "Suiperpower",
@@ -467,6 +515,30 @@
       "lastChecked": "2026-05-12"
     },
     {
+      "id": "frontend-design-guidelines-skill",
+      "name": "Frontend Design Guidelines (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/frontend-design-guidelines",
+      "description": "Apply layout, spacing, hierarchy, accessibility, and interaction defaults for Sui dapp frontends without the generic crypto template look.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "frontend",
+        "design",
+        "accessibility"
+      ],
+      "skillsSh": {
+        "id": "frontend-design-guidelines",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/frontend-design-guidelines"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
       "id": "getnimbus-sui-agent-kit",
       "name": "GetNimbus Sui Agent Kit",
       "publisher": "GetNimbus",
@@ -490,7 +562,7 @@
       "name": "Kiosk Marketplace (Suiperpower)",
       "publisher": "Suiperpower",
       "publisherType": "ecosystem",
-      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/kiosk-marketplace",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/kiosk-marketplace",
       "description": "Build a Kiosk-based marketplace with a full listing and purchase flow demoed end to end.",
       "agents": [
         "claude",
@@ -669,6 +741,30 @@
       "lastChecked": "2026-05-12"
     },
     {
+      "id": "navigate-skills-skill",
+      "name": "Navigate Skills (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/navigate-skills",
+      "description": "Help users browse the Suiperpower skill catalog and pick the right skill for their current goal.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "meta",
+        "routing",
+        "catalog"
+      ],
+      "skillsSh": {
+        "id": "navigate-skills",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/navigate-skills"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
       "id": "nebryx-sui-dev",
       "name": "Nebryx Sui Dev Skill",
       "publisher": "Nebryx",
@@ -684,6 +780,30 @@
         "development"
       ],
       "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "number-formatting-skill",
+      "name": "Number Formatting (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/number-formatting",
+      "description": "Format token amounts, MIST to SUI conversions, USD, percentages, gas, and addresses correctly in a Sui UI.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "formatting",
+        "ui",
+        "tokens"
+      ],
+      "skillsSh": {
+        "id": "number-formatting",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/number-formatting"
+      },
+      "lastChecked": "2026-05-12"
     },
     {
       "id": "object-model-design-skill",
@@ -714,7 +834,7 @@
       "name": "OpenZeppelin Sui Libs (Suiperpower)",
       "publisher": "Suiperpower",
       "publisherType": "ecosystem",
-      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/openzeppelin-sui-libs",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/openzeppelin-sui-libs",
       "description": "Identify hand-rolled patterns OZ Sui replaces and migrate them to vetted primitives.",
       "agents": [
         "claude",
@@ -738,7 +858,7 @@
       "name": "OtterSec Audit Prep (Suiperpower)",
       "publisher": "Suiperpower",
       "publisherType": "ecosystem",
-      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/ottersec-prep",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/ottersec-prep",
       "description": "Walk the OtterSec checklist with every P0 item recorded as resolved or accepted-with-rationale.",
       "agents": [
         "claude",
@@ -782,6 +902,30 @@
       "lastChecked": "2026-05-12"
     },
     {
+      "id": "page-load-animations-skill",
+      "name": "Page Load Animations (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/page-load-animations",
+      "description": "Fix janky page loads, layout shift, skeleton states, and transitions in a Sui dapp.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "animation",
+        "frontend",
+        "loading"
+      ],
+      "skillsSh": {
+        "id": "page-load-animations",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/page-load-animations"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
       "id": "pick-my-sui-track-skill",
       "name": "Pick My Sui Track (Suiperpower)",
       "publisher": "Suiperpower",
@@ -802,6 +946,30 @@
       "skillsSh": {
         "id": "pick-my-sui-track",
         "npxCmd": "npx skills add pivyme/suiperpower/skills/ship/pick-my-sui-track"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "plan-before-code-skill",
+      "name": "Plan Before Code (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/plan-before-code",
+      "description": "Turn intent.md into a concrete build plan covering modules, Objects, capabilities, sponsor integrations, PTB shape, and tests.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "planning",
+        "intent",
+        "ptb"
+      ],
+      "skillsSh": {
+        "id": "plan-before-code",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/plan-before-code"
       },
       "lastChecked": "2026-05-12"
     },
@@ -858,7 +1026,7 @@
       "name": "Pyth Oracle (Suiperpower)",
       "publisher": "Suiperpower",
       "publisherType": "journey",
-      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/pyth-oracle",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/pyth-oracle",
       "description": "Integrate Pyth price feeds into a Sui Move contract. Covers feed selection, on-chain consumption, and staleness checks.",
       "agents": [
         "claude",
@@ -980,7 +1148,7 @@
       "name": "Scallop Money Market (Suiperpower)",
       "publisher": "Suiperpower",
       "publisherType": "ecosystem",
-      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/scallop-money-market",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/scallop-money-market",
       "description": "Deposit, borrow, and repay against a live Scallop pool with quality gate enforcing all three.",
       "agents": [
         "claude",
@@ -1004,7 +1172,7 @@
       "name": "Seal Access Control (Suiperpower)",
       "publisher": "Suiperpower",
       "publisherType": "journey",
-      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/seal-access-control",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/seal-access-control",
       "description": "Add Seal-based on-chain access control and encryption to a Sui dapp. Policy-based decryption using Move.",
       "agents": [
         "claude",
@@ -1121,7 +1289,7 @@
       "name": "Sui zkLogin (Suiperpower)",
       "publisher": "Suiperpower",
       "publisherType": "ecosystem",
-      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/sui-zk-login",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/sui-zk-login",
       "description": "Add zkLogin with a real OAuth provider end to end, not a stub.",
       "agents": [
         "claude",
@@ -1231,6 +1399,30 @@
       "lastChecked": "2026-05-12"
     },
     {
+      "id": "verify-against-intent-skill",
+      "name": "Verify Against Intent (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/verify-against-intent",
+      "description": "Verify a finished Sui build against intent.md and build-plan.md, including Move code, capabilities, sponsor integrations, and upgrades.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "verification",
+        "intent",
+        "quality"
+      ],
+      "skillsSh": {
+        "id": "verify-against-intent",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/verify-against-intent"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
       "id": "video-craft-skill",
       "name": "Video Craft (Suiperpower)",
       "publisher": "Suiperpower",
@@ -1251,6 +1443,30 @@
       "skillsSh": {
         "id": "video-craft",
         "npxCmd": "npx skills add pivyme/suiperpower/skills/ship/video-craft"
+      },
+      "lastChecked": "2026-05-12"
+    },
+    {
+      "id": "virtual-sui-incubator-skill",
+      "name": "Virtual Sui Incubator (Suiperpower)",
+      "publisher": "Suiperpower",
+      "publisherType": "journey",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/virtual-sui-incubator",
+      "description": "Teach Sui internals deeply, including consensus, the Object model, Move execution, gas, upgrades, and indexer architecture.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "phase": "build",
+      "tags": [
+        "learning",
+        "internals",
+        "sui"
+      ],
+      "skillsSh": {
+        "id": "virtual-sui-incubator",
+        "npxCmd": "npx skills add pivyme/suiperpower/skills/build/virtual-sui-incubator"
       },
       "lastChecked": "2026-05-12"
     },
@@ -1308,7 +1524,7 @@
       "name": "Walrus Storage (Suiperpower)",
       "publisher": "Suiperpower",
       "publisherType": "ecosystem",
-      "url": "https://github.com/pivyme/suiperpower/tree/main/skills/build/walrus-storage",
+      "url": "https://github.com/pivyme/suiperpower/tree/main/core/skills/build/walrus-storage",
       "description": "Store and retrieve blobs on Walrus with the demo rendering a real stored blob.",
       "agents": [
         "claude",

@@ -188,6 +188,16 @@ export const SKILLS: Skill[] = [
     agents: ALL,
   },
   {
+    id: "defillama-sui",
+    name: "defillama-sui",
+    title: "Research Sui DeFi",
+    phase: "idea",
+    description:
+      "Use DefiLlama TVL, yield, and protocol data to find concrete Sui DeFi market gaps.",
+    tags: ["DeFi", "Research"],
+    agents: ALL,
+  },
+  {
     id: "find-next-sui-idea",
     name: "find-next-sui-idea",
     title: "Find your next idea",
@@ -240,6 +250,26 @@ export const SKILLS: Skill[] = [
     agents: ALL,
   },
   {
+    id: "build-ai-agent",
+    name: "build-ai-agent",
+    title: "Build an AI agent",
+    phase: "build",
+    description:
+      "Build an autonomous Sui agent with PTBs, wallet patterns, memory, and compute choices.",
+    tags: ["Agent", "PTB"],
+    agents: ALL,
+  },
+  {
+    id: "build-data-pipeline",
+    name: "build-data-pipeline",
+    title: "Build a data pipeline",
+    phase: "build",
+    description:
+      "Index and query Sui data with GraphQL RPC, events, custom indexers, or gRPC.",
+    tags: ["Data", "Indexer"],
+    agents: ALL,
+  },
+  {
     id: "build-mobile-sui",
     name: "build-mobile-sui",
     title: "Build for mobile",
@@ -257,7 +287,7 @@ export const SKILLS: Skill[] = [
     description:
       "Pair-program an MVP step by step, broken into committable slices that pass the quality gates.",
     tags: ["Claude Code"],
-    agents: ["claude"],
+    agents: ALL,
   },
   {
     id: "build-with-move",
@@ -270,6 +300,16 @@ export const SKILLS: Skill[] = [
     agents: ALL,
   },
   {
+    id: "cetus-swap",
+    name: "cetus-swap",
+    title: "Integrate Cetus",
+    phase: "build",
+    description:
+      "Integrate Cetus CLMM for swaps and concentrated liquidity positions on Sui.",
+    tags: ["Cetus", "DeFi"],
+    agents: ALL,
+  },
+  {
     id: "clarify-intent",
     name: "clarify-intent",
     title: "Clarify intent",
@@ -277,6 +317,16 @@ export const SKILLS: Skill[] = [
     description:
       "Pin down Objects, capabilities, network, and upgrade authority before any code. Writes intent.md.",
     tags: ["Intent loop"],
+    agents: ALL,
+  },
+  {
+    id: "cso",
+    name: "cso",
+    title: "Audit infrastructure",
+    phase: "build",
+    description:
+      "Run an infrastructure security audit across OWASP, STRIDE, supply chain, RPC, and keys.",
+    tags: ["Security"],
     agents: ALL,
   },
   {
@@ -310,6 +360,16 @@ export const SKILLS: Skill[] = [
     agents: ALL,
   },
   {
+    id: "eve-frontier",
+    name: "eve-frontier",
+    title: "Build for EVE Frontier",
+    phase: "build",
+    description:
+      "Build EVE Frontier mods and Smart Assembly logic with Sui integration points.",
+    tags: ["Game", "EVE"],
+    agents: ALL,
+  },
+  {
     id: "frontend-design-guidelines",
     name: "frontend-design-guidelines",
     title: "Frontend guidelines",
@@ -337,6 +397,26 @@ export const SKILLS: Skill[] = [
     description:
       "Decide tokenomics, custody TreasuryCap, ship a token that renders cleanly in wallets.",
     tags: ["Coin"],
+    agents: ALL,
+  },
+  {
+    id: "nautilus-offchain",
+    name: "nautilus-offchain",
+    title: "Use Nautilus off-chain",
+    phase: "build",
+    description:
+      "Wire Nautilus trusted off-chain compute into a Sui app, including attestation flows.",
+    tags: ["Nautilus", "TEE"],
+    agents: ALL,
+  },
+  {
+    id: "navi-lending",
+    name: "navi-lending",
+    title: "Integrate NAVI",
+    phase: "build",
+    description:
+      "Build NAVI lending flows for deposits, borrows, withdrawals, repayments, and flash loans.",
+    tags: ["NAVI", "DeFi"],
     agents: ALL,
   },
   {
@@ -430,6 +510,16 @@ export const SKILLS: Skill[] = [
     agents: ALL,
   },
   {
+    id: "pyth-oracle",
+    name: "pyth-oracle",
+    title: "Integrate Pyth",
+    phase: "build",
+    description:
+      "Add Pyth price feeds to a Sui app or Move package with freshness and staleness checks.",
+    tags: ["Oracle", "Pyth"],
+    agents: ALL,
+  },
+  {
     id: "retention-loop",
     name: "retention-loop",
     title: "Design retention",
@@ -480,6 +570,16 @@ export const SKILLS: Skill[] = [
     agents: ALL,
   },
   {
+    id: "seal-access-control",
+    name: "seal-access-control",
+    title: "Use Seal access control",
+    phase: "build",
+    description:
+      "Use Seal for encrypted data access, key servers, threshold encryption, and Move checks.",
+    tags: ["Seal", "Encryption"],
+    agents: ALL,
+  },
+  {
     id: "sponsored-transactions",
     name: "sponsored-transactions",
     title: "Sponsor gas",
@@ -497,6 +597,16 @@ export const SKILLS: Skill[] = [
     description:
       "Sign in with Google, Apple, Facebook, or Twitch. Real Sui address. Ephemeral keys that expire.",
     tags: ["zkLogin"],
+    agents: ALL,
+  },
+  {
+    id: "suins-integration",
+    name: "suins-integration",
+    title: "Integrate SuiNS",
+    phase: "build",
+    description:
+      "Resolve .sui names, register names, and use MVR package naming in a Sui product.",
+    tags: ["SuiNS", "Naming"],
     agents: ALL,
   },
   {
@@ -527,6 +637,16 @@ export const SKILLS: Skill[] = [
     description:
       "Deep teaching: consensus, Object model, Move execution, gas, upgrades, indexer architecture.",
     tags: ["Internals"],
+    agents: ALL,
+  },
+  {
+    id: "walrus-sites",
+    name: "walrus-sites",
+    title: "Deploy Walrus Sites",
+    phase: "build",
+    description:
+      "Host static sites on Walrus, publish site resources, and connect SuiNS names.",
+    tags: ["Walrus", "Hosting"],
     agents: ALL,
   },
   {
