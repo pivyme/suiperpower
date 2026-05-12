@@ -94,7 +94,7 @@ The skill never deletes files outside the integration source path without explic
    - Wire results between commands using the result handles the SDK returns.
 
 4. **Dry-run**
-   - Run `dryRunTransactionBlock`. Inspect effects.
+   - Run `simulateTransaction`. Inspect effects.
    - Confirm balance changes match intent.
    - Confirm Objects created and transferred as expected.
    - Surface any "unexpected behavior" before signing.
