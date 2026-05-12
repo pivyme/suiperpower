@@ -118,7 +118,7 @@ async function sendToConvex(event: TelemetryEvent, convexUrl: string | undefined
     process.env.NEXT_PUBLIC_CONVEX_URL ||
     convexUrl ||
     BRAND.CONVEX_URL_DEFAULT;
-  if (!url || url === BRAND.CONVEX_URL_DEFAULT) return;
+  if (!url || !url.startsWith("https://")) return;
   // Mutation schema is strict. installationId is local-only, never send it.
   const { installationId: _installationId, ...payload } = event;
   const debug = Boolean(process.env.SUIPERPOWER_DEBUG);
