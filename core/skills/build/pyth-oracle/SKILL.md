@@ -109,15 +109,15 @@ Your Move contract never calls Pyth update functions directly. It only receives 
 
 3. **Write the Move contract**
    - Accept `&PriceInfoObject` and `&Clock` as function parameters.
-   - Call `pyth::price_info::get_price_no_older_than(price_info, clock, max_age)` for staleness-checked reads.
+   - Call `pyth::pyth::get_price_no_older_than(price_info_object, clock, max_age)` for staleness-checked reads.
    - Use `price::get_price()`, `price::get_expo()`, `price::get_conf()` to extract values.
    - Handle the exponent correctly: the raw price is `value * 10^expo`. See `references/pyth-pitfalls.md`.
    - Never hard-code any Pyth package ID or update call in Move.
 
 4. **Write the TS client**
    - Install `@pythnetwork/pyth-sui-js`.
-   - Create `SuiPriceServiceConnection` pointing to the right Hermes endpoint.
-   - Create `SuiPythClient` with the correct state IDs for the target network.
+   - Create `SuiPriceServiceConnection` pointing to the right Hermes endpoint (no extra config needed).
+   - Create `SuiPythClient(suiClient, pythStateId, wormholeStateId)` for the target network.
    - Build a PTB: `updatePriceFeeds` first, then your `moveCall` with the returned `PriceInfoObject` IDs.
    - See `references/pyth-quickstart.md` for the full pattern.
 

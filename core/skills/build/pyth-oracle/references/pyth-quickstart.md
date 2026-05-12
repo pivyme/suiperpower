@@ -82,8 +82,8 @@ Your contract receives `&PriceInfoObject`, never calls Pyth update functions dir
 
 ```move
 module my_pkg::my_module {
+    use pyth::pyth;
     use pyth::price_info::PriceInfoObject;
-    use pyth::price_info;
     use pyth::price::{Self, Price};
     use pyth::i64;
     use sui::clock::Clock;
@@ -93,7 +93,7 @@ module my_pkg::my_module {
         clock: &Clock,
         max_age_secs: u64,
     ) {
-        let price: Price = price_info::get_price_no_older_than(
+        let price: Price = pyth::get_price_no_older_than(
             price_info_object, clock, max_age_secs
         );
         let price_value = price::get_price(&price);   // I64

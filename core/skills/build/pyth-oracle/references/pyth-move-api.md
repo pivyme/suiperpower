@@ -2,6 +2,8 @@
 
 Core types and functions for reading Pyth prices in Sui Move contracts.
 
+Source: `pyth-network/pyth-crosschain` `target_chains/sui/contracts/sources/`
+
 ## Types
 
 ### PriceInfoObject
@@ -28,13 +30,16 @@ Pyth's signed 64-bit integer type. Used for price values and exponents (which ar
 use pyth::i64::{Self, I64};
 ```
 
-## Reading prices
+## Reading prices (module: `pyth::pyth`)
+
+All price query functions live in the `pyth::pyth` module, not `pyth::price_info`.
 
 ### get_price_no_older_than (recommended)
 
-Returns the price if it was updated within `max_age` seconds. Aborts if the price is stale.
+Returns the price if it was updated within `max_age_secs` seconds. Aborts if the price is stale.
 
 ```move
+// pyth::pyth
 public fun get_price_no_older_than(
     price_info_object: &PriceInfoObject,
     clock: &Clock,
@@ -44,17 +49,31 @@ public fun get_price_no_older_than(
 
 Use this for all production code. The `max_age_secs` parameter enforces freshness. Typical values: 60 seconds for DeFi, 10 seconds for high-frequency flows.
 
+### get_price
+
+Like `get_price_no_older_than` but uses the Pyth state's default stale threshold instead of a caller-supplied max age.
+
+```move
+// pyth::pyth
+public fun get_price(
+    state: &PythState,
+    price_info_object: &PriceInfoObject,
+    clock: &Clock
+): Price
+```
+
 ### get_price_unsafe
 
 Returns the price regardless of age. Do NOT use in production. Only useful for debugging or display-only reads where staleness is acceptable.
 
 ```move
+// pyth::pyth
 public fun get_price_unsafe(
     price_info_object: &PriceInfoObject
 ): Price
 ```
 
-## Price accessors
+## Price accessors (module: `pyth::price`)
 
 All accessors operate on a `Price` value returned by the functions above.
 
@@ -72,9 +91,7 @@ public fun get_expo(price: &Price): I64
 public fun get_timestamp(price: &Price): u64
 ```
 
-## I64 helpers
-
-The `pyth::i64` module provides basic operations on signed integers.
+## I64 helpers (module: `pyth::i64`)
 
 ```move
 // Get the absolute magnitude
@@ -83,22 +100,43 @@ public fun get_magnitude_if_negative(i: &I64): u64
 
 // Check sign
 public fun get_is_negative(i: &I64): bool
+
+// Convert unsigned to signed (positive)
+public fun from_u64(from: u64): I64
 ```
 
 ## EMA (Exponential Moving Average)
 
-Pyth also publishes an EMA price alongside the spot price. The EMA smooths short-term volatility. Prefer EMA for settlement and liquidation calculations. Prefer spot for real-time display.
+Pyth publishes an EMA price alongside the spot price. The EMA smooths short-term volatility. Prefer EMA for settlement and liquidation calculations. Prefer spot for real-time display.
+
+There are no top-level `get_ema_price_no_older_than` or `get_ema_price_unsafe` functions. To read the EMA, extract it from the PriceFeed:
 
 ```move
-public fun get_ema_price_no_older_than(
-    price_info_object: &PriceInfoObject,
-    clock: &Clock,
-    max_age_secs: u64
-): Price
+use pyth::price_info;
+use pyth::price_feed;
 
-public fun get_ema_price_unsafe(
-    price_info_object: &PriceInfoObject
-): Price
+// Step 1: get PriceInfo from the object
+let info = price_info::get_price_info_from_price_info_object(price_info_object);
+
+// Step 2: get PriceFeed from PriceInfo
+let feed = price_info::get_price_feed(&info);
+
+// Step 3: get EMA price from PriceFeed
+let ema: Price = price_feed::get_ema_price(feed);
+```
+
+Note: this path does NOT enforce staleness. If you need EMA with a freshness check, call `pyth::pyth::get_price_no_older_than` first to confirm the feed is fresh (it will abort if stale), then extract the EMA from the same object.
+
+## PriceInfo accessors (module: `pyth::price_info`)
+
+These are data extraction functions, not price query functions:
+
+```move
+public fun get_price_info_from_price_info_object(obj: &PriceInfoObject): PriceInfo
+public fun get_price_identifier(info: &PriceInfo): PriceIdentifier
+public fun get_price_feed(info: &PriceInfo): &PriceFeed
+public fun get_attestation_time(info: &PriceInfo): u64
+public fun get_arrival_time(info: &PriceInfo): u64
 ```
 
 ## HotPotatoVector pattern
@@ -112,7 +150,7 @@ public fun get_sui_price_usd(
     price_info: &PriceInfoObject,
     clock: &Clock,
 ): (u64, u64, bool) {
-    let price = price_info::get_price_no_older_than(price_info, clock, 60);
+    let price = pyth::get_price_no_older_than(price_info, clock, 60);
 
     let raw_price = price::get_price(&price);
     let conf = price::get_conf(&price);
@@ -133,4 +171,4 @@ public fun get_sui_price_usd(
 
 The caller applies `price_mag * 10^(-expo_mag)` to get the USD value.
 
-Last updated: 2026-05-11. Source: https://docs.pyth.network/price-feeds/use-real-time-data/sui
+Last updated: 2026-05-12. Source: github.com/pyth-network/pyth-crosschain target_chains/sui/contracts/sources/{pyth,price_info,price_feed,price,i64}.move
