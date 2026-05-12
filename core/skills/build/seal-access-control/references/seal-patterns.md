@@ -23,24 +23,26 @@ Admin-managed address allowlist. Admin adds or removes addresses. Only listed ad
 module patterns::whitelist {
     use sui::table;
 
-    public struct Allowlist has key {
+    public struct Cap has key { id: UID }
+
+    public struct Whitelist has key {
         id: UID,
         allowed: table::Table<address, bool>,
     }
 
-    // Admin creates the allowlist
-    public fun create(ctx: &mut TxContext): Allowlist { /* ... */ }
+    // Admin creates the whitelist (returns Cap + Whitelist)
+    public fun create_whitelist(ctx: &mut TxContext): (Cap, Whitelist) { /* ... */ }
 
     // Admin adds an address
-    public fun add(list: &mut Allowlist, addr: address) { /* ... */ }
+    public fun add(wl: &mut Whitelist, cap: &Cap, account: address) { /* ... */ }
 
     // Seal policy check
-    entry fun seal_approve_decrypt(
+    entry fun seal_approve(
         id: vector<u8>,
-        list: &Allowlist,
+        wl: &Whitelist,
         ctx: &TxContext,
     ) {
-        assert!(table::contains(&list.allowed, tx_context::sender(ctx)), ENotAllowed);
+        assert!(table::contains(&wl.allowed, tx_context::sender(ctx)), ENotAllowed);
     }
 }
 ```
@@ -53,28 +55,37 @@ Time-limited paid access. User pays a fee and receives a subscription object tha
 
 ```move
 module patterns::subscription {
+    public struct Service has key {
+        id: UID,
+        fee: u64,
+        ttl: u64, // subscription duration in ms
+    }
+
     public struct Subscription has key {
         id: UID,
-        owner: address,
-        expires_at: u64, // epoch timestamp
+        // tracks owner and expiry
     }
+
+    // Admin creates the service
+    public fun create_service(fee: u64, ttl: u64, ctx: &mut TxContext): Service { /* ... */ }
 
     // User buys a subscription
     public fun subscribe(
-        payment: Coin<SUI>,
-        ttl_ms: u64,
+        fee: Coin<SUI>,
+        service: &Service,
+        c: &Clock,
         ctx: &mut TxContext,
     ): Subscription { /* ... */ }
 
-    // Seal policy check
-    entry fun seal_approve_decrypt(
+    // Seal policy check (validates subscription is active)
+    entry fun seal_approve(
         id: vector<u8>,
+        pkg_version: &PackageVersion,
         sub: &Subscription,
-        clock: &Clock,
-        ctx: &TxContext,
+        service: &Service,
+        c: &Clock,
     ) {
-        assert!(sub.owner == tx_context::sender(ctx), ENotOwner);
-        assert!(clock::timestamp_ms(clock) < sub.expires_at, EExpired);
+        // verifies subscription matches service and has not expired
     }
 }
 ```
@@ -87,22 +98,17 @@ Encrypt to a specific address. Only that address can decrypt.
 
 ```move
 module patterns::account_based {
-    public struct SecretEnvelope has key {
-        id: UID,
-        recipient: address,
-    }
-
-    entry fun seal_approve_decrypt(
+    // No on-chain object needed. The caller's address IS the access check.
+    entry fun seal_approve(
         id: vector<u8>,
-        envelope: &SecretEnvelope,
         ctx: &TxContext,
     ) {
-        assert!(envelope.recipient == tx_context::sender(ctx), ENotRecipient);
+        // verifies the caller matches the account owner encoded in id
     }
 }
 ```
 
-Use when: point-to-point encrypted messages or private data shared with one address.
+Use when: point-to-point encrypted messages or private data targeted to a specific address. The identity is encoded directly in the encryption `id`, so no on-chain access list is needed.
 
 ## 4. Private data
 
@@ -110,17 +116,20 @@ Creator-only access. The object creator is the only one who can decrypt.
 
 ```move
 module patterns::private_data {
-    public struct PrivateVault has key {
+    public struct PrivateData has key {
         id: UID,
-        creator: address,
+        // stores creator address and nonce
     }
 
-    entry fun seal_approve_decrypt(
+    // Store private data (creates a PrivateData object)
+    public fun store(nonce: vector<u8>, data: vector<u8>, ctx: &mut TxContext): PrivateData { /* ... */ }
+
+    // Seal policy check (only the creator can decrypt)
+    entry fun seal_approve(
         id: vector<u8>,
-        vault: &PrivateVault,
-        ctx: &TxContext,
+        e: &PrivateData,
     ) {
-        assert!(vault.creator == tx_context::sender(ctx), ENotCreator);
+        // verifies id matches creator + nonce
     }
 }
 ```
@@ -133,22 +142,17 @@ Anyone can decrypt after a specified timestamp. Before that, no one can.
 
 ```move
 module patterns::tle {
-    public struct TimeLock has key {
-        id: UID,
-        unlock_time: u64, // epoch timestamp in ms
-    }
-
-    entry fun seal_approve_decrypt(
+    // No on-chain object needed. The unlock time is encoded in the id.
+    entry fun seal_approve(
         id: vector<u8>,
-        lock: &TimeLock,
-        clock: &Clock,
+        c: &clock::Clock,
     ) {
-        assert!(clock::timestamp_ms(clock) >= lock.unlock_time, ETooEarly);
+        // verifies current timestamp >= unlock time encoded in id
     }
 }
 ```
 
-Use when: sealed-bid auctions, embargoed content, scheduled reveals. No identity check, only time.
+Use when: sealed-bid auctions, embargoed content, scheduled reveals. No identity check, only time. The unlock timestamp is encoded directly in the encryption `id`.
 
 ## 6. Voting
 
@@ -156,23 +160,42 @@ Secret ballot with threshold decryption. Votes are encrypted, decrypted only aft
 
 ```move
 module patterns::voting {
-    public struct Ballot has key {
+    public struct Vote has key {
         id: UID,
-        closes_at: u64,
-        threshold: u64,
+        // tracks voters, options, encrypted votes, and key server config
     }
 
-    entry fun seal_approve_tally(
+    // Create a vote with eligible voter list
+    public fun create_vote(
+        voters: vector<address>,
+        options: u8,
+        key_servers: vector<address>,
+        public_keys: vector<vector<u8>>,
+        threshold: u8,
+        ctx: &mut TxContext,
+    ): Vote { /* ... */ }
+
+    // Cast an encrypted vote
+    public fun cast_vote(vote: &mut Vote, encrypted_vote: vector<u8>, ctx: &mut TxContext) { /* ... */ }
+
+    // Seal policy check (all voters must have cast before decryption)
+    entry fun seal_approve(
         id: vector<u8>,
-        ballot: &Ballot,
-        clock: &Clock,
+        vote: &Vote,
     ) {
-        assert!(clock::timestamp_ms(clock) >= ballot.closes_at, EVoteOpen);
+        // verifies all voters have submitted their encrypted votes
     }
+
+    // Finalize and tally after decryption
+    public fun finalize_vote(
+        vote: &mut Vote,
+        derived_keys: &vector<vector<u8>>,
+        key_servers: &vector<address>,
+    ): VoteResult { /* ... */ }
 }
 ```
 
-Use when: secret ballots, sealed-bid auctions where results are revealed after a deadline.
+Use when: secret ballots, sealed-bid auctions where results are revealed after all votes are cast.
 
 ## 7. Key request (delegated access)
 
@@ -186,7 +209,7 @@ module patterns::key_request {
         resource_id: ID,
     }
 
-    entry fun seal_approve_decrypt(
+    entry fun seal_approve(
         id: vector<u8>,
         grant: &AccessGrant,
         ctx: &TxContext,
@@ -203,14 +226,14 @@ Use when: an authority issues access grants to specific users for specific resou
 Patterns can be combined in a single module. For example, an allowlist that expires:
 
 ```move
-entry fun seal_approve_decrypt(
+entry fun seal_approve(
     id: vector<u8>,
-    list: &Allowlist,
+    wl: &Whitelist,
     clock: &Clock,
     ctx: &TxContext,
 ) {
-    assert!(table::contains(&list.allowed, tx_context::sender(ctx)), ENotAllowed);
-    assert!(clock::timestamp_ms(clock) < list.expires_at, EExpired);
+    assert!(table::contains(&wl.allowed, tx_context::sender(ctx)), ENotAllowed);
+    assert!(clock::timestamp_ms(clock) < wl.expires_at, EExpired);
 }
 ```
 
@@ -228,4 +251,4 @@ The `seal_approve` convention is flexible. Any logic that aborts on denial and r
 | voting | none | close time | no | Secret ballots |
 | key_request | grantee match | no | no | Delegated or third-party access |
 
-Last updated: 2026-05-11.
+Last updated: 2026-05-12.

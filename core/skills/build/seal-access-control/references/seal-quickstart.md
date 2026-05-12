@@ -16,9 +16,9 @@ npm install @mysten/seal @mysten/sui
 
 ```typescript
 import { SealClient } from '@mysten/seal';
-import { SuiClient, getFullnodeUrl } from '@mysten/sui/client';
+import { SuiGrpcClient } from '@mysten/sui/grpc';
 
-const suiClient = new SuiClient({ url: getFullnodeUrl('testnet') });
+const suiClient = new SuiGrpcClient({ network: 'testnet' });
 
 const sealClient = new SealClient({
   suiClient,
@@ -37,8 +37,9 @@ The `serverConfigs` array lists the key servers that hold decryption key shares.
 
 ```typescript
 import { seal } from '@mysten/seal';
+import { SuiGrpcClient } from '@mysten/sui/grpc';
 
-const client = suiGrpcClient.$extend(seal({
+const client = new SuiGrpcClient({ network: 'testnet' }).$extend(seal({
   serverConfigs: [{ /* same as above */ }],
 }));
 ```
@@ -81,23 +82,19 @@ Decryption requires a SessionKey signed by the user's wallet.
 import { SessionKey } from '@mysten/seal';
 import { Transaction } from '@mysten/sui/transactions';
 
-// 1. Create a SessionKey
+// 1. Create a SessionKey (signer is required)
 const sessionKey = await SessionKey.create({
   address: userAddress,
   packageId,
   ttlMin: 10, // expires in 10 minutes
+  signer: keypair,
   suiClient,
 });
-
-// 2. User signs the personal message via wallet
-const personalMessage = sessionKey.getPersonalMessage();
-const { signature } = await wallet.signPersonalMessage({ message: personalMessage });
-sessionKey.setPersonalMessageSignature(signature);
 
 // 3. Build a seal_approve PTB (dry-run only, no state change)
 const tx = new Transaction();
 tx.moveCall({
-  target: `${yourPolicyPackageId}::your_module::seal_approve_decrypt`,
+  target: `${yourPolicyPackageId}::your_module::seal_approve`,
   arguments: [tx.pure.vector('u8', Array.from(fromHex(id))), /* policy-specific args */],
 });
 const txBytes = await tx.build({ client: suiClient });
@@ -114,9 +111,7 @@ const decryptedData = await sealClient.decrypt({
 
 | Method | Purpose |
 |---|---|
-| `SessionKey.create({ address, packageId, ttlMin, suiClient })` | Create a new session key |
-| `getPersonalMessage()` | Get the message the wallet must sign |
-| `setPersonalMessageSignature(sig)` | Attach the wallet signature |
+| `SessionKey.create({ address, packageId, ttlMin, signer, suiClient })` | Create a new session key (signer is required) |
 | `isExpired()` | Check if the TTL has elapsed |
 | `export()` | Serialize for storage (e.g., sessionStorage) |
 | `SessionKey.import(data)` | Restore from serialized form |
@@ -126,7 +121,11 @@ const decryptedData = await sealClient.decrypt({
 Encrypt with Seal, store ciphertext on Walrus, decrypt after policy check.
 
 ```typescript
-import { WalrusClient } from '@mysten/walrus';
+import { SuiGrpcClient } from '@mysten/sui/grpc';
+import { walrus } from '@mysten/walrus';
+
+// Create a Walrus-extended client
+const walrusClient = new SuiGrpcClient({ network: 'testnet' }).$extend(walrus());
 
 // Encrypt
 const { encryptedObject } = await sealClient.encrypt({
@@ -134,11 +133,12 @@ const { encryptedObject } = await sealClient.encrypt({
 });
 
 // Upload ciphertext to Walrus
-const walrus = await WalrusClient.$extend({ suiClient, network: 'testnet' });
-const { blobId } = await walrus.writeBlob({ blob: encryptedObject, epochs: 5 });
+const { blobId } = await walrusClient.walrus.writeBlob({
+  blob: encryptedObject, epochs: 5, signer: myKeypair,
+});
 
 // Later: download and decrypt
-const ciphertext = await walrus.readBlob({ blobId });
+const ciphertext = await walrusClient.walrus.readBlob({ blobId });
 const decrypted = await sealClient.decrypt({
   data: new Uint8Array(ciphertext),
   sessionKey,
@@ -148,4 +148,4 @@ const decrypted = await sealClient.decrypt({
 
 The blob on Walrus is opaque ciphertext. Without passing the Seal policy check, the bytes are useless.
 
-Last updated: 2026-05-11. Targeting Seal testnet key server.
+Last updated: 2026-05-12. Targeting Seal testnet key server.
