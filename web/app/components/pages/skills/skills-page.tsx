@@ -14,6 +14,7 @@ import {
   IconTerminal2,
 } from "@tabler/icons-react";
 import { GITHUB_LINK } from "~/config";
+import { CliBox } from "~/components/ui/cli-box";
 import { SiteFooter } from "~/components/pages/home/site-footer";
 import {
   PHASE_META,
@@ -176,46 +177,13 @@ function SkillsHero() {
               View source on GitHub
             </a>
           </div>
-          <CliHintBanner />
+          <CliBox
+            command="npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/<phase>/<name>"
+            ariaLabel="Copy install command"
+          />
         </div>
       </div>
     </div>
-  );
-}
-
-function CliHintBanner() {
-  const example =
-    "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/<phase>/<name>";
-  const [copied, setCopied] = useState(false);
-
-  async function copy() {
-    try {
-      await navigator.clipboard.writeText(example);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    } catch {
-      // clipboard blocked, silent
-    }
-  }
-
-  return (
-    <button
-      onClick={copy}
-      disabled={copied}
-      className="w-full bg-white/5 rounded-xl border border-white/10 backdrop-blur-md py-4 md:py-5 px-4 md:px-6 flex items-center gap-3 md:gap-4 overflow-hidden text-left"
-      aria-label="Copy install command"
-    >
-      <pre className="font-mono text-xs md:text-base overflow-x-auto flex-1 text-white">
-        <code>{example}</code>
-      </pre>
-      <div className="flex items-center justify-center text-white">
-        {copied ? (
-          <IconCheck className="size-5" />
-        ) : (
-          <IconCopy className="size-5" />
-        )}
-      </div>
-    </button>
   );
 }
 
@@ -312,11 +280,11 @@ function SkillCard({ skill }: { skill: MergedSkill }) {
   const githubUrl = githubTreeUrl(skill);
   return (
     <div
-      className={`group relative flex flex-col rounded-2xl bg-white/[0.02] hover:bg-white/[0.04] transition-colors ${
+      className={`group relative flex flex-col h-full rounded-2xl bg-white/[0.02] hover:bg-white/[0.04] transition-colors ${
         menuOpen ? "z-20" : "z-0"
       }`}
     >
-      <div className="flex flex-col gap-4 p-5 md:p-6">
+      <div className="flex flex-1 flex-col gap-4 p-5 md:p-6">
         <a
           href={githubUrl}
           target="_blank"

@@ -1,8 +1,9 @@
-import { IconCopy, IconCopyCheck, IconPlayerPlay } from "@tabler/icons-react";
+import { IconPlayerPlay } from "@tabler/icons-react";
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { GrainGradient } from "@paper-design/shaders-react";
 import { GITHUB_LINK, INSTALL_SNIPPET } from "~/config";
+import { CliBox } from "~/components/ui/cli-box";
 import { HowToUseModal } from "./how-to-use-modal";
 
 const fadeIn = (delay: number) => ({
@@ -12,17 +13,7 @@ const fadeIn = (delay: number) => ({
 });
 
 export function Hero() {
-  const [isCopied, setCopied] = useState(false);
   const [isHowToOpen, setHowToOpen] = useState(false);
-
-  const handleCopy = async () => {
-    if (isCopied) return;
-    await navigator.clipboard.writeText(INSTALL_SNIPPET);
-    setCopied(true);
-    setTimeout(() => {
-      setCopied(false);
-    }, 2000);
-  };
   return (
     <div className="relative w-full min-h-screen px-4 md:px-12 flex flex-col items-center justify-center">
       <motion.div
@@ -80,42 +71,9 @@ export function Hero() {
             Install
           </motion.div>
 
-          <motion.button
-            {...fadeIn(0.5)}
-            disabled={isCopied}
-            onClick={handleCopy}
-            className="order-2 md:order-none w-full bg-white/5 rounded-xl border border-white/10 backdrop-blur-md py-4 md:py-5 px-4 md:px-6 flex items-center gap-3 md:gap-4 overflow-hidden"
-          >
-            <pre className="font-mono text-xs md:text-base overflow-x-auto flex-1 text-left">
-              <code>{INSTALL_SNIPPET}</code>
-            </pre>
-            <div className="relative flex items-center justify-center">
-              <IconCopy className="size-5 invisible" />
-              <AnimatePresence initial={false}>
-                {isCopied ? (
-                  <motion.div
-                    key="copy-check"
-                    initial={{ scale: 0.6, opacity: 0, filter: "blur(4px)" }}
-                    animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
-                    exit={{ scale: 0.6, opacity: 0, filter: "blur(4px)" }}
-                    className="absolute"
-                  >
-                    <IconCopyCheck className="size-5" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="copy"
-                    initial={{ scale: 0.6, opacity: 0, filter: "blur(4px)" }}
-                    animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
-                    exit={{ scale: 0.6, opacity: 0, filter: "blur(4px)" }}
-                    className="absolute"
-                  >
-                    <IconCopy className="size-5" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </motion.button>
+          <motion.div {...fadeIn(0.5)} className="order-2 md:order-none">
+            <CliBox command={INSTALL_SNIPPET} ariaLabel="Copy install command" />
+          </motion.div>
 
           <motion.div
             {...fadeIn(0.6)}

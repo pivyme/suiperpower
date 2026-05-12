@@ -44,9 +44,9 @@ export function MadeBy() {
               className="group inline-flex items-center gap-3 self-start"
             >
               <img
-                src="/assets/pivy-logo.svg"
+                src="/assets/pivy-logo.webp"
                 alt="PIVY"
-                className="h-10 md:h-14 w-auto object-contain opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-y-0.5"
+                className="h-10 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:-translate-y-0.5"
               />
             </a>
             <p className="text-white/40 font-medium text-base md:text-lg max-w-xl">
