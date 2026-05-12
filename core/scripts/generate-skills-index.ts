@@ -16,6 +16,7 @@ const REPO_ROOT = resolve(CORE_ROOT, "..");
 const SKILLS_ROOT = join(CORE_ROOT, "skills");
 const TARBALL_DIR = join(REPO_ROOT, "web", "public", "skills");
 const INDEX_PATH = join(TARBALL_DIR, "index.json");
+const APP_INDEX_PATH = join(REPO_ROOT, "web", "app", "data", "skills-index.json");
 const PHASES = ["learn", "idea", "build", "ship", "grow"] as const;
 
 const PUBLISHER = "suiperpower";
@@ -147,8 +148,11 @@ function main(): void {
     skills: entries,
   };
 
-  writeFileSync(INDEX_PATH, JSON.stringify(index, null, 2) + "\n");
+  const payload = JSON.stringify(index, null, 2) + "\n";
+  writeFileSync(INDEX_PATH, payload);
+  writeFileSync(APP_INDEX_PATH, payload);
   console.log(`wrote ${INDEX_PATH} with ${entries.length} entries`);
+  console.log(`wrote ${APP_INDEX_PATH} with ${entries.length} entries`);
 }
 
 main();

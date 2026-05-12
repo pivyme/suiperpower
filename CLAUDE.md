@@ -148,9 +148,12 @@ pnpm typecheck                # tsc --noEmit on core
 pnpm preamble:check           # verify telemetry preamble injection on skills
 pnpm lint:skills              # validate SKILL.md frontmatter + structure
 pnpm lint:catalog             # validate cli/data/*.json catalog entries
-pnpm package:skills           # build skills.sh per-skill bundles + index
+pnpm package:skills           # build per-skill tarballs + index.json (+ web app mirror)
+pnpm skills:watch             # watch core/skills/** and re-run package:skills on save (debounced)
 pnpm skills:lock              # regenerate core/skills-lock.json
 pnpm marketplace:gen          # regenerate .claude-plugin/marketplace.json from skills tree
+pnpm web:dev                  # run the website dev server (auto-runs package:skills first)
+pnpm web:build                # build the website for prod (auto-runs package:skills first)
 pnpm lint                     # ESLint on core/cli/ and core/scripts/
 pnpm format                   # Prettier check on core/cli/ and core/scripts/
 pnpm format:fix               # Prettier write on core/cli/ and core/scripts/
@@ -170,11 +173,22 @@ Planned (will land as the relevant phase ships, do not invoke before then):
 
 ```bash
 pnpm publish                  # actual npm publish (gated, not yet wired at root)
-pnpm web:dev                  # Next.js website dev server (web/ is static-only today)
-pnpm web:build                # Next.js production build
 ```
 
 Update this file as scripts are added so future agents do not invoke commands that do not exist.
+
+### Skills artifact pipeline (keep this in sync, easy to forget)
+
+The website consumes generated artifacts at `web/public/skills/*.tar.gz`, `web/public/skills/index.json`, and a checked-in mirror at `web/app/data/skills-index.json`. They are all written by `pnpm package:skills` (which runs `core/scripts/package-skills.sh` then `core/scripts/generate-skills-index.ts`).
+
+Two automatic safety nets so you do not ship a stale `/skills` page:
+
+1. **Web auto-regen**: `web/package.json` declares `predev` and `prebuild` that invoke `pnpm -F suiperpower package:skills` first. So `pnpm web:dev` and `pnpm web:build` always rebuild artifacts before the React Router app boots or builds. Vercel deploys get fresh data without manual steps.
+2. **Active-author watcher**: `pnpm skills:watch` (root or `core/`) recursively watches `core/skills/**`, debounces saves at 400ms, and re-runs `package:skills` per change. Use this in a side terminal when editing skills so the running dev server picks up new tarballs and index entries automatically.
+
+When you add or edit a SKILL.md, both `web/public/skills/index.json` and `web/app/data/skills-index.json` must regenerate. If you see a skill missing from the website list, the cause is almost always a stale index. Run `pnpm package:skills` once and reload.
+
+Do not commit `web/public/skills/*.tar.gz` or the two index JSONs without first running `pnpm package:skills`. CI does not currently regenerate them, so a stale commit ships a stale website.
 
 ### Autonomous build loop (local-only)
 

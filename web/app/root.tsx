@@ -24,7 +24,16 @@ export const links: Route.LinksFunction = () => [
   {
     rel: "icon",
     href: "/assets/suiperpower-logo.webp",
-    type: "icon/webp",
+    type: "image/webp",
+  },
+  {
+    rel: "shortcut icon",
+    href: "/favicon.ico",
+    type: "image/x-icon",
+  },
+  {
+    rel: "apple-touch-icon",
+    href: "/assets/suiperpower-logo.webp",
   },
 ];
 

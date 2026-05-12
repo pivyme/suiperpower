@@ -69,7 +69,7 @@ export function Hero() {
           {...fadeIn(0.3)}
           className="text-white/50 font-medium text-xl md:text-3xl mt-4 md:mt-5"
         >
-          Build everything on SUI as easy as prompt
+          Build something meaningful, on Sui
         </motion.p>
 
         <div className="mt-10 md:mt-12 w-full max-w-2xl flex flex-col gap-3 md:gap-4">

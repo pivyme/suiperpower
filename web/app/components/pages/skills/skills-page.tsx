@@ -1,9 +1,16 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router";
 import {
   IconArrowLeft,
   IconArrowUpRight,
+  IconBrandGithub,
+  IconCheck,
+  IconChevronDown,
+  IconCopy,
+  IconDownload,
+  IconExternalLink,
   IconSearch,
+  IconTerminal2,
 } from "@tabler/icons-react";
 import { GITHUB_LINK } from "~/config";
 import { SiteFooter } from "~/components/pages/home/site-footer";
@@ -14,8 +21,23 @@ import {
   type Skill,
   type SkillPhase,
 } from "~/data/skills";
+import skillsIndex from "~/data/skills-index.json";
 
 type PhaseFilter = "all" | SkillPhase;
+
+type IndexEntry = {
+  id: string;
+  phase: SkillPhase;
+  description: string;
+  tarballUrl: string;
+  githubPath: string;
+  npxCmd: string;
+  sha256: string;
+  size: number;
+  version: string;
+};
+
+type MergedSkill = Skill & { index: IndexEntry };
 
 const PHASE_ORDER: SkillPhase[] = ["learn", "idea", "build", "ship", "grow"];
 const PHASE_RANK: Record<SkillPhase, number> = {
@@ -26,13 +48,30 @@ const PHASE_RANK: Record<SkillPhase, number> = {
   grow: 4,
 };
 
+const INDEX_BY_ID: Map<string, IndexEntry> = new Map(
+  (skillsIndex.skills as IndexEntry[]).map((e) => [e.id, e]),
+);
+
+const MERGED: MergedSkill[] = SKILLS.flatMap((s) => {
+  const entry = INDEX_BY_ID.get(s.name);
+  return entry ? [{ ...s, index: entry }] : [];
+});
+
+function rawSkillUrl(skill: Skill): string {
+  return `https://raw.githubusercontent.com/pivyme/suiperpower/main/${skillRepoPath(skill)}/SKILL.md`;
+}
+
+function githubTreeUrl(skill: Skill): string {
+  return `${GITHUB_LINK}/tree/main/${skillRepoPath(skill)}`;
+}
+
 export function SkillsPage() {
   const [phase, setPhase] = useState<PhaseFilter>("all");
   const [query, setQuery] = useState("");
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return SKILLS.filter((s) => {
+    return MERGED.filter((s) => {
       if (phase !== "all" && s.phase !== phase) return false;
       if (!q) return true;
       return (
@@ -46,14 +85,14 @@ export function SkillsPage() {
 
   const counts = useMemo(() => {
     const map: Record<PhaseFilter, number> = {
-      all: SKILLS.length,
+      all: MERGED.length,
       learn: 0,
       idea: 0,
       build: 0,
       ship: 0,
       grow: 0,
     };
-    for (const s of SKILLS) map[s.phase] += 1;
+    for (const s of MERGED) map[s.phase] += 1;
     return map;
   }, []);
 
@@ -63,13 +102,17 @@ export function SkillsPage() {
 
       <section className="relative w-full px-4 md:px-12 pt-10 md:pt-14 pb-24 flex flex-col items-center">
         <div className="max-w-5xl w-full">
-          <Toolbar
-            phase={phase}
-            onPhaseChange={setPhase}
-            query={query}
-            onQueryChange={setQuery}
-            counts={counts}
-          />
+          <CliHintBanner />
+
+          <div className="mt-8 md:mt-10">
+            <Toolbar
+              phase={phase}
+              onPhaseChange={setPhase}
+              query={query}
+              onQueryChange={setQuery}
+              counts={counts}
+            />
+          </div>
 
           <div className="mt-10 md:mt-14">
             {filtered.length > 0 ? (
@@ -117,7 +160,7 @@ function SkillsHero() {
           Skills
         </h1>
         <p className="mt-4 md:mt-5 text-white/60 font-medium text-lg md:text-2xl max-w-3xl">
-          {SKILLS.length}+ skills your Sui agent can load on demand. Authored in
+          {MERGED.length}+ skills your Sui agent can load on demand. Authored in
           plain markdown, audit-friendly, open source.
         </p>
 
@@ -132,6 +175,52 @@ function SkillsHero() {
             <IconArrowUpRight className="size-4" />
           </a>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function CliHintBanner() {
+  const example = "npx skills add pivyme/suiperpower/skills/<phase>/<name>";
+  const [copied, setCopied] = useState(false);
+
+  async function copy() {
+    try {
+      await navigator.clipboard.writeText(example);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      // clipboard blocked, silent
+    }
+  }
+
+  return (
+    <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 md:py-3.5">
+      <div className="flex items-center gap-2 shrink-0 text-white/70">
+        <IconTerminal2 className="size-4" />
+        <span className="text-sm font-medium">Install any skill</span>
+      </div>
+      <div className="flex-1 flex items-center gap-2 min-w-0">
+        <code className="flex-1 truncate text-xs md:text-sm font-mono text-white/80 bg-black/30 rounded-lg px-3 py-2">
+          {example}
+        </code>
+        <button
+          onClick={copy}
+          className="flex items-center gap-1.5 rounded-lg bg-white/[0.06] hover:bg-white/[0.1] text-white/80 px-3 py-2 text-xs font-medium transition-colors"
+          aria-label="Copy install command"
+        >
+          {copied ? (
+            <>
+              <IconCheck className="size-3.5" />
+              Copied
+            </>
+          ) : (
+            <>
+              <IconCopy className="size-3.5" />
+              Copy
+            </>
+          )}
+        </button>
       </div>
     </div>
   );
@@ -215,7 +304,7 @@ function FilterPill({
   );
 }
 
-function SkillGrid({ skills }: { skills: Skill[] }) {
+function SkillGrid({ skills }: { skills: MergedSkill[] }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
       {skills.map((s) => (
@@ -225,26 +314,31 @@ function SkillGrid({ skills }: { skills: Skill[] }) {
   );
 }
 
-function SkillCard({ skill }: { skill: Skill }) {
-  const href = `${GITHUB_LINK}/tree/main/${skillRepoPath(skill)}`;
+function SkillCard({ skill }: { skill: MergedSkill }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const githubUrl = githubTreeUrl(skill);
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group relative flex flex-col rounded-2xl bg-white/[0.02] hover:bg-white/[0.04] transition-colors"
+    <div
+      className={`group relative flex flex-col rounded-2xl bg-white/[0.02] hover:bg-white/[0.04] transition-colors ${
+        menuOpen ? "z-20" : "z-0"
+      }`}
     >
       <div className="flex flex-col gap-4 p-5 md:p-6">
-        <p className="text-lg md:text-xl font-semibold text-white">
+        <a
+          href={githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-lg md:text-xl font-semibold text-white hover:text-white/90 transition-colors"
+        >
           {skill.title}
-        </p>
+        </a>
 
         <p className="text-sm md:text-[15px] text-white/65 font-medium leading-relaxed">
           {skill.description}
         </p>
 
         <div className="mt-auto flex items-center justify-between gap-3 pt-2">
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-1.5 min-w-0">
             {skill.tags.slice(0, 3).map((t) => (
               <span
                 key={t}
@@ -254,10 +348,173 @@ function SkillCard({ skill }: { skill: Skill }) {
               </span>
             ))}
           </div>
-          <AgentBadges agents={skill.agents} />
+          <div className="flex items-center gap-2 shrink-0">
+            <AgentBadges agents={skill.agents} />
+            <SkillInstallMenu
+              skill={skill}
+              open={menuOpen}
+              onOpenChange={setMenuOpen}
+            />
+          </div>
         </div>
       </div>
-    </a>
+    </div>
+  );
+}
+
+function SkillInstallMenu({
+  skill,
+  open,
+  onOpenChange,
+}: {
+  skill: MergedSkill;
+  open: boolean;
+  onOpenChange: (next: boolean) => void;
+}) {
+  const [copied, setCopied] = useState<null | "npx" | "raw">(null);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    function onDown(e: MouseEvent) {
+      if (!rootRef.current?.contains(e.target as Node)) onOpenChange(false);
+    }
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") onOpenChange(false);
+    }
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open, onOpenChange]);
+
+  async function copy(text: string, kind: "npx" | "raw") {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(kind);
+      setTimeout(() => setCopied(null), 1500);
+    } catch {
+      // silent
+    }
+  }
+
+  const npx = skill.index.npxCmd;
+  const tarball = skill.index.tarballUrl;
+  const raw = rawSkillUrl(skill);
+  const github = githubTreeUrl(skill);
+
+  return (
+    <div ref={rootRef} className="relative">
+      <button
+        onClick={() => onOpenChange(!open)}
+        aria-expanded={open}
+        aria-haspopup="menu"
+        className="flex items-center gap-1.5 rounded-lg bg-white text-black hover:bg-white/90 px-2.5 py-1 text-xs font-semibold transition-colors"
+      >
+        Add
+        <IconChevronDown
+          className={`size-3.5 transition-transform ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+
+      {open && (
+        <div
+          role="menu"
+          className="absolute right-0 top-full mt-2 z-20 w-72 rounded-xl border border-white/10 bg-neutral-950 shadow-2xl overflow-hidden"
+        >
+          <div className="px-3 pt-3 pb-1 text-[10px] uppercase tracking-wider text-white/40 font-semibold">
+            One command
+          </div>
+          <button
+            role="menuitem"
+            onClick={() => copy(npx, "npx")}
+            className="w-full flex items-start gap-2 px-3 py-2.5 hover:bg-white/[0.05] text-left transition-colors"
+          >
+            <IconTerminal2 className="size-4 text-white/60 mt-0.5 shrink-0" />
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-xs font-medium text-white">
+                  Install with npx skills
+                </span>
+                {copied === "npx" ? (
+                  <IconCheck className="size-3.5 text-emerald-400 shrink-0" />
+                ) : (
+                  <IconCopy className="size-3.5 text-white/40 shrink-0" />
+                )}
+              </div>
+              <code className="block mt-1 text-[11px] font-mono text-white/50 truncate">
+                {npx}
+              </code>
+            </div>
+          </button>
+
+          <div className="h-px bg-white/[0.06] mx-3" />
+
+          <div className="px-3 pt-2 pb-1 text-[10px] uppercase tracking-wider text-white/40 font-semibold">
+            Other options
+          </div>
+          <a
+            role="menuitem"
+            href={tarball}
+            className="flex items-center gap-2 px-3 py-2.5 hover:bg-white/[0.05] transition-colors"
+            onClick={() => onOpenChange(false)}
+          >
+            <IconDownload className="size-4 text-white/60 shrink-0" />
+            <div className="flex-1 min-w-0">
+              <div className="text-xs font-medium text-white">
+                Download .tar.gz
+              </div>
+              <div className="text-[11px] text-white/40">
+                {formatBytes(skill.index.size)} · sha256 {skill.index.sha256.slice(0, 8)}
+              </div>
+            </div>
+          </a>
+          <button
+            role="menuitem"
+            onClick={() => copy(raw, "raw")}
+            className="w-full flex items-center gap-2 px-3 py-2.5 hover:bg-white/[0.05] text-left transition-colors"
+          >
+            <IconCopy className="size-4 text-white/60 shrink-0" />
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-xs font-medium text-white">
+                  Copy SKILL.md raw URL
+                </span>
+                {copied === "raw" ? (
+                  <IconCheck className="size-3.5 text-emerald-400 shrink-0" />
+                ) : null}
+              </div>
+              <div className="text-[11px] text-white/40 truncate">
+                paste into any agent
+              </div>
+            </div>
+          </button>
+          <a
+            role="menuitem"
+            href={github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-3 py-2.5 hover:bg-white/[0.05] transition-colors"
+            onClick={() => onOpenChange(false)}
+          >
+            <IconBrandGithub className="size-4 text-white/60 shrink-0" />
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-xs font-medium text-white">
+                  View on GitHub
+                </span>
+                <IconExternalLink className="size-3.5 text-white/40 shrink-0" />
+              </div>
+              <div className="text-[11px] text-white/40 truncate">
+                {skillRepoPath(skill)}
+              </div>
+            </div>
+          </a>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -280,4 +537,10 @@ function AgentBadges({ agents }: { agents: Skill["agents"] }) {
       ))}
     </div>
   );
+}
+
+function formatBytes(n: number): string {
+  if (n < 1024) return `${n} B`;
+  if (n < 1024 * 1024) return `${(n / 1024).toFixed(1)} KB`;
+  return `${(n / (1024 * 1024)).toFixed(2)} MB`;
 }

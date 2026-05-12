@@ -1,20 +1,7 @@
-import { IconBrandGithub, IconBrandX } from "@tabler/icons-react";
-import { GITHUB_LINK, TWITTER_LINK } from "~/config";
+import { IconBrandGithub } from "@tabler/icons-react";
+import { GITHUB_LINK } from "~/config";
 
 export function SiteFooter() {
-  const socials = [
-    {
-      label: "GitHub",
-      href: GITHUB_LINK,
-      icon: IconBrandGithub,
-    },
-    {
-      label: "X",
-      href: TWITTER_LINK,
-      icon: IconBrandX,
-    },
-  ];
-
   return (
     <footer className="w-full px-4 md:px-12 pb-10 pt-6">
       <div className="max-w-5xl mx-auto pt-8 flex flex-col-reverse md:flex-row items-center justify-between gap-5">
@@ -23,22 +10,33 @@ export function SiteFooter() {
             © {new Date().getFullYear()} PIVY Inc. All rights reserved.
           </p>
         </div>
-        <div className="flex items-center gap-4">
-          {socials.map((s) => {
-            const Icon = s.icon;
-            return (
-              <a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={s.label}
-                className="transition-colors text-neutral-500 hover:text-white"
-              >
-                <Icon className="size-5" />
-              </a>
-            );
-          })}
+        <div className="flex items-center gap-5">
+          <a
+            href={GITHUB_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="transition-colors text-neutral-500 hover:text-white"
+          >
+            <IconBrandGithub className="size-5" />
+          </a>
+          <span className="h-5 w-px bg-white/10" aria-hidden />
+          <a
+            href="https://pivy.me"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="by PIVY"
+            className="group inline-flex items-center gap-2.5"
+          >
+            <span className="text-sm text-white/40 font-medium group-hover:text-white/60 transition-colors">
+              by
+            </span>
+            <img
+              src="/assets/pivy-horizontal.png"
+              alt="PIVY"
+              className="h-5 w-auto object-contain"
+            />
+          </a>
         </div>
       </div>
     </footer>
