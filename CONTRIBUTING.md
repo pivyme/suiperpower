@@ -149,7 +149,7 @@ Adopted from [Contributor Covenant 2.1](https://www.contributor-covenant.org/ver
 
 ## Security disclosures
 
-Vulnerabilities should NOT be opened as public issues. Email `security@suiperpower.dev` (mailbox provisioned at launch) or DM the maintainer. We respond within 24 hours. Critical reports (install script compromise, npm package compromise) trigger a same-day patch and a public advisory.
+Vulnerabilities should NOT be opened as public issues. Email `admin@pivy.me` or DM the maintainer. We aim to respond quickly on a best-effort basis (no guaranteed SLA). Critical reports (install script compromise, npm package compromise) are prioritized and may result in a fast patch and public advisory.
 
 ## DCO
 
