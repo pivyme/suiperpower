@@ -47,7 +47,10 @@ function checkArrayBlock(
     }
     for (const field of requiredFields) {
       if (!(field in row)) {
-        issues.push({ file, message: `${arrayKey}[${i}] (id=${row.id ?? "?"}) missing required field "${field}"` });
+        issues.push({
+          file,
+          message: `${arrayKey}[${i}] (id=${row.id ?? "?"}) missing required field "${field}"`,
+        });
       }
     }
     if (typeof row.id !== "string") {
@@ -62,7 +65,10 @@ function checkArrayBlock(
     }
     seenIds.add(row.id);
     if (row.id < lastId) {
-      issues.push({ file, message: `${arrayKey}[${i}] id "${row.id}" out of alphabetical order (after "${lastId}")` });
+      issues.push({
+        file,
+        message: `${arrayKey}[${i}] id "${row.id}" out of alphabetical order (after "${lastId}")`,
+      });
     }
     lastId = row.id;
   }
@@ -79,7 +85,19 @@ function checkRepos(issues: Issue[]): void {
     file,
     doc,
     "repos",
-    ["id", "name", "owner", "url", "description", "category", "tags", "license", "official", "stars", "lastChecked"],
+    [
+      "id",
+      "name",
+      "owner",
+      "url",
+      "description",
+      "category",
+      "tags",
+      "license",
+      "official",
+      "stars",
+      "lastChecked",
+    ],
     issues,
   );
 }
@@ -95,7 +113,18 @@ function checkSuiSkills(issues: Issue[]): void {
     file,
     doc,
     "skills",
-    ["id", "name", "publisher", "publisherType", "url", "description", "agents", "phase", "tags", "lastChecked"],
+    [
+      "id",
+      "name",
+      "publisher",
+      "publisherType",
+      "url",
+      "description",
+      "agents",
+      "phase",
+      "tags",
+      "lastChecked",
+    ],
     issues,
   );
 }

@@ -102,7 +102,11 @@ function targetDirs(vendor: boolean): { claude: string; codex: string; cursor: s
   };
 }
 
-function copySkillToClaudeOrCodex(skill: SkillEntry, dest: string, rewriteCodexYaml: boolean): string[] {
+function copySkillToClaudeOrCodex(
+  skill: SkillEntry,
+  dest: string,
+  rewriteCodexYaml: boolean,
+): string[] {
   mkdirSync(dest, { recursive: true });
   const written: string[] = [];
   cpSync(skill.srcDir, dest, {
@@ -417,7 +421,9 @@ export async function run(args: string[]): Promise<void> {
   }
 
   if (agent) {
-    console.log(`${BRAND.PRODUCT_NAME} init, ${installed.length} skills (${vendor ? "vendor" : "global"})`);
+    console.log(
+      `${BRAND.PRODUCT_NAME} init, ${installed.length} skills (${vendor ? "vendor" : "global"})`,
+    );
     for (const s of installed) console.log(`  + ${s}`);
     for (const s of orphans) console.log(`  - ${s} (orphan, removed)`);
     console.log(`manifest: ${mPath}`);
@@ -436,9 +442,7 @@ export async function run(args: string[]): Promise<void> {
   } else {
     console.log(`  ${muted("Claude Code: install via plugin marketplace, see below")}`);
     if (legacyCleaned > 0) {
-      console.log(
-        `  ${muted(`removed ${legacyCleaned} legacy file(s) from ~/.claude/skills/`)}`,
-      );
+      console.log(`  ${muted(`removed ${legacyCleaned} legacy file(s) from ~/.claude/skills/`)}`);
     }
   }
   console.log(`  ${dim(targets.codex)} ${muted("(Codex)")}`);

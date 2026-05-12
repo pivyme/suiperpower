@@ -92,6 +92,8 @@ export async function run(_args: string[]): Promise<void> {
   console.log(`  ${bold("run this in your agent")}`);
   console.log(`    ${accent(formatQuotedSkillCommand(cli, stop.command))}`);
   console.log("");
-  console.log(`  ${muted("next stops are listed in this menu when you re-run")} ${accent(`${BRAND.PRODUCT_NAME} journey`)}`);
+  console.log(
+    `  ${muted("next stops are listed in this menu when you re-run")} ${accent(`${BRAND.PRODUCT_NAME} journey`)}`,
+  );
   console.log("");
 }

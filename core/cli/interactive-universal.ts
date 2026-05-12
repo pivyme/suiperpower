@@ -61,9 +61,7 @@ function renderList(items: PickItem[]): void {
 
 function canUseArrowPicker(): boolean {
   return Boolean(
-    process.stdin.isTTY &&
-      process.stdout.isTTY &&
-      typeof process.stdin.setRawMode === "function",
+    process.stdin.isTTY && process.stdout.isTTY && typeof process.stdin.setRawMode === "function",
   );
 }
 
@@ -97,7 +95,9 @@ function renderArrowList(items: PickItem[], selected: number, allowQuit: boolean
   process.stdout.write("\n");
   lines += 1;
   const quitText = allowQuit ? ", q to quit" : "";
-  process.stdout.write(`  ${dim(truncateForTerminal(`up/down to move, enter to pick${quitText}`, controlColumns))}\n`);
+  process.stdout.write(
+    `  ${dim(truncateForTerminal(`up/down to move, enter to pick${quitText}`, controlColumns))}\n`,
+  );
   lines += 1;
   return lines;
 }
@@ -107,12 +107,17 @@ function clearRenderedLines(lines: number): void {
   process.stdout.write(`\x1b[${lines}A\x1b[J`);
 }
 
-async function pickByNumber(items: PickItem[], options: { title: string; subtitle?: string; allowQuit?: boolean }): Promise<PickItem | null> {
+async function pickByNumber(
+  items: PickItem[],
+  options: { title: string; subtitle?: string; allowQuit?: boolean },
+): Promise<PickItem | null> {
   const allowQuit = options.allowQuit !== false;
   printHeader(options.title, options.subtitle);
   renderList(items);
   while (true) {
-    const ans = await prompt(`  ${dim("pick number")} ${allowQuit ? dim("(or q to quit)") : ""} ${accent(">")} `);
+    const ans = await prompt(
+      `  ${dim("pick number")} ${allowQuit ? dim("(or q to quit)") : ""} ${accent(">")} `,
+    );
     if (allowQuit && (ans.toLowerCase() === "q" || ans.toLowerCase() === "quit")) return null;
     const n = Number.parseInt(ans, 10);
     if (Number.isFinite(n) && n >= 1 && n <= items.length) return items[n - 1];
@@ -120,7 +125,10 @@ async function pickByNumber(items: PickItem[], options: { title: string; subtitl
   }
 }
 
-async function pickByArrow(items: PickItem[], options: { title: string; subtitle?: string; allowQuit?: boolean }): Promise<PickItem | null> {
+async function pickByArrow(
+  items: PickItem[],
+  options: { title: string; subtitle?: string; allowQuit?: boolean },
+): Promise<PickItem | null> {
   const allowQuit = options.allowQuit !== false;
   printHeader(options.title, options.subtitle);
 
@@ -194,7 +202,10 @@ async function pickByArrow(items: PickItem[], options: { title: string; subtitle
   });
 }
 
-export async function pick(items: PickItem[], options: { title: string; subtitle?: string; allowQuit?: boolean }): Promise<PickItem | null> {
+export async function pick(
+  items: PickItem[],
+  options: { title: string; subtitle?: string; allowQuit?: boolean },
+): Promise<PickItem | null> {
   if (items.length === 0) {
     printHeader(options.title, "no items");
     return null;

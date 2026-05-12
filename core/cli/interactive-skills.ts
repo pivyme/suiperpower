@@ -23,7 +23,10 @@ function parseDescription(skillMd: string): string {
   if (!fm) return "";
   const desc = fm[1].match(/^description:\s*(.*)$/m);
   if (!desc) return "";
-  return desc[1].replace(/^"(.*)"$/, "$1").replace(/^'(.*)'$/, "$1").trim();
+  return desc[1]
+    .replace(/^"(.*)"$/, "$1")
+    .replace(/^'(.*)'$/, "$1")
+    .trim();
 }
 
 function loadSkills(): SkillInfo[] {
@@ -98,6 +101,8 @@ export async function run(args: string[]): Promise<void> {
   console.log("");
   console.log(`    ${accent(formatSkillInvocation(cli, picked.id))}`);
   console.log("");
-  console.log(`  ${muted("source:")} ${join(getSkillsRoot(), picked.category ?? "", picked.id, "SKILL.md")}`);
+  console.log(
+    `  ${muted("source:")} ${join(getSkillsRoot(), picked.category ?? "", picked.id, "SKILL.md")}`,
+  );
   console.log("");
 }

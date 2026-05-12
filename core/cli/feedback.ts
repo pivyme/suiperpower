@@ -83,7 +83,8 @@ export async function run(args: string[]): Promise<void> {
     const ratingNum = ratingRaw ? Number.parseInt(ratingRaw, 10) : NaN;
     const submission: Submission = {
       skill: skill || undefined,
-      rating: Number.isFinite(ratingNum) && ratingNum >= 1 && ratingNum <= 5 ? ratingNum : undefined,
+      rating:
+        Number.isFinite(ratingNum) && ratingNum >= 1 && ratingNum <= 5 ? ratingNum : undefined,
       text,
       contact: contact || undefined,
       version: readPackageVersion(),
