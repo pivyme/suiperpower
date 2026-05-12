@@ -95,29 +95,33 @@ Note that the response shape has two cases. A fresh upload returns `newlyCreated
 
 ## @mysten/walrus SDK (recommended for production)
 
-The `@mysten/walrus` package provides `WalrusClient` with typed methods, automatic retries, and proper error handling. Prefer it over raw `fetch()` for anything beyond prototyping.
+The `@mysten/walrus` package extends a `SuiGrpcClient` with typed methods, automatic retries, and proper error handling. Prefer it over raw `fetch()` for anything beyond prototyping.
 
 ```bash
 npm install @mysten/walrus @mysten/sui
 ```
 
 ```ts
-import { WalrusClient } from "@mysten/walrus";
-import { getFullnodeUrl, SuiClient } from "@mysten/sui/client";
+import { SuiGrpcClient } from "@mysten/sui/grpc";
+import { walrus } from "@mysten/walrus";
 
-const walrus = await WalrusClient.$extend({
-  suiClient: new SuiClient({ url: getFullnodeUrl("testnet") }),
-  network: "testnet",
+const client = new SuiGrpcClient({ network: "testnet" }).$extend(walrus());
+
+// Store (signer is required)
+const { blobId, blobObject } = await client.walrus.writeBlob({
+  blob: myData,
+  deletable: true,
+  epochs: 5,
+  signer: myKeypair,
 });
 
-// Store
-const { blobId } = await walrus.writeBlob({ blob: myData, epochs: 5 });
-
 // Read
-const data = await walrus.readBlob({ blobId });
+const data = await client.walrus.readBlob({ blobId });
 ```
 
-See the `@mysten/walrus` README for the full API surface (deletable blobs, extend lifetime, etc.).
+`signer` is required for `writeBlob`. Blobs are permanent by default; pass `deletable: true` to allow later deletion. Return value includes both `blobId` and `blobObject`.
+
+See the `@mysten/walrus` README for the full API surface (extend lifetime, delete, etc.).
 
 ## CLI
 
@@ -136,23 +140,23 @@ Use `walrus info` to check current epoch length, storage pricing, and system par
 
 ## Deletable vs permanent
 
-Since Walrus v1.33+, blobs are **deletable by default**. The HTTP publisher accepts `?deletable=false` to make a blob permanent. There is no `?permanent=true` parameter.
+Blobs are **permanent by default**. Pass `deletable=true` explicitly to make a blob deletable (allows later deletion for a storage refund). There is no `?permanent=true` parameter.
 
 ```bash
-# Deletable (default), blob can be deleted for storage refund
+# Permanent (default), cannot be deleted
 curl -X PUT "$PUBLISHER/v1/blobs?epochs=5" --data-binary @./file.txt
 
-# Permanent, cannot be deleted, costs more up front
-curl -X PUT "$PUBLISHER/v1/blobs?epochs=5&deletable=false" --data-binary @./file.txt
+# Deletable, blob can be deleted for storage refund
+curl -X PUT "$PUBLISHER/v1/blobs?epochs=5&deletable=true" --data-binary @./file.txt
 ```
 
-Pick deletable for user-uploaded content where the user controls lifetime. Pick permanent (`deletable=false`) for canonical, never-changing content (NFT media, archival datasets).
+Pick permanent (default) for canonical, never-changing content (NFT media, archival datasets). Pick deletable for user-uploaded content where the user controls lifetime.
 
 Note: public publishers enforce a **10 MiB default blob size limit**. For larger blobs, run your own publisher or use the CLI.
 
 ## Choosing epochs
 
-A Walrus epoch is roughly two weeks; verify the current value at integration time. Common choices:
+A Walrus epoch is ~1 day on testnet and ~2 weeks on mainnet. Verify the current value with `walrus info` at integration time. Common choices (mainnet epochs):
 
 | Use case | Epochs |
 |---|---|
@@ -168,7 +172,7 @@ Document the choice in `.suiperpower/build-context.md`. Surprises about expiry c
 Walrus Sites lets you host static frontends (HTML/CSS/JS) directly on Walrus, served from a custom domain. The `site-builder` CLI handles packaging and deployment:
 
 ```bash
-walrus-sites publish ./dist
+site-builder deploy ./dist
 ```
 
 Useful for fully decentralized dApps where the frontend itself should be censorship-resistant. See the Walrus Sites docs for details.
@@ -177,4 +181,4 @@ Useful for fully decentralized dApps where the frontend itself should be censors
 
 Walrus stores bytes as-is. For access-controlled content, use Seal (`@mysten/seal`) to encrypt client-side before upload. Seal provides decentralized secrets management with on-chain access policies. See `references/seal-encryption.md` for the integration pattern.
 
-Last updated: 2026-05-11. Targeting Walrus testnet and mainnet.
+Last updated: 2026-05-12. Targeting Walrus testnet and mainnet.

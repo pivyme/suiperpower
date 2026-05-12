@@ -28,34 +28,45 @@ npm install @mysten/seal @mysten/walrus @mysten/sui
 
 ```ts
 import { SealClient } from "@mysten/seal";
-import { WalrusClient } from "@mysten/walrus";
-import { SuiClient, getFullnodeUrl } from "@mysten/sui/client";
+import { SuiGrpcClient } from "@mysten/sui/grpc";
 
-const suiClient = new SuiClient({ url: getFullnodeUrl("testnet") });
+const suiClient = new SuiGrpcClient({ network: "testnet" });
 
-const seal = new SealClient({ suiClient, networkType: "testnet" });
-const walrus = await WalrusClient.$extend({
+const sealClient = new SealClient({
   suiClient,
-  network: "testnet",
+  serverConfigs: [{
+    objectId: "0xb012378c9f3799fb5b1a7083da74a4069e3c3f1c93de0b27212a5799ce1e1e98",
+    weight: 1,
+    aggregatorUrl: "https://seal-aggregator-testnet.mystenlabs.com",
+  }],
+  verifyKeyServers: false, // true in production
 });
 
-// Encrypt (policyObjectId is your deployed Move access policy)
-const { encryptedBytes } = await seal.encrypt({
-  policyObjectId: "0x<your-policy-id>",
-  plaintext: new TextEncoder().encode("secret data"),
+// 1. Build identity: policyObjectId + random nonce
+const nonce = crypto.getRandomValues(new Uint8Array(5));
+const policyId = "0x<your-policy-object-id>";
+const id = toHex(new Uint8Array([...fromHex(policyId), ...nonce]));
+
+// 2. Encrypt
+const { encryptedObject } = await sealClient.encrypt({
+  threshold: 1, packageId: "0x<your-package-id>", id,
+  data: new TextEncoder().encode("secret data"),
 });
 
-// Store ciphertext on Walrus
-const { blobId } = await walrus.writeBlob({
-  blob: encryptedBytes,
-  epochs: 5,
+// 3. Upload ciphertext to Walrus publisher
+const resp = await fetch("https://publisher.walrus-testnet.walrus.space/v1/blobs?epochs=5", {
+  method: "PUT", body: encryptedObject.slice(),
 });
+const { newlyCreated } = await resp.json();
+const blobId = newlyCreated.blobObject.blobId;
 
-// Later: fetch and decrypt (caller must satisfy the Move policy)
-const ciphertext = await walrus.readBlob({ blobId });
-const plaintext = await seal.decrypt({
-  encryptedBytes: ciphertext,
-  // Seal SDK handles key share retrieval internally
+// 4. Later: fetch from Walrus aggregator and decrypt
+// (caller must satisfy the Move seal_approve policy)
+const cipherResp = await fetch(`https://aggregator.walrus-testnet.walrus.space/v1/blobs/${blobId}`);
+const cipherBytes = new Uint8Array(await cipherResp.arrayBuffer());
+// Build seal_approve PTB, create SessionKey, then:
+const plaintext = await sealClient.decrypt({
+  data: cipherBytes, sessionKey, txBytes,
 });
 ```
 

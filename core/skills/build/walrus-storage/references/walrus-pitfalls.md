@@ -10,7 +10,7 @@ Mitigations:
 
 - Default to a generous epoch count for production content.
 - For user-uploaded content, surface the expiry to the user and let them extend.
-- For canonical content (NFT media), use `deletable=false` to make the blob permanent.
+- For canonical content (NFT media), keep the default (permanent). Do not pass `deletable=true`.
 
 ## Encryption is your problem
 
@@ -23,9 +23,9 @@ If the blob is sensitive:
 - Document the key management plan in `build-context.md`.
 - Never put plaintext PII directly into a Walrus blob.
 
-## Default is deletable (v1.33+)
+## Default is permanent
 
-Since Walrus v1.33+, blobs are deletable by default. Older code or docs that assume permanent-by-default will behave differently. If you need permanence, explicitly pass `deletable=false` when storing. Do not assume a blob will persist beyond its paid epoch count unless you made it permanent.
+Blobs are permanent by default. If you want users to be able to delete a blob (and reclaim a storage refund), pass `deletable=true` explicitly when storing. Permanent blobs cannot be deleted once created. Choose carefully: user-uploaded content usually benefits from `deletable=true`, while canonical content (NFT media, archives) should stay permanent.
 
 ## Public endpoints are best-effort
 
