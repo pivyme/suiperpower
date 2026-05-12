@@ -80,8 +80,7 @@ function skillRefFromPath(p: string): SkillRef {
 }
 
 function renderPreamble(name: string, phase: string, version: string): string {
-  return PREAMBLE_TEMPLATE
-    .replaceAll("<skill-name>", name)
+  return PREAMBLE_TEMPLATE.replaceAll("<skill-name>", name)
     .replaceAll("<phase>", phase)
     .replaceAll("<version>", version);
 }
@@ -165,9 +164,7 @@ function main(): void {
     }
   }
 
-  console.log(
-    `\nsummary: ${ok.length} ok, ${rewritten.length} rewritten, ${issues.length} issues`,
-  );
+  console.log(`\nsummary: ${ok.length} ok, ${rewritten.length} rewritten, ${issues.length} issues`);
 
   if (check && issues.length > 0) {
     process.exit(1);

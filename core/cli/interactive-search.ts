@@ -49,7 +49,8 @@ function loadSkills(): Hit[] {
       const md = join(phaseDir, sub.name, "SKILL.md");
       if (!existsSync(md)) continue;
       const fm = readFileSync(md, "utf8").match(/^---\n([\s\S]*?)\n---/);
-      const desc = fm?.[1].match(/^description:\s*(.*)$/m)?.[1].replace(/^["'](.*)["']$/, "$1") ?? "";
+      const desc =
+        fm?.[1].match(/^description:\s*(.*)$/m)?.[1].replace(/^["'](.*)["']$/, "$1") ?? "";
       out.push({
         source: "skill",
         id: sub.name,
@@ -63,7 +64,16 @@ function loadSkills(): Hit[] {
 }
 
 function loadRepos(): Hit[] {
-  const data = loadJson<{ repos: { id: string; name: string; description: string; category: string; url: string; tags?: string[] }[] }>("clonable-repos.json");
+  const data = loadJson<{
+    repos: {
+      id: string;
+      name: string;
+      description: string;
+      category: string;
+      url: string;
+      tags?: string[];
+    }[];
+  }>("clonable-repos.json");
   if (!data) return [];
   return data.repos.map((r) => ({
     source: "repo",
@@ -75,7 +85,9 @@ function loadRepos(): Hit[] {
 }
 
 function loadMcps(): Hit[] {
-  const data = loadJson<{ mcps: { id: string; name: string; description: string; installCmd: string }[] }>("sui-mcps.json");
+  const data = loadJson<{
+    mcps: { id: string; name: string; description: string; installCmd: string }[];
+  }>("sui-mcps.json");
   if (!data) return [];
   return data.mcps.map((m) => ({
     source: "mcp",
@@ -87,7 +99,9 @@ function loadMcps(): Hit[] {
 }
 
 function loadIdeas(): Hit[] {
-  const data = loadJson<{ ideas: { id: string; title: string; summary: string; source: string; category: string }[] }>("sui-ideas.json");
+  const data = loadJson<{
+    ideas: { id: string; title: string; summary: string; source: string; category: string }[];
+  }>("sui-ideas.json");
   if (!data) return [];
   return data.ideas.map((i) => ({
     source: "idea",

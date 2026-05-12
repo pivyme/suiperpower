@@ -3,12 +3,7 @@
 // Always writes a local JSONL log so users can audit what would have been sent.
 // Fires Convex mutation in the background, swallows all failures.
 
-import {
-  appendFileSync,
-  mkdirSync,
-  readFileSync,
-  writeFileSync,
-} from "node:fs";
+import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { homedir, platform, arch } from "node:os";
 import { join } from "node:path";
 import { randomUUID } from "node:crypto";
@@ -83,7 +78,7 @@ export function track(
       phase: fields.phase,
       status: fields.status,
       durationMs: fields.durationMs,
-      category: tier === "community" ? fields.category ?? cfg.category : undefined,
+      category: tier === "community" ? (fields.category ?? cfg.category) : undefined,
       version: readPackageVersion(),
       platform: `${platform()}-${arch()}`,
       tier,
@@ -138,7 +133,10 @@ async function sendToConvex(event: TelemetryEvent, convexUrl: string | undefined
   }
 }
 
-export function timeSkill(skill: string, phase: string): { finish: (status: "completed" | "failed" | "aborted") => void } {
+export function timeSkill(
+  skill: string,
+  phase: string,
+): { finish: (status: "completed" | "failed" | "aborted") => void } {
   const start = Date.now();
   track({ skill, phase, status: "started" });
   return {

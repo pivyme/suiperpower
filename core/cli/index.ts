@@ -9,8 +9,7 @@ type Module = { run: Handler; runIdeas?: Handler };
 
 // Dynamic path through a variable so TS does not statically resolve modules
 // that later phases will create (init, doctor, update, etc.).
-const load = (name: string): Promise<Module> =>
-  import(`./${name}.js`) as Promise<Module>;
+const load = (name: string): Promise<Module> => import(`./${name}.js`) as Promise<Module>;
 
 const handlers: Record<string, () => Promise<Module>> = {
   init: () => load("init"),
