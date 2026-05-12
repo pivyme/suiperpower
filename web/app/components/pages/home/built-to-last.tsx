@@ -5,10 +5,11 @@ export function BuiltToLast() {
         <div>
           <h2 className="text-3xl md:text-5xl font-semibold">Built to last</h2>
           <p className="mt-4 md:mt-5 text-white/60 font-medium text-lg md:text-2xl max-w-4xl">
-            Suiperpower is built around a different bar. Build skills run a
-            checklist before they call themselves done. Ship skills refuse to
-            fake telemetry, fake users, or fake code coverage. The bar is in the
-            markdown, public, auditable.
+            Suiperpower is built around a different bar. It is not just a pile
+            of technical skills. The agent steers your product thinking,
+            pushes back on nonsense ideas, and will refuse to help build the
+            next useless hackathon repo. We are tired of seeing slop ship on
+            Sui.
           </p>
         </div>
         <div className="bg-blue-500/5 rounded-3xl p-6 md:p-10 relative overflow-hidden">
