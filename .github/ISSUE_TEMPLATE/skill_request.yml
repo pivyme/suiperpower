@@ -1,0 +1,74 @@
+name: Skill request
+description: Propose a new Suiperpower skill or a change to an existing one.
+title: "[skill] "
+labels:
+  - skill
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Skills are the heart of Suiperpower. Before opening one, skim `core/skills/SKILL_ROUTER.md` and the phase folders to make sure this doesn't duplicate an existing skill.
+
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Phase
+      options:
+        - learn
+        - idea
+        - build
+        - ship
+        - grow
+        - not sure
+    validations:
+      required: true
+
+  - type: input
+    id: name
+    attributes:
+      label: Proposed skill name (kebab-case)
+      placeholder: "scaffold-sui-coin"
+    validations:
+      required: true
+
+  - type: textarea
+    id: trigger
+    attributes:
+      label: When should this skill trigger?
+      description: Plain-English description of the situation where an agent should reach for this skill.
+    validations:
+      required: true
+
+  - type: textarea
+    id: outcome
+    attributes:
+      label: What does the agent produce after running this skill?
+      description: Files written, commands run, decisions captured.
+    validations:
+      required: true
+
+  - type: textarea
+    id: sources
+    attributes:
+      label: Authoritative sources
+      description: |
+        Skills must be grounded in real docs. Paste links to the official sources this skill should pull from (Sui docs, sponsor repos, etc).
+        Skills with no sources will be closed.
+    validations:
+      required: true
+
+  - type: textarea
+    id: antislop
+    attributes:
+      label: Anti-slop gate
+      description: How does this skill make sure the output survives past the hackathon?
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Pre-flight
+      options:
+        - label: I checked `core/skills/` and this isn't already covered.
+          required: true
+        - label: I'm not asking for code-generation logic that belongs in the CLI.
+          required: true

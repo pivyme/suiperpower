@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question or RFC
+    url: https://github.com/pivyme/suiperpower/discussions
+    about: Use Discussions for roadmap input, RFCs, or open-ended questions.
+  - name: Security vulnerability
+    url: https://github.com/pivyme/suiperpower/security/advisories/new
+    about: Report security issues privately. Do not open a public issue.
+  - name: Sui Overflow chat
+    url: https://go.sui.io/suioverflow2026-tg
+    about: Hackathon-specific questions go to the Overflow Telegram.
