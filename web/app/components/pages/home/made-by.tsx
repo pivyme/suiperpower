@@ -4,23 +4,27 @@ export function MadeBy() {
   const people = [
     {
       name: "Kelvin Adithya",
-      role: "Founder",
+      role: "Creator",
       link: "https://klvn.dev",
+      photo: "/team/photo-kelvin.png",
     },
     {
       name: "Febi Mettasari",
-      role: "Founder",
+      role: null,
       link: "https://www.instagram.com/febimettasari",
+      photo: "/team/photo-febi.png",
     },
     {
       name: "Louis Arvin",
-      role: "Infra",
+      role: null,
       link: "https://www.linkedin.com/in/louis-arvin-8a8488268",
+      photo: "/team/photo-louis.png",
     },
     {
       name: "Tengku Farhan",
-      role: "Website",
+      role: "Site",
       link: "https://hanebox.github.io",
+      photo: "/team/photo-farhan.png",
     },
   ];
 
@@ -95,18 +99,48 @@ export function MadeBy() {
                 The team
               </p>
               <div className="flex flex-wrap gap-2">
-                {people.map((p) => (
-                  <a
-                    key={p.name}
-                    href={p.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-white/5 hover:bg-white/10 transition-colors rounded-full px-3 py-1.5 text-sm flex items-center gap-2"
-                  >
-                    <span className="text-white">{p.name}</span>
-                    <span className="text-white/40">{p.role}</span>
-                  </a>
-                ))}
+                {people.map((p, i) => {
+                  const isLead = i === 0;
+                  return (
+                    <a
+                      key={p.name}
+                      href={p.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`group transition-colors rounded-full pl-1.5 pr-4 py-1.5 text-base flex items-center gap-2.5 ${
+                        isLead
+                          ? "bg-blue-500/10 hover:bg-blue-500/15 ring-1 ring-inset ring-blue-400/30"
+                          : "bg-white/5 hover:bg-white/10"
+                      }`}
+                    >
+                      <span
+                        className={`relative size-9 md:size-10 rounded-full overflow-hidden shrink-0 border ${
+                          isLead
+                            ? "border-blue-400/40 bg-gradient-to-br from-blue-500/30 to-blue-300/10"
+                            : "border-white/10 bg-gradient-to-br from-white/15 to-white/5"
+                        }`}
+                      >
+                        <img
+                          src={p.photo}
+                          alt=""
+                          className="absolute inset-0 w-full h-full object-cover"
+                          onError={(e) => {
+                            (e.currentTarget as HTMLImageElement).style.visibility =
+                              "hidden";
+                          }}
+                        />
+                      </span>
+                      <span className="text-white">{p.name}</span>
+                      {p.role && (
+                        <span
+                          className={isLead ? "text-blue-200/70" : "text-white/40"}
+                        >
+                          {p.role}
+                        </span>
+                      )}
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>

@@ -13,21 +13,37 @@ export function BuiltToLast() {
         </div>
         <div className="bg-blue-500/5 rounded-3xl p-6 md:p-10 relative overflow-hidden">
           <blockquote className="text-lg md:text-2xl text-blue-50 leading-relaxed font-medium">
-            Most Sui projects stop the day they ship. They were built to hit a
-            milestone, not to earn users. I built Suiperpower because that is
-            the trap I want the next batch of builders to skip. Build a Sui
-            product that earns real users, real traction, and eventually, real
-            revenue.
+            Most Sui hackathon submissions are built for the hackathon, not to
+            actually become a product. That always bothered me. So I poured my
+            product thinking into Suiperpower, so the agent acts like a
+            brutally honest senior engineer that won't sugarcoat anything.
+            This is my giveback to the Sui community. If it raises the bar of
+            what gets shipped on Sui, that is the win.
           </blockquote>
-          <p className="mt-6 text-sm md:text-base text-blue-200/70 font-medium">
-            Kelvin Adithya, co-founder of{" "}
-            <a
-              href="https://pivy.me"
-              className="underline text-blue-100 hover:text-white"
-            >
-              PIVY
-            </a>
-          </p>
+          <div className="mt-6 flex items-center gap-3">
+            <span className="relative size-10 md:size-11 rounded-full overflow-hidden shrink-0 border border-blue-400/30 bg-gradient-to-br from-blue-500/30 to-blue-300/10">
+              <img
+                src="/team/photo-kelvin.png"
+                alt=""
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </span>
+            <div className="flex flex-col gap-0.5">
+              <p className="text-sm md:text-base text-blue-200/70 font-medium">
+                Kelvin Adithya, co-founder of{" "}
+                <a
+                  href="https://pivy.me"
+                  className="underline text-blue-100 hover:text-white"
+                >
+                  PIVY
+                </a>
+              </p>
+              <p className="text-xs md:text-sm text-blue-200/40 font-medium">
+                ps. mysten labs (or any serious team on Sui), open to
+                engineer full time. hire me?
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

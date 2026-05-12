@@ -26,15 +26,15 @@ export function SiteFooter() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="by PIVY"
-            className="group inline-flex items-center gap-2.5"
+            className="group inline-flex items-center gap-3"
           >
-            <span className="text-sm text-white/40 font-medium group-hover:text-white/60 transition-colors">
+            <span className="text-base text-white/50 font-medium group-hover:text-white/70 transition-colors">
               by
             </span>
             <img
               src="/assets/pivy-horizontal.png"
               alt="PIVY"
-              className="h-5 w-auto object-contain"
+              className="h-8 md:h-9 w-auto object-contain"
             />
           </a>
         </div>

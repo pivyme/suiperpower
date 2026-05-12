@@ -150,7 +150,7 @@ export function Hero() {
                 />
               </div>
               <p className="font-medium text-white/50 text-sm">
-                50+ skills, CLIs and MCPs to use
+                100+ skills, CLIs and MCPs to use
               </p>
             </div>
           </motion.div>
