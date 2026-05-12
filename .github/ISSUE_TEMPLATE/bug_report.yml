@@ -1,0 +1,73 @@
+name: Bug report
+description: Something is broken in the CLI, a skill, or the website.
+title: "[bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. The more specific you are, the faster this gets fixed.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - CLI (suiperpower / suiper)
+        - Skill (Claude Code / Codex / Cursor)
+        - Website (suiperpower.dev)
+        - Install script (install.sh / setup.sh)
+        - Convex backend
+        - Docs
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: CLI version
+      description: Output of `suiper --version`. Leave blank if not CLI related.
+      placeholder: "1.0.0"
+
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      description: OS, Node version, agent (Claude Code / Codex / Cursor) and version.
+      placeholder: "macOS 14.5, Node 20.11, Claude Code 1.0.x"
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Exact commands or actions. Paste output verbatim.
+      placeholder: |
+        1. Run `suiper scaffold ...`
+        2. Observe ...
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Logs, screenshots, related issues.
