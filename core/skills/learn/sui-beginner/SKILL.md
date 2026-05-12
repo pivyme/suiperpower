@@ -1,6 +1,6 @@
 ---
 name: sui-beginner
-description: Teach Sui from scratch in plain language, with explicit framing for builders coming from EVM or Solana so they map known concepts to Sui equivalents instead of being told "it is just different". Use when the user says "teach me Sui", "I am new to Sui", "explain Sui to me", "Sui basics", "Sui for beginners", "I am coming from EVM", "I am coming from Solana", "what is different on Sui", "how does Sui work", or "Sui starter". Reads from skills/data/sui-knowledge/ and writes session notes to .suiperpower/learnings.md if the user wants them captured.
+description: Use when teaching Sui from scratch, mapping EVM or Solana concepts to Sui equivalents for a builder new to the platform.
 ---
 
 ## Preamble (run first)

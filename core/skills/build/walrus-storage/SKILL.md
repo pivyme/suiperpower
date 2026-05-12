@@ -1,6 +1,6 @@
 ---
 name: walrus-storage
-description: Integrate Walrus decentralized blob storage into a Sui project, store and retrieve files, and commit blob ids on chain. Use when the user says "store files on Walrus", "integrate Walrus blob storage", "upload an image to Walrus", "host my NFT media on Walrus", "store user uploads on Sui", "use Walrus for my dataset", or "decentralized storage on Sui". Reads .suiperpower/build-context.md if present. Loads skills/data/sui-knowledge/sponsor-docs/walrus.md.
+description: Use when storing files, NFT media, or user uploads on Walrus and committing blob ids on chain in a Sui project.
 ---
 
 ## Preamble (run first)

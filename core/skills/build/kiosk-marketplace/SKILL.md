@@ -1,6 +1,6 @@
 ---
 name: kiosk-marketplace
-description: Build a marketplace on Sui using the Kiosk standard, list NFTs, enforce transfer policies, take royalties, and complete real listing-to-purchase flows. Use when the user says "build a marketplace", "use the kiosk standard", "list an NFT on Sui", "transfer policy on Sui", "enforce royalties on Sui", or "Sui NFT marketplace". Reads .suiperpower/build-context.md if present. Loads skills/data/sui-knowledge/03-move-and-objects.md.
+description: Use when building a Sui NFT marketplace on the Kiosk standard, listing NFTs, enforcing transfer policies, or taking royalties.
 ---
 
 ## Preamble (run first)

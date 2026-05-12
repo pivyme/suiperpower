@@ -1,6 +1,6 @@
 ---
 name: submit-to-sui-overflow
-description: Drive the Sui Overflow submission end to end on deepsurge.xyz, captures the package id from deploy-context.md, validates the 1280x1280 logo and media set, drafts the form copy, generates the demo video script, and runs the day-of preflight before the user clicks submit. Use when the user says "submit to Sui Overflow", "submit hackathon", "submit my project", "Sui Overflow submission", "fill the deepsurge form", "prepare submission", or "submit to overflow". Reads .suiperpower/idea-context.md, .suiperpower/deploy-context.md (mainnet or testnet), .suiperpower/track-pick.md, writes .suiperpower/submission-context.md.
+description: Use when submitting to Sui Overflow on deepsurge.xyz. Captures package id, validates the 1280x1280 logo, drafts form copy, runs preflight.
 ---
 
 ## Preamble (run first)

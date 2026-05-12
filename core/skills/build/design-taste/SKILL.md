@@ -1,6 +1,6 @@
 ---
 name: design-taste
-description: Diagnose why a Sui dapp looks generic, AI-generated, or "not premium", and produce a specific list of moves to fix it. Use when the user says "this looks generic", "looks AI-generated", "not premium", "it feels cheap", "design taste", "make this look intentional", "design looks off", or "what is wrong with my UI". Reads .suiperpower/brand.md and .suiperpower/build-context.md if present.
+description: Use when a Sui dapp looks generic, AI-generated, or not premium. Diagnoses why and outputs a specific fix list.
 ---
 
 ## Preamble (run first)

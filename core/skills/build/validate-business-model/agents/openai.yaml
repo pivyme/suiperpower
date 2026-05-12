@@ -1,12 +1,7 @@
 name: validate-business-model
 version: 1
 phase: build
-description: |
-  Force the user to answer five concrete questions about who pays, how much,
-  and why, and refuse to claim a business model exists if they cannot. Use
-  when the user says "validate my business model", "who pays for this", "how
-  do I make money", "monetization", "pricing", "business model", or "is this
-  profitable".
+description: Use when validating a Sui product's business model, who pays, how much, pricing, monetization, or profitability.
 prompt_path: ../SKILL.md
 references:
   - ../references/payer-types.md

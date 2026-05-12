@@ -1,6 +1,6 @@
 ---
 name: will-real-users-pay
-description: Run a cheap pricing experiment that produces a real signal from candidate users in two weeks or less, before the user claims "people will pay for this". Use when the user says "will users pay", "willingness to pay", "pricing experiment", "pricing test", "should I charge for this", "validate price", "validate pricing", "smoke test pricing", or "is anyone willing to pay". Reads .suiperpower/idea-context.md and .suiperpower/business-model.md if present, writes .suiperpower/will-pay.md.
+description: Use when stress-testing pricing on a Sui product, running a cheap willingness-to-pay experiment, or validating that anyone will pay.
 ---
 
 ## Preamble (run first)

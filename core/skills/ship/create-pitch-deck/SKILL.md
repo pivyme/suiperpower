@@ -1,6 +1,6 @@
 ---
 name: create-pitch-deck
-description: Draft a 10-slide pitch deck grounded in the project's actual context files (idea, business model, retention loop, deploy artifacts), pick a structure based on audience (judges, investors, grant program), and refuse to claim a metric the source files do not back. Use when the user says "create a pitch deck", "investor deck", "draft my deck", "pitch deck", "make a deck", "deck for hackathon", "deck for grant", or "deck for VCs". Reads .suiperpower/idea-context.md, .suiperpower/business-model.md, .suiperpower/retention-loop.md, .suiperpower/deploy-context.md, writes .suiperpower/pitch-deck.md.
+description: Use when drafting a 10-slide pitch deck for judges, investors, or grants, grounded in real context files, not invented metrics.
 ---
 
 ## Preamble (run first)

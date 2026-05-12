@@ -1,6 +1,6 @@
 ---
 name: build-with-claude
-description: Pair with Claude (or another coding agent) to build the MVP of a Sui project step by step, breaking the work into committable slices with quality gates. Use when the user says "help me build the MVP", "guide me through building this", "build with me on Sui", "be my pair programmer for Sui", "step by step Sui build", or "MVP loop on Sui". Reads .suiperpower/build-context.md if present. Loads skills/data/sui-knowledge/03-move-and-objects.md.
+description: Use when pair-programming an MVP on Sui step by step, breaking work into committable slices with quality gates.
 ---
 
 ## Preamble (run first)

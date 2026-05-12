@@ -1,5 +1,5 @@
 // First-run TUI when the user types `suiperpower` with no args.
-// Each option prints the agent command the user should run; we never invoke the agent for them.
+// Each option prints the command the user should run; we never invoke the agent for them.
 
 import { BRAND } from "./branding.js";
 import { accent, bold, dim, muted } from "./colors.js";
@@ -44,6 +44,10 @@ const OPTIONS: { item: PickItem; command: string }[] = [
     item: { id: "update", label: `Update ${BRAND.PRODUCT_NAME}`, hint: "pull latest skills and CLI" },
     command: `${BRAND.PRODUCT_NAME} update`,
   },
+  {
+    item: { id: "uninstall", label: `Uninstall ${BRAND.PRODUCT_NAME}`, hint: "remove tracked files after confirmation" },
+    command: `${BRAND.PRODUCT_NAME} uninstall`,
+  },
 ];
 
 export async function run(_args: string[]): Promise<void> {
@@ -64,10 +68,11 @@ export async function run(_args: string[]): Promise<void> {
   if (!opt) return;
 
   const cli = detectPreferredAgentCli();
+  const isAgentCommand = opt.command.startsWith('"/');
   console.log("");
-  console.log(`  ${bold("run this in your agent")}`);
+  console.log(`  ${bold(isAgentCommand ? "run this in your agent" : "run this in your terminal")}`);
   console.log("");
-  if (opt.command.startsWith('"/')) {
+  if (isAgentCommand) {
     const meta = cli ? getAgentMeta(cli) : null;
     console.log(`    ${accent(formatQuotedSkillCommand(cli, opt.command))}`);
     if (!meta) {

@@ -1,6 +1,6 @@
 ---
 name: validate-business-model
-description: Force the user to answer five concrete questions about who pays, how much, and why, and refuse to claim a business model exists if they cannot. Use when the user says "validate my business model", "who pays for this", "how do I make money", "monetization", "pricing", "business model", or "is this profitable". Reads .suiperpower/idea-context.md and writes the answer to .suiperpower/business-model.md.
+description: Use when validating a Sui product's business model, who pays, how much, pricing, monetization, or profitability.
 ---
 
 ## Preamble (run first)

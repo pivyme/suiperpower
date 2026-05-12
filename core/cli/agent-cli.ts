@@ -39,11 +39,10 @@ let cachedPaths: Record<AgentCli, string> | null = null;
 function which(bin: string): string {
   // No shell, no interpolation. Static binary name only.
   try {
-    return execFileSync("command", ["-v", bin], {
+    return execFileSync("which", [bin], {
       encoding: "utf8",
       timeout: 5000,
       stdio: ["pipe", "pipe", "pipe"],
-      shell: "/bin/sh",
     }).trim();
   } catch {
     return "";

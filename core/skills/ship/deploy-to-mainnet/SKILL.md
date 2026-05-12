@@ -1,6 +1,6 @@
 ---
 name: deploy-to-mainnet
-description: Publish to Sui mainnet only after the project has cleared the anti-slop gates (validate-business-model, retention-loop, review-move) and the testnet deploy was exercised, then capture the mainnet artifacts and lock the upgrade policy intentionally. Use when the user says "deploy to mainnet", "ship to production", "go to mainnet", "mainnet publish", "production deploy", or "publish to Sui mainnet". Reads .suiperpower/business-model.md, .suiperpower/retention-loop.md, .suiperpower/deploy-context.md (must contain a testnet entry), writes a new mainnet entry to .suiperpower/deploy-context.md.
+description: Use when publishing to Sui mainnet after testnet is exercised and anti-slop gates have cleared. Locks upgrade policy intentionally.
 ---
 
 ## Preamble (run first)

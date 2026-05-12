@@ -1,6 +1,6 @@
 ---
 name: deploy-to-testnet
-description: Publish the user's Move package to Sui testnet using the canonical deploy runbook, capture the package id and upgrade cap, and write deploy-context.md so downstream skills can reference the real artifacts. Use when the user says "deploy to testnet", "publish to Sui testnet", "publish my package to testnet", "ship to testnet", "deploy my contract to testnet", or "publish move package testnet". Reads .suiperpower/idea-context.md and .suiperpower/build-context.md, writes .suiperpower/deploy-context.md per the phase-handoff spec.
+description: Use when publishing a Move package to Sui testnet, capturing the package id and upgrade cap via the canonical deploy runbook.
 ---
 
 ## Preamble (run first)

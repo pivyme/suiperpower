@@ -1,6 +1,6 @@
 ---
 name: retention-loop
-description: Force the user to articulate a concrete retention loop, day 1 / day 2 / day 7 / day 30 anchors, in a single paragraph. Use when the user says "retention loop", "what brings users back", "day 1 day 7 retention", "engagement loop", "user retention", "stickiness", or "why will users come back". Reads .suiperpower/idea-context.md and writes .suiperpower/retention-loop.md.
+description: Use when articulating a retention loop on a Sui product, day 1 / day 7 / day 30 anchors, or asking why users come back.
 ---
 
 ## Preamble (run first)

@@ -1,6 +1,6 @@
 ---
 name: review-move
-description: Run an in-house P0 to P3 security review on a Sui Move package and surface OpenZeppelin migration suggestions. Use when the user says "review my Move code for security", "find bugs in my Move package", "P0 P1 P2 P3 walk", "internal Move audit", "where can OpenZeppelin replace my code", "Move review", or "self-audit before OtterSec". Reads .suiperpower/build-context.md if present. Loads skills/data/guides/security-checklist.md and skills/data/sui-knowledge/sponsor-docs/openzeppelin-sui.md.
+description: Use when running an internal P0-P3 security review on a Sui Move package or finding where OpenZeppelin can replace hand-rolled code.
 ---
 
 ## Preamble (run first)

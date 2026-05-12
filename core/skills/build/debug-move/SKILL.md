@@ -1,6 +1,6 @@
 ---
 name: debug-move
-description: Diagnose Sui Move compile errors, runtime aborts, and capability leakage step by step. Use when the user says "fix my Move build error", "Move compiler is yelling at me", "abort code 0", "my PTB reverted", "my Move test fails", "why does this not compile", "abort_code", "capability leak", or "object cannot be transferred". Reads .suiperpower/build-context.md if present. Loads skills/data/sui-knowledge/03-move-and-objects.md and skills/build/build-with-move/references/common-move-pitfalls.md.
+description: Use when a Sui Move build fails, a PTB reverts, an abort code fires, or a capability leak appears. Diagnoses and fixes step by step.
 ---
 
 ## Preamble (run first)

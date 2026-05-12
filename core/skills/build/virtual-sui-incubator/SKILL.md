@@ -1,6 +1,6 @@
 ---
 name: virtual-sui-incubator
-description: Run a deep-dive teaching session on Sui internals (consensus, object model, Move execution, gas, upgrades, indexer architecture) so the user becomes self-sufficient on the platform. Use when the user says "deep dive into Sui and Move", "teach me Sui internals", "explain how Sui works under the hood", "Sui internals walkthrough", "go deeper on Sui", or "Sui mental model". Reads .suiperpower/build-context.md if present. Loads skills/data/sui-knowledge/02-what-makes-sui-unique.md and skills/data/sui-knowledge/03-move-and-objects.md.
+description: Use when teaching Sui internals deeply, consensus, Object model, Move execution, gas, upgrades, or indexer architecture.
 ---
 
 ## Preamble (run first)

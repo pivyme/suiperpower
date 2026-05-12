@@ -1,6 +1,6 @@
 ---
 name: walrus-research
-description: Research Walrus storage usage patterns and surface product opportunities, underserved use cases, and integration gaps. Use when the user says "Walrus research", "find Walrus opportunities", "what to build on Walrus", "Walrus market gaps", "decentralized storage idea", "Walrus blob storage opportunities", or "Walrus integration ideas". Reads skills/data/sui-knowledge/sponsor-docs/walrus.md.
+description: Use when researching Walrus storage usage patterns, underserved use cases, and product opportunities.
 ---
 
 ## Preamble (run first)

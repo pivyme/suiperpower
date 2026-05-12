@@ -1,6 +1,6 @@
 ---
 name: sponsored-transactions
-description: Add sponsored transactions to a Sui app so the sponsor pays gas while the user signs the move calls. Use when the user says "sponsor user gas", "gasless transactions on Sui", "build a gas station", "pay gas for my users", "sponsor transactions on Sui", or "first-tx-free Sui onboarding". Reads .suiperpower/build-context.md if present. Loads skills/data/sui-knowledge/04-protocols-and-sdks.md.
+description: Use when adding sponsored or gasless transactions on Sui, building a gas station, or paying gas for users.
 ---
 
 ## Preamble (run first)

@@ -1,6 +1,6 @@
 ---
 name: launch-coin
-description: Launch a coin on Sui using the standard Move coin module, decide tokenomics, manage TreasuryCap custody, and confirm the coin renders in wallets. Use when the user says "launch a coin on Sui", "create a Sui token", "tokenomics", "issue a Sui coin", "Sui coin standard", "mint a coin on Sui", or "make my own Sui token". Reads .suiperpower/build-context.md if present. Loads skills/data/sui-knowledge/03-move-and-objects.md.
+description: Use when launching a coin on Sui, deciding tokenomics, managing TreasuryCap custody, or shipping a token that renders in wallets.
 ---
 
 ## Preamble (run first)

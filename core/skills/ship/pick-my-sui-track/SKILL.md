@@ -1,6 +1,6 @@
 ---
 name: pick-my-sui-track
-description: Recommend the right Sui Overflow 2026 track based on real project fit. Scores the project against the four official tracks (Agentic Web, DeFi & Payments, Walrus, DeepBook) on a 0-3 depth scale and refuses to recommend a track where the fit is aspirational. Surfaces the official "team's prerogative" policy. Use when the user says "which track", "which Overflow track", "pick my track", "what track should I submit to", "Sui Overflow track", or "track recommendation". Reads .suiperpower/idea-context.md, .suiperpower/build-context.md, and the project source; writes .suiperpower/track-pick.md.
+description: Use when picking a Sui Overflow 2026 track. Scores fit against the four official tracks on a 0-3 depth scale, refuses aspirational picks.
 ---
 
 ## Preamble (run first)

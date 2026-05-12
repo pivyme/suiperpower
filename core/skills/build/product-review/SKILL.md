@@ -1,6 +1,6 @@
 ---
 name: product-review
-description: Walk the product as a first-time user would, from first paint through onboarding, empty states, error states, mobile, and time-to-first-value, and produce a prioritized roadmap of UX fixes. Use when the user says "product review", "UX review", "review my UX", "review my product", "review the onboarding", "first impressions", "user experience review", "how is the UX", or "audit my UX". Reads .suiperpower/idea-context.md and writes .suiperpower/product-review.md.
+description: Use when reviewing a Sui product as a first-time user would, from first paint through onboarding, empty states, and mobile. Produces a prioritized UX fix roadmap.
 ---
 
 ## Preamble (run first)

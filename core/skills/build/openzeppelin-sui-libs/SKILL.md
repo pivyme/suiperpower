@@ -1,6 +1,6 @@
 ---
 name: openzeppelin-sui-libs
-description: Use OpenZeppelin's audited Move libraries for Sui to replace hand-rolled access control, pausable, ownable, upgradeable, and signer-registry patterns. Use when the user says "use OpenZeppelin Sui libraries", "secure primitives for Sui", "OZ on Sui", "audited Move libraries", "OZ access control on Sui", "OZ pausable Sui", or "stop hand-rolling auth on Sui". Reads .suiperpower/build-context.md if present. Loads skills/data/sui-knowledge/sponsor-docs/openzeppelin-sui.md.
+description: Use when replacing hand-rolled access control, pausable, ownable, or upgradeable patterns with OpenZeppelin's audited Move libraries on Sui.
 ---
 
 ## Preamble (run first)

@@ -1,6 +1,6 @@
 ---
 name: brand-design
-description: Pick a name, color palette, and typography for a Sui product without slipping into generic crypto aesthetics. Use when the user says "pick brand colors", "name my product", "what should my logo look like", "brand my Sui project", "design my brand", "pick a typeface", or "my project name is bad". Reads .suiperpower/idea-context.md and .suiperpower/build-context.md if present.
+description: Use when picking brand colors, naming a Sui product, choosing a typeface, or fixing a generic crypto look. Outputs name, palette, typography.
 ---
 
 ## Preamble (run first)

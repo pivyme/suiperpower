@@ -1,6 +1,6 @@
 ---
 name: build-with-move
-description: Author Sui Move modules and packages with a senior Move dev as your pair. Use when the user says "build a Move module", "write a Move package", "help me with Move", "add a function to my contract", "create a smart contract on Sui", "scaffold a Move package", or "I need to write Move code". Reads .suiperpower/build-context.md if present. Loads skills/data/sui-knowledge/03-move-and-objects.md and skills/data/sui-knowledge/sponsor-docs/openzeppelin-sui.md.
+description: Use when writing a Sui Move module or package, adding a function to a contract, or scaffolding Move code with a senior pair.
 ---
 
 ## Preamble (run first)

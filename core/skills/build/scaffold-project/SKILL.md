@@ -1,6 +1,6 @@
 ---
 name: scaffold-project
-description: Scaffold a new Sui project with the right stack, write the initial .suiperpower/build-context.md, and pick template defaults. Use when the user says "scaffold my project", "set up my workspace", "what stack should I use on Sui", "init a Sui project", "bootstrap a Sui app", "start a new Sui project", or "give me a Sui template". Reads .suiperpower/idea-context.md if present. Loads skills/data/sui-knowledge/04-protocols-and-sdks.md.
+description: Use when starting a new Sui project, bootstrapping a workspace, or picking the right stack and template defaults.
 ---
 
 ## Preamble (run first)

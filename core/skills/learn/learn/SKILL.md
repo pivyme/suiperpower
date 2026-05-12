@@ -1,6 +1,6 @@
 ---
 name: learn
-description: Capture session learnings and decisions to .suiperpower/learnings.md so the next skill, and the user's future self, can pick up where this session left off. Use when the user says "what have we learned", "save what we figured out", "log this learning", "log decisions", "capture session notes", "wrap up this session", "review my learnings", or "log learnings". Reads .suiperpower/idea-context.md and .suiperpower/build-context.md for context, writes append-only entries to .suiperpower/learnings.md.
+description: Use when capturing session learnings and decisions so the next skill, or future-you, can pick up where this session ended.
 ---
 
 ## Preamble (run first)

@@ -1,12 +1,7 @@
 name: walrus-research
 version: 1
 phase: idea
-description: |
-  Research Walrus storage usage patterns and surface product opportunities,
-  underserved use cases, and integration gaps. Use when the user says "Walrus
-  research", "find Walrus opportunities", "what to build on Walrus", "Walrus
-  market gaps", "decentralized storage idea", "Walrus blob storage
-  opportunities", or "Walrus integration ideas".
+description: Use when researching Walrus storage usage patterns, underserved use cases, and product opportunities.
 prompt_path: ../SKILL.md
 references:
   - ../references/walrus-categories.md

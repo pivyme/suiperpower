@@ -1,6 +1,6 @@
 ---
 name: object-model-design
-description: Design the Sui Object schema for a project, choose owned vs shared vs immutable per Object, decide capability patterns, and document the rationale. Use when the user says "design the object schema", "owned vs shared object", "capability pattern for X", "model my data on Sui", "Sui object design", or "how should this be structured on Sui". Reads .suiperpower/build-context.md if present. Loads skills/data/sui-knowledge/03-move-and-objects.md.
+description: Use when designing the Sui Object schema, choosing owned vs shared vs immutable, or picking capability patterns.
 ---
 
 ## Preamble (run first)
