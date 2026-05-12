@@ -1,0 +1,14 @@
+name: build-data-pipeline
+version: 1
+phase: build
+description: |
+  Index and query Sui on-chain data using GraphQL RPC, event polling, custom indexers, or gRPC.
+  Use when the user says "index Sui data", "query events", "build an indexer",
+  "GraphQL on Sui", "data pipeline", "monitor transactions", "event listener",
+  "queryEvents", "subscribe to events", "on-chain analytics", "track transfers",
+  or "index blockchain data".
+  Reads .suiperpower/build-context.md if present.
+prompt_path: ../SKILL.md
+references:
+  - ../references/data-access-methods.md
+  - ../references/data-pipeline-pitfalls.md
