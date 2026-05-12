@@ -46,15 +46,33 @@ Always pin `rev`. Floating revs make builds non-reproducible.
 
 ## Add OpenZeppelin Sui libs
 
+The recommended approach uses MVR (Move Version Registry):
+
+```bash
+mvr add @openzeppelin-move/access
+mvr add @openzeppelin-move/integer-math
+```
+
+This adds to `Move.toml`:
+
 ```toml
 [dependencies]
-OpenZeppelinSui = {
-  git = "https://github.com/OpenZeppelin/sui-contracts.git",
-  rev = "<pinned-rev>"
+openzeppelin_access = { r.mvr = "@openzeppelin-move/access" }
+openzeppelin_math = { r.mvr = "@openzeppelin-move/integer-math" }
+```
+
+If you need a git dependency instead (e.g. for CI or offline builds):
+
+```toml
+[dependencies]
+openzeppelin_access = {
+  git = "https://github.com/OpenZeppelin/contracts-sui.git",
+  subdir = "contracts/access",
+  rev = "v1.1.0"
 }
 ```
 
-(Confirm the upstream repo and subdir path against the OZ Sui release current at the time of authoring; the exact path moves between releases.)
+Packages live under `contracts/` in the repo. Pin to a release tag (e.g. `v1.1.0`), not a branch.
 
 ## Multi-network setup
 
