@@ -23,17 +23,17 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "icon",
-    href: "/assets/suiperpower-logo.webp",
-    type: "image/webp",
+    href: "/suiperpower-icon-only.png",
+    type: "image/png",
   },
   {
     rel: "shortcut icon",
-    href: "/favicon.ico",
-    type: "image/x-icon",
+    href: "/suiperpower-icon-only.png",
+    type: "image/png",
   },
   {
     rel: "apple-touch-icon",
-    href: "/assets/suiperpower-logo.webp",
+    href: "/suiperpower-icon-only.png",
   },
 ];
 
