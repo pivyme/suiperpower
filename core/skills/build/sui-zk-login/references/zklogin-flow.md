@@ -13,7 +13,7 @@ import { generateNonce, generateRandomness } from "@mysten/sui/zklogin";
 
 const sui = new SuiGrpcClient({ network: "testnet" });
 
-const { epoch } = await sui.getLatestSuiSystemState();
+const { epoch } = await sui.core.getCurrentSystemState();
 const maxEpoch = Number(epoch) + 2; // valid for ~2 epochs
 
 const ephemeralKeypair = new Ed25519Keypair();
@@ -74,10 +74,10 @@ Salt determines the user's Sui address. Same JWT subject + same salt = same addr
 ```ts
 import { jwtToAddress } from "@mysten/sui/zklogin";
 
-// Third argument (legacyAddress) is required in SDK v2.
-// Pass false for new deployments. Pass true only if you need
-// backward compatibility with addresses derived under SDK v1.
-const userAddress = jwtToAddress(idToken, userSalt, false);
+// Third argument (legacyAddress) is optional, defaults to false.
+// Pass true only if you need backward compatibility with addresses
+// derived under SDK v1.
+const userAddress = jwtToAddress(idToken, userSalt);
 console.log("Sui address:", userAddress);
 ```
 
@@ -137,7 +137,7 @@ const zkLoginSignature = getZkLoginSignature({
   userSignature: ephemeralSignature,
 });
 
-const result = await sui.executeTransaction({
+const result = await sui.core.executeTransaction({
   transaction: bytes,
   signatures: [zkLoginSignature],
 });

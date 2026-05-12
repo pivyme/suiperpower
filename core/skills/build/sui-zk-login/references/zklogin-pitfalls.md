@@ -90,16 +90,14 @@ Apple also requires a server-side step to verify; pure browser flows do not work
 
 The `@mysten/zklogin` standalone package is deprecated. All zkLogin utilities (`generateNonce`, `generateRandomness`, `jwtToAddress`, `genAddressSeed`, `getZkLoginSignature`, `getExtendedEphemeralPublicKey`) now live under `@mysten/sui/zklogin`. If you see imports from `@mysten/zklogin` in older examples, replace them with `@mysten/sui/zklogin`.
 
-## legacyAddress parameter required in SDK v2
+## legacyAddress parameter in SDK v2
 
-`jwtToAddress(jwt, salt)` no longer works in SDK v2. The function now requires a third argument:
+`jwtToAddress(jwt, salt, legacyAddress?)` accepts an optional third boolean that defaults to `false`. Pass `true` only if your app has existing users whose addresses were derived under SDK v1 and you need continuity. For new projects, omit it or pass `false`.
 
 ```ts
-jwtToAddress(idToken, userSalt, false); // new deployments
+jwtToAddress(idToken, userSalt);        // new deployments (defaults to false)
 jwtToAddress(idToken, userSalt, true);  // backward compat with SDK v1 addresses
 ```
-
-Omitting the third argument throws a runtime error. For new projects, always pass `false`. Only pass `true` if your app already has users whose addresses were derived under SDK v1 and you need continuity.
 
 ## RS256 is the only supported JWT signing algorithm
 

@@ -35,7 +35,7 @@ Adds end-to-end zkLogin to a Sui app. Walks through OAuth provider registration,
 - The user is building consumer-facing Sui apps where wallet friction kills onboarding.
 - The user wants a passwordless Sui address tied to an OAuth identity.
 
-Supported providers (SDK v2): Google, Apple, Facebook, Twitch, Slack, Kakao, Microsoft (devnet only), AWS (tenant-based), Karrier One, Credenza3 (all networks).
+Supported providers (SDK v2): Google, Apple, Facebook, Twitch, AWS (tenant-based), Karrier One, Credenza3 (all networks). Slack, Kakao, Microsoft are devnet only.
 
 ## When NOT to use it
 
@@ -108,7 +108,7 @@ The skill never deletes files outside the integration source path without explic
 
 7. **Address derivation**
    - Derive the user's Sui address from the JWT, salt, and proof.
-   - In SDK v2, `jwtToAddress(jwt, salt, legacyAddress)` requires a third boolean parameter. Pass `false` for new deployments, `true` only for backward compatibility with addresses derived under SDK v1.
+   - `jwtToAddress(jwt, salt, legacyAddress?)` accepts an optional third boolean. It defaults to `false`. Pass `true` only for backward compatibility with addresses derived under SDK v1.
    - Display the address to the user (truncated form fine).
 
 8. **Sign and execute**
@@ -120,6 +120,17 @@ The skill never deletes files outside the integration source path without explic
 
 10. **Writeback**
     - Append session details to `.suiperpower/build-context.md`.
+
+## Production deployment options
+
+The manual flow above gives full control but requires running your own salt service, prover, and key management. For production, consider these managed services:
+
+| Service | What it handles | Docs |
+|---|---|---|
+| **Enoki** (Mysten Labs) | Managed zkLogin: salt, proving, ephemeral key management, sponsored transactions. Drop-in SDK. | https://docs.enoki.mystenlabs.com |
+| **Shinami** (third-party) | zkLogin API, gas station (sponsored txs), Node Service (RPC). Single vendor for auth + gas + infra. | https://docs.shinami.com |
+
+Both remove the need to self-host a prover and salt service. Evaluate based on custody requirements, cost, and vendor preference. The manual flow remains the right choice when you need full control over key material and salt storage.
 
 ## Quality gate (anti-slop)
 
