@@ -25,14 +25,14 @@ The launch occasion is Sui Overflow 2026, but Suiperpower is built as a long-liv
 
 ## Project structure
 
-Monorepo via pnpm workspaces. Three packages: `suiperpower` (published CLI under `core/`), `@suiperpower/convex`, `@suiperpower/web`.
+Monorepo via pnpm workspaces. Three packages: `@pivyme/suiperpower` (published CLI under `core/`), `@suiperpower/convex`, `@suiperpower/web`.
 
 ```
 suiperpower/
 ├── README.md, CLAUDE.md, AGENTS.md, CONTRIBUTING.md, LICENSE
 ├── package.json, pnpm-workspace.yaml
 ├── .claude-plugin/marketplace.json   # generated, Claude Code plugin manifest
-├── core/                              # published npm package "suiperpower"
+├── core/                              # published npm package "@pivyme/suiperpower"
 │   ├── cli/                           # CLI source + cli/data/ ecosystem catalog
 │   ├── skills/                        # SKILL_ROUTER.md + phase folders + skills/data/
 │   ├── scripts/                       # release tooling (preamble, lint, package, publish)
@@ -48,7 +48,7 @@ Skills live under `core/skills/<phase>/<name>/SKILL.md`. Phases: `learn/`, `idea
 
 ## Key design decisions and why
 
-- **Single npm package**: easiest install, easiest versioning, lowest cognitive cost for users.
+- **Single npm package** (`@pivyme/suiperpower`): easiest install, easiest versioning, lowest cognitive cost for users.
 - **Claude Code skills ship as a plugin, not a flat copy**: `.claude-plugin/marketplace.json` declares one plugin named `suiper`. Users install via `/plugin marketplace add pivyme/suiperpower` then `/plugin install suiper@suiperpower`. Skills auto-namespace as `/suiper:scaffold-project`, so installing alongside other packs causes zero collision. Codex and Cursor still receive flat copies because neither has a plugin model today. Regenerate after adding or renaming a skill: `pnpm marketplace:gen`.
 - **Skills as plain markdown**: transparent, audit-friendly, anyone can read or fork.
 - **Multi-agent parity from v1**: Claude Code + Codex + Cursor.
@@ -61,7 +61,7 @@ Skills live under `core/skills/<phase>/<name>/SKILL.md`. Phases: `learn/`, `idea
 
 ## Build commands
 
-Run from the repo root. The root `package.json` proxies to `core` via `pnpm -F suiperpower`; you can also `cd core/` and invoke scripts directly.
+Run from the repo root. The root `package.json` proxies to `core` via `pnpm -F @pivyme/suiperpower`; you can also `cd core/` and invoke scripts directly.
 
 ```bash
 pnpm install                  # install workspace deps
@@ -102,7 +102,7 @@ The website consumes generated artifacts at `web/public/skills/*.tar.gz`, `web/p
 
 Two automatic safety nets so you do not ship a stale `/skills` page:
 
-1. **Web auto-regen**: `web/package.json` declares `predev` and `prebuild` that invoke `pnpm -F suiperpower package:skills` first. So `pnpm web:dev` and `pnpm web:build` verify artifacts before the site boots or builds. If no skill content changed, the tracked JSON files stay untouched. Vercel deploys get fresh data without manual steps.
+1. **Web auto-regen**: `web/package.json` declares `predev` and `prebuild` that invoke `pnpm -F @pivyme/suiperpower package:skills` first. So `pnpm web:dev` and `pnpm web:build` verify artifacts before the site boots or builds. If no skill content changed, the tracked JSON files stay untouched. Vercel deploys get fresh data without manual steps.
 2. **Active-author watcher**: `pnpm skills:watch` recursively watches `core/skills/**`, debounces saves at 400ms, and re-runs `package:skills` per change. Use this in a side terminal when editing skills so the running dev server picks up new tarballs.
 
 When you add or edit a SKILL.md, both `web/public/skills/index.json` and `web/app/data/skills-index.json` must regenerate. `core/skills-lock.json` only needs to change when skill files change. If a skill is missing from the website, the cause is almost always a stale index. Run `pnpm package:skills` once and reload.

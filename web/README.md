@@ -29,7 +29,7 @@ pnpm install
 pnpm web:dev      # http://localhost:5173
 ```
 
-`pnpm web:dev` runs `predev` first, which invokes `pnpm -F suiperpower package:skills`. That rebuilds the tarballs under `public/skills/` and the index JSONs the site loads at runtime. You get fresh artifacts every boot without thinking about it.
+`pnpm web:dev` runs `predev` first, which invokes `pnpm -F @pivyme/suiperpower package:skills`. That rebuilds the tarballs under `public/skills/` and the index JSONs the site loads at runtime. You get fresh artifacts every boot without thinking about it.
 
 If you are editing skills under `core/skills/` while the dev server is running, open a second terminal:
 

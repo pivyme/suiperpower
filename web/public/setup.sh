@@ -5,7 +5,7 @@ set -euo pipefail
 
 PRODUCT_NAME="suiperpower"
 SHORT_NAME="suiper"
-NPM_PACKAGE="suiperpower"
+NPM_PACKAGE="@pivyme/suiperpower"
 GITHUB_REPO_URL="https://github.com/pivyme/suiperpower"
 WEBSITE_URL="https://suiperpower.dev"
 

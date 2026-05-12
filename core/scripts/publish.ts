@@ -189,7 +189,7 @@ function main(): void {
 
   if (realPublish) {
     console.log("\nall gates passed, running npm publish");
-    run("npm", "publish");
+    run("npm", "publish", "--access", "public");
     console.log("published");
   } else {
     console.log("\nall gates passed (dry run, no publish)");

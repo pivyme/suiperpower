@@ -239,7 +239,7 @@ CLAUDE.md         Context for AI agents working on Suiperpower itself
 AGENTS.md         Agent-facing operating rules
 ```
 
-Monorepo via pnpm workspaces. Three packages: `suiperpower` (published CLI), `@suiperpower/convex`, `@suiperpower/web`.
+Monorepo via pnpm workspaces. Three packages: `@pivyme/suiperpower` (published CLI), `@suiperpower/convex`, `@suiperpower/web`.
 
 ## Made by
 

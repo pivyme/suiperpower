@@ -14,7 +14,7 @@ export const BRAND = {
   GH_REPO: "pivyme/suiperpower",
   GH_URL: "https://github.com/pivyme/suiperpower",
 
-  NPM_PKG: "suiperpower",
+  NPM_PKG: "@pivyme/suiperpower",
   CONFIG_DIR: ".suiperpower",
 
   CONVEX_URL_DEFAULT: "https://efficient-squirrel-907.convex.cloud",

@@ -21,7 +21,7 @@ The launch occasion is Sui Overflow 2026, but Suiperpower is a long-lived produc
 - **Skills**: plain markdown (Anthropic skill spec) with optional `references/` and `agents/openai.yaml`
 - **Knowledge base**: plain markdown
 - **Ecosystem catalog**: plain JSON
-- **Install**: bash script hosted at suiperpower.dev/setup.sh, npm package `suiperpower`
+- **Install**: bash script hosted at suiperpower.dev/setup.sh, npm package `@pivyme/suiperpower`
 
 ## Project structure
 
@@ -31,7 +31,7 @@ On-disk shape today:
 suiperpower/
 ├── README.md, CLAUDE.md, AGENTS.md, CONTRIBUTING.md, LICENSE
 ├── package.json, pnpm-workspace.yaml
-├── core/               publishable npm package "suiperpower"
+├── core/               publishable npm package "@pivyme/suiperpower"
 │   ├── cli/            CLI source + cli/data/ ecosystem catalog
 │   ├── skills/         SKILL_ROUTER.md + per-phase skill folders + skills/data/
 │   ├── scripts/        release tooling (preamble injector, lint, package)

@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "predev": "pnpm -F suiperpower package:skills",
+    "predev": "pnpm -F @pivyme/suiperpower package:skills",
     "dev": "react-router dev",
-    "prebuild": "pnpm -F suiperpower package:skills",
+    "prebuild": "pnpm -F @pivyme/suiperpower package:skills",
     "build": "react-router build",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc"

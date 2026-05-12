@@ -1,4 +1,4 @@
-// `suiperpower update` runs `npm install -g suiperpower@latest`, then re-runs init,
+// `suiperpower update` runs `npm install -g @pivyme/suiperpower@latest`, then re-runs init,
 // then prints a one-line changelog summary based on shipped skills.
 
 import { execFileSync } from "node:child_process";
