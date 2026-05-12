@@ -17,7 +17,7 @@ The launch occasion is Sui Overflow 2026, but Suiperpower is built as a long-liv
 - **Package manager**: pnpm workspaces
 - **CLI**: zero runtime deps. The Convex backend owns its own package dependencies.
 - **Backend**: Convex (telemetry + feedback only)
-- **Website**: Next.js App Router, deployed on Vercel
+- **Website**: React Router v7 + Vite (Remix successor), containerized via `web/Dockerfile`
 - **Skills**: plain markdown (Anthropic skill spec) with optional `references/` and `agents/openai.yaml`
 - **Knowledge base**: plain markdown
 - **Ecosystem catalog**: plain JSON
@@ -81,8 +81,11 @@ pnpm web:build                # build the website for prod (auto-runs package:sk
 pnpm lint                     # ESLint on core/cli/ and core/scripts/
 pnpm format                   # Prettier check
 pnpm format:fix               # Prettier write
-pnpm test                     # typecheck + lint + lint:skills + lint:catalog + preamble:check
+pnpm test                     # typecheck + lint + lint:skills + lint:catalog + preamble:check + setup:check
 pnpm test:install             # exercise install flow via core/scripts/test-install.sh
+pnpm test:telemetry           # smoke-test Convex telemetry ingestion (reads .env)
+pnpm setup:check              # verify core/setup is in sync with sources (CI gate)
+pnpm setup:sync               # regenerate core/setup from sources
 pnpm publish:dry              # gated pre-publish check
 ```
 
