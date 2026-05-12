@@ -29,11 +29,12 @@ function readConvexUrl(): string | undefined {
     const cfg = JSON.parse(
       readFileSync(join(homedir(), BRAND.CONFIG_DIR, "config.json"), "utf8"),
     ) as { convexUrl?: string };
-    if (cfg.convexUrl && cfg.convexUrl !== BRAND.CONVEX_URL_DEFAULT) return cfg.convexUrl;
+    if (cfg.convexUrl) return cfg.convexUrl;
   } catch {
     // no config
   }
-  return undefined;
+  const baked = BRAND.CONVEX_URL_DEFAULT;
+  return baked.startsWith("https://") ? baked : undefined;
 }
 
 async function submitToConvex(s: Submission, url: string): Promise<boolean> {
