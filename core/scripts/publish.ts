@@ -178,7 +178,7 @@ function main(): void {
   step("preamble:check", () => run("pnpm", "preamble:check"));
   step("package:skills", () => run("pnpm", "package:skills"));
   step("generate Claude marketplace", () => run("pnpm", "marketplace:gen"));
-  step("generate skills-lock.json", () => run("pnpm", "tsx", "scripts/generate-skills-lock.ts"));
+  step("generate skills-lock.json", () => run("node", "scripts/generate-skills-lock.mjs"));
   step("build", () => run("pnpm", "build"));
   step("test:install", () => run("pnpm", "test:install"));
   step("package.json shape", checkPackageShape);

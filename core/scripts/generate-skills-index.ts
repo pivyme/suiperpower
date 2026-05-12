@@ -6,7 +6,7 @@
 //   pnpm tsx scripts/generate-skills-index.ts
 // Exits non-zero if a skill folder lacks SKILL.md or a tarball.
 
-import { readFileSync, writeFileSync, statSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync, statSync, readdirSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -29,6 +29,10 @@ const GH_REPO = "pivyme/suiperpower";
 const GH_TREE_BASE = `https://github.com/${GH_REPO}/tree/main/core/skills`;
 
 type Phase = (typeof PHASES)[number];
+
+function compareText(a: string, b: string): number {
+  return a < b ? -1 : a > b ? 1 : 0;
+}
 
 interface IndexEntry {
   id: string;
@@ -98,8 +102,34 @@ function listSkills(): { phase: Phase; name: string; dir: string }[] {
       out.push({ phase, name, dir });
     }
   }
-  out.sort((a, b) => a.name.localeCompare(b.name));
+  out.sort((a, b) => compareText(a.name, b.name));
   return out;
+}
+
+function readExistingIndex(): Index | null {
+  if (!existsSync(INDEX_PATH)) return null;
+  try {
+    return JSON.parse(readFileSync(INDEX_PATH, "utf8")) as Index;
+  } catch {
+    return null;
+  }
+}
+
+function withoutGeneratedAt(index: Index | null): Omit<Index, "generatedAt"> & { generatedAt: string } | null {
+  if (!index) return null;
+  return {
+    ...index,
+    generatedAt: "",
+  };
+}
+
+function writeIfChanged(path: string, payload: string): void {
+  if (existsSync(path) && readFileSync(path, "utf8") === payload) {
+    console.log(`up to date ${path}`);
+    return;
+  }
+  writeFileSync(path, payload);
+  console.log(`wrote ${path}`);
 }
 
 function main(): void {
@@ -143,20 +173,26 @@ function main(): void {
     process.exit(1);
   }
 
-  const index: Index = {
+  const existing = readExistingIndex();
+  const next: Index = {
     version: "0.1.0",
-    generatedAt: new Date().toISOString(),
+    generatedAt: "",
     publisher: PUBLISHER,
     publisherUrl: PUBLISHER_URL,
     totalSkills: entries.length,
     skills: entries,
   };
+  const samePayload =
+    JSON.stringify(withoutGeneratedAt(existing)) === JSON.stringify(withoutGeneratedAt(next));
+
+  const index: Index = {
+    ...next,
+    generatedAt: samePayload && existing?.generatedAt ? existing.generatedAt : new Date().toISOString(),
+  };
 
   const payload = JSON.stringify(index, null, 2) + "\n";
-  writeFileSync(INDEX_PATH, payload);
-  writeFileSync(APP_INDEX_PATH, payload);
-  console.log(`wrote ${INDEX_PATH} with ${entries.length} entries`);
-  console.log(`wrote ${APP_INDEX_PATH} with ${entries.length} entries`);
+  writeIfChanged(INDEX_PATH, payload);
+  writeIfChanged(APP_INDEX_PATH, payload);
 }
 
 main();

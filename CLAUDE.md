@@ -98,14 +98,14 @@ pnpm -F @suiperpower/convex convex:deploy   # Convex deploy to prod
 
 ### Skills artifact pipeline (keep this in sync, easy to forget)
 
-The website consumes generated artifacts at `web/public/skills/*.tar.gz`, `web/public/skills/index.json`, and a checked-in mirror at `web/app/data/skills-index.json`. They are all written by `pnpm package:skills` (which runs `core/scripts/package-skills.sh` then `core/scripts/generate-skills-index.mjs`).
+The website consumes generated artifacts at `web/public/skills/*.tar.gz`, `web/public/skills/index.json`, and a checked-in mirror at `web/app/data/skills-index.json`. They are all written by `pnpm package:skills` (which runs `core/scripts/package-skills.sh` then `core/scripts/generate-skills-index.mjs`). Packaging is deterministic and the tracked index files are only rewritten when the actual skill payload changes.
 
 Two automatic safety nets so you do not ship a stale `/skills` page:
 
-1. **Web auto-regen**: `web/package.json` declares `predev` and `prebuild` that invoke `pnpm -F suiperpower package:skills` first. So `pnpm web:dev` and `pnpm web:build` always rebuild artifacts before the site boots or builds. Vercel deploys get fresh data without manual steps.
+1. **Web auto-regen**: `web/package.json` declares `predev` and `prebuild` that invoke `pnpm -F suiperpower package:skills` first. So `pnpm web:dev` and `pnpm web:build` verify artifacts before the site boots or builds. If no skill content changed, the tracked JSON files stay untouched. Vercel deploys get fresh data without manual steps.
 2. **Active-author watcher**: `pnpm skills:watch` recursively watches `core/skills/**`, debounces saves at 400ms, and re-runs `package:skills` per change. Use this in a side terminal when editing skills so the running dev server picks up new tarballs.
 
-When you add or edit a SKILL.md, both `web/public/skills/index.json` and `web/app/data/skills-index.json` must regenerate. If a skill is missing from the website, the cause is almost always a stale index. Run `pnpm package:skills` once and reload.
+When you add or edit a SKILL.md, both `web/public/skills/index.json` and `web/app/data/skills-index.json` must regenerate. `core/skills-lock.json` only needs to change when skill files change. If a skill is missing from the website, the cause is almost always a stale index. Run `pnpm package:skills` once and reload.
 
 Do not commit `web/public/skills/*.tar.gz` or the two index JSONs without first running `pnpm package:skills`. CI does not currently regenerate them.
 

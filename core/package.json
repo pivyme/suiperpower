@@ -38,7 +38,7 @@
     "test": "pnpm typecheck && pnpm -w lint && pnpm lint:skills && pnpm lint:catalog && pnpm preamble:check && pnpm setup:check",
     "test:install": "./scripts/test-install.sh",
     "test:telemetry": "node --env-file=../.env --import tsx scripts/test-telemetry.ts",
-    "skills:lock": "tsx scripts/generate-skills-lock.ts",
+    "skills:lock": "node scripts/generate-skills-lock.mjs",
     "marketplace:gen": "tsx scripts/generate-marketplace.ts",
     "publish:dry": "tsx scripts/publish.ts"
   },
