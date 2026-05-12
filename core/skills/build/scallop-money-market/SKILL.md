@@ -1,6 +1,6 @@
 ---
 name: scallop-money-market
-description: Integrate Scallop, the largest money market on Sui, into a project for deposit, borrow, and repay flows. Use when the user says "integrate Scallop", "borrow on Sui", "lend on Sui", "add a money market to my Sui app", "use Scallop SDK", "build on Scallop", or "yield aggregator on Sui". Reads .suiperpower/build-context.md if present. Loads skills/data/sui-knowledge/sponsor-docs/scallop.md.
+description: Use when integrating Scallop on Sui for deposit, borrow, or repay flows, or adding a money market to a Sui app.
 ---
 
 ## Preamble (run first)

@@ -1,6 +1,6 @@
 ---
 name: build-data-pipeline
-description: Index and query Sui on-chain data using GraphQL RPC, event polling, custom indexers, or gRPC. Use when the user says "index Sui data", "query events", "build an indexer", "GraphQL on Sui", "data pipeline", "monitor transactions", "event listener", "queryEvents", "subscribe to events", "on-chain analytics", "track transfers", or "index blockchain data". Reads .suiperpower/build-context.md if present.
+description: Use when indexing or querying Sui on-chain data via GraphQL RPC, event polling, custom indexers, or gRPC.
 ---
 
 ## Preamble (run first)
@@ -115,6 +115,10 @@ If unclear, interview the user for:
 
 7. **Writeback**
    - Append session details to `.suiperpower/build-context.md`.
+
+8. **Closing handoff**
+   - If `.suiperpower/intent.md` exists and the session was non-trivial (new module, new sponsor integration, or material changes to public functions), recommend `verify-against-intent` as the next step so drift is caught before shipping.
+   - If no `intent.md` exists and the session was non-trivial, surface that gap once: offer `clarify-intent` to backfill, do not force it.
 
 ## Decision table: which method to pick
 

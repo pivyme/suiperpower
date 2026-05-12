@@ -1,6 +1,6 @@
 ---
 name: competitive-landscape
-description: Map the competitive landscape for a Sui product idea, on Sui and adjacent chains, and identify the defensible angle. Use when the user says "competitive landscape", "who else is doing this", "competitor analysis", "is anyone building this on Sui", "what is my edge", "find competitors", or "map the space". Reads .suiperpower/idea-context.md and writes a competitor block back.
+description: Use when mapping competitors for a Sui product idea on Sui and adjacent chains, and finding the defensible angle.
 ---
 
 ## Preamble (run first)

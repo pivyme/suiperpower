@@ -1,6 +1,6 @@
 ---
 name: number-formatting
-description: Format token amounts, USD values, percentages, gas, and addresses correctly in a Sui dapp UI, including MIST to SUI conversion. Use when the user says "format numbers in my UI", "convert MIST to SUI", "format token amounts", "decimal handling", "format USD price", "tabular figures", or "my numbers look ugly". Reads .suiperpower/build-context.md if present.
+description: Use when formatting token amounts in a Sui UI, converting MIST to SUI, or displaying USD, percentages, gas, or addresses.
 ---
 
 ## Preamble (run first)

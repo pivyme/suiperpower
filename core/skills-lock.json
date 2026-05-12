@@ -1,22 +1,22 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-05-12T04:22:10.432Z",
-  "totalSkills": 57,
+  "generatedAt": "2026-05-12T14:32:02.592Z",
+  "totalSkills": 60,
   "skills": [
     {
       "id": "learn",
       "phase": "learn",
-      "folderHash": "48e522e62c3ae6f2ca64c68c11803a9bbf5a484b7f049812de89c04dc63e2310",
+      "folderHash": "2ab06bdac5d95c8f8b8bf3513b511e17b9c51276980020c9aae0786a29589207",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "9bda30cdfc79fe46342066d8cf69866c8712e4a018220f10556e8cc3c69da5b2",
-          "size": 6572
+          "sha256": "bc2339090fd21d84547472ce4eb43c4c685148e869aba6ab4491605d0b0779f5",
+          "size": 6194
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "2dcff5576e97eb521c7ca21e1d83e8e018e7f4a41bcf88f82494f48e42122430",
-          "size": 537
+          "sha256": "b3f980da7fc231eb62e0a2fbd6996e4aae2f761f93df9575536ae11e79a205e2",
+          "size": 286
         },
         {
           "path": "references/append-only-rules.md",
@@ -33,17 +33,17 @@
     {
       "id": "sui-beginner",
       "phase": "learn",
-      "folderHash": "290a378f249a232d11afc6923c227a6bebf208171e94ebc890b757715165299f",
+      "folderHash": "45954921766c0ff46f791d7cb6228ade0008f5bfbb4a749643fef21c4355e83d",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "95c304388aa2ef7df6daab9dc51cf58eb0c81206d59ff2593f2ccf4bcfdb94dd",
-          "size": 8403
+          "sha256": "6b1219f8350f5fc73f9b5e86769b95f029486546996a3b628776ad89038fd610",
+          "size": 7972
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "7c6cdd79b551344980097d6ee5fdb76ac4b4d0a62bd44c7471a95e4792e29585",
-          "size": 601
+          "sha256": "af8062245baf557303060a5c291d1575b5ff1a9f15e59679f201e444b5a82100",
+          "size": 281
         },
         {
           "path": "references/evm-to-sui.md",
@@ -60,17 +60,17 @@
     {
       "id": "competitive-landscape",
       "phase": "idea",
-      "folderHash": "f12293a64fe04bbfce09e02bc4b9e916ef052f97838d3c62d676903d4e84ab2a",
+      "folderHash": "debc7372d22f52886919190fa706163a4d968d3a815bda0c6eedcdaa84fab80e",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "7da4ce502c4293abb312140fd94bd07f13d7caeb1fba44707967d2edb822dc80",
-          "size": 6726
+          "sha256": "700e73b421a8e1bc03901f6cf5a0e61e931bf0aff35385fde20e62f4c5b97a64",
+          "size": 6462
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "15515d612640ab9c8258a92cca68455ec48cf72e676970307564b5c6c16935e2",
-          "size": 596
+          "sha256": "9e22e0c70c6ccea32e3da6176343bafa3c5d13551e2490051e74e483ec5caea4",
+          "size": 391
         },
         {
           "path": "references/defensibility-tests.md",
@@ -87,17 +87,17 @@
     {
       "id": "deepbook-research",
       "phase": "idea",
-      "folderHash": "475636a89a09c38401edf5e4720783cf3b5d1a06681486a8b1d2c2a6e919cfc9",
+      "folderHash": "558829b4bff3f90e94fc8002fdb49ed498fc2107badb80c66006b328d9205907",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "b00694921faca85bddeb8acea8dd7812c2bab5b6227166c9b20cbec185787bbe",
-          "size": 6615
+          "sha256": "e00ff26e6544f3d991511c4d4678a15368ebb9597fdcc474307b8122a2c58789",
+          "size": 6361
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "99c91cd6f5cd9014105a681a4a83fa86a54defef4ce53db6161884d55b0e1667",
-          "size": 626
+          "sha256": "2c0eb0658b2a1de14afde423931a3c5e217bd8ca116feccf35ffe141e947a5ea",
+          "size": 418
         },
         {
           "path": "references/deepbook-data-queries.md",
@@ -114,17 +114,17 @@
     {
       "id": "defillama-sui",
       "phase": "idea",
-      "folderHash": "c90b8a99826e887bf68961e58d9ed7c09a7ab96bb1e8d0f82a5f19641149bcc5",
+      "folderHash": "91b61d026e86f9f71e14cc94777905d073815d4abff132aec97d4d69c6f26abf",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "fc708bc31b940425542aea19e5c95fe515ec1b038cffcac6dc20298a3513d631",
-          "size": 7457
+          "sha256": "5af94498095097793e09119df190176765a80235c33cf4696169f9ae2b2c2ce5",
+          "size": 7267
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "56bd35640f237eb23e587c7a9ad50a6a7dd4e6882af0049367063fe02f0c3702",
-          "size": 540
+          "sha256": "c2d119b740d86ac08df9c3eb1a81eddb5afa5dc6f4bf7a3fa1cea8bea51d3671",
+          "size": 626
         },
         {
           "path": "references/defillama-endpoints.md",
@@ -136,17 +136,17 @@
     {
       "id": "find-next-sui-idea",
       "phase": "idea",
-      "folderHash": "a551f58ec91ca02a70470bf5deed177515e6ce16a765df247f9bad3c475e4527",
+      "folderHash": "a7d631b71b5cd83dc2e245559b4079f87c016aed557501b69607134e08cb939d",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "8194bd363cb63f6c5277a0ddb6cd901ac7780c3aaff67432581ed9d5cf19f56f",
-          "size": 7233
+          "sha256": "3d6b5bf00bc7ca5092db72fb3f87be6d0f2c6edcb0afa58b700d403463ebdb13",
+          "size": 6944
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "0bf31b29eba5920a1615fc4a3d522d69cbb97e09648e1fdce452f7ab7d45aa56",
-          "size": 865
+          "sha256": "c5227e733272a75ebdd18130e6f540345dd1eeaecd5a8007fe83c4ce9758ac84",
+          "size": 661
         },
         {
           "path": "references/non-sui-native-rejection-list.md",
@@ -168,17 +168,17 @@
     {
       "id": "overflow-copilot",
       "phase": "idea",
-      "folderHash": "cd4b31af9dda8f5ed1988ac363438d9ad412c5781f838bc88c356ef40a866ac2",
+      "folderHash": "fcda6f429a09fd4cbf8025135bd3d9acc637b3f25535412eb447de508fef4e2d",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "5163b5d92e789aa242d99d3e90bc60cdf89a85ff0584ec4d8078c742cc4bc87e",
-          "size": 6554
+          "sha256": "d16c9c4a391a81fe7fbb9e7285998d0756979c297b24d11a3ad047e595094d6f",
+          "size": 6239
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "83791911a8f772f5c917d99bd0d3ecd74027f023b5ab3a4761eaa6f14c9be1ee",
-          "size": 638
+          "sha256": "04e387426062cc129025e21461a0088f2c3ac27b2a7f1f364ae2596d86e5d4c2",
+          "size": 407
         },
         {
           "path": "references/archive-search-patterns.md",
@@ -200,17 +200,17 @@
     {
       "id": "validate-idea",
       "phase": "idea",
-      "folderHash": "0dfa99ab8c375f282a2b89267624a67ccbc60877f1607e8ce57ac98a68fc0a2a",
+      "folderHash": "aed40aa95163908236e2090b5701233c12b16be4ae077b33c26785997d635514",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "dc1b63167d28ab4bc7834f4164c15911bc54b08254170b6f1ebf890da5d688bc",
-          "size": 6765
+          "sha256": "7d1338001ddcfbb533a0af577dd397d8ff79bb5c147dfaa7e8dcb9970b72c2c9",
+          "size": 6487
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "0e2409cf164306a120b2a6c242e286a6c5938818168748666322c9e458a47e25",
-          "size": 623
+          "sha256": "59ca7c39c5bc9f8197ce5c9e67a052f029a9207f0f63b60099f4d2a2cc42d559",
+          "size": 404
         },
         {
           "path": "references/demand-evidence-questions.md",
@@ -227,17 +227,17 @@
     {
       "id": "walrus-research",
       "phase": "idea",
-      "folderHash": "b159ad5b8a6e7f4813141f0cb9f42b7be6a3263ddd799153a66393fa7232a58c",
+      "folderHash": "336ba07c246e1ee11932f7efb8a22bfa1f1bfe01332ba1aacd99cdeaf97c3ea5",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "528820526232c174c2667d6cea3ecad7e9e0731b73d345e3ff4526c78d564038",
-          "size": 7054
+          "sha256": "9e7146bb4426f2a1d9939faf11c8abc796ba05b199e8575a10a45e20eff3fafb",
+          "size": 6763
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "5658de72658eeedfd56481659c3094be3f05c43522ffbc0460c9e62c60ce9955",
-          "size": 645
+          "sha256": "9340b20c6ae8c0c9a549260c95e958b1e5b47b8530b36e865daa85243c072e03",
+          "size": 398
         },
         {
           "path": "references/walrus-categories.md",
@@ -254,17 +254,17 @@
     {
       "id": "brand-design",
       "phase": "build",
-      "folderHash": "5e8664b30611ab8047645f81063b0fb00d56981b655323381bad4f99439ab413",
+      "folderHash": "3a243e636c67b18a966e5f87222241561859462a77b3f64157a4f81d927db805",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "c770ce71b990a8b84273e25fb5353b2796ef1d891e6948ec096f3922f7edd8a3",
-          "size": 5452
+          "sha256": "c7cafa029d19b6b286a95994f7a36c8114b46b22d84ce5861a178ff97007f2d1",
+          "size": 5216
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "ef67036ac6bdffdf001d2f51e7d56f4c92565626ebfe9e6ac680ce0ab1e40701",
-          "size": 481
+          "sha256": "25d0805e0b807df74c90d361ea43cf4c407fdb38130b65114fca5ba6a9ffcee2",
+          "size": 316
         },
         {
           "path": "references/anti-generic-checklist.md",
@@ -281,27 +281,27 @@
     {
       "id": "build-ai-agent",
       "phase": "build",
-      "folderHash": "b102c0dffb54219e9a039f2984faae250eff44e384b055c013a577e5829630fe",
+      "folderHash": "3d661da1285dca4fb45a39e06a8552a5984aed7579b31faa4e875b2a2a8e1c5b",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "007606fb073c3477af3e618043065f9c9c9d560a4247ab58df3c55ff9786c587",
-          "size": 10156
+          "sha256": "48924e8725f778ea4a7d6dad629306766c4fb7f399f6ed3d9774bf082490c6bd",
+          "size": 10289
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "10a323b3521fe705db58348df6870ce76f89d8237fd480982cf45fbc429a3183",
-          "size": 662
+          "sha256": "559a4199fc4a22bd9ee964f25d57a35327d13ec8429c43da7ca2ef04790fbc63",
+          "size": 351
         },
         {
           "path": "references/agent-architecture.md",
-          "sha256": "bea2312d8f1033f598446568a44cbb472e7da583456a211f6b861276d5482897",
-          "size": 5625
+          "sha256": "0c2f39ecb6036e47233aab905643ab2c277549813ca892286d25c4c89c2111ce",
+          "size": 5671
         },
         {
           "path": "references/agent-pitfalls.md",
-          "sha256": "273f9e29e86604354f705c5fdee6af04a3663cc92414ecf56c105982f21586e3",
-          "size": 5002
+          "sha256": "a654acfc905b60187da35023e12bffca917d801e353552e09593a0403a36daff",
+          "size": 5083
         },
         {
           "path": "references/agent-tooling.md",
@@ -313,17 +313,17 @@
     {
       "id": "build-data-pipeline",
       "phase": "build",
-      "folderHash": "0661b14ffdc550d02dab57e4197ae6a3dc2fffc41997342a1427157e022e28b6",
+      "folderHash": "8283af58f7deec463698f2b57c0b55239b0e88d607909bc1ebbd7326f6f26b1a",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "7540ffd276e0c943b3d264a4367eb786a0b6a3c3d0c8a9cdc1ea060d2810b95f",
-          "size": 9052
+          "sha256": "f5ab7af6daf3eece251a5257df84bbebd00fca897ae5e452339f6855d38ff86d",
+          "size": 9157
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "d7c2052a14cbe208a8ec037c230f71c487eea744ddfcf472bb27af9c95a33aa0",
-          "size": 602
+          "sha256": "9b7a4ab6919b4ba9e052c6afb6c8849c9fe47ec2b2eb8e74f6e7ec75c6891808",
+          "size": 291
         },
         {
           "path": "references/data-access-methods.md",
@@ -340,17 +340,17 @@
     {
       "id": "build-mobile-sui",
       "phase": "build",
-      "folderHash": "db9ad171db9c8f9ad51622dadea080987693b7b35ca4e2850941a109103f7bfa",
+      "folderHash": "b47b3c479351c8fd591dbdb5843aa4099e0302631735ed6e5f7193e39971c927",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "6eda905930d5f2bd2820aaa5c3290f804720f9cefa396bf939ee8af86cede54a",
-          "size": 6667
+          "sha256": "627702d2525fedff5dca8e3bd7d575d1c0eec8c8c5ea01a031da610f5a3d2888",
+          "size": 6385
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "5c5ec2f3a38ba27f5741be901b37f3b3d29e74b076b5a89e4a97ecbe1d0f06a7",
-          "size": 649
+          "sha256": "f78aba17c1196c4d29bdca4baafd2277cfb62f85941e1e42d1418dda30f06485",
+          "size": 411
         },
         {
           "path": "references/mobile-sdk-setup.md",
@@ -367,17 +367,17 @@
     {
       "id": "build-with-claude",
       "phase": "build",
-      "folderHash": "eadb72859412c4661a802098afc2c89c73bb3ed7a42b99242589ad81ee4f6ea9",
+      "folderHash": "54d685f17bc216e3f784855749e9cda0911a5faee22662725dd9343a5742aef3",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "a6f99c5849768ca4fbd01ca3ac69253ddfbb1bcbc948ab1f785dd7f91d1bfb19",
-          "size": 5635
+          "sha256": "16ff8a5487c164a3df82643fc61d4d5f5bc9450bd7133409035d484127019dcd",
+          "size": 5303
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "f7d8dbc6785ed91f8aad095bbf914a99c772c5e39ab3637b9badb47366d3d105",
-          "size": 633
+          "sha256": "21c3ec9dd7db69f7062b87835342cfd769622058595649b675b8663e67003749",
+          "size": 343
         },
         {
           "path": "references/handoff-rules.md",
@@ -394,17 +394,17 @@
     {
       "id": "build-with-move",
       "phase": "build",
-      "folderHash": "035c04dec14ff5c45dd5638e9d1879b7689a86c9342ff0a3ff5da0cb7d0f56ed",
+      "folderHash": "e906e3a91c556baf7140f4ddd96e05af81dcc8118e6204bd91841f5dbcb45ee0",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "9a2bb184944737b19201916916c7eced8cd31f2a7d7764e80c26e1f6c5428618",
-          "size": 7138
+          "sha256": "73af101a993de69b97123bcb900915180cd33793151df18ca9ddece7fbb2e0ec",
+          "size": 6805
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "130aa32c5930fde56486e9336295e9c0ac6274b8fb71714be9ca7332723f212b",
-          "size": 706
+          "sha256": "e60eef7fb8dbde391bf66edb6f73cc73b2617a1501c26188e5876660c89b4cda",
+          "size": 480
         },
         {
           "path": "references/common-move-pitfalls.md",
@@ -418,47 +418,64 @@
         },
         {
           "path": "references/package-manifest-example.md",
-          "sha256": "46cb1836e3b43778344c10a99b1011be9872ccc41d645f38459e63c75c1eb138",
-          "size": 2813
+          "sha256": "0c9c1efedc96f1e9366ac4e9e609a46929cd101167018a6b3a2d5cb302fb8a57",
+          "size": 3197
         }
       ]
     },
     {
       "id": "cetus-swap",
       "phase": "build",
-      "folderHash": "398e35cfe07ce30477da12bf55245dab6994a47c6762087449ed94099add48ef",
+      "folderHash": "23b2105dd04a17609f32cec60fc4bf74774e8739cfcce4335e15c5145bef235a",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "2464b81579ac7e18b58a4be8cb708a2012364d445ee280ff5a03f80044528179",
-          "size": 8181
+          "sha256": "5da27c16b6d55978134703f7995bd29c8dbb0db8a851c71fe19a2cea662d9ed3",
+          "size": 8388
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "9d16af14d79ad90b80050eb46891891e79628e9cf32398e55be28a00c8da445b",
-          "size": 466
+          "sha256": "42141751358943d60bb8c033cb12de99a79dd66c11635382a0083b52f0c8d8c5",
+          "size": 258
         },
         {
           "path": "references/cetus-quickstart.md",
-          "sha256": "486ee73203fac1b458059a6a136c92964992ef67923f8a5b643bccea2986353c",
-          "size": 6423
+          "sha256": "4ba419a96163815567413137982b626b401a534eb7f1101522f2a9d655995f58",
+          "size": 6509
+        }
+      ]
+    },
+    {
+      "id": "clarify-intent",
+      "phase": "build",
+      "folderHash": "0d4d79b50781ee91e7dee40506e0b2bcd974dfa339cb63577f2e1b60a65bd331",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "bab87a63a009018a191e38812cb4560ca3d2b202a569d45f209cb8264f449255",
+          "size": 9289
+        },
+        {
+          "path": "agents/openai.yaml",
+          "sha256": "39c52a1e699a5efca713d7b3eaf223fd063ff33179334b106583aee122579b18",
+          "size": 443
         }
       ]
     },
     {
       "id": "cso",
       "phase": "build",
-      "folderHash": "a78d2b01b8f04542c2f1bfa15d666dada50b966e8bb2a02e3ca8e5ee4eb4d6aa",
+      "folderHash": "eb56ffb9288e8c8bf684c56b89d04cd1e3897128b95c5c8ecad6a2c73215a3f8",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "be8b5dbd41b6a348c4481f3b7afa211c3950f9daea5a42f996dcbd2ef096e3ba",
-          "size": 9952
+          "sha256": "c697ab774a6857afb9a3831d4d22b921dee968962e2a0338c1fc4f46bd81b981",
+          "size": 10008
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "c1ed9a4e42cdecc4ae7634c6bf6f98e88d71370ebff429823024ebf6b3936e41",
-          "size": 674
+          "sha256": "d78701a77523536109513a4821c125424d47582d5cb8fcdefbd493ab5f69d031",
+          "size": 314
         },
         {
           "path": "references/security-checklist.md",
@@ -475,17 +492,17 @@
     {
       "id": "debug-move",
       "phase": "build",
-      "folderHash": "d2bb0cecd4e1eca381e45c63444612493b113c5bd697486082aeead6d719d446",
+      "folderHash": "218011c331d8dcb1c108c7ac039297fb9338fb8cee5a162083bb8d05c8e4edb4",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "1ee1c7421f401d443dabad1ec64759e4a812012c69a54988623cc1b3b5d36dbd",
-          "size": 7013
+          "sha256": "f7edf26a0decf55459e9dbbf7dd89df9134afa9dc9f8fa78d7466a32ff6defc2",
+          "size": 6649
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "80299172b8219c98efd263cb01e6079281fee3e06fffce1548e718d4c2ecb7da",
-          "size": 693
+          "sha256": "5e01001cf5dd80e28a6258dbfa9df664963760976f706131afda81d7c8694c68",
+          "size": 475
         },
         {
           "path": "references/abort-tracing.md",
@@ -507,17 +524,17 @@
     {
       "id": "deepbook-orderbook",
       "phase": "build",
-      "folderHash": "1b9f0e86ae54e5ee37c772e316be8b34307c96ef9f518c89268b3d794915f8df",
+      "folderHash": "73bb3748042ced509d1005b9497367756f9ba76028ed6f63eaf08b6bf9175401",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "a04c06533677d5dad5450598833b3d8c9a6b2360849be5ebf6c2592d083693a4",
-          "size": 7703
+          "sha256": "30606ac0b76b9de8d5bf4b61fc9b7fb221a2cc62861ac2242426a2735d96c35b",
+          "size": 7414
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "96e8b690ea148b6195b13f1103fd439acfa6d5b63dbaab9258d48042350206ad",
-          "size": 660
+          "sha256": "bc65a786b7aba7a5dc2efb6cd98763923bbaac70219e8aeeb72c2db92d4d979f",
+          "size": 417
         },
         {
           "path": "references/balancemanager-setup.md",
@@ -539,17 +556,17 @@
     {
       "id": "design-taste",
       "phase": "build",
-      "folderHash": "6ebdad526dc93ba8f72e6a54410bf006126cdbd55d6febe05b562e0e5607b461",
+      "folderHash": "d7dee239ac3805813e97f3b716f750dd4f752b9a79c0ab5ecaea6cc8b4ffc809",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "b4641fdaaa5f991090f7b78d713c463fc6a7c5950eff3e0d3e1e536a991d7b80",
-          "size": 5971
+          "sha256": "8c97b153cc0134b9dfaa1327a624c1ae032360c85aac14edc4477b6874053ddc",
+          "size": 5693
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "20476fbd0e173258e35cc2c959216b25e6c667c11e1ed0057a5230b3dac69b2f",
-          "size": 534
+          "sha256": "9e17bb8e70fe69cd84ac946b3e505c863bea619863958efe9521db9c50789829",
+          "size": 318
         },
         {
           "path": "references/ai-generated-markers.md",
@@ -571,44 +588,44 @@
     {
       "id": "eve-frontier",
       "phase": "build",
-      "folderHash": "f936058d257d1ececb6b174cc7022db4cb65275c4e5ba8055d71f8ad29725a59",
+      "folderHash": "470eed67da8345bb95c6316935619417af459a46527144405057cf065824f198",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "c13ca21b78dad744cc078713d25874d7be510c8352c782f80820bad1f64ededf",
-          "size": 8406
+          "sha256": "ef8c77e3bd6255b55d80af268399ae8d0610748a0f23c856c4458e4106579e56",
+          "size": 9870
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "9df555e4ef788073b79e1cf7c75a23d344db4fbd070c1fdf78b235feffa805bc",
-          "size": 592
+          "sha256": "03c31714e9f831a3de05fde7f128e733de4243dc3c9d294c1eb75b42d2b8c553",
+          "size": 296
         },
         {
           "path": "references/eve-assembly-types.md",
-          "sha256": "80beff003e82cd7d035d3e644bc31bea58aa8707c78fc168162e399351bf8394",
-          "size": 4128
+          "sha256": "7f5db78e48c28322a8f2cc8261260c174d612c79569055c48ceff81fa144d2c0",
+          "size": 8685
         },
         {
           "path": "references/eve-quickstart.md",
-          "sha256": "6ccf6e95c9d2cae05afdbfa1205a50eb8deeb184eecec904acfddf56bffcb276",
-          "size": 3411
+          "sha256": "64819536e21f45c2bd5c02d16d257e75be6ff468a63983a44fc585c3427c903d",
+          "size": 3743
         }
       ]
     },
     {
       "id": "frontend-design-guidelines",
       "phase": "build",
-      "folderHash": "293cc1835cc6ea79d993f128e7d1c2c984601a2b103bbcad57d3dabc044cddcf",
+      "folderHash": "fa7b0a6b16cbd62f69247bddc64df093342e2699efaecaa5655299770110c47e",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "cd31b931c530f68e6c615f963c48e1ffef86833891c372ce3f00bd700e3f9f5f",
-          "size": 6476
+          "sha256": "26f07599851c6c428756d578fdaf9ef1ef12a7b808c1e696cc23004f2bd31a37",
+          "size": 6148
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "4824f4b749b8d3a4bb5edfcff29a430ab7aec1702e89214f7bf189ac396188ca",
-          "size": 640
+          "sha256": "a317434014d2571c9dcf3570db9c13ec1ec228e64b9db2036ad5371a14c3c864",
+          "size": 436
         },
         {
           "path": "references/component-defaults.md",
@@ -630,17 +647,17 @@
     {
       "id": "kiosk-marketplace",
       "phase": "build",
-      "folderHash": "d993d7e81c779495e6c113b5280fb48bc31e7c7e38cdd9edd684f5716b738b12",
+      "folderHash": "39791e01c39b6278236874d00c104142a482837feb0f57bd50ff6569564c1dcb",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "4ed02bd92e8dee73bf5b35f3bd6208114729c1e68967d243b9eef6070badae03",
-          "size": 7022
+          "sha256": "24153bdde737f84c216a84e64972229686193cfb786979dc03e382b92f41c6ee",
+          "size": 6719
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "336f7ff1f9e7cc47639a51c508856f7c6c4d14cf74c442560a95e34d19712ec9",
-          "size": 661
+          "sha256": "391b21c3c5184d4eeba9892824b85a4ea6b00294e8ec2f1696b8fcdcaf8ac5b8",
+          "size": 400
         },
         {
           "path": "references/kiosk-pitfalls.md",
@@ -649,8 +666,8 @@
         },
         {
           "path": "references/kiosk-quickstart.md",
-          "sha256": "87130d3f9bcd4d2971bfd745abc775c574ba386a9412c14956bcb00fa0f1f6d5",
-          "size": 3461
+          "sha256": "3702a021ad778b0f64f19b05ed7764bf201814a92338e3466106cc94c5c902e9",
+          "size": 3904
         },
         {
           "path": "references/transfer-policy.md",
@@ -662,17 +679,17 @@
     {
       "id": "launch-coin",
       "phase": "build",
-      "folderHash": "f9059d6ad7feadfe276280e2d427d6e6d9a42a472749658948fcaaea5ead82b0",
+      "folderHash": "bc733172377bb5222c0a2c6e7d4e6ffd18cc9776abc0fe9dc8986fb41f9de71d",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "5df0537ea39bdada9c6b157904b6be59e9e9266bda6e711a499ee4926c3bbf8a",
-          "size": 7348
+          "sha256": "fa64bf89a08c6e51a1d3ddfdc6eb30629ef363c8dd54d1769a2b540dcd69c969",
+          "size": 7054
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "40756d637b66402b8eff3f28f6c43f772cbfb8f134a8cf6e5372b01742f151b8",
-          "size": 622
+          "sha256": "c48f093b6890f818dc1d1d5cd20ab86d017db21ed5b4d3ebc965fa572e452472",
+          "size": 370
         },
         {
           "path": "references/coin-module-template.md",
@@ -689,44 +706,44 @@
     {
       "id": "nautilus-offchain",
       "phase": "build",
-      "folderHash": "c21a3d02579b621427058b70d475ce36b51746a6e1bfae5d50b21916cbe3a8cf",
+      "folderHash": "17538189d5d9b59829b37d76068404e153246335aaac58b674b54fad9d1ba14b",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "e5ef2191730e887039e41d56098fff89a5cdace905a02562a54966dbf4ba2d7d",
-          "size": 8681
+          "sha256": "929fe03fc5d91d2bee9ce19b0b35d1f8a62db267daa1595476ccde934227398c",
+          "size": 8805
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "4799b39260aa95001b95fbf974aea22aa17e506917aaaf075bb4bdf2d9280b1c",
-          "size": 556
+          "sha256": "c750dc6fe597ec93af018f9c18c370f2238412559bc04d2bf9d16adcb79f4297",
+          "size": 305
         },
         {
           "path": "references/nautilus-architecture.md",
-          "sha256": "29baefdf32e502f3fe745a6a573f21ab043407395f5d76ab609e111110494e9f",
-          "size": 5603
+          "sha256": "a74998ca534b8ce792f80bca6a43a53dda103435ac0038599c402fc00872a517",
+          "size": 7212
         },
         {
           "path": "references/nautilus-pitfalls.md",
-          "sha256": "df4388e51447ee852ef1a7c0046ab8a276e16e19765a986375ddc080dc10003e",
-          "size": 3376
+          "sha256": "af7bc5aa84227baccbee0f3395d132599da8f6ca6f3359b5181e5311032770f9",
+          "size": 3371
         }
       ]
     },
     {
       "id": "navi-lending",
       "phase": "build",
-      "folderHash": "250f2bbef34b174eb8a3786538d1186bd235f7e47e4538920069251ba3f67062",
+      "folderHash": "784f3ed7e2f772e2d0fe3b097fbeb2193d7d4712d6dad4d42546f4e7e1d227b0",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "5a2212e29e97d2ec834139849440059052d7997399d19f017116b22312e705c5",
-          "size": 8153
+          "sha256": "898dca59a527b0485d21b057ade637dc98dd88a52523eb0a5e57896b7cd2816a",
+          "size": 8311
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "dc3bb3c634f676be8776cf07dec26e820512e6b5533405407657cf66064a500f",
-          "size": 474
+          "sha256": "a8ce2acecae3294a5f206b52f7e88ae139bdfeb699cf0e78a052453311442a64",
+          "size": 255
         },
         {
           "path": "references/navi-quickstart.md",
@@ -738,17 +755,17 @@
     {
       "id": "navigate-skills",
       "phase": "build",
-      "folderHash": "dbf4fb25f24ed671455907a5dfeb75409e6c62e268048263bdab86e2e7e2c9e4",
+      "folderHash": "5f920e3e9bf4e8abc5c01a67e39d5e974dd2362b9b93ca663d5af1b52e23539b",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "30e87e0586fe5f43291139fb1e5d5b677d190008d914795df888ef55e9323dac",
-          "size": 6162
+          "sha256": "6d2ef987cb96ec2e6c48d2723658d2e9714722438acf33e6c2c5a1bf5d7d2c28",
+          "size": 5858
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "f161050c6e0e87ecfaa58642acfd048a97d27cde33f091252fed633ee31ace1d",
-          "size": 594
+          "sha256": "74ecf7d63abf07fdd1dae7609f1882706e8264dcd96dd83bf95533e88eedc033",
+          "size": 350
         },
         {
           "path": "references/phase-glossary.md",
@@ -765,17 +782,17 @@
     {
       "id": "number-formatting",
       "phase": "build",
-      "folderHash": "0bb653fb773714efcfdcd04b5f37cf74856308a20a7f00600e1812cbdf1be8fb",
+      "folderHash": "6d5421a3d0981a7539523bc81c8804757f35daa07efb038678efc91a6ad05117",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "86a811b3b3ee935407f7fb8d07f9ac8ef3c6d58bcbb261392c1dc723538e9f27",
-          "size": 6034
+          "sha256": "4ea65ca678f33feb0d56538c0490d6dd14371c288102aa20a56fb2f574e601f5",
+          "size": 5797
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "531072b835ddea60a415774200c7bedd2fb5a057d1ddca5eefc5b56294ae8be8",
-          "size": 496
+          "sha256": "9a192f89680f4aca59bf78256cd575fd11ffe8c6d41f5747d7b942d6148df860",
+          "size": 295
         },
         {
           "path": "references/decimals-by-token.md",
@@ -792,17 +809,17 @@
     {
       "id": "object-model-design",
       "phase": "build",
-      "folderHash": "6330204afdab4dc7226b3f56aa31fcf571eefa59400c8b263a14c62db7735923",
+      "folderHash": "1fc3f98e158413ba07f8ab9e7f5711ffdedf700c95a2fcad4f92bca53aeaeb76",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "0f3fa594bb2b3f57f2ff556d7a4535399f16446bdd21dd386af75210ebacff22",
-          "size": 7890
+          "sha256": "cec862e915135d8db400cd605480bc35cfa4e768eb4023876fcc7a2136573efe",
+          "size": 7558
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "d699f41930923dab3c9d907291b72521694fda72c1204d29746b130fd8aa656a",
-          "size": 698
+          "sha256": "fcdd5d452e6820d87db868873fe2fd223d28225c759a360f87889bf4e2fa25bf",
+          "size": 408
         },
         {
           "path": "references/capability-patterns.md",
@@ -824,17 +841,17 @@
     {
       "id": "openzeppelin-sui-libs",
       "phase": "build",
-      "folderHash": "7486a550ed460e7f28d284e73a004cd2c1e6e61e75ee4cae6d6090787698bd16",
+      "folderHash": "0ef82263c7aa2a5bd7c848ec3ce64852638e38767a8fa3ee1ca1bb0a800c582b",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "e97a137d3ef923b6a4c8055d7abb84724cf84a6f75a55d1bb97744a287a3f2be",
-          "size": 7915
+          "sha256": "7c1c1c0a6eab308740918f99c6f99a44e2ab28a79509c8bd7b86856fec578328",
+          "size": 7556
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "9b3b687bbd10e359fb81c19da1f24d128efd7669347bdcd7e31de7440710495f",
-          "size": 718
+          "sha256": "4603732c790279e5689e5b9fc46ff7cd1ae412c2e9ed54b89e8ca01cfffcfbb7",
+          "size": 438
         },
         {
           "path": "references/migration-from-handrolled.md",
@@ -856,17 +873,17 @@
     {
       "id": "ottersec-prep",
       "phase": "build",
-      "folderHash": "7f0a1df6aad59284eff58987decf75064e194fa67312d313d0d0a77f19d477d8",
+      "folderHash": "5c8395948b9f86aa3d31cd8541463ccd622b84f3d8876002780319037effaf0a",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "0672cdc46f1e860d5154882e3b40890301b2c4e71de998b092b3587e119af246",
-          "size": 7542
+          "sha256": "4a00c8b58a9d1bd8781cfe43f75320048d49c66a93190bbd9d7d3a3b1fe8bfc0",
+          "size": 7176
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "01b4b722221fd8d996d7e4a873d7f64520690749d3cacc84d0ce8be18d7da5da",
-          "size": 734
+          "sha256": "a2d5de9d61944324ff4e83c4647f842be67cc2fb380568d3bfed5a9a766d8eba",
+          "size": 469
         },
         {
           "path": "references/finding-categories.md",
@@ -888,17 +905,17 @@
     {
       "id": "page-load-animations",
       "phase": "build",
-      "folderHash": "425e5bc354012309e216dc26dea8541d046d37843d414e07a32f844fe594c243",
+      "folderHash": "972a626b6db3bbfe152817c6c8a2d549c6e2f5161381afc972ce145f88d892b7",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "559c2f6dc980698ef79c60bf2510377919e31f13ae6ed0448586794b5f42fc32",
-          "size": 6160
+          "sha256": "61a6dc800cf822476aaf3dbca7a3f167d30d4ed219f35eb6eb8848dee999a027",
+          "size": 5919
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "c50788427d5235c9956e6005b9c1d9202c27e12cf957df5a0e914ce20540201f",
-          "size": 489
+          "sha256": "0e8842c932570a6a2d4d2aba901ea343068e3397e14ad608e65e29e3b59c07f3",
+          "size": 284
         },
         {
           "path": "references/skeleton-patterns.md",
@@ -913,19 +930,36 @@
       ]
     },
     {
-      "id": "product-review",
+      "id": "plan-before-code",
       "phase": "build",
-      "folderHash": "eec38cb2d8375b8ae4190155ca38b0e5294561d4584b1a7cc738b3aa3c775e26",
+      "folderHash": "eed53426332335abf442caa16cdf09b2b4af3f10ebe1a6514c69f75e99f67e4d",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "ce20a16d96d0ed0bf3896e6270a798239f76a2ceb65bdb2320f09da24003bb32",
-          "size": 7830
+          "sha256": "01d85b36aa3e1f7ae1e8e201d3571d780a070b466d1541bb04348932ac20dc24",
+          "size": 10322
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "9871cb22d632455c5231cc77b9f4b00fd65f09f8e55833d2c5a0aabe3aee26a5",
-          "size": 576
+          "sha256": "26c3c2ad66c61192edda509f93a8ac16ee31acab427e1ba15597dce6d7ee037d",
+          "size": 486
+        }
+      ]
+    },
+    {
+      "id": "product-review",
+      "phase": "build",
+      "folderHash": "e0ae8e1b23a97c3810d586cff4423a3667094ded776f2f2cf1fb9624e791d279",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "3afd8e86e2ccf0c2dda5e4847dcef0ee600f405ad5af8840754082e0a56f3e13",
+          "size": 7527
+        },
+        {
+          "path": "agents/openai.yaml",
+          "sha256": "d10223b7a2e55de5f372e53b94d010afb41556a16214d2f8e55c0904b3567f5b",
+          "size": 337
         },
         {
           "path": "references/impact-effort-matrix.md",
@@ -942,22 +976,22 @@
     {
       "id": "ptb-composer",
       "phase": "build",
-      "folderHash": "97daea5dda0db224dd242bc1e0283a1d98298c680ba13d83f777f91e230af977",
+      "folderHash": "aea48086fee332d02b0cd462986df04c615c2e42b409eac7cbaccf5ae52de42e",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "1edb1d9b571526f94e9cbdd25a6f8644edef7d63c14e7223b7ff4655348efbb5",
-          "size": 6626
+          "sha256": "67ee8fa9b41ea6c317722f37d114b7cd4ee35ae9dee61b7275c877a1a95996c6",
+          "size": 6315
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "69c96df871c6995970bd81991c34e61909f4c364904a09218cdeed29a235ece0",
-          "size": 636
+          "sha256": "eee6993f1730e6b21ddf0ebaebaace1708e87680b78bec8016d5e9e54b0cf7ff",
+          "size": 372
         },
         {
           "path": "references/ptb-dryrun.md",
-          "sha256": "b26a722c2eed61cfa85c1210eef72259628cd4fd9a19b01b74d6b59db40fa924",
-          "size": 3446
+          "sha256": "047e66ee456a7a3f52a5d927a4a31e9c05e128b12a9e3e34afaae05cd526b421",
+          "size": 3443
         },
         {
           "path": "references/ptb-pitfalls.md",
@@ -966,30 +1000,30 @@
         },
         {
           "path": "references/ptb-quickstart.md",
-          "sha256": "47f8dc6f3d84e51aa7f3aa2346f80e905987041a1eb08b8e6f1b34301d89917a",
-          "size": 3544
+          "sha256": "5e0c15f8c31173b40e6151f54399d8fe8edcae1ce5cdaea3b176330c125faf9c",
+          "size": 3566
         }
       ]
     },
     {
       "id": "pyth-oracle",
       "phase": "build",
-      "folderHash": "73b4a2357ab261d499072b06946bf51e933690ecbb589e44b70ae7066d7566d2",
+      "folderHash": "819d30e6e415bad891c982ff292657ca2992aff4938607cdfcf98cafb596563e",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "dd601ea6901c6cfbc6616baa6321106f6113cb2c9a95a7705a990e4555cb58d3",
-          "size": 8501
+          "sha256": "56e8f4f5edce6ae6d287f471c22e46ae365fe410e17b2096e6f2bb5cb68dd232",
+          "size": 8709
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "3386bfc123e182cb31078c9ca10601733cdeead620cd6c8d9bbfea36c94f5b77",
-          "size": 549
+          "sha256": "a5c641f5ef827929aaf02ac408f12ab173869d1066093ee96001cb19c97917c6",
+          "size": 657
         },
         {
           "path": "references/pyth-move-api.md",
-          "sha256": "e04de638b49be62e87f1e3c7f2cbde1d33c6ae753d553c53fa6753df6897b6d6",
-          "size": 3919
+          "sha256": "22cdf257eaf64f343a2e975cbcf8a85d92fe42a429405fa9fb4fd59833779284",
+          "size": 5460
         },
         {
           "path": "references/pyth-pitfalls.md",
@@ -998,25 +1032,25 @@
         },
         {
           "path": "references/pyth-quickstart.md",
-          "sha256": "44e78ddf8476758e629376d80864ac2e63a4a6262563f1b5b891d7875a89e384",
-          "size": 5187
+          "sha256": "10fbb2a0749a6af256e3c1db67a802aa099648599c1ee1d35699e369ea4ed268",
+          "size": 5175
         }
       ]
     },
     {
       "id": "retention-loop",
       "phase": "build",
-      "folderHash": "ca7127579e452e5b0acd3db2ded04473b69e7b66eb254909f047a42efc1a8634",
+      "folderHash": "e7ecbb4391a58bf5ed3e04b54a8aa518ea7dff49b8d6d25a7ef7ae782837a198",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "5b32c3a0e35be42e10d2d0973d86f8c610c6de703aba9acb6ce0b81e8a58f51c",
-          "size": 6316
+          "sha256": "323b71eda736dcec1fc6b658b8b6b39612b7bea171cb685e6b9b0a81fbc097c8",
+          "size": 6065
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "a6c1f07f62fc33eca942c358a9cbfc457eaded2cc2aa54986ef26b78da0ccba4",
-          "size": 477
+          "sha256": "21b2abc1e5cd379ebf8b5acb62b4e83a008d463da6c4443b0905f0a5fa4adbce",
+          "size": 292
         },
         {
           "path": "references/anchor-examples.md",
@@ -1033,17 +1067,17 @@
     {
       "id": "review-move",
       "phase": "build",
-      "folderHash": "09ae453658317ded7e687dff872403b8e22ccf264b8226b3e4fb58e8af422b21",
+      "folderHash": "a4cf826a837baeeef6b7a1e4ae03cdbbc582d8ae9f1cd816695fbfbd4410f754",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "18cb17d4729beb18ecf5ad757bd91b31f2309a0ee27d38548abe4232961b9934",
-          "size": 8047
+          "sha256": "9a3fb7267b790418bdb918ed73bc13604b10c13cd0b9774ffd9a656c451e779c",
+          "size": 7686
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "701d19127a05bf96b3f3f8e2ada849f46a2218f316a7cdaafa662ed97ad1d8af",
-          "size": 731
+          "sha256": "c504b0ab5223e99891e4b8b68d417502b7a8d6a5e49ad052ae1ebca642f54386",
+          "size": 467
         },
         {
           "path": "references/oz-migration-candidates.md",
@@ -1065,17 +1099,17 @@
     {
       "id": "roast-my-product",
       "phase": "build",
-      "folderHash": "5ec67f3f6bdb3127acf746dea959d47ae99dc0de14bc4253249c9ef5ff462ba7",
+      "folderHash": "b1a68acde5e88d7bd1732fbda625c011c08bdb5dbf3b5808da4ddb5f77365cdb",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "a6bcf0549b0ee33e44ece75d40306e652997f658de15e89552aea73e8ca65ee2",
-          "size": 8050
+          "sha256": "4044c0d63f3cf372dd81dd75b589beed808ef9ea1656577e7665073935d00b36",
+          "size": 7646
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "93c2300ee637892c1e383e751f1748848107aec6552c05cf2b25c8f2a72a371a",
-          "size": 571
+          "sha256": "dd9a7e03fbd0ab650b6d46c14b1b1863460182cd66cf4c5f6f27079de6293c3d",
+          "size": 298
         },
         {
           "path": "references/seven-dimensions.md",
@@ -1092,17 +1126,17 @@
     {
       "id": "scaffold-project",
       "phase": "build",
-      "folderHash": "77cd47afad8fac2fc6b9de0f7890e125f58fde4bdf7be37b3d4bd75c1782d8f9",
+      "folderHash": "d13e05005644492eead6a87b84c53878f2ef73c4be42fb1d31846871aa8cd551",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "bdf477541f46ddcd54c956b2c7ea8a5ab71a4465602255b24e8f903cf57be509",
-          "size": 6742
+          "sha256": "1c63b670afbdd25592163f3259852c163adeecf66c3fc4bb94d08220e6cb4701",
+          "size": 6421
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "6a8ef17d88d23b77ba04102505dbd74de1a3f2e20f0ceda196f195ae72265923",
-          "size": 631
+          "sha256": "d06a9f799feb4acb46bcdbfed4bb64b8ace4378f2ed1394c8a8430033e1f4a97",
+          "size": 354
         },
         {
           "path": "references/move-toml-defaults.md",
@@ -1119,17 +1153,17 @@
     {
       "id": "scallop-money-market",
       "phase": "build",
-      "folderHash": "10deb1d6678c6f971128c91c8335b7bb0e7ee6071fcc134a4fc02c3f6b6ff0fa",
+      "folderHash": "01f4915315feaf03795be55d564f909023aa1ef826cf05cb378574d8cd18254f",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "d79727203533d3bb13669661a309a5ba21167dab473386484e4cbf09c32bb768",
-          "size": 7732
+          "sha256": "1942b6a215ce5219abaedd993b57222a0ef645b60d50744b744d6d4f1b162bf7",
+          "size": 7445
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "56aacd757b05bdbc31967edeef342c595fc26287150b193006a31635ba18f193",
-          "size": 626
+          "sha256": "6ead81789af6778762aaba67e6a9e7ca526dabc9534004f476d24877114d3090",
+          "size": 392
         },
         {
           "path": "references/scallop-obligation.md",
@@ -1143,30 +1177,30 @@
         },
         {
           "path": "references/scallop-risk.md",
-          "sha256": "8cedd592bc30eda62fd1ba1bfba9c560478c3671ad7d37c37ebfa0314d2b4e17",
-          "size": 4155
+          "sha256": "a208256b8988b8fdf43e25eeac4e6045cdd67c2da19511d09b8a29587355aa27",
+          "size": 4185
         }
       ]
     },
     {
       "id": "seal-access-control",
       "phase": "build",
-      "folderHash": "e3da6180c124c9b7c0b002d461f77cabdd9cab26b14ee61385c5d68bd4162743",
+      "folderHash": "a411e97dd93bbe4692c816b522f134388cf18103868bde3a82ceeb09f4d403aa",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "0c61819dc108e99c4e07694e3438e09f8fda3e7f931e4847a69b1caa8e4eb503",
-          "size": 9144
+          "sha256": "b790b631b671dd564656693a7f96ff356381bbcc4ff2955b423a1c4b517d69f7",
+          "size": 9189
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "1f67afd9c8d5fda89fe9fda0da73765728f056d083cab28ca211ea9970779932",
-          "size": 732
+          "sha256": "859cea8363aecfcf038b755c92a3a91a121211cd597886db982b8c7f617c6b1d",
+          "size": 417
         },
         {
           "path": "references/seal-patterns.md",
-          "sha256": "433521b3f6618457c5572d2198e1d63a45be44d161005c42706576d74fdd4b3d",
-          "size": 6275
+          "sha256": "4747cbe636933152fc6f26a812e0230bc0272e603b9b4349c7c8e6894f0772cf",
+          "size": 7465
         },
         {
           "path": "references/seal-pitfalls.md",
@@ -1175,35 +1209,35 @@
         },
         {
           "path": "references/seal-quickstart.md",
-          "sha256": "c641e53268184103ff2e6a58f40d70ee85b52cfeea2c77efb3fc58f61e431dc3",
-          "size": 4550
+          "sha256": "2e8d3e163248bff91cef4ec8d064c0bc74fb3e66c909bb5dd8e9220d5d57f1fc",
+          "size": 4420
         }
       ]
     },
     {
       "id": "sponsored-transactions",
       "phase": "build",
-      "folderHash": "ce5f53053e44b4758cd7d5357b4fcfb28d1c34f09499d017c44dd740b20e7aa8",
+      "folderHash": "056059cb5e5ccf869d0bdc1c28436b45e74b6b267f8df1caef6f2be6ddad7ae4",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "8eafb54d7f9df10357e389cf886387eb2cb58342b13a1ebfbc8932aa047120a8",
-          "size": 7417
+          "sha256": "5897ac4e4f0aa1c8a827b9d7d6b06d337cdbe226be5a7864436a8631f98a6b33",
+          "size": 7128
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "f5adad4112d0af94e6d190ce4b0617d60b85c7706507b6c478d3d08b6d7aebf9",
-          "size": 632
+          "sha256": "fea440ced5fe622ad176f57638bce22d62ecb1d6f45481efde5880bd2dfd562f",
+          "size": 391
         },
         {
           "path": "references/gas-station-flow.md",
-          "sha256": "82aac1d9efff6b2190f4ce8889c1d1773325d75ff8bb24540929c00ff8e80fea",
-          "size": 3592
+          "sha256": "3b88fd4ce25ac3d17ced4352bdb18a57e25a5c4138a58722841595e25cd19087",
+          "size": 3569
         },
         {
           "path": "references/sponsor-allowlist.md",
-          "sha256": "599ee586e78e648e776500df979b47716335fb6c807cd1ce48e53023b0975294",
-          "size": 3554
+          "sha256": "e807615aaf908d59cc5f89c7079daeb21b4bb8feb7eedf6ce3f02e84bd146a0d",
+          "size": 3551
         },
         {
           "path": "references/sponsor-pitfalls.md",
@@ -1215,27 +1249,27 @@
     {
       "id": "sui-zk-login",
       "phase": "build",
-      "folderHash": "508206d2cf24f8b6f3e3a1a459febaf1238a0c79b225906ac77bdf88337b8bdc",
+      "folderHash": "9041dcd4634b4e17477a66146d3f4519d2e531a80bf6a150c1b5b497bcfde671",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "5b2450f70e036c0938299a533e72251c2d2695a09296dba5fe612910915b34ff",
-          "size": 8599
+          "sha256": "a8aec0adf80e27b4e336dc546c5b980928c213d2d0d765f7feeda97ed40cae48",
+          "size": 8266
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "09d6bfc09d24722d414f79377d3c627a09e4d034083b0464c4306dcfd48d519c",
-          "size": 651
+          "sha256": "3b6122d3726c2dc6c2f20d4b508681215c3e62fc9cee2750fe78feec7baa00d5",
+          "size": 378
         },
         {
           "path": "references/zklogin-flow.md",
-          "sha256": "211632099680f94e176d6ad69e8797f4b15daa2ea4ca2b5609637e7241f18205",
-          "size": 4579
+          "sha256": "af97dabc3a82216881d0eff771313c479ddad3e719010fc2dffc9dd4375d566a",
+          "size": 4547
         },
         {
           "path": "references/zklogin-pitfalls.md",
-          "sha256": "937430623a3fa45ca473a8cbdac4651e486f199051e0d6df8ab51f6ff6cd17e3",
-          "size": 5467
+          "sha256": "70f60c6126a63ce8f51a0cc9e0e8227fe5cecb5592192bb325d4a986b083e79d",
+          "size": 5435
         },
         {
           "path": "references/zklogin-salt.md",
@@ -1247,44 +1281,44 @@
     {
       "id": "suins-integration",
       "phase": "build",
-      "folderHash": "ec22d3b73e7c960c178d4df620515267cfec622883a9f5f348ad1e96674cd7df",
+      "folderHash": "e8e7791eb7c6061ee1b42e6db9eca88213e3e038055e9bcb4c597bbf9ead0d4d",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "a0ae67c1e40861f81ce3d6b3def2326404f8827405060c51acc5d58116739a61",
-          "size": 8415
+          "sha256": "d9857b44b1f98f54c819181e6b9a94ca9c4af57da854104dd65bb8faa0f1bdda",
+          "size": 9141
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "ff44df843586ce01be6d70e8b167db4290c2e6effd163847be83892105a6b4b7",
-          "size": 565
+          "sha256": "1e5e081c7a8e12a4f2f01e77f4b1bc0ba209e14f291b0075dfcdc87547300a93",
+          "size": 312
         },
         {
           "path": "references/suins-pitfalls.md",
-          "sha256": "db871eb56d861375608176fc60832c6d3e508456d1d2dd949467eeb9450b0028",
-          "size": 2113
+          "sha256": "be5f5ab8eade388a381b317843275fbaf64fa26c19719662f2a9f2336b926a6b",
+          "size": 2533
         },
         {
           "path": "references/suins-quickstart.md",
-          "sha256": "9c6856ced710a1f3e37b0692037f68067940befb48d2f070f72de51113de6161",
-          "size": 5669
+          "sha256": "19e2396cfde48812ff4faa5016ed7508bcb6fb944c9bc93fc31999ab5276123e",
+          "size": 7343
         }
       ]
     },
     {
       "id": "validate-business-model",
       "phase": "build",
-      "folderHash": "9b878c7fce36c213adda237ec842800b85b5d266856cd4f8d61481a512ed4a60",
+      "folderHash": "8ef31388c854035f582cfe39dead3bd496029ad047a7527fad50bba8658d4482",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "367f2ae3c2fb3e36b0d114a247ece950c332d4e550b7c9d370b321bb2402769b",
-          "size": 6633
+          "sha256": "19a45742c8d913241db1200a5884be4d7e119503c45d5bfef7afb64dac9239da",
+          "size": 6343
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "9eff6597a4f0265719c07f5abc86d588f4d756747f4124fb00fe7f50a2c756c2",
-          "size": 496
+          "sha256": "26839b7addf75564be0e572c3b4afd574491d4364ffc8066352841e382200eea",
+          "size": 286
         },
         {
           "path": "references/cost-checklist.md",
@@ -1299,19 +1333,36 @@
       ]
     },
     {
-      "id": "virtual-sui-incubator",
+      "id": "verify-against-intent",
       "phase": "build",
-      "folderHash": "337b491f0f494d095270774da9f343323585a22cc31fca69f54a4166ff61e544",
+      "folderHash": "e713b6b8f2ff6fedfec9a6568f6d4ad526726c27259c265f11ad4b5e106c0a43",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "893304e12164c216155c145ecec23a461baf50f8b7662e7408e0245b3a292940",
-          "size": 6139
+          "sha256": "48d82cb44c2b6434c7489699e3ed33427721956a2d2121af307254305eb9cc9d",
+          "size": 9804
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "faca4ea438b1ef01e7385dcd49d8b70d143624e80574496c72cb3732984f7ede",
-          "size": 738
+          "sha256": "7e5663e6ca5dfc92f3d30599c8797b48b0be520a34907281fd88bc2b71e8d579",
+          "size": 492
+        }
+      ]
+    },
+    {
+      "id": "virtual-sui-incubator",
+      "phase": "build",
+      "folderHash": "a33d861029da7bec0c951c99713583b80fa363eb3e1da15150ab7bae0d8cfcd5",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "d8b12d65f82b2ca80d778a4226a3567c98f495da170ef115f04973400b452a53",
+          "size": 5724
+        },
+        {
+          "path": "agents/openai.yaml",
+          "sha256": "739d10c927c1bd4821098df8bae607c7f8c7d2fa2cb0ba854a7b838b2aa6b206",
+          "size": 421
         },
         {
           "path": "references/migrant-on-ramps.md",
@@ -1328,17 +1379,17 @@
     {
       "id": "walrus-sites",
       "phase": "build",
-      "folderHash": "1edcee3175cbc606ee0c229679ab859271f7c70c1fdce006747e890f6a2d0577",
+      "folderHash": "88fea9dd99b4d9b8ba727407bc411b7b8a2fdc7b96024c620009cad395a06df2",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "9c8a7577ce5cd89970c08c6bef11e662ef6ebf9aa08b64a8ac2cdd3497c38dc1",
-          "size": 7977
+          "sha256": "9fdcf85067f6da206c531778f3a135f999d7442efcca2e6b435d87bdf641209e",
+          "size": 8133
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "df43ca4fe1fe2ead4890553fb7bd9b793c04bf6eb186bde48de184bb6df1a164",
-          "size": 580
+          "sha256": "69503599839007f324cf7d48008e17778d97fd4a0b23cbace1bad22dfc005a9c",
+          "size": 272
         },
         {
           "path": "references/walrus-sites-pitfalls.md",
@@ -1347,25 +1398,25 @@
         },
         {
           "path": "references/walrus-sites-quickstart.md",
-          "sha256": "5fcb619a0bd4f5d530476270745b8ca1f745e4cacb6a394ca9fdf528a7c7b4ea",
-          "size": 3246
+          "sha256": "b57bfe55c91d3d83c0094fb1bd019f95c5b1275df16cb59c25a2e932304e40f6",
+          "size": 3294
         }
       ]
     },
     {
       "id": "walrus-storage",
       "phase": "build",
-      "folderHash": "4e1c3e390b37bc10fc37cf5ee280abc749b4aa84707e2fedf9628f336656cf3d",
+      "folderHash": "da96ba545eb5e57a09936aa6ed48ca09a4410a3e42878c5a8e745545a541ac0b",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "a922f6360e17f4fd90c0b731d9cd9aae865a6af0577d9bf3659471601d45ced3",
-          "size": 8615
+          "sha256": "02cea9c8ff271350a82c880ae16e803944fa1ec0cb509330e8d5a98d97779f13",
+          "size": 8269
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "6462f61ae17aea9ab20383d37a2275b6fa97a9165c1e7ac596b1bf8fbdfe5ad6",
-          "size": 689
+          "sha256": "cd80a00ee31a10946a19d9f8b554815e5b09ac8119a9afdee049fc42b2da44bc",
+          "size": 387
         },
         {
           "path": "references/seal-encryption.md",
@@ -1384,25 +1435,25 @@
         },
         {
           "path": "references/walrus-quickstart.md",
-          "sha256": "27ee73bbb8c57ff9eeb0b1c7a2626e6726cd348fbaa7a6e6770d9d961c77c721",
-          "size": 5829
+          "sha256": "4433a7b13b330437758af6e2d4db2a69c14e1cf283a19c06f38a872d87aef579",
+          "size": 5857
         }
       ]
     },
     {
       "id": "will-real-users-pay",
       "phase": "build",
-      "folderHash": "6563cb6daa3f639c4e4eee4e5b71591502440d70ad3cf89b48582545f6cb5cfc",
+      "folderHash": "c1f1ad1f455d5221c53489a1c71ca5f044bbc51d67675a7791b06eff118b3863",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "6649c8946a5894b7838d4b2621ba89b064d948cdaf04a515155b73fd7073f968",
-          "size": 7718
+          "sha256": "a294836a30221d9742ef3cc0f7e381d5730bed31aa87e6255b5ef9c3f1633a50",
+          "size": 7363
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "1bea7295c9716b66c2be81e05f6a83ea7817a9b5c90d9afeb2f5d62d273729c2",
-          "size": 573
+          "sha256": "a2011afef0209d29f26eb37e9a0a89fb0c816fac2a27f5ee31a610bb76013b7f",
+          "size": 319
         },
         {
           "path": "references/experiment-formats.md",
@@ -1419,17 +1470,17 @@
     {
       "id": "apply-grant",
       "phase": "ship",
-      "folderHash": "5153ef88f7dd2694b87b18f0c2071633a9712b0e7b30202999cafa4d316331c8",
+      "folderHash": "4e4858f674cabbd46e700bb067a491d9d97875a3834222d889fd188d0328c42e",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "404288451ae22862ca666cb090b071c0be6ee319277de5f203acf44ffa215bef",
-          "size": 8368
+          "sha256": "48fbf13ebc68ab42b564c37e74f40a5ae5fc742dc794c096642607109e58dd7c",
+          "size": 7928
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "d4e343d4088a2df6722e1b91bdb0a42b69507bd5d7babb37e194e19a66fe09e5",
-          "size": 600
+          "sha256": "2c73e99324a2b56a76a4d563e886e280a5f92f90a80704da3e95776795ae38c3",
+          "size": 288
         },
         {
           "path": "references/budget-line-items.md",
@@ -1446,17 +1497,17 @@
     {
       "id": "create-pitch-deck",
       "phase": "ship",
-      "folderHash": "9a573e38b9cac3854bd56c7df78d0b97ae00c70025e399268f66967b690100fd",
+      "folderHash": "be93f7f7d577d0849adca3c6c5e211402a24c373289fc4fb51137f17e65ee3e3",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "be0fa2384e5b71ca8b7a2c68c9763e9b7a7362acd14540accf5e1d1491917680",
-          "size": 7034
+          "sha256": "b4533d18f31ee3e6ecee79ce0ef19025c5192bda3c1a85ba0e3bf71db7c5535e",
+          "size": 6564
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "5bba31fae1fecddd3f1b544a5f1cc96c7bbdff5c13ffdf88202f1bc8f663852d",
-          "size": 616
+          "sha256": "56540b7e2b2310e96a1d3d8f95a3669590c61ce10c51655c377b4224ea2760cf",
+          "size": 299
         },
         {
           "path": "references/deck-structures.md",
@@ -1473,17 +1524,17 @@
     {
       "id": "deploy-to-mainnet",
       "phase": "ship",
-      "folderHash": "8d0292b6e60be2fa3832988a65a5776c1c8b74e4b4323a8af4700e7106b52a68",
+      "folderHash": "b105f77566b5d1a1151144b1c33c34f54b4826e9495c7bb369e2d1123bafbae2",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "ab23ea6b3a5e2ab50891d59fc2f6f02aa89280018a16683f9652702845e9e718",
-          "size": 8335
+          "sha256": "5d5c6193e66fb321e59f8c2611f28f128a69ab761e484a9233eee273ab775ad9",
+          "size": 7871
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "c66515947ffed0ab43fd00f2e9a7c0ca1ee0adf12ae708e338783a66711c3611",
-          "size": 591
+          "sha256": "e8b2f2111386489e8b6756c8c2c22a2e4e20440017f9f248dfeea67c86051306",
+          "size": 308
         },
         {
           "path": "references/gate-rationale.md",
@@ -1500,17 +1551,17 @@
     {
       "id": "deploy-to-testnet",
       "phase": "ship",
-      "folderHash": "271a63a8e3f62339af947f7bc0734671ddd75595824e5355af635d8dba8ba9a3",
+      "folderHash": "1e2a78261dc6bbb684b540975a9b04b905d68c40ab41c52e900e7ebe01e1c99e",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "3babeb1bb28ce9ba18748a3a5b9ab399de0404695fb5a46e1e575a4246c0b93c",
-          "size": 6720
+          "sha256": "4e831edaefdc4d2e565c3b6bb5da77284b7fcab71720c8dad0625d2fb342fce4",
+          "size": 6314
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "b24881d3ea15940ae8eab30de2f4ae096df3313ef943609618c2b1f314223104",
-          "size": 585
+          "sha256": "3d089defcd360c6f8ec34f1ccab21c9579e7c0ae0c520e6f4cc269fba507d14b",
+          "size": 301
         },
         {
           "path": "references/preflight-checklist.md",
@@ -1527,17 +1578,17 @@
     {
       "id": "marketing-video",
       "phase": "ship",
-      "folderHash": "36faa3e08f5f56e8fdc0c0e6c753326c405aa21adc64b1f67d7fd2916e34d0b9",
+      "folderHash": "4e4c9350637ba3e9a124f03824baa7c925b1faa042aa26426e15016385eb941b",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "f8301715cc8ae3505e49cda33e61639a817474fdbd99701f3c8b624108f240e9",
-          "size": 6342
+          "sha256": "7f84b54e90b5af59a7f62104c11b122d8380c256ad59a3c55f8ec2d3c6c9a907",
+          "size": 5952
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "e8637a15139e1646cce40f8e69c32479b6a96150f9c8e3ce7f9c7d63e821f7c6",
-          "size": 557
+          "sha256": "e0b94614c7e541dacaba4442f41f411dfa8d18a9c83b5ab9c8133d42ee0ce5fe",
+          "size": 289
         },
         {
           "path": "references/channel-specs.md",
@@ -1554,17 +1605,17 @@
     {
       "id": "pick-my-sui-track",
       "phase": "ship",
-      "folderHash": "9a48bd4797213137c4f2e4fc7812d3444269674f22bc2f8589ee253189bb3063",
+      "folderHash": "ffad1c4fb2e3519616a5f95d95525013a8c5b918df74ffd77d43eed8e2861b8b",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "44961fd7734a03dba389b763242c428508dfe44ee648e960a03c982ce7f594bc",
-          "size": 10694
+          "sha256": "7b0bb320b925c97dadf653fd9b95a50e99c5e628dbebdb259da1b1e8de7563c7",
+          "size": 10260
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "ebdbaa4d152120abd715165c9e6e5123ae124545d4135626a52497f96b494d8e",
-          "size": 750
+          "sha256": "1a83df5216a6706c638b1fd41de7ddb2bae6c2ae279cdeb8e88c9d5ac5378e3e",
+          "size": 885
         },
         {
           "path": "references/load-bearing-tests.md",
@@ -1581,17 +1632,17 @@
     {
       "id": "submit-to-sui-overflow",
       "phase": "ship",
-      "folderHash": "3f3ce53c014abfa7c403db18297fedcf9410cd2ce4bcc637eb8e7ca48e53a8d5",
+      "folderHash": "c7d76e38ea0eb14ee20f8532bdc61ec52f0fd41583f25739e5c4b4400d259776",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "ac056b88029e3cd08c3a4351d87f13053be745be151d140d9651f8df56ef710d",
-          "size": 8608
+          "sha256": "5d8ee3f86369f926622ba5c8171cb4365ab42a91965bec6fc7d4949ff694032f",
+          "size": 8125
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "08def4f401bacbe805c12443b2b65891b19cd6d6b9db7745bf03355a58bb2d5e",
-          "size": 663
+          "sha256": "793ad23430c863aa3a47bd0c78ef87ac9d21ae763c948c79e4aa997d98f946af",
+          "size": 324
         },
         {
           "path": "references/form-copy-template.md",
@@ -1608,17 +1659,17 @@
     {
       "id": "video-craft",
       "phase": "ship",
-      "folderHash": "112a67ec5d0cb6a6fa23d592bff024b3a4435bd9a51b7e4e09323acf966f5d33",
+      "folderHash": "eadfe22160bdf783f6e638195a9a1a1d3ee03c5416d2378f1826fad9dd09ce37",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "54ca2dec9127a3fb40897bd5aea984430e2bd76e295399243bb5726a5c5cc104",
-          "size": 5947
+          "sha256": "24df5e9a528fbdd394196d8b4ed69b3253881318ff42ade92b5c0f1f94a7cf1f",
+          "size": 5597
         },
         {
           "path": "agents/openai.yaml",
-          "sha256": "a1e909cae365fac55215d6632d3ec0a67e2945d8de32943b04321a6de082a0b0",
-          "size": 521
+          "sha256": "14825658ddbe8112712be197c340d32901f9160f38f9eb44554caabec4361cef",
+          "size": 296
         },
         {
           "path": "references/loudness-targets.md",

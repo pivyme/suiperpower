@@ -1,6 +1,6 @@
 ---
 name: ptb-composer
-description: Compose Sui Programmable Transaction Blocks that chain multiple Move calls and transfers atomically in a single transaction. Use when the user says "compose a programmable transaction", "build a PTB", "chain calls in one transaction on Sui", "atomic multi-step Sui tx", "compose Move calls", or "PTB across modules". Reads .suiperpower/build-context.md if present. Loads skills/data/sui-knowledge/03-move-and-objects.md.
+description: Use when composing a Sui Programmable Transaction Block that chains multiple Move calls or transfers atomically.
 ---
 
 ## Preamble (run first)

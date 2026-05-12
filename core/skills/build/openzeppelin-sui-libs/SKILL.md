@@ -1,6 +1,6 @@
 ---
 name: openzeppelin-sui-libs
-description: Use OpenZeppelin's audited Move libraries for Sui to replace hand-rolled ownership transfer, time-locked admin actions, and unsafe arithmetic. Use when the user says "use OpenZeppelin Sui libraries", "safe math for Move", "OZ on Sui", "audited Move libraries", "two-step ownership transfer on Sui", "delayed transfer on Sui", "safe mul_div in Move", or "stop hand-rolling math on Sui". Reads .suiperpower/build-context.md if present. Loads skills/data/sui-knowledge/sponsor-docs/openzeppelin-sui.md.
+description: Use when replacing hand-rolled access control, pausable, ownable, or upgradeable patterns with OpenZeppelin's audited Move libraries on Sui.
 ---
 
 ## Preamble (run first)

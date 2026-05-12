@@ -1,6 +1,6 @@
 ---
 name: suins-integration
-description: Integrate SuiNS name resolution and Move Registry (MVR) into a Sui project. Use when the user says "SuiNS", ".sui name", "name resolution", "human-readable address", "MVR", "Move Registry", "register a name", "resolve .sui", "name service on Sui", "suins lookup", "reverse lookup address", "named packages", or "package registry". Reads .suiperpower/build-context.md if present.
+description: Use when integrating SuiNS name resolution, registering .sui names, doing reverse lookups, or using Move Registry (MVR) for named packages.
 ---
 
 ## Preamble (run first)
@@ -117,6 +117,10 @@ If unclear, interview the user for:
 
 7. **Writeback**
    - Append session details to `.suiperpower/build-context.md`.
+
+8. **Closing handoff**
+   - If `.suiperpower/intent.md` exists and the session was non-trivial (new module, new sponsor integration, or material changes to public functions), recommend `verify-against-intent` as the next step so drift is caught before shipping.
+   - If no `intent.md` exists and the session was non-trivial, surface that gap once: offer `clarify-intent` to backfill, do not force it.
 
 ## Pricing reference (SuiNS name registration)
 

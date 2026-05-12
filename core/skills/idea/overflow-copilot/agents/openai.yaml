@@ -1,12 +1,7 @@
 name: overflow-copilot
 version: 1
 phase: idea
-description: |
-  Search past Sui Overflow hackathon projects to find what has been built,
-  what won, and where the gaps are. Use when the user says "Sui Overflow past
-  projects", "what won at Sui Overflow", "search Sui hackathon archives",
-  "has anyone built X for Overflow", "Overflow research", "past Sui
-  hackathons", or "Sui Overflow copilot".
+description: Use when researching past Sui Overflow hackathon projects, what won, what was built, or where the gaps are.
 prompt_path: ../SKILL.md
 references:
   - ../references/archive-search-patterns.md

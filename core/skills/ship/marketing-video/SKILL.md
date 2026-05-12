@@ -1,6 +1,6 @@
 ---
 name: marketing-video
-description: Plan a 30 to 60 second product marketing video for Twitter, YouTube Shorts, or a launch landing page, with a tight script, a shot list, and on-screen text plan, grounded in the project's load-bearing flow rather than stock visuals. Use when the user says "marketing video", "promo video", "launch video", "Twitter video", "YouTube short", "shorts", "make a promo", or "trailer". Reads .suiperpower/idea-context.md, .suiperpower/deploy-context.md, .suiperpower/track-pick.md, writes .suiperpower/marketing-video.md.
+description: Use when planning a 30-60s product marketing video for Twitter, YouTube Shorts, or a launch page, with script and shot list.
 ---
 
 ## Preamble (run first)

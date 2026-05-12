@@ -1,6 +1,6 @@
 ---
 name: frontend-design-guidelines
-description: Apply tasteful frontend defaults to a Sui dapp, layout, spacing, hierarchy, accessibility, without copying the standard crypto template look. Use when the user says "build a frontend", "design taste check", "review my UI", "frontend defaults", "spacing and typography", "make my dapp look good", or "frontend looks generic". Reads .suiperpower/brand.md and .suiperpower/build-context.md if present. Loads skills/data/sui-knowledge/05-app-layer-and-consumer.md.
+description: Use when building a Sui dapp frontend, reviewing layout, spacing, hierarchy, or accessibility, or avoiding the crypto template look.
 ---
 
 ## Preamble (run first)

@@ -1,6 +1,6 @@
 ---
 name: sui-zk-login
-description: Add Sui zkLogin to a project so users sign in with Google, Apple, Facebook, or Twitch and get a real Sui address backed by an OAuth identity. Use when the user says "add zkLogin", "enable Google sign-in for Sui", "social login on Sui", "Apple sign-in for my Sui app", "OAuth-based wallet on Sui", or "passwordless Sui login". Reads .suiperpower/build-context.md if present. Loads skills/data/sui-knowledge/04-protocols-and-sdks.md.
+description: Use when adding Sui zkLogin so users sign in with Google, Apple, Facebook, or Twitch and get a real Sui address.
 ---
 
 ## Preamble (run first)

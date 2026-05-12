@@ -1,6 +1,6 @@
 ---
 name: cso
-description: Run a comprehensive infrastructure security audit on a Sui project covering OWASP, STRIDE threat modeling, dependency supply chain, RPC security, key management, and frontend hardening. Use when the user says "security audit", "infrastructure security", "OWASP", "threat model", "security review", "CSO audit", "pentest my app", "harden my Sui app", "check my app security", "STRIDE analysis", "supply chain audit", or "key management review". Reads .suiperpower/build-context.md if present.
+description: Use when running an infrastructure security audit on a Sui project covering OWASP, STRIDE, dependencies, RPC, key management, and frontend hardening.
 ---
 
 ## Preamble (run first)
@@ -158,6 +158,11 @@ Document findings per component. Assign severity.
 - For each P0 and P1 finding, write a concrete fix with code or config changes.
 - For P2 and P3, document the finding and recommended fix timeline.
 - Append the session record to `.suiperpower/build-context.md`.
+
+### 11. Closing handoff
+
+- If `.suiperpower/intent.md` exists and the session was non-trivial (new module, new sponsor integration, or material changes to public functions), recommend `verify-against-intent` as the next step so drift is caught before shipping.
+- If no `intent.md` exists and the session was non-trivial, surface that gap once: offer `clarify-intent` to backfill, do not force it.
 
 ## Quality gate (anti-slop)
 

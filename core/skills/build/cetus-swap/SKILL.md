@@ -1,6 +1,6 @@
 ---
 name: cetus-swap
-description: Integrate Cetus CLMM, Sui's largest DEX, for token swaps and liquidity provision. Use when the user says "swap on Cetus", "Cetus integration", "AMM on Sui", "add liquidity on Sui", "concentrated liquidity on Sui", "DEX swap on Sui", "Cetus SDK", or "build a Sui DEX with AMM". Reads .suiperpower/build-context.md if present. Loads references/cetus-quickstart.md.
+description: Use when integrating Cetus CLMM on Sui for token swaps or concentrated liquidity, or when building a Sui DEX with AMM liquidity.
 ---
 
 ## Preamble (run first)
@@ -127,6 +127,10 @@ The skill never deletes files outside the integration source path without explic
 
 7. **Writeback**
    - Append session details to `.suiperpower/build-context.md`.
+
+8. **Closing handoff**
+   - If `.suiperpower/intent.md` exists and the session was non-trivial (new module, new sponsor integration, or material changes to public functions), recommend `verify-against-intent` as the next step so drift is caught before shipping.
+   - If no `intent.md` exists and the session was non-trivial, surface that gap once: offer `clarify-intent` to backfill, do not force it.
 
 ## Aggregator alternative
 

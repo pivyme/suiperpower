@@ -1,6 +1,6 @@
 ---
 name: nautilus-offchain
-description: Build verifiable off-chain computation on Sui using Nautilus TEEs (AWS Nitro Enclaves). Use when the user says "off-chain compute", "TEE on Sui", "Nautilus", "verifiable computation", "trusted execution", "enclave", "off-chain oracle", "verifiable API call", "Nitro enclave Sui", or "run code off-chain with proof". Reads .suiperpower/build-context.md if present.
+description: Use when building verifiable off-chain compute on Sui via Nautilus TEEs (AWS Nitro Enclaves), or attested off-chain oracles.
 ---
 
 ## Preamble (run first)
@@ -122,6 +122,10 @@ If unclear, interview the user for:
    - Submit the signed response to the Move contract's verify function.
    - Confirm the on-chain state updated correctly.
    - Test with a tampered signature and confirm rejection.
+
+9. **Closing handoff**
+   - If `.suiperpower/intent.md` exists and the session was non-trivial (new module, new sponsor integration, or material changes to public functions), recommend `verify-against-intent` as the next step so drift is caught before shipping.
+   - If no `intent.md` exists and the session was non-trivial, surface that gap once: offer `clarify-intent` to backfill, do not force it.
 
 ## Decision table: when to use Nautilus
 

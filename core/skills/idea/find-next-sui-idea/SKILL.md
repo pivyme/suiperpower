@@ -1,6 +1,6 @@
 ---
 name: find-next-sui-idea
-description: Help the user pick a Sui product idea from a curated corpus, or stress test their own, and write the initial idea-context.md. Use when the user says "what should I build on Sui", "find me a Sui idea", "I do not know what to build", "Sui Overflow idea", "give me a hackathon idea", "Sui native opportunities", or "pick my next project". Reads the curated idea sources under skills/data/ideas/ and writes .suiperpower/idea-context.md.
+description: Use when the user has no Sui idea yet, wants a hackathon idea, or wants to stress test their own. Writes idea-context.md from a curated corpus.
 ---
 
 ## Preamble (run first)

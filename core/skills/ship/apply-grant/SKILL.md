@@ -1,6 +1,6 @@
 ---
 name: apply-grant
-description: Draft a Sui Foundation grant application grounded in the project's deployed work, with concrete deliverables, milestones with payouts tied to verifiable outcomes, a public-good rationale, and a sustainability plan that does not say "we will figure it out". Use when the user says "apply for a grant", "Sui Foundation grant", "grant application", "ecosystem grant", "draft my grant", "submit grant", or "Sui grant". Reads .suiperpower/idea-context.md, .suiperpower/business-model.md, .suiperpower/deploy-context.md, writes .suiperpower/grant-application.md.
+description: Use when drafting a Sui Foundation grant, with deliverables, milestones tied to outcomes, and a sustainability plan.
 ---
 
 ## Preamble (run first)

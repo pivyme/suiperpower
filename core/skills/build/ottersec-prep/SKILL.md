@@ -1,6 +1,6 @@
 ---
 name: ottersec-prep
-description: Prepare a Sui Move package for an OtterSec audit by walking the OtterSec pre-audit checklist and producing the engagement package. Use when the user says "prepare for OtterSec audit", "audit-ready checklist", "make my Move package audit-ready", "what does OtterSec look for", "prep for Sui security audit", or "OtterSec submission". Reads .suiperpower/build-context.md if present. Loads skills/data/sui-knowledge/sponsor-docs/ottersec-checklist.md and skills/data/guides/security-checklist.md.
+description: Use when preparing a Sui Move package for an OtterSec audit. Walks the pre-audit checklist and produces the engagement package.
 ---
 
 ## Preamble (run first)

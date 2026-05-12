@@ -1,6 +1,6 @@
 ---
 name: build-ai-agent
-description: Build autonomous AI agents that transact on Sui using PTBs, zkLogin wallets, MemWal memory, Nautilus TEEs, and Atoma inference. Use when the user says "AI agent on Sui", "build an agent", "agentic web", "autonomous agent", "agent that transacts", "AI trading bot", "agent wallet", "agent memory", "build with Nautilus", "Atoma on Sui", "multi-agent coordination", or "agent PTB composition". Reads .suiperpower/build-context.md if present.
+description: Use when building an autonomous AI agent on Sui that transacts via PTBs, uses zkLogin wallets, MemWal memory, Nautilus TEEs, or Atoma inference.
 ---
 
 ## Preamble (run first)
@@ -144,6 +144,10 @@ Confirm the architecture with the user before writing code. If the use case does
 9. **Writeback**
    - Append session details to `.suiperpower/build-context.md`.
    - List open issues, especially custody risks if the agent manages funds.
+
+10. **Closing handoff**
+   - If `.suiperpower/intent.md` exists and the session was non-trivial (new module, new sponsor integration, or material changes to public functions), recommend `verify-against-intent` as the next step so drift is caught before shipping.
+   - If no `intent.md` exists and the session was non-trivial, surface that gap once: offer `clarify-intent` to backfill, do not force it.
 
 ## Quality gate (anti-slop)
 

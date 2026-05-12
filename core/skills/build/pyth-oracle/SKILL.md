@@ -1,6 +1,6 @@
 ---
 name: pyth-oracle
-description: Integrate Pyth pull-based price feeds into a Sui project. Use when the user says "Pyth price feed", "oracle on Sui", "get token price on-chain", "price oracle", "integrate Pyth", "read price in Move", "DeFi price feed", "real-time price on Sui", "price data for my contract", or "on-chain price". Reads .suiperpower/build-context.md if present.
+description: Use when integrating Pyth pull-based price feeds into a Sui Move package or reading real-time on-chain prices.
 ---
 
 ## Preamble (run first)
@@ -133,6 +133,10 @@ Your Move contract never calls Pyth update functions directly. It only receives 
 
 7. **Writeback**
    - Append session details to `.suiperpower/build-context.md`.
+
+8. **Closing handoff**
+   - If `.suiperpower/intent.md` exists and the session was non-trivial (new module, new sponsor integration, or material changes to public functions), recommend `verify-against-intent` as the next step so drift is caught before shipping.
+   - If no `intent.md` exists and the session was non-trivial, surface that gap once: offer `clarify-intent` to backfill, do not force it.
 
 ## Quality gate (anti-slop)
 

@@ -1,6 +1,6 @@
 ---
 name: deepbook-research
-description: Query DeepBook trading data and pool activity to find market niches, underserved pairs, and product opportunities. Use when the user says "DeepBook research", "find DeepBook market gaps", "DeepBook pools", "underserved DeepBook pairs", "trading data on Sui", "DeepBook opportunities", or "what to build on DeepBook". Reads skills/data/sui-knowledge/sponsor-docs/deepbook.md.
+description: Use when researching DeepBook trading data, underserved pairs, pool activity, or product opportunities on the orderbook.
 ---
 
 ## Preamble (run first)

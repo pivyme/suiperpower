@@ -1,6 +1,6 @@
 ---
 name: validate-idea
-description: Stress test a chosen Sui product idea against demand, competition, feasibility, and Sui-native fit, and produce a go/no-go recommendation. Use when the user says "validate my idea", "stress test my idea", "is this idea good", "go or no go", "should I build this", "kill the idea or build it", or "pressure test my Sui idea". Reads .suiperpower/idea-context.md and writes back a validation block.
+description: Use when stress testing a Sui idea against demand, competition, feasibility, and Sui-native fit. Produces a go/no-go.
 ---
 
 ## Preamble (run first)

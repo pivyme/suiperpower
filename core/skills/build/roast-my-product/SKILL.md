@@ -1,6 +1,6 @@
 ---
 name: roast-my-product
-description: Play the harshest investor in the room and produce a numbered list of every weakness in the product, positioning, demo, and brand, so the user can fix the top three before submitting or pitching. Use when the user says "roast my product", "be brutal", "what are the weaknesses", "investor critique", "harsh feedback", "what would a VC say", "tear apart my pitch", or "roast my pitch". Reads .suiperpower/idea-context.md, .suiperpower/business-model.md, and .suiperpower/retention-loop.md if present, writes .suiperpower/roast.md.
+description: Use when the user wants brutal investor-grade critique of a Sui product, pitch, or positioning before submitting or pitching.
 ---
 
 ## Preamble (run first)

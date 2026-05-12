@@ -1,13 +1,7 @@
 name: seal-access-control
 version: 1
 phase: build
-description: |
-  Integrate Seal decentralized secrets management for encrypted, access-controlled data on Sui.
-  Use when the user says "encrypt data on Sui", "Seal access control", "threshold encryption",
-  "gated content", "encrypted NFT", "encrypt with Seal", "access-controlled blobs",
-  "Walrus encryption", "token-gated decryption", "secret ballot on Sui",
-  "time-lock encryption", or "decentralized key management".
-  Reads .suiperpower/build-context.md if present.
+description: Use when adding Seal threshold encryption and access-controlled secrets on Sui, gating content, encrypting Walrus blobs, or time-lock encryption.
 prompt_path: ../SKILL.md
 references:
   - ../references/seal-quickstart.md

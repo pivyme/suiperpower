@@ -1,6 +1,6 @@
 ---
 name: eve-frontier
-description: Build on EVE Frontier's Smart Assembly system for the $50K Sui Overflow 2026 track. Covers Turrets, Gates, and Storage Units. Use when the user says "EVE Frontier", "Smart Assembly", "EVE hackathon", "game mod on Sui", "Turret", "Gate", "Storage Unit", "EVE vending machine", "EVE access control", or "build for EVE on Sui". Reads .suiperpower/build-context.md if present.
+description: Use when building on EVE Frontier's Smart Assembly system (Turrets, Gates, Storage Units) for the Sui Overflow 2026 EVE track.
 ---
 
 ## Preamble (run first)
@@ -136,6 +136,11 @@ If the user's idea spans two types (e.g., a gate that also sells access passes v
 
 - Test the assembly in-game (or via the local dev environment if mainnet is not accessible).
 - Append session details to `.suiperpower/build-context.md`.
+
+### 8. Closing handoff
+
+- If `.suiperpower/intent.md` exists and the session was non-trivial (new module, new sponsor integration, or material changes to public functions), recommend `verify-against-intent` as the next step so drift is caught before shipping.
+- If no `intent.md` exists and the session was non-trivial, surface that gap once: offer `clarify-intent` to backfill, do not force it.
 
 ## Quality gate (anti-slop)
 

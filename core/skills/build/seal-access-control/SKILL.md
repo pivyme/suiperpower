@@ -1,6 +1,6 @@
 ---
 name: seal-access-control
-description: Integrate Seal decentralized secrets management for encrypted, access-controlled data on Sui. Use when the user says "encrypt data on Sui", "Seal access control", "threshold encryption", "gated content", "encrypted NFT", "encrypt with Seal", "access-controlled blobs", "Walrus encryption", "token-gated decryption", "secret ballot on Sui", "time-lock encryption", or "decentralized key management". Reads .suiperpower/build-context.md if present. Loads skills/data/sui-knowledge/sponsor-docs/walrus.md.
+description: Use when adding Seal threshold encryption and access-controlled secrets on Sui, gating content, encrypting Walrus blobs, or time-lock encryption.
 ---
 
 ## Preamble (run first)
@@ -112,6 +112,10 @@ If unclear, interview the user for:
 
 7. **Writeback**
    - Append session details to `.suiperpower/build-context.md`.
+
+8. **Closing handoff**
+   - If `.suiperpower/intent.md` exists and the session was non-trivial (new module, new sponsor integration, or material changes to public functions), recommend `verify-against-intent` as the next step so drift is caught before shipping.
+   - If no `intent.md` exists and the session was non-trivial, surface that gap once: offer `clarify-intent` to backfill, do not force it.
 
 ## Decision table: which pattern to pick
 

@@ -1,6 +1,6 @@
 ---
 name: walrus-sites
-description: Deploy a static frontend to Walrus Sites for decentralized hosting on Sui. Use when the user says "host on Walrus", "Walrus Sites", "decentralized hosting", "deploy static site to Sui", "walrus-sites", "deploy to wal.app", "host my frontend on chain", "publish site to Walrus", "decentralized frontend hosting", or "static site on Sui". Reads .suiperpower/build-context.md if present.
+description: Use when deploying a static frontend to Walrus Sites for decentralized hosting on wal.app.
 ---
 
 ## Preamble (run first)
@@ -120,6 +120,10 @@ If unclear, interview the user for:
 
 8. **Writeback**
    - Append session details to `.suiperpower/build-context.md`.
+
+9. **Closing handoff**
+   - If `.suiperpower/intent.md` exists and the session was non-trivial (new module, new sponsor integration, or material changes to public functions), recommend `verify-against-intent` as the next step so drift is caught before shipping.
+   - If no `intent.md` exists and the session was non-trivial, surface that gap once: offer `clarify-intent` to backfill, do not force it.
 
 ## Quality gate (anti-slop)
 

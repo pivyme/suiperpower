@@ -1,6 +1,6 @@
 ---
 name: build-mobile-sui
-description: Build a mobile Sui app using the Sui Mobile SDK or React Native bindings, with deep-link wallet flows and on-device key custody. Use when the user says "build a mobile Sui app", "Sui Mobile SDK", "React Native Sui", "iOS Sui app", "Android Sui app", "Sui on phone", or "Sui mobile wallet integration". Reads .suiperpower/build-context.md if present. Loads skills/data/sui-knowledge/04-protocols-and-sdks.md.
+description: Use when building a mobile Sui app, integrating the Sui Mobile SDK, React Native Sui, or wallet deep-links on iOS or Android.
 ---
 
 ## Preamble (run first)

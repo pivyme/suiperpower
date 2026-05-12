@@ -1,6 +1,6 @@
 ---
 name: navi-lending
-description: Integrate NAVI Protocol, a leading Sui lending market, for deposits, borrows, and flash loans. Use when the user says "NAVI lending", "NAVI Protocol", "borrow on NAVI", "lend on NAVI", "NAVI integration", "flash loan on Sui", "NAVI SDK", or "lending protocol on Sui besides Scallop". Reads .suiperpower/build-context.md if present. Loads references/navi-quickstart.md.
+description: Use when integrating NAVI Protocol on Sui for deposits, borrows, or flash loans, as an alternative or complement to Scallop.
 ---
 
 ## Preamble (run first)
@@ -119,6 +119,10 @@ The skill never deletes files outside the integration source path without explic
 
 7. **Writeback**
    - Append session details to `.suiperpower/build-context.md`.
+
+8. **Closing handoff**
+   - If `.suiperpower/intent.md` exists and the session was non-trivial (new module, new sponsor integration, or material changes to public functions), recommend `verify-against-intent` as the next step so drift is caught before shipping.
+   - If no `intent.md` exists and the session was non-trivial, surface that gap once: offer `clarify-intent` to backfill, do not force it.
 
 ## Quality gate (anti-slop)
 

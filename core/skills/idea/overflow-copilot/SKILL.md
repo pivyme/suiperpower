@@ -1,6 +1,6 @@
 ---
 name: overflow-copilot
-description: Search past Sui Overflow hackathon projects to find what has been built, what won, and where the gaps are. Use when the user says "Sui Overflow past projects", "what won at Sui Overflow", "search Sui hackathon archives", "has anyone built X for Overflow", "Overflow research", "past Sui hackathons", or "Sui Overflow copilot". Reads skills/data/sui-knowledge/06-opensource-research.md and points at deepsurge.xyz archives.
+description: Use when researching past Sui Overflow hackathon projects, what won, what was built, or where the gaps are.
 ---
 
 ## Preamble (run first)

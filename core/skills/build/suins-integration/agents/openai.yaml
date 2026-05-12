@@ -1,13 +1,7 @@
 name: suins-integration
 version: 1
 phase: build
-description: |
-  Integrate SuiNS name resolution and Move Registry (MVR) into a Sui project.
-  Use when the user says "SuiNS", ".sui name", "name resolution",
-  "human-readable address", "MVR", "Move Registry", "register a name",
-  "resolve .sui", "name service on Sui", "suins lookup", "reverse lookup address",
-  "named packages", or "package registry".
-  Reads .suiperpower/build-context.md if present.
+description: Use when integrating SuiNS name resolution, registering .sui names, doing reverse lookups, or using Move Registry (MVR) for named packages.
 prompt_path: ../SKILL.md
 references:
   - ../references/suins-quickstart.md

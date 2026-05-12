@@ -1,6 +1,6 @@
 ---
 name: page-load-animations
-description: Replace janky page-load animations with calm, fast, layout-shift-free transitions in a Sui dapp. Use when the user says "fix my loading animations", "page transition feels slow", "stop the layout shift", "skeleton loader", "remove the spinner", "smooth the page load", or "first paint feels broken". Reads .suiperpower/build-context.md if present.
+description: Use when page loads feel janky, have layout shift, or need calmer skeletons and transitions in a Sui dapp.
 ---
 
 ## Preamble (run first)

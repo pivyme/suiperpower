@@ -1,6 +1,6 @@
 ---
 name: navigate-skills
-description: Browse and pick the right Suiperpower skill for the user's current goal, reading from the skills catalog. Use when the user says "what skills do I have", "list suiperpower skills", "which skill should I use for X", "show me available skills", "what can suiperpower do", "find a skill for", "navigate skills", or "I do not know which skill fits". Reads cli/data/sui-skills.json and skills/SKILL_ROUTER.md if present.
+description: Use when the user asks what Suiperpower skills exist, which to pick for a goal, or how to navigate the catalog.
 ---
 
 ## Preamble (run first)

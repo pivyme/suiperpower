@@ -1,6 +1,6 @@
 ---
 name: video-craft
-description: Polish frame-level video quality, pacing, captions, color, and audio for a demo or marketing cut, with a structured pass over each issue category before declaring the video ready. Use when the user says "polish my video", "improve my video frames", "improve my demo video", "video review", "make my video better", "video polish", or "edit pass". Reads .suiperpower/marketing-video.md or .suiperpower/submission-context.md video script if present, writes .suiperpower/video-craft.md.
+description: Use when polishing video frames, pacing, captions, color, or audio for a demo or marketing cut, with a structured pass per category.
 ---
 
 ## Preamble (run first)

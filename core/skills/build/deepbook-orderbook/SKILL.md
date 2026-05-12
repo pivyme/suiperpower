@@ -1,6 +1,6 @@
 ---
 name: deepbook-orderbook
-description: Integrate DeepBook v3, Sui's native central limit orderbook, into a project. Place, fill, and cancel real orders. Use when the user says "build on DeepBook", "create a market on DeepBook", "integrate orderbook on Sui", "I want a CLOB on Sui", "place limit orders on Sui", "use DeepBook v3", or "build a Sui DEX". Reads .suiperpower/build-context.md if present. Loads skills/data/sui-knowledge/sponsor-docs/deepbook.md.
+description: Use when building a CLOB on Sui, integrating DeepBook v3, placing or filling orders, or building a Sui DEX with a real orderbook.
 ---
 
 ## Preamble (run first)

@@ -1,13 +1,7 @@
 name: eve-frontier
 version: 1
 phase: build
-description: |
-  Build on EVE Frontier's Smart Assembly system for the $50K Sui Overflow 2026 track.
-  Covers Smart Turrets, Smart Gates, and Smart Storage Units.
-  Use when the user says "EVE Frontier", "Smart Assembly", "EVE hackathon",
-  "game mod on Sui", "Smart Turret", "Smart Gate", "Smart Storage Unit",
-  "EVE vending machine", "EVE access control", or "build for EVE on Sui".
-  Reads .suiperpower/build-context.md if present.
+description: Use when building on EVE Frontier's Smart Assembly system (Turrets, Gates, Storage Units) for the Sui Overflow 2026 EVE track.
 prompt_path: ../SKILL.md
 references:
   - ../references/eve-quickstart.md
