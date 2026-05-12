@@ -20,23 +20,6 @@ export function SiteFooter() {
           >
             <IconBrandGithub className="size-5" />
           </a>
-          <span className="h-5 w-px bg-white/10" aria-hidden />
-          <a
-            href="https://pivy.me"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="by PIVY"
-            className="group inline-flex items-center gap-3"
-          >
-            <span className="text-base text-white/50 font-medium group-hover:text-white/70 transition-colors">
-              by
-            </span>
-            <img
-              src="/assets/pivy-horizontal.png"
-              alt="PIVY"
-              className="h-8 md:h-9 w-auto object-contain"
-            />
-          </a>
         </div>
       </div>
     </footer>

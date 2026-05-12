@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-05-12T16:06:37.859Z",
+  "generatedAt": "2026-05-12T18:18:41.566Z",
   "publisher": "suiperpower",
   "publisherUrl": "https://suiperpower.dev",
   "totalSkills": 60,
@@ -12,8 +12,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/apply-grant.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/ship/apply-grant",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/ship/apply-grant",
-      "sha256": "b48a207b7659cbbdba1e9ea1db4a78f2def6ac2b1dc5a5a413844071257f0721",
-      "size": 6266,
+      "sha256": "6064e2f6752b67d9009125c36693bc26f967fdc340184c1b27f37a5bad92a06e",
+      "size": 6236,
       "version": "0.1.0"
     },
     {
@@ -23,8 +23,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/brand-design.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/brand-design",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/brand-design",
-      "sha256": "88cc43ef543b5f2363c0c86e8d49681ad41c0f1fbd9deda9e8e187410d853d49",
-      "size": 5429,
+      "sha256": "d6472d787ac0fb0037c41f4e98cbb80abf3c16a693f5ce7b8a974352d8160563",
+      "size": 5405,
       "version": "0.1.0"
     },
     {
@@ -34,8 +34,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/build-ai-agent.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/build-ai-agent",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/build-ai-agent",
-      "sha256": "78978cddafdcb588d328d573b0349750778b4c88d104599047c6b937dee578b8",
-      "size": 10915,
+      "sha256": "f0b6f8cd57aae38a29a41c5c4d3a0a22c909a5d87652b41f3962605e30f399e7",
+      "size": 10898,
       "version": "0.1.0"
     },
     {
@@ -45,7 +45,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/build-data-pipeline.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/build-data-pipeline",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/build-data-pipeline",
-      "sha256": "1e1f1c9a3e2fc5e0fcb87861aee071c49e267c4c4adb416a2a2f5e8c85441f0a",
+      "sha256": "76190ca290dbdfe8830e81719b2bb8bac03c407fec52061647be74ff89b64f97",
       "size": 8030,
       "version": "0.1.0"
     },
@@ -56,8 +56,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/build-mobile-sui.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/build-mobile-sui",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/build-mobile-sui",
-      "sha256": "cfa283ea7a922090fedcc8871204a3d6926eadd5c08a4e7bea0b3d54bf162fbc",
-      "size": 7141,
+      "sha256": "eb5d1639b0c871e39140f35da957228956bea5a08d65a7a3007f58e4da01fea4",
+      "size": 7099,
       "version": "0.1.0"
     },
     {
@@ -67,8 +67,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/build-with-claude.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/build-with-claude",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/build-with-claude",
-      "sha256": "0d6ab9af05723d660d42843c978d635e91eea429792bbe175b8bc6997af6dd70",
-      "size": 5921,
+      "sha256": "19f81c8917e92cbac08f19d105df33c1ebcc50f88125f4a8b86b2581321702a9",
+      "size": 5888,
       "version": "0.1.0"
     },
     {
@@ -78,8 +78,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/build-with-move.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/build-with-move",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/build-with-move",
-      "sha256": "177f81f7a81b85ff44d87b90b518f0f78e5b9da72948bc30ea77ee5f1ae6b79c",
-      "size": 9249,
+      "sha256": "296821dee99758d552909bbe30d9f9e4b50a215ba679c0c956903acbea663a81",
+      "size": 9223,
       "version": "0.1.0"
     },
     {
@@ -89,8 +89,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/cetus-swap.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/cetus-swap",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/cetus-swap",
-      "sha256": "b980113a45f3498118b93c40057e372d9a756cbe387b4ad19140fb0f67082946",
-      "size": 6836,
+      "sha256": "bd05f8ae6848267ec376e7c768fdf25e87cfdb37a3f8a77f5f1d77a429d7e9ba",
+      "size": 6824,
       "version": "0.1.0"
     },
     {
@@ -100,8 +100,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/clarify-intent.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/clarify-intent",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/clarify-intent",
-      "sha256": "2001ff19c05b0d0834a09eb50a1d7490f1818b70b91c0fd4d0f8672919b202eb",
-      "size": 4741,
+      "sha256": "268f54715cee3d6e96368583aa0ee55bf1d44ff52c7a916fb170148bd5d92a4c",
+      "size": 4737,
       "version": "0.1.0"
     },
     {
@@ -111,8 +111,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/competitive-landscape.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/idea/competitive-landscape",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/idea/competitive-landscape",
-      "sha256": "90f06f5a4acf7f0272a7860d2b6ae146b7bfd7f506fe053c17e2ccaafd0363dc",
-      "size": 6476,
+      "sha256": "d2bca955c058790679c4be973873f049cb2f9b05a640607f9820815a0e03c3fb",
+      "size": 6473,
       "version": "0.1.0"
     },
     {
@@ -122,8 +122,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/create-pitch-deck.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/ship/create-pitch-deck",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/ship/create-pitch-deck",
-      "sha256": "f920f484af696bb13f83d79cd4c5d718ec7a2796d3692fd936796b5135167729",
-      "size": 5974,
+      "sha256": "5d6c2cde3b792b678df9f4e1d9031f4542905ac3f5ed917b8c8bc19e69f63b04",
+      "size": 5962,
       "version": "0.1.0"
     },
     {
@@ -133,8 +133,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/cso.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/cso",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/cso",
-      "sha256": "3dc9b4cb6ae24c10ef6bc545b62db0f1ddd208301b9d12295d179ee16bed926b",
-      "size": 8571,
+      "sha256": "9115674aab4cc8c475b300bbf6ed11d4f1342a368135d97d761ba96ab8de199c",
+      "size": 8567,
       "version": "0.1.0"
     },
     {
@@ -144,8 +144,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/debug-move.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/debug-move",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/debug-move",
-      "sha256": "54bdd8dca2a3e23166a9ab1efd11c29fe5da0e46b704ed2ff2ce8235b1444af3",
-      "size": 8169,
+      "sha256": "33439002a75ff7d18c47e98f8f091c4bd8c2708f0f0c2883493b31fad2197518",
+      "size": 8145,
       "version": "0.1.0"
     },
     {
@@ -155,8 +155,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/deepbook-orderbook.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/deepbook-orderbook",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/deepbook-orderbook",
-      "sha256": "398871555161f596887e9e63ed50135eec0f9011e01e24e9b5b88beb3d150dc4",
-      "size": 8218,
+      "sha256": "89745440dd785fff08164386fd458f5c44af7c38f41f57b5623f04c633b17fe7",
+      "size": 8225,
       "version": "0.1.0"
     },
     {
@@ -166,8 +166,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/deepbook-research.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/idea/deepbook-research",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/idea/deepbook-research",
-      "sha256": "bdf1e10caeb1b1e59d63e9bc95593ad053ef990b6a42051a2199042bf29251b3",
-      "size": 7053,
+      "sha256": "d6d9f1d69140b0d3a45ee7160f8504c28b400c5151c451e37cd1ed65f76a78bf",
+      "size": 7054,
       "version": "0.1.0"
     },
     {
@@ -177,8 +177,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/defillama-sui.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/idea/defillama-sui",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/idea/defillama-sui",
-      "sha256": "8401b85f6fa29b4f3d77d647d95dd514a45b0ea42ba05ebd2690d4be710eb194",
-      "size": 5681,
+      "sha256": "5156f05c59da10d4af0be8ce87c978ed4cf429016e6ec0a8297cb7efa962b318",
+      "size": 5670,
       "version": "0.1.0"
     },
     {
@@ -188,8 +188,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/deploy-to-mainnet.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/ship/deploy-to-mainnet",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/ship/deploy-to-mainnet",
-      "sha256": "ef8086cf29bdc3881ad1bf3cc36373aada02c22549cd3cd5e4a96bcc01d1fbf5",
-      "size": 6034,
+      "sha256": "1a6e6dc5135951bfb11e94b95d4da9c3bfa98fc313b2a64ba2db7f4fa8e84384",
+      "size": 6017,
       "version": "0.1.0"
     },
     {
@@ -199,8 +199,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/deploy-to-testnet.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/ship/deploy-to-testnet",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/ship/deploy-to-testnet",
-      "sha256": "52f30f9f01e97ea479e4b80e18bc18f12d9463a49bda35a6ede8964a47407bee",
-      "size": 5301,
+      "sha256": "4e659f076dba421cfc68c34c504693fc5412dfe000f628576e4021531c263255",
+      "size": 5290,
       "version": "0.1.0"
     },
     {
@@ -210,8 +210,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/design-taste.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/design-taste",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/design-taste",
-      "sha256": "c5e13c3b972e4a8ace98941cccd28fb35a504be27a3a2e9f1d233cb73b5a27bc",
-      "size": 7508,
+      "sha256": "b0d6461c6c540660f3ce8346466c86d33c1f38fa3bf587f5d60c54e23e3b0792",
+      "size": 7487,
       "version": "0.1.0"
     },
     {
@@ -221,8 +221,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/eve-frontier.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/eve-frontier",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/eve-frontier",
-      "sha256": "b80595cbb96d54d77f73fa71f44d8b79e204876c48f9f78af948a4f2112dd7fc",
-      "size": 8982,
+      "sha256": "9649ef350a5f4882597dc0e8b0a6db06769aaad6fe23547ce146b927ab1f4c28",
+      "size": 8991,
       "version": "0.1.0"
     },
     {
@@ -232,8 +232,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/find-next-sui-idea.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/idea/find-next-sui-idea",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/idea/find-next-sui-idea",
-      "sha256": "f6409913a6cb0a03a954d7df78298cd098284756730efc32278dfb8a3526f5be",
-      "size": 8503,
+      "sha256": "262434182ee4dfc5ecb5555ac02784cbac8e617ac51f3d1c94c3fed5d0aaa450",
+      "size": 8448,
       "version": "0.1.0"
     },
     {
@@ -243,8 +243,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/frontend-design-guidelines.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/frontend-design-guidelines",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/frontend-design-guidelines",
-      "sha256": "1acccff818a19d8f1263df10152b6f9b8c4b21102a629978e28ab08207912c05",
-      "size": 7947,
+      "sha256": "bf75f95834e3e1b804862fe286d4dba4864dd1b551e288f57af4e4c9d9e3a9b6",
+      "size": 7916,
       "version": "0.1.0"
     },
     {
@@ -254,8 +254,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/kiosk-marketplace.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/kiosk-marketplace",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/kiosk-marketplace",
-      "sha256": "c7541d0516a8f57db6e96bb9214d2f3a457cde4cff89e87de06a4644e991bad5",
-      "size": 8013,
+      "sha256": "fa726a55abbf6b9750690426e3e122c8de8ca2e0d9d15e652ffb3b4695925da4",
+      "size": 7988,
       "version": "0.1.0"
     },
     {
@@ -265,8 +265,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/launch-coin.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/launch-coin",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/launch-coin",
-      "sha256": "5ffbc90f1645a24436d3d9fcb1e23b6d1df8fc38d5def4ddc73323e4a28209fa",
-      "size": 7643,
+      "sha256": "6b7340cd17bf9179adbec6c5e85aab0cff5e48b3d1fda0222337085e60d77192",
+      "size": 7650,
       "version": "0.1.0"
     },
     {
@@ -276,8 +276,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/learn.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/learn/learn",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/learn/learn",
-      "sha256": "59ea742bca1ced858a29640eb392d7bc66843c1044b1da7f0ac01d3731d50dfe",
-      "size": 5518,
+      "sha256": "9b8a892c69e4c6f9b2a925a45a1213f0332cdd5674d5382f152c3fca53f5c834",
+      "size": 5490,
       "version": "0.1.0"
     },
     {
@@ -287,8 +287,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/marketing-video.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/ship/marketing-video",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/ship/marketing-video",
-      "sha256": "1fcc4dbe14d0ca0dca18893f32d7ecd22bfe4521bd0d116d9c3eee52c0975a7d",
-      "size": 5306,
+      "sha256": "edb0ae9c5379e94e099af3519bd3c5909ed1f065e148d26d0ce640810ad30782",
+      "size": 5293,
       "version": "0.1.0"
     },
     {
@@ -298,8 +298,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/nautilus-offchain.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/nautilus-offchain",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/nautilus-offchain",
-      "sha256": "3de46770dd35666156ba547d80391a90c0d6be255bf50be65c89e30e70db5529",
-      "size": 8190,
+      "sha256": "52c2062f432709bfffb6578c43980ae790c44e4c431032a76741787c115a3b99",
+      "size": 8186,
       "version": "0.1.0"
     },
     {
@@ -309,8 +309,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/navi-lending.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/navi-lending",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/navi-lending",
-      "sha256": "c5b793bac106f5f827d73db5b2991ff13745f70771685eccdeb552213e41bb6f",
-      "size": 6969,
+      "sha256": "db658e677fc6cdba47e4db3f8f0bb72ef47d407417009b88ad88cecd2b7bb55b",
+      "size": 6954,
       "version": "0.1.0"
     },
     {
@@ -320,8 +320,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/navigate-skills.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/navigate-skills",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/navigate-skills",
-      "sha256": "3f9689634a5ad3d555fdec736aa081e8405960c4562c9c35e1ae046409dcd6a7",
-      "size": 5601,
+      "sha256": "5800be852f7d633dff4ffbb0b3bcd4b1daa1c04b93495f3c26c57b08087cd3a8",
+      "size": 5586,
       "version": "0.1.0"
     },
     {
@@ -331,8 +331,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/number-formatting.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/number-formatting",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/number-formatting",
-      "sha256": "2d8362397ba638f6fd756d9ae6b996bceb860f0300c133d08f195b8aa8aba87d",
-      "size": 6064,
+      "sha256": "b55434ac752e029a7993e4ab902d28c4044cc5c72476f03ff8f81e6ad75cf795",
+      "size": 6040,
       "version": "0.1.0"
     },
     {
@@ -342,8 +342,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/object-model-design.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/object-model-design",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/object-model-design",
-      "sha256": "1684e3a35d39c3366acd230a6c1d2551afd896edcf30406efac7f2dd0ba9b60e",
-      "size": 9398,
+      "sha256": "b8c810ed14dff19d0fbb71e08555d48730e5c17432ce5ea32c609f275c65ced7",
+      "size": 9357,
       "version": "0.1.0"
     },
     {
@@ -353,8 +353,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/openzeppelin-sui-libs.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/openzeppelin-sui-libs",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/openzeppelin-sui-libs",
-      "sha256": "36f36ea41ac5fccd05fe456116382b4ec2868ce4041681ab86208a03e0ae7fca",
-      "size": 10931,
+      "sha256": "533cfb0b6d2c7644871f8cfbc358f502be727599f95a84c7efdbdbf8784e0a56",
+      "size": 10942,
       "version": "0.1.0"
     },
     {
@@ -364,8 +364,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/ottersec-prep.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/ottersec-prep",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/ottersec-prep",
-      "sha256": "f47f0ee982b7fbb2dece4e3de328f93b065996674d244cdbb7bd650db05420a8",
-      "size": 9402,
+      "sha256": "86047b05afde710ed474ba49ac36681c90391d29c0876057aa7f761f7831df1f",
+      "size": 9362,
       "version": "0.1.0"
     },
     {
@@ -375,8 +375,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/overflow-copilot.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/idea/overflow-copilot",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/idea/overflow-copilot",
-      "sha256": "a03945e303d5bcd7d76f0f9179bed4e1feeccaa9885659087e4dc1d08a6231a4",
-      "size": 7782,
+      "sha256": "4e5d5806f7627d139bb27376d4dcf44f60d8cc863e5f6db5e4dbe6588c3dec04",
+      "size": 7758,
       "version": "0.1.0"
     },
     {
@@ -386,8 +386,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/page-load-animations.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/page-load-animations",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/page-load-animations",
-      "sha256": "d6a56da7ad6455fcf91e29f98f488dcecfaaec54ba0ed5ca5f6721061e9add5b",
-      "size": 6069,
+      "sha256": "9a3845c37c301d627376bb44d947aebc6c9fb15dd60a85cd05239e11fcf8ff62",
+      "size": 6051,
       "version": "0.1.0"
     },
     {
@@ -397,8 +397,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/pick-my-sui-track.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/ship/pick-my-sui-track",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/ship/pick-my-sui-track",
-      "sha256": "03660b9fa1922e932381d3c2226e183a32f26a95fdf8743b096214c4ce7936d3",
-      "size": 10817,
+      "sha256": "606ffe615c7b442640ab8045813dcc22187c4d72e5a734cc1a7116a0d8ff9b5c",
+      "size": 10764,
       "version": "0.1.0"
     },
     {
@@ -408,8 +408,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/plan-before-code.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/plan-before-code",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/plan-before-code",
-      "sha256": "97224421441cbe241bd2a19ca5a5a315f1d1b483fc34581504fa1499c1f79e37",
-      "size": 5092,
+      "sha256": "549522e0e7df798d9abb5ceeed1b8ff23c2aa1332362a023ca4e59ffc3041cc1",
+      "size": 5087,
       "version": "0.1.0"
     },
     {
@@ -419,8 +419,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/product-review.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/product-review",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/product-review",
-      "sha256": "4b8c4c180931f461d0d60db807f048f39aadf81756508da57d15d7e14a61563b",
-      "size": 6448,
+      "sha256": "28c1a0c4a3b4632c7f00a4fd50abcefa69869888edf0f3b598ba6da96670591d",
+      "size": 6439,
       "version": "0.1.0"
     },
     {
@@ -430,8 +430,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/ptb-composer.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/ptb-composer",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/ptb-composer",
-      "sha256": "823df6f4db4683258cb888b00de2b41be04faf790e010271ec9410f6fdb86e51",
-      "size": 8018,
+      "sha256": "f50223bee049912ced9562f19a876573e67b364d3f0b4a24b8b7d73b38e26822",
+      "size": 8020,
       "version": "0.1.0"
     },
     {
@@ -441,7 +441,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/pyth-oracle.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/pyth-oracle",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/pyth-oracle",
-      "sha256": "8195c4c943bcda12ea357bc18e1c66aa08512921a092c957781214a3a8dd443c",
+      "sha256": "3c623ed8b4d3a6c01372eab3e5c0258a58f312761f540a3a23505f0b07fb5423",
       "size": 9944,
       "version": "0.1.0"
     },
@@ -452,8 +452,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/retention-loop.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/retention-loop",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/retention-loop",
-      "sha256": "f2381d8b88106802c1e80edb25bcb7d3273d6b693a6ba3ee9c9a83dc2d5a844f",
-      "size": 6539,
+      "sha256": "28fd6e3046e1439bd239a5328d91db78c277ff4883b791dda1ff6df38cab66df",
+      "size": 6528,
       "version": "0.1.0"
     },
     {
@@ -463,8 +463,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/review-move.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/review-move",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/review-move",
-      "sha256": "764efeef066c1ec19f926de22b29783023619d25a03d81971a98db15caebb460",
-      "size": 7944,
+      "sha256": "eb6ce79ebc57b823ec51fcf39e05fd4486867220945a4f4bf711dd6dbdbe34d2",
+      "size": 7933,
       "version": "0.1.0"
     },
     {
@@ -474,8 +474,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/roast-my-product.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/roast-my-product",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/roast-my-product",
-      "sha256": "accb3f275532b2b5268d53fda347aaa1650f6a445ceb27cdba0eed9fae802d30",
-      "size": 6497,
+      "sha256": "c9edfc0f8c91da15130d096ae1403ed0a82cafa53a3104fdd4cfeb10645d2f57",
+      "size": 6478,
       "version": "0.1.0"
     },
     {
@@ -485,8 +485,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/scaffold-project.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/scaffold-project",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/scaffold-project",
-      "sha256": "4c4b312f58d6bc836f85cf2b96b3f5078ddef18aa25976b2fb72a43b9e267b11",
-      "size": 6397,
+      "sha256": "3d0eb70cbc046f16a54a343e74487145398d4d9446eac25242f48067ebe8f7da",
+      "size": 6406,
       "version": "0.1.0"
     },
     {
@@ -496,8 +496,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/scallop-money-market.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/scallop-money-market",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/scallop-money-market",
-      "sha256": "fa45a9d2714507cf4db87427b4fec0b4964982f2a3f7ceb44ad22f7056ba1e63",
-      "size": 8370,
+      "sha256": "9abab7a612d99baf0cfe087fb0b733d0ab276926de39ad7aab22d8d40be68b31",
+      "size": 8374,
       "version": "0.1.0"
     },
     {
@@ -507,8 +507,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/seal-access-control.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/seal-access-control",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/seal-access-control",
-      "sha256": "f68d3ece4ac422c390843848ded3d3bb3f225fece8361f2e4b314c581cab67f5",
-      "size": 9833,
+      "sha256": "5f458ad786f5df9f08ad5d20d7e6b7fd35ea342ac1b6a1778660a654c11b981b",
+      "size": 9836,
       "version": "0.1.0"
     },
     {
@@ -518,7 +518,7 @@
       "tarballUrl": "https://suiperpower.dev/skills/sponsored-transactions.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/sponsored-transactions",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/sponsored-transactions",
-      "sha256": "46aee848fc1c23d3efac0a26270d05e4274175e76f8e59a2befc83afa8356cf1",
+      "sha256": "3ba9892dd730878340f77eb691c1be220e7e969262c6d7552202662a66ed26fa",
       "size": 8624,
       "version": "0.1.0"
     },
@@ -529,8 +529,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/submit-to-sui-overflow.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/ship/submit-to-sui-overflow",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/ship/submit-to-sui-overflow",
-      "sha256": "7e9e1084a058eda8bf8400709b7f03951d25ca4654ebcb1d869507423686b953",
-      "size": 6376,
+      "sha256": "5bdadae551ee675d32608192b26b44ce9be353e3a8ef960b2b438c646dbca357",
+      "size": 6366,
       "version": "0.1.0"
     },
     {
@@ -540,8 +540,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/sui-beginner.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/learn/sui-beginner",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/learn/sui-beginner",
-      "sha256": "0d0bec776a7311013dc0e81b929d44ad5ce859c6136f77687510a64086b4eb56",
-      "size": 7037,
+      "sha256": "798dc66c3f36963d3c3c984de60e92dba62a57d5ec9dd37a78fe22a6c4c595a0",
+      "size": 7022,
       "version": "0.1.0"
     },
     {
@@ -551,8 +551,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/sui-zk-login.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/sui-zk-login",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/sui-zk-login",
-      "sha256": "2b5d4b4c128394da3e71572e008034c81bf32c7994026d760ddf40461a95b875",
-      "size": 9846,
+      "sha256": "01c6351728acac5d68512e5567667150cffddaeb355141c9a0882a23bf8b9840",
+      "size": 9844,
       "version": "0.1.0"
     },
     {
@@ -562,8 +562,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/suins-integration.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/suins-integration",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/suins-integration",
-      "sha256": "b4aaa771e939bdc22c5641cb353736aed0134adb4d6e18faeab745591afb9c58",
-      "size": 7602,
+      "sha256": "a429101208dfd12c85d4b9c79531f8d8a129331c6b4ece85f2e941aff04d8495",
+      "size": 7595,
       "version": "0.1.0"
     },
     {
@@ -573,8 +573,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/validate-business-model.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/validate-business-model",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/validate-business-model",
-      "sha256": "bf8e9f5665de4dfdcdc553d1bcedf953c7575c573dc5be312b9b79f273c31212",
-      "size": 6568,
+      "sha256": "1d9e4f355b3f202858f8037a7c58128562ad595de2ba11259e1812762d9fbcc4",
+      "size": 6538,
       "version": "0.1.0"
     },
     {
@@ -584,8 +584,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/validate-idea.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/idea/validate-idea",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/idea/validate-idea",
-      "sha256": "fd08826e285ffb0bb3246cccf19f260462bbf44f1d466f89f333bfdcd501d3c0",
-      "size": 6503,
+      "sha256": "af8ad2190bc9feb5a309e9beab70754f4589c04868dc1cf7eaf8ad1c769c58da",
+      "size": 6475,
       "version": "0.1.0"
     },
     {
@@ -595,8 +595,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/verify-against-intent.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/verify-against-intent",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/verify-against-intent",
-      "sha256": "aaaa549d85e0aabae225493e05a8b0ad01683b9c6a61014a2710326262a9a187",
-      "size": 4705,
+      "sha256": "33d4c7e297c7554cbe28d5e8b8661148518fe24e01a53b4a3ed3b61debb51f8f",
+      "size": 4703,
       "version": "0.1.0"
     },
     {
@@ -606,8 +606,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/video-craft.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/ship/video-craft",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/ship/video-craft",
-      "sha256": "55e13d8b086688a3429c5f6f9966af1f28da8db36cc6ae165324326347917a34",
-      "size": 5230,
+      "sha256": "bf851359af79f94f8761c3f554490a65d828b684573874c3058828acdeea0c6d",
+      "size": 5213,
       "version": "0.1.0"
     },
     {
@@ -617,8 +617,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/virtual-sui-incubator.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/virtual-sui-incubator",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/virtual-sui-incubator",
-      "sha256": "9534ef05d532a9f8f995f5c139df28087abed9c10fd770c3530fb579d438b237",
-      "size": 7130,
+      "sha256": "247d9caabff47ad18937333a7257a77a1e3e9f082bbecb85d53038dd622b9e2b",
+      "size": 7113,
       "version": "0.1.0"
     },
     {
@@ -628,8 +628,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/walrus-research.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/idea/walrus-research",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/idea/walrus-research",
-      "sha256": "ca09b3136be715724835359c1a7996480516f82e5da0f549159f28ee5ec393c3",
-      "size": 6808,
+      "sha256": "f396c402089ec4a38a53b3427f2b893f7ea8f814fda8427238ea25f67d7799cb",
+      "size": 6790,
       "version": "0.1.0"
     },
     {
@@ -639,8 +639,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/walrus-sites.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/walrus-sites",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/walrus-sites",
-      "sha256": "2e3201b1e7edec340623e3dc00d284fde3a4aa28858f95a7cd79eacedc341d61",
-      "size": 6469,
+      "sha256": "34b5387469205cfceddc9d3d89d185ca00d3a21bb75cca793b7967db73f5b2e4",
+      "size": 6461,
       "version": "0.1.0"
     },
     {
@@ -650,8 +650,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/walrus-storage.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/walrus-storage",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/walrus-storage",
-      "sha256": "f1bd09b001aef57b5e7dc2b234ff8617fa70015347a69f74b01d822e676676e5",
-      "size": 10802,
+      "sha256": "55b8470ff0d6c81c6e0a9d3e9337153334a821fe7445e24a9be9289143b4cf6a",
+      "size": 10798,
       "version": "0.1.0"
     },
     {
@@ -661,8 +661,8 @@
       "tarballUrl": "https://suiperpower.dev/skills/will-real-users-pay.tar.gz",
       "githubPath": "pivyme/suiperpower/skills/build/will-real-users-pay",
       "npxCmd": "npx skills add pivyme/suiperpower/skills/build/will-real-users-pay",
-      "sha256": "ed9fa1097b4a9c5c91deb120d548a69c4cc87ce2d910c7665006468ce2cdb0b0",
-      "size": 6100,
+      "sha256": "910e5ff373fc926c813674c67b53dc67628fa15eba0f60096513655fd61c9cd3",
+      "size": 6082,
       "version": "0.1.0"
     }
   ]

@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router";
+import { AnimatePresence, motion } from "motion/react";
 import {
-  IconArrowLeft,
   IconArrowUpRight,
   IconBrandGithub,
   IconCheck,
   IconChevronDown,
+  IconChevronLeft,
   IconCopy,
   IconDownload,
   IconExternalLink,
@@ -102,17 +103,13 @@ export function SkillsPage() {
 
       <section className="relative w-full px-4 md:px-12 pt-10 md:pt-14 pb-24 flex flex-col items-center">
         <div className="max-w-5xl w-full">
-          <CliHintBanner />
-
-          <div className="mt-8 md:mt-10">
-            <Toolbar
-              phase={phase}
-              onPhaseChange={setPhase}
-              query={query}
-              onQueryChange={setQuery}
-              counts={counts}
-            />
-          </div>
+          <Toolbar
+            phase={phase}
+            onPhaseChange={setPhase}
+            query={query}
+            onQueryChange={setQuery}
+            counts={counts}
+          />
 
           <div className="mt-10 md:mt-14">
             {filtered.length > 0 ? (
@@ -152,7 +149,7 @@ function SkillsHero() {
           to="/"
           className="inline-flex items-center gap-1.5 text-neutral-400 hover:text-neutral-200 text-sm font-medium transition-colors"
         >
-          <IconArrowLeft className="size-4 text-neutral-500" />
+          <IconChevronLeft className="size-4 text-neutral-500" />
           Back home
         </Link>
 
@@ -164,16 +161,22 @@ function SkillsHero() {
           plain markdown, audit-friendly, open source.
         </p>
 
-        <div className="mt-8 md:mt-10 flex flex-wrap items-center gap-3">
-          <a
-            href={`${GITHUB_LINK}/tree/main/core/skills`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center gap-2 bg-white text-black hover:bg-white/90 transition-colors rounded-xl px-5 py-3 font-medium text-sm"
-          >
-            View source on GitHub
-            <IconArrowUpRight className="size-4" />
-          </a>
+        <div className="mt-10 md:mt-12 w-full max-w-2xl flex flex-col gap-3 md:gap-4">
+          <div className="flex items-center justify-between gap-3">
+            <div className="font-medium bg-white rounded-xl text-black px-5 py-2 text-sm md:text-base md:px-6">
+              Install any skill
+            </div>
+            <a
+              href={`${GITHUB_LINK}/tree/main/core/skills`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-1.5 text-white/60 hover:text-white transition-colors font-medium text-sm"
+            >
+              <IconBrandGithub className="size-4" />
+              View source on GitHub
+            </a>
+          </div>
+          <CliHintBanner />
         </div>
       </div>
     </div>
@@ -195,34 +198,23 @@ function CliHintBanner() {
   }
 
   return (
-    <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 md:py-3.5">
-      <div className="flex items-center gap-2 shrink-0 text-white/70">
-        <IconTerminal2 className="size-4" />
-        <span className="text-sm font-medium">Install any skill</span>
+    <button
+      onClick={copy}
+      disabled={copied}
+      className="w-full bg-white/5 rounded-xl border border-white/10 backdrop-blur-md py-4 md:py-5 px-4 md:px-6 flex items-center gap-3 md:gap-4 overflow-hidden text-left"
+      aria-label="Copy install command"
+    >
+      <pre className="font-mono text-xs md:text-base overflow-x-auto flex-1 text-white">
+        <code>{example}</code>
+      </pre>
+      <div className="flex items-center justify-center text-white">
+        {copied ? (
+          <IconCheck className="size-5" />
+        ) : (
+          <IconCopy className="size-5" />
+        )}
       </div>
-      <div className="flex-1 flex items-center gap-2 min-w-0">
-        <code className="flex-1 truncate text-xs md:text-sm font-mono text-white/80 bg-black/30 rounded-lg px-3 py-2">
-          {example}
-        </code>
-        <button
-          onClick={copy}
-          className="flex items-center gap-1.5 rounded-lg bg-white/[0.06] hover:bg-white/[0.1] text-white/80 px-3 py-2 text-xs font-medium transition-colors"
-          aria-label="Copy install command"
-        >
-          {copied ? (
-            <>
-              <IconCheck className="size-3.5" />
-              Copied
-            </>
-          ) : (
-            <>
-              <IconCopy className="size-3.5" />
-              Copy
-            </>
-          )}
-        </button>
-      </div>
-    </div>
+    </button>
   );
 }
 
@@ -419,12 +411,18 @@ function SkillInstallMenu({
         />
       </button>
 
+      <AnimatePresence>
       {open && (
-        <div
+        <motion.div
           role="menu"
+          initial={{ opacity: 0, scale: 0.95, y: -4 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: -4 }}
+          transition={{ duration: 0.15, ease: "easeOut" }}
+          style={{ transformOrigin: "top right" }}
           className="absolute right-0 top-full mt-2 z-20 w-72 rounded-xl border border-white/10 bg-neutral-950 shadow-2xl overflow-hidden"
         >
-          <div className="px-3 pt-3 pb-1 text-[10px] uppercase tracking-wider text-white/40 font-semibold">
+          <div className="px-3 pt-3 pb-1 text-[10px] uppercase text-white/40 font-semibold">
             One command
           </div>
           <button
@@ -452,7 +450,7 @@ function SkillInstallMenu({
 
           <div className="h-px bg-white/[0.06] mx-3" />
 
-          <div className="px-3 pt-2 pb-1 text-[10px] uppercase tracking-wider text-white/40 font-semibold">
+          <div className="px-3 pt-2 pb-1 text-[10px] uppercase text-white/40 font-semibold">
             Other options
           </div>
           <a
@@ -512,8 +510,9 @@ function SkillInstallMenu({
               </div>
             </div>
           </a>
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </div>
   );
 }
