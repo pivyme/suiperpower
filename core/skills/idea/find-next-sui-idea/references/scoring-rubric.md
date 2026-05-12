@@ -24,19 +24,19 @@ Is the demand visible right now?
 - **2**: maybe a future market, hard to validate today.
 - **1**: speculative. Built on assumptions about future user behavior.
 
-A score of 1 or 2 here is fine for a research bet but not for a 4-week sprint.
+A score of 1 or 2 here means the demand story is speculative, fine for a research bet, weaker if the user wants real users at launch.
 
 ## Builder fit (1-5)
 
-Can THIS user, on THIS timeline, ship a v1?
+Can THIS user ship a v1 with AI-assisted pace? Default optimistic. AI pair-coding compresses former multi-week Move and frontend work into days, so do not score down just because the idea sounds big or the user is solo.
 
-- **5**: matches their prior experience and the timeline is generous.
-- **4**: stretch but reasonable.
-- **3**: doable with focus.
-- **2**: tight, needs cuts to scope.
-- **1**: unrealistic. Either the user has not shipped at this complexity before, or the timeline is too short.
+- **5**: matches the user's prior experience or stack, agent can carry most of the unfamiliar parts.
+- **4**: stretch but the unknowns are scoped and named.
+- **3**: doable, requires the user to learn one new primitive (e.g. first time on Walrus or DeepBook).
+- **2**: requires multiple genuinely new primitives at once with no canonical reference, agent will need heavy author guidance.
+- **1**: requires novel research the user has to drive personally (new cryptographic protocol, custom oracle infra, untested L1 work), not just "lots of code".
 
-A score of 1 here means the idea is wrong for this user, even if it is right in the abstract.
+Score 1 only on genuine research gaps, not on apparent scope. "Build a perp dex" is not a 1, "build a new ZK proof system from scratch" is. If the user has a hard external deadline (Overflow cutoff) and the candidate clearly needs research-grade work to even start, note it as a Risk in the writeup rather than killing the candidate outright.
 
 ## Differentiation (1-5)
 

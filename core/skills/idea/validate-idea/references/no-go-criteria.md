@@ -8,7 +8,7 @@ If any of these fire, the recommendation is `no-go`. The user can override, but 
 
 - **No demand evidence at all.** No paying users elsewhere, no public discussion, no sponsor signal, no personal frustration. Pure speculation.
 - **Idea is on the non-sui-native rejection list with no override.** The chain choice fights the idea.
-- **Feasibility is "no" on the user's timeline AND no cuts can make it "yes-with-cuts".** A 4-week idea that requires a 6-month custom oracle is not a 4-week idea.
+- **Feasibility requires research-grade work the user must drive personally** (new cryptographic primitive, untested L1 work, custom consensus, novel oracle infra) AND the user has a hard external deadline that cannot accommodate that research. Application-layer scope does not qualify, AI-assisted pace handles that. Only trigger on genuine research gaps, not on "this sounds big".
 - **Sui-native fit is weak (1-2) AND market timing is weak (1-2).** No edge, no urgency.
 - **The user cannot articulate the riskiest assumption.** If you cannot say what would have to be true for this to work, you do not understand the idea well enough to commit to it.
 
@@ -18,7 +18,6 @@ These do not auto-kill, but they steer toward a pivot:
 
 - **Demand evidence is weak.** Cheap experiments first; do not scaffold yet.
 - **Competition is crowded with no clear differentiation.** The user must articulate the angle in one sentence; "we will be cheaper" is not enough.
-- **Feasibility is "yes-with-cuts" and the user has not agreed to the cuts.** Get explicit scope alignment first.
 - **Sui-native fit is medium.** The idea works on Sui but the angle is not specific. Push for an angle (a specific Walrus, DeepBook, Kiosk, or zkLogin integration) before scaffolding.
 
 ## Common false-positive go signals

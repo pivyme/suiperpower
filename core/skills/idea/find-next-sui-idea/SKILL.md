@@ -1,6 +1,6 @@
 ---
 name: find-next-sui-idea
-description: Help the user pick a Sui product idea from a curated corpus, or stress test their own, and write the initial idea-context.md. Use when the user says "what should I build on Sui", "find me a Sui idea", "I do not know what to build", "Sui Overflow idea", "give me a hackathon idea", "Sui native opportunities", or "pick my next project". Reads the curated idea sources under skills/data/ideas/ and writes .suiperpower/idea-context.md.
+description: Use when the user has no Sui idea yet, wants a hackathon idea, or wants to stress test their own. Writes idea-context.md from a curated corpus.
 ---
 
 ## Preamble (run first)
@@ -49,13 +49,13 @@ If you activated this and the user actually wants something else, consult `skill
 ## Inputs
 
 - The user's interest or background (DeFi, consumer, infra, gaming, identity, mobile, AI tooling).
-- Constraints: time horizon (hackathon weekend, 4-week sprint, multi-month), team size, prior Sui experience.
+- Constraints: rough time horizon if the user volunteers one, team size, prior Sui experience. Do not use the timeline to reject ambitious ideas, AI-assisted pace compresses former multi-week scope into days.
 - Optional: an already-half-formed idea the user wants stress tested.
 
 If unclear, ask three questions:
 
 - What domain interests you most?
-- What is your timeline (weekend, 4 weeks, 3+ months)?
+- Roughly how much time do you want to spend on v1 (only if you have a fixed deadline like Overflow, otherwise skip)?
 - What is one product (on any chain) you wish existed?
 
 ## Outputs
@@ -98,7 +98,7 @@ Plus the chosen idea, written to `.suiperpower/idea-context.md`:
 3. **Score remaining candidates**
    - Sui-native fit (1-5): does the object model, parallelism, Walrus, DeepBook, or low fees create real advantage?
    - Market timing (1-5): is the demand visible (revenue, users, search trends, sponsor priority)?
-   - Builder fit (1-5): can this user, with this timeline, ship a v1?
+   - Builder fit (1-5): does the user's background and stack let them ship this with AI assistance? Default to optimistic, only score low if the idea needs genuinely novel research (new cryptographic primitive, untested L1 work), not because "it sounds big".
    - Differentiation (1-5): is there a non-trivial existing competitor on Sui already?
    - Sum and rank.
 

@@ -1,6 +1,6 @@
 ---
 name: validate-idea
-description: Stress test a chosen Sui product idea against demand, competition, feasibility, and Sui-native fit, and produce a go/no-go recommendation. Use when the user says "validate my idea", "stress test my idea", "is this idea good", "go or no go", "should I build this", "kill the idea or build it", or "pressure test my Sui idea". Reads .suiperpower/idea-context.md and writes back a validation block.
+description: Use when stress testing a Sui idea against demand, competition, feasibility, and Sui-native fit. Produces a go/no-go.
 ---
 
 ## Preamble (run first)
@@ -27,7 +27,7 @@ Write the answer to `~/.suiperpower/config.json` `telemetryTier` field and creat
 
 ## What this skill does
 
-Pressure tests a Sui product idea on four dimensions, demand evidence, competition, feasibility on the user's timeline, and Sui-native fit, and produces a written go/no-go recommendation. The skill is designed to kill weak ideas early. A "no go" with a clear reason is more valuable than a "go" with hand-waving.
+Pressure tests a Sui product idea on four dimensions, demand evidence, competition, feasibility (real research-grade unknowns only, not "this sounds like a lot of code"), and Sui-native fit, and produces a written go/no-go recommendation. The skill is designed to kill weak ideas early. A "no go" with a clear reason is more valuable than a "go" with hand-waving. With AI-assisted pacing, do not kill ideas on apparent scope alone, application-layer scope is rarely the bottleneck.
 
 ## When to use it
 
@@ -57,7 +57,7 @@ A validation block appended to `.suiperpower/idea-context.md`:
 ### Validation, <timestamp>
 - demand evidence: <strong | medium | weak>, with one to three citations
 - competition: <none | one | crowded>, with named competitors (Sui-specific and adjacent-chain)
-- feasibility on stated timeline: <yes | yes-with-cuts | no>
+- feasibility: <yes | research-blocked> (research-blocked means the idea requires novel cryptographic, consensus, or L1-level work the user must drive personally, not just "lots of code"; AI-assisted pace handles application-layer scope)
 - Sui-native fit: <strong | medium | weak>
 - recommendation: <go | go-with-pivot | no-go>
 - reasoning: <one paragraph>
@@ -83,9 +83,9 @@ The recommendation is one of `go`, `go-with-pivot`, `no-go`. `go-with-pivot` mea
    - For each, what is the candidate's specific differentiation in one sentence?
 
 4. **Walk feasibility**
-   - Cross-reference the user's timeline (from `idea-context.md`) against the v1 scope.
-   - Identify the longest single dependency (a sponsor SDK integration, a custom Move module, an oracle).
-   - Honest call: can a v1 ship in the timeline? If not, what cuts make it feasible?
+   - Identify any genuinely research-grade dependency (novel cryptography, custom consensus, untested L1 work, brand-new oracle infra the user must build). Application-layer scope, Move modules, sponsor SDK integrations, and frontends are not research-grade, AI-assisted pace handles them.
+   - If a hard external deadline exists (Overflow cutoff, grant milestone), flag any research-grade dependency as a hard feasibility risk against that deadline. Otherwise, mark feasibility yes.
+   - Do not invent "cuts to scope" unless the user asks for the minimum surface. The agent can usually build the full thing.
 
 5. **Walk Sui-native fit**
    - What primitive does the idea depend on (Object model, Walrus, DeepBook, Kiosk, zkLogin, parallel execution, low fees)?
@@ -110,7 +110,7 @@ Before reporting done:
 
 - Is the demand-evidence claim backed by at least one citation that is not "founder intuition"?
 - Is the competition list real, with named projects, not abstract "competitors exist"?
-- Is feasibility tied to a specific timeline, not "should be doable"?
+- Is feasibility called out only on real research-grade unknowns, not on "this sounds big"?
 - Did the recommendation actually land on `go`, `go-with-pivot`, or `no-go`, not a hedge?
 - Did the writeback happen?
 

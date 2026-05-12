@@ -27,6 +27,10 @@ out/
 coverage/
 .nyc_output/
 
+# Skills phase directory named "build" is content, not output
+!core/skills/build/
+!core/skills/build/**
+
 # Move package build artifacts (inside any Move package)
 **/Move.toml.lock
 **/sources/.move-build/

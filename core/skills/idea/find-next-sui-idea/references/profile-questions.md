@@ -5,7 +5,7 @@ The fastest way to filter a 200-idea corpus is a 90-second profile pass. Pick fr
 ## Mandatory (always ask if unclear)
 
 1. What domain feels obvious to you (DeFi, consumer, infra, gaming, identity, mobile, AI tooling)?
-2. What is your timeline (hackathon weekend, 4-week sprint, multi-month)?
+2. Is there a hard external deadline (Overflow cutoff, grant milestone)? If yes, when. If no, skip, do not invent one.
 3. Are you solo or a team? If team, who has Move experience?
 4. Have you shipped on EVM or Solana before? If yes, briefly, what?
 
@@ -20,8 +20,8 @@ The fastest way to filter a 200-idea corpus is a 90-second profile pass. Pick fr
 ## What the answers gate
 
 - **Domain** -> filter the corpus to that domain plus one adjacent.
-- **Timeline** -> reject ideas that need more than the timeline allows. A weekend project should never need a custom oracle.
-- **Solo / team / Move experience** -> reject ideas that need novel Move work if no one has Move experience and the timeline is short.
+- **Deadline** -> if a hard external one exists, only use it to flag research-grade unknowns (custom cryptography, novel consensus work, untested L1 changes) as risks. Do not use it to reject application-layer ideas, AI-assisted Move and frontend builds compress former multi-week scope into days.
+- **Solo / team / Move experience** -> bias toward ideas where the agent can carry the unfamiliar parts. Only reject if the idea needs research-grade work the user must drive personally.
 - **Prior chain experience** -> bias toward ideas where the prior experience translates (a EVM DeFi person should look at Sui DeFi, not Sui gaming).
 - **Wished-for product** -> if it does not exist for a reason (regulatory, technical, market), name the reason. If it does not exist for no reason, that is often the best lead.
 - **Distribution** -> ideas that need cold-start distribution should be deprioritized for builders without a community.
@@ -42,9 +42,9 @@ These produce generic answers. The questions above produce filterable signal.
 A one-paragraph summary the skill writes to itself before reading the corpus:
 
 ```
-profile: <domain>, <timeline>, <team shape>, <chain experience>, <distribution status>
+profile: <domain>, <hard deadline or none>, <team shape>, <chain experience>, <distribution status>
 filter: <which corpus categories to include>
-reject: <which corpus categories to exclude>
+reject: <which corpus categories to exclude, e.g. research-grade work the user cannot drive>
 ```
 
 Then, and only then, query the corpus.

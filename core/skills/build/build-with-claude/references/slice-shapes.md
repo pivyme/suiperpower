@@ -1,6 +1,6 @@
 # Common slice shapes
 
-A "slice" is a unit of MVP work that fits in a single commit. Aim for 30 to 90 minutes of focused work.
+A "slice" is a unit of work that fits in a single reviewable commit, defined by a clear "done" check, not by a clock. With AI-assisted pacing, a slice may finish in minutes or stretch longer, what matters is that it has one observable outcome and a passing build at the end.
 
 ## Move-only slice
 
@@ -65,11 +65,11 @@ Example slice intent: "audit-prep pass before mainnet."
 
 ## Slice anti-patterns
 
-- "Build the whole feature." Too big. Split.
+- "Build the whole feature with no done-check." Split until every chunk has one observable outcome and one passing build.
 - "Refactor everything." Probably not a slice; it is a project. Defer until needs are concrete.
-- "Add three sponsor integrations." Each is its own slice.
+- "Add three sponsor integrations in one commit." Each is its own slice, mainly so the load-bearing test for each is reviewable.
 - "Polish the UI." Vague. Pick a specific screen and a specific quality bar.
 
-A slice that takes more than 2 hours of focused work is too big. Break it down before starting.
+A slice is too big when it has more than one done-check or more than one passing-build moment inside it. Time is not the constraint, reviewability is.
 
 Last updated: 2026-05-10.

@@ -1,0 +1,12 @@
+name: verify-against-intent
+version: 1
+phase: build
+description: Use when verifying a finished Sui build session, checking whether Move code, capabilities, sponsor integrations, and upgrades match intent.md and build-plan.md.
+prompt_path: ../SKILL.md
+references: []
+knowledge:
+  - plans/12-ANTI-SLOP-FRAMEWORK.md
+  - plans/11-SPONSOR-INTEGRATION.md
+  - plans/30-SHARED-GUIDES-SPEC.md
+  - core/skills/data/sui-knowledge/03-move-and-objects.md
+  - core/skills/data/guides/package-id-capture.md
