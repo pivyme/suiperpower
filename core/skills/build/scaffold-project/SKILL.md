@@ -95,7 +95,7 @@ The skill never deletes files outside the scaffolded directory without explicit 
 
 4. **Frontend setup (if applicable)**
    - Scaffold Next.js or Vite.
-   - Install `@mysten/sui` and `@mysten/dapp-kit`.
+   - Install `@mysten/sui`, `@mysten/dapp-kit-core`, and `@mysten/dapp-kit-react`. The legacy `@mysten/dapp-kit` package is deprecated and does not support gRPC or GraphQL.
    - Write a starter page that connects to a wallet and reads the user's address.
 
 5. **Sponsor defaults (if applicable)**
