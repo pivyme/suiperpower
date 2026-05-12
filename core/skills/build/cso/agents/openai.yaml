@@ -1,0 +1,16 @@
+name: cso
+version: 1
+phase: build
+description: |
+  Run a comprehensive infrastructure security audit on a Sui project covering
+  OWASP, STRIDE threat modeling, dependency supply chain, RPC security,
+  key management, and frontend hardening.
+  Use when the user says "security audit", "infrastructure security", "OWASP",
+  "threat model", "security review", "CSO audit", "pentest my app",
+  "harden my Sui app", "check my app security", "STRIDE analysis",
+  "supply chain audit", or "key management review".
+  Reads .suiperpower/build-context.md if present.
+prompt_path: ../SKILL.md
+references:
+  - ../references/security-checklist.md
+  - ../references/supply-chain-audit.md
