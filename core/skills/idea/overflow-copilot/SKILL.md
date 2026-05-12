@@ -29,6 +29,8 @@ Write the answer to `~/.suiperpower/config.json` `telemetryTier` field and creat
 
 Searches the Sui Overflow archive (deepsurge.xyz, the official submission and judging platform) for past hackathon projects relevant to a candidate idea. Returns a summary of what has been tried, what won, what failed, and where gaps remain. Helps the user position their candidate against history rather than reinventing it.
 
+Includes structured data from the 2025 Sui Overflow winners (46 projects across 9 tracks), covering technology usage, winning patterns, and 1st place projects per track. See `references/overflow-2025-winners.md` for the full dataset.
+
 This is the Sui-specific analog of a "past hackathon copilot". It only covers Sui Overflow; for ecosystem-wide research, route to `competitive-landscape`.
 
 ## When to use it
@@ -123,6 +125,7 @@ If any answer is no, the skill keeps working.
 
 On-demand references (load when relevant to the user's question):
 
+- `references/overflow-2025-winners.md`: Structured 2025 Sui Overflow winner data: technology usage, winning patterns, 1st place projects by track.
 - `references/archive-search-patterns.md`: How to query the deepsurge.xyz archive efficiently.
 - `references/post-overflow-tracking.md`: How to check whether a past project shipped, pivoted, or died.
 
