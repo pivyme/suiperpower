@@ -12,13 +12,13 @@ export function MadeBy() {
     },
     {
       name: "Louis Arvin",
-      role: "Infra intern",
+      role: "Infra",
       link: "https://www.linkedin.com/in/louis-arvin-8a8488268",
     },
     {
       name: "Tengku Farhan",
       role: "Website",
-      link: "https://hanebox.xyz",
+      link: "https://hanebox.github.io",
     },
   ];
 

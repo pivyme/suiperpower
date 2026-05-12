@@ -1,5 +1,5 @@
 import { IconBrandGithub, IconBrandX } from "@tabler/icons-react";
-import { GITHUB_LINK } from "~/config";
+import { GITHUB_LINK, TWITTER_LINK } from "~/config";
 
 export function SiteFooter() {
   const socials = [
@@ -10,7 +10,7 @@ export function SiteFooter() {
     },
     {
       label: "X",
-      href: "https://x.com/",
+      href: TWITTER_LINK,
       icon: IconBrandX,
     },
   ];

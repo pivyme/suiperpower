@@ -5,6 +5,12 @@ import { GrainGradient } from "@paper-design/shaders-react";
 import { GITHUB_LINK, INSTALL_SNIPPET } from "~/config";
 import { HowToUseModal } from "./how-to-use-modal";
 
+const fadeIn = (delay: number) => ({
+  initial: { opacity: 0, filter: "blur(8px)" },
+  animate: { opacity: 1, filter: "blur(0px)" },
+  transition: { duration: 0.8, delay, ease: "easeOut" as const },
+});
+
 export function Hero() {
   const [isCopied, setCopied] = useState(false);
   const [isHowToOpen, setHowToOpen] = useState(false);
@@ -19,45 +25,63 @@ export function Hero() {
   };
   return (
     <div className="relative w-full min-h-screen px-4 md:px-12 flex flex-col items-center justify-center">
-      <GrainGradient
-        width="100%"
-        height="100%"
-        colors={["#155dfc", "#bedbff"]}
-        colorBack="#000000"
-        softness={0.5}
-        intensity={0.1}
-        noise={0.07}
-        shape="wave"
-        speed={0.2}
-        scale={1.5}
-        offsetY={0.3}
-        offsetX={1}
-        className="absolute inset-0 opacity-90"
-      />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.9 }}
+        transition={{ duration: 1.2, delay: 1.5, ease: "easeOut" }}
+        className="absolute inset-0"
+      >
+        <GrainGradient
+          width="100%"
+          height="100%"
+          colors={["#155dfc", "#bedbff"]}
+          colorBack="#000000"
+          softness={0.5}
+          intensity={0.1}
+          noise={0.07}
+          shape="wave"
+          speed={0.2}
+          scale={1.5}
+          offsetY={0.3}
+          offsetX={1}
+          className="w-full h-full"
+        />
+      </motion.div>
       <div className="flex flex-col items-start relative w-full max-w-5xl">
-        <video
+        <motion.video
+          {...fadeIn(0.1)}
           autoPlay
           muted
           playsInline
           loop
-          className="size-20 md:size-24 object-contain bg-red-400"
+          className="size-20 md:size-24 object-contain"
         >
           <source src="/assets/video-logo.mp4" type="video/mp4" />
-        </video>
+        </motion.video>
 
-        <h1 className="text-4xl md:text-5xl font-semibold text-white mt-8 md:mt-10">
+        <motion.h1
+          {...fadeIn(0.2)}
+          className="text-4xl md:text-5xl font-semibold text-white mt-8 md:mt-10"
+        >
           Suiperpower
-        </h1>
-        <p className="text-white/50 font-medium text-xl md:text-3xl mt-4 md:mt-5">
+        </motion.h1>
+        <motion.p
+          {...fadeIn(0.3)}
+          className="text-white/50 font-medium text-xl md:text-3xl mt-4 md:mt-5"
+        >
           Build everything on SUI as easy as prompt
-        </p>
+        </motion.p>
 
         <div className="mt-10 md:mt-12 w-full max-w-2xl flex flex-col gap-3 md:gap-4">
-          <div className="font-medium bg-white rounded-xl text-black px-5 py-2 self-start text-sm md:text-base md:px-6">
+          <motion.div
+            {...fadeIn(0.4)}
+            className="font-medium bg-white rounded-xl text-black px-5 py-2 self-start text-sm md:text-base md:px-6"
+          >
             Install
-          </div>
+          </motion.div>
 
-          <button
+          <motion.button
+            {...fadeIn(0.5)}
             disabled={isCopied}
             onClick={handleCopy}
             className="order-2 md:order-none w-full bg-white/5 rounded-xl border border-white/10 backdrop-blur-md py-4 md:py-5 px-4 md:px-6 flex items-center gap-3 md:gap-4 overflow-hidden"
@@ -91,9 +115,12 @@ export function Hero() {
                 )}
               </AnimatePresence>
             </div>
-          </button>
+          </motion.button>
 
-          <div className="order-4 md:order-none flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-5">
+          <motion.div
+            {...fadeIn(0.6)}
+            className="order-4 md:order-none flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-5"
+          >
             <div className="flex flex-wrap items-center gap-5">
               <button
                 onClick={() => setHowToOpen(true)}
@@ -126,22 +153,28 @@ export function Hero() {
                 50+ skills, CLIs and MCPs to use
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-      <a
+      <motion.a
+        initial={{ opacity: 0, filter: "blur(8px)" }}
+        animate={{ opacity: 1, filter: "blur(0px)" }}
+        transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
         href={GITHUB_LINK}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub"
-        className="absolute top-6 right-4 md:top-10 md:right-10 opacity-50 hover:opacity-80"
+        className="group absolute top-6 right-4 md:top-10 md:right-10"
       >
-        <img
-          src="/assets/github-dark.svg"
-          alt=""
-          className="size-6 object-contain"
-        />
-      </a>
+        <div className="flex items-center gap-2 opacity-50 group-hover:opacity-80 transition-opacity duration-200">
+          <img
+            src="/assets/github-dark.svg"
+            alt=""
+            className="size-5 object-contain"
+          />
+          <span className="text-white font-medium text-sm">pivyme/suiperpower</span>
+        </div>
+      </motion.a>
 
       <HowToUseModal open={isHowToOpen} onClose={() => setHowToOpen(false)} />
     </div>
