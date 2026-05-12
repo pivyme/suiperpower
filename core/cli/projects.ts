@@ -7,12 +7,7 @@
 // Event log grows unbounded in v1. If it ever becomes a problem we cap per
 // project, not here.
 
-import {
-  existsSync,
-  mkdirSync,
-  readFileSync,
-  writeFileSync,
-} from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join, basename, resolve } from "node:path";
 import { randomUUID } from "node:crypto";
@@ -204,7 +199,9 @@ function printList(): void {
   if (all.length === 0) {
     console.log("");
     console.log(`  ${muted("No projects yet.")}`);
-    console.log(`  ${muted("Run")} ${accent(`${BRAND.PRODUCT_NAME} workspace-setup`)} ${muted("inside a project dir to register one.")}`);
+    console.log(
+      `  ${muted("Run")} ${accent(`${BRAND.PRODUCT_NAME} workspace-setup`)} ${muted("inside a project dir to register one.")}`,
+    );
     console.log("");
     return;
   }
@@ -255,7 +252,9 @@ function printShow(query: string): void {
     for (const e of recent) {
       const status = e.status ? ` ${muted(e.status)}` : "";
       const dur = e.durationMs ? muted(` (${Math.round(e.durationMs / 100) / 10}s)`) : "";
-      console.log(`    ${muted(relTime(e.ts).padEnd(10))} ${dim(e.kind)} ${e.value}${status}${dur}`);
+      console.log(
+        `    ${muted(relTime(e.ts).padEnd(10))} ${dim(e.kind)} ${e.value}${status}${dur}`,
+      );
     }
   }
   console.log("");
@@ -265,7 +264,9 @@ function printSet(args: string[]): void {
   const [query, key, ...rest] = args;
   if (!query || !key || rest.length === 0) {
     console.error("usage: projects set <name> <key> <value>");
-    console.error("keys: name, concept, phase, status, notes, github, demo, deployed, tag-add, tag-remove");
+    console.error(
+      "keys: name, concept, phase, status, notes, github, demo, deployed, tag-add, tag-remove",
+    );
     process.exit(1);
   }
   const p = findByNameOrId(query);

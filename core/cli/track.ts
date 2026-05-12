@@ -21,7 +21,7 @@ function takeFlag(args: string[], flag: string): string | undefined {
 }
 
 export async function run(args: string[]): Promise<void> {
-  const positional = args.filter((a) => !a.startsWith("-"));
+  const _positional = args.filter((a) => !a.startsWith("-"));
   // Strip values that follow flags we know about so positional reads correctly.
   const knownValueFlags = ["--duration", "--category"];
   const cleanPositional: string[] = [];

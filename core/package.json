@@ -32,7 +32,7 @@
     "package:skills": "./scripts/package-skills.sh && tsx scripts/generate-skills-index.ts",
     "lint:skills": "tsx scripts/lint-skills.ts",
     "lint:catalog": "tsx scripts/lint-catalog.ts",
-    "test": "pnpm typecheck && pnpm lint:skills && pnpm lint:catalog && pnpm preamble:check",
+    "test": "pnpm typecheck && pnpm -w lint && pnpm lint:skills && pnpm lint:catalog && pnpm preamble:check",
     "test:install": "./scripts/test-install.sh",
     "test:telemetry": "node --env-file=../.env --import tsx scripts/test-telemetry.ts",
     "skills:lock": "tsx scripts/generate-skills-lock.ts",

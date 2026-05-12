@@ -59,7 +59,7 @@ function bashScript(): string {
 }
 
 function zshScript(): string {
-  const cmds = COMMANDS.join(" ");
+  const _cmds = COMMANDS.join(" ");
   const lines: string[] = [];
   lines.push(`#compdef ${BRAND.PRODUCT_NAME} suiper`);
   lines.push(`_${BRAND.PRODUCT_NAME}() {`);

@@ -7,7 +7,7 @@ import { homedir } from "node:os";
 import { join } from "node:path";
 
 import { BRAND } from "./branding.js";
-import { bold, dim, err, muted, ok, warn } from "./colors.js";
+import { bold, dim, err, ok, warn } from "./colors.js";
 import { detectAgentCliPaths } from "./agent-cli.js";
 import { getCliDataRoot, getSkillsRoot as findSkillsRoot } from "./paths.js";
 import { track } from "./telemetry.js";
@@ -230,7 +230,9 @@ export async function run(args: string[]): Promise<void> {
     group: "Suiperpower",
     label: "shared knowledge",
     status: sharedOk ? "pass" : "warn",
-    detail: sharedOk ? "Codex router and catalogs installed" : `missing, run: ${BRAND.PRODUCT_NAME} init`,
+    detail: sharedOk
+      ? "Codex router and catalogs installed"
+      : `missing, run: ${BRAND.PRODUCT_NAME} init`,
   });
 
   const counts = catalogCounts();

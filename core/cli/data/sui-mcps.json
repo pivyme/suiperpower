@@ -1,6 +1,6 @@
 {
-  "version": "0.1.0",
-  "generatedAt": "2026-05-11T00:00:00Z",
+  "version": "0.2.0",
+  "generatedAt": "2026-05-11T12:00:00Z",
   "schema": "plans/07-ECOSYSTEM-CATALOG.md",
   "mcps": [
     {
@@ -16,6 +16,18 @@
       "lastChecked": "2026-05-11"
     },
     {
+      "id": "coingecko-mcp",
+      "name": "CoinGecko MCP",
+      "publisher": "CoinGecko",
+      "url": "https://github.com/coingecko/coingecko-typescript/tree/main/packages/mcp-server",
+      "installCmd": "npx -y @coingecko/coingecko-mcp",
+      "configSnippet": "{\"mcpServers\":{\"coingecko\":{\"command\":\"npx\",\"args\":[\"-y\",\"@coingecko/coingecko-mcp\"]}}}",
+      "description": "CoinGecko token prices, market data, and trending tokens. Useful for Sui DeFi research and market analysis.",
+      "tools": ["get_token_price", "get_market_data", "get_trending_tokens", "search_tokens"],
+      "useCases": ["defi-research", "market-analysis", "token-discovery"],
+      "lastChecked": "2026-05-11"
+    },
+    {
       "id": "deepbook-mcp",
       "name": "DeepBook Research MCP",
       "publisher": "Suiperpower",
@@ -25,6 +37,54 @@
       "description": "Thin wrapper over the DeepBook indexer. Pool listings, recent trades, depth at price.",
       "tools": ["list_pools", "recent_trades", "depth_at_price", "pool_volume_24h"],
       "useCases": ["research", "market-niche-discovery"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "dexscreener-mcp",
+      "name": "DexScreener MCP",
+      "publisher": "janswist",
+      "url": "https://github.com/janswist/mcp-dexscreener",
+      "installCmd": "git clone https://github.com/janswist/mcp-dexscreener && cd mcp-dexscreener && npm install",
+      "configSnippet": "{\"mcpServers\":{\"dexscreener\":{\"command\":\"node\",\"args\":[\"path/to/mcp-dexscreener/index.js\"]}}}",
+      "description": "On-chain token and pair data from DexScreener. Track Sui token liquidity, volume, and price action.",
+      "tools": ["search_pairs", "get_token_info", "get_pair_data", "get_trending"],
+      "useCases": ["defi-research", "token-analysis", "market-monitoring"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "go-sui-mcp",
+      "name": "Go Sui MCP",
+      "publisher": "hawkli-1994",
+      "url": "https://github.com/hawkli-1994/go-sui-mcp",
+      "installCmd": "go install github.com/hawkli-1994/go-sui-mcp@latest",
+      "configSnippet": "{\"mcpServers\":{\"go-sui\":{\"command\":\"go-sui-mcp\",\"args\":[]}}}",
+      "description": "Go-based Sui MCP with 28 tools covering balances, transactions, Move compilation, and object inspection.",
+      "tools": ["get_balance", "get_transaction", "compile_move", "get_object", "get_owned_objects", "dry_run_tx"],
+      "useCases": ["development", "debugging", "move-dev", "object-inspection"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "hashlock-mcp",
+      "name": "Hashlock MCP",
+      "publisher": "Hashlock-Tech",
+      "url": "https://github.com/Hashlock-Tech/hashlock-mcp",
+      "installCmd": "npx -y @hashlock-tech/mcp",
+      "configSnippet": "{\"mcpServers\":{\"hashlock\":{\"command\":\"npx\",\"args\":[\"-y\",\"@hashlock-tech/mcp\"]}}}",
+      "description": "Atomic OTC settlement on Sui using hash time-locked contracts. Enables trustless peer-to-peer swaps.",
+      "tools": ["create_htlc", "claim_htlc", "refund_htlc", "get_htlc_status"],
+      "useCases": ["otc-trading", "atomic-swaps", "p2p-settlement"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "pyth-network-mcp",
+      "name": "Pyth Network MCP",
+      "publisher": "itsOmSarraf",
+      "url": "https://github.com/itsOmSarraf/pyth-network-mcp",
+      "installCmd": "pip install pyth-network-mcp",
+      "configSnippet": "{\"mcpServers\":{\"pyth-network\":{\"command\":\"python\",\"args\":[\"-m\",\"pyth_network_mcp\"]}}}",
+      "description": "Pyth Network price feeds via MCP. Access real-time and historical oracle data for Sui DeFi development.",
+      "tools": ["get_price", "get_price_feed_ids", "get_historical_price"],
+      "useCases": ["oracle-integration", "price-feeds", "defi-research"],
       "lastChecked": "2026-05-11"
     },
     {
@@ -40,6 +100,102 @@
       "lastChecked": "2026-05-11"
     },
     {
+      "id": "sui-ai-agent-kit-mcp",
+      "name": "Sui AI Agent Kit MCP",
+      "publisher": "caterpillardev",
+      "url": "https://github.com/caterpillardev/Sui-AI-Agent-Kit",
+      "installCmd": "npm install sui-ai-agent-kit",
+      "configSnippet": "{\"mcpServers\":{\"sui-ai-agent-kit\":{\"command\":\"node\",\"args\":[\"path/to/sui-ai-agent-kit/mcp.js\"]}}}",
+      "description": "AI agent toolkit for Sui DeFi operations. Swaps, staking, lending, and token transfers via MCP.",
+      "tools": ["swap_tokens", "stake_sui", "lend_tokens", "transfer_tokens", "get_portfolio"],
+      "useCases": ["ai-agent", "defi-automation", "portfolio-management"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-analytics-mcp",
+      "name": "Sui Analytics MCP",
+      "publisher": "0xfreak0",
+      "url": "https://github.com/0xfreak0/sui-analytics-mcp",
+      "installCmd": "node sui-analytics-mcp",
+      "configSnippet": "{\"mcpServers\":{\"sui-analytics\":{\"command\":\"node\",\"args\":[\"path/to/sui-analytics-mcp/index.js\"]}}}",
+      "description": "Comprehensive Sui analytics with 39 tools. Chain metrics, DeFi stats, NFT data, and network health.",
+      "tools": ["get_chain_metrics", "get_defi_tvl", "get_nft_stats", "get_validator_info", "get_gas_metrics"],
+      "useCases": ["analytics", "research", "monitoring", "reporting"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-dev-mcp",
+      "name": "Sui Dev MCP",
+      "publisher": "Motion Labs",
+      "url": "https://github.com/motion-intern/sui-dev-mcp",
+      "installCmd": "git clone https://github.com/motion-intern/sui-dev-mcp && cd sui-dev-mcp && npm install",
+      "configSnippet": "{\"mcpServers\":{\"sui-dev\":{\"command\":\"node\",\"args\":[\"path/to/sui-dev-mcp/index.js\"]}}}",
+      "description": "Sui developer MCP from Motion Labs. Doc search, security audit tools, and Move code analysis.",
+      "tools": ["search_docs", "audit_contract", "analyze_move", "get_best_practices"],
+      "useCases": ["development", "security-audit", "documentation"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-graphql-mcp",
+      "name": "Sui GraphQL MCP",
+      "publisher": "Sceat",
+      "url": "https://github.com/Sceat/sui-graphql-mcp",
+      "installCmd": "npx -y github:Sceat/sui-graphql-mcp",
+      "configSnippet": "{\"mcpServers\":{\"sui-graphql\":{\"command\":\"npx\",\"args\":[\"-y\",\"github:Sceat/sui-graphql-mcp\"]}}}",
+      "description": "Query Sui chain data via the GraphQL API. Object lookups, transaction history, and custom queries.",
+      "tools": ["query_objects", "query_transactions", "execute_graphql", "get_checkpoints"],
+      "useCases": ["development", "data-queries", "object-inspection"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-mcp-0xdwong",
+      "name": "Sui MCP (0xdwong)",
+      "publisher": "0xdwong",
+      "url": "https://github.com/0xdwong/sui-mcp",
+      "installCmd": "npx -y sui-mcp@latest",
+      "configSnippet": "{\"mcpServers\":{\"sui-mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"sui-mcp@latest\"]}}}",
+      "description": "Lightweight Sui MCP for faucet requests, balance checks, and SUI transfers.",
+      "tools": ["request_faucet", "get_balance", "transfer_sui", "get_object"],
+      "useCases": ["development", "testing", "quick-operations"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-mcp-rag",
+      "name": "Sui MCP RAG",
+      "publisher": "ProbonoBonobo",
+      "url": "https://github.com/ProbonoBonobo/sui-mcp-server",
+      "installCmd": "pipx install sui-mcp-server",
+      "configSnippet": "{\"mcpServers\":{\"sui-mcp-rag\":{\"command\":\"sui-mcp-server\",\"args\":[]}}}",
+      "description": "RAG-powered MCP for Sui Move code understanding. Indexes Move source and provides contextual answers.",
+      "tools": ["search_move_code", "explain_module", "find_patterns", "get_function_info"],
+      "useCases": ["code-understanding", "move-dev", "documentation"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-mcp-tamago",
+      "name": "Sui MCP (Tamago)",
+      "publisher": "Tamago Labs",
+      "url": "https://github.com/tamago-labs/sui-mcp",
+      "installCmd": "npx -y @tamago-labs/sui-mcp",
+      "configSnippet": "{\"mcpServers\":{\"sui-tamago\":{\"command\":\"npx\",\"args\":[\"-y\",\"@tamago-labs/sui-mcp\"]}}}",
+      "description": "Feature-rich Sui MCP with 33+ tools. Object operations, token management, DeFi interactions, and more.",
+      "tools": ["get_object", "transfer_token", "swap_tokens", "get_balance", "mint_nft", "deploy_package"],
+      "useCases": ["development", "defi-operations", "nft-management", "deployment"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "sui-move-analyzer-mcp",
+      "name": "Sui Move Analyzer MCP",
+      "publisher": "KlyntLabs",
+      "url": "https://github.com/KlyntLabs/sui-move-analyzer",
+      "installCmd": "Download binary from releases",
+      "configSnippet": "{\"mcpServers\":{\"sui-move-analyzer\":{\"command\":\"sui-move-analyzer-mcp\",\"args\":[]}}}",
+      "description": "Move code analysis MCP. Static analysis, linting, and security checks for Sui Move contracts.",
+      "tools": ["analyze_module", "lint_move", "check_security", "get_dependencies"],
+      "useCases": ["code-analysis", "security-audit", "move-dev"],
+      "lastChecked": "2026-05-11"
+    },
+    {
       "id": "sui-rpc-mcp",
       "name": "Sui RPC MCP",
       "publisher": "Suiperpower",
@@ -52,6 +208,18 @@
       "lastChecked": "2026-05-11"
     },
     {
+      "id": "sui-trader-mcp",
+      "name": "Sui Trader MCP",
+      "publisher": "kukapay",
+      "url": "https://github.com/kukapay/sui-trader-mcp",
+      "installCmd": "git clone https://github.com/kukapay/sui-trader-mcp && cd sui-trader-mcp && npm install",
+      "configSnippet": "{\"mcpServers\":{\"sui-trader\":{\"command\":\"node\",\"args\":[\"path/to/sui-trader-mcp/index.js\"]}}}",
+      "description": "Sui trading MCP focused on Cetus DEX swaps. Execute trades and query pool data.",
+      "tools": ["swap_tokens", "get_pool_info", "get_quote", "get_token_balance"],
+      "useCases": ["trading", "defi-operations", "cetus-integration"],
+      "lastChecked": "2026-05-11"
+    },
+    {
       "id": "walrus-mcp",
       "name": "Walrus MCP",
       "publisher": "Suiperpower",
@@ -61,6 +229,18 @@
       "description": "Wrapper over the Walrus aggregator and publisher endpoints. Store, retrieve, inspect blobs.",
       "tools": ["walrus_store_blob", "walrus_get_blob", "walrus_blob_metadata"],
       "useCases": ["walrus-integration", "demo-validation"],
+      "lastChecked": "2026-05-11"
+    },
+    {
+      "id": "walrus-mcp-motion",
+      "name": "Walrus MCP (Motion Labs)",
+      "publisher": "Motion Labs",
+      "url": "https://github.com/Motion-Labs-Sui/walrus-mcp",
+      "installCmd": "git clone https://github.com/Motion-Labs-Sui/walrus-mcp && cd walrus-mcp && npm install",
+      "configSnippet": "{\"mcpServers\":{\"walrus-motion\":{\"command\":\"node\",\"args\":[\"path/to/walrus-mcp/index.js\"]}}}",
+      "description": "Walrus blob storage operations via MCP from Motion Labs. Upload, download, and manage Walrus blobs.",
+      "tools": ["store_blob", "get_blob", "delete_blob", "list_blobs", "get_blob_metadata"],
+      "useCases": ["walrus-integration", "blob-storage", "file-management"],
       "lastChecked": "2026-05-11"
     }
   ]
