@@ -1,0 +1,14 @@
+name: walrus-sites
+version: 1
+phase: build
+description: |
+  Deploy a static frontend to Walrus Sites for decentralized hosting on Sui.
+  Use when the user says "host on Walrus", "Walrus Sites", "decentralized hosting",
+  "deploy static site to Sui", "walrus-sites", "deploy to wal.app",
+  "host my frontend on chain", "publish site to Walrus",
+  "decentralized frontend hosting", or "static site on Sui".
+  Reads .suiperpower/build-context.md if present.
+prompt_path: ../SKILL.md
+references:
+  - ../references/walrus-sites-quickstart.md
+  - ../references/walrus-sites-pitfalls.md
