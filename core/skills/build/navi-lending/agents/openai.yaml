@@ -1,0 +1,12 @@
+name: navi-lending
+version: 1
+phase: build
+description: |
+  Integrate NAVI Protocol, a leading Sui lending market, for deposits,
+  borrows, and flash loans. Use when the user says "NAVI lending",
+  "NAVI Protocol", "borrow on NAVI", "lend on NAVI", "NAVI integration",
+  "flash loan on Sui", "NAVI SDK", or "lending protocol on Sui besides Scallop".
+  Reads .suiperpower/build-context.md if present.
+prompt_path: ../SKILL.md
+references:
+  - ../references/navi-quickstart.md
