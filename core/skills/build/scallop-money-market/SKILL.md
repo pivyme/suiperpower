@@ -73,7 +73,7 @@ If unclear, interview the user for:
   - sample deposit tx digest: <digest>
   - sample borrow tx digest: <digest>
   - sample repay tx digest: <digest>
-  - oracle: <pyth feed or other>
+  - oracle: Pyth (sole active provider)
   - open issues: <list>
   ```
 
@@ -110,7 +110,7 @@ The skill never deletes files outside the integration source path without explic
 
 7. **Risk surfacing**
    - Compute and display the position's risk level. Scallop uses "Risk Level" with `liquidation_factor` and `borrow_weight` per market, not a generic "health factor" with "collateral_factor".
-   - Document the oracle source (Pyth feed) and the liquidation threshold.
+   - Document the oracle source and the liquidation threshold. Scallop currently relies solely on Pyth for price feeds on Sui. Multi-oracle support (Switchboard, Supra) is on the roadmap but not yet active.
    - For end-user UIs, add a clear "this position can be liquidated if X happens" message.
 
 8. **Writeback**
@@ -125,7 +125,7 @@ Before reporting done, the skill asks itself the following and refuses to declar
 - Does the borrow path compute the risk level before submission and refuse if it would exceed the safe threshold?
 - Does the repay path query live amount-owed, not assume the original borrow amount?
 - Is liquidation risk documented in the user-facing UI, not hidden behind a tooltip?
-- Is the oracle source named (Pyth feed id, etc.) so the user knows where the price comes from?
+- Is the oracle source named (Pyth) so the user knows where the prices come from?
 
 If any answer is no, the skill reports the gap and works through it before claiming the integration is complete.
 

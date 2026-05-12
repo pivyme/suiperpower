@@ -18,15 +18,18 @@ Most apps surface a "safe zone" (risk_level under 0.6), a "warning zone" (0.6 to
 
 ## Oracle drift
 
-Scallop reads prices from Pyth feeds. During market stress, oracle prices can lag actual market prices by seconds to minutes. Liquidations execute against the oracle price.
+Scallop currently relies solely on Pyth as its price feed provider. Per the official docs: "Currently, only Pyth provides comprehensive and stable price data on the Sui network." Multi-oracle support (Switchboard, Supra) is on the roadmap but not yet active.
+
+During market stress, oracle prices can lag actual market prices by seconds to minutes. Liquidations execute against the oracle price.
 
 Implications:
 
 - A position that looks safe at "real" prices can liquidate when the oracle catches up.
 - A liquidation can also fail to fire when it "should," leaving bad debt.
+- Single-oracle dependency means a Pyth outage or exploit affects all Scallop markets.
 - For UI, surface the oracle price alongside the user's reference price, not just one.
 
-For a stress-aware product, monitor Pyth feed staleness. If a feed has not updated in N seconds, refuse to accept new borrows against it.
+For a stress-aware product, monitor Pyth feed staleness. If the feed has not updated in N seconds, refuse to accept new borrows against it.
 
 ## Borrow caps
 
@@ -73,4 +76,4 @@ The Scallop SDK only supports mainnet. Testnet has no address package IDs and wi
 
 Markets enforce per-24h outflow limits and per-market borrow caps. Large withdrawals or borrows can fail if limits are reached. For automated strategies, check utilization before submitting and fall back to a different market if the primary is at capacity.
 
-Last updated: 2026-05-11.
+Last updated: 2026-05-12.
