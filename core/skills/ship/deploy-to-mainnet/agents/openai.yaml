@@ -1,7 +1,7 @@
 name: deploy-to-mainnet
 version: 1
 phase: ship
-description: Use when deploying a Sui Move package to mainnet after testnet has been exercised.
+description: Deploy a Sui Move package to mainnet after testnet has been exercised. Use when the user wants to ship to mainnet, go to prod, or publish to Sui mainnet.
 prompt_path: ../SKILL.md
 references:
   - ../references/gate-rationale.md

@@ -1,6 +1,6 @@
 ---
 name: review-move
-description: Use when running an in-house P0-P3 security review on a Sui Move package.
+description: Run an in-house P0-P3 security review on a Sui Move package. Use when the user wants a Move security review or self-audit.
 ---
 
 ## Preamble (run first)

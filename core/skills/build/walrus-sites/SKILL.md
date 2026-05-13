@@ -1,6 +1,6 @@
 ---
 name: walrus-sites
-description: Use when publishing a Walrus Site (decentralized website hosted on Walrus).
+description: Publish a Walrus Site (decentralized website hosted on Walrus). Use when the user mentions Walrus Sites or wants to host a site on Walrus.
 ---
 
 ## Preamble (run first)

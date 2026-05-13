@@ -1,6 +1,6 @@
 ---
 name: object-model-design
-description: Use when designing the Sui Object schema (owned vs shared, capability patterns).
+description: Design the Sui Object schema (owned vs shared, capability patterns). Use when the user wants to model Sui Objects or pick capability patterns.
 ---
 
 ## Preamble (run first)

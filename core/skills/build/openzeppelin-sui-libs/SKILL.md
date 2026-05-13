@@ -1,6 +1,6 @@
 ---
 name: openzeppelin-sui-libs
-description: Use when using OpenZeppelin's audited Move libraries on Sui (access control, pausable, ownable).
+description: Use OpenZeppelin's audited Move libraries on Sui (access control, pausable, ownable). Use when the user mentions OpenZeppelin, OZ, or audited Move libs.
 ---
 
 ## Preamble (run first)

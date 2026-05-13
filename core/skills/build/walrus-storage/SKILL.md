@@ -1,6 +1,6 @@
 ---
 name: walrus-storage
-description: Use when integrating Walrus decentralized blob storage on Sui (upload, retrieve files).
+description: Integrate Walrus decentralized blob storage on Sui (upload, retrieve files). Use when the user mentions Walrus, blob storage, or decentralized storage on Sui.
 ---
 
 ## Preamble (run first)

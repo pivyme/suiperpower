@@ -1,7 +1,7 @@
 name: object-model-design
 version: 1
 phase: build
-description: Use when designing the Sui Object schema (owned vs shared, capability patterns).
+description: Design the Sui Object schema (owned vs shared, capability patterns). Use when the user wants to model Sui Objects or pick capability patterns.
 prompt_path: ../SKILL.md
 references:
   - ../references/owned-vs-shared-decision.md

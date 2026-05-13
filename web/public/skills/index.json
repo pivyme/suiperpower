@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-05-13T01:44:21.127Z",
+  "generatedAt": "2026-05-13T01:54:43.775Z",
   "publisher": "suiperpower",
   "publisherUrl": "https://suiperpower.dev",
   "totalSkills": 60,
@@ -8,662 +8,662 @@
     {
       "id": "apply-grant",
       "phase": "ship",
-      "description": "Use when drafting a Sui Foundation grant application with milestones and sustainability plan.",
+      "description": "Draft a Sui Foundation grant application with milestones and sustainability plan. Use when the user wants to apply for a Sui grant or draft a grant application.",
       "tarballUrl": "https://suiperpower.dev/skills/apply-grant.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/ship/apply-grant",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/ship/apply-grant",
-      "sha256": "14e88f18119a73bd5bfe60dbfeb08d5d14e0d83dff79086bebec5ff80eab6fc6",
+      "sha256": "2644e88f6a56aa04544834538966d03f842813b3358511a3fffc596c1b56fbc3",
       "size": 18455,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "brand-design",
       "phase": "build",
-      "description": "Use when picking a brand name, color palette, or typography for a Sui product.",
+      "description": "Pick a brand name, color palette, or typography for a Sui product. Use when the user wants to name or brand a Sui project.",
       "tarballUrl": "https://suiperpower.dev/skills/brand-design.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/brand-design",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/brand-design",
-      "sha256": "90e33e98e1e2e2aed62b4ed06cfc61ce858a550657184fabe6c5453cd87f4a46",
+      "sha256": "15f07b3ff7cb87e548f1e8aeb79f8e44bdb17f6775e59415ae9cd69fbbe3385d",
       "size": 15383,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "build-ai-agent",
       "phase": "build",
-      "description": "Use when building an AI agent that signs Sui transactions or runs onchain actions.",
+      "description": "Build an AI agent that signs Sui transactions or runs onchain actions. Use when the user wants an AI agent on Sui.",
       "tarballUrl": "https://suiperpower.dev/skills/build-ai-agent.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/build-ai-agent",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/build-ai-agent",
-      "sha256": "4eea6c802416fde3531c6e2a8d7fa8f7ffd15e4926cdf78aa7a5a90ea8de9207",
-      "size": 32279,
-      "version": "0.1.1"
+      "sha256": "2bc68ec608b89ed1c8fab0a3a19832e147c7c43d02e4c885a56ad5e336c0b3be",
+      "size": 32791,
+      "version": "0.1.2"
     },
     {
       "id": "build-data-pipeline",
       "phase": "build",
-      "description": "Use when building a Sui data indexer or analytics pipeline (events, RPC, off-chain DB).",
+      "description": "Build a Sui data indexer or analytics pipeline. Use when the user wants to index Sui events, build a pipeline, or query Sui RPC data.",
       "tarballUrl": "https://suiperpower.dev/skills/build-data-pipeline.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/build-data-pipeline",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/build-data-pipeline",
-      "sha256": "5eb0bbb839694e466c06df936469ef7dfe286e21fc1b64b902cc3ba4180b4cbf",
+      "sha256": "e286e43c5ecd0a197b23aaf30e43ba94ee35e6c9d2f801b2f6b3873c02f7af6c",
       "size": 23575,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "build-mobile-sui",
       "phase": "build",
-      "description": "Use when building a mobile Sui app with React Native or the Sui Mobile SDK.",
+      "description": "Build a mobile Sui app with React Native or the Sui Mobile SDK. Use when the user wants iOS, Android, or mobile Sui flows.",
       "tarballUrl": "https://suiperpower.dev/skills/build-mobile-sui.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/build-mobile-sui",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/build-mobile-sui",
-      "sha256": "79b1eb16d4162ab92c84f1a4ae98f811c4bb6dc465f138d764ab3c4fa04d6be4",
+      "sha256": "17b0fe217d25a042620f4daa60ca82857d7de9a1d2f985072f2724c6bdeeb94d",
       "size": 20503,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "build-with-claude",
       "phase": "build",
-      "description": "Use when pairing with a coding agent to build a Sui MVP step by step.",
+      "description": "Pair with a coding agent to build a Sui MVP step by step. Use when the user wants to build the MVP iteratively with an agent.",
       "tarballUrl": "https://suiperpower.dev/skills/build-with-claude.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/build-with-claude",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/build-with-claude",
-      "sha256": "62a1f9ee002c34a418a5fe54c3493b292f7451b4ec0de4aa76cc46ac6b14971f",
+      "sha256": "e5558fe26e00ebaf658cd477d4866339a6252bd8b5c70bc3a1bf0e1c7cfbc7d4",
       "size": 17943,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "build-with-move",
       "phase": "build",
-      "description": "Author Sui Move modules and packages with a senior Move dev as your pair. Use when the user says \"build a Move module\", \"write a Move package\", \"help me with Move\", \"add a function to my contract\", \"create a smart contract on Sui\", \"build a Sui program\", \"build a Sui smart contract\", \"write Sui Move code\", \"scaffold a Move package\", or \"I need to write Move code\".",
+      "description": "Author Sui Move modules and packages with a senior Move dev as your pair. Use when the user wants to write, build, author, add, or scaffold Move code, smart contracts, or Sui programs at the module or function level, in any phrasing.",
       "tarballUrl": "https://suiperpower.dev/skills/build-with-move.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/build-with-move",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/build-with-move",
-      "sha256": "f1ab80d860884baec943b221d10bf8bfd10d27fb3b0a0d662b9bf1ef16300a2a",
+      "sha256": "8cce445820ad2b1f1627d619da764adddafd696382e134f245a360927ba3e01e",
       "size": 27671,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "cetus-swap",
       "phase": "build",
-      "description": "Use when integrating Cetus AMM on Sui for swaps, liquidity, or concentrated pools.",
+      "description": "Integrate Cetus AMM on Sui (swaps, liquidity, concentrated pools). Use when the user mentions Cetus.",
       "tarballUrl": "https://suiperpower.dev/skills/cetus-swap.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/cetus-swap",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/cetus-swap",
-      "sha256": "2c275092155fc5dd5edc5da692399f16943f77d2cb48752dd6afe8c1ce66ccf0",
+      "sha256": "2c127d2f31c13b99c23ea390ac244d943a8146fe1531bed322021674728a0030",
       "size": 19991,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "clarify-intent",
       "phase": "build",
-      "description": "Pin down what the user is actually building on Sui before any code. Use when the user says \"build me X\", \"build a Sui program\", \"build a Sui app\", \"build a Sui dapp\", \"build something on Sui\", \"make a Sui smart contract\", \"implement Y on Sui\", \"write a contract for Z on Sui\", \"start a Sui project\", \"let's start building on Sui\", \"scaffold this\", \"I want to build on Sui\", or \"step back\".",
+      "description": "Pin down what the user is actually building on Sui before any code. Use when the user wants to build, create, make, develop, scaffold, implement, or ship anything on Sui, in any phrasing, trigger eagerly. Skip if .suiperpower/intent.md already exists for this session.",
       "tarballUrl": "https://suiperpower.dev/skills/clarify-intent.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/clarify-intent",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/clarify-intent",
-      "sha256": "b3714db10aa0bbce0a57008a4c8f52929b888c1827dab4feaccba26848c043af",
-      "size": 13335,
-      "version": "0.1.1"
+      "sha256": "82900e4fedcb6f7a1b8cce780b93da66404ae75d1798c5163afda92ca972f70a",
+      "size": 12823,
+      "version": "0.1.2"
     },
     {
       "id": "competitive-landscape",
       "phase": "idea",
-      "description": "Use when mapping competitors for a Sui idea, on Sui and adjacent chains.",
+      "description": "Map competitors for a Sui idea, on Sui and adjacent chains. Use when the user wants a competitive landscape, competitor analysis, or to find their edge.",
       "tarballUrl": "https://suiperpower.dev/skills/competitive-landscape.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/idea/competitive-landscape",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/idea/competitive-landscape",
-      "sha256": "053c7d60f57dd0ec31057ef963c69d1e75a523a6e29b36f3e99ffa20d48f5189",
+      "sha256": "a0fb17057a34cbb1b7ecf0078109501079badd98984fbd03910792a08a0c86e7",
       "size": 18967,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "create-pitch-deck",
       "phase": "ship",
-      "description": "Use when drafting a 10-slide pitch deck for a Sui product (investors, judges, grant).",
+      "description": "Draft a 10-slide pitch deck for a Sui product (investors, judges, grant). Use when the user wants a pitch deck or to draft slides for a Sui project.",
       "tarballUrl": "https://suiperpower.dev/skills/create-pitch-deck.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/ship/create-pitch-deck",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/ship/create-pitch-deck",
-      "sha256": "a260c2bbe29f17fa87194c864d570e25c3845653f6de88ad4b3b3f5dec329192",
+      "sha256": "4baddb45d5f39da6f09604569f1f47f35143317983a74d81f3de82279d954659",
       "size": 17943,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "cso",
       "phase": "build",
-      "description": "Use when running a CSO-style customer signal review for a Sui product.",
+      "description": "Run a CSO-style customer signal review on a Sui product. Use when the user wants a CSO or customer signal review.",
       "tarballUrl": "https://suiperpower.dev/skills/cso.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/cso",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/cso",
-      "sha256": "aab1838a6987d7dc98f6d729a11b2a7bec405008553deb7cc6aa9e4fc09c493a",
+      "sha256": "c6a3fda855646afd96e1cd3973ae682a12628bf3ca23fd43b1ac322fffea2dab",
       "size": 25623,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "debug-move",
       "phase": "build",
-      "description": "Use when debugging Sui Move compile errors, runtime aborts, or capability leaks.",
+      "description": "Debug Sui Move compile errors, runtime aborts, or capability leaks. Use when the user has a Move error, abort code, failed PTB, or compiler issue.",
       "tarballUrl": "https://suiperpower.dev/skills/debug-move.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/debug-move",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/debug-move",
-      "sha256": "39c0a93e023c7a15232ed6163af89f72fbeac814c4deebab800fd5d4e837324a",
-      "size": 23575,
-      "version": "0.1.1"
+      "sha256": "1efe3d9854887a58b29f4821a3cd82e4532adb88b289578a5d0d8e5010cb0feb",
+      "size": 24087,
+      "version": "0.1.2"
     },
     {
       "id": "deepbook-orderbook",
       "phase": "build",
-      "description": "Use when integrating DeepBook v3 orderbook on Sui (limit orders, CLOB, DEX).",
+      "description": "Integrate DeepBook v3 orderbook on Sui (limit orders, CLOB, DEX). Use when the user wants to build on DeepBook or a Sui orderbook DEX.",
       "tarballUrl": "https://suiperpower.dev/skills/deepbook-orderbook.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/deepbook-orderbook",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/deepbook-orderbook",
-      "sha256": "5d5ddbceb0ebc2dd780161c011db983ec39c3f87766fde81e2e408aca745f44e",
+      "sha256": "86c85f41355942cdb56ba01143d357cab7b8727d51af22033b79d3c048fed530",
       "size": 25111,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "deepbook-research",
       "phase": "idea",
-      "description": "Use when researching DeepBook trading data, market gaps, underserved pairs on Sui.",
+      "description": "Research DeepBook trading data and market gaps on Sui. Use when the user wants DeepBook research, market opportunities, or underserved pairs.",
       "tarballUrl": "https://suiperpower.dev/skills/deepbook-research.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/idea/deepbook-research",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/idea/deepbook-research",
-      "sha256": "595937bc5118df9aa99d2975f61688510fc8a5b94ad7c84680ae202019117edd",
+      "sha256": "f31cdd1d5829811cb5702197c07f33df1c5abde76deee4499bc5859c6baf5483",
       "size": 20503,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "defillama-sui",
       "phase": "idea",
-      "description": "Use when researching Sui DeFi TVL, protocols, and yield via DefiLlama.",
+      "description": "Research Sui DeFi TVL, protocols, and yield via DefiLlama. Use when the user wants Sui DeFi data, TVL, or protocol research.",
       "tarballUrl": "https://suiperpower.dev/skills/defillama-sui.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/idea/defillama-sui",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/idea/defillama-sui",
-      "sha256": "532beb192b67da7fe0dfe3a9808778af4a943952b730d6b5514e92473e50ccbb",
+      "sha256": "dca61ef43255d593448596f2dd11ae4e45e01885254a8c86d843d096b7c42814",
       "size": 17943,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "deploy-to-mainnet",
       "phase": "ship",
-      "description": "Use when deploying a Sui Move package to mainnet after testnet has been exercised.",
+      "description": "Deploy a Sui Move package to mainnet after testnet has been exercised. Use when the user wants to ship to mainnet, go to prod, or publish to Sui mainnet.",
       "tarballUrl": "https://suiperpower.dev/skills/deploy-to-mainnet.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/ship/deploy-to-mainnet",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/ship/deploy-to-mainnet",
-      "sha256": "5d7251803467607698cc58c5f97b2e5e2967faf87d48e6c148fcaf727b88bdba",
+      "sha256": "293970f4c119c0c0e2594f472df3974171c8ee485448e123acd3ec6bbaac8f21",
       "size": 18455,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "deploy-to-testnet",
       "phase": "ship",
-      "description": "Use when deploying a Sui Move package to testnet and capturing package id and UpgradeCap.",
+      "description": "Deploy a Sui Move package to testnet and capture package id and UpgradeCap. Use when the user wants to deploy to testnet or publish to Sui testnet.",
       "tarballUrl": "https://suiperpower.dev/skills/deploy-to-testnet.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/ship/deploy-to-testnet",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/ship/deploy-to-testnet",
-      "sha256": "e4d73a9b8779123622b430905fee6c9fd3df60f611b1384c14ab5af141245c01",
+      "sha256": "598528dcbf07a6d4199f1356e4125e677973ea2bd47a95417a37f80c720097b4",
       "size": 16407,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "design-taste",
       "phase": "build",
-      "description": "Use when a Sui dapp UI looks generic, AI-generated, cheap, or not premium.",
+      "description": "Diagnose why a Sui dapp UI looks generic, AI-generated, or cheap. Use when the user wants a design-taste review or premium look.",
       "tarballUrl": "https://suiperpower.dev/skills/design-taste.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/design-taste",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/design-taste",
-      "sha256": "47e7f2f96afefd68ca29d13071a648df823a231baaf598704a862e0d21162fe0",
+      "sha256": "1ce929e460d095c84fdc543d663c58cbe405cdc8f59e31d8284b76d64d44b2f3",
       "size": 21015,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "eve-frontier",
       "phase": "build",
-      "description": "Use when building for the EVE Frontier track on Sui (game-economy integration).",
+      "description": "Build for the EVE Frontier track on Sui (game-economy integration). Use when the user mentions EVE Frontier.",
       "tarballUrl": "https://suiperpower.dev/skills/eve-frontier.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/eve-frontier",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/eve-frontier",
-      "sha256": "837a621bf5297ac9ea0b7a96b45964628aeb14ceab6edefdaabb18c607ee6ee4",
+      "sha256": "a1c476ef29281fc7b68d9f3f7cef7d289e72bb05ad0bda88d9340a5a3f7e6d10",
       "size": 28183,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "find-next-sui-idea",
       "phase": "idea",
-      "description": "Help the user pick a Sui product idea from a curated corpus, or stress-test their own. Use when the user says \"brainstorm a Sui product\", \"brainstorm me an idea for Sui\", \"give me a Sui idea\", \"give me ideas for Sui\", \"suggest a Sui product\", \"recommend something to build on Sui\", \"what should I build on Sui\", \"find me a Sui idea\", \"I do not know what to build\", \"what's a good product for Sui\", \"Sui Overflow idea\", \"give me a hackathon idea\", \"Sui native opportunities\", \"pick my next project\", \"ideate on Sui\", or \"I need an idea for Sui\".",
+      "description": "Pick a Sui product idea from a curated corpus, or stress-test the user's own. Use when the user wants an idea, product, or project to build on Sui, in any phrasing, including brainstorm, suggest, recommend, ideate, \"what should I build\", \"no idea yet\", or \"Sui Overflow idea\", trigger eagerly. Idea-phase only.",
       "tarballUrl": "https://suiperpower.dev/skills/find-next-sui-idea.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/idea/find-next-sui-idea",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/idea/find-next-sui-idea",
-      "sha256": "9fac4554c0f803920ab8dcb1ed0800b0c02489ac16830a7c399745ec3ab4eb18",
-      "size": 26135,
-      "version": "0.1.1"
+      "sha256": "7b67d190da5fde1dd9d35ffb6653b4401fb46f1b3a9648c5ec551c678fec3a63",
+      "size": 25111,
+      "version": "0.1.2"
     },
     {
       "id": "frontend-design-guidelines",
       "phase": "build",
-      "description": "Use when applying tasteful frontend defaults to a Sui dapp (layout, spacing, typography).",
+      "description": "Apply tasteful frontend defaults to a Sui dapp (layout, spacing, typography). Use when the user wants frontend defaults or a UI review.",
       "tarballUrl": "https://suiperpower.dev/skills/frontend-design-guidelines.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/frontend-design-guidelines",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/frontend-design-guidelines",
-      "sha256": "cd8ec355841170b7caf61af1076cf1c65b1af766d4b3f76d6fcca07fe9cd9c30",
-      "size": 21527,
-      "version": "0.1.1"
+      "sha256": "a6111369c0e157d5cccf359517a3368d2968f050eae1921c5c7da7a1c2b0e9d2",
+      "size": 22039,
+      "version": "0.1.2"
     },
     {
       "id": "kiosk-marketplace",
       "phase": "build",
-      "description": "Use when building a Sui NFT marketplace with the Kiosk standard, transfer policy, royalties.",
+      "description": "Build a Sui NFT marketplace with the Kiosk standard, transfer policy, royalties. Use when the user wants a Sui NFT marketplace or Kiosk integration.",
       "tarballUrl": "https://suiperpower.dev/skills/kiosk-marketplace.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/kiosk-marketplace",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/kiosk-marketplace",
-      "sha256": "b4c9e6668ae1f8e86329485d175e8eaf0484f5c6b79db7ef03d4ce41b57d6b55",
-      "size": 24599,
-      "version": "0.1.1"
+      "sha256": "76630d9a762774b542a117440b65f34ec1e3b7701869d7d554e72fb2569c930c",
+      "size": 25111,
+      "version": "0.1.2"
     },
     {
       "id": "launch-coin",
       "phase": "build",
-      "description": "Use when launching a coin on Sui with the Move coin module, tokenomics, TreasuryCap.",
+      "description": "Launch a coin on Sui with the Move coin module, tokenomics, TreasuryCap. Use when the user wants to mint, launch, or create a Sui coin or token.",
       "tarballUrl": "https://suiperpower.dev/skills/launch-coin.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/launch-coin",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/launch-coin",
-      "sha256": "172733942dc27e67e39c725c840661df52866b819146a65bcd46a22bca63a63b",
+      "sha256": "624c2bedc5c78348cdb5a121976c456e3fbbc5956b62b6eb042ca5ddd4d4872f",
       "size": 24087,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "learn",
       "phase": "learn",
-      "description": "Use when capturing session learnings and decisions to .suiperpower/learnings.md.",
+      "description": "Capture session learnings and decisions to .suiperpower/learnings.md. Use when the user wants to save what they learned, log decisions, or wrap up a session.",
       "tarballUrl": "https://suiperpower.dev/skills/learn.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/learn/learn",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/learn/learn",
-      "sha256": "86814aed09b88018547ea03ddd64ea866b485410666fdd896d9f72ae231032f2",
+      "sha256": "3a6a842931a5a10acf064c24ba8c69ca542ba5d8a8e1b5b67be45ecdaae46165",
       "size": 17431,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "marketing-video",
       "phase": "ship",
-      "description": "Use when planning a 30-60s product marketing video for Twitter, Shorts, or a launch page.",
+      "description": "Plan a 30-60s marketing video for a Sui product (Twitter, Shorts, launch page). Use when the user wants a marketing, promo, or launch video.",
       "tarballUrl": "https://suiperpower.dev/skills/marketing-video.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/ship/marketing-video",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/ship/marketing-video",
-      "sha256": "a3b0f765f500cf599c367af229284532da6627d4a0e8bdbc0192d31ed2298f0f",
+      "sha256": "1d1ebfbbd055ac05b36f1607d097297a4b89d2cec775c05bbe9a838f5a1926f7",
       "size": 15383,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "nautilus-offchain",
       "phase": "build",
-      "description": "Use when integrating Nautilus offchain TEE compute for a Sui project.",
+      "description": "Integrate Nautilus offchain TEE compute for a Sui project. Use when the user mentions Nautilus.",
       "tarballUrl": "https://suiperpower.dev/skills/nautilus-offchain.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/nautilus-offchain",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/nautilus-offchain",
-      "sha256": "f20dd3db12d8adccac6e0b9c7c2502175ce87bf88db9a0fc2bffa459e862e85f",
+      "sha256": "1d466429afb15d94e985a2859f92b7e1c984d4560f0e032c002e5cb20b313157",
       "size": 25623,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "navi-lending",
       "phase": "build",
-      "description": "Use when integrating Navi lending protocol on Sui (deposit, borrow, repay).",
+      "description": "Integrate Navi lending protocol on Sui. Use when the user mentions Navi or wants to lend or borrow on Sui via Navi.",
       "tarballUrl": "https://suiperpower.dev/skills/navi-lending.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/navi-lending",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/navi-lending",
-      "sha256": "16bc0aacc8956d9c7ee3c15abffd818dfbca2cf8e0462be64f859114fdb24ecb",
+      "sha256": "63d20fff0bf1fbe3c9e745df42a76ad8dd4b11f0282a778c8cd756238567cce7",
       "size": 21527,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "navigate-skills",
       "phase": "build",
-      "description": "Browse and pick the right Suiperpower skill for the user's current goal, reading from the skills catalog. Use when the user says \"what skills do I have\", \"list suiperpower skills\", \"which skill should I use\", \"show me available skills\", \"what can suiperpower do\", \"find a skill for X\", \"navigate skills\", \"I do not know which skill fits\", or when the request is vague and needs triage.",
+      "description": "Suiperpower skill catalog and router. Use when the user's Sui request is vague, asks \"which skill\", \"what's available\", \"how do I X on Sui\", or does not clearly map to one specific suiper skill. Lists relevant skills and hands off.",
       "tarballUrl": "https://suiperpower.dev/skills/navigate-skills.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/navigate-skills",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/navigate-skills",
-      "sha256": "af4a5a0fa09e3196ea6c7415a13e4cf78825ce0965527e4c4ab0fa827f39ee86",
-      "size": 17943,
-      "version": "0.1.1"
+      "sha256": "f5d0ef855a8465cc90d3d6b2278a1d447d22c1c8b0bec53a3af4c855f4c3ad05",
+      "size": 17431,
+      "version": "0.1.2"
     },
     {
       "id": "number-formatting",
       "phase": "build",
-      "description": "Use when formatting token amounts, USD, gas, or MIST/SUI conversion in a Sui dapp UI.",
+      "description": "Format token amounts, USD, gas, or MIST/SUI conversion in a Sui dapp UI. Use when the user wants to fix or implement number formatting.",
       "tarballUrl": "https://suiperpower.dev/skills/number-formatting.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/number-formatting",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/number-formatting",
-      "sha256": "3b8bc727a6a24dd34cc04201b0b1a2bc3b4d1c29a37852114486a376028b1d5f",
+      "sha256": "fd616468ea73f0594161a8544bc444affa1ebb61853f035a170d246bc667d95d",
       "size": 17943,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "object-model-design",
       "phase": "build",
-      "description": "Use when designing the Sui Object schema (owned vs shared, capability patterns).",
+      "description": "Design the Sui Object schema (owned vs shared, capability patterns). Use when the user wants to model Sui Objects or pick capability patterns.",
       "tarballUrl": "https://suiperpower.dev/skills/object-model-design.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/object-model-design",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/object-model-design",
-      "sha256": "b1945414a6914705ae3423f70e00b8317ee420ad1a87bd36d2423c80f9369e9a",
+      "sha256": "f4dd5a31d7c680c95d3b13be6c2443a69b2b215e12b016dae1757c5478aaba91",
       "size": 27671,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "openzeppelin-sui-libs",
       "phase": "build",
-      "description": "Use when using OpenZeppelin's audited Move libraries on Sui (access control, pausable, ownable).",
+      "description": "Use OpenZeppelin's audited Move libraries on Sui (access control, pausable, ownable). Use when the user mentions OpenZeppelin, OZ, or audited Move libs.",
       "tarballUrl": "https://suiperpower.dev/skills/openzeppelin-sui-libs.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/openzeppelin-sui-libs",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/openzeppelin-sui-libs",
-      "sha256": "8b89d38350979e216e38fa61154b3708db6f03f5b4fc99ef869ca32ea7bb2295",
+      "sha256": "de562988ee28441abe650c9b906c5a5b7b56d849ecd2ee65324d1d6af1617536",
       "size": 34839,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "ottersec-prep",
       "phase": "build",
-      "description": "Use when prepping a Sui Move package for an OtterSec security audit.",
+      "description": "Prep a Sui Move package for an OtterSec security audit. Use when the user mentions OtterSec or wants audit prep.",
       "tarballUrl": "https://suiperpower.dev/skills/ottersec-prep.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/ottersec-prep",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/ottersec-prep",
-      "sha256": "9522f91aed285fcc794bca8f597429c64ccaabe5e1abf8940fbb831840aa1cfd",
+      "sha256": "bef1e25c5186c6e6b5c9a658920f1478a9ee47767916666e17bfe413bc8cbdda",
       "size": 26135,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "overflow-copilot",
       "phase": "idea",
-      "description": "Use when researching past Sui Overflow hackathon projects, winners, and gaps.",
+      "description": "Research past Sui Overflow hackathon projects, winners, and gaps. Use when the user wants past Overflow research, winners, or hackathon archive.",
       "tarballUrl": "https://suiperpower.dev/skills/overflow-copilot.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/idea/overflow-copilot",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/idea/overflow-copilot",
-      "sha256": "5af522658f330e6fa5185af775efb1109141888033402487a293b441854e776f",
+      "sha256": "324ecb0efe53c0857c1e096bca140831c61441e7042db49949c978c006a5aa93",
       "size": 22551,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "page-load-animations",
       "phase": "build",
-      "description": "Use when fixing janky page-load animations, layout shift, or skeleton loaders in a Sui dapp.",
+      "description": "Fix janky page-load animations, layout shift, or skeletons in a Sui dapp. Use when the user wants to fix loading animations or first paint.",
       "tarballUrl": "https://suiperpower.dev/skills/page-load-animations.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/page-load-animations",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/page-load-animations",
-      "sha256": "4384429da253a448a5bfa1f164e0bebe491069254e72466e735d6de1fa0ba019",
+      "sha256": "0a0fe70fc6ff2184bdee7ce1eaaf5b8dc639aedd1a0afe93041c331efba95246",
       "size": 18455,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "pick-my-sui-track",
       "phase": "ship",
-      "description": "Use when picking a Sui Overflow 2026 track (Agentic Web, DeFi, Walrus, DeepBook).",
+      "description": "Pick a Sui Overflow 2026 track (Agentic Web, DeFi, Walrus, DeepBook). Use when the user wants a track recommendation for Sui Overflow.",
       "tarballUrl": "https://suiperpower.dev/skills/pick-my-sui-track.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/ship/pick-my-sui-track",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/ship/pick-my-sui-track",
-      "sha256": "5810d534d8a1d7daa7961d4ab3912811a48d0f4d2e9fcdc5b8b7546b99d9acd2",
-      "size": 35863,
-      "version": "0.1.1"
+      "sha256": "b17056a2b278314e4884d36617d5b23cbe48f10616c26863424441469b872c45",
+      "size": 36375,
+      "version": "0.1.2"
     },
     {
       "id": "plan-before-code",
       "phase": "build",
-      "description": "Use when planning a Sui Move package before writing code (abilities, capabilities, PTB, upgrades). Writes build-plan.md.",
+      "description": "Plan a Sui Move package before writing code (abilities, capabilities, PTB shape, upgrade strategy). Use when the user wants a build plan before Move code.",
       "tarballUrl": "https://suiperpower.dev/skills/plan-before-code.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/plan-before-code",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/plan-before-code",
-      "sha256": "7e2351f2673578cc749fc73719551ff02fdd71a82966aeb721b6af8de1295664",
+      "sha256": "dc8938aa67c474e8dce509ced03c766ba394f7d59ed8c0d0dbdeeb37f661453b",
       "size": 13847,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "product-review",
       "phase": "build",
-      "description": "Use when running a UX product review of a Sui dapp (first paint, onboarding, mobile).",
+      "description": "Run a UX product review of a Sui dapp (first paint, onboarding, mobile). Use when the user wants a product, UX, or onboarding review.",
       "tarballUrl": "https://suiperpower.dev/skills/product-review.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/product-review",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/product-review",
-      "sha256": "39f03729cb569354a6bd385fb706ceaaf645cf0cf69efc1bcd5e48d368e8bb6a",
+      "sha256": "3a43a2a582498e2e3ecf1384eec2b2d2a758ea283b17ace8e5a976bc286ff8af",
       "size": 18967,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "ptb-composer",
       "phase": "build",
-      "description": "Use when composing a Sui Programmable Transaction Block, chaining Move calls atomically.",
+      "description": "Compose a Sui Programmable Transaction Block, chaining Move calls atomically. Use when the user wants to build a PTB or chain transactions.",
       "tarballUrl": "https://suiperpower.dev/skills/ptb-composer.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/ptb-composer",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/ptb-composer",
-      "sha256": "868af6d73847c1bb36777f04c398b8fd0365aafc40397f219aa0ff160e256872",
+      "sha256": "de0d8fc5bfa72bcea91435ce23f2c5a4a4b29daffa19fe4d63d4eb9d05e67813",
       "size": 23575,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "pyth-oracle",
       "phase": "build",
-      "description": "Use when integrating Pyth oracle prices into a Sui Move package.",
+      "description": "Integrate Pyth oracle prices into a Sui Move package. Use when the user mentions Pyth or wants price oracles on Sui.",
       "tarballUrl": "https://suiperpower.dev/skills/pyth-oracle.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/pyth-oracle",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/pyth-oracle",
-      "sha256": "d11463edf6ac0c0b10a998f41cf3fc3e4fe6aa57c1f19aa79671684b78af0af2",
-      "size": 31255,
-      "version": "0.1.1"
+      "sha256": "151f101676c0a1c80f575faa27abeed5b1321ace53babf3d7b3b6d5f6867c645",
+      "size": 31767,
+      "version": "0.1.2"
     },
     {
       "id": "retention-loop",
       "phase": "build",
-      "description": "Use when articulating a day 1 / day 7 / day 30 retention loop for a Sui product.",
+      "description": "Articulate a day 1 / day 7 / day 30 retention loop for a Sui product. Use when the user wants to define retention, stickiness, or engagement loop.",
       "tarballUrl": "https://suiperpower.dev/skills/retention-loop.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/retention-loop",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/retention-loop",
-      "sha256": "d6eede4fb2377a0bba6d6d16ec792e43e28e67ab82c3761bdd5ce5f46d341cbc",
+      "sha256": "f233fe3cce395553b6df9972bbd9c2cec2d0848fcc05dc341c86bb6cd850558a",
       "size": 18967,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "review-move",
       "phase": "build",
-      "description": "Use when running an in-house P0-P3 security review on a Sui Move package.",
+      "description": "Run an in-house P0-P3 security review on a Sui Move package. Use when the user wants a Move security review or self-audit.",
       "tarballUrl": "https://suiperpower.dev/skills/review-move.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/review-move",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/review-move",
-      "sha256": "d9e1cd484bd415ff88166af460aea18c30eeb2be024685fd8b7e00e9cc3a282e",
+      "sha256": "66082202b074a541b0988415d26eac101acc1502f6b8873452f05afc23694ccd",
       "size": 22551,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "roast-my-product",
       "phase": "build",
-      "description": "Use when roasting a Sui product as the harshest investor, brutal critique.",
+      "description": "Roast a Sui product as the harshest investor in the room. Use when the user wants brutal critique, roast, or VC-style feedback.",
       "tarballUrl": "https://suiperpower.dev/skills/roast-my-product.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/roast-my-product",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/roast-my-product",
-      "sha256": "1b5a19ddd31e23fc16b942e291425fe99a60deb272e49ba5df820db11248ed56",
+      "sha256": "19b7530457190d25ff6b528effe376b66b6635d94b17148035aaf66b9b09287f",
       "size": 19991,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "scaffold-project",
       "phase": "build",
-      "description": "Scaffold a new Sui project with the right stack and write .suiperpower/build-context.md. Use when the user says \"scaffold my project\", \"set up my workspace\", \"what stack should I use on Sui\", \"init a Sui project\", \"bootstrap a Sui app\", \"start a new Sui project\", \"create a Sui project\", or \"give me a Sui template\".",
+      "description": "Scaffold a new Sui project with the right stack and write build-context.md. Use when the user wants to start, init, bootstrap, set up, or create a new Sui project, workspace, or template, in any phrasing.",
       "tarballUrl": "https://suiperpower.dev/skills/scaffold-project.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/scaffold-project",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/scaffold-project",
-      "sha256": "a5daa0ae37d27ae90eb370214b71236a94ad87338cc951bb577eeb673a71a292",
-      "size": 19991,
-      "version": "0.1.1"
+      "sha256": "032f5e64f737e1884b98a8759a01e74bce620a5d5badba23c0296cfb356b3c9d",
+      "size": 19479,
+      "version": "0.1.2"
     },
     {
       "id": "scallop-money-market",
       "phase": "build",
-      "description": "Use when integrating Scallop money market on Sui (lend, borrow, repay).",
+      "description": "Integrate Scallop money market on Sui. Use when the user mentions Scallop or wants to lend or borrow on Sui via Scallop.",
       "tarballUrl": "https://suiperpower.dev/skills/scallop-money-market.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/scallop-money-market",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/scallop-money-market",
-      "sha256": "75dbc6b21d716d39a7984de9a195899f1c62a3aa4cc52807c9b4b0e4fe9176c0",
+      "sha256": "dead693ee7f1a157672b0c74bbddf3503604f15a1d29ac59c6dd0987195f2cf8",
       "size": 27159,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "seal-access-control",
       "phase": "build",
-      "description": "Use when integrating Seal threshold encryption and access control on Sui.",
+      "description": "Integrate Seal threshold encryption and access control on Sui. Use when the user mentions Seal.",
       "tarballUrl": "https://suiperpower.dev/skills/seal-access-control.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/seal-access-control",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/seal-access-control",
-      "sha256": "d0b192587f557f006dc03b8e7ffc39d8234311a618ac8c951a23cb89058e49a0",
+      "sha256": "ab91aaf854be199f6a59c135582c2775a6227b0e2e3a93e6e28633f4a90fb2f9",
       "size": 31255,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "sponsored-transactions",
       "phase": "build",
-      "description": "Use when adding sponsored (gasless) transactions to a Sui app via a gas station.",
+      "description": "Add sponsored (gasless) transactions to a Sui app via a gas station. Use when the user wants gasless tx, sponsor user gas, or first-tx-free onboarding.",
       "tarballUrl": "https://suiperpower.dev/skills/sponsored-transactions.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/sponsored-transactions",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/sponsored-transactions",
-      "sha256": "85f6d0c1790b0223af8744ca9a043104d53870aba5f2b6dd718761af4a981198",
+      "sha256": "d026280d7e3557d6bebf5f38b3b741d5b770982697138f7b9cc4caa194420119",
       "size": 24599,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "submit-to-sui-overflow",
       "phase": "ship",
-      "description": "Use when submitting a project to Sui Overflow on deepsurge.xyz.",
+      "description": "Submit a project to Sui Overflow on deepsurge.xyz. Use when the user wants to submit to Overflow or prepare a hackathon submission.",
       "tarballUrl": "https://suiperpower.dev/skills/submit-to-sui-overflow.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/ship/submit-to-sui-overflow",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/ship/submit-to-sui-overflow",
-      "sha256": "4050171eb9b7fe1a6d01c9912906e1baed70ffb8ef3f8186d6969b0c35242cb6",
+      "sha256": "7ddaebcb6cb2818c1b5d154886badced6924eefd30abb18a66667b29ee33c87f",
       "size": 18967,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "sui-beginner",
       "phase": "learn",
-      "description": "Use when the user is new to Sui and wants Sui taught from scratch, including EVM and Solana mapping.",
+      "description": "Teach Sui from scratch with EVM and Solana mapping. Use when the user is new to Sui, wants Sui basics, or is coming from another chain wanting to understand Sui.",
       "tarballUrl": "https://suiperpower.dev/skills/sui-beginner.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/learn/sui-beginner",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/learn/sui-beginner",
-      "sha256": "0865c32b131439cc8879a5504aeeec1c898a287e2c9326c2df48e33b95038898",
+      "sha256": "b170c4f505ff051caa7a1cb1565acf5867de4445664edc2eb40b85a4a3c05b7e",
       "size": 21527,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "sui-zk-login",
       "phase": "build",
-      "description": "Use when adding Sui zkLogin for Google, Apple, Facebook, or Twitch social sign-in.",
+      "description": "Add Sui zkLogin for Google, Apple, Facebook, or Twitch sign-in. Use when the user mentions zkLogin, social login, or OAuth-based Sui auth.",
       "tarballUrl": "https://suiperpower.dev/skills/sui-zk-login.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/sui-zk-login",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/sui-zk-login",
-      "sha256": "9be2d2a80460e7543a32602aeea12c2f8da5d474ef506183a58aab4d6cb02816",
-      "size": 28695,
-      "version": "0.1.1"
+      "sha256": "588607c3d1805d418567488c2157ba72df22e9c8a2c886d15d2bf92338a0deda",
+      "size": 29207,
+      "version": "0.1.2"
     },
     {
       "id": "suins-integration",
       "phase": "build",
-      "description": "Use when integrating SuiNS names (suinet.sui) into a Sui dapp.",
+      "description": "Integrate SuiNS names into a Sui dapp. Use when the user mentions SuiNS or wants name resolution on Sui.",
       "tarballUrl": "https://suiperpower.dev/skills/suins-integration.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/suins-integration",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/suins-integration",
-      "sha256": "6397cdde26b3f32aa9a33775e0ed3ee59e469fca09b09afda96128726e8872f2",
+      "sha256": "a95d122a434438b0c1f04f885345a52a2ed6c62b5ce054e741c4f4805de561f2",
       "size": 24599,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "validate-business-model",
       "phase": "build",
-      "description": "Use when validating a Sui product business model (who pays, how much, why).",
+      "description": "Validate a Sui product business model (who pays, how much, why). Use when the user wants to validate monetization, pricing, or business model.",
       "tarballUrl": "https://suiperpower.dev/skills/validate-business-model.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/validate-business-model",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/validate-business-model",
-      "sha256": "10eb93af20f55a1453d95106f7ff7241c67c7d42613cfe4fbe2da0f6e17e1075",
+      "sha256": "f591195de13e90cf95b47b434521d64aebf09a0a3d484fc6cecf600471590877",
       "size": 18455,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "validate-idea",
       "phase": "idea",
-      "description": "Use when stress-testing a Sui idea for demand, competition, feasibility, and Sui-native fit.",
+      "description": "Stress-test a Sui idea for demand, competition, feasibility, and Sui-native fit. Use when the user has an idea and wants validation, go/no-go, or sanity check.",
       "tarballUrl": "https://suiperpower.dev/skills/validate-idea.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/idea/validate-idea",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/idea/validate-idea",
-      "sha256": "06b7fe80782af16e131aa2085f5caca76552536fba8e68b82eb8b2ff76cfae79",
-      "size": 18967,
-      "version": "0.1.1"
+      "sha256": "c23754504b34eb98ae9f7704672872eda2ffa27b2bc07ff4be9f166321d03049",
+      "size": 19479,
+      "version": "0.1.2"
     },
     {
       "id": "verify-against-intent",
       "phase": "build",
-      "description": "Use when a Sui build session ends, to check what was built against .suiperpower/intent.md and flag drift.",
+      "description": "After a Sui build session, check what was built against .suiperpower/intent.md and flag drift. Use when the user wants to verify their build matches intent.",
       "tarballUrl": "https://suiperpower.dev/skills/verify-against-intent.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/verify-against-intent",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/verify-against-intent",
-      "sha256": "9e7e33a951342e81c9378ffb60faeb98829152d1b5e685ca697961491a78730b",
+      "sha256": "165d87a7464c98c29529ce87af399fe1335aa454ee7d903b5766168ad701f349",
       "size": 13335,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "video-craft",
       "phase": "ship",
-      "description": "Use when polishing demo or marketing video frames, pacing, captions, and audio.",
+      "description": "Polish demo or marketing video frames, pacing, captions, and audio. Use when the user wants to polish a video, do an edit pass, or improve video quality.",
       "tarballUrl": "https://suiperpower.dev/skills/video-craft.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/ship/video-craft",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/ship/video-craft",
-      "sha256": "84dc9f3ab0ac002a729b372ff6bd8e75f86985ff3b7765004d69306f6c4d30dc",
+      "sha256": "c018c066b9ca48650f2c98c49b825365f27ee1a8f463016a98b51ac6b5161c4a",
       "size": 14871,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "virtual-sui-incubator",
       "phase": "build",
-      "description": "Use when deep-diving Sui internals (consensus, object model, Move execution, gas).",
+      "description": "Deep-dive Sui internals (consensus, object model, Move execution, gas). Use when the user wants to learn Sui internals or how Sui works under the hood.",
       "tarballUrl": "https://suiperpower.dev/skills/virtual-sui-incubator.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/virtual-sui-incubator",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/virtual-sui-incubator",
-      "sha256": "b4a80952d6aad23fdda4fdca0a28e98ea3c131ed3301a7de549af354915f15a3",
+      "sha256": "8594c29d132111d34d02b41297b02e9c5bfddbd959d4e20e6de0a23ec08fb07d",
       "size": 21015,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "walrus-research",
       "phase": "idea",
-      "description": "Use when researching Walrus storage usage patterns and product opportunities.",
+      "description": "Research Walrus storage usage patterns and product opportunities. Use when the user wants Walrus research, market gaps, or storage opportunities.",
       "tarballUrl": "https://suiperpower.dev/skills/walrus-research.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/idea/walrus-research",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/idea/walrus-research",
-      "sha256": "92afab3ed0fb8f3b305ce6bf97b3462c9fd07f3e9b140d87619766180acaecdc",
+      "sha256": "46307188f0f43add3c8f6f74f5dcbfc91bde71ffdebb503271f7996a0e7ba940",
       "size": 19991,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "walrus-sites",
       "phase": "build",
-      "description": "Use when publishing a Walrus Site (decentralized website hosted on Walrus).",
+      "description": "Publish a Walrus Site (decentralized website hosted on Walrus). Use when the user mentions Walrus Sites or wants to host a site on Walrus.",
       "tarballUrl": "https://suiperpower.dev/skills/walrus-sites.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/walrus-sites",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/walrus-sites",
-      "sha256": "c5f55a26c92c7945385a5cb1761d4c08344950fbd3226b1ba1c51ddd8fc93fb2",
+      "sha256": "62e31b83b3811c45ee8ab30f16ef8de614d91452fba5b0c75b69fa4ce3b31b26",
       "size": 19479,
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "id": "walrus-storage",
       "phase": "build",
-      "description": "Use when integrating Walrus decentralized blob storage on Sui (upload, retrieve files).",
+      "description": "Integrate Walrus decentralized blob storage on Sui (upload, retrieve files). Use when the user mentions Walrus, blob storage, or decentralized storage on Sui.",
       "tarballUrl": "https://suiperpower.dev/skills/walrus-storage.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/walrus-storage",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/walrus-storage",
-      "sha256": "4bcfa8f328898c65def3b823ebace8046d0b51205d05bf4814e0368ed478e519",
-      "size": 31767,
-      "version": "0.1.1"
+      "sha256": "812aba6428c355e81237eed981539c64af930e276c9d499bbd9acc813c429ec5",
+      "size": 32279,
+      "version": "0.1.2"
     },
     {
       "id": "will-real-users-pay",
       "phase": "build",
-      "description": "Use when running a pricing experiment to test willingness to pay for a Sui product.",
+      "description": "Run a pricing experiment to test willingness to pay for a Sui product. Use when the user wants to validate pricing or willingness to pay.",
       "tarballUrl": "https://suiperpower.dev/skills/will-real-users-pay.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/build/will-real-users-pay",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/build/will-real-users-pay",
-      "sha256": "44f7354159870894c42d0f68d8801d0d998024ff5e83bf847f449cbf63b339cb",
+      "sha256": "a1d53c2cccf85cbd10c635471d14c5a4fe7a323ca0b36958027f22bb97e0ff12",
       "size": 18455,
-      "version": "0.1.1"
+      "version": "0.1.2"
     }
   ]
 }

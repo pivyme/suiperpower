@@ -1,6 +1,6 @@
 ---
 name: brand-design
-description: Use when picking a brand name, color palette, or typography for a Sui product.
+description: Pick a brand name, color palette, or typography for a Sui product. Use when the user wants to name or brand a Sui project.
 ---
 
 ## Preamble (run first)

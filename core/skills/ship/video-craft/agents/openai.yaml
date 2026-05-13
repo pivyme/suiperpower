@@ -1,7 +1,7 @@
 name: video-craft
 version: 1
 phase: ship
-description: Use when polishing demo or marketing video frames, pacing, captions, and audio.
+description: Polish demo or marketing video frames, pacing, captions, and audio. Use when the user wants to polish a video, do an edit pass, or improve video quality.
 prompt_path: ../SKILL.md
 references:
   - ../references/loudness-targets.md

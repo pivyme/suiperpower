@@ -1,6 +1,6 @@
 ---
 name: kiosk-marketplace
-description: Use when building a Sui NFT marketplace with the Kiosk standard, transfer policy, royalties.
+description: Build a Sui NFT marketplace with the Kiosk standard, transfer policy, royalties. Use when the user wants a Sui NFT marketplace or Kiosk integration.
 ---
 
 ## Preamble (run first)

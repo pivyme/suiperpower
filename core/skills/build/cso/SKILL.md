@@ -1,6 +1,6 @@
 ---
 name: cso
-description: Use when running a CSO-style customer signal review for a Sui product.
+description: Run a CSO-style customer signal review on a Sui product. Use when the user wants a CSO or customer signal review.
 ---
 
 ## Preamble (run first)

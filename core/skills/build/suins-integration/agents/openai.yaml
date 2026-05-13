@@ -1,7 +1,7 @@
 name: suins-integration
 version: 1
 phase: build
-description: Use when integrating SuiNS names (suinet.sui) into a Sui dapp.
+description: Integrate SuiNS names into a Sui dapp. Use when the user mentions SuiNS or wants name resolution on Sui.
 prompt_path: ../SKILL.md
 references:
   - ../references/suins-quickstart.md

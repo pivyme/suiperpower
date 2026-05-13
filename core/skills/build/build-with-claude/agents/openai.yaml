@@ -1,7 +1,7 @@
 name: build-with-claude
 version: 1
 phase: build
-description: Use when pairing with a coding agent to build a Sui MVP step by step.
+description: Pair with a coding agent to build a Sui MVP step by step. Use when the user wants to build the MVP iteratively with an agent.
 prompt_path: ../SKILL.md
 references:
   - ../references/slice-shapes.md

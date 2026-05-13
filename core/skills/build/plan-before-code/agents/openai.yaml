@@ -1,7 +1,7 @@
 name: plan-before-code
 version: 1
 phase: build
-description: Use when planning a Sui Move package before writing code (abilities, capabilities, PTB, upgrades). Writes build-plan.md.
+description: Plan a Sui Move package before writing code (abilities, capabilities, PTB shape, upgrade strategy). Use when the user wants a build plan before Move code.
 prompt_path: ../SKILL.md
 references: []
 knowledge:

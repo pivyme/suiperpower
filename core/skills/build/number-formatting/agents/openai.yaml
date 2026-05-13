@@ -1,7 +1,7 @@
 name: number-formatting
 version: 1
 phase: build
-description: Use when formatting token amounts, USD, gas, or MIST/SUI conversion in a Sui dapp UI.
+description: Format token amounts, USD, gas, or MIST/SUI conversion in a Sui dapp UI. Use when the user wants to fix or implement number formatting.
 prompt_path: ../SKILL.md
 references:
   - ../references/format-helpers.md

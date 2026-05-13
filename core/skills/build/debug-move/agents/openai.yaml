@@ -1,7 +1,7 @@
 name: debug-move
 version: 1
 phase: build
-description: Use when debugging Sui Move compile errors, runtime aborts, or capability leaks.
+description: Debug Sui Move compile errors, runtime aborts, or capability leaks. Use when the user has a Move error, abort code, failed PTB, or compiler issue.
 prompt_path: ../SKILL.md
 references:
   - ../references/compile-error-playbook.md

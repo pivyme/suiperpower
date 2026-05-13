@@ -1,6 +1,6 @@
 ---
 name: eve-frontier
-description: Use when building for the EVE Frontier track on Sui (game-economy integration).
+description: Build for the EVE Frontier track on Sui (game-economy integration). Use when the user mentions EVE Frontier.
 ---
 
 ## Preamble (run first)

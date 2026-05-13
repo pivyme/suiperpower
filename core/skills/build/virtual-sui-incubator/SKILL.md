@@ -1,6 +1,6 @@
 ---
 name: virtual-sui-incubator
-description: Use when deep-diving Sui internals (consensus, object model, Move execution, gas).
+description: Deep-dive Sui internals (consensus, object model, Move execution, gas). Use when the user wants to learn Sui internals or how Sui works under the hood.
 ---
 
 ## Preamble (run first)

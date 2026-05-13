@@ -1,6 +1,6 @@
 ---
 name: overflow-copilot
-description: Use when researching past Sui Overflow hackathon projects, winners, and gaps.
+description: Research past Sui Overflow hackathon projects, winners, and gaps. Use when the user wants past Overflow research, winners, or hackathon archive.
 ---
 
 ## Preamble (run first)

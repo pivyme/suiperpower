@@ -1,6 +1,6 @@
 ---
 name: navi-lending
-description: Use when integrating Navi lending protocol on Sui (deposit, borrow, repay).
+description: Integrate Navi lending protocol on Sui. Use when the user mentions Navi or wants to lend or borrow on Sui via Navi.
 ---
 
 ## Preamble (run first)

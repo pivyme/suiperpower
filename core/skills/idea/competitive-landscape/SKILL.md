@@ -1,6 +1,6 @@
 ---
 name: competitive-landscape
-description: Use when mapping competitors for a Sui idea, on Sui and adjacent chains.
+description: Map competitors for a Sui idea, on Sui and adjacent chains. Use when the user wants a competitive landscape, competitor analysis, or to find their edge.
 ---
 
 ## Preamble (run first)

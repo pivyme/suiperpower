@@ -1,7 +1,7 @@
 name: build-mobile-sui
 version: 1
 phase: build
-description: Use when building a mobile Sui app with React Native or the Sui Mobile SDK.
+description: Build a mobile Sui app with React Native or the Sui Mobile SDK. Use when the user wants iOS, Android, or mobile Sui flows.
 prompt_path: ../SKILL.md
 references:
   - ../references/mobile-sdk-setup.md

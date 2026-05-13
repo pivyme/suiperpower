@@ -1,7 +1,7 @@
 name: validate-business-model
 version: 1
 phase: build
-description: Use when validating a Sui product business model (who pays, how much, why).
+description: Validate a Sui product business model (who pays, how much, why). Use when the user wants to validate monetization, pricing, or business model.
 prompt_path: ../SKILL.md
 references:
   - ../references/payer-types.md

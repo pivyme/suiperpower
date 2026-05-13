@@ -1,6 +1,6 @@
 ---
 name: pyth-oracle
-description: Use when integrating Pyth oracle prices into a Sui Move package.
+description: Integrate Pyth oracle prices into a Sui Move package. Use when the user mentions Pyth or wants price oracles on Sui.
 ---
 
 ## Preamble (run first)

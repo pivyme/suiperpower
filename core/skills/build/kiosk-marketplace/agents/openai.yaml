@@ -1,7 +1,7 @@
 name: kiosk-marketplace
 version: 1
 phase: build
-description: Use when building a Sui NFT marketplace with the Kiosk standard, transfer policy, royalties.
+description: Build a Sui NFT marketplace with the Kiosk standard, transfer policy, royalties. Use when the user wants a Sui NFT marketplace or Kiosk integration.
 prompt_path: ../SKILL.md
 references:
   - ../references/kiosk-quickstart.md

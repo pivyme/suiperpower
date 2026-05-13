@@ -1,7 +1,7 @@
 name: verify-against-intent
 version: 1
 phase: build
-description: Use when a Sui build session ends, to check what was built against .suiperpower/intent.md and flag drift.
+description: After a Sui build session, check what was built against .suiperpower/intent.md and flag drift. Use when the user wants to verify their build matches intent.
 prompt_path: ../SKILL.md
 references: []
 knowledge:

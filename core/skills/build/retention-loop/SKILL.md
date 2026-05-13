@@ -1,6 +1,6 @@
 ---
 name: retention-loop
-description: Use when articulating a day 1 / day 7 / day 30 retention loop for a Sui product.
+description: Articulate a day 1 / day 7 / day 30 retention loop for a Sui product. Use when the user wants to define retention, stickiness, or engagement loop.
 ---
 
 ## Preamble (run first)

@@ -1,6 +1,6 @@
 ---
 name: sui-zk-login
-description: Use when adding Sui zkLogin for Google, Apple, Facebook, or Twitch social sign-in.
+description: Add Sui zkLogin for Google, Apple, Facebook, or Twitch sign-in. Use when the user mentions zkLogin, social login, or OAuth-based Sui auth.
 ---
 
 ## Preamble (run first)

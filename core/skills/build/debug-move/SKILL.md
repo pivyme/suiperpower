@@ -1,6 +1,6 @@
 ---
 name: debug-move
-description: Use when debugging Sui Move compile errors, runtime aborts, or capability leaks.
+description: Debug Sui Move compile errors, runtime aborts, or capability leaks. Use when the user has a Move error, abort code, failed PTB, or compiler issue.
 ---
 
 ## Preamble (run first)

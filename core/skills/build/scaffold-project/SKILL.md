@@ -1,6 +1,6 @@
 ---
 name: scaffold-project
-description: Scaffold a new Sui project with the right stack and write .suiperpower/build-context.md. Use when the user says "scaffold my project", "set up my workspace", "what stack should I use on Sui", "init a Sui project", "bootstrap a Sui app", "start a new Sui project", "create a Sui project", or "give me a Sui template".
+description: Scaffold a new Sui project with the right stack and write build-context.md. Use when the user wants to start, init, bootstrap, set up, or create a new Sui project, workspace, or template, in any phrasing.
 ---
 
 ## Preamble (run first)

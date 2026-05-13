@@ -1,6 +1,6 @@
 ---
 name: cetus-swap
-description: Use when integrating Cetus AMM on Sui for swaps, liquidity, or concentrated pools.
+description: Integrate Cetus AMM on Sui (swaps, liquidity, concentrated pools). Use when the user mentions Cetus.
 ---
 
 ## Preamble (run first)

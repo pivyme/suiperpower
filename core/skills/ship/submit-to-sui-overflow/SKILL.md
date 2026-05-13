@@ -1,6 +1,6 @@
 ---
 name: submit-to-sui-overflow
-description: Use when submitting a project to Sui Overflow on deepsurge.xyz.
+description: Submit a project to Sui Overflow on deepsurge.xyz. Use when the user wants to submit to Overflow or prepare a hackathon submission.
 ---
 
 ## Preamble (run first)

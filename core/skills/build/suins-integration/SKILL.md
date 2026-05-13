@@ -1,6 +1,6 @@
 ---
 name: suins-integration
-description: Use when integrating SuiNS names (suinet.sui) into a Sui dapp.
+description: Integrate SuiNS names into a Sui dapp. Use when the user mentions SuiNS or wants name resolution on Sui.
 ---
 
 ## Preamble (run first)

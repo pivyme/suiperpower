@@ -1,6 +1,6 @@
 ---
 name: ptb-composer
-description: Use when composing a Sui Programmable Transaction Block, chaining Move calls atomically.
+description: Compose a Sui Programmable Transaction Block, chaining Move calls atomically. Use when the user wants to build a PTB or chain transactions.
 ---
 
 ## Preamble (run first)

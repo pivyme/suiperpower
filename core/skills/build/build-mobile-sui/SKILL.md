@@ -1,6 +1,6 @@
 ---
 name: build-mobile-sui
-description: Use when building a mobile Sui app with React Native or the Sui Mobile SDK.
+description: Build a mobile Sui app with React Native or the Sui Mobile SDK. Use when the user wants iOS, Android, or mobile Sui flows.
 ---
 
 ## Preamble (run first)

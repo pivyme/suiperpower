@@ -1,6 +1,6 @@
 ---
 name: nautilus-offchain
-description: Use when integrating Nautilus offchain TEE compute for a Sui project.
+description: Integrate Nautilus offchain TEE compute for a Sui project. Use when the user mentions Nautilus.
 ---
 
 ## Preamble (run first)

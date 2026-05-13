@@ -1,6 +1,6 @@
 ---
 name: video-craft
-description: Use when polishing demo or marketing video frames, pacing, captions, and audio.
+description: Polish demo or marketing video frames, pacing, captions, and audio. Use when the user wants to polish a video, do an edit pass, or improve video quality.
 ---
 
 ## Preamble (run first)

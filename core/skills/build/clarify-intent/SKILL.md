@@ -1,6 +1,6 @@
 ---
 name: clarify-intent
-description: Pin down what the user is actually building on Sui before any code. Use when the user says "build me X", "build a Sui program", "build a Sui app", "build a Sui dapp", "build something on Sui", "make a Sui smart contract", "implement Y on Sui", "write a contract for Z on Sui", "start a Sui project", "let's start building on Sui", "scaffold this", "I want to build on Sui", or "step back".
+description: Pin down what the user is actually building on Sui before any code. Use when the user wants to build, create, make, develop, scaffold, implement, or ship anything on Sui, in any phrasing, trigger eagerly. Skip if .suiperpower/intent.md already exists for this session.
 ---
 
 ## Preamble (run first)

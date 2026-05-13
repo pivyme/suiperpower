@@ -1,7 +1,7 @@
 name: page-load-animations
 version: 1
 phase: build
-description: Use when fixing janky page-load animations, layout shift, or skeleton loaders in a Sui dapp.
+description: Fix janky page-load animations, layout shift, or skeletons in a Sui dapp. Use when the user wants to fix loading animations or first paint.
 prompt_path: ../SKILL.md
 references:
   - ../references/timing-defaults.md

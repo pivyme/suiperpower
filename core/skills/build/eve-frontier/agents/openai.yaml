@@ -1,7 +1,7 @@
 name: eve-frontier
 version: 1
 phase: build
-description: Use when building for the EVE Frontier track on Sui (game-economy integration).
+description: Build for the EVE Frontier track on Sui (game-economy integration). Use when the user mentions EVE Frontier.
 prompt_path: ../SKILL.md
 references:
   - ../references/eve-quickstart.md

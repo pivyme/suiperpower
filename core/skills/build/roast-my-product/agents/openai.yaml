@@ -1,7 +1,7 @@
 name: roast-my-product
 version: 1
 phase: build
-description: Use when roasting a Sui product as the harshest investor, brutal critique.
+description: Roast a Sui product as the harshest investor in the room. Use when the user wants brutal critique, roast, or VC-style feedback.
 prompt_path: ../SKILL.md
 references:
   - ../references/seven-dimensions.md

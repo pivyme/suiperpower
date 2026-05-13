@@ -1,6 +1,6 @@
 ---
 name: deepbook-research
-description: Use when researching DeepBook trading data, market gaps, underserved pairs on Sui.
+description: Research DeepBook trading data and market gaps on Sui. Use when the user wants DeepBook research, market opportunities, or underserved pairs.
 ---
 
 ## Preamble (run first)

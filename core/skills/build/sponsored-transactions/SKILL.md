@@ -1,6 +1,6 @@
 ---
 name: sponsored-transactions
-description: Use when adding sponsored (gasless) transactions to a Sui app via a gas station.
+description: Add sponsored (gasless) transactions to a Sui app via a gas station. Use when the user wants gasless tx, sponsor user gas, or first-tx-free onboarding.
 ---
 
 ## Preamble (run first)

@@ -1,6 +1,6 @@
 ---
 name: product-review
-description: Use when running a UX product review of a Sui dapp (first paint, onboarding, mobile).
+description: Run a UX product review of a Sui dapp (first paint, onboarding, mobile). Use when the user wants a product, UX, or onboarding review.
 ---
 
 ## Preamble (run first)

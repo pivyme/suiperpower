@@ -1,6 +1,6 @@
 ---
 name: roast-my-product
-description: Use when roasting a Sui product as the harshest investor, brutal critique.
+description: Roast a Sui product as the harshest investor in the room. Use when the user wants brutal critique, roast, or VC-style feedback.
 ---
 
 ## Preamble (run first)

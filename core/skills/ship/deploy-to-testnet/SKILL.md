@@ -1,6 +1,6 @@
 ---
 name: deploy-to-testnet
-description: Use when deploying a Sui Move package to testnet and capturing package id and UpgradeCap.
+description: Deploy a Sui Move package to testnet and capture package id and UpgradeCap. Use when the user wants to deploy to testnet or publish to Sui testnet.
 ---
 
 ## Preamble (run first)

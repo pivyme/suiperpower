@@ -1,7 +1,7 @@
 name: walrus-research
 version: 1
 phase: idea
-description: Use when researching Walrus storage usage patterns and product opportunities.
+description: Research Walrus storage usage patterns and product opportunities. Use when the user wants Walrus research, market gaps, or storage opportunities.
 prompt_path: ../SKILL.md
 references:
   - ../references/walrus-categories.md

@@ -1,6 +1,6 @@
 ---
 name: apply-grant
-description: Use when drafting a Sui Foundation grant application with milestones and sustainability plan.
+description: Draft a Sui Foundation grant application with milestones and sustainability plan. Use when the user wants to apply for a Sui grant or draft a grant application.
 ---
 
 ## Preamble (run first)

@@ -1,6 +1,6 @@
 ---
 name: ottersec-prep
-description: Use when prepping a Sui Move package for an OtterSec security audit.
+description: Prep a Sui Move package for an OtterSec security audit. Use when the user mentions OtterSec or wants audit prep.
 ---
 
 ## Preamble (run first)

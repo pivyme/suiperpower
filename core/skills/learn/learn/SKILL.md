@@ -1,6 +1,6 @@
 ---
 name: learn
-description: Use when capturing session learnings and decisions to .suiperpower/learnings.md.
+description: Capture session learnings and decisions to .suiperpower/learnings.md. Use when the user wants to save what they learned, log decisions, or wrap up a session.
 ---
 
 ## Preamble (run first)

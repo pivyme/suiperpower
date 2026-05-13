@@ -1,6 +1,6 @@
 ---
 name: create-pitch-deck
-description: Use when drafting a 10-slide pitch deck for a Sui product (investors, judges, grant).
+description: Draft a 10-slide pitch deck for a Sui product (investors, judges, grant). Use when the user wants a pitch deck or to draft slides for a Sui project.
 ---
 
 ## Preamble (run first)

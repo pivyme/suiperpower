@@ -1,6 +1,6 @@
 ---
 name: deploy-to-mainnet
-description: Use when deploying a Sui Move package to mainnet after testnet has been exercised.
+description: Deploy a Sui Move package to mainnet after testnet has been exercised. Use when the user wants to ship to mainnet, go to prod, or publish to Sui mainnet.
 ---
 
 ## Preamble (run first)

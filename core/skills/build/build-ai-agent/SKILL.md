@@ -1,6 +1,6 @@
 ---
 name: build-ai-agent
-description: Use when building an AI agent that signs Sui transactions or runs onchain actions.
+description: Build an AI agent that signs Sui transactions or runs onchain actions. Use when the user wants an AI agent on Sui.
 ---
 
 ## Preamble (run first)

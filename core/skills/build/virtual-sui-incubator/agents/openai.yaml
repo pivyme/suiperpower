@@ -1,7 +1,7 @@
 name: virtual-sui-incubator
 version: 1
 phase: build
-description: Use when deep-diving Sui internals (consensus, object model, Move execution, gas).
+description: Deep-dive Sui internals (consensus, object model, Move execution, gas). Use when the user wants to learn Sui internals or how Sui works under the hood.
 prompt_path: ../SKILL.md
 references:
   - ../references/topic-deep-dives.md

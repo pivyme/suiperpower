@@ -1,7 +1,7 @@
 name: product-review
 version: 1
 phase: build
-description: Use when running a UX product review of a Sui dapp (first paint, onboarding, mobile).
+description: Run a UX product review of a Sui dapp (first paint, onboarding, mobile). Use when the user wants a product, UX, or onboarding review.
 prompt_path: ../SKILL.md
 references:
   - ../references/impact-effort-matrix.md

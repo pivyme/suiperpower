@@ -1,7 +1,7 @@
 name: sui-zk-login
 version: 1
 phase: build
-description: Use when adding Sui zkLogin for Google, Apple, Facebook, or Twitch social sign-in.
+description: Add Sui zkLogin for Google, Apple, Facebook, or Twitch sign-in. Use when the user mentions zkLogin, social login, or OAuth-based Sui auth.
 prompt_path: ../SKILL.md
 references:
   - ../references/zklogin-flow.md

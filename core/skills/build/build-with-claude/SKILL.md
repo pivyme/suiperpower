@@ -1,6 +1,6 @@
 ---
 name: build-with-claude
-description: Use when pairing with a coding agent to build a Sui MVP step by step.
+description: Pair with a coding agent to build a Sui MVP step by step. Use when the user wants to build the MVP iteratively with an agent.
 ---
 
 ## Preamble (run first)

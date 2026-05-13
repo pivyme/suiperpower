@@ -1,6 +1,6 @@
 ---
 name: build-with-move
-description: Author Sui Move modules and packages with a senior Move dev as your pair. Use when the user says "build a Move module", "write a Move package", "help me with Move", "add a function to my contract", "create a smart contract on Sui", "build a Sui program", "build a Sui smart contract", "write Sui Move code", "scaffold a Move package", or "I need to write Move code".
+description: Author Sui Move modules and packages with a senior Move dev as your pair. Use when the user wants to write, build, author, add, or scaffold Move code, smart contracts, or Sui programs at the module or function level, in any phrasing.
 ---
 
 ## Preamble (run first)

@@ -1,6 +1,6 @@
 ---
 name: number-formatting
-description: Use when formatting token amounts, USD, gas, or MIST/SUI conversion in a Sui dapp UI.
+description: Format token amounts, USD, gas, or MIST/SUI conversion in a Sui dapp UI. Use when the user wants to fix or implement number formatting.
 ---
 
 ## Preamble (run first)

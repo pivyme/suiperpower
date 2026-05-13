@@ -1,6 +1,6 @@
 ---
 name: scallop-money-market
-description: Use when integrating Scallop money market on Sui (lend, borrow, repay).
+description: Integrate Scallop money market on Sui. Use when the user mentions Scallop or wants to lend or borrow on Sui via Scallop.
 ---
 
 ## Preamble (run first)

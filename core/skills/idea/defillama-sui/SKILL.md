@@ -1,6 +1,6 @@
 ---
 name: defillama-sui
-description: Use when researching Sui DeFi TVL, protocols, and yield via DefiLlama.
+description: Research Sui DeFi TVL, protocols, and yield via DefiLlama. Use when the user wants Sui DeFi data, TVL, or protocol research.
 ---
 
 ## Preamble (run first)

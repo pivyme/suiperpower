@@ -1,6 +1,6 @@
 ---
 name: build-data-pipeline
-description: Use when building a Sui data indexer or analytics pipeline (events, RPC, off-chain DB).
+description: Build a Sui data indexer or analytics pipeline. Use when the user wants to index Sui events, build a pipeline, or query Sui RPC data.
 ---
 
 ## Preamble (run first)

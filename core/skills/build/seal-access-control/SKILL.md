@@ -1,6 +1,6 @@
 ---
 name: seal-access-control
-description: Use when integrating Seal threshold encryption and access control on Sui.
+description: Integrate Seal threshold encryption and access control on Sui. Use when the user mentions Seal.
 ---
 
 ## Preamble (run first)

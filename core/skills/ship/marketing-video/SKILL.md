@@ -1,6 +1,6 @@
 ---
 name: marketing-video
-description: Use when planning a 30-60s product marketing video for Twitter, Shorts, or a launch page.
+description: Plan a 30-60s marketing video for a Sui product (Twitter, Shorts, launch page). Use when the user wants a marketing, promo, or launch video.
 ---
 
 ## Preamble (run first)

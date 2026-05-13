@@ -1,6 +1,6 @@
 ---
 name: frontend-design-guidelines
-description: Use when applying tasteful frontend defaults to a Sui dapp (layout, spacing, typography).
+description: Apply tasteful frontend defaults to a Sui dapp (layout, spacing, typography). Use when the user wants frontend defaults or a UI review.
 ---
 
 ## Preamble (run first)
