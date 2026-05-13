@@ -1,6 +1,6 @@
 ---
 name: scallop-money-market
-description: Use when integrating Scallop on Sui for deposit, borrow, or repay flows, or adding a money market to a Sui app.
+description: Use when integrating Scallop money market on Sui (lend, borrow, repay).
 ---
 
 ## Preamble (run first)

@@ -1,7 +1,7 @@
 name: ptb-composer
 version: 1
 phase: build
-description: Use when composing a Sui Programmable Transaction Block that chains multiple Move calls or transfers atomically.
+description: Use when composing a Sui Programmable Transaction Block, chaining Move calls atomically.
 prompt_path: ../SKILL.md
 references:
   - ../references/ptb-quickstart.md

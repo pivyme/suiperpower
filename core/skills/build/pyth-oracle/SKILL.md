@@ -1,6 +1,6 @@
 ---
 name: pyth-oracle
-description: Use when integrating Pyth pull-based price feeds into a Sui Move package or reading real-time on-chain prices.
+description: Use when integrating Pyth oracle prices into a Sui Move package.
 ---
 
 ## Preamble (run first)

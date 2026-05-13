@@ -1,7 +1,7 @@
 name: overflow-copilot
 version: 1
 phase: idea
-description: Use when researching past Sui Overflow hackathon projects, what won, what was built, or where the gaps are.
+description: Use when researching past Sui Overflow hackathon projects, winners, and gaps.
 prompt_path: ../SKILL.md
 references:
   - ../references/archive-search-patterns.md

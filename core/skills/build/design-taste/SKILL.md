@@ -1,6 +1,6 @@
 ---
 name: design-taste
-description: Use when a Sui dapp looks generic, AI-generated, or not premium. Diagnoses why and outputs a specific fix list.
+description: Use when a Sui dapp UI looks generic, AI-generated, cheap, or not premium.
 ---
 
 ## Preamble (run first)

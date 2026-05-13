@@ -1,6 +1,6 @@
 ---
 name: suins-integration
-description: Use when integrating SuiNS name resolution, registering .sui names, doing reverse lookups, or using Move Registry (MVR) for named packages.
+description: Use when integrating SuiNS names (suinet.sui) into a Sui dapp.
 ---
 
 ## Preamble (run first)

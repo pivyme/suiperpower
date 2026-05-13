@@ -1,7 +1,7 @@
 name: scallop-money-market
 version: 1
 phase: build
-description: Use when integrating Scallop on Sui for deposit, borrow, or repay flows, or adding a money market to a Sui app.
+description: Use when integrating Scallop money market on Sui (lend, borrow, repay).
 prompt_path: ../SKILL.md
 references:
   - ../references/scallop-quickstart.md

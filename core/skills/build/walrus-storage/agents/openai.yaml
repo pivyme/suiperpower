@@ -1,7 +1,7 @@
 name: walrus-storage
 version: 1
 phase: build
-description: Use when storing files, NFT media, or user uploads on Walrus and committing blob ids on chain in a Sui project.
+description: Use when integrating Walrus decentralized blob storage on Sui (upload, retrieve files).
 prompt_path: ../SKILL.md
 references:
   - ../references/walrus-quickstart.md

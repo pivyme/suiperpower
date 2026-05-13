@@ -1,6 +1,6 @@
 ---
 name: defillama-sui
-description: Use when researching Sui DeFi market gaps using DefiLlama TVL, yield, and protocol data.
+description: Use when researching Sui DeFi TVL, protocols, and yield via DefiLlama.
 ---
 
 ## Preamble (run first)

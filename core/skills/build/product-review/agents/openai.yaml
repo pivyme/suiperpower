@@ -1,7 +1,7 @@
 name: product-review
 version: 1
 phase: build
-description: Use when reviewing a Sui product as a first-time user would, from first paint through onboarding, empty states, and mobile. Produces a prioritized UX fix roadmap.
+description: Use when running a UX product review of a Sui dapp (first paint, onboarding, mobile).
 prompt_path: ../SKILL.md
 references:
   - ../references/impact-effort-matrix.md

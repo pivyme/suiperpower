@@ -1,6 +1,6 @@
 ---
 name: eve-frontier
-description: Use when building on EVE Frontier's Smart Assembly system (Turrets, Gates, Storage Units) for the Sui Overflow 2026 EVE track.
+description: Use when building for the EVE Frontier track on Sui (game-economy integration).
 ---
 
 ## Preamble (run first)

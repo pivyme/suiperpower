@@ -1,7 +1,7 @@
 name: build-mobile-sui
 version: 1
 phase: build
-description: Use when building a mobile Sui app, integrating the Sui Mobile SDK, React Native Sui, or wallet deep-links on iOS or Android.
+description: Use when building a mobile Sui app with React Native or the Sui Mobile SDK.
 prompt_path: ../SKILL.md
 references:
   - ../references/mobile-sdk-setup.md

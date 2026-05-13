@@ -1,6 +1,6 @@
 ---
 name: validate-idea
-description: Use when stress testing a Sui idea against demand, competition, feasibility, and Sui-native fit. Produces a go/no-go.
+description: Use when stress-testing a Sui idea for demand, competition, feasibility, and Sui-native fit.
 ---
 
 ## Preamble (run first)

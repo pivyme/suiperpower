@@ -1,6 +1,6 @@
 ---
 name: will-real-users-pay
-description: Use when stress-testing pricing on a Sui product, running a cheap willingness-to-pay experiment, or validating that anyone will pay.
+description: Use when running a pricing experiment to test willingness to pay for a Sui product.
 ---
 
 ## Preamble (run first)

@@ -1,6 +1,6 @@
 ---
 name: review-move
-description: Use when running an internal P0-P3 security review on a Sui Move package or finding where OpenZeppelin can replace hand-rolled code.
+description: Use when running an in-house P0-P3 security review on a Sui Move package.
 ---
 
 ## Preamble (run first)

@@ -1,7 +1,7 @@
 name: marketing-video
 version: 1
 phase: ship
-description: Use when planning a 30-60s product marketing video for Twitter, YouTube Shorts, or a launch page, with script and shot list.
+description: Use when planning a 30-60s product marketing video for Twitter, Shorts, or a launch page.
 prompt_path: ../SKILL.md
 references:
   - ../references/channel-specs.md

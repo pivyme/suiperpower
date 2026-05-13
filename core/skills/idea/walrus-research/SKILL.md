@@ -1,6 +1,6 @@
 ---
 name: walrus-research
-description: Use when researching Walrus storage usage patterns, underserved use cases, and product opportunities.
+description: Use when researching Walrus storage usage patterns and product opportunities.
 ---
 
 ## Preamble (run first)

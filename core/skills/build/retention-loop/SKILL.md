@@ -1,6 +1,6 @@
 ---
 name: retention-loop
-description: Use when articulating a retention loop on a Sui product, day 1 / day 7 / day 30 anchors, or asking why users come back.
+description: Use when articulating a day 1 / day 7 / day 30 retention loop for a Sui product.
 ---
 
 ## Preamble (run first)

@@ -1,6 +1,6 @@
 ---
 name: plan-before-code
-description: Use when planning a Sui build after clarify-intent, or when the work spans multiple Move modules, a sponsor integration, or a multi-step PTB. Writes build-plan.md.
+description: Use when planning a Sui Move package before writing code (abilities, capabilities, PTB, upgrades). Writes build-plan.md.
 ---
 
 ## Preamble (run first)

@@ -1,7 +1,7 @@
 name: walrus-sites
 version: 1
 phase: build
-description: Use when deploying a static frontend to Walrus Sites for decentralized hosting on wal.app.
+description: Use when publishing a Walrus Site (decentralized website hosted on Walrus).
 prompt_path: ../SKILL.md
 references:
   - ../references/walrus-sites-quickstart.md

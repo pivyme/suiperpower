@@ -1,6 +1,6 @@
 ---
 name: deepbook-orderbook
-description: Use when building a CLOB on Sui, integrating DeepBook v3, placing or filling orders, or building a Sui DEX with a real orderbook.
+description: Use when integrating DeepBook v3 orderbook on Sui (limit orders, CLOB, DEX).
 ---
 
 ## Preamble (run first)

@@ -1,6 +1,6 @@
 ---
 name: verify-against-intent
-description: Use when verifying a finished Sui build session, checking whether Move code, capabilities, sponsor integrations, and upgrades match intent.md and build-plan.md.
+description: Use when a Sui build session ends, to check what was built against .suiperpower/intent.md and flag drift.
 ---
 
 ## Preamble (run first)

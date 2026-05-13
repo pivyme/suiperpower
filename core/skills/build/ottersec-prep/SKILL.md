@@ -1,6 +1,6 @@
 ---
 name: ottersec-prep
-description: Use when preparing a Sui Move package for an OtterSec audit. Walks the pre-audit checklist and produces the engagement package.
+description: Use when prepping a Sui Move package for an OtterSec security audit.
 ---
 
 ## Preamble (run first)

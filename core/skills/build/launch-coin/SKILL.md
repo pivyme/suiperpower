@@ -1,6 +1,6 @@
 ---
 name: launch-coin
-description: Use when launching a coin on Sui, deciding tokenomics, managing TreasuryCap custody, or shipping a token that renders in wallets.
+description: Use when launching a coin on Sui with the Move coin module, tokenomics, TreasuryCap.
 ---
 
 ## Preamble (run first)

@@ -1,7 +1,7 @@
 name: build-data-pipeline
 version: 1
 phase: build
-description: Use when indexing or querying Sui on-chain data via GraphQL RPC, event polling, custom indexers, or gRPC.
+description: Use when building a Sui data indexer or analytics pipeline (events, RPC, off-chain DB).
 prompt_path: ../SKILL.md
 references:
   - ../references/data-access-methods.md

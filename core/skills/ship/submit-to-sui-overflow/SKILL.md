@@ -1,6 +1,6 @@
 ---
 name: submit-to-sui-overflow
-description: Use when submitting to Sui Overflow on deepsurge.xyz. Captures package id, validates the 1280x1280 logo, drafts form copy, runs preflight.
+description: Use when submitting a project to Sui Overflow on deepsurge.xyz.
 ---
 
 ## Preamble (run first)

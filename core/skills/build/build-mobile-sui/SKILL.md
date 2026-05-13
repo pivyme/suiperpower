@@ -1,6 +1,6 @@
 ---
 name: build-mobile-sui
-description: Use when building a mobile Sui app, integrating the Sui Mobile SDK, React Native Sui, or wallet deep-links on iOS or Android.
+description: Use when building a mobile Sui app with React Native or the Sui Mobile SDK.
 ---
 
 ## Preamble (run first)

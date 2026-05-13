@@ -1,6 +1,6 @@
 ---
 name: openzeppelin-sui-libs
-description: Use when replacing hand-rolled access control, pausable, ownable, or upgradeable patterns with OpenZeppelin's audited Move libraries on Sui.
+description: Use when using OpenZeppelin's audited Move libraries on Sui (access control, pausable, ownable).
 ---
 
 ## Preamble (run first)

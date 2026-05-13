@@ -1,6 +1,6 @@
 ---
 name: virtual-sui-incubator
-description: Use when teaching Sui internals deeply, consensus, Object model, Move execution, gas, upgrades, or indexer architecture.
+description: Use when deep-diving Sui internals (consensus, object model, Move execution, gas).
 ---
 
 ## Preamble (run first)

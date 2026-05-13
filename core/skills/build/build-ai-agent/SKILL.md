@@ -1,6 +1,6 @@
 ---
 name: build-ai-agent
-description: Use when building an autonomous AI agent on Sui that transacts via PTBs, uses zkLogin wallets, MemWal memory, Nautilus TEEs, or Atoma inference.
+description: Use when building an AI agent that signs Sui transactions or runs onchain actions.
 ---
 
 ## Preamble (run first)

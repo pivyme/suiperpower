@@ -1,6 +1,6 @@
 ---
 name: cetus-swap
-description: Use when integrating Cetus CLMM on Sui for token swaps or concentrated liquidity, or when building a Sui DEX with AMM liquidity.
+description: Use when integrating Cetus AMM on Sui for swaps, liquidity, or concentrated pools.
 ---
 
 ## Preamble (run first)

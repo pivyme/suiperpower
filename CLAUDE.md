@@ -102,7 +102,7 @@ The website consumes generated artifacts at `web/public/skills/*.tar.gz`, `web/p
 
 Two automatic safety nets so you do not ship a stale `/skills` page:
 
-1. **Web auto-regen**: `web/package.json` declares `predev` and `prebuild` that invoke `pnpm -F @pivyme/suiperpower package:skills` first. So `pnpm web:dev` and `pnpm web:build` verify artifacts before the site boots or builds. If no skill content changed, the tracked JSON files stay untouched. Vercel deploys get fresh data without manual steps.
+1. **Web auto-regen**: `web/package.json` declares `predev` and `prebuild` that invoke `pnpm -F suiperpower package:skills` first. So `pnpm web:dev` and `pnpm web:build` verify artifacts before the site boots or builds. If no skill content changed, the tracked JSON files stay untouched. Vercel deploys get fresh data without manual steps.
 2. **Active-author watcher**: `pnpm skills:watch` recursively watches `core/skills/**`, debounces saves at 400ms, and re-runs `package:skills` per change. Use this in a side terminal when editing skills so the running dev server picks up new tarballs.
 
 When you add or edit a SKILL.md, both `web/public/skills/index.json` and `web/app/data/skills-index.json` must regenerate. `core/skills-lock.json` only needs to change when skill files change. If a skill is missing from the website, the cause is almost always a stale index. Run `pnpm package:skills` once and reload.

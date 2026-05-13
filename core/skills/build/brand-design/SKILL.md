@@ -1,6 +1,6 @@
 ---
 name: brand-design
-description: Use when picking brand colors, naming a Sui product, choosing a typeface, or fixing a generic crypto look. Outputs name, palette, typography.
+description: Use when picking a brand name, color palette, or typography for a Sui product.
 ---
 
 ## Preamble (run first)

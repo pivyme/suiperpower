@@ -1,7 +1,7 @@
 name: openzeppelin-sui-libs
 version: 1
 phase: build
-description: Use when replacing hand-rolled access control, pausable, ownable, or upgradeable patterns with OpenZeppelin's audited Move libraries on Sui.
+description: Use when using OpenZeppelin's audited Move libraries on Sui (access control, pausable, ownable).
 prompt_path: ../SKILL.md
 references:
   - ../references/oz-modules-quickref.md

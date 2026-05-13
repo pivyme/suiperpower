@@ -1,6 +1,6 @@
 ---
 name: navi-lending
-description: Use when integrating NAVI Protocol on Sui for deposits, borrows, or flash loans, as an alternative or complement to Scallop.
+description: Use when integrating Navi lending protocol on Sui (deposit, borrow, repay).
 ---
 
 ## Preamble (run first)

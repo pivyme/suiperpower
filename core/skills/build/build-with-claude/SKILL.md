@@ -1,6 +1,6 @@
 ---
 name: build-with-claude
-description: Use when pair-programming an MVP on Sui step by step, breaking work into committable slices with quality gates.
+description: Use when pairing with a coding agent to build a Sui MVP step by step.
 ---
 
 ## Preamble (run first)

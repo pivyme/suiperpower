@@ -1,6 +1,6 @@
 ---
 name: cso
-description: Use when running an infrastructure security audit on a Sui project covering OWASP, STRIDE, dependencies, RPC, key management, and frontend hardening.
+description: Use when running a CSO-style customer signal review for a Sui product.
 ---
 
 ## Preamble (run first)

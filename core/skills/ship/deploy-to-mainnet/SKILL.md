@@ -1,6 +1,6 @@
 ---
 name: deploy-to-mainnet
-description: Use when publishing to Sui mainnet after testnet is exercised and anti-slop gates have cleared. Locks upgrade policy intentionally.
+description: Use when deploying a Sui Move package to mainnet after testnet has been exercised.
 ---
 
 ## Preamble (run first)

@@ -1,7 +1,7 @@
 name: retention-loop
 version: 1
 phase: build
-description: Use when articulating a retention loop on a Sui product, day 1 / day 7 / day 30 anchors, or asking why users come back.
+description: Use when articulating a day 1 / day 7 / day 30 retention loop for a Sui product.
 prompt_path: ../SKILL.md
 references:
   - ../references/loop-anti-patterns.md

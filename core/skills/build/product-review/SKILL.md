@@ -1,6 +1,6 @@
 ---
 name: product-review
-description: Use when reviewing a Sui product as a first-time user would, from first paint through onboarding, empty states, and mobile. Produces a prioritized UX fix roadmap.
+description: Use when running a UX product review of a Sui dapp (first paint, onboarding, mobile).
 ---
 
 ## Preamble (run first)

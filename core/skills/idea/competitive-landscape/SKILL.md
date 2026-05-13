@@ -1,6 +1,6 @@
 ---
 name: competitive-landscape
-description: Use when mapping competitors for a Sui product idea on Sui and adjacent chains, and finding the defensible angle.
+description: Use when mapping competitors for a Sui idea, on Sui and adjacent chains.
 ---
 
 ## Preamble (run first)

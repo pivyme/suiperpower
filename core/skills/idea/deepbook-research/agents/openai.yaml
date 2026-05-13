@@ -1,7 +1,7 @@
 name: deepbook-research
 version: 1
 phase: idea
-description: Use when researching DeepBook trading data, underserved pairs, pool activity, or product opportunities on the orderbook.
+description: Use when researching DeepBook trading data, market gaps, underserved pairs on Sui.
 prompt_path: ../SKILL.md
 references:
   - ../references/deepbook-data-queries.md

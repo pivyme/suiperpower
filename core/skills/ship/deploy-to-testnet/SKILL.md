@@ -1,6 +1,6 @@
 ---
 name: deploy-to-testnet
-description: Use when publishing a Move package to Sui testnet, capturing the package id and upgrade cap via the canonical deploy runbook.
+description: Use when deploying a Sui Move package to testnet and capturing package id and UpgradeCap.
 ---
 
 ## Preamble (run first)

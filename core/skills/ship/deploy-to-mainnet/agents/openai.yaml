@@ -1,7 +1,7 @@
 name: deploy-to-mainnet
 version: 1
 phase: ship
-description: Use when publishing to Sui mainnet after testnet is exercised and anti-slop gates have cleared. Locks upgrade policy intentionally.
+description: Use when deploying a Sui Move package to mainnet after testnet has been exercised.
 prompt_path: ../SKILL.md
 references:
   - ../references/gate-rationale.md

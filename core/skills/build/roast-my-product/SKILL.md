@@ -1,6 +1,6 @@
 ---
 name: roast-my-product
-description: Use when the user wants brutal investor-grade critique of a Sui product, pitch, or positioning before submitting or pitching.
+description: Use when roasting a Sui product as the harshest investor, brutal critique.
 ---
 
 ## Preamble (run first)

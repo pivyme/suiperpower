@@ -1,7 +1,7 @@
 name: competitive-landscape
 version: 1
 phase: idea
-description: Use when mapping competitors for a Sui product idea on Sui and adjacent chains, and finding the defensible angle.
+description: Use when mapping competitors for a Sui idea, on Sui and adjacent chains.
 prompt_path: ../SKILL.md
 references:
   - ../references/where-to-look.md

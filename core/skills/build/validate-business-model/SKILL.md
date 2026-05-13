@@ -1,6 +1,6 @@
 ---
 name: validate-business-model
-description: Use when validating a Sui product's business model, who pays, how much, pricing, monetization, or profitability.
+description: Use when validating a Sui product business model (who pays, how much, why).
 ---
 
 ## Preamble (run first)

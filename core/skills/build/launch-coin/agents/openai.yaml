@@ -1,7 +1,7 @@
 name: launch-coin
 version: 1
 phase: build
-description: Use when launching a coin on Sui, deciding tokenomics, managing TreasuryCap custody, or shipping a token that renders in wallets.
+description: Use when launching a coin on Sui with the Move coin module, tokenomics, TreasuryCap.
 prompt_path: ../SKILL.md
 references:
   - ../references/coin-module-template.md

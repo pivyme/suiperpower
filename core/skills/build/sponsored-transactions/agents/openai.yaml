@@ -1,7 +1,7 @@
 name: sponsored-transactions
 version: 1
 phase: build
-description: Use when adding sponsored or gasless transactions on Sui, building a gas station, or paying gas for users.
+description: Use when adding sponsored (gasless) transactions to a Sui app via a gas station.
 prompt_path: ../SKILL.md
 references:
   - ../references/gas-station-flow.md

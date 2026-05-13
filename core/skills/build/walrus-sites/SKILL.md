@@ -1,6 +1,6 @@
 ---
 name: walrus-sites
-description: Use when deploying a static frontend to Walrus Sites for decentralized hosting on wal.app.
+description: Use when publishing a Walrus Site (decentralized website hosted on Walrus).
 ---
 
 ## Preamble (run first)

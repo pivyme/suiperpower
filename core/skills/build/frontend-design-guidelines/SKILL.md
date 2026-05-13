@@ -1,6 +1,6 @@
 ---
 name: frontend-design-guidelines
-description: Use when building a Sui dapp frontend, reviewing layout, spacing, hierarchy, or accessibility, or avoiding the crypto template look.
+description: Use when applying tasteful frontend defaults to a Sui dapp (layout, spacing, typography).
 ---
 
 ## Preamble (run first)

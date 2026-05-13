@@ -1,6 +1,6 @@
 ---
 name: sui-beginner
-description: Use when teaching Sui from scratch, mapping EVM or Solana concepts to Sui equivalents for a builder new to the platform.
+description: Use when the user is new to Sui and wants Sui taught from scratch, including EVM and Solana mapping.
 ---
 
 ## Preamble (run first)

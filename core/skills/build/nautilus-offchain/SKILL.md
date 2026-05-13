@@ -1,6 +1,6 @@
 ---
 name: nautilus-offchain
-description: Use when building verifiable off-chain compute on Sui via Nautilus TEEs (AWS Nitro Enclaves), or attested off-chain oracles.
+description: Use when integrating Nautilus offchain TEE compute for a Sui project.
 ---
 
 ## Preamble (run first)

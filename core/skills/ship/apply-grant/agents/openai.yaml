@@ -1,7 +1,7 @@
 name: apply-grant
 version: 1
 phase: ship
-description: Use when drafting a Sui Foundation grant, with deliverables, milestones tied to outcomes, and a sustainability plan.
+description: Use when drafting a Sui Foundation grant application with milestones and sustainability plan.
 prompt_path: ../SKILL.md
 references:
   - ../references/milestone-templates.md

@@ -1,6 +1,6 @@
 ---
 name: page-load-animations
-description: Use when page loads feel janky, have layout shift, or need calmer skeletons and transitions in a Sui dapp.
+description: Use when fixing janky page-load animations, layout shift, or skeleton loaders in a Sui dapp.
 ---
 
 ## Preamble (run first)

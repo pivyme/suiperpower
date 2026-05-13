@@ -1,7 +1,7 @@
 name: brand-design
 version: 1
 phase: build
-description: Use when picking brand colors, naming a Sui product, choosing a typeface, or fixing a generic crypto look. Outputs name, palette, typography.
+description: Use when picking a brand name, color palette, or typography for a Sui product.
 prompt_path: ../SKILL.md
 references:
   - ../references/anti-generic-checklist.md

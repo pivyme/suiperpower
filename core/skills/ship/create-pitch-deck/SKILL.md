@@ -1,6 +1,6 @@
 ---
 name: create-pitch-deck
-description: Use when drafting a 10-slide pitch deck for judges, investors, or grants, grounded in real context files, not invented metrics.
+description: Use when drafting a 10-slide pitch deck for a Sui product (investors, judges, grant).
 ---
 
 ## Preamble (run first)

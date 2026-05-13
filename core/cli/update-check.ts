@@ -92,10 +92,22 @@ export async function run(_args: string[]): Promise<void> {
   }
 }
 
+function hasClaudePlugin(): boolean {
+  // Plugin marketplace is git-cloned into ~/.claude/plugins/marketplaces/suiperpower
+  // when the user runs `/plugin marketplace add pivyme/suiperpower`. Presence is the
+  // signal that they will need the plugin update step too.
+  return existsSync(join(homedir(), ".claude", "plugins", "marketplaces", "suiperpower"));
+}
+
 export function printNudge(current: string, latest: string): void {
   console.log(
     `${dim(`${BRAND.PRODUCT_NAME} v${latest} available (you have v${current}). run`)} ${accent(`${BRAND.PRODUCT_NAME} update`)}`,
   );
+  if (hasClaudePlugin()) {
+    console.log(
+      `  ${dim("Claude Code plugin users, also run")} ${accent("/plugin marketplace update suiperpower")}`,
+    );
+  }
 }
 
 export async function maybeNudge(): Promise<void> {

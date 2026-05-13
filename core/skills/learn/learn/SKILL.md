@@ -1,6 +1,6 @@
 ---
 name: learn
-description: Use when capturing session learnings and decisions so the next skill, or future-you, can pick up where this session ended.
+description: Use when capturing session learnings and decisions to .suiperpower/learnings.md.
 ---
 
 ## Preamble (run first)

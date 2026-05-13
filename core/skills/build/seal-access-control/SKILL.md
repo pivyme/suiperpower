@@ -1,6 +1,6 @@
 ---
 name: seal-access-control
-description: Use when adding Seal threshold encryption and access-controlled secrets on Sui, gating content, encrypting Walrus blobs, or time-lock encryption.
+description: Use when integrating Seal threshold encryption and access control on Sui.
 ---
 
 ## Preamble (run first)
