@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-05-13T01:39:22.439Z",
+  "generatedAt": "2026-05-13T01:44:21.127Z",
   "publisher": "suiperpower",
   "publisherUrl": "https://suiperpower.dev",
   "totalSkills": 60,
@@ -228,12 +228,12 @@
     {
       "id": "find-next-sui-idea",
       "phase": "idea",
-      "description": "Help the user pick a Sui product idea from a curated corpus, or stress-test their own. Use when the user says \"what should I build on Sui\", \"find me a Sui idea\", \"I do not know what to build\", \"Sui Overflow idea\", \"give me a hackathon idea\", \"Sui native opportunities\", \"pick my next project\", or \"I need an idea for Sui\".",
+      "description": "Help the user pick a Sui product idea from a curated corpus, or stress-test their own. Use when the user says \"brainstorm a Sui product\", \"brainstorm me an idea for Sui\", \"give me a Sui idea\", \"give me ideas for Sui\", \"suggest a Sui product\", \"recommend something to build on Sui\", \"what should I build on Sui\", \"find me a Sui idea\", \"I do not know what to build\", \"what's a good product for Sui\", \"Sui Overflow idea\", \"give me a hackathon idea\", \"Sui native opportunities\", \"pick my next project\", \"ideate on Sui\", or \"I need an idea for Sui\".",
       "tarballUrl": "https://suiperpower.dev/skills/find-next-sui-idea.tar.gz",
       "githubPath": "pivyme/suiperpower/core/skills/idea/find-next-sui-idea",
       "npxCmd": "npx skills add https://github.com/pivyme/suiperpower/tree/main/core/skills/idea/find-next-sui-idea",
-      "sha256": "317bfd6227ecdbe10f4c1d80670d50529158f15ffdc6e9e1384373a4231e182f",
-      "size": 25111,
+      "sha256": "9fac4554c0f803920ab8dcb1ed0800b0c02489ac16830a7c399745ec3ab4eb18",
+      "size": 26135,
       "version": "0.1.1"
     },
     {
