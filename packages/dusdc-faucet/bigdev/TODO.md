@@ -106,13 +106,13 @@ The orchestrator reads this file at the start of every iteration and picks the f
 - [x] create `web/src/providers/SuiProviders.tsx`, wire into `__root.tsx`
 - [x] import `@mysten/dapp-kit/dist/index.css` at the top of `styles.css`
 
-## Phase 17: Frontend lib (sui, api, fingerprint, format) [ ]
-- [ ] create `web/src/lib/sui/client.ts`
-- [ ] create `web/src/lib/sui/format.ts` (SUI↔MIST, DUSDC↔base)
-- [ ] create `web/src/lib/sui/ptb-claim.ts`, `ptb-return.ts`, `ptb-refill.ts` per `bigdev/plans/03-FRONTEND.md`
-- [ ] create `web/src/lib/sui/faucet-read.ts` mirroring the backend reader
-- [ ] create `web/src/lib/api.ts` with typed fetch wrappers for `/verify`, `/stats`, `/tx-hint`, `/event/claim`
-- [ ] create `web/src/lib/fingerprint.ts` per the doc
+## Phase 17: Frontend lib (sui, api, fingerprint, format) [x]
+- [x] create `web/src/lib/sui/client.ts`
+- [x] create `web/src/lib/sui/format.ts` (SUI↔MIST, DUSDC↔base)
+- [x] create `web/src/lib/sui/ptb-claim.ts`, `ptb-return.ts`, `ptb-refill.ts` per `bigdev/plans/03-FRONTEND.md`
+- [x] create `web/src/lib/sui/faucet-read.ts` mirroring the backend reader
+- [x] create `web/src/lib/api.ts` with typed fetch wrappers for `/verify`, `/stats`, `/tx-hint`, `/event/claim`
+- [x] create `web/src/lib/fingerprint.ts` per the doc
 
 ## Phase 18: Frontend hooks [ ]
 - [ ] create `web/src/hooks/useVaultStats.ts` (TanStack Query, 10s refetch, chain fallback if backend 5xx)
