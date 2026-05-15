@@ -30,6 +30,23 @@ export const JWT_EXPIRES_IN: string = process.env.JWT_EXPIRES_IN || '7d';
 export const ERROR_LOG_MAX_RECORDS: number = 10000;
 export const ERROR_LOG_CLEANUP_INTERVAL: string = '0 * * * *'; // Every hour
 
+// Sui
+export const SUI_NETWORK: string = process.env.SUI_NETWORK || 'testnet';
+export const SUI_RPC_URL: string =
+  process.env.SUI_RPC_URL || 'https://fullnode.testnet.sui.io';
+export const FAUCET_PACKAGE_ID: string = process.env.FAUCET_PACKAGE_ID || '';
+export const FAUCET_OBJECT_ID: string = process.env.FAUCET_OBJECT_ID || '';
+export const DUSDC_COIN_TYPE: string = process.env.DUSDC_COIN_TYPE || '';
+
+// Turnstile + rate limits
+export const TURNSTILE_SECRET: string = process.env.TURNSTILE_SECRET || '';
+export const PER_IP_DAILY_SUI_CAP_MIST: bigint = BigInt(
+  process.env.PER_IP_DAILY_SUI_CAP_MIST || '5000000000'
+);
+export const PER_FP_DAILY_SUI_CAP_MIST: bigint = BigInt(
+  process.env.PER_FP_DAILY_SUI_CAP_MIST || '5000000000'
+);
+
 // Export all as default object for convenience
 export default {
   APP_PORT,
@@ -41,4 +58,12 @@ export default {
   JWT_EXPIRES_IN,
   ERROR_LOG_MAX_RECORDS,
   ERROR_LOG_CLEANUP_INTERVAL,
+  SUI_NETWORK,
+  SUI_RPC_URL,
+  FAUCET_PACKAGE_ID,
+  FAUCET_OBJECT_ID,
+  DUSDC_COIN_TYPE,
+  TURNSTILE_SECRET,
+  PER_IP_DAILY_SUI_CAP_MIST,
+  PER_FP_DAILY_SUI_CAP_MIST,
 };
