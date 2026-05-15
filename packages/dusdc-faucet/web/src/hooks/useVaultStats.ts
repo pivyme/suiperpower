@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
-import { getStats, type VaultStatsResponse } from '@/lib/api'
+import type {VaultStatsResponse} from '@/lib/api';
+import {  getStats } from '@/lib/api'
 import { readFaucetState } from '@/lib/sui/faucet-read'
 
 // Live vault stats with chain fallback. Backend is the fast path; if it 5xx's

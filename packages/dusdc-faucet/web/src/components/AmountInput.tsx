@@ -43,8 +43,7 @@ export function AmountInput({
     if (parsed === null || parsed !== value) {
       setText(formatDecimal(value, decimals))
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value])
+  }, [value, decimals]) // intentionally omit text, only re-sync when parent value changes
 
   const onInput = (raw: string) => {
     // Allow empty, digits, and one decimal point.

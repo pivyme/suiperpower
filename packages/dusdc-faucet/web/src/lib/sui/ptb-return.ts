@@ -1,6 +1,6 @@
 import { Transaction } from '@mysten/sui/transactions'
-import { env } from '@/env'
 import { CLOCK_OBJECT_ID } from './format'
+import { env } from '@/env'
 
 export interface OwnerCoin {
   coinObjectId: string
@@ -9,7 +9,7 @@ export interface OwnerCoin {
 
 export interface BuildReturnArgs {
   dusdcAmountBase: bigint
-  ownerCoins: OwnerCoin[]
+  ownerCoins: Array<OwnerCoin>
 }
 
 export function buildReturnTx({

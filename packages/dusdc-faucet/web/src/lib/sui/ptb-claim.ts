@@ -1,6 +1,6 @@
 import { Transaction } from '@mysten/sui/transactions'
-import { env } from '@/env'
 import { CLOCK_OBJECT_ID } from './format'
+import { env } from '@/env'
 
 export interface BuildClaimArgs {
   suiAmountMist: bigint

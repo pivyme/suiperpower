@@ -1,10 +1,10 @@
 import { Transaction } from '@mysten/sui/transactions'
-import { env } from '@/env'
 import type { OwnerCoin } from './ptb-return'
+import { env } from '@/env'
 
 export interface BuildRefillArgs {
   dusdcAmountBase: bigint
-  ownerCoins: OwnerCoin[]
+  ownerCoins: Array<OwnerCoin>
 }
 
 export function buildRefillTx({

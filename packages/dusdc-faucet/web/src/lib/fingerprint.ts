@@ -1,8 +1,9 @@
-import { sha256 } from '@noble/hashes/sha2'
-import { bytesToHex } from '@noble/hashes/utils'
+import { sha256 } from '@noble/hashes/sha2.js'
+import { bytesToHex } from '@noble/hashes/utils.js'
 
 const STORAGE_KEY = 'dusdc-faucet:fp'
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export async function getFingerprint(): Promise<string> {
   if (typeof window === 'undefined') {
     // SSR safety, server has no browser surface; return a stable placeholder.

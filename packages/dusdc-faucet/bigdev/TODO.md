@@ -126,20 +126,20 @@ The orchestrator reads this file at the start of every iteration and picks the f
 - [x] match `bigdev/plans/04-DESIGN-SYSTEM.md` for every visible string and state
 - [x] confirm `bun run build` passes
 
-## Phase 20: Frontend layout components [ ]
-- [ ] create `Header`, `HeroBlock`, `VaultStats`, `FaucetCard`, `HowItWorks`
-- [ ] copy strings VERBATIM from `bigdev/plans/04-DESIGN-SYSTEM.md` "Verbatim demo strings" table
-- [ ] wire all five page-level states (empty, loading, error, skeleton, populated) per the doc
+## Phase 20: Frontend layout components [x]
+- [x] create `Header`, `HeroBlock`, `VaultStats`, `FaucetCard`, `HowItWorks`
+- [x] copy strings VERBATIM from `bigdev/plans/04-DESIGN-SYSTEM.md` "Verbatim demo strings" table
+- [x] wire all five page-level states (empty, loading, error, skeleton, populated) per the doc
 
-## Phase 21: Frontend tabs (Claim, Return, Refill) [ ]
-- [ ] create `ClaimTab.tsx`, `ReturnTab.tsx`, `RefillTab.tsx` per `bigdev/plans/03-FRONTEND.md`
-- [ ] wire mutations + toasts, include explorer link in success toasts (`https://suiscan.xyz/testnet/tx/<digest>`)
-- [ ] handle the not-connected, vault-dry, balance-empty, daily-cap-exhausted edge states with the exact copy from the design system
+## Phase 21: Frontend tabs (Claim, Return, Refill) [x]
+- [x] create `ClaimTab.tsx`, `ReturnTab.tsx`, `RefillTab.tsx` per `bigdev/plans/03-FRONTEND.md`
+- [x] wire mutations + toasts, include explorer link in success toasts (`https://suiscan.xyz/testnet/tx/<digest>`)
+- [x] handle the not-connected, vault-dry, balance-empty, daily-cap-exhausted edge states with the exact copy from the design system
 
-## Phase 22: Frontend index route [ ]
-- [ ] overwrite `web/src/routes/index.tsx` to assemble the page in the layout from `bigdev/plans/03-FRONTEND.md`
-- [ ] remove the WebstarterOnboarding route reference and any demo routes from the starter
-- [ ] confirm `bun run build` clean and `bun dev` shows the page
+## Phase 22: Frontend index route [x]
+- [x] overwrite `web/src/routes/index.tsx` to assemble the page in the layout from `bigdev/plans/03-FRONTEND.md`
+- [x] remove the WebstarterOnboarding route reference and any demo routes from the starter
+- [x] confirm `bun run build` clean and `bun dev` shows the page
 
 ## Phase 23: Design system foundation [ ]
 - [ ] tokens wired (colors, spacing, radius, shadow per `bigdev/plans/04-DESIGN-SYSTEM.md`)

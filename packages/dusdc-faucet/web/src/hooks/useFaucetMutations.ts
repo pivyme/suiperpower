@@ -3,14 +3,16 @@ import {
   useCurrentAccount,
   useSignAndExecuteTransaction,
 } from '@mysten/dapp-kit'
+import type {OwnerCoin} from '@/lib/sui/ptb-return';
+import type {VerifyResponse} from '@/lib/api';
 import { buildClaimTx } from '@/lib/sui/ptb-claim'
-import { buildReturnTx, type OwnerCoin } from '@/lib/sui/ptb-return'
+import {  buildReturnTx } from '@/lib/sui/ptb-return'
 import { buildRefillTx } from '@/lib/sui/ptb-refill'
 import { sui } from '@/lib/sui/client'
 import {
+  
   postClaimEvent,
-  postVerify,
-  type VerifyResponse,
+  postVerify
 } from '@/lib/api'
 import { getOwnedDusdcCoins } from '@/lib/sui/faucet-read'
 import { previewClaim, previewReturn } from '@/lib/sui/format'
@@ -113,7 +115,7 @@ export function useReturn() {
   return useMutation<ReturnSuccess, Error, ReturnArgs>({
     mutationFn: async (args): Promise<ReturnSuccess> => {
       if (!account) throw new Error('NOT_CONNECTED')
-      const coins: OwnerCoin[] = await getOwnedDusdcCoins(account.address)
+      const coins: Array<OwnerCoin> = await getOwnedDusdcCoins(account.address)
       if (coins.length === 0) throw new Error('NO_DUSDC')
 
       const tx = buildReturnTx({
@@ -155,7 +157,7 @@ export function useRefill() {
   return useMutation<RefillSuccess, Error, RefillArgs>({
     mutationFn: async (args): Promise<RefillSuccess> => {
       if (!account) throw new Error('NOT_CONNECTED')
-      const coins: OwnerCoin[] = await getOwnedDusdcCoins(account.address)
+      const coins: Array<OwnerCoin> = await getOwnedDusdcCoins(account.address)
       if (coins.length === 0) throw new Error('NO_DUSDC')
 
       const tx = buildRefillTx({

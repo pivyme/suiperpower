@@ -5,7 +5,7 @@ import {
   useDisconnectWallet,
   useWallets,
 } from '@mysten/dapp-kit'
-import { Wallet, LogOut } from 'lucide-react'
+import { LogOut, Wallet } from 'lucide-react'
 import { cnm } from '@/utils/style'
 import { shortAddr } from '@/lib/sui/format'
 

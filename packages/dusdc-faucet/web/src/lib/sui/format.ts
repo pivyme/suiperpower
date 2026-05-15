@@ -10,7 +10,7 @@ const DUSDC_BASE = 10n ** BigInt(DUSDC_DECIMALS)
 // Parse a user-typed decimal string into base units.
 // Tolerant of empty input (returns 0n) and trailing zeros.
 export function parseDecimal(input: string, decimals: number): bigint {
-  const trimmed = (input ?? '').trim()
+  const trimmed = input.trim()
   if (!trimmed) return 0n
   if (!/^\d*\.?\d*$/.test(trimmed)) {
     throw new Error('PARSE_DECIMAL_INVALID')
