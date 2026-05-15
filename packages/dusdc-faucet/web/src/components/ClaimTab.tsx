@@ -116,7 +116,7 @@ export function ClaimTab() {
     <div className="flex flex-col gap-4">
       {vaultDry ? (
         <div className="border border-white/10 bg-white/[0.035] px-4 py-3 text-sm text-white/80 backdrop-blur-md">
-          Vault is empty. DeepBook can top it up from the QR panel.
+          Vault is empty. Please donate dUSDC from the donate panel if you have some to spare.
         </div>
       ) : null}
 
