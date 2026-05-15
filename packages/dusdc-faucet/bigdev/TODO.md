@@ -93,11 +93,11 @@ The orchestrator reads this file at the start of every iteration and picks the f
 - [x] create `backend/src/workers/rateLimitCleanup.ts`, hourly, deletes rows where `utcDay < currentDay - 14`
 - [x] register in `backend/index.ts`
 
-## Phase 15: Backend tests [ ]
-- [ ] create `backend/vitest.config.ts`
-- [ ] write tests under `backend/test/` per `bigdev/plans/07-TEST-PLAN.md` Layer 2 (verify, stats, tx-hint, rate-limit)
-- [ ] stub Prisma via `vitest-mock-extended` (add to devDeps)
-- [ ] confirm `bun test` passes
+## Phase 15: Backend tests [x]
+- [x] create `backend/vitest.config.ts`
+- [x] write tests under `backend/test/` per `bigdev/plans/07-TEST-PLAN.md` Layer 2 (verify, stats, tx-hint, rate-limit)
+- [x] stub Prisma via `vitest-mock-extended` (add to devDeps)
+- [x] confirm `bun test` passes
 
 ## Phase 16: Frontend env, providers, base layout [ ]
 - [ ] create `web/src/env.ts` exactly per `bigdev/plans/03-FRONTEND.md`
