@@ -25,10 +25,9 @@ export function WalletButton() {
           type="button"
           onClick={() => setOpen((v) => !v)}
           className={cnm(
-            'h-10 px-4 rounded-lg text-sm font-medium flex items-center gap-2',
-            'border border-neutral-800 bg-neutral-900',
-            'hover:bg-neutral-800 transition-colors',
-            'font-mono text-neutral-200',
+            'h-10 px-4 rounded-xl text-sm font-medium flex items-center gap-2',
+            'bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-md',
+            'font-mono text-white transition-colors',
           )}
         >
           <Wallet size={14} />
@@ -43,9 +42,9 @@ export function WalletButton() {
             }}
             className={cnm(
               'absolute right-0 mt-2 z-10',
-              'h-9 px-3 rounded-lg text-xs flex items-center gap-2',
-              'border border-neutral-800 bg-neutral-900',
-              'hover:bg-neutral-800 transition-colors text-neutral-300',
+              'h-9 px-3 rounded-xl text-xs flex items-center gap-2',
+              'bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-md',
+              'text-white/80 transition-colors',
             )}
           >
             <LogOut size={12} />
@@ -70,10 +69,10 @@ export function WalletButton() {
       onClick={handleConnect}
       disabled={isPending}
       className={cnm(
-        'h-10 px-4 rounded-lg text-sm font-medium flex items-center gap-2',
-        'bg-amber-400 text-neutral-950',
-        'hover:bg-amber-300 active:bg-amber-500',
-        'disabled:bg-neutral-800 disabled:text-neutral-600 disabled:cursor-not-allowed',
+        'h-10 px-5 rounded-xl text-sm font-medium flex items-center gap-2',
+        'bg-white text-black',
+        'hover:bg-white/90',
+        'disabled:opacity-60 disabled:cursor-not-allowed',
         'transition-colors',
       )}
     >

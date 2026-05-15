@@ -17,18 +17,16 @@ export function FaucetCard() {
   return (
     <div
       className={cnm(
-        'rounded-2xl border p-6 max-w-[480px] mx-auto w-full',
-        'border-neutral-200 dark:border-neutral-800',
-        'bg-white dark:bg-neutral-900',
+        'rounded-2xl p-6 max-w-[480px] mx-auto w-full',
+        'bg-white/5 border border-white/10 backdrop-blur-md',
       )}
     >
       <div
         role="tablist"
         aria-label="Faucet actions"
         className={cnm(
-          'grid grid-cols-3 gap-1 p-1 rounded-lg mb-5',
-          'bg-neutral-100 dark:bg-neutral-950',
-          'border border-neutral-200 dark:border-neutral-800',
+          'grid grid-cols-3 gap-1 p-1 rounded-xl mb-5',
+          'bg-white/5 border border-white/10 backdrop-blur-md',
         )}
       >
         {TABS.map((t) => {
@@ -41,10 +39,10 @@ export function FaucetCard() {
               aria-selected={selected}
               onClick={() => setActive(t.id)}
               className={cnm(
-                'h-9 rounded-md text-sm font-medium transition-colors',
+                'h-9 rounded-lg text-sm font-medium transition-colors',
                 selected
-                  ? 'bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-50 shadow-sm'
-                  : 'text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-200',
+                  ? 'bg-white/10 text-white'
+                  : 'text-white/50 hover:text-white hover:bg-white/5',
               )}
             >
               {t.label}

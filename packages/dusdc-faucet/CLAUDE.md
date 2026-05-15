@@ -111,7 +111,7 @@ cd contracts/faucet && sui move test
 - **Stats cache, not chain-on-every-request**. A 15-second poll worker keeps `/stats` cheap. Cache stales after 60s, then refetches inline. If the cache is unavailable, frontend falls back to direct chain reads.
 - **Postgres for rate limits, not Redis**. Backend starter already has Prisma + Postgres wired, no new infra. Testnet volume does not justify Redis.
 - **dapp-kit, not Suiet**. Official Mysten SDK, broadest wallet support.
-- **Dark by default, amber accent**. Matches the suiperpower visual language without claiming the brand. The page itself never mentions Suiperpower.
+- **Dark-only, glass surfaces on an animated grain backdrop**. Black background, full-bleed `GrainGradient` (`@paper-design/shaders-react`) with the Suiperpower hero config, white text with `text-white/50` secondaries, `bg-white/5 + border-white/10 + backdrop-blur-md` glass cards, solid white pill primary. `motion/react` fade-in-blur entrance on first-fold elements. Visual language matches the Suiperpower hero; the page never mentions Suiperpower.
 
 ## Quality bar reference
 

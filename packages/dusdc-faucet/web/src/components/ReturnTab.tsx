@@ -78,7 +78,7 @@ export function ReturnTab() {
               href={`${EXPLORER}/${res.digest}`}
               target="_blank"
               rel="noreferrer"
-              className="text-amber-300 hover:text-amber-200 inline-flex items-center gap-1"
+              className="text-white hover:text-white/70 inline-flex items-center gap-1"
               onClick={() => toast.dismiss(t.id)}
             >
               tx <ExternalLink size={12} />
@@ -96,8 +96,8 @@ export function ReturnTab() {
   if (account && ownedBase === 0n && !owned.isLoading) {
     return (
       <div className="flex flex-col items-center gap-3 py-6 text-center">
-        <Inbox size={28} className="text-neutral-600" />
-        <p className="text-sm text-neutral-400">
+        <Inbox size={28} className="text-white/40" />
+        <p className="text-sm text-white/50">
           You have no DUSDC to return. Claim some first.
         </p>
       </div>
@@ -118,10 +118,10 @@ export function ReturnTab() {
         error={error}
       />
 
-      <div className="rounded-lg border border-neutral-800 bg-neutral-950 px-4 py-3">
-        <div className="text-xs text-neutral-500">You receive</div>
-        <div className="mt-1 font-mono text-xl text-neutral-100">
-          {mistToSui(preview)} <span className="text-sm text-neutral-500">SUI</span>
+      <div className="rounded-xl bg-white/5 border border-white/10 backdrop-blur-md px-4 py-3">
+        <div className="text-xs text-white/50">You receive</div>
+        <div className="mt-1 font-mono text-xl text-white">
+          {mistToSui(preview)} <span className="text-sm text-white/50">SUI</span>
         </div>
       </div>
 
@@ -130,10 +130,9 @@ export function ReturnTab() {
         onClick={onSubmit}
         disabled={buttonDisabled}
         className={cnm(
-          'h-11 rounded-lg font-medium text-sm transition-colors flex items-center justify-center gap-2',
-          'bg-amber-400 text-neutral-950',
-          'hover:bg-amber-300 active:bg-amber-500',
-          'disabled:bg-neutral-800 disabled:text-neutral-600 disabled:cursor-not-allowed',
+          'h-11 rounded-xl font-medium text-sm transition-colors flex items-center justify-center gap-2',
+          'bg-white text-black hover:bg-white/90',
+          'disabled:opacity-60 disabled:cursor-not-allowed',
         )}
       >
         {ret.isPending ? <Loader2 size={14} className="animate-spin" /> : null}
@@ -141,7 +140,7 @@ export function ReturnTab() {
       </button>
 
       {account ? (
-        <p className="text-xs text-neutral-500 text-center">
+        <p className="text-xs text-white/50 text-center">
           Balance: {baseToDusdc(ownedBase)} DUSDC
         </p>
       ) : null}

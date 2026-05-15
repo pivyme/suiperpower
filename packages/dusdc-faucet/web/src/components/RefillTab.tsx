@@ -54,7 +54,7 @@ export function RefillTab() {
               href={`${EXPLORER}/${res.digest}`}
               target="_blank"
               rel="noreferrer"
-              className="text-amber-300 hover:text-amber-200 inline-flex items-center gap-1"
+              className="text-white hover:text-white/70 inline-flex items-center gap-1"
               onClick={() => toast.dismiss(t.id)}
             >
               tx <ExternalLink size={12} />
@@ -70,7 +70,7 @@ export function RefillTab() {
 
   return (
     <div className="flex flex-col gap-4">
-      <p className="text-sm text-neutral-400">
+      <p className="text-sm text-white/50">
         Anyone can refill. Recommended balance is 1,000 DUSDC or more.
       </p>
 
@@ -91,10 +91,9 @@ export function RefillTab() {
         onClick={onSubmit}
         disabled={buttonDisabled}
         className={cnm(
-          'h-11 rounded-lg font-medium text-sm transition-colors flex items-center justify-center gap-2',
-          'bg-amber-400 text-neutral-950',
-          'hover:bg-amber-300 active:bg-amber-500',
-          'disabled:bg-neutral-800 disabled:text-neutral-600 disabled:cursor-not-allowed',
+          'h-11 rounded-xl font-medium text-sm transition-colors flex items-center justify-center gap-2',
+          'bg-white text-black hover:bg-white/90',
+          'disabled:opacity-60 disabled:cursor-not-allowed',
         )}
       >
         {refill.isPending ? <Loader2 size={14} className="animate-spin" /> : null}
@@ -102,7 +101,7 @@ export function RefillTab() {
       </button>
 
       {account ? (
-        <p className="text-xs text-neutral-500 text-center">
+        <p className="text-xs text-white/50 text-center">
           Your balance: {baseToDusdc(ownedBase)} DUSDC
         </p>
       ) : null}

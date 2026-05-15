@@ -41,50 +41,32 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
   }
 
   return (
-    <div
-      className={cnm(
-        'min-h-screen w-full flex items-center justify-center',
-        'bg-neutral-50 dark:bg-neutral-900',
-        'px-6 py-20'
-      )}
-    >
+    <div className="min-h-screen w-full flex items-center justify-center bg-black text-white px-6 py-20">
       <div className="max-w-md w-full">
         <div className="text-center mb-10">
           <div className="mb-6 flex justify-center">
-            <div
-              className={cnm(
-                'w-14 h-14 flex items-center justify-center',
-                'border border-amber-200 dark:border-amber-900/50',
-                'bg-amber-50 dark:bg-amber-950/30'
-              )}
-            >
-              <AlertTriangle className="w-6 h-6 text-amber-500" />
+            <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
+              <AlertTriangle className="w-6 h-6 text-white" />
             </div>
           </div>
 
-          <h1 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 mb-2">
+          <h1 className="text-xl font-medium text-white mb-2">
             Something went wrong
           </h1>
 
-          <p className="text-sm text-neutral-500 dark:text-neutral-400">
+          <p className="text-sm text-white/50">
             An unexpected error occurred. Try refreshing, or head back home.
           </p>
         </div>
 
         {error && (
-          <div
-            className={cnm(
-              'mb-8 border border-neutral-200 dark:border-neutral-800',
-              'bg-neutral-100/50 dark:bg-neutral-800/20',
-              'overflow-hidden'
-            )}
-          >
+          <div className="mb-8 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md overflow-hidden">
             <div className="px-4 py-3 flex items-start justify-between gap-3">
               <div className="min-w-0 flex-1">
-                <p className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 mb-1.5">
+                <p className="text-[10px] font-mono uppercase tracking-wider text-white/40 mb-1.5">
                   Error
                 </p>
-                <p className="text-xs font-mono text-red-600 dark:text-red-400 break-words leading-relaxed">
+                <p className="text-xs font-mono text-red-400/80 break-words leading-relaxed">
                   {errorMessage}
                 </p>
               </div>
@@ -92,12 +74,12 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
                 isIconOnly
                 size="sm"
                 variant="tertiary"
-                className="rounded-none shrink-0 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200"
+                className="rounded-lg shrink-0 text-white/50 hover:text-white"
                 onPress={handleCopy}
                 aria-label="Copy error details"
               >
                 {copied ? (
-                  <Check className="w-3.5 h-3.5 text-green-500" />
+                  <Check className="w-3.5 h-3.5 text-white" />
                 ) : (
                   <Copy className="w-3.5 h-3.5" />
                 )}
@@ -110,23 +92,23 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
                   onClick={() => setShowStack(!showStack)}
                   className={cnm(
                     'w-full px-4 py-2 flex items-center gap-1.5',
-                    'text-[10px] font-mono uppercase tracking-wider text-neutral-400',
-                    'border-t border-neutral-200 dark:border-neutral-800',
-                    'hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors',
-                    'cursor-pointer'
+                    'text-[10px] font-mono uppercase tracking-wider text-white/40',
+                    'border-t border-white/10',
+                    'hover:text-white/80 transition-colors',
+                    'cursor-pointer',
                   )}
                 >
                   <ChevronDown
                     className={cnm(
                       'w-3 h-3 transition-transform',
-                      showStack && 'rotate-180'
+                      showStack && 'rotate-180',
                     )}
                   />
                   Stack trace
                 </button>
                 {showStack && (
-                  <div className="px-4 pb-3 border-t border-neutral-200 dark:border-neutral-800">
-                    <pre className="text-[11px] font-mono text-neutral-500 dark:text-neutral-400 whitespace-pre-wrap break-words leading-relaxed max-h-48 overflow-y-auto pt-3">
+                  <div className="px-4 pb-3 border-t border-white/10">
+                    <pre className="text-[11px] font-mono text-white/50 whitespace-pre-wrap break-words leading-relaxed max-h-48 overflow-y-auto pt-3">
                       {errorStack}
                     </pre>
                   </div>
@@ -138,11 +120,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
 
         <div className="flex items-center justify-center gap-3">
           <Button
-            className={cnm(
-              'rounded-none font-mono text-xs',
-              'bg-neutral-900 dark:bg-neutral-100',
-              'text-neutral-100 dark:text-neutral-900'
-            )}
+            className="rounded-xl font-mono text-xs bg-white text-black hover:bg-white/90"
             onPress={handleRetry}
           >
             <RefreshCw className="w-3.5 h-3.5" />
@@ -150,11 +128,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
           </Button>
           <Button
             variant="outline"
-            className={cnm(
-              'rounded-none font-mono text-xs',
-              'border-neutral-300 dark:border-neutral-700',
-              'text-neutral-600 dark:text-neutral-400'
-            )}
+            className="rounded-xl font-mono text-xs bg-white/5 border-white/10 text-white/80 hover:bg-white/10"
             onPress={() => router.navigate({ to: '/' })}
           >
             <Home className="w-3.5 h-3.5" />

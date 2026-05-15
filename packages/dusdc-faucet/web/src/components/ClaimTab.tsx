@@ -92,7 +92,7 @@ export function ClaimTab() {
               href={`${EXPLORER}/${res.digest}`}
               target="_blank"
               rel="noreferrer"
-              className="text-amber-300 hover:text-amber-200 inline-flex items-center gap-1"
+              className="text-white hover:text-white/70 inline-flex items-center gap-1"
               onClick={() => toast.dismiss(t.id)}
             >
               tx <ExternalLink size={12} />
@@ -115,7 +115,7 @@ export function ClaimTab() {
   return (
     <div className="flex flex-col gap-4">
       {vaultDry ? (
-        <div className="rounded-lg border border-amber-400/30 bg-amber-400/10 px-4 py-3 text-sm text-amber-200">
+        <div className="rounded-xl bg-white/5 border border-white/10 backdrop-blur-md px-4 py-3 text-sm text-white/80">
           Vault is empty. Ping @DeepBookFi to refill.
         </div>
       ) : null}
@@ -132,10 +132,10 @@ export function ClaimTab() {
         error={error}
       />
 
-      <div className="rounded-lg border border-neutral-800 bg-neutral-950 px-4 py-3">
-        <div className="text-xs text-neutral-500">You receive</div>
-        <div className="mt-1 font-mono text-xl text-neutral-100">
-          {baseToDusdc(preview)} <span className="text-sm text-neutral-500">DUSDC</span>
+      <div className="rounded-xl bg-white/5 border border-white/10 backdrop-blur-md px-4 py-3">
+        <div className="text-xs text-white/50">You receive</div>
+        <div className="mt-1 font-mono text-xl text-white">
+          {baseToDusdc(preview)} <span className="text-sm text-white/50">DUSDC</span>
         </div>
       </div>
 
@@ -146,10 +146,9 @@ export function ClaimTab() {
         onClick={onSubmit}
         disabled={buttonDisabled}
         className={cnm(
-          'h-11 rounded-lg font-medium text-sm transition-colors flex items-center justify-center gap-2',
-          'bg-amber-400 text-neutral-950',
-          'hover:bg-amber-300 active:bg-amber-500',
-          'disabled:bg-neutral-800 disabled:text-neutral-600 disabled:cursor-not-allowed',
+          'h-11 rounded-xl font-medium text-sm transition-colors flex items-center justify-center gap-2',
+          'bg-white text-black hover:bg-white/90',
+          'disabled:opacity-60 disabled:cursor-not-allowed',
         )}
       >
         {claim.isPending ? <Loader2 size={14} className="animate-spin" /> : null}
@@ -157,7 +156,7 @@ export function ClaimTab() {
       </button>
 
       {account && hint.data ? (
-        <p className="text-xs text-neutral-500 text-center">
+        <p className="text-xs text-white/50 text-center">
           You have {mistToSui(BigInt(hint.data.remainingMist))} SUI of {mistToSui(BigInt(hint.data.perWalletDailyCapMist))} SUI left today.
         </p>
       ) : null}

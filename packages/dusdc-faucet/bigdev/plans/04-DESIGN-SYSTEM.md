@@ -1,14 +1,14 @@
 # 04, Design System
 
-The faucet looks like a thoughtfully built dev tool, not a hackathon submission. Dark by default, neutral palette, Google Sans family, no chrome, no marketing words. The whole product fits in one screen.
+The faucet looks like a thoughtfully built dev tool. Dark-only, glass surfaces over an animated grain gradient, Google Sans family, no chrome, no marketing words. The whole product fits in one screen.
 
 ## Reference inspirations
 
-- **suiperpower.dev** (parent project), take the typographic restraint, the warm neutral background, the wordmark-only header. Do not take any wording.
+- **suiperpower.dev** (parent project), take the full-bleed grain-gradient backdrop, glass surfaces, white pill primaries, fade-in-blur entrance. Visual language only. Never reference Suiperpower by name in shipped copy.
 - **vercel.com/dashboard**, take the table density and the "no chrome" feeling. Do not take the multi-column layout.
 - **stripe.com/docs**, take the calm and the careful spacing. Do not take the illustration heaviness.
 
-Avoid the generic "DEX clone" look: no neon glows, no gradient buttons, no animated background particles, no card-stacking depth.
+Avoid the generic "DEX clone" look: no neon glows, no gradient buttons, no card-stacking depth, no fake activity feeds.
 
 ## Typography
 
@@ -39,64 +39,64 @@ Letter-spacing: default. Avoid all-caps. Title case only for buttons and tab lab
 
 ## Color palette
 
-We use the neutral scale almost exclusively. One accent only.
+Dark-only. The page sits on a pure-black background with a full-bleed animated `GrainGradient` from `@paper-design/shaders-react`. Surfaces are glass on top of that backdrop. The primary CTA is a solid white pill.
 
 ```css
-:root, .dark {
-  /* surfaces, dark by default */
-  --bg:           theme("colors.neutral.950");   /* page */
-  --surface:      theme("colors.neutral.900");   /* card */
-  --surface-elev: theme("colors.neutral.800");   /* hover */
-  --border:       theme("colors.neutral.800");   /* hairlines */
-  --border-soft:  theme("colors.neutral.900");
+:root, html, body {
+  --bg:           #000000;                       /* page */
+  --fg:           #ffffff;                       /* primary text */
+  --fg-muted:     rgba(255, 255, 255, 0.5);      /* secondary text */
+  --fg-quiet:     rgba(255, 255, 255, 0.4);      /* footnotes */
 
-  /* text */
-  --fg:           theme("colors.neutral.50");
-  --fg-muted:     theme("colors.neutral.400");
-  --fg-quiet:     theme("colors.neutral.500");
+  /* glass surfaces, applied via Tailwind classes */
+  --surface:      rgba(255, 255, 255, 0.05);     /* card idle */
+  --surface-elev: rgba(255, 255, 255, 0.10);     /* card hover */
+  --border:       rgba(255, 255, 255, 0.10);     /* hairlines */
+  --border-soft:  rgba(255, 255, 255, 0.06);
 
-  /* one accent: amber 400, matches suiperpower */
-  --accent:       theme("colors.amber.400");
-  --accent-hover: theme("colors.amber.300");
-  --accent-fg:    theme("colors.neutral.950");
+  /* primary action, white pill */
+  --accent:       #ffffff;
+  --accent-hover: rgba(255, 255, 255, 0.90);
+  --accent-fg:    #000000;
 
-  /* semantic */
+  /* semantic, kept slightly muted to read on black */
   --success:      theme("colors.emerald.400");
   --warning:      theme("colors.amber.300");
   --danger:       theme("colors.red.400");
 }
+```
 
-.light {
-  --bg:           theme("colors.neutral.50");
-  --surface:      theme("colors.white");
-  --surface-elev: theme("colors.neutral.100");
-  --border:       theme("colors.neutral.200");
-  --border-soft:  theme("colors.neutral.100");
-  --fg:           theme("colors.neutral.900");
-  --fg-muted:     theme("colors.neutral.600");
-  --fg-quiet:     theme("colors.neutral.500");
-  --accent:       theme("colors.amber.500");
-  --accent-hover: theme("colors.amber.600");
-  --accent-fg:    theme("colors.white");
-  --success:      theme("colors.emerald.600");
-  --warning:      theme("colors.amber.600");
-  --danger:       theme("colors.red.600");
+`GrainGradient` config (matches the Suiperpower hero, do not deviate):
+
+```ts
+{
+  colors: ["#155dfc", "#bedbff"],
+  colorBack: "#000000",
+  softness: 0.5,
+  intensity: 0.1,
+  noise: 0.07,
+  shape: "wave",
+  speed: 0.2,
+  scale: 1.5,
+  offsetY: 0.3,
+  offsetX: 1,
 }
 ```
 
-Light mode is supported (the starter already has the toggle) but the demo runs in dark mode. The accent stays consistent across themes.
+Rendered once at the route level, wrapped in `motion.div` fading from opacity 0 to 0.9 over 1.2s with a 1.5s delay, `absolute inset-0` underneath the page body.
 
 State pairs:
 
 | Token | Idle | Hover | Active | Disabled |
 | --- | --- | --- | --- | --- |
-| Primary button bg | `accent` | `accent-hover` | `amber-500` | `neutral-800` |
-| Primary button fg | `accent-fg` | `accent-fg` | `accent-fg` | `neutral-600` |
-| Secondary button bg | `transparent` | `surface-elev` | `neutral-700` | `transparent` |
-| Secondary button border | `border` | `border` | `border` | `border-soft` |
-| Input border | `border` | `border` | `accent` | `border-soft` |
-| Tab inactive | `transparent` | `surface-elev` | `surface-elev` | n/a |
-| Tab active | `surface-elev` | `surface-elev` | `surface-elev` | n/a |
+| Primary button bg | `bg-white` | `bg-white/90` | `bg-white/90` | `bg-white/30` |
+| Primary button fg | `text-black` | `text-black` | `text-black` | `text-black/60` |
+| Secondary button bg | `bg-white/5` | `bg-white/10` | `bg-white/10` | `bg-white/5` |
+| Secondary button border | `border-white/10` | `border-white/10` | `border-white/10` | `border-white/5` |
+| Input bg | `bg-white/5` | `bg-white/5` | `bg-white/10` | `bg-white/5` |
+| Input border | `border-white/10` | `border-white/10` | `border-white/30` | `border-white/5` |
+| Tab inactive | `transparent` | `bg-white/5` | `bg-white/5` | n/a |
+| Tab active | `bg-white/10` | `bg-white/10` | `bg-white/10` | n/a |
 
 ## Spacing scale
 
@@ -110,66 +110,72 @@ Vertical rhythm:
 
 ## Radius / shadow / border
 
-- Radius `rounded-lg` (8px) for inputs, buttons
+- Radius `rounded-xl` (12px) for inputs, buttons, glass tab bars
 - Radius `rounded-2xl` (16px) for the main card and stat cards
-- No shadows in dark mode. In light mode, `shadow-sm` only.
-- All borders `1px solid var(--border)`. No double borders.
+- No shadows. Depth comes from glass + the grain backdrop.
+- All borders `1px solid rgba(255,255,255,0.10)`. No double borders.
+- All glass surfaces use `backdrop-blur-md`.
 
 ## Component primitives
 
 ### Button
 
-Three variants: `primary`, `secondary`, `ghost`. One size for actions, smaller variant for the wallet button.
+Two variants: `primary` (white pill, used for the CTA), `secondary` (glass pill, used for wallet, refill secondary actions).
 
 ```tsx
-// Primary (the CTA, used for Claim/Return/Refill submit)
+// Primary, Claim / Return / Refill submit
 <button className="
-  h-11 px-5 rounded-lg font-medium text-sm
-  bg-amber-400 text-neutral-950
-  hover:bg-amber-300 active:bg-amber-500
-  disabled:bg-neutral-800 disabled:text-neutral-600 disabled:cursor-not-allowed
+  h-11 px-5 rounded-xl font-medium text-sm
+  bg-white text-black
+  hover:bg-white/90
+  disabled:opacity-60 disabled:cursor-not-allowed
   transition-colors
 ">Claim</button>
+
+// Secondary, wallet / how-to / ancillary
+<button className="
+  h-10 px-4 rounded-xl text-sm font-medium
+  bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-md
+  text-white/80 hover:text-white
+  transition-colors
+">Connect wallet</button>
 ```
 
-States required: idle, hover, focus (ring), active, disabled, loading (small spinner + label "Claiming..."), error (one-shot red flash for 600ms after a failed submission, then back to idle).
+States required: idle, hover, focus (`ring-1 ring-white/30`), active, disabled, loading (small spinner + label "Claiming..."), error (one-shot toast).
 
 ### Input (AmountInput)
 
 ```tsx
 <div className="
-  flex items-center gap-3 px-4 h-14 rounded-lg
-  bg-neutral-950 border border-neutral-800
-  focus-within:border-amber-400 transition-colors
+  flex items-center gap-3 px-4 h-14 rounded-xl
+  bg-white/5 border border-white/10 backdrop-blur-md
+  focus-within:ring-1 focus-within:ring-white/30 transition-shadow
 ">
   <input className="
-    flex-1 bg-transparent text-xl font-mono text-neutral-50
-    placeholder:text-neutral-600 outline-none
-    [appearance:textfield] [-moz-appearance:textfield]
-    [&::-webkit-outer-spin-button]:appearance-none
-    [&::-webkit-inner-spin-button]:appearance-none
+    flex-1 bg-transparent text-xl font-mono text-white
+    placeholder:text-white/30 outline-none
   " />
-  <span className="text-sm text-neutral-400">SUI</span>
-  <button className="text-xs text-amber-400 hover:text-amber-300">MAX</button>
+  <span className="text-sm text-white/50">SUI</span>
+  <button className="text-xs text-white hover:text-white/80">MAX</button>
 </div>
 ```
 
-States: idle, focus, error (border red-400), disabled (opacity 50, no caret).
+States: idle, focus (white ring), error (border red-400/60), disabled (opacity 50, no caret).
 
 ### Card
 
-Standard:
+Standard glass:
 
 ```tsx
-<div className="rounded-2xl border border-neutral-800 bg-neutral-900 p-6">
+<div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md p-6">
   ...
 </div>
 ```
 
-Elevated (used inside the card for the swap preview):
+Inner surface (swap preview):
 
 ```tsx
-<div className="rounded-lg bg-neutral-950 border border-neutral-800 p-4">
+<div className="rounded-xl bg-white/5 border border-white/10 backdrop-blur-md p-4">
   ...
 </div>
 ```
@@ -177,10 +183,10 @@ Elevated (used inside the card for the swap preview):
 ### Tab bar
 
 ```tsx
-<div role="tablist" className="grid grid-cols-3 gap-1 p-1 rounded-lg bg-neutral-950 border border-neutral-800">
+<div role="tablist" className="grid grid-cols-3 gap-1 p-1 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
   <button role="tab" aria-selected={active} className={`
-    h-9 rounded-md text-sm transition-colors
-    ${active ? 'bg-neutral-800 text-neutral-50' : 'text-neutral-400 hover:text-neutral-200'}
+    h-9 rounded-lg text-sm transition-colors
+    ${active ? 'bg-white/10 text-white' : 'text-white/50 hover:text-white'}
   `}>Get DUSDC</button>
   ...
 </div>
@@ -188,23 +194,21 @@ Elevated (used inside the card for the swap preview):
 
 ### Toast
 
-react-hot-toast, configured in `__root.tsx`. Already has the right styling for the suiperpower vibe (mono font, neutral palette). One thing to adjust: success icon color to amber, not green.
+react-hot-toast, configured in `__root.tsx`. Glass background, white text, white success icon.
 
 ### Chip / Badge
 
 ```tsx
 <span className="inline-flex items-center gap-1.5 px-2 h-6 rounded-full text-xs
-  bg-amber-400/10 text-amber-300 border border-amber-400/20">
+  bg-white/5 text-white/80 border border-white/10 backdrop-blur-md">
   testnet
 </span>
 ```
 
-Variants: `info` (amber), `warning` (amber, brighter), `danger` (red), `neutral` (neutral-400/10).
-
 ### Skeleton
 
 ```tsx
-<div className="h-7 w-32 rounded bg-neutral-800 animate-pulse" />
+<div className="h-7 w-32 rounded bg-white/10 animate-pulse" />
 ```
 
 ## Page-level state patterns
@@ -212,12 +216,12 @@ Variants: `info` (amber), `warning` (amber, brighter), `danger` (red), `neutral`
 Every screen handles:
 
 1. **Empty state**, applies to ReturnTab when user has no DUSDC, RefillTab never (always actionable), ClaimTab when vault is dry.
-   - Visual: 80px tall block, neutral-400 icon (Lucide `Inbox` or `AlertCircle`), one line of copy, one primary CTA when applicable.
+   - Visual: 80px tall block, `text-white/40` icon (Lucide `Inbox` or `AlertCircle`), one line of copy, one primary CTA when applicable.
 2. **Loading state**, applied to VaultStats, the address-resolved tx-hint, the user's coin list when switching to Return/Refill.
-   - Visual: skeleton rectangles matching the populated layout.
-3. **Error state**, when `/stats` or chain reads fail. Replace VaultStats with `<div className="text-sm text-neutral-500">stats unavailable, claim still works</div>`. Inline form errors are red-400 text below the input.
+   - Visual: `bg-white/10 animate-pulse` skeleton rectangles matching the populated layout.
+3. **Error state**, when `/stats` or chain reads fail. Replace VaultStats with `<div className="text-sm text-white/50">stats unavailable, claim still works</div>`. Inline form errors are `text-red-400/80` below the input.
 4. **Success state**, post-tx toast with explorer link.
-5. **Disabled state**, button greyed when validation fails. The reason appears in plain text below the input, never only in a tooltip.
+5. **Disabled state**, button stays white with reduced opacity when validation fails. The reason appears in plain text below the input, never only in a tooltip.
 
 ## Iconography
 
@@ -230,17 +234,30 @@ Icon use:
 - `Inbox`, empty states
 - `Loader2`, button loading (animated `animate-spin`)
 - `ExternalLink`, explorer links in toasts
-- `Moon` / `Sun`, theme toggle
 
 ## Motion
 
-- Page enter: no animation. Demo grade > flashy.
+Use `motion/react` (Motion One) only. Do not use GSAP `AnimateComponent` on this page.
+
+- Backdrop: `GrainGradient` wrapped in `motion.div` fading from opacity 0 to 0.9 over 1.2s with 1.5s delay.
+- First-fold elements (hero title, subtitle, stats card, faucet card, how-it-works, credit): fade-in-blur entrance, staggered.
+
+```ts
+const fadeIn = (delay: number) => ({
+  initial: { opacity: 0, filter: "blur(8px)" },
+  animate: { opacity: 1, filter: "blur(0px)" },
+  transition: { duration: 0.8, delay, ease: "easeOut" as const },
+})
+```
+
+Delays: hero 0.1, subtitle 0.2, vault stats 0.3, faucet card 0.4, how-it-works 0.5, credit 0.6.
+
 - Tab switch: instant. No fade.
 - Button hover: 120ms color transition. Easing `ease-out`.
 - Toast: default react-hot-toast.
 - Skeleton: `animate-pulse` (Tailwind default, 2s).
 
-Do not use the existing GSAP `AnimateComponent` for anything on this page. Reserve animations for the suiperpower marketing site.
+`motion` honors `useReducedMotion()` automatically; no manual handling needed.
 
 ## Copywriting tone
 
@@ -318,9 +335,10 @@ Breakpoint: 768px. Anything below is mobile.
 
 ## Don'ts
 
-- No background gradients on the page.
+- No light mode. The page is dark-only.
 - No floating elements (sticky CTAs, chat bubbles, cookie banners, anything fixed except the header).
 - No carousels.
 - No metrics that aren't actually live ("100k+ developers" type).
 - No "Powered by Sui" badge. The token type tells you everything.
 - No animated charts, no token tickers, no fake activity feeds.
+- No Suiperpower mentions anywhere in the rendered page. The shared piece is visual language only.

@@ -60,17 +60,17 @@ export function AmountInput({
   return (
     <div className="flex flex-col gap-2">
       {label ? (
-        <label htmlFor={id} className="text-xs text-neutral-500">
+        <label htmlFor={id} className="text-xs text-white/50">
           {label}
         </label>
       ) : null}
       <div
         className={cnm(
-          'flex items-center gap-3 px-4 h-14 rounded-lg transition-colors',
-          'bg-neutral-950 border',
+          'flex items-center gap-3 px-4 h-14 rounded-xl transition-shadow',
+          'bg-white/5 border backdrop-blur-md',
           error
-            ? 'border-red-400'
-            : 'border-neutral-800 focus-within:border-amber-400',
+            ? 'border-red-400/60'
+            : 'border-white/10 focus-within:ring-1 focus-within:ring-white/30',
           disabled && 'opacity-50 cursor-not-allowed',
         )}
       >
@@ -84,14 +84,14 @@ export function AmountInput({
           placeholder={placeholder}
           disabled={disabled}
           className={cnm(
-            'flex-1 bg-transparent text-xl font-mono text-neutral-50',
-            'placeholder:text-neutral-700 outline-none',
+            'flex-1 bg-transparent text-xl font-mono text-white',
+            'placeholder:text-white/30 outline-none',
             '[appearance:textfield] [-moz-appearance:textfield]',
             '[&::-webkit-outer-spin-button]:appearance-none',
             '[&::-webkit-inner-spin-button]:appearance-none',
           )}
         />
-        <span className="text-sm text-neutral-400 font-medium">{unit}</span>
+        <span className="text-sm text-white/50 font-medium">{unit}</span>
         {max !== undefined && max > 0n && !disabled ? (
           <button
             type="button"
@@ -100,14 +100,14 @@ export function AmountInput({
               setText(s)
               onChange(max)
             }}
-            className="text-xs font-medium text-amber-400 hover:text-amber-300 transition-colors"
+            className="text-xs font-medium text-white hover:text-white/70 transition-colors"
           >
             MAX
           </button>
         ) : null}
       </div>
       {error ? (
-        <p role="alert" className="text-xs text-red-400">
+        <p role="alert" className="text-xs text-red-400/80">
           {error}
         </p>
       ) : null}

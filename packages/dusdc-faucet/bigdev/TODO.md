@@ -141,18 +141,18 @@ The orchestrator reads this file at the start of every iteration and picks the f
 - [x] remove the WebstarterOnboarding route reference and any demo routes from the starter
 - [x] confirm `bun run build` clean and `bun dev` shows the page
 
-## Phase 23: Design system foundation [ ]
-- [ ] tokens wired (colors, spacing, radius, shadow per `bigdev/plans/04-DESIGN-SYSTEM.md`)
-- [ ] Google Sans Flex + Google Sans Code applied to body/headings; no leftover Inter
-- [ ] base primitives (Button, AmountInput, Card, TabBar, Toast, Chip) styled with every required state (idle, hover, focus, active, disabled, loading, error)
-- [ ] typography scale applied across the page; no arbitrary text sizes
+## Phase 23: Design system foundation [x]
+- [x] tokens wired (colors, spacing, radius, shadow per `bigdev/plans/04-DESIGN-SYSTEM.md`)
+- [x] Google Sans Flex + Google Sans Code applied to body/headings; no leftover Inter
+- [x] base primitives (Button, AmountInput, Card, TabBar, Toast, Chip) styled with every required state (idle, hover, focus, active, disabled, loading, error)
+- [x] typography scale applied across the page; no arbitrary text sizes
 
-## Phase 24: UI states pass [ ]
-- [ ] every screen has empty state with on-brand copy per design system
-- [ ] every screen has loading + skeleton states for the data it shows
-- [ ] every screen has error state with recovery action (chain-fallback caption, retry-where-applicable)
-- [ ] no Lorem ipsum, no `<placeholder>`, no TODO strings, all copy from `bigdev/plans/04-DESIGN-SYSTEM.md` verbatim
-- [ ] vault stats render with real fixture data when running with `0xPENDING_*` stub ids: show "stats unavailable, claim still works" rather than crashing
+## Phase 24: UI states pass [x]
+- [x] every screen has empty state with on-brand copy per design system
+- [x] every screen has loading + skeleton states for the data it shows
+- [x] every screen has error state with recovery action (chain-fallback caption, retry-where-applicable)
+- [x] no Lorem ipsum, no `<placeholder>`, no TODO strings, all copy from `bigdev/plans/04-DESIGN-SYSTEM.md` verbatim
+- [x] vault stats render with real fixture data when running with `0xPENDING_*` stub ids: show "stats unavailable, claim still works" rather than crashing
 
 ## Phase 25: Demo polish [ ]
 - [ ] create `scripts/seed-demo-vault.ts` that mints test DUSDC and refills the vault to 1,000

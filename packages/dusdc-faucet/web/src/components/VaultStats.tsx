@@ -14,18 +14,17 @@ function StatCard({
   return (
     <div
       className={cnm(
-        'rounded-2xl border p-5 flex flex-col gap-1.5',
-        'border-neutral-200 dark:border-neutral-800',
-        'bg-white/60 dark:bg-neutral-900/50',
+        'rounded-2xl p-5 flex flex-col gap-1.5',
+        'bg-white/5 border border-white/10 backdrop-blur-md',
       )}
     >
-      <div className="text-xs uppercase tracking-wide text-neutral-500">
+      <div className="text-xs uppercase tracking-wide text-white/50">
         {label}
       </div>
-      <div className="text-xl md:text-[22px] font-mono font-medium text-neutral-900 dark:text-neutral-50">
+      <div className="text-xl md:text-[22px] font-mono font-medium text-white">
         {children}
       </div>
-      {sub ? <div className="text-xs text-neutral-500">{sub}</div> : null}
+      {sub ? <div className="text-xs text-white/50">{sub}</div> : null}
     </div>
   )
 }
@@ -34,7 +33,7 @@ function Skel({ className }: { className?: string }) {
   return (
     <div
       className={cnm(
-        'rounded bg-neutral-200 dark:bg-neutral-800 animate-pulse',
+        'rounded bg-white/10 animate-pulse',
         className,
       )}
     />
@@ -46,7 +45,7 @@ export function VaultStats() {
 
   if (isError) {
     return (
-      <div className="text-sm text-neutral-500 text-center py-4">
+      <div className="text-sm text-white/50 text-center py-4">
         Stats unavailable, claim still works.
       </div>
     )
@@ -59,9 +58,8 @@ export function VaultStats() {
           <div
             key={i}
             className={cnm(
-              'rounded-2xl border p-5 flex flex-col gap-2',
-              'border-neutral-200 dark:border-neutral-800',
-              'bg-white/60 dark:bg-neutral-900/50',
+              'rounded-2xl p-5 flex flex-col gap-2',
+              'bg-white/5 border border-white/10 backdrop-blur-md',
             )}
           >
             <Skel className="h-3 w-24" />
@@ -93,12 +91,12 @@ export function VaultStats() {
         </StatCard>
       </div>
       {lowVault ? (
-        <div className="text-xs text-amber-300 bg-amber-400/10 border border-amber-400/20 rounded-lg px-3 py-2">
+        <div className="text-xs text-white/80 bg-white/5 border border-white/10 backdrop-blur-md rounded-xl px-3 py-2">
           Vault running low. Anyone can refill from the Refill tab.
         </div>
       ) : null}
       {!data.isFresh ? (
-        <div className="text-[11px] text-neutral-500 text-right">
+        <div className="text-[11px] text-white/40 text-right">
           Stats from chain
         </div>
       ) : null}

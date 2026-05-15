@@ -19,6 +19,7 @@
     "@mysten/dapp-kit": "^0.18.0",
     "@mysten/sui": "^1.40.0",
     "@noble/hashes": "^2.0.1",
+    "@paper-design/shaders-react": "^0.0.76",
     "@t3-oss/env-core": "^0.13.11",
     "@tailwindcss/vite": "^4.3.0",
     "@tanstack/match-sorter-utils": "^8.19.4",

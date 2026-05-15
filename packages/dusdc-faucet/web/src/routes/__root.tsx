@@ -5,7 +5,6 @@ import {
 } from '@tanstack/react-router'
 import { Toaster } from 'react-hot-toast'
 import LenisSmoothScrollProvider from '../providers/LenisSmoothScrollProvider'
-import { ThemeProvider } from '../providers/ThemeProvider'
 import { SuiProviders } from '../providers/SuiProviders'
 import ErrorPage from '../components/ErrorPage'
 import NotFoundPage from '../components/NotFoundPage'
@@ -25,6 +24,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'color-scheme', content: 'dark' },
       { title: 'DUSDC Faucet · DeepBook Predict Testnet' },
       {
         name: 'description',
@@ -49,50 +49,32 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
         <HeadContent />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme');
-                  if (theme) {
-                    theme = JSON.parse(theme);
-                  }
-                  document.documentElement.classList.add(theme || 'dark');
-                } catch (e) {
-                  document.documentElement.classList.add('dark');
-                }
-              })();
-            `,
-          }}
-        />
       </head>
-      <body className="bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-50 antialiased transition-colors duration-300">
-        <ThemeProvider>
-          <SuiProviders>
-            <LenisSmoothScrollProvider />
-            <Toaster
-              position="bottom-center"
-              toastOptions={{
-                style: {
-                  background: 'var(--toast-bg)',
-                  color: 'var(--toast-color)',
-                  border: '1px solid var(--toast-border)',
-                  borderRadius: '8px',
-                  fontSize: '13px',
-                  fontFamily: 'Google Sans Code, monospace',
-                },
-                success: {
-                  iconTheme: { primary: '#fbbf24', secondary: '#0a0a0a' },
-                },
-              }}
-            />
-            {children}
-          </SuiProviders>
-        </ThemeProvider>
+      <body className="bg-black text-white antialiased">
+        <SuiProviders>
+          <LenisSmoothScrollProvider />
+          <Toaster
+            position="bottom-center"
+            toastOptions={{
+              style: {
+                background: 'rgba(20, 20, 20, 0.85)',
+                color: '#ffffff',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                borderRadius: '12px',
+                fontSize: '13px',
+                fontFamily: 'Google Sans Code, monospace',
+                backdropFilter: 'blur(12px)',
+              },
+              success: {
+                iconTheme: { primary: '#ffffff', secondary: '#000000' },
+              },
+            }}
+          />
+          {children}
+        </SuiProviders>
         <Scripts />
       </body>
     </html>
