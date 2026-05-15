@@ -6,14 +6,15 @@ export interface TurnstileWidgetProps {
   onError?: (err?: unknown) => void
 }
 
-// Invisible Turnstile by default. The widget auto-runs and fires onToken once
-// Cloudflare returns a valid response. Site key 1x00000000000000000000AA
-// (always-pass) is the recommended dev value.
+// Managed Turnstile. Cloudflare decides whether to challenge silently or show
+// a checkbox; appearance:'interaction-only' keeps the widget hidden until a
+// challenge is actually required. Dashboard widget mode must be Managed for
+// this to render correctly.
 export function TurnstileWidget({ onToken, onError }: TurnstileWidgetProps) {
   return (
     <Turnstile
       siteKey={env.VITE_TURNSTILE_SITE_KEY}
-      options={{ size: 'invisible', theme: 'dark', appearance: 'interaction-only' }}
+      options={{ size: 'flexible', theme: 'dark', appearance: 'interaction-only' }}
       onSuccess={onToken}
       onError={onError}
       onExpire={() => onError?.('expired')}
