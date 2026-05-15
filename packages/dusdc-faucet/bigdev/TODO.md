@@ -21,12 +21,12 @@ The orchestrator reads this file at the start of every iteration and picks the f
 - [x] update `backend/.env.example` and `web/.env.example` to match the per-app subsets in `08-ENV-AND-SECRETS.md`
 - [x] verify `git status` shows no committed `.env` files
 
-## Phase 3: Prisma schema for rate limits, stats, claim events [ ]
+## Phase 3: Prisma schema for rate limits, stats, claim events [x]
 - [x] extend `backend/prisma/schema.prisma` with `RateLimit`, `ClaimEvent`, `VaultStatsSnapshot` per `bigdev/plans/00-ARCHITECTURE.md`
 - [x] keep existing `User` and `ErrorLog` untouched
-- [ ] emit a PAUSE_FOR_USER asking Kelvin to run `bun run db:push` from `backend/` (we never run destructive Prisma)
-- [ ] after Kelvin confirms, run `bun run db:generate` to refresh the Prisma client
-- [ ] confirm `bun run lint` passes
+- [x] emit a PAUSE_FOR_USER asking Kelvin to run `bun run db:push` from `backend/` (we never run destructive Prisma)
+- [x] after Kelvin confirms, run `bun run db:generate` to refresh the Prisma client
+- [x] confirm `bun run lint` passes
 
 ## Phase 4: Move package, faucet, scaffolding [x]
 - [x] create `contracts/faucet/Move.toml` per `bigdev/plans/01-MOVE-CONTRACT.md`
