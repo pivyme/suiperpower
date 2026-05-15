@@ -63,7 +63,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
                 background: 'rgba(20, 20, 20, 0.85)',
                 color: '#ffffff',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
-                borderRadius: '12px',
+                borderRadius: '0px',
                 fontSize: '13px',
                 fontFamily: 'Google Sans Code, monospace',
                 backdropFilter: 'blur(12px)',

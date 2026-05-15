@@ -45,7 +45,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
       <div className="max-w-md w-full">
         <div className="text-center mb-10">
           <div className="mb-6 flex justify-center">
-            <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
+            <div className="flex h-14 w-14 items-center justify-center border border-white/10 bg-white/5 backdrop-blur-md">
               <AlertTriangle className="w-6 h-6 text-white" />
             </div>
           </div>
@@ -60,7 +60,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
         </div>
 
         {error && (
-          <div className="mb-8 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md overflow-hidden">
+          <div className="mb-8 overflow-hidden border border-white/10 bg-white/5 backdrop-blur-md">
             <div className="px-4 py-3 flex items-start justify-between gap-3">
               <div className="min-w-0 flex-1">
                 <p className="text-[10px] font-mono uppercase tracking-wider text-white/40 mb-1.5">
@@ -74,7 +74,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
                 isIconOnly
                 size="sm"
                 variant="tertiary"
-                className="rounded-lg shrink-0 text-white/50 hover:text-white"
+                className="shrink-0 text-white/50 hover:text-white [border-radius:0]"
                 onPress={handleCopy}
                 aria-label="Copy error details"
               >
@@ -120,7 +120,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
 
         <div className="flex items-center justify-center gap-3">
           <Button
-            className="rounded-xl font-mono text-xs bg-white text-black hover:bg-white/90"
+            className="bg-white font-mono text-xs text-black hover:bg-white/90 [border-radius:0]"
             onPress={handleRetry}
           >
             <RefreshCw className="w-3.5 h-3.5" />
@@ -128,7 +128,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
           </Button>
           <Button
             variant="outline"
-            className="rounded-xl font-mono text-xs bg-white/5 border-white/10 text-white/80 hover:bg-white/10"
+            className="border-white/10 bg-white/5 font-mono text-xs text-white/80 hover:bg-white/10 [border-radius:0]"
             onPress={() => router.navigate({ to: '/' })}
           >
             <Home className="w-3.5 h-3.5" />

@@ -1,32 +1,24 @@
 import { useState } from 'react'
 import { ClaimTab } from './ClaimTab'
 import { ReturnTab } from './ReturnTab'
-import { RefillTab } from './RefillTab'
 import { cnm } from '@/utils/style'
 
-type Tab = 'claim' | 'return' | 'refill'
+type Tab = 'claim' | 'return'
 
 const TABS: Array<{ id: Tab; label: string }> = [
   { id: 'claim', label: 'Get DUSDC' },
   { id: 'return', label: 'Return DUSDC' },
-  { id: 'refill', label: 'Refill' },
 ]
 
 export function FaucetCard() {
   const [active, setActive] = useState<Tab>('claim')
   return (
-    <div
-      className={cnm(
-        'rounded-2xl p-6 max-w-[480px] mx-auto w-full',
-        'bg-white/5 border border-white/10 backdrop-blur-md',
-      )}
-    >
+    <div className="mx-auto w-full max-w-[480px]">
       <div
         role="tablist"
         aria-label="Faucet actions"
         className={cnm(
-          'grid grid-cols-3 gap-1 p-1 rounded-xl mb-5',
-          'bg-white/5 border border-white/10 backdrop-blur-md',
+          'mb-5 grid grid-cols-2 border border-white/12 bg-white/[0.03]',
         )}
       >
         {TABS.map((t) => {
@@ -39,10 +31,10 @@ export function FaucetCard() {
               aria-selected={selected}
               onClick={() => setActive(t.id)}
               className={cnm(
-                'h-9 rounded-lg text-sm font-medium transition-colors',
+                'h-10 border-r border-white/10 text-sm font-medium transition-colors last:border-r-0 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-[-1px] focus-visible:outline-white/70',
                 selected
-                  ? 'bg-white/10 text-white'
-                  : 'text-white/50 hover:text-white hover:bg-white/5',
+                  ? 'bg-white text-black'
+                  : 'text-white/48 hover:bg-white/[0.06] hover:text-white',
               )}
             >
               {t.label}
@@ -52,7 +44,6 @@ export function FaucetCard() {
       </div>
       {active === 'claim' ? <ClaimTab /> : null}
       {active === 'return' ? <ReturnTab /> : null}
-      {active === 'refill' ? <RefillTab /> : null}
     </div>
   )
 }

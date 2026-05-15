@@ -3,17 +3,12 @@ import {
   useCurrentAccount,
   useSignAndExecuteTransaction,
 } from '@mysten/dapp-kit'
-import type {OwnerCoin} from '@/lib/sui/ptb-return';
-import type {VerifyResponse} from '@/lib/api';
+import type { OwnerCoin } from '@/lib/sui/ptb-return'
+import type { VerifyResponse } from '@/lib/api'
 import { buildClaimTx } from '@/lib/sui/ptb-claim'
-import {  buildReturnTx } from '@/lib/sui/ptb-return'
-import { buildRefillTx } from '@/lib/sui/ptb-refill'
+import { buildReturnTx } from '@/lib/sui/ptb-return'
 import { sui } from '@/lib/sui/client'
-import {
-  
-  postClaimEvent,
-  postVerify
-} from '@/lib/api'
+import { postClaimEvent, postVerify } from '@/lib/api'
 import { getOwnedDusdcCoins } from '@/lib/sui/faucet-read'
 import { previewClaim, previewReturn } from '@/lib/sui/format'
 import { getFingerprint } from '@/lib/fingerprint'
@@ -140,44 +135,7 @@ export function useReturn() {
   })
 }
 
-export interface RefillArgs {
-  dusdcAmountBase: bigint
-}
-
-export interface RefillSuccess {
-  digest: string
-  dusdcAmountBase: bigint
-}
-
-export function useRefill() {
-  const account = useCurrentAccount()
-  const sign = useSignAndExecuteTransaction()
-  const qc = useQueryClient()
-
-  return useMutation<RefillSuccess, Error, RefillArgs>({
-    mutationFn: async (args): Promise<RefillSuccess> => {
-      if (!account) throw new Error('NOT_CONNECTED')
-      const coins: Array<OwnerCoin> = await getOwnedDusdcCoins(account.address)
-      if (coins.length === 0) throw new Error('NO_DUSDC')
-
-      const tx = buildRefillTx({
-        dusdcAmountBase: args.dusdcAmountBase,
-        ownerCoins: coins,
-      })
-      const result = await sign.mutateAsync({ transaction: tx, chain: CHAIN })
-      const digest = (result as { digest: string }).digest
-      await sui.waitForTransaction({ digest, options: { showEffects: true } })
-
-      return { digest, dusdcAmountBase: args.dusdcAmountBase }
-    },
-    onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ['vault-stats'] })
-      qc.invalidateQueries({ queryKey: ['dusdc-coins'] })
-    },
-  })
-}
-
-// User's DUSDC coin list with cached balance sum for Return/Refill tabs.
+// User's DUSDC coin list with cached balance sum for Return.
 export function useOwnedDusdc() {
   const account = useCurrentAccount()
   return useQuery({

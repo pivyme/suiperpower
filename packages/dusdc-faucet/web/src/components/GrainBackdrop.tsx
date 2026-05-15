@@ -1,14 +1,15 @@
 import { motion } from 'motion/react'
 import { GrainGradient } from '@paper-design/shaders-react'
+import { cnm } from '@/utils/style'
 
-// Full-bleed animated backdrop. Sits behind the page body, fades in once.
-export function GrainBackdrop() {
+// Full-bleed animated backdrop. The caller owns placement so it can be used as a panel texture.
+export function GrainBackdrop({ className }: { className?: string }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 0.9 }}
       transition={{ duration: 1.2, delay: 1.5, ease: 'easeOut' }}
-      className="fixed inset-0 -z-10 pointer-events-none"
+      className={cnm('pointer-events-none absolute inset-0', className)}
       aria-hidden
     >
       <GrainGradient

@@ -118,7 +118,7 @@ export function ReturnTab() {
         error={error}
       />
 
-      <div className="rounded-xl bg-white/5 border border-white/10 backdrop-blur-md px-4 py-3">
+      <div className="border border-white/10 bg-white/[0.035] px-4 py-3 backdrop-blur-md">
         <div className="text-xs text-white/50">You receive</div>
         <div className="mt-1 font-mono text-xl text-white">
           {mistToSui(preview)} <span className="text-sm text-white/50">SUI</span>
@@ -130,9 +130,10 @@ export function ReturnTab() {
         onClick={onSubmit}
         disabled={buttonDisabled}
         className={cnm(
-          'h-11 rounded-xl font-medium text-sm transition-colors flex items-center justify-center gap-2',
+          'flex h-11 items-center justify-center gap-2 text-sm font-medium transition-colors',
           'bg-white text-black hover:bg-white/90',
           'disabled:opacity-60 disabled:cursor-not-allowed',
+          'focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white',
         )}
       >
         {ret.isPending ? <Loader2 size={14} className="animate-spin" /> : null}

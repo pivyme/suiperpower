@@ -18,7 +18,7 @@ export default function NotFoundPage() {
     <div className="min-h-screen w-full flex items-center justify-center bg-black text-white px-6 py-20">
       <div className="max-w-lg w-full text-center">
         <div className="mb-8 flex justify-center">
-          <div className="w-16 h-16 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
+          <div className="flex h-16 w-16 items-center justify-center border border-white/10 bg-white/5 backdrop-blur-md">
             <span className="text-2xl font-mono font-light text-white">?</span>
           </div>
         </div>
@@ -36,7 +36,7 @@ export default function NotFoundPage() {
         </p>
 
         {path && (
-          <div className="mb-8 px-4 py-3 text-left rounded-xl bg-white/5 border border-white/10 backdrop-blur-md flex items-start justify-between gap-3">
+          <div className="mb-8 flex items-start justify-between gap-3 border border-white/10 bg-white/5 px-4 py-3 text-left backdrop-blur-md">
             <div className="min-w-0 flex-1">
               <p className="text-[10px] font-mono uppercase tracking-wider text-white/40 mb-1">
                 Requested path
@@ -49,7 +49,7 @@ export default function NotFoundPage() {
               isIconOnly
               size="sm"
               variant="outline"
-              className="rounded-lg shrink-0 mt-1 bg-white/5 border-white/10 text-white/60"
+              className="mt-1 shrink-0 border-white/10 bg-white/5 text-white/60 [border-radius:0]"
               onPress={handleCopy}
               aria-label="Copy error to clipboard"
             >
@@ -60,7 +60,7 @@ export default function NotFoundPage() {
 
         <div className="flex items-center justify-center">
           <Button
-            className="rounded-xl font-mono text-sm bg-white text-black hover:bg-white/90"
+            className="bg-white font-mono text-sm text-black hover:bg-white/90 [border-radius:0]"
             onPress={() => router.navigate({ to: '/' })}
           >
             <Home className="w-4 h-4" />
