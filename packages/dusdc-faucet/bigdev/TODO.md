@@ -155,11 +155,11 @@ The orchestrator reads this file at the start of every iteration and picks the f
 - [x] vault stats render with real fixture data when running with `0xPENDING_*` stub ids: show "stats unavailable, claim still works" rather than crashing
 
 ## Phase 25: Demo polish [ ]
-- [ ] create `scripts/seed-demo-vault.ts` that mints test DUSDC and refills the vault to 1,000
-- [ ] create `scripts/reset-demo-state.ts` that returns the publisher's DUSDC back to the vault
+- [x] create `scripts/seed-demo-vault.ts` that mints test DUSDC and refills the vault to 1,000
+- [x] create `scripts/reset-demo-state.ts` that returns the publisher's DUSDC back to the vault
 - [ ] golden demo path (claim 0.5 SUI, return 50 DUSDC, refill 500 DUSDC) runs end-to-end without errors against testnet
 - [ ] screenshots captured to `web/public/demo/` and `packages/dusdc-faucet/docs/screenshots/` (placeholder names: `hero.png`, `claim.png`, `return.png`, `refill.png`, `vault-stats.png`)
-- [ ] `README.md` screenshot placeholders filled
+- [x] `README.md` screenshot placeholders filled
 - [ ] `bigdev/claude/demo-script.md` timing verified by Kelvin (PAUSE_FOR_USER for the manual stopwatch pass)
 
 ## Phase 26: E2E rehearsal and live deploy handover [ ]
