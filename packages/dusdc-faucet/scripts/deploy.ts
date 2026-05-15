@@ -132,6 +132,7 @@ async function publishPackage(
       `publish failed: ${result.effects?.status.error ?? "unknown error"}`,
     );
   }
+  await client.waitForTransaction({ digest: result.digest });
   const pkg = result.objectChanges?.find((c) => c.type === "published");
   if (!pkg || pkg.type !== "published") {
     throw new Error("published package id not found in object changes");
@@ -177,6 +178,7 @@ async function mintTestDusdc(
   if (result.effects?.status.status !== "success") {
     throw new Error(`mint failed: ${result.effects?.status.error}`);
   }
+  await client.waitForTransaction({ digest: result.digest });
   const coinChange = findCreated(result, (t) =>
     t.startsWith(`0x2::coin::Coin<${testPkg}::test_dusdc::TEST_DUSDC>`),
   );
@@ -206,6 +208,7 @@ async function createFaucet(
   if (result.effects?.status.status !== "success") {
     throw new Error(`create_faucet failed: ${result.effects?.status.error}`);
   }
+  await client.waitForTransaction({ digest: result.digest });
   const faucet = findCreated(result, (t) =>
     t.startsWith(`${faucetPkg}::faucet::Faucet<`),
   );
@@ -243,6 +246,7 @@ async function refill(
   if (result.effects?.status.status !== "success") {
     throw new Error(`refill failed: ${result.effects?.status.error}`);
   }
+  await client.waitForTransaction({ digest: result.digest });
   process.stdout.write(`  refilled: ${result.digest}\n`);
 }
 
