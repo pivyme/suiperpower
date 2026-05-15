@@ -17,8 +17,18 @@ module faucet::faucet {
     const E_DUST_RETURN: u64 = 8;
     const E_WRONG_ADMIN_CAP: u64 = 9;
     const E_BAD_RATE: u64 = 10;
+    const E_NOT_ELIGIBLE_TO_RETURN: u64 = 11;
+    const E_OVER_RETURN_LIMIT: u64 = 12;
+    const E_NOT_RECOVERY_ADMIN: u64 = 13;
 
-    /// Shared faucet object. Holds SUI and quote-coin liquidity plus the rate, caps, and daily usage.
+    /// Recovery admin. Hardcoded to the publisher wallet (derived from backend/.env PRIVATE_KEY)
+    /// so the recovery escape hatch stays bound to a wallet whose key the backend already holds.
+    /// Used to refund users whose donated quote exceeds their claim ledger and therefore can no
+    /// longer be returned on-chain.
+    const RECOVERY_ADMIN: address =
+        @0x3935bbb26c147851285c0fd76c712e5ccc7669908c2327a1301db52563b12e71;
+
+    /// Shared faucet object. Holds SUI and quote-coin liquidity plus the rate, caps, and per-wallet ledger.
     /// Generic over T, the quote coin type. Publish once with test DUSDC for rehearsal, again with real DUSDC.
     public struct Faucet<phantom T> has key {
         id: UID,
@@ -28,16 +38,21 @@ module faucet::faucet {
         rate_denominator: u64,
         per_tx_sui_cap_mist: u64,
         per_wallet_daily_sui_cap_mist: u64,
-        usage: Table<address, DailyUsage>,
+        usage: Table<address, WalletRecord>,
         paused: bool,
         return_enabled: bool,
         total_served_quote: u64,
         total_claims: u64,
     }
 
-    public struct DailyUsage has store, copy, drop {
+    /// Per-wallet state. `consumed_sui_mist` resets each UTC day; `claimed_quote_net` is the
+    /// running ledger of quote received via claim minus quote already returned. Returns are
+    /// capped at this ledger so a wallet that never claimed cannot drain SUI by dumping quote
+    /// acquired elsewhere.
+    public struct WalletRecord has store, copy, drop {
         utc_day: u64,
         consumed_sui_mist: u64,
+        claimed_quote_net: u64,
     }
 
     /// Owned cap. Bound to a single Faucet via object id so a stolen cap cannot control other deployments.
@@ -79,6 +94,12 @@ module faucet::faucet {
         new_value_bool: bool,
     }
 
+    public struct QuoteRecovered has copy, drop {
+        admin: address,
+        amount: u64,
+        new_quote_balance: u64,
+    }
+
     // Init the faucet at deploy time. Publisher calls this, receives the AdminCap, shares the Faucet.
     public entry fun create_faucet<T>(ctx: &mut TxContext) {
         let id = object::new(ctx);
@@ -92,7 +113,7 @@ module faucet::faucet {
             rate_denominator: 1,
             per_tx_sui_cap_mist: 1_000_000_000,
             per_wallet_daily_sui_cap_mist: 5_000_000_000,
-            usage: table::new<address, DailyUsage>(ctx),
+            usage: table::new<address, WalletRecord>(ctx),
             paused: false,
             return_enabled: true,
             total_served_quote: 0,
@@ -120,21 +141,6 @@ module faucet::faucet {
         let wallet = tx_context::sender(ctx);
         let today = clock::timestamp_ms(clock) / 86_400_000;
 
-        // Update usage before moving any coins.
-        if (table::contains(&faucet.usage, wallet)) {
-            let prior = table::borrow_mut(&mut faucet.usage, wallet);
-            if (prior.utc_day != today) {
-                prior.utc_day = today;
-                prior.consumed_sui_mist = 0;
-            };
-            prior.consumed_sui_mist = prior.consumed_sui_mist + sui_in;
-            assert!(prior.consumed_sui_mist <= faucet.per_wallet_daily_sui_cap_mist, E_OVER_DAILY_WALLET_CAP);
-        } else {
-            assert!(sui_in <= faucet.per_wallet_daily_sui_cap_mist, E_OVER_DAILY_WALLET_CAP);
-            let usage = DailyUsage { utc_day: today, consumed_sui_mist: sui_in };
-            table::add(&mut faucet.usage, wallet, usage);
-        };
-
         // SUI 9 decimals -> DUSDC 6 decimals. base_quote = mist * num / (den * 1000).
         let quote_out_u128 = (sui_in as u128)
             * (faucet.rate_numerator as u128)
@@ -143,6 +149,26 @@ module faucet::faucet {
 
         assert!(quote_out > 0, E_ZERO_AMOUNT);
         assert!(balance::value(&faucet.quote_balance) >= quote_out, E_INSUFFICIENT_VAULT_QUOTE);
+
+        // Update wallet ledger before moving any coins.
+        if (table::contains(&faucet.usage, wallet)) {
+            let prior = table::borrow_mut(&mut faucet.usage, wallet);
+            if (prior.utc_day != today) {
+                prior.utc_day = today;
+                prior.consumed_sui_mist = 0;
+            };
+            prior.consumed_sui_mist = prior.consumed_sui_mist + sui_in;
+            assert!(prior.consumed_sui_mist <= faucet.per_wallet_daily_sui_cap_mist, E_OVER_DAILY_WALLET_CAP);
+            prior.claimed_quote_net = prior.claimed_quote_net + quote_out;
+        } else {
+            assert!(sui_in <= faucet.per_wallet_daily_sui_cap_mist, E_OVER_DAILY_WALLET_CAP);
+            let record = WalletRecord {
+                utc_day: today,
+                consumed_sui_mist: sui_in,
+                claimed_quote_net: quote_out,
+            };
+            table::add(&mut faucet.usage, wallet, record);
+        };
 
         let sui_in_balance = coin::into_balance(payment);
         balance::join(&mut faucet.sui_balance, sui_in_balance);
@@ -166,7 +192,8 @@ module faucet::faucet {
         });
     }
 
-    // Trade quote back for SUI at the same rate. Dust-protected.
+    // Trade quote back for SUI at the same rate. Capped at the wallet's net claim ledger so a
+    // wallet that never claimed (or one that bought quote elsewhere) cannot drain the SUI vault.
     public entry fun return_quote<T>(
         faucet: &mut Faucet<T>,
         payment: Coin<T>,
@@ -179,6 +206,11 @@ module faucet::faucet {
         let quote_in = coin::value(&payment);
         assert!(quote_in > 0, E_ZERO_AMOUNT);
 
+        let wallet = tx_context::sender(ctx);
+        assert!(table::contains(&faucet.usage, wallet), E_NOT_ELIGIBLE_TO_RETURN);
+        let record = table::borrow_mut(&mut faucet.usage, wallet);
+        assert!(record.claimed_quote_net >= quote_in, E_OVER_RETURN_LIMIT);
+
         let sui_mist_out_u128 = (quote_in as u128)
             * (faucet.rate_denominator as u128)
             * 1000u128
@@ -188,15 +220,17 @@ module faucet::faucet {
         assert!(sui_mist_out > 0, E_DUST_RETURN);
         assert!(balance::value(&faucet.sui_balance) >= sui_mist_out, E_INSUFFICIENT_VAULT_SUI);
 
+        record.claimed_quote_net = record.claimed_quote_net - quote_in;
+
         let quote_in_balance = coin::into_balance(payment);
         balance::join(&mut faucet.quote_balance, quote_in_balance);
 
         let payout_balance = balance::split(&mut faucet.sui_balance, sui_mist_out);
         let payout_coin = coin::from_balance(payout_balance, ctx);
-        transfer::public_transfer(payout_coin, tx_context::sender(ctx));
+        transfer::public_transfer(payout_coin, wallet);
 
         event::emit(Returned {
-            wallet: tx_context::sender(ctx),
+            wallet,
             quote_in,
             sui_mist_out,
             rate_numerator: faucet.rate_numerator,
@@ -274,6 +308,29 @@ module faucet::faucet {
         transfer::public_transfer(c, tx_context::sender(ctx));
     }
 
+    /// Recovery escape hatch. Pulls out donated/excess quote so we can refund users off-chain
+    /// when their tokens are stuck above their return ledger. Gated to `RECOVERY_ADMIN` only,
+    /// independent of AdminCap ownership.
+    public entry fun recover_quote<T>(
+        faucet: &mut Faucet<T>,
+        amount: u64,
+        ctx: &mut TxContext,
+    ) {
+        let sender = tx_context::sender(ctx);
+        assert!(sender == RECOVERY_ADMIN, E_NOT_RECOVERY_ADMIN);
+        assert!(amount > 0, E_ZERO_AMOUNT);
+
+        let bal = balance::split(&mut faucet.quote_balance, amount);
+        let c = coin::from_balance(bal, ctx);
+        transfer::public_transfer(c, sender);
+
+        event::emit(QuoteRecovered {
+            admin: sender,
+            amount,
+            new_quote_balance: balance::value(&faucet.quote_balance),
+        });
+    }
+
     public entry fun transfer_admin(cap: AdminCap, recipient: address) {
         transfer::public_transfer(cap, recipient);
     }
@@ -288,6 +345,16 @@ module faucet::faucet {
     public fun total_served_quote<T>(f: &Faucet<T>): u64 { f.total_served_quote }
     public fun total_claims<T>(f: &Faucet<T>): u64 { f.total_claims }
 
+    /// How much quote the given wallet may still return. Zero if the wallet has never claimed.
+    public fun wallet_return_capacity<T>(f: &Faucet<T>, wallet: address): u64 {
+        if (table::contains(&f.usage, wallet)) {
+            let r = table::borrow(&f.usage, wallet);
+            r.claimed_quote_net
+        } else {
+            0
+        }
+    }
+
     // Test-only helpers, never compiled into prod artifacts.
     #[test_only]
     public fun new_for_testing<T>(ctx: &mut TxContext): (Faucet<T>, AdminCap) {
@@ -301,7 +368,7 @@ module faucet::faucet {
             rate_denominator: 1,
             per_tx_sui_cap_mist: 1_000_000_000,
             per_wallet_daily_sui_cap_mist: 5_000_000_000,
-            usage: table::new<address, DailyUsage>(ctx),
+            usage: table::new<address, WalletRecord>(ctx),
             paused: false,
             return_enabled: true,
             total_served_quote: 0,

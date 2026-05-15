@@ -8,6 +8,7 @@ module faucet::faucet_tests {
         claim,
         return_quote,
         refill,
+        recover_quote,
         set_rate,
         set_per_tx_cap,
         set_daily_cap,
@@ -30,6 +31,8 @@ module faucet::faucet_tests {
     const PUBLISHER: address = @0xA11CE;
     const USER: address = @0xB0B;
     const OTHER: address = @0xCAFE;
+    const RECOVERY_ADMIN: address =
+        @0x3935bbb26c147851285c0fd76c712e5ccc7669908c2327a1301db52563b12e71;
 
     const ONE_SUI_MIST: u64 = 1_000_000_000;
     const HUNDRED_DUSDC_BASE: u64 = 100_000_000; // 100 * 10^6
@@ -207,23 +210,119 @@ module faucet::faucet_tests {
         let mut scenario = ts::begin(PUBLISHER);
         let clock = setup_funded(&mut scenario, 1_000 * 1_000_000);
 
+        // USER must claim first to be eligible to return; the ledger needs to hold >= the dust quote_in.
+        ts::next_tx(&mut scenario, USER);
+        {
+            let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
+            let payment = mint_sui(&mut scenario, ONE_SUI_MIST);
+            claim<QUOTE>(&mut faucet, payment, &clock, ts::ctx(&mut scenario));
+            ts::return_shared(faucet);
+        };
+
+        // Skew rate so 1 base unit of quote rounds to 0 MIST: sui_out = 1 * 1 * 1000 / 10_000_000_000 = 0.
+        ts::next_tx(&mut scenario, PUBLISHER);
+        {
+            let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
+            let admin = ts::take_from_address<AdminCap>(&scenario, PUBLISHER);
+            set_rate<QUOTE>(&admin, &mut faucet, 10_000_000_000, 1);
+            ts::return_to_address(PUBLISHER, admin);
+            ts::return_shared(faucet);
+        };
+
         ts::next_tx(&mut scenario, USER);
         let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
-        // 1 base unit of DUSDC translates to 1 * 1 * 1000 / 100 = 10 MIST? No: 0.01 MIST -> 0.
-        // Actually: quote_in=1, sui_mist_out = 1 * 1 * 1000 / 100 = 10. That's not dust.
-        // For dust we need quote_in such that quote_in * 1000 / 100 < 1 => quote_in = 0, but we abort on zero first.
-        // Better: set rate to 1/1 (1 DUSDC per 1 SUI base-unit), then 1 quote -> 1 * 1 * 1000 / 1 = 1000 MIST, not dust.
-        // Easiest dust path: skew rate so denominator dominates. set_rate(1, 1_000_000) -> sui_out = 1 * 1_000_000 * 1000 / 1 = huge. Wrong direction.
-        // We want sui_mist_out=0. Formula: quote_in * den * 1000 / num. Need num >> quote_in * den * 1000.
-        // With rate set to (10_000_000_000, 1), quote_in=1: 1 * 1 * 1000 / 10_000_000_000 = 0. Dust.
-        let admin = ts::take_from_address<AdminCap>(&scenario, PUBLISHER);
-        set_rate<QUOTE>(&admin, &mut faucet, 10_000_000_000, 1);
-        ts::return_to_address(PUBLISHER, admin);
-
         let tiny = mint_quote(&mut scenario, 1);
         return_quote<QUOTE>(&mut faucet, tiny, &clock, ts::ctx(&mut scenario));
 
         ts::return_shared(faucet);
+        clock::destroy_for_testing(clock);
+        ts::end(scenario);
+    }
+
+    #[test]
+    #[expected_failure(abort_code = 11, location = faucet)]
+    fun test_return_blocks_wallet_that_never_claimed() {
+        let mut scenario = ts::begin(PUBLISHER);
+        let clock = setup_funded(&mut scenario, 1_000 * 1_000_000);
+
+        // Seed vault with SUI so the only thing protecting it is the eligibility check.
+        ts::next_tx(&mut scenario, USER);
+        {
+            let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
+            let payment = mint_sui(&mut scenario, ONE_SUI_MIST);
+            claim<QUOTE>(&mut faucet, payment, &clock, ts::ctx(&mut scenario));
+            ts::return_shared(faucet);
+        };
+
+        // OTHER never claimed but somehow holds DUSDC. Return must abort.
+        ts::next_tx(&mut scenario, OTHER);
+        let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
+        let foreign_quote = mint_quote(&mut scenario, HUNDRED_DUSDC_BASE);
+        return_quote<QUOTE>(&mut faucet, foreign_quote, &clock, ts::ctx(&mut scenario));
+
+        ts::return_shared(faucet);
+        clock::destroy_for_testing(clock);
+        ts::end(scenario);
+    }
+
+    #[test]
+    #[expected_failure(abort_code = 12, location = faucet)]
+    fun test_return_caps_at_claimed_amount() {
+        let mut scenario = ts::begin(PUBLISHER);
+        let clock = setup_funded(&mut scenario, 1_000 * 1_000_000);
+
+        // USER claims 100 DUSDC; their ledger sits at 100M base units.
+        ts::next_tx(&mut scenario, USER);
+        {
+            let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
+            let payment = mint_sui(&mut scenario, ONE_SUI_MIST);
+            claim<QUOTE>(&mut faucet, payment, &clock, ts::ctx(&mut scenario));
+            ts::return_shared(faucet);
+        };
+
+        // Attempting to return 200 DUSDC must abort even though USER could mint or buy more elsewhere.
+        ts::next_tx(&mut scenario, USER);
+        let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
+        let extra = mint_quote(&mut scenario, 2 * HUNDRED_DUSDC_BASE);
+        return_quote<QUOTE>(&mut faucet, extra, &clock, ts::ctx(&mut scenario));
+
+        ts::return_shared(faucet);
+        clock::destroy_for_testing(clock);
+        ts::end(scenario);
+    }
+
+    #[test]
+    fun test_return_partial_then_remainder() {
+        let mut scenario = ts::begin(PUBLISHER);
+        let clock = setup_funded(&mut scenario, 1_000 * 1_000_000);
+
+        ts::next_tx(&mut scenario, USER);
+        {
+            let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
+            let payment = mint_sui(&mut scenario, ONE_SUI_MIST);
+            claim<QUOTE>(&mut faucet, payment, &clock, ts::ctx(&mut scenario));
+            ts::return_shared(faucet);
+        };
+
+        // Return 40 DUSDC. Ledger should drop from 100M to 60M.
+        ts::next_tx(&mut scenario, USER);
+        {
+            let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
+            let part = mint_quote(&mut scenario, 40 * 1_000_000);
+            return_quote<QUOTE>(&mut faucet, part, &clock, ts::ctx(&mut scenario));
+            ts::return_shared(faucet);
+        };
+
+        // Return remaining 60 DUSDC. Should succeed and exhaust the ledger.
+        ts::next_tx(&mut scenario, USER);
+        {
+            let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
+            let part = mint_quote(&mut scenario, 60 * 1_000_000);
+            return_quote<QUOTE>(&mut faucet, part, &clock, ts::ctx(&mut scenario));
+            assert!(sui_balance<QUOTE>(&faucet) == 0, 600);
+            ts::return_shared(faucet);
+        };
+
         clock::destroy_for_testing(clock);
         ts::end(scenario);
     }
@@ -362,6 +461,56 @@ module faucet::faucet_tests {
         test_utils::destroy(admin_b);
         test_utils::destroy(faucet_b);
         ts::return_shared(faucet_a);
+        clock::destroy_for_testing(clock);
+        ts::end(scenario);
+    }
+
+    #[test]
+    fun test_recover_quote_happy_path() {
+        let mut scenario = ts::begin(PUBLISHER);
+        let clock = setup_funded(&mut scenario, 1_000 * 1_000_000);
+
+        // OTHER refills the vault with 500 DUSDC on top of the 1000 seed (1500 total).
+        ts::next_tx(&mut scenario, OTHER);
+        {
+            let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
+            let topup = mint_quote(&mut scenario, 500 * 1_000_000);
+            refill<QUOTE>(&mut faucet, topup, ts::ctx(&mut scenario));
+            ts::return_shared(faucet);
+        };
+
+        // Recovery admin pulls 300 DUSDC out so they can refund OTHER off-chain.
+        ts::next_tx(&mut scenario, RECOVERY_ADMIN);
+        {
+            let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
+            recover_quote<QUOTE>(&mut faucet, 300 * 1_000_000, ts::ctx(&mut scenario));
+            assert!(quote_balance<QUOTE>(&faucet) == 1_200 * 1_000_000, 700);
+            ts::return_shared(faucet);
+        };
+
+        ts::next_tx(&mut scenario, RECOVERY_ADMIN);
+        {
+            let got = ts::take_from_address<Coin<QUOTE>>(&scenario, RECOVERY_ADMIN);
+            assert!(coin::value(&got) == 300 * 1_000_000, 701);
+            ts::return_to_address(RECOVERY_ADMIN, got);
+        };
+
+        clock::destroy_for_testing(clock);
+        ts::end(scenario);
+    }
+
+    #[test]
+    #[expected_failure(abort_code = 13, location = faucet)]
+    fun test_recover_quote_rejects_non_admin() {
+        let mut scenario = ts::begin(PUBLISHER);
+        let clock = setup_funded(&mut scenario, 1_000 * 1_000_000);
+
+        // PUBLISHER holds the AdminCap, but recover_quote is pinned to RECOVERY_ADMIN's address.
+        ts::next_tx(&mut scenario, PUBLISHER);
+        let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
+        recover_quote<QUOTE>(&mut faucet, 1, ts::ctx(&mut scenario));
+
+        ts::return_shared(faucet);
         clock::destroy_for_testing(clock);
         ts::end(scenario);
     }

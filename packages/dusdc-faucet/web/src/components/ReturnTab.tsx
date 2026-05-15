@@ -6,6 +6,7 @@ import { AmountInput } from './AmountInput'
 import { cnm } from '@/utils/style'
 import { useVaultStats } from '@/hooks/useVaultStats'
 import { useOwnedDusdc, useReturn } from '@/hooks/useFaucetMutations'
+import { useReturnCapacity } from '@/hooks/useReturnCapacity'
 import {
   baseToDusdc,
   mistToSui,
@@ -18,6 +19,7 @@ export function ReturnTab() {
   const account = useCurrentAccount()
   const stats = useVaultStats()
   const owned = useOwnedDusdc()
+  const capacity = useReturnCapacity()
   const ret = useReturn()
   const [amount, setAmount] = useState<bigint>(0n)
 
@@ -30,6 +32,10 @@ export function ReturnTab() {
   const vaultSui = stats.data ? BigInt(stats.data.suiAccumulatedMist) : 0n
   const returnEnabled = stats.data ? stats.data.returnEnabled : true
   const ownedBase = owned.data?.totalBase ?? 0n
+  const capacityBase = capacity.data ?? 0n
+  const capacityLoading = !!account && capacity.isLoading
+  // Hard ceiling: wallet can return at most what it claimed, and at most what it holds.
+  const maxReturnable = capacityBase < ownedBase ? capacityBase : ownedBase
 
   const preview = useMemo(
     () => previewReturn(amount, rateNum, rateDen),
@@ -38,6 +44,7 @@ export function ReturnTab() {
 
   let error: string | null = null
   if (amount > ownedBase) error = `You only have ${baseToDusdc(ownedBase)} DUSDC`
+  else if (amount > capacityBase) error = `Above your claim ledger of ${baseToDusdc(capacityBase)} DUSDC`
   else if (preview > vaultSui && amount > 0n) error = 'Vault does not have enough SUI yet'
 
   let buttonLabel: string
@@ -51,6 +58,9 @@ export function ReturnTab() {
     buttonDisabled = true
   } else if (ownedBase === 0n) {
     buttonLabel = 'No DUSDC to return'
+    buttonDisabled = true
+  } else if (!capacityLoading && capacityBase === 0n) {
+    buttonLabel = 'Claim first to enable returns'
     buttonDisabled = true
   } else if (ret.isPending) {
     buttonLabel = 'Returning…'
@@ -106,6 +116,25 @@ export function ReturnTab() {
 
   return (
     <div className="flex flex-col gap-4">
+      {account && !capacityLoading ? (
+        <div className="border border-white/10 bg-white/[0.035] px-4 py-3 text-xs text-white/70 backdrop-blur-md">
+          {capacityBase === 0n ? (
+            <>
+              You can return up to <span className="font-mono text-white">0 DUSDC</span>.
+              Returns are capped at how much you previously claimed from this faucet. Claim
+              some DUSDC first to unlock returns.
+            </>
+          ) : (
+            <>
+              You can return up to{' '}
+              <span className="font-mono text-white">{baseToDusdc(capacityBase)} DUSDC</span>
+              , the net amount you have claimed so far. DUSDC acquired elsewhere cannot be
+              swapped back here.
+            </>
+          )}
+        </div>
+      ) : null}
+
       <AmountInput
         id="return-amount"
         label="You return"
@@ -113,8 +142,8 @@ export function ReturnTab() {
         onChange={setAmount}
         unit="DUSDC"
         decimals={6}
-        max={ownedBase}
-        disabled={!account || ownedBase === 0n}
+        max={maxReturnable}
+        disabled={!account || ownedBase === 0n || capacityBase === 0n}
         error={error}
       />
 
@@ -143,6 +172,8 @@ export function ReturnTab() {
       {account ? (
         <p className="text-xs text-white/50 text-center">
           Balance: {baseToDusdc(ownedBase)} DUSDC
+          <span className="mx-2 text-white/20">·</span>
+          Return cap: {baseToDusdc(capacityBase)} DUSDC
         </p>
       ) : null}
     </div>

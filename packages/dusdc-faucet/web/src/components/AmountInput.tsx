@@ -15,6 +15,16 @@ export interface AmountInputProps {
   id?: string
 }
 
+function normalizeNumericInput(raw: string): string {
+  if (raw === '') return ''
+  if (raw.startsWith('.')) return `0${raw}`
+
+  const [whole, fraction] = raw.split('.')
+  const normalizedWhole = whole.replace(/^0+(?=\d)/, '') || '0'
+
+  return fraction === undefined ? normalizedWhole : `${normalizedWhole}.${fraction}`
+}
+
 // Controlled numeric input, stores the user's literal string so trailing dots
 // and zeros do not get clobbered by bigint round-trips.
 export function AmountInput({
@@ -48,9 +58,10 @@ export function AmountInput({
   const onInput = (raw: string) => {
     // Allow empty, digits, and one decimal point.
     if (raw === '' || /^\d*\.?\d*$/.test(raw)) {
-      setText(raw)
+      const next = normalizeNumericInput(raw)
+      setText(next)
       try {
-        onChange(parseDecimal(raw, decimals))
+        onChange(parseDecimal(next, decimals))
       } catch {
         onChange(0n)
       }

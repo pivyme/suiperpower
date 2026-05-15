@@ -28,7 +28,7 @@ export function DonationPanel() {
         <div>
           <h3 className="text-xs font-medium text-white">Donate</h3>
           <p className="mt-1 text-[11px] leading-4 text-white/45">
-            DeepBook team top-up address.
+            Please help keep the vault alive.
           </p>
         </div>
         <span className="border border-white/10 px-2 py-1 font-mono text-[10px] uppercase text-white/45">
@@ -52,7 +52,7 @@ export function DonationPanel() {
             {shortAddr(depositAddress, 8, 6)}
           </div>
           <p className="mt-1 text-[11px] leading-4 text-white/45">
-            Send DUSDC here when the vault needs fuel.
+            Send DUSDC to this address.
           </p>
           <button
             type="button"

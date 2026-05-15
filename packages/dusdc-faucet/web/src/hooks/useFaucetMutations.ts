@@ -87,6 +87,7 @@ export function useClaim() {
       qc.invalidateQueries({ queryKey: ['vault-stats'] })
       qc.invalidateQueries({ queryKey: ['tx-hint'] })
       qc.invalidateQueries({ queryKey: ['dusdc-coins'] })
+      qc.invalidateQueries({ queryKey: ['return-capacity'] })
     },
   })
 }
@@ -131,6 +132,7 @@ export function useReturn() {
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ['vault-stats'] })
       qc.invalidateQueries({ queryKey: ['dusdc-coins'] })
+      qc.invalidateQueries({ queryKey: ['return-capacity'] })
     },
   })
 }
