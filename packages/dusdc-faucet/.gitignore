@@ -1,0 +1,13 @@
+# Local env
+.env
+.env.local
+*.env.local
+
+# Deploy state
+.deploy.json
+
+# bigdev tooling, local-only planning + autonomous build loop, not shipped
+bigdev/
+
+# OS junk
+.DS_Store

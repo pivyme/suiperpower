@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String   @id @default(cuid())
+  walletAddress String   @unique
+  nonce        String?   // For signature verification
+  lastSignIn   DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model ErrorLog {
+  id         String   @id @default(cuid())
+  errorCode  String
+  message    String
+  statusCode Int
+  stack      String?  @db.Text
+  context    String?  @db.Text
+  userId     String?
+  method     String?
+  path       String?
+  userAgent  String?  @db.Text
+  ip         String?
+  createdAt  DateTime @default(now())
+
+  @@index([errorCode])
+  @@index([createdAt])
+}

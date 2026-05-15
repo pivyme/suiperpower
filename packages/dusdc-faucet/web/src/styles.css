@@ -1,0 +1,121 @@
+@import "tailwindcss";
+@import "@heroui/styles";
+@import "@fontsource-variable/inter";
+
+/* Enable class-based dark mode (instead of prefers-color-scheme) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Base theme */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html.light {
+    @apply bg-neutral-50 text-neutral-900;
+    --toast-bg: theme("colors.neutral.50");
+    --toast-color: theme("colors.neutral.900");
+    --toast-border: theme("colors.neutral.200");
+  }
+
+  html.dark {
+    @apply bg-neutral-900 text-neutral-100;
+    --toast-bg: theme("colors.neutral.800");
+    --toast-color: theme("colors.neutral.100");
+    --toast-border: theme("colors.neutral.700");
+  }
+
+  button, [role="button"], a, select, summary, [type="button"], [type="submit"], [type="reset"] {
+    cursor: pointer;
+  }
+
+  body {
+    @apply m-0 antialiased;
+    font-family: "Inter Variable", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
+  }
+
+  code {
+    font-family: "JetBrains Mono", "Fira Code", source-code-pro, Menlo, Monaco,
+      Consolas, "Courier New", monospace;
+  }
+
+  /* Custom scrollbar - light */
+  html.light ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  html.light ::-webkit-scrollbar-track {
+    background: theme("colors.neutral.100");
+  }
+
+  html.light ::-webkit-scrollbar-thumb {
+    background: theme("colors.neutral.300");
+    border-radius: 4px;
+  }
+
+  html.light ::-webkit-scrollbar-thumb:hover {
+    background: theme("colors.neutral.400");
+  }
+
+  /* Custom scrollbar - dark */
+  html.dark ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  html.dark ::-webkit-scrollbar-track {
+    background: theme("colors.neutral.900");
+  }
+
+  html.dark ::-webkit-scrollbar-thumb {
+    background: theme("colors.neutral.700");
+    border-radius: 4px;
+  }
+
+  html.dark ::-webkit-scrollbar-thumb:hover {
+    background: theme("colors.neutral.600");
+  }
+}
+
+/* Selection styling */
+html.light ::selection {
+  background: theme("colors.neutral.200");
+  color: theme("colors.neutral.900");
+}
+
+html.dark ::selection {
+  background: theme("colors.neutral.700");
+  color: theme("colors.neutral.100");
+}
+
+/* Focus ring styling */
+@layer utilities {
+  .focus-ring {
+    @apply outline-none ring-2 ring-neutral-500 ring-offset-2;
+  }
+
+  html.light .focus-ring {
+    @apply ring-offset-neutral-50;
+  }
+
+  html.dark .focus-ring {
+    @apply ring-offset-neutral-900;
+  }
+}
+
+/* Gradient animation */
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 4s ease-in-out infinite;
+}

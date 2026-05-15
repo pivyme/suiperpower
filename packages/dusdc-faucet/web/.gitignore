@@ -1,0 +1,6 @@
+# build artifacts
+.nitro
+.tanstack
+.wrangler
+.output
+.vinxi

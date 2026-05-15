@@ -1,0 +1,20 @@
+{
+  "projectName": "web-starter-v2",
+  "mode": "file-router",
+  "typescript": true,
+  "tailwind": true,
+  "packageManager": "pnpm",
+  "addOnOptions": {},
+  "git": true,
+  "version": 1,
+  "framework": "react-cra",
+  "chosenAddOns": [
+    "eslint",
+    "nitro",
+    "start",
+    "tanstack-query",
+    "table",
+    "t3env",
+    "form"
+  ]
+}
