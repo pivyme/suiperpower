@@ -14,7 +14,22 @@ export interface FaucetState {
   totalClaims: bigint;
 }
 
-type BalanceField = { fields: { value: string } };
+// Sui RPC serializes a Move `Balance<T>` field as a plain numeric string,
+// not the nested `{ fields: { value } }` shape the older SDK reported. We
+// accept both forms so this keeps working if the RPC encoding flips again.
+function readBalance(v: unknown): bigint {
+  if (typeof v === 'string' || typeof v === 'number') return BigInt(v);
+  if (v && typeof v === 'object') {
+    const o = v as { value?: unknown; fields?: { value?: unknown } };
+    if (o.fields && (typeof o.fields.value === 'string' || typeof o.fields.value === 'number')) {
+      return BigInt(o.fields.value);
+    }
+    if (typeof o.value === 'string' || typeof o.value === 'number') {
+      return BigInt(o.value);
+    }
+  }
+  throw new Error('FAUCET_BALANCE_SHAPE_UNEXPECTED');
+}
 
 export async function readFaucetState(): Promise<FaucetState> {
   if (!FAUCET_OBJECT_ID) {
@@ -29,8 +44,8 @@ export async function readFaucetState(): Promise<FaucetState> {
   }
   const f = obj.data.content.fields as Record<string, unknown>;
   return {
-    dusdcAvailable: BigInt((f.quote_balance as BalanceField).fields.value),
-    suiAccumulatedMist: BigInt((f.sui_balance as BalanceField).fields.value),
+    dusdcAvailable: readBalance(f.quote_balance),
+    suiAccumulatedMist: readBalance(f.sui_balance),
     rateNumerator: Number(f.rate_numerator),
     rateDenominator: Number(f.rate_denominator),
     perTxSuiCapMist: BigInt(f.per_tx_sui_cap_mist as string),

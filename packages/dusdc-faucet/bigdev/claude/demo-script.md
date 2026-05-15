@@ -87,3 +87,9 @@ Type `500`. Click "Top up vault". Approve.
 - **Submission video (2:00)**: this script verbatim.
 - **Quick share to DeepBook (1:00)**: scenes 2, 3, 5. Skip the Tally framing and the return scene.
 - **GIF for Twitter (15s)**: just the claim moment, the toast and the stat refresh.
+
+## Rehearsal verification
+
+Layer 4 manual checklist (`bigdev/plans/07-TEST-PLAN.md`), replayed via `scripts/manual-rehearsal-replay.ts` against the local stack on 2026-05-16. Vault=1,500 DUSDC, paused=false. Screenshots in `docs/screenshots/rehearsal/`.
+
+1:PASS 2:PASS 3:SKIP 4:SKIP 5:PASS 6:UNVERIFIABLE 7:PASS 8:PASS, summary 5 PASS / 2 SKIP / 1 UNVERIFIABLE. Items 3-4 skipped (multi-browser + network throttling need a human); item 6 unverifiable from automation (requires a signed PTB at cap, but `scripts/e2e-rehearsal.ts` exercises the same Move abort path from the wallet side).

@@ -14,7 +14,21 @@ export interface FaucetState {
   totalClaims: bigint
 }
 
-type BalanceField = { fields: { value: string } }
+// Sui RPC returns Move `Balance<T>` fields as plain numeric strings, but
+// older SDK versions wrapped them as `{ fields: { value } }`. Accept both.
+function readBalance(v: unknown): bigint {
+  if (typeof v === 'string' || typeof v === 'number') return BigInt(v)
+  if (v && typeof v === 'object') {
+    const o = v as { value?: unknown; fields?: { value?: unknown } }
+    if (o.fields && (typeof o.fields.value === 'string' || typeof o.fields.value === 'number')) {
+      return BigInt(o.fields.value)
+    }
+    if (typeof o.value === 'string' || typeof o.value === 'number') {
+      return BigInt(o.value)
+    }
+  }
+  throw new Error('FAUCET_BALANCE_SHAPE_UNEXPECTED')
+}
 
 // Mirrors backend/src/lib/sui/faucet-read.ts. Frontend uses it as a
 // chain-only fallback when /faucet/stats is unavailable.
@@ -30,8 +44,8 @@ export async function readFaucetState(): Promise<FaucetState> {
   }
   const f = obj.data.content.fields as Record<string, unknown>
   return {
-    dusdcAvailable: BigInt((f.quote_balance as BalanceField).fields.value),
-    suiAccumulatedMist: BigInt((f.sui_balance as BalanceField).fields.value),
+    dusdcAvailable: readBalance(f.quote_balance),
+    suiAccumulatedMist: readBalance(f.sui_balance),
     rateNumerator: Number(f.rate_numerator),
     rateDenominator: Number(f.rate_denominator),
     perTxSuiCapMist: BigInt(f.per_tx_sui_cap_mist as string),

@@ -12,6 +12,20 @@ A self-serve faucet for DUSDC on Sui testnet. Trade testnet SUI for DUSDC at 100
 
 Caps live on-chain. Per transaction: 1 SUI. Per wallet per day: 5 SUI. Off-chain Turnstile + IP/fingerprint limits are convenience layers; the on-chain cap is the actual security floor.
 
+## Deployed at
+
+Testnet rehearsal build (v0.1.0), live with the throwaway test DUSDC coin until DeepBook hands over the real coin type.
+
+| Field | Value |
+| --- | --- |
+| Network | Sui testnet |
+| Faucet package id | `0x4cf98e90fcbcb37657939a4c930a70932147dee3899449f502eef641b9886f3d` |
+| Faucet object id | `0x27c05925fc39dab2526a866523d45c0c0533af1a420289e0d5a31cd5d67a6875` |
+| DUSDC coin type | `0x3f8b178ff847bd88e7335dc04ca48d3307c3ef9d9b252dc971c59eac78321472::test_dusdc::TEST_DUSDC` |
+| AdminCap holder | `0x3935bbb26c147851285c0fd76c712e5ccc7669908c2327a1301db52563b12e71` |
+
+Inspect on Suiscan: `https://suiscan.xyz/testnet/object/0x27c05925fc39dab2526a866523d45c0c0533af1a420289e0d5a31cd5d67a6875`.
+
 ## Tech stack
 
 | Layer | Tech |
@@ -136,6 +150,13 @@ To continue or restart the loop:
 ./bigdev/autobuild fix "msg"    # one-shot transient inject
 ./bigdev/autobuild kill         # stop cleanly
 ```
+
+## Pending DeepBook handover
+
+Two items wait on DeepBook input. They are tracked in `bigdev/TODO.md` Phase 26 as deferred substeps; the v0.1.0 rehearsal deploy is independent of both and stays usable in the meantime.
+
+1. **Republish with the real DUSDC coin type.** The Move package is coin-generic. When DeepBook hands over the real `coin_type`, run `bun run scripts/deploy.ts --which=real --dusdc-type=<TYPE>` and rotate `FAUCET_PACKAGE_ID`, `FAUCET_OBJECT_ID`, `DUSDC_COIN_TYPE` in `.env`.
+2. **Transfer the AdminCap.** Once DeepBook provides a recipient, call `${FAUCET_PACKAGE_ID}::faucet::transfer_admin(AdminCap, recipient)`. AdminCap currently lives at `0x3935bbb26c147851285c0fd76c712e5ccc7669908c2327a1301db52563b12e71`.
 
 ## License
 
