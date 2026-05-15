@@ -59,9 +59,9 @@ The orchestrator reads this file at the start of every iteration and picks the f
 - [x] add a one-line `tests/smoke.move` (or skip if framework allows no-test packages)
 
 ## Phase 9: Deploy helper script [ ]
-- [ ] create `packages/dusdc-faucet/scripts/deploy.ts` per `bigdev/plans/06-DEPLOY-AND-ADMIN.md` (publish, create_faucet, refill, write .deploy.json)
-- [ ] do NOT execute the script in the loop; only validate it `bun run --check`-style by type-checking and parsing flags
-- [ ] emit PAUSE_FOR_USER instructions so Kelvin runs `bun run scripts/deploy.ts --which=test` manually
+- [x] create `packages/dusdc-faucet/scripts/deploy.ts` per `bigdev/plans/06-DEPLOY-AND-ADMIN.md` (publish, create_faucet, refill, write .deploy.json)
+- [x] do NOT execute the script in the loop; only validate it `bun run --check`-style by type-checking and parsing flags
+- [x] emit PAUSE_FOR_USER instructions so Kelvin runs `bun run scripts/deploy.ts --which=test` manually
 - [ ] capture returned `FAUCET_PACKAGE_ID`, `FAUCET_OBJECT_ID`, `ADMIN_CAP` ids from Kelvin's reply into `backend/.env` and `web/.env`
 
 ## Phase 10: Backend config and Sui client [ ]

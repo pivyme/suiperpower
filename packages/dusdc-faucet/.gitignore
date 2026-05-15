@@ -13,5 +13,8 @@ bigdev/claude/inject.md
 # Move build artifacts
 contracts/*/build/
 
+# Deps
+node_modules/
+
 # OS junk
 .DS_Store
