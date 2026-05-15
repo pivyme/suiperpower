@@ -1,11 +1,16 @@
 @import "tailwindcss";
 @import "@heroui/styles";
-@import "@fontsource-variable/inter";
+@import "@mysten/dapp-kit/dist/index.css";
 
-/* Enable class-based dark mode (instead of prefers-color-scheme) */
+/* Class-based dark mode */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Base theme */
+@theme {
+  --font-sans: "Google Sans Flex", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Inter", system-ui, sans-serif;
+  --font-mono: "Google Sans Code", "JetBrains Mono", "Fira Code", source-code-pro, monospace;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -13,16 +18,44 @@
 
   html.light {
     @apply bg-neutral-50 text-neutral-900;
+    --bg: theme("colors.neutral.50");
+    --surface: theme("colors.white");
+    --surface-elev: theme("colors.neutral.100");
+    --border: theme("colors.neutral.200");
+    --border-soft: theme("colors.neutral.100");
+    --fg: theme("colors.neutral.900");
+    --fg-muted: theme("colors.neutral.600");
+    --fg-quiet: theme("colors.neutral.500");
+    --accent: theme("colors.amber.500");
+    --accent-hover: theme("colors.amber.600");
+    --accent-fg: theme("colors.white");
+    --success: theme("colors.emerald.600");
+    --warning: theme("colors.amber.600");
+    --danger: theme("colors.red.600");
     --toast-bg: theme("colors.neutral.50");
     --toast-color: theme("colors.neutral.900");
     --toast-border: theme("colors.neutral.200");
   }
 
   html.dark {
-    @apply bg-neutral-900 text-neutral-100;
-    --toast-bg: theme("colors.neutral.800");
-    --toast-color: theme("colors.neutral.100");
-    --toast-border: theme("colors.neutral.700");
+    @apply bg-neutral-950 text-neutral-50;
+    --bg: theme("colors.neutral.950");
+    --surface: theme("colors.neutral.900");
+    --surface-elev: theme("colors.neutral.800");
+    --border: theme("colors.neutral.800");
+    --border-soft: theme("colors.neutral.900");
+    --fg: theme("colors.neutral.50");
+    --fg-muted: theme("colors.neutral.400");
+    --fg-quiet: theme("colors.neutral.500");
+    --accent: theme("colors.amber.400");
+    --accent-hover: theme("colors.amber.300");
+    --accent-fg: theme("colors.neutral.950");
+    --success: theme("colors.emerald.400");
+    --warning: theme("colors.amber.300");
+    --danger: theme("colors.red.400");
+    --toast-bg: theme("colors.neutral.900");
+    --toast-color: theme("colors.neutral.50");
+    --toast-border: theme("colors.neutral.800");
   }
 
   button, [role="button"], a, select, summary, [type="button"], [type="submit"], [type="reset"] {
@@ -31,91 +64,66 @@
 
   body {
     @apply m-0 antialiased;
-    font-family: "Inter Variable", -apple-system, BlinkMacSystemFont, "Segoe UI",
-      "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-      "Helvetica Neue", sans-serif;
+    font-family: "Google Sans Flex", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      "Inter", system-ui, sans-serif;
   }
 
-  code {
-    font-family: "JetBrains Mono", "Fira Code", source-code-pro, Menlo, Monaco,
+  code, .font-mono {
+    font-family: "Google Sans Code", "JetBrains Mono", "Fira Code", source-code-pro, Menlo, Monaco,
       Consolas, "Courier New", monospace;
   }
 
-  /* Custom scrollbar - light */
-  html.light ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-
-  html.light ::-webkit-scrollbar-track {
-    background: theme("colors.neutral.100");
-  }
-
-  html.light ::-webkit-scrollbar-thumb {
-    background: theme("colors.neutral.300");
-    border-radius: 4px;
-  }
-
-  html.light ::-webkit-scrollbar-thumb:hover {
-    background: theme("colors.neutral.400");
-  }
-
-  /* Custom scrollbar - dark */
+  /* Scrollbar, dark */
   html.dark ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
-
   html.dark ::-webkit-scrollbar-track {
-    background: theme("colors.neutral.900");
+    background: theme("colors.neutral.950");
   }
-
   html.dark ::-webkit-scrollbar-thumb {
-    background: theme("colors.neutral.700");
+    background: theme("colors.neutral.800");
     border-radius: 4px;
   }
-
   html.dark ::-webkit-scrollbar-thumb:hover {
-    background: theme("colors.neutral.600");
+    background: theme("colors.neutral.700");
+  }
+
+  /* Scrollbar, light */
+  html.light ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  html.light ::-webkit-scrollbar-track {
+    background: theme("colors.neutral.100");
+  }
+  html.light ::-webkit-scrollbar-thumb {
+    background: theme("colors.neutral.300");
+    border-radius: 4px;
+  }
+  html.light ::-webkit-scrollbar-thumb:hover {
+    background: theme("colors.neutral.400");
   }
 }
 
-/* Selection styling */
+html.dark ::selection {
+  background: theme("colors.neutral.800");
+  color: theme("colors.neutral.50");
+}
+
 html.light ::selection {
   background: theme("colors.neutral.200");
   color: theme("colors.neutral.900");
 }
 
-html.dark ::selection {
-  background: theme("colors.neutral.700");
-  color: theme("colors.neutral.100");
-}
-
-/* Focus ring styling */
 @layer utilities {
   .focus-ring {
-    @apply outline-none ring-2 ring-neutral-500 ring-offset-2;
+    @apply outline-none ring-2 ring-amber-400/60 ring-offset-2;
   }
-
   html.light .focus-ring {
     @apply ring-offset-neutral-50;
   }
-
   html.dark .focus-ring {
-    @apply ring-offset-neutral-900;
+    @apply ring-offset-neutral-950;
   }
-}
-
-/* Gradient animation */
-@keyframes gradient {
-  0%, 100% {
-    background-position: 0% center;
-  }
-  50% {
-    background-position: 100% center;
-  }
-}
-
-.animate-gradient {
-  animation: gradient 4s ease-in-out infinite;
 }

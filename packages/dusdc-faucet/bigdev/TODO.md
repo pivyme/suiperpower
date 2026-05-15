@@ -99,12 +99,12 @@ The orchestrator reads this file at the start of every iteration and picks the f
 - [x] stub Prisma via `vitest-mock-extended` (add to devDeps)
 - [x] confirm `bun test` passes
 
-## Phase 16: Frontend env, providers, base layout [ ]
-- [ ] create `web/src/env.ts` exactly per `bigdev/plans/03-FRONTEND.md`
-- [ ] add Google Sans Flex + Google Sans Code font links to `web/src/routes/__root.tsx`, remove the Inter Variable font import from `styles.css`
-- [ ] update `web/src/styles.css` to use the new font tokens and palette per `bigdev/plans/04-DESIGN-SYSTEM.md`
-- [ ] create `web/src/providers/SuiProviders.tsx`, wire into `__root.tsx`
-- [ ] import `@mysten/dapp-kit/dist/index.css` at the top of `styles.css`
+## Phase 16: Frontend env, providers, base layout [x]
+- [x] create `web/src/env.ts` exactly per `bigdev/plans/03-FRONTEND.md`
+- [x] add Google Sans Flex + Google Sans Code font links to `web/src/routes/__root.tsx`, remove the Inter Variable font import from `styles.css`
+- [x] update `web/src/styles.css` to use the new font tokens and palette per `bigdev/plans/04-DESIGN-SYSTEM.md`
+- [x] create `web/src/providers/SuiProviders.tsx`, wire into `__root.tsx`
+- [x] import `@mysten/dapp-kit/dist/index.css` at the top of `styles.css`
 
 ## Phase 17: Frontend lib (sui, api, fingerprint, format) [ ]
 - [ ] create `web/src/lib/sui/client.ts`
