@@ -28,35 +28,35 @@ The orchestrator reads this file at the start of every iteration and picks the f
 - [ ] after Kelvin confirms, run `bun run db:generate` to refresh the Prisma client
 - [ ] confirm `bun run lint` passes
 
-## Phase 4: Move package, faucet, scaffolding [ ]
-- [ ] create `contracts/faucet/Move.toml` per `bigdev/plans/01-MOVE-CONTRACT.md`
-- [ ] create `contracts/faucet/sources/faucet.move` with the `Faucet<T>`, `DailyUsage`, `AdminCap` types, error codes, and events declared
-- [ ] add `create_faucet`, `claim`, `return_quote`, `refill` entry function signatures (bodies in next phases)
-- [ ] confirm `sui move build` succeeds with the type declarations and empty bodies (or `abort 0` placeholders)
+## Phase 4: Move package, faucet, scaffolding [x]
+- [x] create `contracts/faucet/Move.toml` per `bigdev/plans/01-MOVE-CONTRACT.md`
+- [x] create `contracts/faucet/sources/faucet.move` with the `Faucet<T>`, `DailyUsage`, `AdminCap` types, error codes, and events declared
+- [x] add `create_faucet`, `claim`, `return_quote`, `refill` entry function signatures (bodies in next phases)
+- [x] confirm `sui move build` succeeds with the type declarations and empty bodies (or `abort 0` placeholders)
 
-## Phase 5: Move package, claim and refill [ ]
-- [ ] implement `claim` body exactly per `bigdev/plans/01-MOVE-CONTRACT.md`, including u128 math, daily reset, counter update, event emit
-- [ ] implement `refill` body and event emit
-- [ ] update `create_faucet` to share the object and transfer the AdminCap to the sender
-- [ ] confirm `sui move build` clean
+## Phase 5: Move package, claim and refill [x]
+- [x] implement `claim` body exactly per `bigdev/plans/01-MOVE-CONTRACT.md`, including u128 math, daily reset, counter update, event emit
+- [x] implement `refill` body and event emit
+- [x] update `create_faucet` to share the object and transfer the AdminCap to the sender
+- [x] confirm `sui move build` clean
 
-## Phase 6: Move package, return and admin functions [ ]
-- [ ] implement `return_quote` per the doc, including dust check and pause/return_enabled assertions
-- [ ] implement `set_rate`, `set_per_tx_cap`, `set_daily_cap`, `set_paused`, `set_return_enabled`, `withdraw_sui`, `transfer_admin`
-- [ ] each admin entry asserts AdminCap binding via `cap.faucet_id == object::uid_to_address(&faucet.id)`
-- [ ] add read helpers (`quote_balance`, `sui_balance`, `rate`, `is_paused`, `return_enabled`, `total_served_quote`, `total_claims`)
-- [ ] confirm `sui move build` clean
+## Phase 6: Move package, return and admin functions [x]
+- [x] implement `return_quote` per the doc, including dust check and pause/return_enabled assertions
+- [x] implement `set_rate`, `set_per_tx_cap`, `set_daily_cap`, `set_paused`, `set_return_enabled`, `withdraw_sui`, `transfer_admin`
+- [x] each admin entry asserts AdminCap binding via `cap.faucet_id == object::uid_to_address(&faucet.id)`
+- [x] add read helpers (`quote_balance`, `sui_balance`, `rate`, `is_paused`, `return_enabled`, `total_served_quote`, `total_claims`)
+- [x] confirm `sui move build` clean
 
-## Phase 7: Move tests [ ]
-- [ ] create `contracts/faucet/tests/faucet_tests.move` covering every case in `bigdev/plans/07-TEST-PLAN.md` Layer 1
-- [ ] use `sui::test_scenario` and `sui::clock::create_for_testing`
-- [ ] confirm `sui move test` passes all listed scenarios
+## Phase 7: Move tests [x]
+- [x] create `contracts/faucet/tests/faucet_tests.move` covering every case in `bigdev/plans/07-TEST-PLAN.md` Layer 1
+- [x] use `sui::test_scenario` and `sui::clock::create_for_testing`
+- [x] confirm `sui move test` passes all listed scenarios
 
-## Phase 8: Test DUSDC clone package [ ]
-- [ ] create `contracts/test-dusdc/Move.toml`
-- [ ] create `contracts/test-dusdc/sources/test_dusdc.move` exactly per `bigdev/plans/01-MOVE-CONTRACT.md`
-- [ ] confirm `sui move build` in that folder
-- [ ] add a one-line `tests/smoke.move` (or skip if framework allows no-test packages)
+## Phase 8: Test DUSDC clone package [x]
+- [x] create `contracts/test-dusdc/Move.toml`
+- [x] create `contracts/test-dusdc/sources/test_dusdc.move` exactly per `bigdev/plans/01-MOVE-CONTRACT.md`
+- [x] confirm `sui move build` in that folder
+- [x] add a one-line `tests/smoke.move` (or skip if framework allows no-test packages)
 
 ## Phase 9: Deploy helper script [ ]
 - [ ] create `packages/dusdc-faucet/scripts/deploy.ts` per `bigdev/plans/06-DEPLOY-AND-ADMIN.md` (publish, create_faucet, refill, write .deploy.json)

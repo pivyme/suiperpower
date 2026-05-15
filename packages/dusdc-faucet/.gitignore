@@ -10,5 +10,8 @@
 bigdev/claude/auto-build-logs/
 bigdev/claude/inject.md
 
+# Move build artifacts
+contracts/*/build/
+
 # OS junk
 .DS_Store
