@@ -6,8 +6,9 @@
 # Deploy state
 .deploy.json
 
-# bigdev tooling, local-only planning + autonomous build loop, not shipped
-bigdev/
+# bigdev tooling, ephemeral artifacts only. Plans, TODO, prompts stay tracked.
+bigdev/claude/auto-build-logs/
+bigdev/claude/inject.md
 
 # OS junk
 .DS_Store

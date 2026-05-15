@@ -36,3 +36,47 @@ model ErrorLog {
   @@index([errorCode])
   @@index([createdAt])
 }
+
+// Per-day rate limit counters keyed by (scope, identifier, utcDay).
+// scope = "ip" | "fingerprint" | "wallet". Increment-or-create via upsert.
+model RateLimit {
+  id           String   @id @default(cuid())
+  scope        String
+  identifier   String
+  utcDay       Int
+  consumedMist BigInt   @default(0)
+  claimCount   Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([scope, identifier, utcDay])
+  @@index([utcDay])
+}
+
+// Audit trail of claims confirmed on-chain. Populated by /event/claim.
+model ClaimEvent {
+  id            String   @id @default(cuid())
+  txDigest      String   @unique
+  walletAddress String
+  suiMist       BigInt
+  dusdcBaseUnit BigInt
+  ip            String?
+  fingerprint   String?
+  createdAt     DateTime @default(now())
+
+  @@index([walletAddress])
+  @@index([createdAt])
+}
+
+// Cached snapshot of on-chain vault state, refreshed by statsCacheWorker.
+model VaultStatsSnapshot {
+  id               String   @id @default(cuid())
+  dusdcAvailable   BigInt
+  suiAccumulated   BigInt
+  servedTodayDusdc BigInt
+  servedTotalDusdc BigInt
+  claimsTodayCount Int
+  capturedAt       DateTime @default(now())
+
+  @@index([capturedAt])
+}

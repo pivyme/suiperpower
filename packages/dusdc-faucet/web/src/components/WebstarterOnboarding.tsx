@@ -1,43 +1,43 @@
 import { useState } from 'react'
 import {
+  Bell,
   BookOpen,
   Check,
   Code2,
   ExternalLink,
-  Info,
-  MousePointerClick,
-  Moon,
-  Sun,
-  Terminal,
-  Sparkles,
-  TriangleAlert,
-  X,
-  Search,
-  Mail,
-  Lock,
-  Bell,
-  Wifi,
   Eye,
   Globe,
-  User,
+  Info,
   Layers,
+  Lock,
+  Mail,
+  Moon,
+  MousePointerClick,
+  Search,
+  Sparkles,
+  Sun,
+  Terminal,
+  TriangleAlert,
+  User,
+  Wifi,
+  X,
   Zap,
 } from 'lucide-react'
 import {
+  Avatar,
   Button,
-  Switch,
   Checkbox,
   Chip,
-  Slider,
-  ProgressBar,
-  Avatar,
-  Tabs,
-  Tab,
-  TextField,
-  Label,
   InputGroup,
-  Tooltip,
+  Label,
   Popover,
+  ProgressBar,
+  Slider,
+  Switch,
+  Tab,
+  Tabs,
+  TextField,
+  Tooltip,
 } from '@heroui/react'
 import { motion } from 'motion/react'
 import toast from 'react-hot-toast'
@@ -47,8 +47,8 @@ import { config } from '@/config'
 import { cnm } from '@/utils/style'
 import { useTheme } from '@/providers/ThemeProvider'
 import {
-  EASE_OUT_QUINT,
   EASE_OUT_EXPO,
+  EASE_OUT_QUINT,
   EASE_SNAPPY_OUT,
 } from '@/utils/motion'
 
@@ -356,11 +356,11 @@ function StartSection() {
 }
 
 function AnimationShowcase() {
-  const items: {
+  const items: Array<{
     label: string
     tag: string
     demo: React.ReactNode
-  }[] = [
+  }> = [
     {
       label: 'SPRING_SMOOTH',
       tag: 'spring',
@@ -745,7 +745,7 @@ function ComponentsShowcase() {
                 </p>
                 <Slider
                   value={sliderValue}
-                  onChange={(v) => setSliderValue(v as number[])}
+                  onChange={(v) => setSliderValue(v as Array<number>)}
                   minValue={0}
                   maxValue={100}
                   step={1}

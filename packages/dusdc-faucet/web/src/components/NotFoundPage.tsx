@@ -1,6 +1,6 @@
 import { useRouter } from '@tanstack/react-router'
 import { Button } from '@heroui/react'
-import { Home, Copy } from 'lucide-react'
+import { Copy, Home } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { cnm } from '@/utils/style'
 

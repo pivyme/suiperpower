@@ -183,7 +183,7 @@ function getEntryGSAPVars(
     slideUp: [{ y: 60, opacity: 0 }, { y: 0, opacity: 1 }],
   }
 
-  return animations[animation] || animations.fadeInUp
+  return animations[animation]
 }
 
 function getExitGSAPVars(animation: ExitAnimation): gsap.TweenVars {
@@ -197,5 +197,5 @@ function getExitGSAPVars(animation: ExitAnimation): gsap.TweenVars {
     slideDown: { y: 60, opacity: 0 },
   }
 
-  return animations[animation] || animations.fadeOutDown
+  return animations[animation]
 }

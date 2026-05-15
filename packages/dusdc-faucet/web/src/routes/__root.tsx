@@ -3,9 +3,9 @@ import {
   Scripts,
   createRootRouteWithContext,
 } from '@tanstack/react-router'
+import { Toaster } from 'react-hot-toast'
 import LenisSmoothScrollProvider from '../providers/LenisSmoothScrollProvider'
 import { ThemeProvider } from '../providers/ThemeProvider'
-import { Toaster } from 'react-hot-toast'
 import ErrorPage from '../components/ErrorPage'
 import NotFoundPage from '../components/NotFoundPage'
 

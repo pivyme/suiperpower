@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { useTheme } from '@/providers/ThemeProvider'
 
 interface Cell {
@@ -33,14 +33,14 @@ export default function ModularGrid({
   className = '',
 }: ModularGridProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const cellsRef = useRef<Cell[]>([])
+  const cellsRef = useRef<Array<Cell>>([])
   const animationRef = useRef<number>(0)
   const timeRef = useRef<number>(0)
   const { theme } = useTheme()
 
   const initializeCells = useCallback(
     (width: number, height: number) => {
-      const cells: Cell[] = []
+      const cells: Array<Cell> = []
       const seed = 42
 
       const cellWidth = (width - gap * (columns + 1)) / columns

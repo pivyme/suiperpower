@@ -15,7 +15,7 @@ export const formatStringToNumericDecimals = (
     parts[0] = '0'
   }
 
-  if (parts[1] !== undefined) {
+  if (parts.length > 1) {
     parts[1] = parts[1].substring(0, maxDecimals)
   }
 
@@ -28,7 +28,7 @@ export const formatStringToNumericDecimals = (
     .reverse()
     .join('')
 
-  return formattedIntegerPart + (parts[1] !== undefined ? `.${parts[1]}` : '')
+  return formattedIntegerPart + (parts.length > 1 ? `.${parts[1]}` : '')
 }
 
 export const serializeFormattedStringToFloat = (val: string): number => {
@@ -131,7 +131,7 @@ export const formatUiNumber = (
       return `${value.toPrecision(significantFigures).replace(/\.?0+$/, '')}${currencyStr}`
     }
 
-    let decimalsToShow = defaultDecimals !== undefined ? defaultDecimals : 2
+    let decimalsToShow = defaultDecimals
 
     if (Math.abs(value) < 1 && Math.abs(value) > 0) {
       const valueStr = value.toString()
@@ -161,7 +161,7 @@ export const formatUiNumber = (
       ? `${formattedWholePart}.${trimmedDecimalPart}${currencyStr}`
       : `${formattedWholePart}${currencyStr}`
   } catch {
-    const fallbackValue = num?.toString() || '0'
+    const fallbackValue = num.toString()
     return currency ? `${fallbackValue} ${currency.trim()}` : fallbackValue
   }
 }
