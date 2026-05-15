@@ -100,6 +100,18 @@ module faucet::faucet {
         new_quote_balance: u64,
     }
 
+    public struct SuiRecovered has copy, drop {
+        admin: address,
+        amount_mist: u64,
+        new_sui_balance: u64,
+    }
+
+    public struct EmergencyDrained has copy, drop {
+        admin: address,
+        sui_mist_out: u64,
+        quote_out: u64,
+    }
+
     // Init the faucet at deploy time. Publisher calls this, receives the AdminCap, shares the Faucet.
     public entry fun create_faucet<T>(ctx: &mut TxContext) {
         let id = object::new(ctx);
@@ -308,9 +320,9 @@ module faucet::faucet {
         transfer::public_transfer(c, tx_context::sender(ctx));
     }
 
-    /// Recovery escape hatch. Pulls out donated/excess quote so we can refund users off-chain
-    /// when their tokens are stuck above their return ledger. Gated to `RECOVERY_ADMIN` only,
-    /// independent of AdminCap ownership.
+    /// Recovery escape hatch for quote. Pulls a specific amount of donated/excess quote so we
+    /// can refund users off-chain when their tokens are stuck above their return ledger. Gated
+    /// to `RECOVERY_ADMIN` only, independent of AdminCap ownership.
     public entry fun recover_quote<T>(
         faucet: &mut Faucet<T>,
         amount: u64,
@@ -328,6 +340,63 @@ module faucet::faucet {
             admin: sender,
             amount,
             new_quote_balance: balance::value(&faucet.quote_balance),
+        });
+    }
+
+    /// Recovery escape hatch for SUI. Mirror of `recover_quote` for the SUI side of the vault.
+    public entry fun recover_sui<T>(
+        faucet: &mut Faucet<T>,
+        amount_mist: u64,
+        ctx: &mut TxContext,
+    ) {
+        let sender = tx_context::sender(ctx);
+        assert!(sender == RECOVERY_ADMIN, E_NOT_RECOVERY_ADMIN);
+        assert!(amount_mist > 0, E_ZERO_AMOUNT);
+
+        let bal = balance::split(&mut faucet.sui_balance, amount_mist);
+        let c = coin::from_balance(bal, ctx);
+        transfer::public_transfer(c, sender);
+
+        event::emit(SuiRecovered {
+            admin: sender,
+            amount_mist,
+            new_sui_balance: balance::value(&faucet.sui_balance),
+        });
+    }
+
+    /// Emergency drain. Empties both SUI and quote balances in one tx and transfers them to the
+    /// recovery admin. Use only if something is wrong with the faucet and we need everything out
+    /// fast. Does not pause; combine with `set_paused(true)` beforehand if you also want to stop
+    /// concurrent claims/returns from racing in the same transaction batch.
+    public entry fun emergency_withdraw_all<T>(
+        faucet: &mut Faucet<T>,
+        ctx: &mut TxContext,
+    ) {
+        let sender = tx_context::sender(ctx);
+        assert!(sender == RECOVERY_ADMIN, E_NOT_RECOVERY_ADMIN);
+
+        let sui_bal = balance::withdraw_all(&mut faucet.sui_balance);
+        let sui_amount = balance::value(&sui_bal);
+        if (sui_amount > 0) {
+            let c = coin::from_balance(sui_bal, ctx);
+            transfer::public_transfer(c, sender);
+        } else {
+            balance::destroy_zero(sui_bal);
+        };
+
+        let quote_bal = balance::withdraw_all(&mut faucet.quote_balance);
+        let quote_amount = balance::value(&quote_bal);
+        if (quote_amount > 0) {
+            let c = coin::from_balance(quote_bal, ctx);
+            transfer::public_transfer(c, sender);
+        } else {
+            balance::destroy_zero(quote_bal);
+        };
+
+        event::emit(EmergencyDrained {
+            admin: sender,
+            sui_mist_out: sui_amount,
+            quote_out: quote_amount,
         });
     }
 

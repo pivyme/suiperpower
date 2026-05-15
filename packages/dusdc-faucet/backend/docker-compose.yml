@@ -1,0 +1,33 @@
+# Production-style stack for Dokploy. DATABASE_URL is injected by Dokploy
+# and points at an external Postgres (Neon, Supabase, or Dokploy-managed).
+# Schema changes are applied manually via `bun run db:push` from a shell.
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: dusdc-faucet-backend:latest
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-3700}:3700"
+    environment:
+      NODE_ENV: production
+      APP_PORT: 3700
+      DATABASE_URL: ${DATABASE_URL}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-7d}
+      ALLOWED_ORIGIN: ${ALLOWED_ORIGIN}
+      SUI_RPC_URL: ${SUI_RPC_URL:-https://fullnode.testnet.sui.io}
+      FAUCET_PACKAGE_ID: ${FAUCET_PACKAGE_ID}
+      FAUCET_OBJECT_ID: ${FAUCET_OBJECT_ID}
+      DUSDC_COIN_TYPE: ${DUSDC_COIN_TYPE}
+      TURNSTILE_SECRET: ${TURNSTILE_SECRET}
+      PER_IP_DAILY_SUI_CAP_MIST: ${PER_IP_DAILY_SUI_CAP_MIST:-5000000000}
+      PER_FP_DAILY_SUI_CAP_MIST: ${PER_FP_DAILY_SUI_CAP_MIST:-5000000000}
+    healthcheck:
+      test: ["CMD", "bun", "-e", "fetch('http://127.0.0.1:3700/').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s

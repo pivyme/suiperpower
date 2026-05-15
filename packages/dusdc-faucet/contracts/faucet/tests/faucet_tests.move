@@ -9,6 +9,8 @@ module faucet::faucet_tests {
         return_quote,
         refill,
         recover_quote,
+        recover_sui,
+        emergency_withdraw_all,
         set_rate,
         set_per_tx_cap,
         set_daily_cap,
@@ -509,6 +511,135 @@ module faucet::faucet_tests {
         ts::next_tx(&mut scenario, PUBLISHER);
         let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
         recover_quote<QUOTE>(&mut faucet, 1, ts::ctx(&mut scenario));
+
+        ts::return_shared(faucet);
+        clock::destroy_for_testing(clock);
+        ts::end(scenario);
+    }
+
+    #[test]
+    fun test_recover_sui_happy_path() {
+        let mut scenario = ts::begin(PUBLISHER);
+        let clock = setup_funded(&mut scenario, 1_000 * 1_000_000);
+
+        // Seed SUI side via a normal claim.
+        ts::next_tx(&mut scenario, USER);
+        {
+            let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
+            let payment = mint_sui(&mut scenario, ONE_SUI_MIST);
+            claim<QUOTE>(&mut faucet, payment, &clock, ts::ctx(&mut scenario));
+            ts::return_shared(faucet);
+        };
+
+        // Recovery admin pulls half of it out.
+        ts::next_tx(&mut scenario, RECOVERY_ADMIN);
+        {
+            let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
+            recover_sui<QUOTE>(&mut faucet, ONE_SUI_MIST / 2, ts::ctx(&mut scenario));
+            assert!(sui_balance<QUOTE>(&faucet) == ONE_SUI_MIST / 2, 800);
+            ts::return_shared(faucet);
+        };
+
+        ts::next_tx(&mut scenario, RECOVERY_ADMIN);
+        {
+            let got = ts::take_from_address<Coin<SUI>>(&scenario, RECOVERY_ADMIN);
+            assert!(coin::value(&got) == ONE_SUI_MIST / 2, 801);
+            ts::return_to_address(RECOVERY_ADMIN, got);
+        };
+
+        clock::destroy_for_testing(clock);
+        ts::end(scenario);
+    }
+
+    #[test]
+    #[expected_failure(abort_code = 13, location = faucet)]
+    fun test_recover_sui_rejects_non_admin() {
+        let mut scenario = ts::begin(PUBLISHER);
+        let clock = setup_funded(&mut scenario, 1_000 * 1_000_000);
+
+        ts::next_tx(&mut scenario, PUBLISHER);
+        let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
+        recover_sui<QUOTE>(&mut faucet, 1, ts::ctx(&mut scenario));
+
+        ts::return_shared(faucet);
+        clock::destroy_for_testing(clock);
+        ts::end(scenario);
+    }
+
+    #[test]
+    fun test_emergency_withdraw_all_drains_both_sides() {
+        let mut scenario = ts::begin(PUBLISHER);
+        let clock = setup_funded(&mut scenario, 1_000 * 1_000_000);
+
+        // Seed SUI side via a claim so both balances are non-zero.
+        ts::next_tx(&mut scenario, USER);
+        {
+            let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
+            let payment = mint_sui(&mut scenario, ONE_SUI_MIST);
+            claim<QUOTE>(&mut faucet, payment, &clock, ts::ctx(&mut scenario));
+            ts::return_shared(faucet);
+        };
+
+        // Quote vault now holds 900 DUSDC (1000 seeded minus 100 served). SUI vault holds 1 SUI.
+        ts::next_tx(&mut scenario, RECOVERY_ADMIN);
+        {
+            let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
+            emergency_withdraw_all<QUOTE>(&mut faucet, ts::ctx(&mut scenario));
+            assert!(sui_balance<QUOTE>(&faucet) == 0, 900);
+            assert!(quote_balance<QUOTE>(&faucet) == 0, 901);
+            ts::return_shared(faucet);
+        };
+
+        ts::next_tx(&mut scenario, RECOVERY_ADMIN);
+        {
+            let sui_got = ts::take_from_address<Coin<SUI>>(&scenario, RECOVERY_ADMIN);
+            let quote_got = ts::take_from_address<Coin<QUOTE>>(&scenario, RECOVERY_ADMIN);
+            assert!(coin::value(&sui_got) == ONE_SUI_MIST, 902);
+            assert!(coin::value(&quote_got) == 900 * 1_000_000, 903);
+            ts::return_to_address(RECOVERY_ADMIN, sui_got);
+            ts::return_to_address(RECOVERY_ADMIN, quote_got);
+        };
+
+        clock::destroy_for_testing(clock);
+        ts::end(scenario);
+    }
+
+    #[test]
+    fun test_emergency_withdraw_all_handles_empty_side() {
+        let mut scenario = ts::begin(PUBLISHER);
+        // Vault has 1000 DUSDC seeded but zero SUI since nobody claimed yet.
+        let clock = setup_funded(&mut scenario, 1_000 * 1_000_000);
+
+        ts::next_tx(&mut scenario, RECOVERY_ADMIN);
+        {
+            let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
+            emergency_withdraw_all<QUOTE>(&mut faucet, ts::ctx(&mut scenario));
+            assert!(sui_balance<QUOTE>(&faucet) == 0, 910);
+            assert!(quote_balance<QUOTE>(&faucet) == 0, 911);
+            ts::return_shared(faucet);
+        };
+
+        // Only a quote coin should land in recovery admin's inventory.
+        ts::next_tx(&mut scenario, RECOVERY_ADMIN);
+        {
+            let quote_got = ts::take_from_address<Coin<QUOTE>>(&scenario, RECOVERY_ADMIN);
+            assert!(coin::value(&quote_got) == 1_000 * 1_000_000, 912);
+            ts::return_to_address(RECOVERY_ADMIN, quote_got);
+        };
+
+        clock::destroy_for_testing(clock);
+        ts::end(scenario);
+    }
+
+    #[test]
+    #[expected_failure(abort_code = 13, location = faucet)]
+    fun test_emergency_withdraw_all_rejects_non_admin() {
+        let mut scenario = ts::begin(PUBLISHER);
+        let clock = setup_funded(&mut scenario, 1_000 * 1_000_000);
+
+        ts::next_tx(&mut scenario, PUBLISHER);
+        let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
+        emergency_withdraw_all<QUOTE>(&mut faucet, ts::ctx(&mut scenario));
 
         ts::return_shared(faucet);
         clock::destroy_for_testing(clock);

@@ -31,6 +31,14 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         content:
           'Trade testnet SUI for DUSDC at 100 to 1. Swap back any time. No form, no waiting.',
       },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:title', content: 'DUSDC FAUCET' },
+      { property: 'og:image', content: '/og-image.png' },
+      { property: 'og:image:width', content: '1200' },
+      { property: 'og:image:height', content: '630' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: 'DUSDC FAUCET' },
+      { name: 'twitter:image', content: '/og-image.png' },
     ],
     links: [
       { rel: 'stylesheet', href: appCss },

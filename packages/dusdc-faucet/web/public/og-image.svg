@@ -1,0 +1,25 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="centerGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 315) rotate(90) scale(330 470)">
+      <stop stop-color="#FFFFFF" stop-opacity="0.12"/>
+      <stop offset="0.48" stop-color="#FFFFFF" stop-opacity="0.045"/>
+      <stop offset="1" stop-color="#040404" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="panel" x1="210" y1="132" x2="990" y2="498" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111111" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#050505" stop-opacity="0.92"/>
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" stroke="#FFFFFF" stroke-opacity="0.052" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="#040404"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#centerGlow)"/>
+  <rect x="128" y="96" width="944" height="438" rx="0" fill="url(#panel)" stroke="#FFFFFF" stroke-opacity="0.13"/>
+  <rect x="160" y="128" width="880" height="374" rx="0" fill="#050505" fill-opacity="0.48" stroke="#FFFFFF" stroke-opacity="0.08"/>
+
+  <text x="600" y="300" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="106" font-weight="700" letter-spacing="0" text-anchor="middle">DUSDC</text>
+  <text x="600" y="414" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="106" font-weight="700" letter-spacing="0" text-anchor="middle">FAUCET</text>
+</svg>
