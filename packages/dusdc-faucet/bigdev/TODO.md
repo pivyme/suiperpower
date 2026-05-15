@@ -64,34 +64,34 @@ The orchestrator reads this file at the start of every iteration and picks the f
 - [x] emit PAUSE_FOR_USER instructions so Kelvin runs `bun run scripts/deploy.ts --which=test` manually
 - [x] capture returned `FAUCET_PACKAGE_ID`, `FAUCET_OBJECT_ID`, `ADMIN_CAP` ids from Kelvin's reply into `backend/.env` and `web/.env`
 
-## Phase 10: Backend config and Sui client [ ]
-- [ ] extend `backend/src/config/main-config.ts` with the variables listed in `bigdev/plans/02-BACKEND.md`
-- [ ] add the startup `validateConfig()` function in `backend/index.ts` per `bigdev/plans/08-ENV-AND-SECRETS.md`
-- [ ] create `backend/src/lib/sui/client.ts` and `backend/src/lib/sui/faucet-read.ts`
-- [ ] confirm `bun run typecheck` (add the script if missing, `tsc --noEmit`) passes
+## Phase 10: Backend config and Sui client [x]
+- [x] extend `backend/src/config/main-config.ts` with the variables listed in `bigdev/plans/02-BACKEND.md`
+- [x] add the startup `validateConfig()` function in `backend/index.ts` per `bigdev/plans/08-ENV-AND-SECRETS.md`
+- [x] create `backend/src/lib/sui/client.ts` and `backend/src/lib/sui/faucet-read.ts`
+- [x] confirm `bun run typecheck` (add the script if missing, `tsc --noEmit`) passes
 
-## Phase 11: Backend rate limit and Turnstile libs [ ]
-- [ ] create `backend/src/lib/rate-limit.ts` with `checkAndConsume({ scope, identifier, requestedMist, capMist })` returning `{ allowed, remaining }`
-- [ ] use Prisma upsert keyed by `(scope, identifier, utcDay)` for atomic increment
-- [ ] create `backend/src/lib/turnstile.ts` exactly per `bigdev/plans/02-BACKEND.md`
-- [ ] vitest stub-friendly: extract `fetch` calls to a thin wrapper for mockability
+## Phase 11: Backend rate limit and Turnstile libs [x]
+- [x] create `backend/src/lib/rate-limit.ts` with `checkAndConsume({ scope, identifier, requestedMist, capMist })` returning `{ allowed, remaining }`
+- [x] use Prisma upsert keyed by `(scope, identifier, utcDay)` for atomic increment
+- [x] create `backend/src/lib/turnstile.ts` exactly per `bigdev/plans/02-BACKEND.md`
+- [x] vitest stub-friendly: extract `fetch` calls to a thin wrapper for mockability
 
-## Phase 12: Backend routes [ ]
-- [ ] create `backend/src/routes/faucetRoutes.ts` mounting `/verify`, `/stats`, `/tx-hint/:addr`, `/event/claim`
-- [ ] zod body validators per `bigdev/plans/02-BACKEND.md`
-- [ ] response envelope matches the starter pattern (`success`, `error`, `data`)
-- [ ] register the plugin in `backend/index.ts` with prefix `/faucet`
-- [ ] remove the example route registration if Kelvin agrees (default: keep it, harmless)
+## Phase 12: Backend routes [x]
+- [x] create `backend/src/routes/faucetRoutes.ts` mounting `/verify`, `/stats`, `/tx-hint/:addr`, `/event/claim`
+- [x] zod body validators per `bigdev/plans/02-BACKEND.md`
+- [x] response envelope matches the starter pattern (`success`, `error`, `data`)
+- [x] register the plugin in `backend/index.ts` with prefix `/faucet`
+- [x] remove the example route registration if Kelvin agrees (default: keep it, harmless)
 
-## Phase 13: Stats cache worker [ ]
-- [ ] create `backend/src/workers/statsCacheWorker.ts` polling chain every 15 seconds, writing `VaultStatsSnapshot`
-- [ ] use the starter's `isRunning` flag pattern
-- [ ] register in `backend/index.ts`
-- [ ] confirm `bun dev` boots without errors and `/faucet/stats` returns shape
+## Phase 13: Stats cache worker [x]
+- [x] create `backend/src/workers/statsCacheWorker.ts` polling chain every 15 seconds, writing `VaultStatsSnapshot`
+- [x] use the starter's `isRunning` flag pattern
+- [x] register in `backend/index.ts`
+- [x] confirm `bun dev` boots without errors and `/faucet/stats` returns shape
 
-## Phase 14: Rate limit cleanup worker [ ]
-- [ ] create `backend/src/workers/rateLimitCleanup.ts`, hourly, deletes rows where `utcDay < currentDay - 14`
-- [ ] register in `backend/index.ts`
+## Phase 14: Rate limit cleanup worker [x]
+- [x] create `backend/src/workers/rateLimitCleanup.ts`, hourly, deletes rows where `utcDay < currentDay - 14`
+- [x] register in `backend/index.ts`
 
 ## Phase 15: Backend tests [ ]
 - [ ] create `backend/vitest.config.ts`
