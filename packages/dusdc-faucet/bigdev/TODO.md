@@ -114,17 +114,17 @@ The orchestrator reads this file at the start of every iteration and picks the f
 - [x] create `web/src/lib/api.ts` with typed fetch wrappers for `/verify`, `/stats`, `/tx-hint`, `/event/claim`
 - [x] create `web/src/lib/fingerprint.ts` per the doc
 
-## Phase 18: Frontend hooks [ ]
-- [ ] create `web/src/hooks/useVaultStats.ts` (TanStack Query, 10s refetch, chain fallback if backend 5xx)
-- [ ] create `web/src/hooks/useTxHint.ts`
-- [ ] create `web/src/hooks/useFaucetMutations.ts` exposing `useClaim`, `useReturn`, `useRefill`
-- [ ] create `web/src/hooks/useTurnstile.ts` returning `{ token, ready, error, reset }`
+## Phase 18: Frontend hooks [x]
+- [x] create `web/src/hooks/useVaultStats.ts` (TanStack Query, 10s refetch, chain fallback if backend 5xx)
+- [x] create `web/src/hooks/useTxHint.ts`
+- [x] create `web/src/hooks/useFaucetMutations.ts` exposing `useClaim`, `useReturn`, `useRefill`
+- [x] create `web/src/hooks/useTurnstile.ts` returning `{ token, ready, error, reset }`
 
-## Phase 19: Frontend primitive components [ ]
-- [ ] delete `web/src/components/WebstarterOnboarding.tsx` and any starter art references it pulls
-- [ ] create `web/src/components/AmountInput.tsx`, `web/src/components/WalletButton.tsx`, `web/src/components/TurnstileWidget.tsx`, `web/src/components/Credit.tsx`
-- [ ] match `bigdev/plans/04-DESIGN-SYSTEM.md` for every visible string and state
-- [ ] confirm `bun run build` passes
+## Phase 19: Frontend primitive components [x]
+- [x] delete `web/src/components/WebstarterOnboarding.tsx` and any starter art references it pulls
+- [x] create `web/src/components/AmountInput.tsx`, `web/src/components/WalletButton.tsx`, `web/src/components/TurnstileWidget.tsx`, `web/src/components/Credit.tsx`
+- [x] match `bigdev/plans/04-DESIGN-SYSTEM.md` for every visible string and state
+- [x] confirm `bun run build` passes
 
 ## Phase 20: Frontend layout components [ ]
 - [ ] create `Header`, `HeroBlock`, `VaultStats`, `FaucetCard`, `HowItWorks`
