@@ -155,7 +155,7 @@ export function VaultStats({ variant = 'grid' }: { variant?: 'grid' | 'rail' | '
       </div>
       {lowVault ? (
         <div className="border border-white/10 bg-white/[0.035] px-3 py-2 text-xs text-white/80 backdrop-blur-md">
-          Vault running low. Please donate dUSDC from the donate panel if you can spare some.
+          Vault running low. If you can spare some DUSDC, refill from the panel on the right.
         </div>
       ) : null}
       {!data.isFresh && variant !== 'compact' ? (

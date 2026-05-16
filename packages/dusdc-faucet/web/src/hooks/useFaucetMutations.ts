@@ -6,6 +6,7 @@ import {
 import type { OwnerCoin } from '@/lib/sui/ptb-return'
 import type { VerifyResponse } from '@/lib/api'
 import { buildClaimTx } from '@/lib/sui/ptb-claim'
+import { buildRefillTx } from '@/lib/sui/ptb-refill'
 import { buildReturnTx } from '@/lib/sui/ptb-return'
 import { sui } from '@/lib/sui/client'
 import { postClaimEvent, postVerify } from '@/lib/api'
@@ -133,6 +134,41 @@ export function useReturn() {
       qc.invalidateQueries({ queryKey: ['vault-stats'] })
       qc.invalidateQueries({ queryKey: ['dusdc-coins'] })
       qc.invalidateQueries({ queryKey: ['return-capacity'] })
+    },
+  })
+}
+
+export interface RefillArgs {
+  dusdcAmountBase: bigint
+}
+
+export interface RefillSuccess {
+  digest: string
+}
+
+export function useRefill() {
+  const account = useCurrentAccount()
+  const sign = useSignAndExecuteTransaction()
+  const qc = useQueryClient()
+
+  return useMutation<RefillSuccess, Error, RefillArgs>({
+    mutationFn: async (args): Promise<RefillSuccess> => {
+      if (!account) throw new Error('NOT_CONNECTED')
+      const coins: Array<OwnerCoin> = await getOwnedDusdcCoins(account.address)
+      if (coins.length === 0) throw new Error('NO_DUSDC')
+
+      const tx = buildRefillTx({
+        dusdcAmountBase: args.dusdcAmountBase,
+        ownerCoins: coins,
+      })
+      const result = await sign.mutateAsync({ transaction: tx, chain: CHAIN })
+      const digest = (result as { digest: string }).digest
+      await sui.waitForTransaction({ digest, options: { showEffects: true } })
+      return { digest }
+    },
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['vault-stats'] })
+      qc.invalidateQueries({ queryKey: ['dusdc-coins'] })
     },
   })
 }

@@ -1,34 +1,81 @@
-import { useState } from 'react'
-import { Check, Copy } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { useCurrentAccount } from '@mysten/dapp-kit'
+import { ExternalLink, Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
-import { env } from '@/env'
-import { shortAddr } from '@/lib/sui/format'
+import { AmountInput } from './AmountInput'
+import { cnm } from '@/utils/style'
+import { useOwnedDusdc, useRefill } from '@/hooks/useFaucetMutations'
+import { baseToDusdc } from '@/lib/sui/format'
 
-const FALLBACK_DEPOSIT_ADDRESS =
-  '0x3935bbb26c147851285c0fd76c712e5ccc7669908c2327a1301db52563b12e71'
-
-const depositAddress =
-  env.VITE_DEEPBOOK_DUSDC_DONATION_ADDRESS ?? FALLBACK_DEPOSIT_ADDRESS
-
-const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=112x112&margin=0&data=${encodeURIComponent(depositAddress)}`
+const EXPLORER = 'https://suiscan.xyz/testnet/tx'
 
 export function DonationPanel() {
-  const [copied, setCopied] = useState(false)
+  const account = useCurrentAccount()
+  const owned = useOwnedDusdc()
+  const refill = useRefill()
+  const [amount, setAmount] = useState<bigint>(0n)
 
-  const copyAddress = async () => {
-    await navigator.clipboard.writeText(depositAddress)
-    setCopied(true)
-    toast.success('Deposit address copied', { id: 'deposit-address' })
-    window.setTimeout(() => setCopied(false), 1800)
+  useEffect(() => {
+    setAmount(0n)
+  }, [account?.address])
+
+  const ownedBase = owned.data?.totalBase ?? 0n
+
+  let error: string | null = null
+  if (amount > ownedBase) {
+    error = `You only have ${baseToDusdc(ownedBase)} DUSDC`
+  }
+
+  let buttonLabel = 'Refill the vault'
+  let buttonDisabled = false
+  if (!account) {
+    buttonLabel = 'Connect wallet'
+    buttonDisabled = true
+  } else if (ownedBase === 0n) {
+    buttonLabel = 'No DUSDC in wallet'
+    buttonDisabled = true
+  } else if (refill.isPending) {
+    buttonLabel = 'Refilling…'
+    buttonDisabled = true
+  } else if (amount === 0n || error) {
+    buttonDisabled = true
+  }
+
+  const onSubmit = async () => {
+    if (!account) return
+    try {
+      const res = await refill.mutateAsync({ dusdcAmountBase: amount })
+      toast.success(
+        (t) => (
+          <div className="flex items-center gap-3">
+            <span>{`Refilled ${baseToDusdc(amount)} DUSDC. Thank you!`}</span>
+            <a
+              href={`${EXPLORER}/${res.digest}`}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 text-white hover:text-white/70"
+              onClick={() => toast.dismiss(t.id)}
+            >
+              tx <ExternalLink size={12} />
+            </a>
+          </div>
+        ),
+        { duration: 6000 },
+      )
+      setAmount(0n)
+    } catch {
+      toast.error('Transaction failed. Check the wallet for details.')
+    }
   }
 
   return (
-    <section className="w-full border border-white/10 bg-white/[0.03] p-2.5">
-      <div className="mb-2 flex items-start justify-between gap-3">
+    <section className="w-full border border-white/10 bg-white/[0.03] p-3">
+      <div className="mb-2.5 flex items-start justify-between gap-3">
         <div>
-          <h3 className="text-xs font-medium text-white">Donate</h3>
-          <p className="mt-1 text-[11px] leading-4 text-white/45">
-            Please help keep the vault alive.
+          <h3 className="text-xs font-medium text-white">Keep the faucet alive</h3>
+          <p className="mt-1 text-[11px] leading-4 text-white/55">
+            Anyone can refill. Your DUSDC lands straight in the vault, no
+            middleman, and the next builder gets to claim.
           </p>
         </div>
         <span className="border border-white/10 px-2 py-1 font-mono text-[10px] uppercase text-white/45">
@@ -36,33 +83,42 @@ export function DonationPanel() {
         </span>
       </div>
 
-      <div className="grid grid-cols-[80px_1fr] gap-2.5">
-        <div className="aspect-square w-20 border border-white/10 bg-white p-1">
-          <img
-            src={qrSrc}
-            width={72}
-            height={72}
-            alt="DUSDC deposit address QR"
-            className="aspect-square h-full w-full"
-            loading="lazy"
-          />
-        </div>
-        <div className="min-w-0">
-          <div className="font-mono text-xs text-white">
-            {shortAddr(depositAddress, 8, 6)}
-          </div>
-          <p className="mt-1 text-[11px] leading-4 text-white/45">
-            Send DUSDC to this address.
+      <div className="flex flex-col gap-2.5">
+        <AmountInput
+          id="donate-amount"
+          value={amount}
+          onChange={setAmount}
+          unit="DUSDC"
+          decimals={6}
+          max={ownedBase}
+          disabled={!account || ownedBase === 0n}
+          error={error}
+        />
+
+        <button
+          type="button"
+          onClick={onSubmit}
+          disabled={buttonDisabled}
+          className={cnm(
+            'flex h-10 items-center justify-center gap-2 text-sm font-medium transition-colors',
+            'bg-white text-black hover:bg-white/90',
+            'disabled:cursor-not-allowed disabled:opacity-60',
+            'focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white',
+          )}
+        >
+          {refill.isPending ? <Loader2 size={14} className="animate-spin" /> : null}
+          {buttonLabel}
+        </button>
+
+        {account ? (
+          <p className="text-center text-[11px] text-white/45">
+            You hold {baseToDusdc(ownedBase)} DUSDC
           </p>
-          <button
-            type="button"
-            onClick={copyAddress}
-            className="mt-2 inline-flex h-7 items-center gap-1.5 border border-white/12 px-2 text-[11px] text-white/70 transition-colors hover:bg-white/[0.06] hover:text-white focus-visible:outline focus-visible:outline-1 focus-visible:outline-white/70"
-          >
-            {copied ? <Check size={12} /> : <Copy size={12} />}
-            Copy
-          </button>
-        </div>
+        ) : (
+          <p className="text-center text-[11px] text-white/45">
+            Connect a wallet with DUSDC to chip in.
+          </p>
+        )}
       </div>
     </section>
   )

@@ -10,7 +10,6 @@ export const env = createEnv({
     VITE_FAUCET_PACKAGE_ID: z.string().min(1),
     VITE_FAUCET_OBJECT_ID: z.string().min(1),
     VITE_DUSDC_COIN_TYPE: z.string().min(1),
-    VITE_DEEPBOOK_DUSDC_DONATION_ADDRESS: z.string().min(1).optional(),
     VITE_TURNSTILE_SITE_KEY: z.string().min(1),
   },
   runtimeEnv: {
@@ -20,8 +19,6 @@ export const env = createEnv({
     VITE_FAUCET_PACKAGE_ID: import.meta.env.VITE_FAUCET_PACKAGE_ID,
     VITE_FAUCET_OBJECT_ID: import.meta.env.VITE_FAUCET_OBJECT_ID,
     VITE_DUSDC_COIN_TYPE: import.meta.env.VITE_DUSDC_COIN_TYPE,
-    VITE_DEEPBOOK_DUSDC_DONATION_ADDRESS:
-      import.meta.env.VITE_DEEPBOOK_DUSDC_DONATION_ADDRESS,
     VITE_TURNSTILE_SITE_KEY: import.meta.env.VITE_TURNSTILE_SITE_KEY,
   },
   emptyStringAsUndefined: true,

@@ -8,8 +8,8 @@ const ITEMS: Array<{ title: string; body: string }> = [
     body: '5 SUI daily per wallet. 1 SUI per transaction.',
   },
   {
-    title: 'Donate if you can :)',
-    body: 'Use the QR below to send spare DUSDC when the vault runs low.',
+    title: 'Refill if you can :)',
+    body: 'Got spare DUSDC? Drop it back into the vault below and keep the faucet alive for the next builder.',
   },
 ]
 

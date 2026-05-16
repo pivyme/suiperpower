@@ -116,7 +116,7 @@ export function ClaimTab() {
     <div className="flex flex-col gap-4">
       {vaultDry ? (
         <div className="border border-white/10 bg-white/[0.035] px-4 py-3 text-sm text-white/80 backdrop-blur-md">
-          Vault is empty. Please donate dUSDC from the donate panel if you have some to spare.
+          Vault is empty. If you have spare DUSDC, refill from the panel on the right and keep the faucet alive.
         </div>
       ) : null}
 

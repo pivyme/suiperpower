@@ -23,7 +23,6 @@ The frontend lives in `web/` and uses TanStack Start with the Nitro Vercel prese
 | `VITE_FAUCET_PACKAGE_ID` | From `scripts/deploy.ts` output |
 | `VITE_FAUCET_OBJECT_ID` | From `scripts/deploy.ts` output |
 | `VITE_DUSDC_COIN_TYPE` | Full `<pkg>::dusdc::DUSDC` type tag |
-| `VITE_DEEPBOOK_DUSDC_DONATION_ADDRESS` | Optional, only set when DeepBook hands over a real address |
 | `VITE_TURNSTILE_SITE_KEY` | Cloudflare Turnstile site key (use `1x00000000000000000000AA` for preview) |
 
 Set these in Vercel for both Production and Preview. Re-trigger a build whenever they change, since Vite inlines them at build time.
