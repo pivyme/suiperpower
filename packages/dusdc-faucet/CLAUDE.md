@@ -14,7 +14,7 @@ Win for DeepBook: zero ops, refill when low.
 | Layer | Tech | Path |
 | --- | --- | --- |
 | Move contract | Sui Move, edition 2024.beta | `contracts/faucet`, `contracts/test-dusdc` |
-| Backend API | Bun + Fastify + Prisma + Postgres | `backend/` (port 3700) |
+| Backend API | Bun + Fastify + Prisma + Postgres | `backend/` (port 4127) |
 | Frontend | TanStack Start + React 19 + HeroUI v3 + Tailwind v4 | `web/` (port 3200) |
 | Wallet | @mysten/dapp-kit | testnet only |
 | Bot gate | Cloudflare Turnstile | siteverify endpoint |
@@ -77,7 +77,7 @@ From `packages/dusdc-faucet/`:
 
 ```bash
 # Backend
-cd backend && bun install && bun run db:push && bun dev      # http://localhost:3700
+cd backend && bun install && bun run db:push && bun dev      # http://localhost:4127
 
 # Frontend (in a second terminal)
 cd web && bun install && bun dev                              # http://localhost:3200

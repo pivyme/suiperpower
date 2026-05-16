@@ -18,7 +18,7 @@ FROM oven/bun:1-slim AS runtime
 WORKDIR /app
 
 ENV NODE_ENV=production \
-    APP_PORT=3700
+    APP_PORT=4127
 
 # Tini for clean signal handling under Dokploy.
 RUN apt-get update \
@@ -32,10 +32,10 @@ COPY --from=build /app /app
 RUN chown -R bun:bun /app
 USER bun
 
-EXPOSE 3700
+EXPOSE 4127
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
-  CMD bun -e "fetch('http://127.0.0.1:'+ (process.env.APP_PORT||3700) +'/').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"
+  CMD bun -e "fetch('http://127.0.0.1:'+ (process.env.APP_PORT||4127) +'/').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
 CMD ["bun", "index.ts"]

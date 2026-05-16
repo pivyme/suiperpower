@@ -15,7 +15,7 @@ Day-of, before recording the demo or pinging DeepBook. Tick each line as you go.
 
 ## Services
 
-- [ ] Backend running, `curl http://localhost:3700/` returns `{ success: true }`
+- [ ] Backend running, `curl http://localhost:4127/` returns `{ success: true }`
 - [ ] Backend `/faucet/stats` returns vault state with `dusdcAvailable` matching the chain
 - [ ] Frontend running, `http://localhost:3200/` loads the page
 - [ ] Vault stats card shows non-zero `DUSDC available`

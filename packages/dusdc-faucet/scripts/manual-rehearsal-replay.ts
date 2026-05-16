@@ -6,7 +6,7 @@
  * screenshots into `docs/screenshots/rehearsal/`.
  *
  * Requires:
- *   - backend on http://localhost:3700 with /faucet/stats returning real data
+ *   - backend on http://localhost:4127 with /faucet/stats returning real data
  *   - web on http://localhost:3200
  */
 
@@ -17,7 +17,7 @@ import { fileURLToPath } from 'node:url';
 import { chromium, type Page } from 'playwright';
 
 const WEB_BASE = process.env.WEB_URL ?? 'http://localhost:3200';
-const API_BASE = process.env.API_URL ?? 'http://localhost:3700';
+const API_BASE = process.env.API_URL ?? 'http://localhost:4127';
 const VIEWPORT = { width: 1280, height: 720 } as const;
 
 const here = dirname(fileURLToPath(import.meta.url));

@@ -200,7 +200,7 @@ After this, only the DeepBook wallet can tune the faucet. Kelvin retains nothing
 
 Bun + Fastify can deploy almost anywhere. Suggested targets:
 
-- **Render / Railway / Fly.io**: Dockerfile already present in the starter. Set env vars in the platform UI. Port 3700.
+- **Render / Railway / Fly.io**: Dockerfile already present in the starter. Set env vars in the platform UI. Port 4127.
 - **Self-hosted VPS**: `bun start` behind `caddy` reverse proxy with auto-TLS.
 
 CORS origin in prod must match the deployed frontend URL.

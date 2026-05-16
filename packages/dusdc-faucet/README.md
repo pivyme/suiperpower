@@ -31,7 +31,7 @@ Inspect on Suiscan: `https://suiscan.xyz/testnet/object/0x27c05925fc39dab2526a86
 | Layer | Tech |
 | --- | --- |
 | Contract | Sui Move (testnet), generic over the quote coin |
-| Backend | Bun + Fastify + Prisma + Postgres (port 3700) |
+| Backend | Bun + Fastify + Prisma + Postgres (port 4127) |
 | Frontend | TanStack Start + React 19 + HeroUI v3 + Tailwind v4 (port 3200) |
 | Wallet | @mysten/dapp-kit, testnet |
 | Bot gate | Cloudflare Turnstile |
@@ -60,7 +60,7 @@ bun run scripts/deploy.ts --which=test
 # paste the returned ids into backend/.env and web/.env
 
 # 5. run
-cd backend && bun dev      # terminal 1, http://localhost:3700
+cd backend && bun dev      # terminal 1, http://localhost:4127
 cd web && bun dev          # terminal 2, http://localhost:3200
 ```
 
@@ -131,7 +131,7 @@ The pre-handover confidence checklist lives in `bigdev/plans/07-TEST-PLAN.md`.
 
 ## Deployment
 
-- **Backend**: Render / Railway / Fly.io, set env in the dashboard, port 3700. Dockerfile already present.
+- **Backend**: Render / Railway / Fly.io, set env in the dashboard, port 4127. Dockerfile already present.
 - **Frontend**: Vercel, Root Directory `packages/dusdc-faucet/web`, framework preset Vite, build `bun run build`, output `.output`.
 - **Contracts**: `bun run scripts/deploy.ts`, publishes and creates the shared Faucet on testnet.
 

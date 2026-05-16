@@ -14,7 +14,7 @@ Three independently deployable parts inside `packages/dusdc-faucet/`:
 | Layer | Path | Runtime | Port |
 | --- | --- | --- | --- |
 | Move package | `contracts/` | Sui Move (testnet) | n/a |
-| Backend API | `backend/` | Bun + Fastify + Prisma + Postgres | 3700 |
+| Backend API | `backend/` | Bun + Fastify + Prisma + Postgres | 4127 |
 | Frontend | `web/` | TanStack Start + React 19 + HeroUI v3 | 3200 |
 
 Plus a sibling **test DUSDC** Move package (`contracts/test-dusdc/`) for end-to-end rehearsals before DeepBook funds the real vault.
@@ -148,7 +148,7 @@ Keep `ErrorLog` and `User` from the starter, untouched. `User` is not used by th
 | --- | --- | --- | --- |
 | `DATABASE_URL` | yes | n/a | Postgres connection string |
 | `JWT_SECRET` | yes | n/a | Inherited from starter, unused by faucet but starter loads it |
-| `APP_PORT` | no | 3700 | Backend port |
+| `APP_PORT` | no | 4127 | Backend port |
 | `ALLOWED_ORIGIN` | prod | n/a | CORS origin for the deployed web |
 | `NODE_ENV` | no | development | |
 | `SUI_RPC_URL` | yes | https://fullnode.testnet.sui.io | Sui testnet RPC |
@@ -164,7 +164,7 @@ Validated via `@t3-oss/env-core` in `web/src/env.ts`. Anything that ships to the
 
 | Var | Required | Default | Meaning |
 | --- | --- | --- | --- |
-| `VITE_API_URL` | yes | http://localhost:3700 | Backend base URL |
+| `VITE_API_URL` | yes | http://localhost:4127 | Backend base URL |
 | `VITE_SUI_NETWORK` | yes | testnet | Always `testnet` for v1 |
 | `VITE_SUI_RPC_URL` | yes | https://fullnode.testnet.sui.io | RPC for read paths |
 | `VITE_FAUCET_PACKAGE_ID` | yes | n/a | Published Move package id |

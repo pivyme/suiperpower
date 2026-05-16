@@ -250,5 +250,5 @@ function MyComponent() {
 - HeroUI v3 requires no provider wrapper, CSS handled via `@import "@heroui/styles"` in styles.css
 - GSAP is the free version (not Shockingly) - all features available
 - Lenis smooth scroll is initialized globally in root layout
-- Part of a monorepo. Sibling `backend/` is a Bun + Fastify API on :3700. Wire calls via `VITE_API_URL` from `src/env.ts`. Backend CORS is locked to `ALLOWED_ORIGIN` in production.
+- Part of a monorepo. Sibling `backend/` is a Bun + Fastify API on :4127. Wire calls via `VITE_API_URL` from `src/env.ts`. Backend CORS is locked to `ALLOWED_ORIGIN` in production.
 - Animation lib `motion` is Motion One (rebranded successor to Framer Motion). Existing Framer Motion docs mostly apply.

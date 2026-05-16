@@ -21,7 +21,7 @@ The packaged backend and web each read their own `.env`. The monorepo-level `.en
 | `DATABASE_URL` | yes | (none) | `prisma.ts` | Postgres connection string |
 | `JWT_SECRET` | yes | (none) | starter middleware | Inherited from starter, used for the verify nonce |
 | `JWT_EXPIRES_IN` | no | `7d` | starter | Not load-bearing for the faucet |
-| `APP_PORT` | no | `3700` | `index.ts` | |
+| `APP_PORT` | no | `4127` | `index.ts` | |
 | `NODE_ENV` | no | `development` | many | |
 | `ALLOWED_ORIGIN` | prod | (none) | CORS | Required in prod; in dev defaults to `*` |
 | `SUI_RPC_URL` | yes | `https://fullnode.testnet.sui.io` | `lib/sui/client.ts` | Testnet RPC |
@@ -39,7 +39,7 @@ Frontend env is validated by zod in `web/src/env.ts`. Missing variables crash th
 
 | Var | Required | Default | Read by | Notes |
 | --- | --- | --- | --- | --- |
-| `VITE_API_URL` | yes | `http://localhost:3700` | `lib/api.ts` | Backend base URL |
+| `VITE_API_URL` | yes | `http://localhost:4127` | `lib/api.ts` | Backend base URL |
 | `VITE_SUI_NETWORK` | yes | `testnet` | provider | Literal "testnet" |
 | `VITE_SUI_RPC_URL` | yes | `https://fullnode.testnet.sui.io` | provider | Override for redundant RPC if needed |
 | `VITE_FAUCET_PACKAGE_ID` | yes (post-deploy) | (none) | PTB builders | |
@@ -60,7 +60,7 @@ The example file is committed; users copy it to `.env`. It contains only shapes 
 # ===== Backend =====
 DATABASE_URL=postgres://USER:PASSWORD@HOST:5432/DBNAME
 JWT_SECRET=replace-with-a-long-random-string
-APP_PORT=3700
+APP_PORT=4127
 NODE_ENV=development
 ALLOWED_ORIGIN=https://your-deployed-frontend.example
 
@@ -81,7 +81,7 @@ PER_FP_DAILY_SUI_CAP_MIST=5000000000
 E2E_SIGNER_PRIVATE_KEY=
 
 # ===== Frontend (VITE_*) =====
-VITE_API_URL=http://localhost:3700
+VITE_API_URL=http://localhost:4127
 VITE_SUI_NETWORK=testnet
 VITE_SUI_RPC_URL=https://fullnode.testnet.sui.io
 VITE_FAUCET_PACKAGE_ID=
@@ -101,7 +101,7 @@ Auto-copied to `.env` by the orchestrator if `.env` is missing. Lets the loop an
 # Backend
 DATABASE_URL=postgres://postgres:postgres@localhost:5432/dusdc_faucet_dev
 JWT_SECRET=dev-only-not-secret-replace-in-prod
-APP_PORT=3700
+APP_PORT=4127
 NODE_ENV=development
 ALLOWED_ORIGIN=
 
@@ -118,7 +118,7 @@ PER_IP_DAILY_SUI_CAP_MIST=5000000000
 PER_FP_DAILY_SUI_CAP_MIST=5000000000
 
 # Frontend
-VITE_API_URL=http://localhost:3700
+VITE_API_URL=http://localhost:4127
 VITE_SUI_NETWORK=testnet
 VITE_SUI_RPC_URL=https://fullnode.testnet.sui.io
 VITE_FAUCET_PACKAGE_ID=0xPENDING_PUBLISH

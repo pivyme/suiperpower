@@ -11,7 +11,7 @@
 Runtime is **Bun**, not Node. Framework is **Fastify**. All scripts run via `bun`.
 
 ```bash
-bun dev              # Start with file watcher on :3700
+bun dev              # Start with file watcher on :4127
 bun start            # Production start (no watch)
 bun run lint         # ESLint
 bun run db:push      # Push schema + regenerate client
@@ -20,7 +20,7 @@ bun run db:generate  # Regenerate Prisma client only
 bun run db:migrate   # Create a new migration
 ```
 
-Env is loaded by `dotenv.ts`, which is imported at the top of `index.ts` before any other module. Copy `.env.example` to `.env`. Required: `DATABASE_URL`, `JWT_SECRET`. Optional: `APP_PORT` (default 3700), `ALLOWED_ORIGIN` (required in production for CORS).
+Env is loaded by `dotenv.ts`, which is imported at the top of `index.ts` before any other module. Copy `.env.example` to `.env`. Required: `DATABASE_URL`, `JWT_SECRET`. Optional: `APP_PORT` (default 4127), `ALLOWED_ORIGIN` (required in production for CORS).
 
 This is part of a monorepo. Sibling `web/` is the TanStack Start frontend.
 
@@ -65,7 +65,7 @@ import { JWT_SECRET, APP_PORT, IS_DEV } from '../config/main-config.ts';
 ```
 
 **Available exports:**
-- `APP_PORT: number` - Server port (default: 3700)
+- `APP_PORT: number` - Server port (default: 4127)
 - `NODE_ENV: string` - Environment mode
 - `IS_DEV: boolean` / `IS_PROD: boolean` - Boolean flags
 - `DATABASE_URL: string` - Database connection string

@@ -35,7 +35,7 @@ The backend lives in `backend/` and ships as a single image built from `backend/
 ### Build context
 - **Path**: `backend/` (or `packages/dusdc-faucet/backend` from monorepo root).
 - **Dockerfile**: `Dockerfile` (multi-stage: deps -> build -> runtime, runs as non-root `bun` user, supervised by `tini`).
-- **Exposed port**: `3700`.
+- **Exposed port**: `4127`.
 - **Healthcheck**: `GET /` returns 200, baked into the image and Compose file.
 
 ### Required env vars (set in Dokploy, never commit)
@@ -46,7 +46,7 @@ The backend lives in `backend/` and ships as a single image built from `backend/
 | `JWT_EXPIRES_IN` | Optional, default `7d` |
 | `ALLOWED_ORIGIN` | Exact origin of the deployed frontend, for CORS lockdown in prod |
 | `NODE_ENV` | `production` |
-| `APP_PORT` | Optional, default `3700` |
+| `APP_PORT` | Optional, default `4127` |
 | `SUI_RPC_URL` | Default `https://fullnode.testnet.sui.io` |
 | `FAUCET_PACKAGE_ID` | Required in prod |
 | `FAUCET_OBJECT_ID` | Required in prod |
@@ -74,11 +74,11 @@ Re-run the same command after every schema change. The project rule in `CLAUDE.m
 ```bash
 cd backend
 docker build -t dusdc-faucet-backend:local .
-docker run --rm -p 3700:3700 \
+docker run --rm -p 4127:4127 \
   -e DATABASE_URL="postgres://..." \
   -e JWT_SECRET=local-test-secret \
   dusdc-faucet-backend:local
-curl http://localhost:3700/
+curl http://localhost:4127/
 ```
 
 Or via Compose (loads vars from a local `.env` next to `docker-compose.yml`):
