@@ -47,8 +47,8 @@ module faucet::faucet {
         id: UID,
         sui_balance: Balance<SUI>,
         quote_balance: Balance<T>,
-        rate_numerator: u64,      // default 100
-        rate_denominator: u64,    // default 1, so 100 DUSDC per 1 SUI
+        rate_numerator: u64,      // default 1
+        rate_denominator: u64,    // default 1, so 1 DUSDC per 1 SUI
         per_tx_sui_cap_mist: u64, // default 1_000_000_000 (1 SUI)
         per_wallet_daily_sui_cap_mist: u64, // default 5_000_000_000 (5 SUI)
         usage: Table<address, DailyUsage>,
@@ -147,7 +147,7 @@ public entry fun create_faucet<T>(ctx: &mut TxContext) {
         id,
         sui_balance: balance::zero<SUI>(),
         quote_balance: balance::zero<T>(),
-        rate_numerator: 100,
+        rate_numerator: 1,
         rate_denominator: 1,
         per_tx_sui_cap_mist: 1_000_000_000,
         per_wallet_daily_sui_cap_mist: 5_000_000_000,
@@ -205,8 +205,8 @@ public entry fun claim<T>(
 
     // Compute payout. quote_out = sui_in * num / (den * 10^3) is wrong; we
     // are working in base units. SUI has 9 decimals, DUSDC has 6.
-    // Raw rate 100 DUSDC per 1 SUI in human units means:
-    //   1_000_000_000 MIST -> 100_000_000 base DUSDC
+    // Raw rate 1 DUSDC per 1 SUI in human units means:
+    //   1_000_000_000 MIST -> 1_000_000 base DUSDC
     // i.e. base_quote = sui_mist * (rate_num * 10^6) / (rate_den * 10^9)
     //                 = sui_mist * rate_num / (rate_den * 1000)
     let quote_out = (sui_in as u128)
@@ -387,7 +387,7 @@ These let the frontend pull state via `sui_devInspectTransactionBlock` or just `
 
 `contracts/faucet/tests/faucet_tests.move`:
 
-- `test_claim_happy_path`: mint test coin, refill, claim 1 SUI, assert 100 DUSDC received and counters updated.
+- `test_claim_happy_path`: mint test coin, refill, claim 1 SUI, assert 1 DUSDC received and counters updated.
 - `test_claim_over_per_tx_cap`: try to claim 2 SUI when cap is 1, expect `E_OVER_PER_TX_CAP`.
 - `test_claim_over_daily_cap`: claim 1 SUI five times, assert sixth aborts with `E_OVER_DAILY_WALLET_CAP`.
 - `test_daily_reset`: claim, advance clock by 24h, claim again, assert counter reset.

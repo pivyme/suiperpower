@@ -121,7 +121,7 @@ module faucet::faucet {
             id,
             sui_balance: balance::zero<SUI>(),
             quote_balance: balance::zero<T>(),
-            rate_numerator: 100,
+            rate_numerator: 1,
             rate_denominator: 1,
             per_tx_sui_cap_mist: 1_000_000_000,
             per_wallet_daily_sui_cap_mist: 5_000_000_000,
@@ -154,6 +154,7 @@ module faucet::faucet {
         let today = clock::timestamp_ms(clock) / 86_400_000;
 
         // SUI 9 decimals -> DUSDC 6 decimals. base_quote = mist * num / (den * 1000).
+        // With default num=1 den=1, that is 1 SUI in -> 1 DUSDC out.
         let quote_out_u128 = (sui_in as u128)
             * (faucet.rate_numerator as u128)
             / ((faucet.rate_denominator as u128) * 1000);
@@ -433,7 +434,7 @@ module faucet::faucet {
             id,
             sui_balance: balance::zero<SUI>(),
             quote_balance: balance::zero<T>(),
-            rate_numerator: 100,
+            rate_numerator: 1,
             rate_denominator: 1,
             per_tx_sui_cap_mist: 1_000_000_000,
             per_wallet_daily_sui_cap_mist: 5_000_000_000,

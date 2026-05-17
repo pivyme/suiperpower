@@ -4,7 +4,7 @@ Context for any AI agent (Claude Code, Codex, Cursor) working on the DUSDC Fauce
 
 ## What this is
 
-A self-serve DUSDC faucet for the DeepBook Predict testnet. Builders trade testnet SUI for DUSDC at a fixed 100:1 rate, can swap back any time, and anyone can refill the on-chain vault. Replaces the existing manual Tally form (`https://tally.so/r/Xx102L`).
+A self-serve DUSDC faucet for the DeepBook Predict testnet. Builders trade testnet SUI for DUSDC at a fixed 1:1 rate, can swap back any time, and anyone can refill the on-chain vault. Replaces the existing manual Tally form (`https://tally.so/r/Xx102L`).
 
 Win for builders: no form, tokens in 5 seconds.
 Win for DeepBook: zero ops, refill when low.

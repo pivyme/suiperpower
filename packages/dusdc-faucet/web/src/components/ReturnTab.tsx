@@ -27,7 +27,7 @@ export function ReturnTab() {
     setAmount(0n)
   }, [account?.address])
 
-  const rateNum = stats.data?.rateNumerator ?? 100
+  const rateNum = stats.data?.rateNumerator ?? 1
   const rateDen = stats.data?.rateDenominator ?? 1
   const vaultSui = stats.data ? BigInt(stats.data.suiAccumulatedMist) : 0n
   const returnEnabled = stats.data ? stats.data.returnEnabled : true

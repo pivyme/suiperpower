@@ -18,7 +18,7 @@ Expected wow: none. This is the setup.
 
 Cut to `https://dusdc-faucet.localhost:3200` (or the deployed URL).
 
-On screen: dark page, "DUSDC Faucet · DeepBook Predict Testnet" title, vault stats card showing "1,000 DUSDC available · 0 served today · 100 DUSDC / 1 SUI". The faucet card sits below with three tabs visible.
+On screen: dark page, "DUSDC Faucet · DeepBook Predict Testnet" title, vault stats card showing "1,000 DUSDC available · 0 served today · 1 DUSDC / 1 SUI". The faucet card sits below with three tabs visible.
 
 Voiceover: "This is a self-serve faucet. The vault is on-chain, anyone can refill, the rate is fixed. Let me show you a claim."
 
@@ -73,7 +73,7 @@ Before recording, the publisher wallet has:
 The vault state before recording:
 - `quote_balance`: 1,000 DUSDC (so the first stat reads cleanly)
 - `sui_balance`: 0 SUI
-- `rate_numerator`: 100, `rate_denominator`: 1
+- `rate_numerator`: 1, `rate_denominator`: 1
 - `per_tx_sui_cap_mist`: 1_000_000_000 (1 SUI)
 - `per_wallet_daily_sui_cap_mist`: 5_000_000_000 (5 SUI)
 - `paused`: false

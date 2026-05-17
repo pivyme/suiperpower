@@ -32,7 +32,7 @@ export function ClaimTab() {
     : perTxCap
   const vaultBase = stats.data ? BigInt(stats.data.dusdcAvailable) : 0n
   const vaultDry = stats.data ? vaultBase === 0n : false
-  const rateNum = stats.data?.rateNumerator ?? 100
+  const rateNum = stats.data?.rateNumerator ?? 1
   const rateDen = stats.data?.rateDenominator ?? 1
 
   const preview = useMemo(

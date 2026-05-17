@@ -15,11 +15,11 @@ Required test cases (from `01-MOVE-CONTRACT.md`):
 
 | Test | Expected |
 | --- | --- |
-| claim happy path | 1 SUI in, 100 DUSDC out, counters updated |
+| claim happy path | 1 SUI in, 1 DUSDC out, counters updated |
 | claim over per-tx cap | abort E_OVER_PER_TX_CAP |
 | claim over daily cap | abort E_OVER_DAILY_WALLET_CAP on the 6th 1-SUI claim |
 | daily reset | after `clock::increment_for_testing` by 86_400_001 ms, the counter resets and a fresh claim succeeds |
-| return happy path | 100 DUSDC in, 1 SUI out |
+| return happy path | 1 DUSDC in, 1 SUI out |
 | return dust | 1 base unit DUSDC in, abort E_DUST_RETURN |
 | return when disabled | abort E_RETURN_DISABLED after `set_return_enabled(false)` |
 | refill | 500 DUSDC in, quote_balance grows |

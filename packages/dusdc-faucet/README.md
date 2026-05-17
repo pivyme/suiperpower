@@ -1,6 +1,6 @@
 # DUSDC Faucet
 
-A self-serve faucet for DUSDC on Sui testnet. Trade testnet SUI for DUSDC at 100 to 1, swap back any time, anyone can refill the vault. Replaces the existing Tally form for DeepBook Predict testnet onboarding.
+A self-serve faucet for DUSDC on Sui testnet. Trade testnet SUI for DUSDC at 1 to 1, swap back any time, anyone can refill the vault. Replaces the existing Tally form for DeepBook Predict testnet onboarding.
 
 ![hero](docs/screenshots/hero.png)
 

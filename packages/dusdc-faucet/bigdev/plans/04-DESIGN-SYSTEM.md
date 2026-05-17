@@ -287,14 +287,14 @@ These are the exact strings the build loop copies into the UI. Do not paraphrase
 | --- | --- |
 | Tab title | `DUSDC Faucet · DeepBook Predict Testnet` |
 | Hero title | `DUSDC Faucet` |
-| Hero subtitle | `Trade testnet SUI for DUSDC at 100 to 1. Swap back any time. No form, no waiting.` |
+| Hero subtitle | `Trade testnet SUI for DUSDC at 1 to 1. Swap back any time. No form, no waiting.` |
 | Wallet button (disconnected) | `Connect wallet` |
 | Wallet button (connected) | `0x12ab…cd34` (shortened, 6 + 4) |
 | Vault stat 1 label | `DUSDC available` |
 | Vault stat 2 label | `Served today` |
 | Vault stat 2 sub | `{n} claims` |
 | Vault stat 3 label | `Rate` |
-| Vault stat 3 value | `100 DUSDC / 1 SUI` |
+| Vault stat 3 value | `1 DUSDC / 1 SUI` |
 | Tab "Get DUSDC" | `Get DUSDC` |
 | Tab "Return DUSDC" | `Return DUSDC` |
 | Tab "Refill" | `Refill` |

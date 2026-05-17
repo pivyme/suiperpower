@@ -265,7 +265,7 @@ Sticky top, 64px tall, `bg-neutral-950/80 backdrop-blur border-b border-neutral-
 
 ### `HeroBlock`
 
-Centered, 64px below header. Title "DUSDC Faucet · DeepBook Predict Testnet" in Google Sans Flex 600 at 44px desktop / 32px mobile. Subtitle "Trade testnet SUI for DUSDC at 100:1. Swap back any time. No form, no waiting." in neutral-400 at 18px.
+Centered, 64px below header. Title "DUSDC Faucet · DeepBook Predict Testnet" in Google Sans Flex 600 at 44px desktop / 32px mobile. Subtitle "Trade testnet SUI for DUSDC at 1:1. Swap back any time. No form, no waiting." in neutral-400 at 18px.
 
 ### `VaultStats`
 
@@ -273,7 +273,7 @@ Three numbers in a row (stacked on mobile). Each in its own card with `border-ne
 
 - DUSDC available, big number, `font-mono`, e.g. `420.000000`
 - Served today, smaller, with claims count subtitle
-- Rate, "100 DUSDC / 1 SUI"
+- Rate, "1 DUSDC / 1 SUI"
 
 States:
 - loading, skeleton (animated `bg-neutral-800` block)

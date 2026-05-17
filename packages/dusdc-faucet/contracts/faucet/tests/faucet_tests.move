@@ -37,7 +37,7 @@ module faucet::faucet_tests {
         @0x3935bbb26c147851285c0fd76c712e5ccc7669908c2327a1301db52563b12e71;
 
     const ONE_SUI_MIST: u64 = 1_000_000_000;
-    const HUNDRED_DUSDC_BASE: u64 = 100_000_000; // 100 * 10^6
+    const ONE_DUSDC_BASE: u64 = 1_000_000; // 1 * 10^6, the payout for 1 SUI at the default 1:1 rate
     const ONE_DAY_MS: u64 = 86_400_000;
 
     // Build a Faucet preloaded with `quote_amount` base-units of quote liquidity.
@@ -78,16 +78,16 @@ module faucet::faucet_tests {
             claim<QUOTE>(&mut faucet, payment, &clock, ts::ctx(&mut scenario));
 
             assert!(total_claims<QUOTE>(&faucet) == 1, 100);
-            assert!(total_served_quote<QUOTE>(&faucet) == HUNDRED_DUSDC_BASE, 101);
+            assert!(total_served_quote<QUOTE>(&faucet) == ONE_DUSDC_BASE, 101);
             assert!(sui_balance<QUOTE>(&faucet) == ONE_SUI_MIST, 102);
             ts::return_shared(faucet);
         };
 
-        // Verify user received exactly 100 DUSDC base-units.
+        // Verify user received exactly 1 DUSDC base-units.
         ts::next_tx(&mut scenario, USER);
         {
             let received = ts::take_from_address<Coin<QUOTE>>(&scenario, USER);
-            assert!(coin::value(&received) == HUNDRED_DUSDC_BASE, 103);
+            assert!(coin::value(&received) == ONE_DUSDC_BASE, 103);
             ts::return_to_address(USER, received);
         };
 
@@ -184,7 +184,7 @@ module faucet::faucet_tests {
             ts::return_shared(faucet);
         };
 
-        // Now return all 100 DUSDC.
+        // Now return all 1 DUSDC.
         ts::next_tx(&mut scenario, USER);
         {
             let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
@@ -259,7 +259,7 @@ module faucet::faucet_tests {
         // OTHER never claimed but somehow holds DUSDC. Return must abort.
         ts::next_tx(&mut scenario, OTHER);
         let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
-        let foreign_quote = mint_quote(&mut scenario, HUNDRED_DUSDC_BASE);
+        let foreign_quote = mint_quote(&mut scenario, ONE_DUSDC_BASE);
         return_quote<QUOTE>(&mut faucet, foreign_quote, &clock, ts::ctx(&mut scenario));
 
         ts::return_shared(faucet);
@@ -273,7 +273,7 @@ module faucet::faucet_tests {
         let mut scenario = ts::begin(PUBLISHER);
         let clock = setup_funded(&mut scenario, 1_000 * 1_000_000);
 
-        // USER claims 100 DUSDC; their ledger sits at 100M base units.
+        // USER claims 1 DUSDC; their ledger sits at 1M base units.
         ts::next_tx(&mut scenario, USER);
         {
             let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
@@ -282,10 +282,10 @@ module faucet::faucet_tests {
             ts::return_shared(faucet);
         };
 
-        // Attempting to return 200 DUSDC must abort even though USER could mint or buy more elsewhere.
+        // Attempting to return 2 DUSDC must abort even though USER could mint or buy more elsewhere.
         ts::next_tx(&mut scenario, USER);
         let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
-        let extra = mint_quote(&mut scenario, 2 * HUNDRED_DUSDC_BASE);
+        let extra = mint_quote(&mut scenario, 2 * ONE_DUSDC_BASE);
         return_quote<QUOTE>(&mut faucet, extra, &clock, ts::ctx(&mut scenario));
 
         ts::return_shared(faucet);
@@ -306,20 +306,20 @@ module faucet::faucet_tests {
             ts::return_shared(faucet);
         };
 
-        // Return 40 DUSDC. Ledger should drop from 100M to 60M.
+        // Return 0.4 DUSDC. Ledger should drop from 1M to 600k base units.
         ts::next_tx(&mut scenario, USER);
         {
             let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
-            let part = mint_quote(&mut scenario, 40 * 1_000_000);
+            let part = mint_quote(&mut scenario, 400_000);
             return_quote<QUOTE>(&mut faucet, part, &clock, ts::ctx(&mut scenario));
             ts::return_shared(faucet);
         };
 
-        // Return remaining 60 DUSDC. Should succeed and exhaust the ledger.
+        // Return remaining 0.6 DUSDC. Should succeed and exhaust the ledger.
         ts::next_tx(&mut scenario, USER);
         {
             let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
-            let part = mint_quote(&mut scenario, 60 * 1_000_000);
+            let part = mint_quote(&mut scenario, 600_000);
             return_quote<QUOTE>(&mut faucet, part, &clock, ts::ctx(&mut scenario));
             assert!(sui_balance<QUOTE>(&faucet) == 0, 600);
             ts::return_shared(faucet);
@@ -580,7 +580,7 @@ module faucet::faucet_tests {
             ts::return_shared(faucet);
         };
 
-        // Quote vault now holds 900 DUSDC (1000 seeded minus 100 served). SUI vault holds 1 SUI.
+        // Quote vault now holds 999 DUSDC (1000 seeded minus 1 served). SUI vault holds 1 SUI.
         ts::next_tx(&mut scenario, RECOVERY_ADMIN);
         {
             let mut faucet = ts::take_shared<Faucet<QUOTE>>(&scenario);
@@ -595,7 +595,7 @@ module faucet::faucet_tests {
             let sui_got = ts::take_from_address<Coin<SUI>>(&scenario, RECOVERY_ADMIN);
             let quote_got = ts::take_from_address<Coin<QUOTE>>(&scenario, RECOVERY_ADMIN);
             assert!(coin::value(&sui_got) == ONE_SUI_MIST, 902);
-            assert!(coin::value(&quote_got) == 900 * 1_000_000, 903);
+            assert!(coin::value(&quote_got) == 999 * 1_000_000, 903);
             ts::return_to_address(RECOVERY_ADMIN, sui_got);
             ts::return_to_address(RECOVERY_ADMIN, quote_got);
         };
