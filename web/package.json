@@ -13,14 +13,14 @@
   "dependencies": {
     "@lobehub/icons": "^5.8.0",
     "@paper-design/shaders-react": "^0.0.76",
-    "@react-router/node": "7.15.0",
-    "@react-router/serve": "7.15.0",
+    "@react-router/node": "7.15.1",
+    "@react-router/serve": "7.15.1",
     "@tabler/icons-react": "^3.44.0",
     "isbot": "^5.1.36",
     "motion": "^12.38.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-router": "7.15.0",
+    "react-router": "7.15.1",
     "shiki": "^4.0.2"
   },
   "devDependencies": {
