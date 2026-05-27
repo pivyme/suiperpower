@@ -7,6 +7,7 @@ settings:
 overrides:
   js-cookie: ^3.0.7
   qs: ^6.15.2
+  ws: ^8.20.1
 
 importers:
 
@@ -4593,8 +4594,8 @@ packages:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
 
-  ws@8.18.0:
-    resolution: {integrity: sha512-8VbfWfHLbbwu3+N6OKsOMpBdT4kXPDDB9cJk2bJ6mh9ucxdlnNvH1e+roYkKmN9Nxw2yjz7VzeO9oOz2zJ04Pw==}
+  ws@8.21.0:
+    resolution: {integrity: sha512-Vsp28b7DRcimFQvrqu2Wek3z1iYxDCWqHYB8Qsnk/S4RfaCQzPGPyBNuVjJV3cd6UiKtUtp6sNM77gWvzcCH+g==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -5433,7 +5434,7 @@ snapshots:
       '@mdx-js/react': 3.1.1(@types/react@19.2.15)(react@19.2.6)
       '@pierre/diffs': 1.1.22(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@radix-ui/react-slot': 1.2.4(@types/react@19.2.15)(react@19.2.6)
-      '@shikijs/core': 4.0.2
+      '@shikijs/core': 4.1.0
       '@shikijs/transformers': 4.0.2
       '@splinetool/runtime': 0.9.526
       ahooks: 3.9.7(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -7080,7 +7081,7 @@ snapshots:
     dependencies:
       esbuild: 0.27.0
       prettier: 3.8.3
-      ws: 8.18.0
+      ws: 8.21.0
     optionalDependencies:
       react: 19.2.6
     transitivePeerDependencies:
@@ -9719,7 +9720,7 @@ snapshots:
 
   word-wrap@1.2.5: {}
 
-  ws@8.18.0: {}
+  ws@8.21.0: {}
 
   yallist@3.1.1: {}
 
