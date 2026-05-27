@@ -1,15 +1,40 @@
 {
   "name": "@pivyme/suiperpower",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": false,
   "license": "MIT",
   "description": "Skills, knowledge, and a CLI for shipping production Sui products. think. build. ship.",
   "type": "module",
+  "homepage": "https://suiperpower.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pivyme/suiperpower.git",
+    "directory": "core"
+  },
+  "bugs": {
+    "url": "https://github.com/pivyme/suiperpower/issues"
+  },
+  "author": "Kelvin Adithya (https://klvn.dev)",
+  "keywords": [
+    "sui",
+    "move",
+    "blockchain",
+    "skills",
+    "ai-agent",
+    "claude-code",
+    "codex",
+    "cursor",
+    "grok",
+    "cli",
+    "walrus",
+    "deepbook"
+  ],
   "bin": {
     "suiperpower": "./dist/cli/index.js",
     "suiper": "./dist/cli/index.js"
   },
   "files": [
+    "README.md",
     "dist/",
     "skills/learn/",
     "skills/idea/",
