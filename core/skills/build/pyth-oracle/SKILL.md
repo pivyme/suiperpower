@@ -169,6 +169,7 @@ Official docs (fetch at runtime for the latest details):
 
 - Claude Code: `claude "/suiper:pyth-oracle <your message>"`
 - Codex: `codex "/pyth-oracle <your message>"`
+- Grok Build: run `grok`, then `/pyth-oracle <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "integrate Pyth price feed", or load `~/.cursor/rules/pyth-oracle.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

@@ -1,6 +1,6 @@
 export type SkillPhase = "learn" | "idea" | "build" | "ship" | "grow";
 
-export type SkillAgent = "claude" | "codex" | "cursor";
+export type SkillAgent = "claude" | "codex" | "cursor" | "grok";
 
 export type Skill = {
   id: string;
@@ -139,9 +139,9 @@ export const PHASE_META: Record<
   },
 };
 
-export const ALL_AGENTS: SkillAgent[] = ["claude", "codex", "cursor"];
+export const ALL_AGENTS: SkillAgent[] = ["claude", "codex", "cursor", "grok"];
 
-const ALL: SkillAgent[] = ["claude", "codex", "cursor"];
+const ALL: SkillAgent[] = ["claude", "codex", "cursor", "grok"];
 
 export const SKILLS: Skill[] = [
   // learn

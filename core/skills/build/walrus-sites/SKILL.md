@@ -155,6 +155,7 @@ External docs (fetch at runtime for the latest CLI flags and config):
 
 - Claude Code: `claude "/suiper:walrus-sites <your message>"`
 - Codex: `codex "/walrus-sites <your message>"`
+- Grok Build: run `grok`, then `/walrus-sites <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "host on Walrus" or "deploy to wal.app", or load `~/.cursor/rules/walrus-sites.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

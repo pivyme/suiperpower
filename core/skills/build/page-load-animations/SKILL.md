@@ -121,6 +121,7 @@ On-demand references (load when relevant to the user's question):
 
 - Claude Code: `claude "/suiper:page-load-animations <your message>"`
 - Codex: `codex "/page-load-animations <your message>"`
+- Grok Build: run `grok`, then `/page-load-animations <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "fix my loading animations", or load `~/.cursor/rules/page-load-animations.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

@@ -22,7 +22,7 @@ const STEPS: Step[] = [
     index: 2,
     title: "Open your agent",
     description:
-      "Claude Code, Codex, or Cursor. Skills auto-load and stay out of the way.",
+      "Claude Code, Codex, Cursor, or Grok Build. Skills auto-load and stay out of the way.",
     visual: AgentsVisual,
   },
   {
@@ -248,6 +248,7 @@ function AgentsVisual() {
     { src: "/assets/claude.webp", label: "Claude Code" },
     { src: "/assets/codex.webp", label: "Codex" },
     { src: "/assets/cursor.webp", label: "Cursor" },
+    { src: "/assets/grok.jpg", label: "Grok Build" },
   ];
   return (
     <div className="flex flex-wrap gap-2">

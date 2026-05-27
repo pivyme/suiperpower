@@ -156,6 +156,7 @@ These are separate DeepBook modules. Do not integrate them into the core orderbo
 
 - Claude Code: `claude "/suiper:deepbook-orderbook <your message>"`
 - Codex: `codex "/deepbook-orderbook <your message>"`
+- Grok Build: run `grok`, then `/deepbook-orderbook <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "build on DeepBook", or load `~/.cursor/rules/deepbook-orderbook.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

@@ -148,6 +148,7 @@ On-demand references (load when relevant to the user's question):
 
 - Claude Code: `claude "/suiper:video-craft <your message>"`
 - Codex: `codex "/video-craft <your message>"`
+- Grok Build: run `grok`, then `/video-craft <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "polish my video", or load `~/.cursor/rules/video-craft.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

@@ -27,7 +27,7 @@ const OPTIONS: { item: PickItem; command: string }[] = [
   {
     item: {
       id: "build",
-      label: "Build with Claude / Codex / Cursor",
+      label: "Build with Claude / Codex / Cursor / Grok",
       hint: "guided pair-programming through the MVP",
     },
     command: '"/build-with-claude help me build the MVP"',
@@ -120,6 +120,9 @@ export async function run(_args: string[]): Promise<void> {
       console.log(`  ${muted("no agent CLI detected.")} install:`);
       console.log(`    ${accent("npm i -g @anthropic-ai/claude-code")}  ${muted("Claude Code")}`);
       console.log(`    ${accent("npm i -g @openai/codex")}  ${muted("Codex")}`);
+      console.log(
+        `    ${accent("curl -fsSL https://x.ai/cli/install.sh | bash")}  ${muted("Grok Build")}`,
+      );
     }
   } else {
     console.log(`    ${accent(opt.command)}`);

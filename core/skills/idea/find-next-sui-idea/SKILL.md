@@ -151,6 +151,7 @@ Knowledge docs:
 
 - Claude Code: `claude "/suiper:find-next-sui-idea <your message>"`
 - Codex: `codex "/find-next-sui-idea <your message>"`
+- Grok Build: run `grok`, then `/find-next-sui-idea <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "what should I build on Sui", or load `~/.cursor/rules/find-next-sui-idea.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

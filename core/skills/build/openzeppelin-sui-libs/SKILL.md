@@ -153,6 +153,7 @@ Knowledge docs (load when scope expands beyond what is in references):
 
 - Claude Code: `claude "/suiper:openzeppelin-sui-libs <your message>"`
 - Codex: `codex "/openzeppelin-sui-libs <your message>"`
+- Grok Build: run `grok`, then `/openzeppelin-sui-libs <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "use OpenZeppelin Sui libraries", or load `~/.cursor/rules/openzeppelin-sui-libs.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

@@ -223,6 +223,7 @@ Knowledge docs (load when scope expands):
 
 - Claude Code: `claude "/suiper:plan-before-code <your message>"`
 - Codex: `codex "/plan-before-code <your message>"`
+- Grok Build: run `grok`, then `/plan-before-code <your message>` in the session
 - Cursor: paste a message like "plan the Sui build before we code", or reference `~/.cursor/rules/plan-before-code.mdc`.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

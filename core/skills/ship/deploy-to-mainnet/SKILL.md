@@ -166,6 +166,7 @@ Canonical:
 
 - Claude Code: `claude "/suiper:deploy-to-mainnet <your message>"`
 - Codex: `codex "/deploy-to-mainnet <your message>"`
+- Grok Build: run `grok`, then `/deploy-to-mainnet <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "deploy to mainnet", or load `~/.cursor/rules/deploy-to-mainnet.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

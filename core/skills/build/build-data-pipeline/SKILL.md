@@ -168,6 +168,7 @@ External docs (fetch at runtime for the latest API surface):
 
 - Claude Code: `claude "/suiper:build-data-pipeline <your message>"`
 - Codex: `codex "/build-data-pipeline <your message>"`
+- Grok Build: run `grok`, then `/build-data-pipeline <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "index Sui data" or "query events", or load `~/.cursor/rules/build-data-pipeline.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

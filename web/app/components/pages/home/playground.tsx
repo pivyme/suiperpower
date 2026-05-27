@@ -225,11 +225,12 @@ const DEMOS: Demo[] = [
   },
 ];
 
-type AgentId = "claude" | "codex";
+type AgentId = "claude" | "codex" | "grok";
 
 const AGENT_TABS: { id: AgentId; label: string; logo: string }[] = [
   { id: "claude", label: "Claude Code", logo: "/assets/claude.webp" },
   { id: "codex", label: "Codex", logo: "/assets/codex.webp" },
+  { id: "grok", label: "Grok Build", logo: "/assets/grok.jpg" },
 ];
 
 export function Playground() {
@@ -325,8 +326,10 @@ export function Playground() {
               >
                 {agent === "claude" ? (
                   <ClaudeSession active={active} />
-                ) : (
+                ) : agent === "codex" ? (
                   <CodexSession active={active} />
+                ) : (
+                  <GrokSession active={active} />
                 )}
               </motion.div>
             </AnimatePresence>
@@ -569,6 +572,120 @@ function CodexWelcome() {
         {` OpenAI codex CLI                             │
 │                                                 │
 │    model: gpt-5 · approval: full · sandbox      │
+│    suiperpower · 60+ skills loaded              │
+│    cwd: ~/your-sui-project                      │
+╰─────────────────────────────────────────────────╯`}
+      </pre>
+    </div>
+  );
+}
+
+function GrokSession({ active }: { active: Demo }) {
+  const skills = active.skills.map((s) => s.replace(/^\/suiper:/, ""));
+  const base = promptDelay(active.prompt);
+  return (
+    <>
+      <GrokWelcome />
+      <div>
+        <p className="font-mono text-xs text-white/40 mb-1">you</p>
+        <PromptLine prompt={active.prompt} indent />
+      </div>
+
+      <div className="flex flex-col gap-3 font-mono text-sm">
+        <p className="text-white/55 text-xs">grok</p>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: base + 0.1 }}
+          className="ml-3 text-white/80"
+        >
+          Reading ~/.grok/skills, routing through suiperpower.
+        </motion.p>
+
+        <div className="ml-3 flex flex-col gap-0.5">
+          {skills.map((s, i) => (
+            <motion.div
+              key={s}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: base + 0.2 + i * 0.08 }}
+              className="text-white/70"
+            >
+              <span className="text-white/50 mr-1">✦</span>
+              <span className="text-white/50">skill:</span>{" "}
+              <span className="text-white">/{s}</span>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: base + 0.75 }}
+          className="ml-3 text-white/70"
+        >
+          <span className="text-white/50 mr-1">✦</span>
+          <span className="text-white/50">knowledge:</span>{" "}
+          {active.knowledge.join(", ")}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: base + 0.9 }}
+          className="ml-3"
+        >
+          <div className="text-white/70">
+            <span className="text-white/50 mr-1">✦</span>
+            <span className="text-white/50">scaffold:</span>
+          </div>
+          <div className="mt-1 ml-5 flex flex-col gap-0.5">
+            {active.files.map((f, i) => (
+              <motion.div
+                key={f.path}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: base + 1.0 + i * 0.06 }}
+                className="flex flex-col md:flex-row md:items-baseline gap-0 md:gap-3"
+              >
+                <span className="text-white/80 md:w-56 shrink-0">{f.path}</span>
+                <span className="text-white/30 truncate"># {f.note}</span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: base + 1.4 }}
+          className="ml-3 text-white/70"
+        >
+          <span className="text-white/50 mr-1">✦</span>
+          <span className="text-white/50">anti-slop gate:</span>{" "}
+          <span className="text-white/85">{active.gate}</span>
+        </motion.div>
+      </div>
+    </>
+  );
+}
+
+function GrokWelcome() {
+  return (
+    <div className="font-mono text-xs leading-relaxed overflow-x-auto">
+      <pre className="text-white/60 leading-tight">
+        {`█▀▀ █▀█ █▀█ █ █
+█▄█ █▀▄ █ █ █▀▄
+▀▀▀ ▀ ▀ ▀▀▀ ▀ ▀`}
+      </pre>
+      <pre className="mt-3 text-white/50">
+        {`╭─────────────────────────────────────────────────╮
+│  `}
+        <span className="text-white/80">✦</span>
+        {` Welcome to Grok Build                        │
+│                                                 │
+│    /skills for extensions · /plan mode          │
 │    suiperpower · 60+ skills loaded              │
 │    cwd: ~/your-sui-project                      │
 ╰─────────────────────────────────────────────────╯`}

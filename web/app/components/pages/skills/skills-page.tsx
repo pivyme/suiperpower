@@ -491,6 +491,7 @@ function AgentBadges({ agents }: { agents: Skill["agents"] }) {
     claude: { src: "/assets/claude.webp", label: "Claude Code" },
     codex: { src: "/assets/codex.webp", label: "Codex" },
     cursor: { src: "/assets/cursor.webp", label: "Cursor" },
+    grok: { src: "/assets/grok.jpg", label: "Grok Build" },
   };
   return (
     <div className="flex items-center -space-x-1.5 shrink-0">

@@ -119,6 +119,7 @@ Knowledge docs (load when scope expands beyond what is in references):
 
 - Claude Code: `claude "/suiper:navigate-skills <your message>"`
 - Codex: `codex "/navigate-skills <your message>"`
+- Grok Build: run `grok`, then `/navigate-skills <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "which suiperpower skill should I use", or load `~/.cursor/rules/navigate-skills.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

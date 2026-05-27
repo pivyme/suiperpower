@@ -1,5 +1,7 @@
-// `suiperpower init` writes Codex skills and Cursor rules globally.
+// `suiperpower init` writes Codex skills, Cursor rules, and Grok Build skills globally.
 // Claude Code uses the plugin marketplace globally and vendor-mode flat copies.
+// Grok reads the Anthropic skill format straight from ~/.grok/skills, so it gets the
+// same flat copy as Codex (no Codex-yaml rewrite, no Cursor .mdc).
 // `--vendor` writes to <project>/.claude/skills/suiperpower etc instead.
 // All writes are tracked in ~/.suiperpower/skills-installed.json so `update` and `uninstall`
 // only touch files we own.
@@ -86,19 +88,26 @@ function detectProjectRoot(): string {
   return process.cwd();
 }
 
-function targetDirs(vendor: boolean): { claude: string; codex: string; cursor: string } {
+function targetDirs(vendor: boolean): {
+  claude: string;
+  codex: string;
+  cursor: string;
+  grok: string;
+} {
   if (vendor) {
     const root = detectProjectRoot();
     return {
       claude: join(root, ".claude", "skills", "suiperpower"),
       codex: join(root, ".codex", "skills", "suiperpower"),
       cursor: join(root, ".cursor", "rules", "suiperpower"),
+      grok: join(root, ".grok", "skills", "suiperpower"),
     };
   }
   return {
     claude: join(homedir(), ".claude", "skills"),
     codex: join(homedir(), ".codex", "skills"),
     cursor: join(homedir(), ".cursor", "rules"),
+    grok: join(homedir(), ".grok", "skills"),
   };
 }
 
@@ -281,21 +290,25 @@ function readPriorManifest(vendor: boolean): Manifest | null {
 }
 
 // Skills get renamed or removed across versions. Without cleanup, the old
-// directory keeps living under ~/.codex/skills/<old-name>/ and the old .mdc
-// keeps living under ~/.cursor/rules/<old-name>.mdc, double-triggering. We
+// directory keeps living under ~/.codex/skills/<old-name>/, ~/.grok/skills/<old-name>/,
+// and the old .mdc under ~/.cursor/rules/<old-name>.mdc, double-triggering. We
 // diff the prior manifest's skill names against the current set and remove
 // orphans from every install target.
 function removeOrphanSkills(
   prior: Manifest | null,
   currentNames: Set<string>,
-  targets: { claude: string; codex: string; cursor: string },
+  targets: { claude: string; codex: string; cursor: string; grok: string },
   writeClaude: boolean,
 ): string[] {
   if (!prior) return [];
   const removed: string[] = [];
   for (const s of prior.skills ?? []) {
     if (currentNames.has(s.name)) continue;
-    const candidates = [join(targets.codex, s.name), join(targets.cursor, `${s.name}.mdc`)];
+    const candidates = [
+      join(targets.codex, s.name),
+      join(targets.cursor, `${s.name}.mdc`),
+      join(targets.grok, s.name),
+    ];
     if (writeClaude) candidates.push(join(targets.claude, s.name));
     let touched = false;
     for (const p of candidates) {
@@ -372,6 +385,7 @@ export async function run(args: string[]): Promise<void> {
   if (writeClaude) mkdirSync(targets.claude, { recursive: true });
   mkdirSync(targets.codex, { recursive: true });
   mkdirSync(targets.cursor, { recursive: true });
+  mkdirSync(targets.grok, { recursive: true });
 
   const allWritten: string[] = [];
   const installed: string[] = [];
@@ -379,17 +393,23 @@ export async function run(args: string[]): Promise<void> {
   for (const skill of skills) {
     const codexDest = join(targets.codex, skill.name);
     if (existsSync(codexDest)) rmSync(codexDest, { recursive: true, force: true });
+    const grokDest = join(targets.grok, skill.name);
+    if (existsSync(grokDest)) rmSync(grokDest, { recursive: true, force: true });
     if (writeClaude) {
       const claudeDest = join(targets.claude, skill.name);
       if (existsSync(claudeDest)) rmSync(claudeDest, { recursive: true, force: true });
       allWritten.push(...copySkillToClaudeOrCodex(skill, claudeDest, false));
     }
     allWritten.push(...copySkillToClaudeOrCodex(skill, codexDest, true));
+    // Grok reads the raw Anthropic folder; no Codex-yaml rewrite needed.
+    allWritten.push(...copySkillToClaudeOrCodex(skill, grokDest, false));
     allWritten.push(...renderCursorMdc(skill, targets.cursor));
     installed.push(skill.name);
   }
 
-  const sharedTargets = writeClaude ? [targets.claude, targets.codex] : [targets.codex];
+  const sharedTargets = writeClaude
+    ? [targets.claude, targets.codex, targets.grok]
+    : [targets.codex, targets.grok];
   allWritten.push(...copySharedKnowledge(sharedTargets));
 
   if (!vendor) writeConfig(convexUrl);
@@ -408,7 +428,12 @@ export async function run(args: string[]): Promise<void> {
   // cpSync copies empty placeholder dirs (agents/, references/) when a skill
   // has them. Those never enter the manifest (walk only records files), so on
   // reinstall they accumulate. Sweep each install root bottom-up.
-  for (const root of [targets.codex, targets.cursor, ...(writeClaude ? [targets.claude] : [])]) {
+  for (const root of [
+    targets.codex,
+    targets.cursor,
+    targets.grok,
+    ...(writeClaude ? [targets.claude] : []),
+  ]) {
     pruneEmptyDirs(root);
   }
 
@@ -447,6 +472,7 @@ export async function run(args: string[]): Promise<void> {
   }
   console.log(`  ${dim(targets.codex)} ${muted("(Codex)")}`);
   console.log(`  ${dim(targets.cursor)} ${muted("(Cursor)")}`);
+  console.log(`  ${dim(targets.grok)} ${muted("(Grok Build)")}`);
   console.log("");
   console.log(`  ${muted("manifest:")} ${mPath}`);
   console.log("");

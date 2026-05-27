@@ -149,6 +149,12 @@ export async function run(args: string[]): Promise<void> {
     status: agents.cursor ? "pass" : "warn",
     detail: agents.cursor || "not detected, install: https://cursor.com",
   });
+  checks.push({
+    group: "Agents",
+    label: "Grok Build",
+    status: agents.grok ? "pass" : "warn",
+    detail: agents.grok || "not detected, install: curl -fsSL https://x.ai/cli/install.sh | bash",
+  });
 
   // Sui
   const suiV = tryExec("sui", ["--version"]);
@@ -202,9 +208,11 @@ export async function run(args: string[]): Promise<void> {
   const expected = expectedSkills();
   const codexDir = join(homedir(), ".codex", "skills");
   const cursorDir = join(homedir(), ".cursor", "rules");
+  const grokDir = join(homedir(), ".grok", "skills");
   const total = expected.length;
   const codexCount = countSkillDirs(codexDir, expected);
   const cursorCount = countCursorRules(cursorDir, expected);
+  const grokCount = countSkillDirs(grokDir, expected);
   checks.push({
     group: "Suiperpower",
     label: "Claude plugin",
@@ -222,6 +230,12 @@ export async function run(args: string[]): Promise<void> {
     label: "Cursor rules",
     status: total > 0 && cursorCount === total ? "pass" : "warn",
     detail: total === 0 ? "no rules discovered" : `${cursorCount}/${total} installed`,
+  });
+  checks.push({
+    group: "Suiperpower",
+    label: "Grok skills",
+    status: total > 0 && grokCount === total ? "pass" : "warn",
+    detail: total === 0 ? "no skills discovered" : `${grokCount}/${total} installed`,
   });
   const sharedOk =
     existsSync(join(codexDir, "skills", "SKILL_ROUTER.md")) &&

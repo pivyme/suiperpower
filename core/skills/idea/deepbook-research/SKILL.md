@@ -135,6 +135,7 @@ Knowledge docs:
 
 - Claude Code: `claude "/suiper:deepbook-research <your message>"`
 - Codex: `codex "/deepbook-research <your message>"`
+- Grok Build: run `grok`, then `/deepbook-research <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "DeepBook research", or load `~/.cursor/rules/deepbook-research.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

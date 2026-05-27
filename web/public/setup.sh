@@ -93,6 +93,12 @@ else
   warn "Cursor not detected. If you use Cursor, install from https://cursor.com (skills still write to ~/.cursor/rules/)"
 fi
 
+if has_cmd grok || [ -d "$HOME/.grok" ]; then
+  ok "Grok Build detected"
+else
+  warn "Grok Build not detected. If you use Grok Build, install with: curl -fsSL https://x.ai/cli/install.sh | bash (skills still write to ~/.grok/skills/)"
+fi
+
 # Auto-install the Suiperpower plugin into Claude Code.
 # Idempotent; both subcommands no-op if already added/installed. Silent failure
 # (e.g. repo not yet public) falls back to the manual instructions printed below.
@@ -121,11 +127,12 @@ run_ss() {
   fi
 }
 
-# Install skills for Codex + Cursor (flat, no plugin system in those tools).
+# Install skills for Codex + Cursor + Grok Build (flat copy; those tools have no
+# plugin system, and Grok reads the Anthropic skill format from ~/.grok/skills/).
 # Claude Code skills land via the plugin marketplace flow printed at the end,
 # so we deliberately skip ~/.claude/skills/ to avoid colliding with other packs.
-log "Installing journey skills (Codex + Cursor)"
-mkdir -p "$HOME/.codex/skills" "$HOME/.cursor/rules"
+log "Installing journey skills (Codex + Cursor + Grok)"
+mkdir -p "$HOME/.codex/skills" "$HOME/.cursor/rules" "$HOME/.grok/skills"
 run_ss init
 
 # Doctor (never blocks)
@@ -185,6 +192,7 @@ printf "\n"
 printf "  ${CYAN}+--------------------------------------------------------------+${RESET}\n"
 printf "  ${CYAN}|${RESET} ${BOLD}Skills installed${RESET}                                              ${CYAN}|${RESET}\n"
 printf "  ${CYAN}|${RESET}   ~/.codex/skills/    ~/.cursor/rules/                       ${CYAN}|${RESET}\n"
+printf "  ${CYAN}|${RESET}   ~/.grok/skills/                                            ${CYAN}|${RESET}\n"
 printf "  ${CYAN}|${RESET}   Claude Code: see plugin install steps below                ${CYAN}|${RESET}\n"
 printf "  ${CYAN}+--------------------------------------------------------------+${RESET}\n"
 
@@ -197,7 +205,7 @@ printf "    ${BOLD}Manage${RESET}\n"
 printf "      ${CYAN}${SHORT_NAME}${RESET}                      ${DIM}interactive onboarding menu${RESET}\n"
 printf "      ${CYAN}${SHORT_NAME} doctor${RESET}               ${DIM}health check, never blocks${RESET}\n"
 printf "      ${CYAN}${SHORT_NAME} update${RESET}               ${DIM}pull the latest skills + CLI${RESET}\n"
-printf "      ${CYAN}${SHORT_NAME} init${RESET}                 ${DIM}re-run install for Codex + Cursor${RESET}\n"
+printf "      ${CYAN}${SHORT_NAME} init${RESET}                 ${DIM}re-run install for Codex + Cursor + Grok${RESET}\n"
 printf "      ${CYAN}${SHORT_NAME} init --vendor${RESET}        ${DIM}vendor skills into the current repo${RESET}\n"
 printf "      ${CYAN}${SHORT_NAME} uninstall${RESET}            ${DIM}remove tracked skills + config${RESET}\n"
 printf "\n"
@@ -221,7 +229,7 @@ printf "    ${DIM}then inside Claude, run:${RESET}\n"
 printf "    ${CYAN}/plugin marketplace add pivyme/suiperpower${RESET}\n"
 printf "    ${CYAN}/plugin install suiper@suiperpower${RESET}\n"
 printf "\n"
-printf "  ${BOLD}Get started${RESET} ${DIM}(open Claude Code, Codex, or Cursor and ask):${RESET}\n\n"
+printf "  ${BOLD}Get started${RESET} ${DIM}(open Claude Code, Codex, Cursor, or Grok Build and ask):${RESET}\n\n"
 printf "    ${CYAN}claude \"/suiper:find-next-sui-idea what should I build for Sui Overflow?\"${RESET}\n"
 printf "    ${CYAN}claude \"/suiper:scaffold-project escrow with Walrus storage\"${RESET}\n"
 printf "    ${CYAN}claude \"/suiper:build-with-claude help me build the MVP\"${RESET}\n"
@@ -229,8 +237,8 @@ printf "    ${CYAN}claude \"/suiper:build-with-move add the lock function\"${RES
 printf "    ${CYAN}claude \"/suiper:deploy-to-testnet\"${RESET}\n"
 printf "    ${CYAN}claude \"/suiper:submit-to-sui-overflow\"${RESET}\n"
 printf "\n"
-printf "  ${DIM}Skills auto-route by intent inside Claude. In Codex / Cursor use the bare${RESET}\n"
-printf "  ${DIM}name (no /suiper: prefix). Same trigger phrases work across all three.${RESET}\n"
+printf "  ${DIM}Skills auto-route by intent inside Claude. In Codex / Cursor / Grok use the${RESET}\n"
+printf "  ${DIM}bare name (no /suiper: prefix). Same trigger phrases work across all four.${RESET}\n"
 printf "\n"
 
 printf "  ${DIM}Docs   ${WEBSITE_URL}${RESET}\n"

@@ -166,6 +166,7 @@ External docs (fetch at runtime for the latest API surface):
 
 - Claude Code: `claude "/suiper:suins-integration <your message>"`
 - Codex: `codex "/suins-integration <your message>"`
+- Grok Build: run `grok`, then `/suins-integration <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "SuiNS" or "name resolution", or load `~/.cursor/rules/suins-integration.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

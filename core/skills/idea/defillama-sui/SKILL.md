@@ -161,6 +161,7 @@ Knowledge docs:
 
 - Claude Code: `claude "/suiper:defillama-sui <your message>"`
 - Codex: `codex "/defillama-sui <your message>"`
+- Grok Build: run `grok`, then `/defillama-sui <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "DeFi research on Sui", or load `~/.cursor/rules/defillama-sui.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

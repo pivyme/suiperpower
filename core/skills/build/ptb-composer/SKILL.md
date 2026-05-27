@@ -139,6 +139,7 @@ Knowledge docs (load when scope expands beyond what is in references):
 
 - Claude Code: `claude "/suiper:ptb-composer <your message>"`
 - Codex: `codex "/ptb-composer <your message>"`
+- Grok Build: run `grok`, then `/ptb-composer <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "compose a PTB", or load `~/.cursor/rules/ptb-composer.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

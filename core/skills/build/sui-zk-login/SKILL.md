@@ -165,6 +165,7 @@ Knowledge docs (load when scope expands beyond what is in references):
 
 - Claude Code: `claude "/suiper:sui-zk-login <your message>"`
 - Codex: `codex "/sui-zk-login <your message>"`
+- Grok Build: run `grok`, then `/sui-zk-login <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "add zkLogin", or load `~/.cursor/rules/sui-zk-login.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

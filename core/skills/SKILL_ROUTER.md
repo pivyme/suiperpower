@@ -270,7 +270,7 @@ If the user types `/build-with-move` but actually wants to debug a deploy, the s
 
 - Per skill PR: if adding a skill that overlaps with existing skills, add at least one router row. PR is rejected if the row is missing.
 - Quarterly: read telemetry, spot-check routing failures, refresh rows.
-- Pre-launch: full pass with real Claude / Codex / Cursor prompts confirming routing.
+- Pre-launch: full pass with real Claude / Codex / Cursor / Grok Build prompts confirming routing.
 
 ## What is intentionally NOT in the router
 

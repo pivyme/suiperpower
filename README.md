@@ -16,7 +16,7 @@ A superpower for AI coding agents to ship real products on Sui.
 
 Your AI coding agent has never written Move before. Suiperpower fixes that.
 
-It's an open platform of 60 production-grade skills, a curated ecosystem catalog, a Sui knowledge base, and a CLI that turns Claude Code, Codex, or Cursor into a senior Sui engineer sitting next to you. One curl install, three agents, every Sui project from here on.
+It's an open platform of 60 production-grade skills, a curated ecosystem catalog, a Sui knowledge base, and a CLI that turns Claude Code, Codex, Cursor, or Grok Build into a senior Sui engineer sitting next to you. One curl install, four agents, every Sui project from here on.
 
 Built around an explicit anti-slop bar so the project survives past the hackathon, not just wins it.
 
@@ -28,7 +28,7 @@ curl -fsSL https://suiperpower.dev/setup.sh | bash
 
 Requirements: Node.js 20+, git.
 
-The installer writes Codex skills to `~/.codex/skills/`, Cursor rules to `~/.cursor/rules/`, and prints the Claude Code plugin commands:
+The installer writes Codex skills to `~/.codex/skills/`, Cursor rules to `~/.cursor/rules/`, Grok Build skills to `~/.grok/skills/`, and prints the Claude Code plugin commands:
 
 ```text
 /plugin marketplace add pivyme/suiperpower
@@ -54,7 +54,7 @@ claude "/suiper:deploy-to-testnet"
 claude "/suiper:submit-to-sui-overflow"
 ```
 
-Use the `/suiper:` prefix in Claude Code. Use the bare skill name in Codex and Cursor. Skills auto-route by intent, so you mostly don't need to remember names.
+Use the `/suiper:` prefix in Claude Code. Use the bare skill name in Codex, Cursor, and Grok Build. Skills auto-route by intent, so you mostly don't need to remember names.
 
 ## Why this exists
 
@@ -195,8 +195,9 @@ Curated, source-checked, regenerated each release. Lives in `core/cli/data/`, br
 | Claude Code | Plugin marketplace, namespaced | `/suiper:<skill-name>` |
 | Codex | `~/.codex/skills/<skill-name>/` | bare skill name |
 | Cursor | `~/.cursor/rules/<skill-name>.mdc` | bare skill name |
+| Grok Build | `~/.grok/skills/<skill-name>/` | bare skill name (`/<skill-name>`) |
 
-`suiper init` writes Codex and Cursor formats by default and prints the Claude plugin install commands. `suiper init --vendor` writes all three into the current repo under namespaced folders, so teammates inherit the skill set on clone.
+Grok Build reads the Anthropic skill format straight from `~/.grok/skills/`, the same `SKILL.md` we ship, so it needs no separate generator. `suiper init` writes Codex, Cursor, and Grok formats by default and prints the Claude plugin install commands. `suiper init --vendor` writes all four into the current repo under namespaced folders, so teammates inherit the skill set on clone.
 
 ### Vendor mode
 
@@ -204,7 +205,7 @@ Curated, source-checked, regenerated each release. Lives in `core/cli/data/`, br
 suiper init --vendor
 ```
 
-Writes skills into `<repo>/.claude/skills/suiperpower/`, `<repo>/.codex/skills/suiperpower/`, and `<repo>/.cursor/rules/suiperpower/`. Commit, push, done. Teammates clone and their agents are ready.
+Writes skills into `<repo>/.claude/skills/suiperpower/`, `<repo>/.codex/skills/suiperpower/`, `<repo>/.cursor/rules/suiperpower/`, and `<repo>/.grok/skills/suiperpower/`. Commit, push, done. Teammates clone and their agents are ready.
 
 ### Per-skill install
 

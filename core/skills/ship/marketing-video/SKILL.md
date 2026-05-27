@@ -154,6 +154,7 @@ On-demand references (load when relevant to the user's question):
 
 - Claude Code: `claude "/suiper:marketing-video <your message>"`
 - Codex: `codex "/marketing-video <your message>"`
+- Grok Build: run `grok`, then `/marketing-video <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "marketing video", or load `~/.cursor/rules/marketing-video.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

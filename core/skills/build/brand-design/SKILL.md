@@ -117,6 +117,7 @@ On-demand references (load when relevant to the user's question):
 
 - Claude Code: `claude "/suiper:brand-design <your message>"`
 - Codex: `codex "/brand-design <your message>"`
+- Grok Build: run `grok`, then `/brand-design <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "pick brand colors", or load `~/.cursor/rules/brand-design.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

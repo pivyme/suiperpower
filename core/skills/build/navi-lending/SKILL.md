@@ -154,6 +154,7 @@ SDK documentation (load when scope expands beyond what is in references):
 
 - Claude Code: `claude "/suiper:navi-lending <your message>"`
 - Codex: `codex "/navi-lending <your message>"`
+- Grok Build: run `grok`, then `/navi-lending <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "NAVI lending" or "borrow on NAVI", or load `~/.cursor/rules/navi-lending.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

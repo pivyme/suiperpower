@@ -140,6 +140,7 @@ On-demand references (load when relevant to the user's question):
 
 - Claude Code: `claude "/suiper:retention-loop <your message>"`
 - Codex: `codex "/retention-loop <your message>"`
+- Grok Build: run `grok`, then `/retention-loop <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "retention loop", or load `~/.cursor/rules/retention-loop.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

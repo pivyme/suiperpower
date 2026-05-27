@@ -148,6 +148,7 @@ On-demand references (load when relevant to the user's question):
 
 - Claude Code: `claude "/suiper:validate-business-model <your message>"`
 - Codex: `codex "/validate-business-model <your message>"`
+- Grok Build: run `grok`, then `/validate-business-model <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "validate my business model", or load `~/.cursor/rules/validate-business-model.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

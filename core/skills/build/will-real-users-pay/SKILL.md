@@ -154,6 +154,7 @@ On-demand references (load when relevant to the user's question):
 
 - Claude Code: `claude "/suiper:will-real-users-pay <your message>"`
 - Codex: `codex "/will-real-users-pay <your message>"`
+- Grok Build: run `grok`, then `/will-real-users-pay <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "will users pay", or load `~/.cursor/rules/will-real-users-pay.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

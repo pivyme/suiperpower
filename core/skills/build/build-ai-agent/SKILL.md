@@ -185,6 +185,7 @@ External docs (fetch at runtime for the latest API surface):
 
 - Claude Code: `claude "/suiper:build-ai-agent <your message>"`
 - Codex: `codex "/build-ai-agent <your message>"`
+- Grok Build: run `grok`, then `/build-ai-agent <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "build an AI agent on Sui" or reference `~/.cursor/rules/build-ai-agent.mdc`
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

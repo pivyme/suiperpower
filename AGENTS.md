@@ -18,7 +18,7 @@ The launch occasion is Sui Overflow 2026, but Suiperpower is a long-lived produc
 - **CLI**: zero runtime deps. The Convex backend owns its own package dependencies.
 - **Backend**: Convex (telemetry + feedback only)
 - **Website**: static setup assets today, full site is separate from the core CLI work
-- **Skills**: plain markdown (Anthropic skill spec) with optional `references/` and `agents/openai.yaml`
+- **Skills**: plain markdown (Anthropic skill spec) with optional `references/` and `agents/openai.yaml`. Grok Build reads this same Anthropic format straight from `~/.grok/skills/`, so no Grok-specific generator exists
 - **Knowledge base**: plain markdown
 - **Ecosystem catalog**: plain JSON
 - **Install**: bash script hosted at suiperpower.dev/setup.sh, npm package `@pivyme/suiperpower`

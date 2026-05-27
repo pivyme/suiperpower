@@ -178,6 +178,7 @@ Canonical:
 
 - Claude Code: `claude "/suiper:submit-to-sui-overflow <your message>"`
 - Codex: `codex "/submit-to-sui-overflow <your message>"`
+- Grok Build: run `grok`, then `/submit-to-sui-overflow <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "submit to Sui Overflow", or load `~/.cursor/rules/submit-to-sui-overflow.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

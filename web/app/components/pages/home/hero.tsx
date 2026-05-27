@@ -106,6 +106,11 @@ export function Hero() {
                   src="/assets/codex.webp"
                   className="object-contain size-5 rounded-full -translate-x-full"
                 />
+                <img
+                  alt=""
+                  src="/assets/grok.jpg"
+                  className="object-contain size-5 rounded-full -translate-x-[150%]"
+                />
               </div>
               <p className="font-medium text-white/50 text-sm">
                 100+ skills, CLIs and MCPs to use

@@ -149,6 +149,7 @@ Knowledge docs (load when scope expands beyond what is in references):
 
 - Claude Code: `claude "/suiper:scallop-money-market <your message>"`
 - Codex: `codex "/scallop-money-market <your message>"`
+- Grok Build: run `grok`, then `/scallop-money-market <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "integrate Scallop" or "borrow on Sui", or load `~/.cursor/rules/scallop-money-market.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

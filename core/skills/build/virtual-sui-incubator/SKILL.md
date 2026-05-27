@@ -127,6 +127,7 @@ Knowledge docs (load when scope expands beyond what is in references):
 
 - Claude Code: `claude "/suiper:virtual-sui-incubator <your message>"`
 - Codex: `codex "/virtual-sui-incubator <your message>"`
+- Grok Build: run `grok`, then `/virtual-sui-incubator <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "deep dive into Sui internals", or load `~/.cursor/rules/virtual-sui-incubator.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

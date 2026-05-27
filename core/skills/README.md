@@ -6,7 +6,7 @@ Skill format follows the Anthropic skill spec. For voice and quality rules, see 
 
 ## Two install paths
 
-The recommended install is the curl one-liner. It writes every skill to all three agent dirs and sets up doctor / update / uninstall:
+The recommended install is the curl one-liner. It writes every skill for all four agents and sets up doctor / update / uninstall:
 
 ```
 curl -fsSL https://suiperpower.dev/setup.sh | bash

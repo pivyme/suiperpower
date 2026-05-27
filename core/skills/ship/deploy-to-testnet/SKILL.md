@@ -143,6 +143,7 @@ Canonical:
 
 - Claude Code: `claude "/suiper:deploy-to-testnet <your message>"`
 - Codex: `codex "/deploy-to-testnet <your message>"`
+- Grok Build: run `grok`, then `/deploy-to-testnet <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "deploy to testnet", or load `~/.cursor/rules/deploy-to-testnet.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

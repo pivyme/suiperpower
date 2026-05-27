@@ -148,6 +148,7 @@ Knowledge base anchors (canonical):
 
 - Claude Code: `claude "/suiper:sui-beginner <your message>"`
 - Codex: `codex "/sui-beginner <your message>"`
+- Grok Build: run `grok`, then `/sui-beginner <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "teach me Sui", or load `~/.cursor/rules/sui-beginner.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

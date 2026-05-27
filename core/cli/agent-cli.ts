@@ -1,5 +1,5 @@
 // Detect / install agent CLIs. Never blocks: missing CLI is a warning, not a failure.
-// Three agents we care about: Claude Code, Codex, Cursor.
+// Four agents we care about: Claude Code, Codex, Cursor, Grok Build.
 
 import { execFileSync } from "node:child_process";
 import { existsSync } from "node:fs";
@@ -8,7 +8,7 @@ import { join } from "node:path";
 
 import { ENV } from "./branding.js";
 
-export type AgentCli = "claude" | "codex" | "cursor";
+export type AgentCli = "claude" | "codex" | "cursor" | "grok";
 
 interface AgentMeta {
   label: string;
@@ -32,6 +32,11 @@ const AGENT_META: Record<AgentCli, AgentMeta> = {
     installCmd: "https://cursor.com",
     npmPkg: null,
   },
+  grok: {
+    label: "Grok Build",
+    installCmd: "curl -fsSL https://x.ai/cli/install.sh | bash",
+    npmPkg: null,
+  },
 };
 
 let cachedPaths: Record<AgentCli, string> | null = null;
@@ -51,13 +56,18 @@ function which(bin: string): string {
 
 export function detectAgentCliPaths(): Record<AgentCli, string> {
   if (cachedPaths) return cachedPaths;
-  const paths: Record<AgentCli, string> = { claude: "", codex: "", cursor: "" };
+  const paths: Record<AgentCli, string> = { claude: "", codex: "", cursor: "", grok: "" };
   for (const cli of Object.keys(paths) as AgentCli[]) {
     paths[cli] = which(cli);
   }
   // Cursor often installs as a GUI app on macOS; fall back to ~/.cursor existence.
   if (!paths.cursor && existsSync(join(homedir(), ".cursor"))) {
     paths.cursor = `${homedir()}/.cursor`;
+  }
+  // Grok Build keeps its config under ~/.grok; fall back to that if the binary
+  // is not on PATH yet (it installs outside npm).
+  if (!paths.grok && existsSync(join(homedir(), ".grok"))) {
+    paths.grok = `${homedir()}/.grok`;
   }
   cachedPaths = paths;
   return paths;
@@ -66,10 +76,10 @@ export function detectAgentCliPaths(): Record<AgentCli, string> {
 export function detectPreferredAgentCli(): AgentCli | null {
   const paths = detectAgentCliPaths();
   const envPref = (process.env[ENV.AGENT] || "").toLowerCase() as AgentCli;
-  const order: AgentCli[] =
-    envPref === "claude" || envPref === "codex" || envPref === "cursor"
-      ? [envPref, ...(["claude", "codex", "cursor"] as AgentCli[]).filter((a) => a !== envPref)]
-      : ["claude", "codex", "cursor"];
+  const all: AgentCli[] = ["claude", "codex", "cursor", "grok"];
+  const order: AgentCli[] = all.includes(envPref)
+    ? [envPref, ...all.filter((a) => a !== envPref)]
+    : all;
   for (const cli of order) {
     if (paths[cli]) return cli;
   }
@@ -94,6 +104,9 @@ export function formatSkillInvocation(
   const target = cli ?? "claude";
   const slash = target === "claude" ? `/suiper:${skillName}` : `/${skillName}`;
   const prompt = message ? `${slash} ${message}` : slash;
+  // Grok one-shot is `grok -p "..."`; slash commands run inside the TUI session,
+  // not in headless mode, so we point users at the session rather than a one-liner.
+  if (target === "grok") return `Grok session: ${prompt}`;
   if (target === "cursor") return `Cursor chat: "${prompt}"`;
   return `${target} "${prompt}"`;
 }

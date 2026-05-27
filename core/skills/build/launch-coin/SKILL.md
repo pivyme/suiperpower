@@ -150,6 +150,7 @@ Knowledge docs (load when scope expands beyond what is in references):
 
 - Claude Code: `claude "/suiper:launch-coin <your message>"`
 - Codex: `codex "/launch-coin <your message>"`
+- Grok Build: run `grok`, then `/launch-coin <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "launch a coin on Sui", or load `~/.cursor/rules/launch-coin.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

@@ -115,6 +115,7 @@ On-demand references (load when relevant to the user's question):
 
 - Claude Code: `claude "/suiper:number-formatting <your message>"`
 - Codex: `codex "/number-formatting <your message>"`
+- Grok Build: run `grok`, then `/number-formatting <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "format numbers in my UI", or load `~/.cursor/rules/number-formatting.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

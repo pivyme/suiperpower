@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # CLI smoke test. Builds the CLI, runs --version / --help / doctor, then runs
 # init --vendor in a temporary project root and verifies skills land under all
-# three agent dirs. Does not exercise the curl one-liner (that runs npm install
-# globally and needs a sandboxed environment).
+# four agent dirs (Claude, Codex, Cursor, Grok Build). Does not exercise the curl
+# one-liner (that runs npm install globally and needs a sandboxed environment).
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -52,13 +52,17 @@ log "checking global init uses Claude plugin flow"
 HOME="$TMP_HOME" node "$CLI" init --agent >/dev/null || fail "global init exited non-zero"
 GLOBAL_CODEX_COUNT=$(find "$TMP_HOME/.codex/skills" -mindepth 2 -maxdepth 2 -name SKILL.md | wc -l | tr -d ' ')
 GLOBAL_CURSOR_COUNT=$(find "$TMP_HOME/.cursor/rules" -name '*.mdc' | wc -l | tr -d ' ')
+GLOBAL_GROK_COUNT=$(find "$TMP_HOME/.grok/skills" -mindepth 2 -maxdepth 2 -name SKILL.md | wc -l | tr -d ' ')
 [ "$GLOBAL_CODEX_COUNT" -gt 0 ] || fail "global init did not write Codex skills"
 [ "$GLOBAL_CURSOR_COUNT" -gt 0 ] || fail "global init did not write Cursor rules"
+[ "$GLOBAL_GROK_COUNT" -gt 0 ] || fail "global init did not write Grok Build skills"
 [ ! -e "$TMP_HOME/.claude/skills" ] || fail "global init wrote flat Claude skills instead of using plugin flow"
 [ -f "$TMP_HOME/.codex/skills/skills/SKILL_ROUTER.md" ] || fail "global Codex shared router missing"
+[ -f "$TMP_HOME/.grok/skills/skills/SKILL_ROUTER.md" ] || fail "global Grok shared router missing"
 grep -q "../../skills/data/sui-knowledge/03-move-and-objects.md" "$TMP_HOME/.codex/skills/build-with-move/agents/openai.yaml" || fail "global Codex knowledge paths were not rewritten"
 grep -q "Shared references (inlined)" "$TMP_HOME/.cursor/rules/build-with-move.mdc" || fail "global Cursor shared references block missing"
-pass "global init landed $GLOBAL_CODEX_COUNT Codex skills and $GLOBAL_CURSOR_COUNT Cursor rules, Claude stays plugin-only"
+grep -q 'Grok Build: run `grok`, then `/build-with-move' "$TMP_HOME/.grok/skills/build-with-move/SKILL.md" || fail "global Grok skill missing Grok Build invocation footer"
+pass "global init landed $GLOBAL_CODEX_COUNT Codex skills, $GLOBAL_CURSOR_COUNT Cursor rules, $GLOBAL_GROK_COUNT Grok skills, Claude stays plugin-only"
 
 log "running init --vendor in temp project"
 TMP=$(mktemp -d)
@@ -71,30 +75,37 @@ JSON
 CLAUDE_DIR="$TMP/.claude/skills/suiperpower"
 CODEX_DIR="$TMP/.codex/skills/suiperpower"
 CURSOR_DIR="$TMP/.cursor/rules/suiperpower"
+GROK_DIR="$TMP/.grok/skills/suiperpower"
 
 [ -d "$CLAUDE_DIR" ] || fail "no skills landed at $CLAUDE_DIR"
 [ -d "$CODEX_DIR" ]  || fail "no skills landed at $CODEX_DIR"
 [ -d "$CURSOR_DIR" ] || fail "no .mdc rules landed at $CURSOR_DIR"
+[ -d "$GROK_DIR" ]   || fail "no skills landed at $GROK_DIR"
 
 CLAUDE_COUNT=$(find "$CLAUDE_DIR" -maxdepth 2 -name SKILL.md | wc -l | tr -d ' ')
 CODEX_COUNT=$(find "$CODEX_DIR" -maxdepth 2 -name SKILL.md | wc -l | tr -d ' ')
 CURSOR_COUNT=$(find "$CURSOR_DIR" -name '*.mdc' | wc -l | tr -d ' ')
+GROK_COUNT=$(find "$GROK_DIR" -maxdepth 2 -name SKILL.md | wc -l | tr -d ' ')
 
 [ "$CLAUDE_COUNT" -gt 0 ] || fail "no SKILL.md files under $CLAUDE_DIR"
 [ "$CODEX_COUNT" -gt 0 ]  || fail "no SKILL.md files under $CODEX_DIR"
 [ "$CURSOR_COUNT" -gt 0 ] || fail "no .mdc files under $CURSOR_DIR"
+[ "$GROK_COUNT" -gt 0 ]   || fail "no SKILL.md files under $GROK_DIR"
 
-pass "init landed $CLAUDE_COUNT skills under Claude, $CODEX_COUNT under Codex, $CURSOR_COUNT .mdc rules under Cursor"
+pass "init landed $CLAUDE_COUNT skills under Claude, $CODEX_COUNT under Codex, $CURSOR_COUNT .mdc rules under Cursor, $GROK_COUNT under Grok"
 
 log "checking shared knowledge and agent metadata"
 [ -f "$CLAUDE_DIR/skills/SKILL_ROUTER.md" ] || fail "Claude shared router missing"
 [ -f "$CODEX_DIR/skills/SKILL_ROUTER.md" ] || fail "Codex shared router missing"
 [ -f "$CODEX_DIR/skills/data/sui-knowledge/03-move-and-objects.md" ] || fail "Codex shared Sui knowledge missing"
 [ -f "$CODEX_DIR/cli/data/sui-skills.json" ] || fail "Codex catalog mirror missing"
+[ -f "$GROK_DIR/skills/SKILL_ROUTER.md" ] || fail "Grok shared router missing"
+[ -f "$GROK_DIR/skills/data/sui-knowledge/03-move-and-objects.md" ] || fail "Grok shared Sui knowledge missing"
 grep -q "../../skills/data/sui-knowledge/03-move-and-objects.md" "$CODEX_DIR/build-with-move/agents/openai.yaml" || fail "Codex knowledge paths were not rewritten for install layout"
 grep -q "Shared references (inlined)" "$CURSOR_DIR/build-with-move.mdc" || fail "Cursor shared references block missing"
 grep -q "skills/data/sui-knowledge/03-move-and-objects.md" "$CURSOR_DIR/build-with-move.mdc" || fail "Cursor shared Sui knowledge not inlined"
-pass "shared knowledge resolves for Claude, Codex, and Cursor"
+grep -q 'Grok Build: run `grok`, then `/build-with-move' "$GROK_DIR/build-with-move/SKILL.md" || fail "vendor Grok skill missing Grok Build invocation footer"
+pass "shared knowledge resolves for Claude, Codex, Cursor, and Grok"
 
 log "checking built CLI catalog discovery"
 DOCTOR_OUT=$(node "$CLI" doctor --agent)

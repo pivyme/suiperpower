@@ -167,6 +167,7 @@ Knowledge docs (load when scope expands):
 
 - Claude Code: `claude "/suiper:clarify-intent <your message>"`
 - Codex: `codex "/clarify-intent <your message>"`
+- Grok Build: run `grok`, then `/clarify-intent <your message>` in the session
 - Cursor: paste a message like "step back, what am I really building on Sui", or reference `~/.cursor/rules/clarify-intent.mdc`.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

@@ -152,6 +152,7 @@ Knowledge docs (load when scope expands beyond what is in references):
 
 - Claude Code: `claude "/suiper:object-model-design <your message>"`
 - Codex: `codex "/object-model-design <your message>"`
+- Grok Build: run `grok`, then `/object-model-design <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "design the object schema", or load `~/.cursor/rules/object-model-design.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

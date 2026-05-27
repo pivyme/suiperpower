@@ -146,6 +146,7 @@ On-demand references (load when relevant to the user's question):
 
 - Claude Code: `claude "/suiper:roast-my-product <your message>"`
 - Codex: `codex "/roast-my-product <your message>"`
+- Grok Build: run `grok`, then `/roast-my-product <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "roast my product", or load `~/.cursor/rules/roast-my-product.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

@@ -36,6 +36,7 @@ export const PATHS = {
   CLAUDE_SKILLS: "~/.claude/skills",
   CODEX_SKILLS: "~/.codex/skills",
   CURSOR_RULES: "~/.cursor/rules",
+  GROK_SKILLS: "~/.grok/skills",
   HOME_CONFIG: `~/${BRAND.CONFIG_DIR}`,
   PROJECT_CONTEXT: BRAND.CONFIG_DIR,
 } as const;

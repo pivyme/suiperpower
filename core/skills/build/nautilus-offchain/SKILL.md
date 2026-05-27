@@ -169,6 +169,7 @@ External docs (fetch at runtime for the latest API surface):
 
 - Claude Code: `claude "/suiper:nautilus-offchain <your message>"`
 - Codex: `codex "/nautilus-offchain <your message>"`
+- Grok Build: run `grok`, then `/nautilus-offchain <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "off-chain compute" or "Nautilus TEE", or load `~/.cursor/rules/nautilus-offchain.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

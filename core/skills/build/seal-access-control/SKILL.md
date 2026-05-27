@@ -167,6 +167,7 @@ External docs (fetch at runtime for the latest API surface):
 
 - Claude Code: `claude "/suiper:seal-access-control <your message>"`
 - Codex: `codex "/seal-access-control <your message>"`
+- Grok Build: run `grok`, then `/seal-access-control <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "encrypt with Seal" or "gated content", or load `~/.cursor/rules/seal-access-control.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

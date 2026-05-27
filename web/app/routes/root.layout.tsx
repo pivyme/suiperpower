@@ -7,7 +7,7 @@ const OG_IMAGE = `${SITE_URL}/assets/suiperpower-og.png`;
 export function meta({}: Route.MetaArgs) {
   const title = "Suiperpower, AI agent skills and CLI for Sui developers";
   const description =
-    "Give Claude Code, Cursor, and Codex superpower on Sui. Skills, knowledge, CLI, and anti-slop quality gates for shipping real Sui Move products.";
+    "Give Claude Code, Cursor, Codex, and Grok Build superpower on Sui. Skills, knowledge, CLI, and anti-slop quality gates for shipping real Sui Move products.";
   const keywords = [
     "Sui",
     "Sui development",
@@ -17,6 +17,7 @@ export function meta({}: Route.MetaArgs) {
     "Claude Code Sui",
     "Cursor Sui",
     "Codex Sui",
+    "Grok Build Sui",
     "Sui CLI",
     "build on Sui",
     "Sui Overflow 2026",

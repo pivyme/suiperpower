@@ -132,6 +132,7 @@ Knowledge docs:
 
 - Claude Code: `claude "/suiper:validate-idea <your message>"`
 - Codex: `codex "/validate-idea <your message>"`
+- Grok Build: run `grok`, then `/validate-idea <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "validate my idea", or load `~/.cursor/rules/validate-idea.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

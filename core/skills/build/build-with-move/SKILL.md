@@ -145,6 +145,7 @@ Knowledge docs (load when scope expands beyond what is in references):
 
 - Claude Code: `claude "/suiper:build-with-move <your message>"`
 - Codex: `codex "/build-with-move <your message>"`
+- Grok Build: run `grok`, then `/build-with-move <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "write a Move module", or load `~/.cursor/rules/build-with-move.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

@@ -50,7 +50,7 @@ function tryRmFile(p: string): boolean {
 
 // Walk the tree bottom-up and remove every empty directory under root.
 // Leaves root itself in place if it ends up empty, since root is the agent's
-// canonical dir (~/.codex/skills, ~/.cursor/rules) that other tools may rely on.
+// canonical dir (~/.codex/skills, ~/.cursor/rules, ~/.grok/skills) that other tools may rely on.
 function pruneEmptyDirsRecursive(root: string): void {
   if (!existsSync(root)) return;
   const visit = (dir: string): boolean => {
@@ -132,6 +132,7 @@ export async function run(args: string[]): Promise<void> {
     join(homedir(), ".claude", "skills"),
     join(homedir(), ".codex", "skills"),
     join(homedir(), ".cursor", "rules"),
+    join(homedir(), ".grok", "skills"),
   ];
   for (const d of installDirs) pruneEmptyDirsRecursive(d);
 

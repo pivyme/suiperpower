@@ -143,6 +143,7 @@ Knowledge docs:
 
 - Claude Code: `claude "/suiper:walrus-research <your message>"`
 - Codex: `codex "/walrus-research <your message>"`
+- Grok Build: run `grok`, then `/walrus-research <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "Walrus research", or load `~/.cursor/rules/walrus-research.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

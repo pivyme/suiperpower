@@ -201,6 +201,7 @@ Canonical:
 
 - Claude Code: `claude "/suiper:pick-my-sui-track <your message>"`
 - Codex: `codex "/pick-my-sui-track <your message>"`
+- Grok Build: run `grok`, then `/pick-my-sui-track <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "which Overflow track", or load `~/.cursor/rules/pick-my-sui-track.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

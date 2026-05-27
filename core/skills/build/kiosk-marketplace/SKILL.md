@@ -148,6 +148,7 @@ Knowledge docs (load when scope expands beyond what is in references):
 
 - Claude Code: `claude "/suiper:kiosk-marketplace <your message>"`
 - Codex: `codex "/kiosk-marketplace <your message>"`
+- Grok Build: run `grok`, then `/kiosk-marketplace <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "build a marketplace on Sui", or load `~/.cursor/rules/kiosk-marketplace.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

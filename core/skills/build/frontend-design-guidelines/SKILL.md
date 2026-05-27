@@ -130,6 +130,7 @@ Knowledge docs:
 
 - Claude Code: `claude "/suiper:frontend-design-guidelines <your message>"`
 - Codex: `codex "/frontend-design-guidelines <your message>"`
+- Grok Build: run `grok`, then `/frontend-design-guidelines <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "design taste check", or load `~/.cursor/rules/frontend-design-guidelines.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

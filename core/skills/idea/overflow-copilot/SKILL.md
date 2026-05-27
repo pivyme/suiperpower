@@ -138,6 +138,7 @@ Knowledge docs:
 
 - Claude Code: `claude "/suiper:overflow-copilot <your message>"`
 - Codex: `codex "/overflow-copilot <your message>"`
+- Grok Build: run `grok`, then `/overflow-copilot <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "search Sui hackathon archives", or load `~/.cursor/rules/overflow-copilot.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

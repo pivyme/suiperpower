@@ -156,6 +156,7 @@ Knowledge docs (load when scope expands beyond what is in references):
 
 - Claude Code: `claude "/suiper:walrus-storage <your message>"`
 - Codex: `codex "/walrus-storage <your message>"`
+- Grok Build: run `grok`, then `/walrus-storage <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "store files on Walrus", or load `~/.cursor/rules/walrus-storage.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

@@ -49,9 +49,9 @@ Skills live under `core/skills/<phase>/<name>/SKILL.md`. Phases: `learn/`, `idea
 ## Key design decisions and why
 
 - **Single npm package** (`@pivyme/suiperpower`): easiest install, easiest versioning, lowest cognitive cost for users.
-- **Claude Code skills ship as a plugin, not a flat copy**: `.claude-plugin/marketplace.json` declares one plugin named `suiper`. Users install via `/plugin marketplace add pivyme/suiperpower` then `/plugin install suiper@suiperpower`. Skills auto-namespace as `/suiper:scaffold-project`, so installing alongside other packs causes zero collision. Codex and Cursor still receive flat copies because neither has a plugin model today. Regenerate after adding or renaming a skill: `pnpm marketplace:gen`.
+- **Claude Code skills ship as a plugin, not a flat copy**: `.claude-plugin/marketplace.json` declares one plugin named `suiper`. Users install via `/plugin marketplace add pivyme/suiperpower` then `/plugin install suiper@suiperpower`. Skills auto-namespace as `/suiper:scaffold-project`, so installing alongside other packs causes zero collision. Codex, Cursor, and Grok Build still receive flat copies because none has a plugin model we target today. Grok reads the Anthropic skill format straight from `~/.grok/skills/`, so it gets the same flat copy as Codex (no Codex-yaml rewrite, no Cursor `.mdc`). Regenerate after adding or renaming a skill: `pnpm marketplace:gen`.
 - **Skills as plain markdown**: transparent, audit-friendly, anyone can read or fork.
-- **Multi-agent parity from v1**: Claude Code + Codex + Cursor.
+- **Multi-agent parity from v1**: Claude Code + Codex + Cursor + Grok Build.
 - **Convex backend**: zero-ops, free tier sufficient, telemetry + feedback only.
 - **Anti-slop quality gates as first-class skills**: every build / ship skill embeds a gate. This is the differentiator.
 - **Sponsor integrations are real**: Walrus / DeepBook / Scallop have first-class skills, knowledge docs, catalog entries. `/pick-my-sui-track` refuses to recommend a sponsor track unless the integration is load-bearing.

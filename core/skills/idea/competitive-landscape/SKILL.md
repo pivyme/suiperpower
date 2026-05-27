@@ -135,6 +135,7 @@ Knowledge docs:
 
 - Claude Code: `claude "/suiper:competitive-landscape <your message>"`
 - Codex: `codex "/competitive-landscape <your message>"`
+- Grok Build: run `grok`, then `/competitive-landscape <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "competitive landscape", or load `~/.cursor/rules/competitive-landscape.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

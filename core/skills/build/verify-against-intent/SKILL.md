@@ -189,6 +189,7 @@ Knowledge docs (load when scope expands):
 
 - Claude Code: `claude "/suiper:verify-against-intent <your message>"`
 - Codex: `codex "/verify-against-intent <your message>"`
+- Grok Build: run `grok`, then `/verify-against-intent <your message>` in the session
 - Cursor: paste a message like "did we build what I asked for on Sui", or reference `~/.cursor/rules/verify-against-intent.mdc`.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

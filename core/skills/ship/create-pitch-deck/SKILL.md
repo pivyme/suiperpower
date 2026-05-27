@@ -143,6 +143,7 @@ On-demand references (load when relevant to the user's question):
 
 - Claude Code: `claude "/suiper:create-pitch-deck <your message>"`
 - Codex: `codex "/create-pitch-deck <your message>"`
+- Grok Build: run `grok`, then `/create-pitch-deck <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "create a pitch deck", or load `~/.cursor/rules/create-pitch-deck.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

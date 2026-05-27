@@ -122,6 +122,7 @@ Knowledge docs (load when scope expands beyond what is in references):
 
 - Claude Code: `claude "/suiper:debug-move <your message>"`
 - Codex: `codex "/debug-move <your message>"`
+- Grok Build: run `grok`, then `/debug-move <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "fix my Move error", or load `~/.cursor/rules/debug-move.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.

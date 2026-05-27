@@ -159,6 +159,7 @@ On-demand references (load when relevant to the user's question):
 
 - Claude Code: `claude "/suiper:product-review <your message>"`
 - Codex: `codex "/product-review <your message>"`
+- Grok Build: run `grok`, then `/product-review <your message>` in the session
 - Cursor: paste a chat message that includes a phrase like "product review", or load `~/.cursor/rules/product-review.mdc` and reference it.
 
 If you activated this and the user actually wants something else, consult `skills/SKILL_ROUTER.md` and hand off.
