@@ -28,17 +28,23 @@
     "format:fix": "prettier --write core/cli/ core/scripts/"
   },
   "devDependencies": {
-    "@eslint/js": "^9.27.0",
-    "@types/node": "^25.7.0",
-    "eslint": "^10.3.0",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^25.9.1",
+    "eslint": "^10.4.0",
     "eslint-config-prettier": "^10.1.5",
     "globals": "^17.6.0",
     "prettier": "^3.5.3",
-    "tsx": "^4.20.0",
+    "tsx": "^4.22.3",
     "typescript": "^5.8.2",
-    "typescript-eslint": "^8.32.1"
+    "typescript-eslint": "^8.59.4"
   },
   "engines": {
     "node": ">=20.0.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "js-cookie": "^3.0.7",
+      "qs": "^6.15.2"
+    }
   }
 }
