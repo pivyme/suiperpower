@@ -110,7 +110,8 @@ function main() {
 
   const lock = {
     ...next,
-    generatedAt: samePayload && existing?.generatedAt ? existing.generatedAt : new Date().toISOString(),
+    generatedAt:
+      samePayload && existing?.generatedAt ? existing.generatedAt : new Date().toISOString(),
   };
 
   const payload = JSON.stringify(lock, null, 2) + "\n";

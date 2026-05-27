@@ -115,7 +115,9 @@ function readExistingIndex(): Index | null {
   }
 }
 
-function withoutGeneratedAt(index: Index | null): Omit<Index, "generatedAt"> & { generatedAt: string } | null {
+function withoutGeneratedAt(
+  index: Index | null,
+): (Omit<Index, "generatedAt"> & { generatedAt: string }) | null {
   if (!index) return null;
   return {
     ...index,
@@ -187,7 +189,8 @@ function main(): void {
 
   const index: Index = {
     ...next,
-    generatedAt: samePayload && existing?.generatedAt ? existing.generatedAt : new Date().toISOString(),
+    generatedAt:
+      samePayload && existing?.generatedAt ? existing.generatedAt : new Date().toISOString(),
   };
 
   const payload = JSON.stringify(index, null, 2) + "\n";

@@ -164,7 +164,8 @@ function main() {
 
   const index = {
     ...next,
-    generatedAt: samePayload && existing?.generatedAt ? existing.generatedAt : new Date().toISOString(),
+    generatedAt:
+      samePayload && existing?.generatedAt ? existing.generatedAt : new Date().toISOString(),
   };
 
   const payload = JSON.stringify(index, null, 2) + "\n";

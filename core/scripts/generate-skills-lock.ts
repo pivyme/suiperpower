@@ -66,7 +66,9 @@ function readExistingLock(): Lock | null {
   }
 }
 
-function withoutGeneratedAt(lock: Lock | null): (Omit<Lock, "generatedAt"> & { generatedAt: string }) | null {
+function withoutGeneratedAt(
+  lock: Lock | null,
+): (Omit<Lock, "generatedAt"> & { generatedAt: string }) | null {
   if (!lock) return null;
   return {
     ...lock,
@@ -132,7 +134,8 @@ function main(): void {
 
   const lock: Lock = {
     ...next,
-    generatedAt: samePayload && existing?.generatedAt ? existing.generatedAt : new Date().toISOString(),
+    generatedAt:
+      samePayload && existing?.generatedAt ? existing.generatedAt : new Date().toISOString(),
   };
 
   const payload = JSON.stringify(lock, null, 2) + "\n";

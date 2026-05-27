@@ -73,7 +73,9 @@ function npmInstallLatest(agent: boolean): boolean {
   if (!isLegacyPackageInstalled()) return false;
   if (!agent) {
     console.log("");
-    console.log(`  ${muted("removing legacy")} ${accent(LEGACY_PACKAGE)} ${muted("package (renamed to")} ${accent(BRAND.NPM_PKG)}${muted(")")}`);
+    console.log(
+      `  ${muted("removing legacy")} ${accent(LEGACY_PACKAGE)} ${muted("package (renamed to")} ${accent(BRAND.NPM_PKG)}${muted(")")}`,
+    );
   }
   if (!uninstallLegacyPackage()) return false;
   return tryNpmInstall();
