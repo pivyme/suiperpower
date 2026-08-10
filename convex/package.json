@@ -8,6 +8,6 @@
     "convex:deploy": "convex deploy"
   },
   "dependencies": {
-    "convex": "^1.39.1"
+    "convex": "^1.43.0"
   }
 }
